@@ -44,5 +44,5 @@ retries:
   backoff_seconds: [5, 30, 120]
 
 paths:
-  state_db: state/shorts.db
+  state_db: state/live.db
   build_dir: build

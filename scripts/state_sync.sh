@@ -11,7 +11,7 @@ if [[ "$cmd" == "pull" ]]; then
   if git ls-remote --exit-code --heads origin "$BR" >/dev/null 2>&1; then
     git fetch -q origin "$BR"
     mkdir -p state data
-    for db in shorts.db dryrun.db; do git show "origin/$BR:state/$db" > "state/$db" 2>/dev/null || rm -f "state/$db"; done
+    for db in live.db dryrun.db; do git show "origin/$BR:state/$db" > "state/$db" 2>/dev/null || rm -f "state/$db"; done
     for f in signals.json insights.json; do git show "origin/$BR:data/$f" > "data/$f" 2>/dev/null || rm -f "data/$f"; done
     echo "state restored"
   else
