@@ -1,4 +1,4 @@
-# Hidden by Design — automated YouTube Shorts system
+# Professor of Things — automated YouTube Shorts system
 
 "Every everyday object has a reason. We show you the reason in under a minute."
 

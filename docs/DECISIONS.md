@@ -69,3 +69,12 @@ Each entry: date, decision, who decided, why. Newest at the bottom.
 
 - Budget of ≈ $24–95/month rules out AI video in every scene of a daily Short. Production style must lean on images + programmatic motion + deterministic editing, with AI video used sparingly.
 - Public auto-upload depends on Google's API audit; until then uploads are private and the owner publishes manually or after approval.
+
+## 2026-10-24 — Channel name changed (owner)
+
+| Topic | Decision | Source |
+|---|---|---|
+| Channel name | **Professor of Things** (replaces "Hidden by Design"; @hiddenbydesign was taken) | Owner |
+| Handle | **@professorofthings** (owner confirmed available) | Owner |
+| Tagline | "Why everyday things are designed the way they are." | Recommendation |
+| Persona | Alice's voice is "the Professor": calm, curious teacher | Recommendation |

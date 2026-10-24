@@ -1,9 +1,9 @@
 # Channel identity and content rules. Edit freely; the pipeline reads this every run.
 channel:
-  name: Hidden by Design
+  name: Professor of Things
   language: en
   audience: "Curious adults and older teens (16-40), English-speaking, global (US, UK, CA, AU, IN)"
-  promise: "Every everyday object has a reason. We show you the reason in under a minute."
+  promise: "Why everyday things are designed the way they are."
   made_for_kids: false
   youtube_category_id: "27"        # Education
   default_hashtags: ["#design", "#everydaythings", "#didyouknow"]
