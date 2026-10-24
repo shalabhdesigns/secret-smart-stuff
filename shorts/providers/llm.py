@@ -97,7 +97,13 @@ class AnthropicLLM:
                 continuations += 1
                 continue
             if stop == "max_tokens":
-                raise LLMError(f"model hit max_tokens ({max_tokens}); raise the limit for this step")
+                if body["max_tokens"] < 32000:
+                    # out of room: start this request again once with double the limit
+                    body["max_tokens"] = min(32000, body["max_tokens"] * 2)
+                    body["messages"] = body["messages"][:1]
+                    blocks, continuations = [], 0
+                    continue
+                raise LLMError(f"model hit max_tokens ({body['max_tokens']}) even after retry")
             text_parts, sources = [], []
             for block in blocks:
                 if block.get("type") == "text":

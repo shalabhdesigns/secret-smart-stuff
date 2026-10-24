@@ -21,7 +21,7 @@ providers:
     vendor: anthropic
     model_script: claude-sonnet-5-5
     model_routine: claude-haiku-5-5
-    web_search_tool: web_search_20260209   # checked 2026-10-24 on platform.claude.com
+    web_search_tool: web_search_20250305   # basic search; the newer version's code-execution filtering used up output tokens
     max_searches_per_video: 6
     # USD per million tokens (input, output) - update when prices change
     prices: {claude-sonnet-5-5: [2.0, 10.0], claude-haiku-5-5: [0.10, 0.50]}

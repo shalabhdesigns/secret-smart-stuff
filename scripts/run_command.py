@@ -42,6 +42,12 @@ def main(path: str) -> int:
     action = req.get("action")
     p = Pipeline(load())
     if action == "produce":
+        for skip in req.get("skip") or []:          # topics to drop before choosing
+            for jj in p.state.jobs():
+                if jj["topic_id"] == skip:
+                    p.state.set_job_status(jj["id"], "rejected", "skipped on request")
+            if p.state.get_topic(skip):
+                p.state.set_topic_status(skip, "rejected")
         tid = req.get("topic") or ""
         if not tid:
             if len(p.state.topics("shortlisted")) < 3:
