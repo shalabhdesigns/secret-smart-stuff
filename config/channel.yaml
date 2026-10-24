@@ -1,9 +1,9 @@
 # Channel identity and content rules. Edit freely; the pipeline reads this every run.
 channel:
-  name: Professor of Things
+  name: Secret Smart Stuff
   language: en
   audience: "Curious adults and older teens (16-40), English-speaking, global (US, UK, CA, AU, IN)"
-  promise: "Why everyday things are designed the way they are."
+  promise: "The secret smart reasons behind everyday things."
   made_for_kids: false
   youtube_category_id: "27"        # Education
   default_hashtags: ["#design", "#everydaythings", "#didyouknow"]

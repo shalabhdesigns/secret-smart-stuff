@@ -74,7 +74,16 @@ Each entry: date, decision, who decided, why. Newest at the bottom.
 
 | Topic | Decision | Source |
 |---|---|---|
-| Channel name | **Professor of Things** (replaces "Hidden by Design"; @hiddenbydesign was taken) | Owner |
-| Handle | **@professorofthings** (owner confirmed available) | Owner |
+| Channel name | **Secret Smart Stuff** (replaces "Hidden by Design"; @hiddenbydesign was taken) | Owner |
+| Handle | **@secretsmartstuff** (owner confirmed available) | Owner |
 | Tagline | "Why everyday things are designed the way they are." | Recommendation |
 | Persona | Alice's voice is "the Professor": calm, curious teacher | Recommendation |
+
+## 2026-10-24 — Final channel name (owner)
+
+| Topic | Decision | Source |
+|---|---|---|
+| Channel name | **Secret Smart Stuff** (replaces Professor of Things) | Owner |
+| Handle | **@secretsmartstuff** (claimed by owner) | Owner |
+| Channel Gmail | secretsmartstuff@gmail.com (separate account, as recommended) | Owner |
+| Tagline | "The secret smart reasons behind everyday things." | Recommendation |

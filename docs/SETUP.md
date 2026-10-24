@@ -11,7 +11,7 @@ Steps are in order. Each step says **why** it is needed.
 ## Step 1 — GitHub (where the system lives and runs)
 
 1. Create a free account at **github.com** (skip if you have one).
-2. Create a **private** repository named `professor-of-things`.
+2. Create a **private** repository named `secret-smart-stuff`.
    - Private matters: it keeps your files hidden and gives 2,000 free automation minutes a month.
 3. Let Claude put the code there. Choose one:
    - **Easiest:** in Claude, open *Settings → Connectors* and connect **GitHub**. Then tell me "push the code". I'll do the rest.
@@ -20,20 +20,20 @@ Steps are in order. Each step says **why** it is needed.
 ## Step 2 — YouTube channel
 
 1. Sign in to YouTube with the Google account you want to own the channel.
-2. Profile picture → **Create a channel** → name: **Professor of Things**.
-   - Handle: try `@professorofthings`.
+2. Profile picture → **Create a channel** → name: **Secret Smart Stuff**.
+   - Handle: try `@secretsmartstuff`.
 3. In **YouTube Studio → Settings → Channel → Advanced**, set **"No, set this channel as not made for kids"**.
 4. Verify your phone number at **youtube.com/verify**. This unlocks longer uploads and custom thumbnails.
 
 ## Step 3 — Google Cloud (permission for the system to upload)
 
 1. Open **console.cloud.google.com** and sign in with the **same** Google account.
-2. Create a project named `professor-of-things`.
+2. Create a project named `secret-smart-stuff`.
 3. Go to **APIs & Services → Library** and enable:
    - **YouTube Data API v3**
    - **YouTube Analytics API**
 4. Go to **APIs & Services → OAuth consent screen** (may be called "Google Auth Platform"):
-   - User type: **External**. App name: `Professor of Things uploader`. Use your email for support and developer contact.
+   - User type: **External**. App name: `Secret Smart Stuff uploader`. Use your email for support and developer contact.
    - Add these scopes: `youtube.upload`, `youtube.readonly`, `yt-analytics.readonly`.
    - **Publishing status: click "Publish app" so it says "In production".**
      - ⚠️ This matters. In "Testing", Google cancels the login every 7 days and the automation stops.

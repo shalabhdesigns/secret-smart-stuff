@@ -1,6 +1,6 @@
-# Professor of Things — automated YouTube Shorts system
+# Secret Smart Stuff — automated YouTube Shorts system
 
-"Every everyday object has a reason. We show you the reason in under a minute."
+"The secret smart reasons behind everyday things."
 
 A small, reliable pipeline that researches topics, writes sourced scripts, voices
 them (ElevenLabs), illustrates them (FLUX), renders vertical Shorts with
