@@ -172,7 +172,7 @@ class Pipeline:
         self.state.set_job_status(job_id, "running")
         d = self.build / job_id
         d.mkdir(parents=True, exist_ok=True)
-        done = job["stage"]
+        done = self._restore(job, d)
         start = STAGES.index(done) + 1 if done in STAGES else 0
         for stage in STAGES[start:]:
             try:
@@ -191,6 +191,39 @@ class Pipeline:
                 return job_id
         self.state.set_job_status(job_id, "review")
         return job_id
+
+    def _restore(self, job: dict, d: Path) -> str:
+        """Each run starts on a fresh machine. Text outputs (script, review) are kept in the
+        state database and written back here; media outputs are not kept, so if they are
+        missing the job steps back to the last stage whose outputs still exist."""
+        arts = job["artifacts"]
+        if arts.get("review", {}).get("script"):
+            (d / "script.json").write_text(json.dumps(arts["review"]["script"], indent=2, ensure_ascii=False))
+            (d / "review.json").write_text(json.dumps(arts["review"].get("content", {}), indent=2))
+        elif arts.get("script", {}).get("content") and not (d / "script.json").exists():
+            (d / "script.json").write_text(json.dumps(arts["script"]["content"], indent=2, ensure_ascii=False))
+        needs = {
+            "script": [d / "script.json"],
+            "review": [d / "script.json", d / "review.json"],
+            "voice": [Path(arts.get("voice", {}).get("audio", d / "_none")),
+                      Path(arts.get("voice", {}).get("words", d / "_none"))],
+            "visuals": [d / "visuals.json"],
+            "render": [Path(arts.get("render", {}).get("video", d / "_none"))],
+            "qa": [d / "qa.json"],
+            "package": [d / "metadata.json", d / "review.md"],
+        }
+        done = job["stage"]
+        last_ok = "created"
+        for st in STAGES:
+            if done not in STAGES or STAGES.index(st) > STAGES.index(done):
+                break
+            if not all(f.exists() for f in needs[st]):
+                break
+            last_ok = st
+        if last_ok != done:
+            self.state.log(f"resuming from after '{last_ok}' (outputs of later stages not on this machine)",
+                           job_id=job["id"])
+        return last_ok
 
     def _art(self, job_id: str, stage: str) -> dict:
         return self.state.get_job(job_id)["artifacts"].get(stage, {})  # type: ignore[index]
@@ -219,7 +252,7 @@ class Pipeline:
             script.setdefault("chosen_hook", best)
         self._validate_script(script)
         (d / "script.json").write_text(json.dumps(script, indent=2, ensure_ascii=False))
-        return {"file": str(d / "script.json")}
+        return {"file": str(d / "script.json"), "content": script}
 
     @staticmethod
     def _attach_citations(s: dict) -> None:
@@ -287,7 +320,8 @@ class Pipeline:
         if rv.get("verdict") == "reject" or float(rv.get("total", 0)) < self.cfg.channel["rules"]["review_pass_score"]:
             raise StageFailed(f"review score {rv.get('total')} / verdict {rv.get('verdict')}: "
                               f"{[p.get('issue') for p in rv.get('problems', [])]}")
-        return {"file": str(d / "review.json"), "score": rv.get("total")}
+        return {"file": str(d / "review.json"), "score": rv.get("total"), "content": rv,
+                "script": json.loads(path.read_text())}
 
     # ---- D: voice
     def _stage_voice(self, job_id: str, topic: dict, d: Path) -> dict:
