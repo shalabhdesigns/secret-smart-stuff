@@ -1,5 +1,5 @@
 {
- "collected_at": "2026-10-24T21:31:11Z",
+ "collected_at": "2026-10-24T21:58:35Z",
  "errors": [
   "@simplethingshistories: ERROR: [youtube:tab] @simplethingshistories: This channel does not have a shorts tab"
  ],
@@ -1714,17 +1714,17 @@
    "multiple": 4.8
   },
   {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Copper Can Make You Serious Cash?💰",
-   "views": 13000,
-   "url": "https://www.youtube.com/shorts/hLRu5f6OFQw",
-   "multiple": 4.2
-  },
-  {
    "channel": "@nameexplain",
    "title": "How Did East Timor Get Its Name? #shorts",
    "views": 35000,
    "url": "https://www.youtube.com/shorts/b4zrXLrj4Ow",
+   "multiple": 4.2
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Copper Can Make You Serious Cash?💰",
+   "views": 13000,
+   "url": "https://www.youtube.com/shorts/hLRu5f6OFQw",
    "multiple": 4.2
   },
   {
@@ -1735,6 +1735,13 @@
    "multiple": 4.1
   },
   {
+   "channel": "@nameexplain",
+   "title": "How Did Canada Get Its Name? #Shorts",
+   "views": 32000,
+   "url": "https://www.youtube.com/shorts/pvt4HXh-drg",
+   "multiple": 3.9
+  },
+  {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Roads Can Be Recycled? 🛣️♻️",
    "views": 12000,
@@ -1743,17 +1750,17 @@
   },
   {
    "channel": "@nameexplain",
-   "title": "How Did Canada Get Its Name? #Shorts",
-   "views": 32000,
-   "url": "https://www.youtube.com/shorts/pvt4HXh-drg",
-   "multiple": 3.9
-  },
-  {
-   "channel": "@nameexplain",
    "title": "How Did Cape Verde Get Its Name? #Shorts",
    "views": 31000,
    "url": "https://www.youtube.com/shorts/Eqx4CR_S8SQ",
    "multiple": 3.7
+  },
+  {
+   "channel": "@nameexplain",
+   "title": "How Did France Get Its Name?",
+   "views": 29000,
+   "url": "https://www.youtube.com/shorts/Egrv1P5FVeo",
+   "multiple": 3.5
   },
   {
    "channel": "@historyofsimplethings",
@@ -1774,13 +1781,6 @@
    "title": "Did You Know Builders Used Eggs In Walls? 🥚🏗️",
    "views": 11000,
    "url": "https://www.youtube.com/shorts/5Hm1hbL6XMk",
-   "multiple": 3.5
-  },
-  {
-   "channel": "@nameexplain",
-   "title": "How Did France Get Its Name?",
-   "views": 29000,
-   "url": "https://www.youtube.com/shorts/Egrv1P5FVeo",
    "multiple": 3.5
   },
   {
@@ -1826,13 +1826,6 @@
    "multiple": 3.2
   },
   {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Aluminum Doesn’t Rust Like Iron? ✨",
-   "views": 9500,
-   "url": "https://www.youtube.com/shorts/58rlT470JyU",
-   "multiple": 3.1
-  },
-  {
    "channel": "@nameexplain",
    "title": "Why Does Sino Mean China?",
    "views": 26000,
@@ -1848,10 +1841,10 @@
   },
   {
    "channel": "@historyofsimplethings",
-   "title": "Did You Know Honey Never Spoils? 🍯⏳",
-   "views": 9300,
-   "url": "https://www.youtube.com/shorts/TDtLqm-6AUo",
-   "multiple": 3.0
+   "title": "Did You Know Aluminum Doesn’t Rust Like Iron? ✨",
+   "views": 9500,
+   "url": "https://www.youtube.com/shorts/58rlT470JyU",
+   "multiple": 3.1
   },
   {
    "channel": "@nameexplain",
@@ -1869,10 +1862,10 @@
   },
   {
    "channel": "@historyofsimplethings",
-   "title": "Did You Know Basketball Began as a Winter Game?",
-   "views": 8900,
-   "url": "https://www.youtube.com/shorts/GaED350XHFU",
-   "multiple": 2.9
+   "title": "Did You Know Honey Never Spoils? 🍯⏳",
+   "views": 9300,
+   "url": "https://www.youtube.com/shorts/TDtLqm-6AUo",
+   "multiple": 3.0
   },
   {
    "channel": "@nameexplain",
@@ -1890,10 +1883,24 @@
   },
   {
    "channel": "@historyofsimplethings",
+   "title": "Did You Know Basketball Began as a Winter Game?",
+   "views": 8900,
+   "url": "https://www.youtube.com/shorts/GaED350XHFU",
+   "multiple": 2.9
+  },
+  {
+   "channel": "@historyofsimplethings",
    "title": "Did You Know Some Dams Can Slow Earth’s Rotation?",
    "views": 8600,
    "url": "https://www.youtube.com/shorts/c2gY3ivfEGA",
    "multiple": 2.8
+  },
+  {
+   "channel": "@nameexplain",
+   "title": "How  Did Czechia Get Its Name? #Shorts",
+   "views": 22000,
+   "url": "https://www.youtube.com/shorts/kii5SIsYPH0",
+   "multiple": 2.7
   },
   {
    "channel": "@historyofsimplethings",
@@ -1914,13 +1921,6 @@
    "title": "Did You Know Oil Comes From Ancient Life? 🛢️😮",
    "views": 8300,
    "url": "https://www.youtube.com/shorts/bXD-q4_E0gs",
-   "multiple": 2.7
-  },
-  {
-   "channel": "@nameexplain",
-   "title": "How  Did Czechia Get Its Name? #Shorts",
-   "views": 22000,
-   "url": "https://www.youtube.com/shorts/kii5SIsYPH0",
    "multiple": 2.7
   },
   {
@@ -1950,6 +1950,27 @@
    "views": 7900,
    "url": "https://www.youtube.com/shorts/dfQpC80UsZQ",
    "multiple": 2.5
+  },
+  {
+   "channel": "@nameexplain",
+   "title": "How Did Brunei Get Its Name? #Shorts",
+   "views": 20000,
+   "url": "https://www.youtube.com/shorts/4LarInTV84I",
+   "multiple": 2.4
+  },
+  {
+   "channel": "@nameexplain",
+   "title": "How Did Azerbaijan Get Its Name? #Shorts",
+   "views": 20000,
+   "url": "https://www.youtube.com/shorts/5fSMfBDQxB8",
+   "multiple": 2.4
+  },
+  {
+   "channel": "@nameexplain",
+   "title": "How Did Australia Get Its Name? #Shorts",
+   "views": 20000,
+   "url": "https://www.youtube.com/shorts/6nxScDW-4eQ",
+   "multiple": 2.4
   },
   {
    "channel": "@historyofsimplethings",
@@ -1984,27 +2005,6 @@
    "title": "Did You Know The Printing Press Changed The World? 🖨️📚",
    "views": 7500,
    "url": "https://www.youtube.com/shorts/Fm3cpQV5aCQ",
-   "multiple": 2.4
-  },
-  {
-   "channel": "@nameexplain",
-   "title": "How Did Brunei Get Its Name? #Shorts",
-   "views": 20000,
-   "url": "https://www.youtube.com/shorts/4LarInTV84I",
-   "multiple": 2.4
-  },
-  {
-   "channel": "@nameexplain",
-   "title": "How Did Azerbaijan Get Its Name? #Shorts",
-   "views": 20000,
-   "url": "https://www.youtube.com/shorts/5fSMfBDQxB8",
-   "multiple": 2.4
-  },
-  {
-   "channel": "@nameexplain",
-   "title": "How Did Australia Get Its Name? #Shorts",
-   "views": 20000,
-   "url": "https://www.youtube.com/shorts/6nxScDW-4eQ",
    "multiple": 2.4
   },
   {
