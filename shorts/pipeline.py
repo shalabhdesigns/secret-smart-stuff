@@ -148,6 +148,11 @@ class Pipeline:
         return [v["title"] for v in json.loads(p.read_text()).get("all_titles", [])]
 
     def next_topic(self) -> dict | None:
+        # Finish what was started first: a failed job resumes from its last good stage.
+        for j in self.state.jobs("failed"):
+            t = self.state.get_topic(j["topic_id"])
+            if t:
+                return t
         for status in ("approved", "shortlisted"):
             ts = self.state.topics(status)
             if ts:
@@ -207,6 +212,7 @@ class Pipeline:
             self.state.set_topic_status(topic["id"], "rejected")
             raise StageFailed(f"idea not viable: {script.get('reason_if_not')}")
         script["cited_sources"] = r.sources
+        self._attach_citations(script)
         script["hook_scores"] = [hook_score(h) for h in script.get("hooks", [])]
         if script["hook_scores"]:
             best = max(range(len(script["hook_scores"])), key=lambda i: script["hook_scores"][i]["verdict"])
@@ -214,6 +220,22 @@ class Pipeline:
         self._validate_script(script)
         (d / "script.json").write_text(json.dumps(script, indent=2, ensure_ascii=False))
         return {"file": str(d / "script.json")}
+
+    @staticmethod
+    def _attach_citations(s: dict) -> None:
+        """Pages the model actually cited during web search are real sources. If the main
+        claim lists fewer than two, top it up from those citations (never invented URLs)."""
+        cited = list(dict.fromkeys(c["url"] for c in s.get("cited_sources") or [] if c.get("url")))
+        facts = s.get("facts") or []
+        main = [f for f in facts if f.get("main")] or facts[:1]
+        for f in main:
+            srcs = list(dict.fromkeys(f.get("sources") or []))
+            for u in cited:
+                if len(srcs) >= 2:
+                    break
+                if u not in srcs:
+                    srcs.append(u)
+            f["sources"] = srcs
 
     def _validate_script(self, s: dict) -> None:
         scenes = s.get("scenes") or []
