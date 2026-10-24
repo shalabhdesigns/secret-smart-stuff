@@ -344,7 +344,10 @@ class Pipeline:
         bar = self.cfg.channel["rules"]["review_pass_score"]
 
         def review(sc: dict, tag: str) -> dict:
-            lean = {k: sc.get(k) for k in ("title", "hooks", "chosen_hook", "scenes", "facts")}
+            # The reviewer sees only what the viewer will get (no hook list or index to confuse it).
+            lean = {"title": sc.get("title"),
+                    "opening_line": (sc.get("scenes") or [{}])[0].get("narration", ""),
+                    "scenes": sc.get("scenes"), "facts": sc.get("facts")}
             return self._llm(P.REVIEW.format(script=json.dumps(lean, ensure_ascii=False)), job_id, tag,
                              est=0.08, web_search=True, model=rv_model, max_tokens=8000).data or {}
 

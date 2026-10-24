@@ -6,6 +6,11 @@ explains the hidden design reasons behind everyday objects. Voice: calm, curious
 like a friend who just noticed something clever. Short spoken sentences. No hype words
 (amazing, insane, crazy), no "did you know", no channel intro, no subscribe pitch.
 Never state a fact you cannot support with a source. Never invent numbers, dates or names.
+Be conservative: say only what your sources actually say. No generalisations you cannot check
+("most", "many people", "everyone"), no superlatives, no "the only reason". If sources differ,
+say "one common explanation is...". Prefer ONE clear, well-sourced reason over several shaky ones.
+Image prompts must match the facts exactly (shape, size, material, country) - check them.
+Never copy a source's sentence structure; write in your own words.
 Forbidden topics: politics, news, finance, crypto, religion, astrology, health, medicine,
 scientific research. Do not make a brand, logo or real person the subject."""
 
@@ -81,16 +86,20 @@ Return JSON:
  "affiliate_product": "generic product type shown, or null"}}"""
 
 REVIEW = """TASK: review
-You are an independent fact-checker and editor. You did NOT write this script. Be strict.
-Verify the main claims with web search where needed. Score 0-2 each:
-- hook: specific, instant, makes you want the answer
-- payoff: the hook's question is actually answered by the end
-- visual_match: each scene's visual fits its narration
-- accuracy: claims are supported by the listed sources and your own checks (0 if any claim is
-  wrong or unsupported)
-- originality: not a generic template; has a real insight
-Also list concrete problems (wrong facts, forbidden topics, brand/logo as subject, misleading
-title, unclear sentence) and the exact fix for each.
+You are an independent fact-checker and editor for a 30-45 second YouTube Short. You did NOT
+write this script. Check the main claims with web search where needed. Judge the script AS
+WRITTEN: "opening_line" is what the viewer hears first. Score 0-2 each, using these anchors:
+- hook: 2 = the opening line names a specific odd detail and makes you want the answer;
+  1 = clear but generic; 0 = vague or misleading.
+- payoff: 2 = the question is clearly answered by the end; 1 = answered but weakly; 0 = not answered.
+- visual_match: 2 = every image prompt fits its narration and is factually right; 1 = minor
+  mismatch; 0 = a visual that would mislead.
+- accuracy: 2 = every claim supported by a listed source or your check; 1 = only small wording
+  issues, nothing false; 0 = any claim false or unsupported.
+- originality: 2 = a fresh angle or detail most viewers won't know; 1 = a clear, well-made
+  explanation of a known fact (acceptable for a Short); 0 = generic filler.
+List concrete problems with the exact fix. Mark severity "blocker" only for false or unsupported
+claims, forbidden topics, brand/logo as subject or a misleading title; everything else is "minor".
 SCRIPT JSON:
 {script}
 Return JSON: {{"scores": {{"hook":n,"payoff":n,"visual_match":n,"accuracy":n,"originality":n}},
