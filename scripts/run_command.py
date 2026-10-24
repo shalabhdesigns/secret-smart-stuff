@@ -51,9 +51,15 @@ def main(path: str) -> int:
         if not tid:
             alert("Pipeline problem: no topic", "Discovery returned no usable topics.")
             return 1
+        if req.get("reset"):
+            # owner/Claude asked to retry a job that had hit the attempt limit
+            for jj in p.state.jobs():
+                if jj["topic_id"] == tid:
+                    p.state.db.execute("UPDATE jobs SET attempts=0, status='failed' WHERE id=?", (jj["id"],))
+                    p.state.db.commit()
         job = p.produce(tid)
         j = p.state.get_job(job)
-        if j["status"] == "review":
+        if j["status"] == "review" and not j["error"]:
             subprocess.run([str(ROOT / "scripts" / "open_review.sh"), job], check=True)
         else:
             ev = p.state.db.execute("SELECT message FROM events WHERE job_id=? ORDER BY at DESC LIMIT 8",

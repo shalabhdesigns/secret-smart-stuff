@@ -250,7 +250,23 @@ class Pipeline:
         if script["hook_scores"]:
             best = max(range(len(script["hook_scores"])), key=lambda i: script["hook_scores"][i]["verdict"])
             script.setdefault("chosen_hook", best)
-        self._validate_script(script)
+        try:
+            self._validate_script(script)
+        except StageFailed as e:
+            # One bounded repair with web search: ask for the missing sources / fixes.
+            self.state.log(f"script failed check ({e}); one repair attempt", "warn", job_id)
+            fx = self._llm(P.FIX.format(problems=json.dumps([{"issue": str(e),
+                    "fix": "Search the web and add at least two independent, credible source URLs "
+                           "for the main claim (and one for every other claim). Keep everything else."}]),
+                    script=json.dumps(script, ensure_ascii=False)),
+                job_id, "script_repair", est=0.2, system=P.SYSTEM_WRITER, web_search=True,
+                model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=12000)
+            fixed = fx.data or {}
+            fixed["cited_sources"] = (script.get("cited_sources") or []) + fx.sources
+            fixed["hook_scores"] = [hook_score(h) for h in fixed.get("hooks", [])]
+            self._attach_citations(fixed)
+            self._validate_script(fixed)
+            script = fixed
         (d / "script.json").write_text(json.dumps(script, indent=2, ensure_ascii=False))
         return {"file": str(d / "script.json"), "content": script}
 
@@ -284,7 +300,8 @@ class Pipeline:
             raise StageFailed("no fact list")
         main = [f for f in facts if f.get("main")] or facts[:1]
         need = self.cfg.channel["rules"]["min_sources_main_claim"]
-        if any(len(f.get("sources") or []) < need for f in main) and self.cfg.live:
+        distinct = {u for f in facts for u in (f.get("sources") or [])}
+        if self.cfg.live and (any(not f.get("sources") for f in main) or len(distinct) < need):
             raise StageFailed("main claim has too few sources")
         if any(not f.get("sources") for f in facts):
             raise StageFailed("a claim has no source")
