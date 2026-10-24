@@ -8,7 +8,7 @@ on:
       topic:
         description: "Topic id to produce (blank = next best)"
         required: false
-concurrency: { group: shorts-state, cancel-in-progress: false }
+concurrency: { group: shorts-state, cancel-in-progress: false, queue: max }
 permissions: { contents: write, issues: write }
 jobs:
   produce:
@@ -48,6 +48,14 @@ jobs:
         if: steps.prod.outputs.status == 'review'
         env: { JOB: "${{ steps.prod.outputs.job }}" }
         run: scripts/open_review.sh "$JOB"
+      - name: Auto-approve (only if approval.mode is auto and the video clears the bar)
+        if: steps.prod.outputs.status == 'review'
+        env:
+          JOB: "${{ steps.prod.outputs.job }}"
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: python -m shorts.cli auto-approve "$JOB"
       - name: Alert on failure or budget pause
         if: steps.prod.outputs.status == 'failed' || steps.prod.outputs.status == 'paused'
         env: { JOB: "${{ steps.prod.outputs.job }}" }

@@ -35,6 +35,8 @@ def main(argv: list[str] | None = None) -> int:
     s = sub.add_parser("upload-resolve"); s.add_argument("job")
     s.add_argument("--video-id", help="the video ID if YouTube Studio shows the upload did finish")
     s = sub.add_parser("next-slot")
+    s = sub.add_parser("auto-approve", help="approve+publish if approval.mode is auto and the job clears the bar")
+    s.add_argument("job")
     a = ap.parse_args(argv)
 
     p = Pipeline(load(mode=a.mode))
@@ -79,6 +81,18 @@ def main(argv: list[str] | None = None) -> int:
         p.state.log(f"upload resolved by owner: {a.video_id or 'not on YouTube, retry allowed'}", job_id=a.job)
     elif a.cmd == "next-slot":
         print(next_slot(p))
+    elif a.cmd == "auto-approve":
+        j = p.state.get_job(a.job)
+        arts = j["artifacts"] if j else {}
+        score = float(arts.get("review", {}).get("score") or 0)
+        clean = not arts.get("qa", {}).get("image_flags")
+        bar = p.cfg.channel["rules"]["auto_publish_score"]
+        if p.cfg.pipeline["approval"]["mode"] != "auto" or not p.cfg.live:
+            print("manual approval mode - waiting for owner"); return 0
+        if j["status"] != "review" or score < bar or not clean:
+            print(f"needs owner review (score {score}, bar {bar}, image flags: {not clean})"); return 0
+        p.decide(a.job, "approve", "auto: score >= bar")
+        print(json.dumps(p.publish(a.job, next_slot(p)), indent=1))
     elif a.cmd == "run-daily":
         if len(p.state.topics("shortlisted")) < a.min_backlog:
             p.discover()

@@ -18,7 +18,8 @@ url=$(gh release view "$TAG" --json assets -q '.assets[] | select(.name=="final.
   echo
   cat "$D/review.md"
 } > issue.md
-existing=$(gh issue list --label review --state open --search "job:$JOB in:body" --json number -q '.[0].number')
+existing=$(gh issue list --label review --state open --limit 100 --json number,body \
+  -q ".[] | select(.body | contains(\"<!-- job:$JOB -->\")) | .number" | head -1)
 if [ -n "$existing" ]; then
   gh issue comment "$existing" --body-file issue.md
 else

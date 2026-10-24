@@ -32,32 +32,46 @@ METRICS = ["views", "engagedViews", "averageViewDuration", "averageViewPercentag
 def _query(token: str, video_ids: list[str], start: str, end: str, metrics: list[str]) -> dict:
     r = requests.get(REPORTS, headers={"Authorization": f"Bearer {token}"}, timeout=60, params={
         "ids": "channel==MINE", "startDate": start, "endDate": end, "metrics": ",".join(metrics),
-        "dimensions": "video", "filters": "video==" + ",".join(video_ids), "maxResults": 200})
+        "dimensions": "video", "filters": "video==" + ",".join(video_ids), "maxResults": 200,
+        "sort": "-views"})
     return {"status": r.status_code, "body": r.json() if r.content else {}}
 
 
 def snapshot(state: State, start_date: str = "2026-01-01") -> dict:
-    rows = state.db.execute("SELECT job_id, video_id, at FROM uploads WHERE video_id IS NOT NULL").fetchall()
+    rows = state.db.execute("SELECT job_id, video_id, at, publish_at FROM uploads "
+                            "WHERE video_id IS NOT NULL").fetchall()
     if not rows:
         return {"videos": 0}
     token = access_token()
     end = time.strftime("%Y-%m-%d", time.gmtime())
+    import datetime as dt
     ids = [r["video_id"] for r in rows]
+    live_at = {}
+    for r in rows:   # age counts from going public (publish_at), not from the private upload
+        ts = r["at"]
+        if r["publish_at"]:
+            ts = dt.datetime.strptime(r["publish_at"], "%Y-%m-%dT%H:%M:%SZ").replace(
+                tzinfo=dt.timezone.utc).timestamp()
+        live_at[r["video_id"]] = ts
     metrics, missing = list(METRICS), []
-    res = _query(token, ids, start_date, end, metrics)
-    while res["status"] == 400 and len(metrics) > 1:
-        dropped = metrics.pop(1)                 # drop optional metrics one by one
-        missing.append(dropped)
-        res = _query(token, ids, start_date, end, metrics)
-    if res["status"] != 200:
-        raise RuntimeError(f"analytics error {res['status']}: {str(res['body'])[:300]}")
-    cols = [h["name"] for h in res["body"].get("columnHeaders", [])]
-    uploaded_at = {r["video_id"]: r["at"] for r in rows}
-    for row in res["body"].get("rows", []):
-        rec = dict(zip(cols, row))
-        vid = rec.get("video")
-        age = (time.time() - uploaded_at.get(vid, time.time())) / 3600
-        state.add_metrics(vid, rec | {"missing_metrics": missing}, age)
+    for i in range(0, len(ids), 200):
+        batch = ids[i:i + 200]
+        res = _query(token, batch, start_date, end, metrics)
+        for optional in ("engagedViews", "averageViewPercentage"):
+            if res["status"] == 400 and optional in str(res["body"]) and optional in metrics:
+                metrics.remove(optional)
+                missing.append(optional)
+                res = _query(token, batch, start_date, end, metrics)
+        if res["status"] != 200:
+            raise RuntimeError(f"analytics error {res['status']}: {str(res['body'])[:300]}")
+        cols = [h["name"] for h in res["body"].get("columnHeaders", [])]
+        for row in res["body"].get("rows", []):
+            rec = dict(zip(cols, row))
+            vid = rec.get("video")
+            age = (time.time() - live_at.get(vid, time.time())) / 3600
+            if age < 0:
+                continue          # not public yet
+            state.add_metrics(vid, rec | {"missing_metrics": missing}, age)
     return {"videos": len(ids), "missing_metrics": missing}
 
 

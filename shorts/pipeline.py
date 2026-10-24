@@ -201,7 +201,7 @@ class Pipeline:
                                  seconds_lo=lo, seconds_hi=hi, words_lo=int(lo * wps), words_hi=int(hi * wps),
                                  min_sources=r_["min_sources_main_claim"])
         r = self._llm(prompt, job_id, "script", est=0.25, system=P.SYSTEM_WRITER, web_search=True,
-                      model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=6000)
+                      model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=12000)
         script = r.data or {}
         if script.get("viable") is False:
             self.state.set_topic_status(topic["id"], "rejected")
@@ -246,7 +246,7 @@ class Pipeline:
         lean = {k: script.get(k) for k in ("title", "hooks", "chosen_hook", "scenes", "facts")}
         rv_model = self.cfg.pipeline["providers"]["llm"]["model_routine"]
         rv = self._llm(P.REVIEW.format(script=json.dumps(lean, ensure_ascii=False)), job_id, "review",
-                       est=0.08, web_search=True, model=rv_model).data or {}
+                       est=0.08, web_search=True, model=rv_model, max_tokens=8000).data or {}
         blockers = [p for p in rv.get("problems", []) if p.get("severity") == "blocker"]
         if (blockers or rv.get("verdict") == "fix") and not script.get("_revised"):
             fx = self._llm(P.FIX.format(problems=json.dumps(rv.get("problems", [])),
@@ -260,7 +260,7 @@ class Pipeline:
             path.write_text(json.dumps(fx, indent=2, ensure_ascii=False))
             lean = {k: fx.get(k) for k in ("title", "hooks", "chosen_hook", "scenes", "facts")}
             rv = self._llm(P.REVIEW.format(script=json.dumps(lean, ensure_ascii=False)), job_id, "review2",
-                           est=0.08, web_search=True, model=rv_model).data or {}
+                           est=0.08, web_search=True, model=rv_model, max_tokens=8000).data or {}
         (d / "review.json").write_text(json.dumps(rv, indent=2))
         if rv.get("verdict") == "reject" or float(rv.get("total", 0)) < self.cfg.channel["rules"]["review_pass_score"]:
             raise StageFailed(f"review score {rv.get('total')} / verdict {rv.get('verdict')}: "
@@ -308,7 +308,14 @@ class Pipeline:
                 for attempt in range(2):
                     if self.cfg.live:
                         self.budget.authorize(0.03, "image", job_id)
-                    img, usd = self.images.generate(prompt, path, seed=rng.randint(1, 10**6))
+                    try:
+                        img, usd = self.images.generate(prompt, path, seed=rng.randint(1, 10**6))
+                    except Exception as e:  # noqa: BLE001 - one try on the fallback model, then give up
+                        fb = self.cfg.pipeline["providers"]["images"].get("fallback_model")
+                        if not fb:
+                            raise
+                        self.state.log(f"image model failed ({e}); trying {fb}", "warn", job_id)
+                        img, usd = self.images.generate(prompt, path, seed=rng.randint(1, 10**6), model=fb)
                     if usd:
                         self.state.add_cost("bfl", "image", 1, usd, job_id)
                     target = (sc.get("callouts") or [{}])[0].get("target", sc[key])

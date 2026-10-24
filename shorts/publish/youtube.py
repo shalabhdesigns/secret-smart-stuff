@@ -77,6 +77,13 @@ def access_token() -> str:
     return r.json()["access_token"]
 
 
+def _clean(text: str, max_bytes: int) -> str:
+    """YouTube rejects < and > in titles/descriptions and caps length in bytes."""
+    t = text.replace("<", "‹").replace(">", "›")
+    b = t.encode("utf-8")[:max_bytes]
+    return b.decode("utf-8", errors="ignore")
+
+
 def _body(meta: VideoMeta) -> dict:
     status = {
         "privacyStatus": "private",
@@ -88,8 +95,8 @@ def _body(meta: VideoMeta) -> dict:
         status["publishAt"] = meta.publish_at
     return {
         "snippet": {
-            "title": meta.title[:100],
-            "description": meta.description[:5000],
+            "title": _clean(meta.title, 100)[:100],
+            "description": _clean(meta.description, 5000),
             "tags": meta.tags[:15],
             "categoryId": meta.category_id,
             "defaultLanguage": meta.language,
@@ -109,8 +116,6 @@ def upload(state: State, job_id: str, video: Path, meta: VideoMeta,
         raise UploadBlocked(f"an earlier upload of this file started but did not confirm "
                             f"(job {prior['job_id']}). Check YouTube Studio, then mark it "
                             f"resolved with `shorts upload-resolve {prior['job_id']}`.")
-    state.record_upload(job_id, digest, "started", privacy="private", publish_at=meta.publish_at)
-
     token = access_token()
     size = video.stat().st_size
     init = requests.post(
@@ -120,10 +125,12 @@ def upload(state: State, job_id: str, video: Path, meta: VideoMeta,
         data=json.dumps(_body(meta)), timeout=60,
     )
     if init.status_code == 403 and "quota" in init.text.lower():
-        state.record_upload(job_id, digest, "failed")
         raise UploadBlocked("upload quota exhausted for today")
-    init.raise_for_status()
+    if init.status_code >= 400:
+        raise UploadBlocked(f"upload could not start ({init.status_code}): {init.text[:300]}")
     session = init.headers["Location"]
+    # Only now can a video start to exist on YouTube, so only now block re-uploads.
+    state.record_upload(job_id, digest, "started", privacy="private", publish_at=meta.publish_at)
 
     sent, attempt = 0, 0
     with video.open("rb") as f:
@@ -154,8 +161,15 @@ def upload(state: State, job_id: str, video: Path, meta: VideoMeta,
             if attempt > max_retries:
                 raise UploadBlocked("upload kept failing; left as 'started' for a human to check")
             time.sleep(min(2 ** attempt, 60))
-            q = requests.put(session, timeout=60, headers={
-                "Authorization": f"Bearer {token}", "Content-Range": f"bytes */{size}"})
+            try:
+                q = requests.put(session, timeout=60, headers={
+                    "Authorization": f"Bearer {token}", "Content-Range": f"bytes */{size}"})
+            except requests.RequestException:
+                continue
+            if q.status_code in (200, 201):
+                vid = q.json()["id"]
+                state.record_upload(job_id, digest, "uploaded", video_id=vid, url=f"https://youtube.com/shorts/{vid}")
+                return state.upload_for_hash(digest)  # type: ignore[return-value]
             if q.status_code == 308:
                 rng = q.headers.get("Range")
                 sent = int(rng.split("-")[1]) + 1 if rng else 0

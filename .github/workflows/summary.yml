@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: "23 16 * * *"
   workflow_dispatch:
-concurrency: { group: shorts-state, cancel-in-progress: false }
+concurrency: { group: shorts-state, cancel-in-progress: false, queue: max }
 permissions: { contents: read, issues: write }
 jobs:
   summary:

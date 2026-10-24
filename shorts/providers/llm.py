@@ -70,28 +70,45 @@ class AnthropicLLM:
         headers = {"x-api-key": self.key, "anthropic-version": "2023-06-01",
                    "content-type": "application/json"}
         last = None
-        for attempt in range(retries):
+        blocks: list[dict] = []
+        usage_total = {"input_tokens": 0, "output_tokens": 0}
+        searches = 0
+        attempt = 0
+        continuations = 0
+        while attempt < retries:
             r = requests.post(API, headers=headers, json=body, timeout=300)
             if r.status_code in (429, 500, 502, 503, 529):
                 last = r.text[:200]
                 time.sleep(5 * (2 ** attempt))
+                attempt += 1
                 continue
             if r.status_code != 200:
                 raise LLMError(f"Anthropic {r.status_code}: {r.text[:300]}")
             msg = r.json()
-            text_parts, sources, searches = [], [], 0
-            for block in msg.get("content", []):
+            u = msg.get("usage", {})
+            usage_total["input_tokens"] += u.get("input_tokens", 0)
+            usage_total["output_tokens"] += u.get("output_tokens", 0)
+            searches += (u.get("server_tool_use") or {}).get("web_search_requests", 0)
+            blocks += msg.get("content", [])
+            stop = msg.get("stop_reason")
+            if stop == "pause_turn" and continuations < 4:
+                # long server-tool turn: send the partial turn back so the model continues
+                body["messages"] = body["messages"] + [{"role": "assistant", "content": msg["content"]}]
+                continuations += 1
+                continue
+            if stop == "max_tokens":
+                raise LLMError(f"model hit max_tokens ({max_tokens}); raise the limit for this step")
+            text_parts, sources = [], []
+            for block in blocks:
                 if block.get("type") == "text":
                     text_parts.append(block["text"])
                     for c in block.get("citations") or []:
                         if c.get("url"):
                             sources.append({"url": c["url"], "title": c.get("title", ""),
                                             "cited_text": c.get("cited_text", "")})
-                elif block.get("type") == "server_tool_use":
-                    searches += 1
             text = "".join(text_parts)
             data = extract_json(text) if json_out else None
-            usd = self._price(model, msg.get("usage", {}), searches)
+            usd = self._price(model, usage_total, searches)
             return LLMResult(text=text, data=data, usd=usd, sources=sources, model=model)
         raise LLMError(f"Anthropic kept failing: {last}")
 

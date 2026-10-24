@@ -39,10 +39,11 @@ class ElevenLabsTTS:
         self.key, self.voice, self.model, self.rate = api_key, voice_id, model_id, usd_per_1k_chars
 
     def speak(self, text: str, out: Path, retries: int = 3) -> Speech:
-        body = {"text": text, "model_id": self.model, "output_format": "mp3_44100_128"}
+        body = {"text": text, "model_id": self.model}
         headers = {"xi-api-key": self.key, "content-type": "application/json"}
         for attempt in range(retries):
-            r = requests.post(API.format(voice=self.voice), json=body, headers=headers, timeout=180)
+            r = requests.post(API.format(voice=self.voice), params={"output_format": "mp3_44100_128"},
+                              json=body, headers=headers, timeout=180)
             if r.status_code in (429, 500, 502, 503):
                 time.sleep(5 * (2 ** attempt))
                 continue

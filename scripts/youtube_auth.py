@@ -16,6 +16,8 @@ Google expires the refresh token after 7 days and the automation stops.
 from __future__ import annotations
 
 import argparse
+import base64
+import hashlib
 import http.server
 import secrets
 import urllib.parse
@@ -38,9 +40,12 @@ def main() -> None:
     ap.add_argument("--client-secret", required=True)
     a = ap.parse_args()
     state = secrets.token_urlsafe(16)
+    verifier = secrets.token_urlsafe(64)                       # PKCE, as Google recommends
+    challenge = base64.urlsafe_b64encode(hashlib.sha256(verifier.encode()).digest()).rstrip(b"=").decode()
     url = "https://accounts.google.com/o/oauth2/v2/auth?" + urllib.parse.urlencode({
         "client_id": a.client_id, "redirect_uri": REDIRECT, "response_type": "code", "scope": SCOPES,
-        "access_type": "offline", "prompt": "consent", "state": state})
+        "access_type": "offline", "prompt": "consent", "state": state,
+        "code_challenge": challenge, "code_challenge_method": "S256"})
     got: dict = {}
 
     class H(http.server.BaseHTTPRequestHandler):
@@ -64,7 +69,7 @@ def main() -> None:
         raise SystemExit(f"Login failed: {got.get('error', 'state mismatch')}")
     r = requests.post("https://oauth2.googleapis.com/token", data={
         "code": got["code"], "client_id": a.client_id, "client_secret": a.client_secret,
-        "redirect_uri": REDIRECT, "grant_type": "authorization_code"}, timeout=30)
+        "redirect_uri": REDIRECT, "grant_type": "authorization_code", "code_verifier": verifier}, timeout=30)
     r.raise_for_status()
     tok = r.json()
     if "refresh_token" not in tok:

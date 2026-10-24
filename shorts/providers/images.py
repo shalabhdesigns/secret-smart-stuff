@@ -32,7 +32,11 @@ class BFLImages:
         if seed is not None:
             body["seed"] = seed
         h = {"x-key": self.key, "accept": "application/json", "content-type": "application/json"}
-        r = requests.post(BASE + model, json=body, headers=h, timeout=60)
+        for attempt in range(4):
+            r = requests.post(BASE + model, json=body, headers=h, timeout=60)
+            if r.status_code != 429:
+                break
+            time.sleep(5 * (2 ** attempt))       # too many active tasks: wait and retry
         if r.status_code == 402:
             raise ImageError("BFL account has no credits left")
         if r.status_code != 200:
@@ -41,14 +45,21 @@ class BFLImages:
         t0 = time.time()
         while time.time() - t0 < timeout_s:
             time.sleep(1.0)
-            s = requests.get(poll, headers=h, timeout=30).json()
+            try:
+                resp = requests.get(poll, headers=h, timeout=30)
+            except requests.RequestException:
+                continue
+            if resp.status_code != 200:
+                continue
+            s = resp.json()
             status = s.get("status")
             if status == "Ready":
                 img = requests.get(s["result"]["sample"], timeout=120)
                 img.raise_for_status()
                 out.write_bytes(img.content)
                 return out, float(self.prices.get(model, 0.03))
-            if status in ("Error", "Failed", "Request Moderated", "Content Moderated"):
+            if status in ("Error", "Failed", "Task not found", "No Card Generated",
+                          "Request Moderated", "Content Moderated"):
                 raise ImageError(f"BFL generation {status}: {s}")
         raise ImageError("BFL generation timed out")
 
