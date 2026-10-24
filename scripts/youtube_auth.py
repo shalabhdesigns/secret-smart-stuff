@@ -36,9 +36,14 @@ REDIRECT = f"http://127.0.0.1:{PORT}"
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--client-id", required=True)
-    ap.add_argument("--client-secret", required=True)
+    ap.add_argument("--client-id", default="")
+    ap.add_argument("--client-secret", default="")
     a = ap.parse_args()
+    # Simplest path: just run the script and paste when asked.
+    while not a.client_id.strip().endswith(".apps.googleusercontent.com"):
+        a.client_id = input("Paste your Client ID (ends with .apps.googleusercontent.com), then press Enter:\n> ").strip().strip('"')
+    while not a.client_secret.strip():
+        a.client_secret = input("Paste your Client secret (often starts with GOCSPX-), then press Enter:\n> ").strip().strip('"')
     state = secrets.token_urlsafe(16)
     verifier = secrets.token_urlsafe(64)                       # PKCE, as Google recommends
     challenge = base64.urlsafe_b64encode(hashlib.sha256(verifier.encode()).digest()).rstrip(b"=").decode()
