@@ -252,7 +252,7 @@ class Pipeline:
             fx = self._llm(P.FIX.format(problems=json.dumps(rv.get("problems", [])),
                                         script=json.dumps(script, ensure_ascii=False)),
                            job_id, "fix", est=0.2, system=P.SYSTEM_WRITER,
-                           model=self.cfg.pipeline["providers"]["llm"]["model_script"]).data or {}
+                           model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=12000).data or {}
             fx["_revised"] = True
             fx["hook_scores"] = [hook_score(h) for h in fx.get("hooks", [])]
             fx["cited_sources"] = script.get("cited_sources", [])
@@ -501,7 +501,7 @@ class Pipeline:
             (d / "script.json").write_text(json.dumps(script, indent=2, ensure_ascii=False))
             fx = self._llm(P.FIX.format(problems=json.dumps(rv["problems"]), script=json.dumps(script)),
                            job_id, "owner_fix", est=0.2, system=P.SYSTEM_WRITER,
-                           model=self.cfg.pipeline["providers"]["llm"]["model_script"]).data or {}
+                           model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=12000).data or {}
             fx["_revised"] = True
             fx["hook_scores"] = [hook_score(h) for h in fx.get("hooks", [])]
             (d / "script.json").write_text(json.dumps(fx, indent=2, ensure_ascii=False))
