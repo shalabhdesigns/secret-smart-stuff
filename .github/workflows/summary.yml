@@ -1,0 +1,38 @@
+# Daily 22:00 IST summary as a comment on the pinned "Daily summary" issue.
+name: summary
+on:
+  schedule:
+    - cron: "23 16 * * *"
+  workflow_dispatch:
+concurrency: { group: shorts-state, cancel-in-progress: false }
+permissions: { contents: read, issues: write }
+jobs:
+  summary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env: { GH_TOKEN: "${{ github.token }}" }
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -q -r requirements.txt
+      - run: scripts/state_sync.sh pull
+      - run: |
+          python -m shorts.cli summary > summary.md
+          n=$(gh issue list --label summary --state open --json number -q '.[0].number')
+          if [ -z "$n" ]; then
+            gh label create summary --color 0E8A16 2>/dev/null || true
+            gh issue create --label summary --title "Daily summary" --body "Daily reports are posted as comments here."
+            n=$(gh issue list --label summary --state open --json number -q '.[0].number')
+          fi
+          gh issue comment "$n" --body-file summary.md
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
+      - run: pip install -q -r requirements.txt && python -m pytest -q

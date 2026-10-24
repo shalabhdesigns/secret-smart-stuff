@@ -1,0 +1,123 @@
+"""Reliability tests: resume after a crash, duplicate prevention, budget stop,
+upload idempotency, QA hard gates. All offline (dry-run providers)."""
+import shutil
+import time
+from pathlib import Path
+
+import pytest
+
+from shorts.budget import Budget, BudgetExceeded, Limits
+from shorts.config import load
+from shorts.pipeline import Pipeline, similarity
+from shorts.publish import youtube as yt
+from shorts.qa.media import check_video
+from shorts.state import State
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+@pytest.fixture()
+def pipe(tmp_path, monkeypatch):
+    cfg = load(mode="dry_run")
+    cfg.pipeline["paths"] = {"state_db": str(tmp_path / "s.db"), "build_dir": str(tmp_path / "build")}
+    cfg.root = Path("/")  # paths above are absolute
+    return Pipeline(cfg)
+
+
+def test_duplicate_ideas_are_skipped(pipe):
+    first = pipe.discover()
+    second = pipe.discover()          # the fake returns the same ideas again
+    assert len(first) == 2 and second == []
+    assert similarity("Why do jeans have a tiny pocket?", "Why do jeans have that tiny pocket") > 0.5
+    assert similarity("Why do jeans have a tiny pocket?", "Why are manhole covers round?") < 0.2
+
+
+def test_resume_after_crash_does_not_repeat_finished_stages(pipe, monkeypatch):
+    pipe.discover()
+    tid = pipe.next_topic()["id"]
+    calls = {"tts": 0}
+    real_speak = pipe.tts.speak
+
+    def counting_speak(*a, **k):
+        calls["tts"] += 1
+        return real_speak(*a, **k)
+    monkeypatch.setattr(pipe.tts, "speak", counting_speak)
+
+    def boom(*a, **k):
+        raise RuntimeError("simulated crash during visuals")
+    monkeypatch.setattr(pipe, "_stage_visuals", boom)
+    job = pipe.produce(tid)
+    j = pipe.state.get_job(job)
+    assert j["status"] == "failed" and j["stage"] == "voice" and "simulated crash" in j["error"]
+
+    monkeypatch.undo()                          # "fix the outage", keep counting TTS calls
+    monkeypatch.setattr(pipe.tts, "speak", counting_speak)
+    job = pipe.produce(tid)
+    j = pipe.state.get_job(job)
+    assert j["status"] == "review" and j["stage"] == "package"
+    assert calls["tts"] == 1                    # voice was NOT generated (or paid for) twice
+
+
+def test_job_goes_to_human_review_after_max_attempts(pipe, monkeypatch):
+    pipe.discover()
+    tid = pipe.next_topic()["id"]
+    monkeypatch.setattr(pipe, "_stage_script", lambda *a: (_ for _ in ()).throw(RuntimeError("bad")))
+    for _ in range(3):
+        job = pipe.produce(tid)
+    assert pipe.state.get_job(job)["status"] == "review"
+
+
+def test_budget_blocks_before_spending(tmp_path):
+    st = State(tmp_path / "b.db")
+    b = Budget(st, Limits(daily_usd=1.0, monthly_usd=10.0, per_video_usd=0.5))
+    st.add_cost("x", "y", 1, 0.45, job_id="j1")
+    b.authorize(0.04, "ok", "j1")               # 0.49 <= 0.5
+    with pytest.raises(BudgetExceeded):
+        b.authorize(0.10, "too much for this video", "j1")
+    st.add_cost("x", "y", 1, 0.9, job_id="j2")
+    with pytest.raises(BudgetExceeded):
+        b.authorize(0.2, "over daily", "j3")
+
+
+def test_upload_is_idempotent(tmp_path, monkeypatch):
+    st = State(tmp_path / "u.db")
+    f = tmp_path / "v.mp4"
+    f.write_bytes(b"x" * 1000)
+    digest = yt.sha256(f)
+    meta = yt.VideoMeta("t", "d", [])
+    # an earlier run already finished this exact file -> return the record, no network
+    st.record_upload("jobA", digest, "uploaded", video_id="abc", url="https://youtube.com/shorts/abc")
+    assert yt.upload(st, "jobB", f, meta)["video_id"] == "abc"
+    # an earlier run started but never confirmed -> refuse (human must check Studio)
+    st2 = State(tmp_path / "u2.db")
+    st2.record_upload("jobA", digest, "started")
+    with pytest.raises(yt.UploadBlocked):
+        yt.upload(st2, "jobA", f, meta)
+
+
+def test_missing_secrets_fail_clearly(tmp_path, monkeypatch):
+    for k in ("YT_CLIENT_ID", "YT_CLIENT_SECRET", "YT_REFRESH_TOKEN"):
+        monkeypatch.delenv(k, raising=False)
+    with pytest.raises(yt.UploadBlocked, match="missing secrets"):
+        yt.access_token()
+
+
+def test_qa_rejects_wrong_resolution(tmp_path):
+    import subprocess
+    bad = tmp_path / "bad.mp4"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "testsrc=size=1280x720:rate=30",
+                    "-f", "lavfi", "-i", "sine=frequency=300", "-t", "10", "-c:v", "libx264", "-c:a", "aac",
+                    "-shortest", str(bad)], check=True)
+    rep = check_video(bad)
+    assert not rep.passed
+    assert any(c.name == "resolution" and not c.ok for c in rep.checks)
+
+
+def test_publish_refuses_dry_run_and_unapproved(pipe):
+    pipe.discover()
+    job = pipe.produce(pipe.next_topic()["id"])
+    with pytest.raises(RuntimeError, match="not approved"):
+        pipe.publish(job)
+    pipe.decide(job, "approve")
+    with pytest.raises(RuntimeError, match="dry-run"):
+        pipe.publish(job)

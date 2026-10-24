@@ -1,0 +1,40 @@
+# Owner replies on a review issue: "approve" | "reject: reason" | "fix: what to change".
+name: review
+on:
+  issue_comment:
+    types: [created]
+concurrency: { group: shorts-state, cancel-in-progress: false }
+permissions: { contents: write, issues: write }
+jobs:
+  decide:
+    # only the repository owner can approve; only on review issues
+    if: >-
+      github.event.comment.user.login == github.repository_owner &&
+      contains(github.event.issue.labels.*.name, 'review')
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      SHORTS_MODE: ${{ vars.SHORTS_MODE || 'dry_run' }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+      BFL_API_KEY: ${{ secrets.BFL_API_KEY }}
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      GH_TOKEN: ${{ github.token }}
+      COMMENT: ${{ github.event.comment.body }}     # passed via env, never inlined into shell
+      ISSUE_BODY: ${{ github.event.issue.body }}
+      ISSUE: ${{ github.event.issue.number }}
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
+      - run: pip install -q -r requirements.txt
+      - run: scripts/state_sync.sh pull
+      - name: Apply decision
+        run: python scripts/handle_review.py
+      - name: Save state
+        if: always()
+        run: scripts/state_sync.sh push

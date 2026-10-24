@@ -1,0 +1,12 @@
+build/
+state/
+data/signals.json
+data/insights.json
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.state-wt/
+issue.md
+status.txt
+summary.md

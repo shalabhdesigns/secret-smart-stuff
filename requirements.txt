@@ -1,0 +1,6 @@
+requests>=2.31
+PyYAML>=6.0
+Pillow>=10.0
+numpy>=1.26
+yt-dlp>=2026.1.1
+pytest>=8.0

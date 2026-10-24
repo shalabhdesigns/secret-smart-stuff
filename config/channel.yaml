@@ -1,0 +1,53 @@
+# Channel identity and content rules. Edit freely; the pipeline reads this every run.
+channel:
+  name: Hidden by Design
+  language: en
+  audience: "Curious adults and older teens (16-40), English-speaking, global (US, UK, CA, AU, IN)"
+  promise: "Every everyday object has a reason. We show you the reason in under a minute."
+  made_for_kids: false
+  youtube_category_id: "27"        # Education
+  default_hashtags: ["#design", "#everydaythings", "#didyouknow"]
+
+voice:
+  provider: elevenlabs
+  voice_id: Xb7hH8MSUJpSbSDYk0k2   # Alice (premade) - chosen by owner 2026-10-24
+  model_id: eleven_v4
+  backup_voice_id: null             # premade voices are not removed; set one if Alice is ever unavailable
+  pronunciations: {}                # e.g. {"tiffin": "TIF-in"}
+
+style:
+  palette: {paper: "#F4EFE6", ink: "#14213D", accent: "#F26B1D"}
+  caption_font: Inter
+  caption_size: 86
+  image_style: >-
+    clean editorial product photograph, soft natural light, shallow depth of field,
+    realistic materials, uncluttered background, no text, no letters, no logos, no watermark
+  # Variety rules so the channel never looks like one template (inauthentic-content policy).
+  variety:
+    motions: [zoom_in, zoom_out, pan_left, pan_right, pan_up, pan_down]
+    scene_types: [hero, detail, context, comparison, blueprint_card]
+
+pillars:
+  - {id: why_detail,   name: "Why does X have Y?",               share: 0.40}
+  - {id: walk_past,    name: "You walk past this every day",     share: 0.20}
+  - {id: by_country,   name: "Same thing, different country",    share: 0.15}
+  - {id: first_version, name: "The first version",               share: 0.15}
+  - {id: india_asia,   name: "From India and Asia, for the world", share: 0.10}
+
+rules:
+  target_seconds: [25, 40]          # pilot also tests ~50 s variants
+  words_per_second: 2.6
+  min_sources_main_claim: 2
+  min_sources_other_claims: 1
+  banned_topics: [politics, news, finance, crypto, religion, astrology, health, medicine, science research]
+  banned_content: [logos as subject, real people's faces, brand names in titles, copyrighted music, fear bait]
+  review_pass_score: 7              # out of 10, separate AI reviewer
+  auto_publish_score: 8             # used only when approval.mode == auto
+
+# Competitors: used ONLY to (1) avoid repeating topics they already covered unless we have a
+# clearly different angle, and (2) learn which objects people care about (outlier multiples).
+# Never to copy scripts or structure.
+competitors:
+  - {handle: "@historyofsimplethings", note: "leader, ~1M subs, ~4.5 uploads/day"}
+  - {handle: "@simplethingshistories", note: "fast follower, ~296K subs, started Sep 2025"}
+  - {handle: "@nameexplain", note: "adjacent: place/name origins"}
