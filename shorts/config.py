@@ -21,7 +21,11 @@ class Config:
         return self.pipeline.get("mode") == "live"
 
     def path(self, key: str) -> Path:
-        return self.root / self.pipeline["paths"][key]
+        p = self.root / self.pipeline["paths"][key]
+        # Dry-run data lives in its own database, so test runs never mix with real topics/jobs.
+        if key == "state_db" and not self.live:
+            p = p.with_name("dryrun.db")
+        return p
 
     def secret(self, name: str, required: bool = True) -> str | None:
         val = os.environ.get(name)

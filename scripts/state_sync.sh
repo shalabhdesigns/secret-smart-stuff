@@ -11,7 +11,7 @@ if [[ "$cmd" == "pull" ]]; then
   if git ls-remote --exit-code --heads origin "$BR" >/dev/null 2>&1; then
     git fetch -q origin "$BR"
     mkdir -p state data
-    git show "origin/$BR:state/shorts.db" > state/shorts.db 2>/dev/null || rm -f state/shorts.db
+    for db in shorts.db dryrun.db; do git show "origin/$BR:state/$db" > "state/$db" 2>/dev/null || rm -f "state/$db"; done
     for f in signals.json insights.json; do git show "origin/$BR:data/$f" > "data/$f" 2>/dev/null || rm -f "data/$f"; done
     echo "state restored"
   else
@@ -28,7 +28,7 @@ elif [[ "$cmd" == "push" ]]; then
       git worktree add -q --detach .state-wt && (cd .state-wt && git checkout -q --orphan "$BR" && git rm -rqf . )
     fi
     mkdir -p .state-wt/state .state-wt/data
-    cp "$tmp"/state/shorts.db .state-wt/state/ 2>/dev/null || true
+    cp "$tmp"/state/*.db .state-wt/state/ 2>/dev/null || true
     cp "$tmp"/data/*.json .state-wt/data/ 2>/dev/null || true
     (cd .state-wt && git add -A && (git diff --cached --quiet || git commit -qm "state: $(date -u +%FT%TZ) ${GITHUB_WORKFLOW:-local}") && git push -q origin "$BR") && break
     echo "push conflict, retrying ($attempt)"; sleep $((attempt * 5))
