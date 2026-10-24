@@ -59,6 +59,15 @@ def main(path: str) -> int:
                     p.state.db.commit()
         job = p.produce(tid)
         j = p.state.get_job(job)
+        tries = 1
+        while j["status"] == "rejected" and tries < 3 and not req.get("topic"):
+            # quality gate dropped this topic: move straight on to the next best one
+            t = p.next_topic()
+            if not t:
+                break
+            job = p.produce(t["id"])
+            j = p.state.get_job(job)
+            tries += 1
         if j["status"] == "review" and not j["error"]:
             subprocess.run([str(ROOT / "scripts" / "open_review.sh"), job], check=True)
         else:

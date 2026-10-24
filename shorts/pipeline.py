@@ -33,6 +33,10 @@ class StageFailed(RuntimeError):
     pass
 
 
+class QualityRejected(StageFailed):
+    """The script could not reach the quality bar; drop the topic instead of retrying it."""
+
+
 # ---------------- helpers ----------------
 
 def slug(text: str) -> str:
@@ -179,6 +183,11 @@ class Pipeline:
                 arts = getattr(self, f"_stage_{stage}")(job_id, topic, d)
                 self.state.finish_stage(job_id, stage, arts)
                 self.state.log(f"stage {stage} done", job_id=job_id)
+            except QualityRejected as e:
+                self.state.set_job_status(job_id, "rejected", f"{stage}: {e}")
+                self.state.set_topic_status(topic_id, "rejected")
+                self.state.log(f"topic dropped at quality gate: {e}", "warn", job_id)
+                return job_id
             except BudgetExceeded as e:
                 self.state.set_job_status(job_id, "paused", str(e))
                 self.state.log(f"paused for budget: {e}", "warn", job_id)
@@ -245,6 +254,7 @@ class Pipeline:
             self.state.set_topic_status(topic["id"], "rejected")
             raise StageFailed(f"idea not viable: {script.get('reason_if_not')}")
         script["cited_sources"] = r.sources
+        self._sync_hook(script)
         self._attach_citations(script)
         script["hook_scores"] = [hook_score(h) for h in script.get("hooks", [])]
         if script["hook_scores"]:
@@ -269,6 +279,19 @@ class Pipeline:
             script = fixed
         (d / "script.json").write_text(json.dumps(script, indent=2, ensure_ascii=False))
         return {"file": str(d / "script.json"), "content": script}
+
+    @staticmethod
+    def _sync_hook(s: dict) -> None:
+        """The spoken first line must be the chosen hook, so reviewer and viewer see the same thing."""
+        hooks, scenes = s.get("hooks") or [], s.get("scenes") or []
+        if not hooks or not scenes:
+            return
+        scores = s.get("hook_scores") or []
+        idx = s.get("chosen_hook")
+        if not isinstance(idx, int) or not 0 <= idx < len(hooks):
+            idx = max(range(len(scores)), key=lambda i: scores[i]["verdict"]) if scores else 0
+        s["chosen_hook"] = idx
+        scenes[0]["narration"] = hooks[idx]
 
     @staticmethod
     def _attach_citations(s: dict) -> None:
@@ -313,30 +336,47 @@ class Pipeline:
 
     # ---- F (part 1): independent review of the script, with one bounded repair
     def _stage_review(self, job_id: str, topic: dict, d: Path) -> dict:
+        """Independent review, then up to 2 targeted repairs. If it still scores below the bar,
+        the topic is dropped (QualityRejected) so the run can move on to a better topic."""
         path = d / "script.json"
         script = json.loads(path.read_text())
-        lean = {k: script.get(k) for k in ("title", "hooks", "chosen_hook", "scenes", "facts")}
         rv_model = self.cfg.pipeline["providers"]["llm"]["model_routine"]
-        rv = self._llm(P.REVIEW.format(script=json.dumps(lean, ensure_ascii=False)), job_id, "review",
-                       est=0.08, web_search=True, model=rv_model, max_tokens=8000).data or {}
-        blockers = [p for p in rv.get("problems", []) if p.get("severity") == "blocker"]
-        if (blockers or rv.get("verdict") == "fix") and not script.get("_revised"):
-            fx = self._llm(P.FIX.format(problems=json.dumps(rv.get("problems", [])),
-                                        script=json.dumps(script, ensure_ascii=False)),
-                           job_id, "fix", est=0.2, system=P.SYSTEM_WRITER,
-                           model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=12000).data or {}
-            fx["_revised"] = True
-            fx["hook_scores"] = [hook_score(h) for h in fx.get("hooks", [])]
-            fx["cited_sources"] = script.get("cited_sources", [])
-            self._validate_script(fx)
-            path.write_text(json.dumps(fx, indent=2, ensure_ascii=False))
-            lean = {k: fx.get(k) for k in ("title", "hooks", "chosen_hook", "scenes", "facts")}
-            rv = self._llm(P.REVIEW.format(script=json.dumps(lean, ensure_ascii=False)), job_id, "review2",
-                           est=0.08, web_search=True, model=rv_model, max_tokens=8000).data or {}
+        bar = self.cfg.channel["rules"]["review_pass_score"]
+
+        def review(sc: dict, tag: str) -> dict:
+            lean = {k: sc.get(k) for k in ("title", "hooks", "chosen_hook", "scenes", "facts")}
+            return self._llm(P.REVIEW.format(script=json.dumps(lean, ensure_ascii=False)), job_id, tag,
+                             est=0.08, web_search=True, model=rv_model, max_tokens=8000).data or {}
+
+        rv = review(script, "review")
+        for round_ in range(2):
+            if float(rv.get("total", 0)) >= bar and rv.get("verdict") != "reject":
+                break
+            if rv.get("verdict") == "reject":
+                break
+            problems = rv.get("problems", []) + [{"issue": "general", "severity": "blocker", "fix":
+                "Fix every problem above. Remove or soften any claim you cannot support with a source "
+                "you can open. Keep the hook, the first scene's narration and chosen_hook consistent."}]
+            fx = self._llm(P.FIX.format(problems=json.dumps(problems), script=json.dumps(script, ensure_ascii=False)),
+                           job_id, f"fix{round_ + 1}", est=0.25, system=P.SYSTEM_WRITER, web_search=True,
+                           model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=12000)
+            fixed = fx.data or {}
+            fixed["cited_sources"] = (script.get("cited_sources") or []) + fx.sources
+            fixed["hook_scores"] = [hook_score(h) for h in fixed.get("hooks", [])]
+            self._sync_hook(fixed)
+            self._attach_citations(fixed)
+            try:
+                self._validate_script(fixed)
+            except StageFailed as e:
+                self.state.log(f"repair {round_ + 1} broke the script ({e}); keeping previous", "warn", job_id)
+                continue
+            script = fixed
+            path.write_text(json.dumps(script, indent=2, ensure_ascii=False))
+            rv = review(script, f"review{round_ + 2}")
         (d / "review.json").write_text(json.dumps(rv, indent=2))
-        if rv.get("verdict") == "reject" or float(rv.get("total", 0)) < self.cfg.channel["rules"]["review_pass_score"]:
-            raise StageFailed(f"review score {rv.get('total')} / verdict {rv.get('verdict')}: "
-                              f"{[p.get('issue') for p in rv.get('problems', [])]}")
+        if rv.get("verdict") == "reject" or float(rv.get("total", 0)) < bar:
+            raise QualityRejected(f"review score {rv.get('total')} / verdict {rv.get('verdict')}: "
+                                  f"{[p.get('issue') for p in rv.get('problems', [])][:4]}")
         return {"file": str(d / "review.json"), "score": rv.get("total"), "content": rv,
                 "script": json.loads(path.read_text())}
 
