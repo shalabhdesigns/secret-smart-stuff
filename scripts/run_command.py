@@ -57,6 +57,17 @@ def main(path: str) -> int:
         if not tid:
             alert("Pipeline problem: no topic", "Discovery returned no usable topics.")
             return 1
+        if req.get("angle") and p.state.get_topic(tid):
+            # owner/Claude can steer the angle of a topic before a fresh version
+            t = p.state.get_topic(tid)
+            notes = json.loads(t.get("notes") or "{}")
+            notes["angle"] = req["angle"]
+            if req.get("question"):
+                notes["question"] = req["question"]
+            fields = {"notes": json.dumps(notes), "status": "shortlisted"}
+            if req.get("question"):
+                fields["title"] = req["question"]
+            p.state.upsert_topic(tid, "", **fields)
         if req.get("reset"):
             # owner/Claude asked to retry a job that had hit the attempt limit
             for jj in p.state.jobs():

@@ -275,7 +275,7 @@ class Pipeline:
         except StageFailed as e:
             # One bounded repair with web search: ask for the missing sources / fixes.
             self.state.log(f"script failed check ({e}); one repair attempt", "warn", job_id)
-            fx = self._llm(P.FIX.format(problems=json.dumps([{"issue": str(e),
+            fx = self._llm(P.FIX.format(problems=json.dumps([self._length_rule(), {"issue": str(e),
                     "fix": "Search the web and add at least two independent, credible source URLs "
                            "for the main claim (and one for every other claim). Keep everything else."}]),
                     script=json.dumps(script, ensure_ascii=False)),
@@ -289,6 +289,13 @@ class Pipeline:
             script = fixed
         (d / "script.json").write_text(json.dumps(script, indent=2, ensure_ascii=False))
         return {"file": str(d / "script.json"), "content": script}
+
+    def _length_rule(self) -> dict:
+        lo, hi = self.cfg.channel["rules"]["target_seconds"]
+        wps = self.cfg.channel["rules"]["words_per_second"]
+        return {"issue": "length", "severity": "blocker",
+                "fix": f"Keep the TOTAL narration between {int(lo * wps)} and {int(hi * wps)} words across "
+                       f"11-13 beats (5-9 words each). If you add words anywhere, cut the same number elsewhere."}
 
     @staticmethod
     def _sync_hook(s: dict) -> None:
@@ -383,7 +390,7 @@ class Pipeline:
                 break
             if rv.get("verdict") == "reject":
                 break
-            problems = rv.get("problems", []) + [{"issue": "general", "severity": "blocker", "fix":
+            problems = rv.get("problems", []) + [self._length_rule(), {"issue": "general", "severity": "blocker", "fix":
                 "Fix every problem above. Remove or soften any claim you cannot support with a source "
                 "you can open. Keep the hook, the first scene's narration and chosen_hook consistent."}]
             fx = self._llm(P.FIX.format(problems=json.dumps(problems), script=json.dumps(script, ensure_ascii=False)),
@@ -746,6 +753,7 @@ class Pipeline:
             rv_path = d / "review.json"
             rv = json.loads(rv_path.read_text()) if rv_path.exists() else {}
             rv.setdefault("problems", []).append({"issue": f"owner: {note}", "fix": note, "severity": "blocker"})
+            rv["problems"].append(self._length_rule())
             script = json.loads((d / "script.json").read_text())
             script.pop("_revised", None)
             (d / "script.json").write_text(json.dumps(script, indent=2, ensure_ascii=False))
