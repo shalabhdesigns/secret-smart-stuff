@@ -3,7 +3,7 @@ mode: dry_run            # dry_run (fake providers, no spend) | live
 
 budget_usd:
   per_video: 2.00
-  daily: 7.00          # raised from 4.00 on 2026-10-25 for first-day testing
+  daily: 12.00         # testing phase (owner OK 2026-10-25); set back to 4.00 when daily runs go hands-off
   monthly: 45.00         # ElevenLabs plan is paid separately and not counted here
 
 schedule:
