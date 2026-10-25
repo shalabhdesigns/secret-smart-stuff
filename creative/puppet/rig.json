@@ -1,0 +1,245 @@
+{
+ "parts_dir": "../../assets/puppet/parts",
+ "backgrounds": {
+  "barber": "release:media-puppet-haircut/bg_barber.png",
+  "flat": "release:media-puppet-haircut/bg_flat.png"
+ },
+ "heads": {
+  "dev_messy": {
+   "file": "dev_head_messy.png",
+   "eyes": [
+    [
+     188,
+     338
+    ],
+    [
+     350,
+     338
+    ]
+   ],
+   "eye_r": 30,
+   "mouth": [
+    268,
+    515
+   ],
+   "mouth_w": 92,
+   "neck": [
+    268,
+    700
+   ],
+   "glasses": true,
+   "brow_gap": 2.0,
+   "skin_at": [
+    160,
+    470
+   ]
+  },
+  "dev_bowl": {
+   "file": "dev_head_bowl.png",
+   "eyes": [
+    [
+     190,
+     342
+    ],
+    [
+     348,
+     342
+    ]
+   ],
+   "eye_r": 30,
+   "mouth": [
+    268,
+    508
+   ],
+   "mouth_w": 92,
+   "neck": [
+    268,
+    690
+   ],
+   "glasses": true,
+   "brow_gap": 1.8,
+   "skin_at": [
+    160,
+    470
+   ]
+  },
+  "dev_tuft": {
+   "file": "dev_head_tuft.png",
+   "eyes": [
+    [
+     178,
+     370
+    ],
+    [
+     334,
+     370
+    ]
+   ],
+   "eye_r": 30,
+   "mouth": [
+    255,
+    548
+   ],
+   "mouth_w": 92,
+   "neck": [
+    255,
+    722
+   ],
+   "glasses": true,
+   "brow_gap": 2.0,
+   "skin_at": [
+    150,
+    520
+   ]
+  },
+  "rocky": {
+   "file": "rocky_head.png",
+   "eyes": [
+    [
+     362,
+     452
+    ],
+    [
+     588,
+     452
+    ]
+   ],
+   "eye_r": 50,
+   "mouth": [
+    475,
+    800
+   ],
+   "mouth_w": 175,
+   "neck": [
+    475,
+    1330
+   ],
+   "brow_gap": 1.75,
+   "skin_at": [
+    300,
+    820
+   ],
+   "scale": 0.55,
+   "stache": {
+    "file": "rocky_stache.png",
+    "at": [
+     475,
+     700
+    ],
+    "width": 600
+   }
+  },
+  "rocky_phone": {
+   "file": "rocky_body_phone.png",
+   "single": true,
+   "eyes": [
+    [
+     336,
+     176
+    ],
+    [
+     466,
+     176
+    ]
+   ],
+   "eye_r": 21,
+   "mouth": [
+    401,
+    350
+   ],
+   "mouth_w": 66,
+   "neck": [
+    413,
+    1330
+   ],
+   "brow_gap": 1.75,
+   "skin_at": [
+    300,
+    330
+   ],
+   "stache": {
+    "file": "rocky_stache.png",
+    "at": [
+     401,
+     300
+    ],
+    "width": 250
+   }
+  },
+  "meera": {
+   "file": "meera_head.png",
+   "eyes": [
+    [
+     452,
+     615
+    ],
+    [
+     752,
+     615
+    ]
+   ],
+   "eye_r": 50,
+   "mouth": [
+    605,
+    868
+   ],
+   "mouth_w": 140,
+   "neck": [
+    605,
+    1370
+   ],
+   "brow_gap": 1.8,
+   "skin_at": [
+    500,
+    820
+   ],
+   "scale": 0.8
+  }
+ },
+ "bodies": {
+  "dev_cape": {
+   "file": "dev_body_cape.png",
+   "socket": [
+    421,
+    70
+   ]
+  },
+  "dev_hoodie": {
+   "file": "dev_body_hoodie.png",
+   "socket": [
+    381,
+    118
+   ],
+   "erase": [
+    [
+     335,
+     0,
+     432,
+     82
+    ]
+   ]
+  },
+  "rocky_proud": {
+   "file": "rocky_body_proud.png",
+   "socket": [
+    505,
+    300
+   ],
+   "erase": [
+    [
+     440,
+     40,
+     575,
+     250
+    ]
+   ]
+  },
+  "meera_tee": {
+   "file": "meera_body.png",
+   "socket": [
+    594,
+    95
+   ]
+  }
+ }
+}

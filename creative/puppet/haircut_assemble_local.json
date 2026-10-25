@@ -1,0 +1,189 @@
+{
+ "name": "puppet-haircut-v1",
+ "music": {
+  "file": "assets/music/quirky_funk.mp3",
+  "gain_db": -24,
+  "mute_shots": [
+   [
+    2,
+    2
+   ],
+   [
+    5,
+    5
+   ]
+  ]
+ },
+ "shots": [
+  {
+   "speaker": "rocky",
+   "caption": "Lo guru! Dekho... ekdam hero lag rahe ho!\nBhaukaal hai, bhaukaal!",
+   "sounds": [
+    {
+     "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/puppet/lines/h1.wav",
+     "at": 0.15
+    },
+    {
+     "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/pilot/media/sfx_twitch.mp3",
+     "at": 5.4,
+     "gain_db": -4
+    }
+   ],
+   "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/puppet/shots/shot00.mp4",
+   "keep_audio": false
+  },
+  {
+   "speaker": "dev",
+   "caption": "Haan... haan... bahut badhiya...\ntheek hai.",
+   "sounds": [
+    {
+     "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/puppet/lines/h2.wav",
+     "at": 0.2
+    },
+    {
+     "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/pilot/media/sfx_twitch.mp3",
+     "at": 3.3,
+     "gain_db": -2
+    }
+   ],
+   "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/puppet/shots/shot01.mp4",
+   "keep_audio": false
+  },
+  {
+   "speaker": "dev",
+   "inner": true,
+   "caption": "Bol de Dev! 28 saal ka hai tu...\ntax bharta hai... BOL DE!",
+   "sounds": [
+    {
+     "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/pilot/media/sfx_spiral.mp3",
+     "at": 0,
+     "gain_db": -11
+    },
+    {
+     "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/puppet/lines/h3.wav",
+     "at": 0.3,
+     "gain_db": 3,
+     "reverb": true
+    }
+   ],
+   "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/puppet/shots/shot02.mp4",
+   "keep_audio": false
+  },
+  {
+   "speaker": "dev",
+   "caption": "Bhaiyaji... woh... baayein taraf se...\nbas thoda sa...",
+   "sounds": [
+    {
+     "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/puppet/lines/h4.wav",
+     "at": 0.2
+    }
+   ],
+   "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/puppet/shots/shot03.mp4",
+   "keep_audio": false
+  },
+  {
+   "speaker": "rocky",
+   "caption": "Baayein? Arre guru! Symmetry!\nAb dekhna, poora mohalla jal-bhun jaayega!",
+   "sounds": [
+    {
+     "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/puppet/lines/h5.wav",
+     "at": 0.15
+    }
+   ],
+   "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/puppet/shots/shot04.mp4",
+   "keep_audio": false
+  },
+  {
+   "speaker": "rocky",
+   "caption": "...Oho.",
+   "caption_at": 1.2,
+   "sounds": [
+    {
+     "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/pilot/media/sfx_snips.mp3",
+     "at": 0.05,
+     "gain_db": 5
+    },
+    {
+     "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/puppet/lines/h6.wav",
+     "at": 1.0
+    }
+   ],
+   "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/puppet/shots/shot05.mp4",
+   "keep_audio": false
+  },
+  {
+   "speaker": "dev",
+   "caption": "...Theek hai.",
+   "sounds": [
+    {
+     "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/puppet/lines/h7.wav",
+     "at": 0.35
+    },
+    {
+     "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/pilot/media/sfx_twitch.mp3",
+     "at": 1.5,
+     "gain_db": -2
+    }
+   ],
+   "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/puppet/shots/shot06.mp4",
+   "keep_audio": false
+  },
+  {
+   "speaker": "rocky",
+   "caption": "Smile karo guru! Insta pe daal rahe hain...\nNaya style: 'Theek Hai Cut'!",
+   "sounds": [
+    {
+     "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/puppet/lines/h8.wav",
+     "at": 0.15
+    },
+    {
+     "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/pilot/media/sfx_shutter.mp3",
+     "at": 5.12
+    }
+   ],
+   "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/puppet/shots/shot07.mp4",
+   "keep_audio": false
+  },
+  {
+   "speaker": "meera",
+   "caption": "Ee ka hai? Naai ne kaata...\nki bakri chaba gayi?",
+   "sounds": [
+    {
+     "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/puppet/lines/h9.wav",
+     "at": 0.45
+    }
+   ],
+   "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/puppet/shots/shot08.mp4",
+   "keep_audio": false
+  },
+  {
+   "speaker": "dev",
+   "caption": "THEEK HAI! ...Kal jaake\nset karwa lenge.",
+   "sounds": [
+    {
+     "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/puppet/lines/h10.wav",
+     "at": 0.12
+    }
+   ],
+   "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/puppet/shots/shot09.mp4",
+   "keep_audio": false
+  },
+  {
+   "speaker": "rocky",
+   "caption": "Aao guru, baitho...\nbas do minute.",
+   "sounds": [
+    {
+     "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/puppet/lines/h11.wav",
+     "at": 0.2
+    },
+    {
+     "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/pilot/media/sfx_snips.mp3",
+     "at": 3.25,
+     "gain_db": 2
+    }
+   ],
+   "url": "/tmp/claude-0/-home-claude/f0b78fac-b114-559d-9c62-5215266ee890/scratchpad/puppet/shots/shot10.mp4",
+   "keep_audio": false
+  }
+ ]
+}
