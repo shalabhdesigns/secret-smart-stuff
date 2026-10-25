@@ -25,8 +25,10 @@ from .publish.youtube import access_token
 from .state import State
 
 REPORTS = "https://youtubeanalytics.googleapis.com/v2/reports"
-METRICS = ["views", "engagedViews", "averageViewDuration", "averageViewPercentage",
-           "likes", "comments", "shares", "subscribersGained"]
+METRICS = ["views", "engagedViews", "estimatedMinutesWatched", "averageViewDuration", "averageViewPercentage",
+           "likes", "comments", "shares", "subscribersGained", "subscribersLost"]
+DAILY = ["views", "engagedViews", "estimatedMinutesWatched", "subscribersGained", "subscribersLost",
+         "likes", "comments", "shares"]
 
 
 def _query(token: str, video_ids: list[str], start: str, end: str, metrics: list[str]) -> dict:
@@ -57,7 +59,7 @@ def snapshot(state: State, start_date: str = "2026-01-01") -> dict:
     for i in range(0, len(ids), 200):
         batch = ids[i:i + 200]
         res = _query(token, batch, start_date, end, metrics)
-        for optional in ("engagedViews", "averageViewPercentage"):
+        for optional in ("engagedViews", "averageViewPercentage", "estimatedMinutesWatched", "subscribersLost"):
             if res["status"] == 400 and optional in str(res["body"]) and optional in metrics:
                 metrics.remove(optional)
                 missing.append(optional)
@@ -116,3 +118,98 @@ def adjusted_pillar_shares(base: list[dict], insight: dict) -> list[dict]:
         out.append(p | {"share": p["share"] * max(0.5, min(1.5, perf))})
     total = sum(p["share"] for p in out)
     return [p | {"share": p["share"] / total} for p in out]
+
+
+def _get(token: str, params: dict) -> tuple[int, dict]:
+    r = requests.get(REPORTS, headers={"Authorization": f"Bearer {token}"}, timeout=60,
+                     params={"ids": "channel==MINE", **params})
+    return r.status_code, (r.json() if r.content else {})
+
+
+def _rows(body: dict) -> list[dict]:
+    cols = [h["name"] for h in body.get("columnHeaders", [])]
+    return [dict(zip(cols, row)) for row in body.get("rows", []) or []]
+
+
+def channel_daily(state: State, days: int = 400) -> dict:
+    """Channel totals per day (for trends and period views on the dashboard)."""
+    import datetime as dt
+    first = state.db.execute("SELECT MIN(publish_at) p FROM uploads WHERE publish_at IS NOT NULL").fetchone()["p"]
+    if not first:
+        return {"days": 0}
+    start = max(dt.date.fromisoformat(first[:10]) - dt.timedelta(days=1),
+                dt.date.today() - dt.timedelta(days=days)).isoformat()
+    end = time.strftime("%Y-%m-%d", time.gmtime())
+    token = access_token()
+    metrics = list(DAILY)
+    code, body = _get(token, {"startDate": start, "endDate": end, "metrics": ",".join(metrics), "dimensions": "day", "sort": "day"})
+    if code == 400 and "engagedViews" in str(body):
+        metrics.remove("engagedViews")
+        code, body = _get(token, {"startDate": start, "endDate": end, "metrics": ",".join(metrics), "dimensions": "day", "sort": "day"})
+    if code != 200:
+        state.log(f"channel daily analytics {code}: {str(body)[:200]}", "warn")
+        return {"error": code}
+    rows = _rows(body)
+    with state.tx() as db:
+        for r in rows:
+            db.execute("INSERT INTO channel_daily(day, data, at) VALUES (?,?,?) ON CONFLICT(day) DO UPDATE SET "
+                       "data=excluded.data, at=excluded.at", (r.pop("day"), json.dumps(r), time.time()))
+    return {"days": len(rows)}
+
+
+def video_details(state: State) -> dict:
+    """Retention curve and traffic sources per public video (one call each, small channel)."""
+    token = access_token()
+    end = time.strftime("%Y-%m-%d", time.gmtime())
+    done, errors = 0, []
+    for r in state.db.execute("SELECT video_id, publish_at FROM uploads WHERE status='live'").fetchall():
+        vid, start = r["video_id"], (r["publish_at"] or "2026-01-01")[:10]
+        queries = {
+            "retention": {"metrics": "audienceWatchRatio,relativeRetentionPerformance",
+                          "dimensions": "elapsedVideoTimeRatio", "filters": f"video=={vid}"},
+            "traffic": {"metrics": "views,estimatedMinutesWatched", "dimensions": "insightTrafficSourceType",
+                        "filters": f"video=={vid}", "sort": "-views"},
+        }
+        for kind, q in queries.items():
+            code, body = _get(token, {"startDate": start, "endDate": end, **q})
+            if code == 400 and kind == "retention" and "relativeRetentionPerformance" in str(body):
+                q["metrics"] = "audienceWatchRatio"
+                code, body = _get(token, {"startDate": start, "endDate": end, **q})
+            if code != 200:
+                errors.append(f"{vid} {kind}: {code}")
+                continue
+            with state.tx() as db:
+                db.execute("INSERT INTO video_detail(video_id, kind, data, at) VALUES (?,?,?,?) ON CONFLICT(video_id, kind) "
+                           "DO UPDATE SET data=excluded.data, at=excluded.at", (vid, kind, json.dumps(_rows(body)), time.time()))
+            done += 1
+    if errors:
+        state.log("video detail analytics: " + "; ".join(errors[:5]), "warn")
+    return {"details": done, "errors": errors[:5]}
+
+
+def revenue_from_api(state: State) -> dict:
+    """Estimated revenue per video per month, if the channel is monetised AND the monetary scope was
+    granted. Otherwise returns why not; revenue then comes from the owner's /revenue entries."""
+    token = access_token()
+    end = time.strftime("%Y-%m-%d", time.gmtime())
+    code, body = _get(token, {"startDate": "2026-10-01", "endDate": end, "metrics": "estimatedRevenue",
+                              "dimensions": "video", "sort": "-estimatedRevenue", "maxResults": 200})
+    if code != 200:
+        return {"available": False, "why": f"{code}: {str(body.get('error', {}).get('message', body))[:160]}"}
+    with state.tx() as db:
+        for r in _rows(body):
+            db.execute("INSERT INTO revenue(period, video_id, usd, source, at) VALUES (?,?,?,?,?) ON CONFLICT(period, "
+                       "video_id, source) DO UPDATE SET usd=excluded.usd, at=excluded.at",
+                       ("lifetime", r["video"], float(r["estimatedRevenue"]), "youtube_api_estimate", time.time()))
+    # channel revenue per day, merged into channel_daily for period views
+    code, body = _get(token, {"startDate": "2026-10-01", "endDate": end, "metrics": "estimatedRevenue",
+                              "dimensions": "day", "sort": "day"})
+    if code == 200:
+        with state.tx() as db:
+            for r in _rows(body):
+                row = db.execute("SELECT data FROM channel_daily WHERE day=?", (r["day"],)).fetchone()
+                data = json.loads(row["data"]) if row else {}
+                data["estimatedRevenue"] = r["estimatedRevenue"]
+                db.execute("INSERT INTO channel_daily(day, data, at) VALUES (?,?,?) ON CONFLICT(day) DO UPDATE SET "
+                           "data=excluded.data, at=excluded.at", (r["day"], json.dumps(data), time.time()))
+    return {"available": True}

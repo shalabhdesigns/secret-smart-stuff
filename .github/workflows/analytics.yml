@@ -1,20 +1,28 @@
-# Every 6 hours: pull YouTube Analytics for uploaded Shorts and update insights.
+# Every 4 h, plus shortly after each publish slot: verify uploads went live, pull YouTube
+# Analytics, rebuild the dashboard.
 name: analytics
 on:
   schedule:
-    - cron: "41 */6 * * *"
+    - cron: "41 */4 * * *"
+    - cron: "57 13 * * *"       # 27 min after the 13:30 UTC slot
+    - cron: "27 17 * * *"       # after 17:00 UTC
+    - cron: "27 2 * * *"        # after 02:00 UTC
   workflow_dispatch:
 concurrency: { group: shorts-state, cancel-in-progress: false, queue: max }
 permissions: { contents: write }
 jobs:
   analytics:
     if: vars.SHORTS_MODE == 'live'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     env:
+      SHORTS_MODE: live
       YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
       YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
       YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
     steps:
       - uses: actions/checkout@v5
         with: { fetch-depth: 0 }

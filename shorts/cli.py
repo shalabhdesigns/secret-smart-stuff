@@ -31,7 +31,7 @@ def main(argv: list[str] | None = None) -> int:
     s = sub.add_parser("publish"); s.add_argument("job"); s.add_argument("--at")
     sub.add_parser("status"); sub.add_parser("summary"); sub.add_parser("topics")
     s = sub.add_parser("run-daily"); s.add_argument("--min-backlog", type=int, default=5)
-    sub.add_parser("analytics")
+    sub.add_parser("analytics"); sub.add_parser("learn")
     s = sub.add_parser("upload-resolve"); s.add_argument("job")
     s.add_argument("--video-id", help="the video ID if YouTube Studio shows the upload did finish")
     s = sub.add_parser("next-slot")
@@ -66,9 +66,27 @@ def main(argv: list[str] | None = None) -> int:
     elif a.cmd == "summary":
         print(p.summary())
     elif a.cmd == "analytics":
+        # each part is independent: one failing (e.g. a metric YouTube withholds) never blocks the rest
         from . import analytics as an
-        print(json.dumps(an.snapshot(p.state), indent=1))
-        print(json.dumps(an.insights(p.state, p.cfg.root / "data" / "insights.json"), indent=1))
+        from .publish.verify import run as verify
+        from . import dashboard
+        steps = [("verify uploads", lambda: verify(p.state)),
+                 ("video metrics", lambda: an.snapshot(p.state)),
+                 ("channel daily", lambda: an.channel_daily(p.state)),
+                 ("retention + traffic", lambda: an.video_details(p.state)),
+                 ("revenue (API)", lambda: an.revenue_from_api(p.state)),
+                 ("insights", lambda: an.insights(p.state, p.cfg.root / "data" / "insights.json")),
+                 ("dashboard", lambda: dashboard.upload(p.state, dashboard.build(p.state, p.cfg)))]
+        for name, fn in steps:
+            try:
+                print(name, json.dumps(fn(), default=str)[:500])
+            except Exception as e:  # noqa: BLE001
+                p.state.log(f"analytics step '{name}' failed: {e}", "warn")
+                print(name, "FAILED", e)
+    elif a.cmd == "learn":
+        from . import learn, dashboard
+        print(json.dumps(learn.weekly(p), default=str))
+        dashboard.upload(p.state, dashboard.build(p.state, p.cfg))
     elif a.cmd == "upload-resolve":
         row = p.state.db.execute("SELECT * FROM uploads WHERE job_id=?", (a.job,)).fetchone()
         if not row:

@@ -1,0 +1,86 @@
+"""Offline tests for the automation layer: experiments, publish times, verification, owner fixes
+that reuse media, revenue entry, dashboard build. No network, no GitHub, no Telegram."""
+from __future__ import annotations
+
+import datetime as dt
+import json
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+import pytest
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from shorts import experiments as X  # noqa: E402
+from shorts.publish.verify import classify  # noqa: E402
+from shorts.state import State  # noqa: E402
+
+
+def test_publish_time_rotation_and_next_time(tmp_path):
+    st = State(tmp_path / "s.db")
+    st.upsert_topic("t", "T")
+    arms = []
+    for i in range(6):
+        st.start_job(f"t-v{i}", "t")
+        arms.append(X.assign(st, f"t-v{i}")["exp-001-publish-time"])
+    assert sorted(arms) == sorted(["a_1900_ist", "b_2230_ist", "c_0730_ist"] * 2)   # balanced
+    assert X.assign(st, "t-v0")["exp-001-publish-time"] == arms[0]                    # stable
+    now = dt.datetime(2026, 10, 25, 13, 10, tzinfo=dt.timezone.utc)
+    assert X.next_publish_time(st, "13:30", 30, now) == "2026-10-26T13:30:00Z"       # too close -> tomorrow
+    assert X.next_publish_time(st, "13:30", 15, now) == "2026-10-25T13:30:00Z"
+    st.record_upload("t-v0", "h", "uploaded", video_id="x", url="u", publish_at="2026-10-26T13:30:00Z")
+    assert X.next_publish_time(st, "13:30", 30, now) == "2026-10-27T13:30:00Z"       # slot taken
+
+
+def test_verify_classify():
+    future = "2099-01-01T00:00:00Z"
+    past = "2020-01-01T00:00:00Z"
+    now = dt.datetime(2026, 10, 25, tzinfo=dt.timezone.utc).timestamp()
+    assert classify({}, None, now)[0] == "problem"
+    assert classify({"status": {"uploadStatus": "processed", "privacyStatus": "private", "publishAt": future}}, future, now)[0] == "scheduled"
+    assert classify({"status": {"uploadStatus": "processed", "privacyStatus": "public"}}, past, now)[0] == "live"
+    s, why = classify({"status": {"uploadStatus": "processed", "privacyStatus": "private"}}, past, now)
+    assert s == "problem" and "audit" in why
+    assert classify({"status": {"uploadStatus": "rejected", "rejectionReason": "duplicate"}}, past, now)[0] == "problem"
+
+
+def run_cmd(req: dict, tmp_path: Path) -> int:
+    f = tmp_path / "req.json"
+    f.write_text(json.dumps(req))
+    env = {**os.environ, "SHORTS_MODE": "dry_run", "SHORTS_NO_GITHUB": "1", "TELEGRAM_BOT_TOKEN": ""}
+    return subprocess.run([sys.executable, str(ROOT / "scripts" / "run_command.py"), str(f)], cwd=ROOT, env=env,
+                          capture_output=True, text=True, timeout=900).returncode
+
+
+@pytest.mark.slow
+def test_produce_fix_reuses_media_then_approve(tmp_path):
+    db = ROOT / "state" / "dryrun.db"
+    db.unlink(missing_ok=True)
+    assert run_cmd({"action": "produce"}, tmp_path) == 0
+    st = State(db)
+    job = st.jobs("review")[0]["id"]
+    assert st.db.execute("SELECT COUNT(*) n FROM features WHERE job_id=?", (job,)).fetchone()["n"] == 1
+    assert st.db.execute("SELECT COUNT(*) n FROM assignments WHERE job_id=?", (job,)).fetchone()["n"] == 1
+    # a second produce while one waits for review must not make another video
+    assert run_cmd({"action": "produce"}, tmp_path) == 0
+    assert len(State(db).jobs("review")) == 1
+    d = ROOT / "build" / job
+    before = {p.name: p.stat().st_mtime for p in d.glob("img*.png")}
+    assert run_cmd({"action": "fix", "job": job, "note": "make the music a bit louder"}, tmp_path) == 0
+    st = State(db)
+    assert st.get_job(job)["status"] == "review"
+    # dry-run fake fix returns the same script, so every picture and the voice are reused
+    ev = [r["message"] for r in st.db.execute("SELECT message FROM events WHERE job_id=?", (job,))]
+    assert any("voice unchanged" in m for m in ev)
+    after = {p.name: p.stat().st_mtime for p in d.glob("img*.png")}
+    assert before.keys() == after.keys()
+    assert st.db.execute("SELECT COUNT(*) n FROM feedback WHERE decision='fix'").fetchone()["n"] == 1
+    assert run_cmd({"action": "revenue", "period": "2026-11", "usd": 3.5}, tmp_path) == 0
+    assert run_cmd({"action": "approve", "job": job}, tmp_path) == 0          # dry run: approve, no upload
+    assert State(db).get_job(job)["status"] == "approved"
+    assert run_cmd({"action": "dashboard"}, tmp_path) == 0
+    html = (ROOT / "build" / "dashboard.html").read_text()
+    assert "Studio" in html and job in html

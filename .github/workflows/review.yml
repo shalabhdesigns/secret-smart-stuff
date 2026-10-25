@@ -1,4 +1,4 @@
-# Owner replies on a review issue: "approve" | "reject: reason" | "fix: what to change".
+# Fallback: the owner can still decide by commenting approve / fix: ... / reject: ... on a review issue.
 name: review
 on:
   issue_comment:
@@ -6,13 +6,12 @@ on:
 permissions: { contents: write, issues: write }
 jobs:
   decide:
-    # only the repository owner can approve; only on review issues
     if: >-
       github.event.comment.user.login == github.repository_owner &&
       contains(github.event.issue.labels.*.name, 'review')
     concurrency: { group: shorts-state, cancel-in-progress: false, queue: max }
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
     env:
       SHORTS_MODE: ${{ vars.SHORTS_MODE || 'dry_run' }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -21,10 +20,12 @@ jobs:
       YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
       YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
       YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       GH_TOKEN: ${{ github.token }}
-      COMMENT: ${{ github.event.comment.body }}     # passed via env, never inlined into shell
+      COMMENT: ${{ github.event.comment.body }}     # via env, never inlined into the shell
       ISSUE_BODY: ${{ github.event.issue.body }}
-      ISSUE: ${{ github.event.issue.number }}
     steps:
       - uses: actions/checkout@v5
         with: { fetch-depth: 0 }
@@ -33,8 +34,20 @@ jobs:
       - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
       - run: pip install -q -r requirements.txt
       - run: scripts/state_sync.sh pull
+      - name: Turn the comment into a request
+        id: req
+        run: |
+          python - <<'PY' > "$RUNNER_TEMP/req.json"
+          import json, os, re
+          m = re.search(r"<!-- job:([a-z0-9-]+) -->", os.environ.get("ISSUE_BODY", ""))
+          first = (os.environ.get("COMMENT") or "").strip().splitlines()[0:1]
+          c = re.match(r"^(approve|reject|fix)\b\s*:?\s*(.*)$", first[0].strip(), re.I) if first else None
+          print(json.dumps({"action": c.group(1).lower(), "job": m.group(1), "note": c.group(2).strip()} if (m and c) else {"action": "none"}))
+          PY
+          grep -q '"none"' "$RUNNER_TEMP/req.json" && echo "skip=1" >> "$GITHUB_OUTPUT" || true
       - name: Apply decision
-        run: python scripts/handle_review.py
+        if: steps.req.outputs.skip != '1'
+        run: python scripts/run_command.py "$RUNNER_TEMP/req.json"
       - name: Save state
         if: always()
         run: scripts/state_sync.sh push

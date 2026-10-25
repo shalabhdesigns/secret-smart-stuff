@@ -140,6 +140,20 @@ Revise this script to fix ONLY these problems. Keep everything else. Same JSON s
 Problems: {problems}
 Script: {script}"""
 
+OWNER_FIX = """TASK: script
+The channel owner reviewed this Short and asked for a change. Apply EXACTLY what they asked and
+nothing else. Every beat, line, image prompt, focus, pop, marker and field that the request does
+not touch must stay CHARACTER-FOR-CHARACTER identical (unchanged pictures and voice are reused, so
+needless edits cost money and lose what the owner liked). Keep the format rules: question first,
+the second-to-last line is the answer, the last line is the "..." lead-in into beat 1, the last beat
+uses img1. If the request needs a new picture, change only that image's prompt (or add a new image
+key and point the beat at it). Facts must stay sourced; never invent facts to satisfy a request.
+Owner's request: "{note}"
+Other rule: {length_rule}
+Script: {script}
+Return the full revised script JSON (same schema) with one extra field
+"change_summary": one short sentence saying what you changed."""
+
 LOCATE = """TASK: locate
 Look at this image (a generated photo for a YouTube Short). Answer as JSON:
 {{"found": bool (is "{target}" clearly visible?),

@@ -110,7 +110,11 @@ class Pipeline:
         covered_titles = self._competitor_titles()
         covered = "\n".join(f"- {t}" for t in covered_titles[:300]) or "(unknown)"
         sig = json.dumps((signals or [])[:30], ensure_ascii=False) if signals else "(none)"
-        r = self._llm(P.IDEAS.format(n=n, quotas=quotas, avoid=avoid, covered=covered, signals=sig), None, "ideas",
+        drops = [r["note"] for r in self.state.db.execute(
+            "SELECT note FROM feedback WHERE decision='drop' AND note != '' ORDER BY at DESC LIMIT 8")]
+        extra = ("\n\nThe owner dropped earlier topics for these reasons - avoid ideas with the same problem:\n"
+                 + "\n".join(f"- {x[:200]}" for x in drops)) if drops else ""
+        r = self._llm(P.IDEAS.format(n=n, quotas=quotas, avoid=avoid, covered=covered, signals=sig) + extra, None, "ideas",
                       system=P.SYSTEM_WRITER, model=self.cfg.pipeline["providers"]["llm"]["model_routine"])
         added = []
         for idea in (r.data or {}).get("ideas", []):
@@ -249,6 +253,20 @@ class Pipeline:
         return self.state.get_job(job_id)["artifacts"].get(stage, {})  # type: ignore[index]
 
     # ---- C: script
+    def _owner_context(self) -> str:
+        """The owner's past change requests (so the writer gets it right first time) and lessons that
+        passed the evidence bar in the weekly learning report. Both are short; empty when none."""
+        out = []
+        notes = [r["note"] for r in self.state.db.execute(
+            "SELECT note FROM feedback WHERE decision='fix' AND note != '' ORDER BY at DESC LIMIT 8")]
+        if notes:
+            out.append("\n\nThe channel owner asked for these changes on earlier videos. Apply them proactively "
+                       "where relevant:\n" + "\n".join(f"- {n[:240]}" for n in notes))
+        lessons = self.state.get_setting("lessons_for_writer")
+        if lessons:
+            out.append("\n\nLessons from this channel's own analytics (evidence-backed):\n" + lessons[:1500])
+        return "".join(out)
+
     def _stage_script(self, job_id: str, topic: dict, d: Path) -> dict:
         idea = json.loads(topic.get("notes") or "{}")
         r_ = self.cfg.channel["rules"]
@@ -258,6 +276,7 @@ class Pipeline:
                                  angle=idea.get("angle", ""), pillar=topic.get("pillar"),
                                  seconds_lo=lo, seconds_hi=hi, words_lo=int(lo * wps), words_hi=int(hi * wps),
                                  min_sources=r_["min_sources_main_claim"])
+        prompt += self._owner_context()
         r = self._llm(prompt, job_id, "script", est=0.25, system=P.SYSTEM_WRITER, web_search=True,
                       model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=12000)
         script = r.data or {}
@@ -433,6 +452,11 @@ class Pipeline:
         text = " ".join(sc["narration"].strip() for sc in scenes)
         for word, say in (self.cfg.channel["voice"].get("pronunciations") or {}).items():
             text = re.sub(rf"\b{re.escape(word)}\b", say, text)
+        reused = self._reuse_voice(d, text)
+        if reused:
+            self.state.log("voice unchanged: reused the previous narration", job_id=job_id)
+            (d / "script.json").write_text(json.dumps(script, indent=2, ensure_ascii=False))
+            return reused
         if self.cfg.live:
             est = len(text) / 1000 * self.cfg.pipeline["providers"]["tts"]["usd_per_1k_chars"]
             self.budget.authorize(est, "tts", job_id)
@@ -451,7 +475,38 @@ class Pipeline:
                 w.start, w.end = max(0.0, w.start - lead), max(0.0, w.end - lead)
         (d / "script.json").write_text(json.dumps(script, indent=2, ensure_ascii=False))
         (d / "words.json").write_text(json.dumps([w.__dict__ for w in sp.words]))
+        (d / "voice_text.txt").write_text(text)
         return {"audio": str(audio), "words": str(d / "words.json"), "duration": sp.words[-1].end if sp.words else 0}
+
+    # ---- reuse of a previous version's media (owner fixes) ----
+    def _prior(self, d: Path) -> Path | None:
+        pr = d / "prior"
+        return pr if (pr / "script.json").exists() else None
+
+    def _reuse_voice(self, d: Path, text: str) -> dict | None:
+        pr = self._prior(d)
+        if not pr:
+            return None
+        old = (pr / "voice_text.txt").read_text() if (pr / "voice_text.txt").exists() else None
+        if old is None:   # older bundles: rebuild the text from the old script
+            try:
+                old_script = json.loads((pr / "script.json").read_text())
+                old = " ".join(sc["narration"].strip() for sc in old_script["scenes"])
+                for word, say in (self.cfg.channel["voice"].get("pronunciations") or {}).items():
+                    old = re.sub(rf"\b{re.escape(word)}\b", say, old)
+            except Exception:  # noqa: BLE001
+                return None
+        audio = next((pr / n for n in ("narration_trim.mp3", "narration_trim.wav", "narration.mp3")
+                      if (pr / n).exists()), None)
+        if old != text or not audio or not (pr / "words.json").exists():
+            return None
+        import shutil
+        shutil.copy(audio, d / audio.name)
+        shutil.copy(pr / "words.json", d / "words.json")
+        (d / "voice_text.txt").write_text(text)
+        words = json.loads((d / "words.json").read_text())
+        return {"audio": str(d / audio.name), "words": str(d / "words.json"),
+                "duration": words[-1]["end"] if words else 0, "reused": True}
 
     # ---- E (part 1): images + vision check + focus boxes
     def _stage_visuals(self, job_id: str, topic: dict, d: Path) -> dict:
@@ -465,9 +520,25 @@ class Pipeline:
         for sc in script["scenes"]:
             if sc.get("image") and sc.get("focus") and sc["image"] not in first_focus:
                 first_focus[sc["image"]] = sc["focus"]
+        pr = self._prior(d)
+        old_script = json.loads((pr / "script.json").read_text()) if pr else {}
+        old_vis = json.loads((pr / "visuals.json").read_text()) if pr and (pr / "visuals.json").exists() else {}
+        old_images = old_script.get("images") or {}
+        old_scenes = {sc["id"]: sc for sc in old_script.get("scenes") or []}
+        reused_keys: set[str] = set()
         for key, prompt_text in images.items():
             prompt = f"{prompt_text}. {style}. Vertical 9:16 composition, key subject large and centred."
             path = d / f"{key}.png"
+            if pr and old_images.get(key) == prompt_text and (pr / f"{key}.png").exists() \
+                    and key in (old_vis.get("images") or {}):
+                import shutil
+                shutil.copy(pr / f"{key}.png", path)
+                info = dict(old_vis["images"][key])
+                info["path"] = str(path)
+                info["focus_cache"] = {}
+                out["images"][key] = info
+                reused_keys.add(key)
+                continue
             best = None
             for attempt in range(2):
                 if self.cfg.live:
@@ -494,6 +565,26 @@ class Pipeline:
             out["images"][key] = {"path": str(img), "check": chk, "focus_cache": {first_focus.get(key, ""): chk}}
         for sc in script["scenes"]:
             entry: dict = {}
+            old_sc = old_scenes.get(sc["id"])
+            old_entry = (old_vis.get("beats") or {}).get(sc["id"])
+            if (old_sc is not None and old_entry is not None and sc.get("image") in reused_keys
+                    and all(old_sc.get(k) == sc.get(k) for k in ("narration", "image", "focus", "markers", "arrow"))):
+                # same words, same picture: keep the old framing, markers and any replacement image
+                entry = dict(old_entry)
+                fix_key = entry.get("image")
+                if fix_key and fix_key not in out["images"]:
+                    src = pr / f"{fix_key}.png"
+                    if src.exists() and fix_key in (old_vis.get("images") or {}):
+                        import shutil
+                        shutil.copy(src, d / f"{fix_key}.png")
+                        info = dict(old_vis["images"][fix_key])
+                        info["path"] = str(d / f"{fix_key}.png")
+                        info["focus_cache"] = {}
+                        out["images"][fix_key] = info
+                    else:
+                        entry.pop("image", None)
+                out["beats"][sc["id"]] = entry
+                continue
             if sc.get("image") and sc.get("focus"):
                 info = out["images"][sc["image"]]
                 loc = info["focus_cache"].get(sc["focus"])
@@ -781,28 +872,39 @@ class Pipeline:
             raise KeyError(job_id)
         if decision == "approve":
             self.state.set_job_status(job_id, "approved")
+            self.state.add_feedback(job_id, "approve", note)
         elif decision == "reject":
             self.state.set_job_status(job_id, "rejected", note)
             self.state.set_topic_status(job["topic_id"], "rejected")
-            self.state.upsert_topic(job["topic_id"], "", notes=json.dumps({"rejected_reason": note}))
+            t = self.state.get_topic(job["topic_id"]) or {}
+            notes = json.loads(t.get("notes") or "{}")
+            notes["rejected_reason"] = note
+            self.state.upsert_topic(job["topic_id"], "", notes=json.dumps(notes))
+            self.state.add_feedback(job_id, "drop", note)
         elif decision == "fix":
-            # one bounded repair: rewrite from the review stage with the owner's note as a blocker
+            # Apply the owner's request with minimal edits; unchanged pictures/voice are reused from
+            # build/<job>/prior (see _reuse_*), so a small fix costs cents, not a whole new video.
             d = self.build / job_id
-            rv_path = d / "review.json"
-            rv = json.loads(rv_path.read_text()) if rv_path.exists() else {}
-            rv.setdefault("problems", []).append({"issue": f"owner: {note}", "fix": note, "severity": "blocker"})
-            rv["problems"].append(self._length_rule())
             script = json.loads((d / "script.json").read_text())
             script.pop("_revised", None)
-            (d / "script.json").write_text(json.dumps(script, indent=2, ensure_ascii=False))
-            fx = self._llm(P.FIX.format(problems=json.dumps(rv["problems"]), script=json.dumps(script)),
+            fx = self._llm(P.OWNER_FIX.format(note=note, length_rule=json.dumps(self._length_rule()),
+                                              script=json.dumps(script, ensure_ascii=False)),
                            job_id, "owner_fix", est=0.2, system=P.SYSTEM_WRITER,
                            model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=12000).data or {}
+            if not fx.get("scenes"):
+                raise StageFailed("the fix could not be applied (no script returned)")
             fx["_revised"] = True
             fx["hook_scores"] = [hook_score(h) for h in fx.get("hooks", [])]
+            self._validate_script(fx)
             (d / "script.json").write_text(json.dumps(fx, indent=2, ensure_ascii=False))
-            self.state.finish_stage(job_id, "review")   # resume from voice
+            arts = job["artifacts"]
+            rv = dict(arts.get("review") or {})
+            rv["script"] = fx                      # _restore must bring back the FIXED script
+            rv.setdefault("content", {})
+            self.state.finish_stage(job_id, "review", rv)
             self.state.set_job_status(job_id, "running")
+            self.state.add_feedback(job_id, "fix", note)
+            self.state.log(f"owner fix applied: {fx.get('change_summary', '')}", job_id=job_id)
         else:
             raise ValueError(decision)
         self.state.log(f"owner decision: {decision} {note}", job_id=job_id)

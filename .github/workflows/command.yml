@@ -1,18 +1,24 @@
-# Lets Claude (or the owner) drive the pipeline by committing a small request file,
-# instead of clicking in GitHub. Push commands/request.json with:
-#   {"action": "produce", "topic": "", "nonce": "..."}
-#   {"action": "approve" | "reject" | "fix", "job": "<job id>", "note": "...", "nonce": "..."}
+# One entry point for every action. Triggered by:
+#  - the owner's Telegram (Cloudflare Worker -> workflow_dispatch with a JSON "request")
+#  - Claude committing commands/request.json
+# See scripts/run_command.py for the actions.
 name: command
 on:
   push:
     branches: [main]
     paths: ["commands/request.json"]
+  workflow_dispatch:
+    inputs:
+      request:
+        description: 'JSON request, e.g. {"action":"status"}'
+        required: true
+        default: '{"action":"status"}'
 concurrency: { group: shorts-state, cancel-in-progress: false, queue: max }
 permissions: { contents: write, issues: write }
 jobs:
   run:
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
     env:
       SHORTS_MODE: ${{ vars.SHORTS_MODE || 'dry_run' }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -21,7 +27,12 @@ jobs:
       YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
       YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
       YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      GH_DISPATCH_TOKEN: ${{ secrets.GH_DISPATCH_TOKEN }}
       GH_TOKEN: ${{ github.token }}
+      REQUEST: ${{ github.event.inputs.request }}   # via env, never inlined into the shell
     steps:
       - uses: actions/checkout@v5
         with: { fetch-depth: 0 }
@@ -31,7 +42,14 @@ jobs:
       - run: pip install -q -r requirements.txt
       - run: scripts/state_sync.sh pull
       - name: Run the requested command
-        run: python scripts/run_command.py commands/request.json
+        run: |
+          if [ -n "$REQUEST" ]; then printf '%s' "$REQUEST" > "$RUNNER_TEMP/request.json"; f="$RUNNER_TEMP/request.json"
+          else f=commands/request.json; fi
+          python -c 'import json,sys; json.load(open(sys.argv[1]))' "$f"
+          python scripts/run_command.py "$f"
       - name: Save state
         if: always()
         run: scripts/state_sync.sh push
+      - name: Tell the owner if this run crashed
+        if: failure()
+        run: python scripts/notify_failure.py "command run ${{ github.run_id }} failed"

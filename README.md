@@ -41,7 +41,7 @@ shorts/            pipeline.py · cli.py · state.py · budget.py · analytics.p
   render/          compose.py (scenes) · captions.py · assemble.py (FFmpeg)
   qa/              media.py (technical gate)
   publish/         youtube.py (resumable, idempotent upload)
-scripts/           youtube_auth.py · collect_signals.py · open_review.sh · handle_review.py · state_sync.sh
+scripts/           youtube_auth.py · collect_signals.py · open_review.sh · run_command.py · deploy_worker.py · state_sync.sh
 .github/workflows  produce · review · analytics · summary
 vendor/ytskill/    hook scorer, title linter (MIT, from youtube-agent-skill)
 ```

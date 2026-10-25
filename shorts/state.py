@@ -72,6 +72,63 @@ CREATE TABLE IF NOT EXISTS metrics (
     PRIMARY KEY (video_id, fetched_at)
 );
 
+CREATE TABLE IF NOT EXISTS settings (
+    key           TEXT PRIMARY KEY,          -- e.g. telegram_chat_id, telegram_review_msg:<job>
+    value         TEXT NOT NULL,
+    at            REAL NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS feedback (
+    id            INTEGER PRIMARY KEY AUTOINCREMENT,
+    at            REAL NOT NULL,
+    job_id        TEXT,
+    decision      TEXT NOT NULL,             -- approve | fix | drop
+    note          TEXT
+);
+
+CREATE TABLE IF NOT EXISTS features (
+    job_id        TEXT PRIMARY KEY,          -- what the video was made of (for learning)
+    data          TEXT NOT NULL,             -- JSON: pillar, hook formula, seconds, beats, wit, slot, ...
+    at            REAL NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS experiments (
+    id            TEXT PRIMARY KEY,          -- e.g. exp-001-publish-time
+    data          TEXT NOT NULL,             -- JSON: hypothesis, arms, metric, min_n, status, result, decision
+    at            REAL NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS assignments (
+    experiment_id TEXT NOT NULL,
+    job_id        TEXT NOT NULL,
+    arm           TEXT NOT NULL,
+    at            REAL NOT NULL,
+    PRIMARY KEY (experiment_id, job_id)
+);
+
+CREATE TABLE IF NOT EXISTS revenue (
+    period        TEXT NOT NULL,             -- YYYY-MM (owner-entered) or YYYY-MM-DD (API)
+    video_id      TEXT NOT NULL DEFAULT '',  -- '' = whole channel
+    usd           REAL NOT NULL,
+    source        TEXT NOT NULL,             -- owner | youtube_api
+    at            REAL NOT NULL,
+    PRIMARY KEY (period, video_id, source)
+);
+
+CREATE TABLE IF NOT EXISTS channel_daily (
+    day           TEXT PRIMARY KEY,          -- YYYY-MM-DD (YouTube Analytics, channel totals)
+    data          TEXT NOT NULL,
+    at            REAL NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS video_detail (
+    video_id      TEXT NOT NULL,
+    kind          TEXT NOT NULL,             -- retention | traffic | demographics
+    data          TEXT NOT NULL,
+    at            REAL NOT NULL,
+    PRIMARY KEY (video_id, kind)
+);
+
 CREATE TABLE IF NOT EXISTS events (
     id            INTEGER PRIMARY KEY AUTOINCREMENT,
     at            REAL NOT NULL,
@@ -239,6 +296,28 @@ class State:
                 db.execute(f"UPDATE uploads SET {sets} WHERE job_id=?", (*fields.values(), job_id))
 
     # ---------- metrics ----------
+    # ---------- settings / feedback ----------
+    def get_setting(self, key: str, default: str | None = None) -> str | None:
+        r = self.db.execute("SELECT value FROM settings WHERE key=?", (key,)).fetchone()
+        return r["value"] if r else default
+
+    def set_setting(self, key: str, value: str) -> None:
+        with self.tx() as db:
+            db.execute("INSERT INTO settings(key, value, at) VALUES (?,?,?) "
+                       "ON CONFLICT(key) DO UPDATE SET value=excluded.value, at=excluded.at",
+                       (key, value, time.time()))
+
+    def add_feedback(self, job_id: str | None, decision: str, note: str = "") -> None:
+        with self.tx() as db:
+            db.execute("INSERT INTO feedback(at, job_id, decision, note) VALUES (?,?,?,?)",
+                       (time.time(), job_id, decision, note))
+
+    def set_features(self, job_id: str, data: dict) -> None:
+        with self.tx() as db:
+            db.execute("INSERT INTO features(job_id, data, at) VALUES (?,?,?) "
+                       "ON CONFLICT(job_id) DO UPDATE SET data=excluded.data, at=excluded.at",
+                       (job_id, json.dumps(data), time.time()))
+
     def add_metrics(self, video_id: str, data: dict, age_hours: float | None) -> None:
         with self.tx() as db:
             db.execute(

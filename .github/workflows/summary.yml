@@ -1,16 +1,22 @@
-# Daily 22:00 IST summary as a comment on the pinned "Daily summary" issue.
-name: summary
+# Weekly learning report (Mondays) + the offline test suite.
+name: weekly
 on:
   schedule:
-    - cron: "23 16 * * *"
+    - cron: "33 3 * * 1"        # Monday 09:03 IST
   workflow_dispatch:
 concurrency: { group: shorts-state, cancel-in-progress: false, queue: max }
-permissions: { contents: read, issues: write }
+permissions: { contents: write }
 jobs:
-  summary:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    env: { GH_TOKEN: "${{ github.token }}" }
+  learn:
+    if: vars.SHORTS_MODE == 'live'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      SHORTS_MODE: live
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
     steps:
       - uses: actions/checkout@v5
         with: { fetch-depth: 0 }
@@ -18,17 +24,11 @@ jobs:
         with: { python-version: "3.12", cache: pip }
       - run: pip install -q -r requirements.txt
       - run: scripts/state_sync.sh pull
-      - run: |
-          python -m shorts.cli summary > summary.md
-          n=$(gh issue list --label summary --state open --json number -q '.[0].number')
-          if [ -z "$n" ]; then
-            gh label create summary --color 0E8A16 2>/dev/null || true
-            gh issue create --label summary --title "Daily summary" --body "Daily reports are posted as comments here."
-            n=$(gh issue list --label summary --state open --json number -q '.[0].number')
-          fi
-          gh issue comment "$n" --body-file summary.md
+      - run: python -m shorts.cli learn
+      - if: always()
+        run: scripts/state_sync.sh push
   tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v5
@@ -36,3 +36,4 @@ jobs:
         with: { python-version: "3.12", cache: pip }
       - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
       - run: pip install -q -r requirements.txt && python -m pytest -q
+      - run: node worker/test.mjs

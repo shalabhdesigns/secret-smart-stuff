@@ -1,0 +1,22 @@
+# Controlled experiments. One variable per experiment; everything else follows docs/PLAYBOOK.md.
+# The pipeline assigns arms in balanced rotation when a video is made, records the assignment,
+# and the weekly learning report compares arms only on videos of the same age.
+# Status: active | paused | concluded. Decisions are written to docs/EXPERIMENTS.md.
+experiments:
+  - id: exp-001-publish-time
+    status: active
+    owner_request: "1 per day; vary publish times, then double down on what the analytics show works (25 Oct 2026)"
+    hypothesis: >-
+      The publish time changes early distribution. Three slots cover the main English-speaking
+      audiences: US morning / India evening, US midday / India late evening, US evening / India morning.
+    variable: publish_slot_utc
+    arms:
+      a_1900_ist: "13:30"   # 19:00 IST, 09:30 US Eastern (EDT) / 08:30 (EST)
+      b_2230_ist: "17:00"   # 22:30 IST, 13:00 US Eastern
+      c_0730_ist: "02:00"   # 07:30 IST, 22:00 US Eastern (previous day)
+    primary_metric: views_7d
+    secondary_metrics: [engaged_views_7d, average_view_percentage_7d, subscribers_gained_7d]
+    min_videos_per_arm: 8
+    notes: >-
+      Shorts reach is very topic-dependent and noisy; compare medians, not means, and only at equal
+      age (7 days). Revisit when each arm has 8 videos (~24 days at 1/day).

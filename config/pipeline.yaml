@@ -6,10 +6,17 @@ budget_usd:
   daily: 12.00         # testing phase (owner OK 2026-10-25); set back to 4.00 when daily runs go hands-off
   monthly: 45.00         # ElevenLabs plan is paid separately and not counted here
 
+# Fixed monthly costs shown on the dashboard (not per-video). Edit to match your real bills.
+fixed_costs_usd_month:
+  elevenlabs_plan: 22.00   # ASSUMPTION: Creator plan list price; owner to confirm
+  github_actions: 0.00     # within the free minutes
+  cloudflare: 0.00         # free plan
+  telegram: 0.00
+
 schedule:
   timezone: Asia/Kolkata
   produce_per_day: 1
-  publish_slots_utc: ["13:30"]   # 19:00 IST ≈ 08:30 US Eastern; treated as an experiment
+  publish_slots_utc: ["13:30"]   # fallback only; the active experiment in config/experiments.yaml decides
   analytics_every_hours: 6
 
 approval:

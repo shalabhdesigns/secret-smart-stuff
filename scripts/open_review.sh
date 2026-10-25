@@ -4,12 +4,13 @@ set -euo pipefail
 JOB="${1:?job id}"
 D="build/$JOB"
 TAG="review-$JOB"
-gh label create review --color 1D76DB 2>/dev/null || true
 # media.tgz keeps the pictures, voice and timings so a "fix" can re-render without paying again
 # (built outside the folder it archives: tar fails if its own output appears while reading)
 tmp=$(mktemp -d)
-tar -czf "$tmp/media.tgz" -C "$D" --exclude=./final.mp4 --exclude=./video.mp4 --exclude=./mix.wav --exclude=./mix.bed.wav --exclude=./media.tgz .
+tar -czf "$tmp/media.tgz" -C "$D" --exclude=./final.mp4 --exclude=./video.mp4 --exclude=./mix.wav --exclude=./mix.bed.wav --exclude=./media.tgz --exclude=./prior .
 mv "$tmp/media.tgz" "$D/media.tgz"
+[ "${SHORTS_NO_GITHUB:-}" = "1" ] && { echo "SHORTS_NO_GITHUB=1: skipping release/issue for $JOB"; exit 0; }
+gh label create review --color 1D76DB 2>/dev/null || true
 files=("$D/final.mp4" "$D/metadata.json" "$D/script.json" "$D/review.md" "$D/media.tgz")
 if gh release view "$TAG" >/dev/null 2>&1; then
   gh release upload "$TAG" "${files[@]}" --clobber
