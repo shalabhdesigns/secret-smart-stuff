@@ -2,6 +2,7 @@
  "parts_dir": "../../assets/puppet/parts",
  "backgrounds": {
   "barber": "release:media-puppet-haircut/bg_barber.png",
+  "barber_empty": "release:media-puppet-library/bg_barber_nochair.png",
   "flat": "release:media-puppet-haircut/bg_flat.png"
  },
  "heads": {
@@ -32,7 +33,9 @@
    "skin_at": [
     160,
     470
-   ]
+   ],
+   "chin": 598,
+   "chin_x": 268
   },
   "dev_bowl": {
    "file": "dev_head_bowl.png",
@@ -61,7 +64,9 @@
    "skin_at": [
     160,
     470
-   ]
+   ],
+   "chin": 592,
+   "chin_x": 268
   },
   "dev_tuft": {
    "file": "dev_head_tuft.png",
@@ -90,7 +95,9 @@
    "skin_at": [
     150,
     520
-   ]
+   ],
+   "chin": 622,
+   "chin_x": 255
   },
   "rocky": {
    "file": "rocky_head.png",
@@ -127,7 +134,9 @@
      700
     ],
     "width": 600
-   }
+   },
+   "chin": 1088,
+   "chin_x": 475
   },
   "rocky_phone": {
    "file": "rocky_body_phone.png",
@@ -193,7 +202,9 @@
     500,
     820
    ],
-   "scale": 0.8
+   "scale": 0.8,
+   "chin": 1008,
+   "chin_x": 605
   }
  },
  "bodies": {
@@ -240,6 +251,57 @@
     594,
     95
    ]
+  }
+ },
+ "characters": {
+  "dev": {
+   "primary_head": "dev_messy"
+  },
+  "rocky": {
+   "primary_head": "rocky",
+   "face_scale": 1.21
+  },
+  "meera": {
+   "primary_head": "meera",
+   "face_scale": 0.83
+  }
+ },
+ "figures": {
+  "dev_seated": {
+   "file": "dev_seated.png"
+  },
+  "dev_stand": {
+   "file": "dev_stand.png"
+  },
+  "dev_point": {
+   "file": "dev_point.png"
+  },
+  "dev_nono": {
+   "file": "dev_nono.png"
+  },
+  "dev_thumbs": {
+   "file": "dev_thumbs.png"
+  },
+  "rocky_tada": {
+   "file": "rocky_tada.png"
+  },
+  "rocky_phone": {
+   "file": "rocky_phone.png"
+  },
+  "rocky_hips": {
+   "file": "rocky_hips.png"
+  },
+  "rocky_scissors": {
+   "file": "rocky_scissors.png"
+  },
+  "meera_chips": {
+   "file": "meera_chips.png"
+  },
+  "meera_arms": {
+   "file": "meera_arms.png"
+  },
+  "meera_point": {
+   "file": "meera_point.png"
   }
  }
 }

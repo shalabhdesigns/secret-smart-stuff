@@ -23,7 +23,7 @@ for shot in scene["shots"]:
         canvas = P.load_bg(parts / rig["backgrounds"][bg], b.get("zoom", 1), b.get("cx", .5), b.get("cy", .5), b.get("blur", 0))
     for a in shot.get("actors", []):
         a = dict(a); a["lines"] = [{"lips": lips[l["line"]], "at": l["at"]} for l in a.get("lines", [])]
-        P.Actor(rig, parts, a, shot["dur"]).render(canvas, t)
+        (P.FigureActor if "pose" in a else P.Actor)(rig, parts, a, shot["dur"]).render(canvas, t)
     c = shot.get("cam", {"zoom": 1, "cx": 540, "cy": 960})
     z, cx, cy = c["zoom"], c["cx"], c["cy"]
     for e in shot.get("fx", []):
