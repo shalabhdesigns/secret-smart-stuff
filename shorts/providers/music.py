@@ -1,0 +1,50 @@
+"""One-time music library via ElevenLabs Music (verified 2026-10-25).
+
+POST https://api.elevenlabs.io/v1/music  -> raw mp3 bytes.  Creator plan: ~$0.15 per minute.
+The key needs the `music_generation` permission. Tracks are generated ONCE, committed to
+assets/music, and rotated across videos, so the per-video music cost is zero and the
+music is original (no licensed-music revenue penalty on Shorts).
+"""
+from __future__ import annotations
+
+from pathlib import Path
+
+import requests
+
+ENDPOINT = "https://api.elevenlabs.io/v1/music"
+
+# Short, loop-friendly instrumental beds. Different moods so videos don't all sound alike.
+BEDS = {
+    "curious_pluck": "Light, curious instrumental: soft pizzicato strings and marimba, gentle ticking percussion, "
+                     "100 BPM, playful but calm, steady loopable groove, no melody climax, no vocals",
+    "warm_lofi": "Warm lo-fi hip hop instrumental, mellow keys, soft vinyl texture, 88 BPM, relaxed, "
+                 "steady loopable groove, no vocals",
+    "bright_pop": "Bright minimal electronic pop instrumental, clean synth plucks and light claps, 112 BPM, "
+                  "upbeat and tidy, steady loopable groove, no vocals",
+    "clockwork": "Minimal clockwork-style instrumental: woodblock ticks, soft kalimba and sub bass, 96 BPM, "
+                 "inquisitive and precise, steady loopable groove, no vocals",
+    "soft_piano": "Soft piano and light acoustic guitar instrumental, gentle brush percussion, 92 BPM, warm, "
+                  "steady loopable groove, no vocals",
+    "quirky_funk": "Quirky light funk instrumental, muted guitar, bouncy bass, finger snaps, 104 BPM, fun, "
+                   "steady loopable groove, no vocals",
+}
+
+
+def generate_library(api_key: str, folder: Path, length_ms: int = 45000) -> list[Path]:
+    folder.mkdir(parents=True, exist_ok=True)
+    made = []
+    for name, prompt in BEDS.items():
+        out = folder / f"{name}.mp3"
+        if out.exists():
+            continue
+        r = requests.post(ENDPOINT, params={"output_format": "mp3_44100_128"},
+                          headers={"xi-api-key": api_key, "content-type": "application/json"},
+                          json={"prompt": prompt, "music_length_ms": length_ms, "model_id": "music_v2_5",
+                                "force_instrumental": True}, timeout=600)
+        if r.status_code == 401:
+            raise PermissionError("ElevenLabs key lacks the music_generation permission")
+        if r.status_code != 200:
+            raise RuntimeError(f"ElevenLabs music {r.status_code}: {r.text[:300]}")
+        out.write_bytes(r.content)
+        made.append(out)
+    return made
