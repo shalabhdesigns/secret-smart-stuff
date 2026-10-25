@@ -155,6 +155,8 @@ def main(path: str) -> int:
         if not issue:
             alert(f"Pipeline problem: {job}", f"No open review issue found for job `{job}`.")
             return 1
+        if req.get("publish_at"):
+            os.environ["PUBLISH_AT"] = req["publish_at"]
         os.environ["COMMENT"] = f"{action}: {req.get('note', '')}".strip().rstrip(":")
         os.environ["ISSUE_BODY"] = f"<!-- job:{job} -->"
         os.environ["ISSUE"] = issue

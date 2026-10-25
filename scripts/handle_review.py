@@ -72,7 +72,7 @@ def main() -> int:
         if not p.cfg.live:
             reply(issue, "✅ Approved (dry-run mode, so nothing was uploaded).")
             return 0
-        slot = next_slot(p)
+        slot = os.environ.get("PUBLISH_AT") or next_slot(p)   # explicit time if the owner chose one
         try:
             rec = p.publish(job, publish_at=slot)
             reply(issue, f"✅ Uploaded as **private**, scheduled to go public at **{slot}** (UTC).\n"
