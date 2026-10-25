@@ -371,6 +371,43 @@ def main(path: str) -> int:
                                                     p.state.get_topic(j["topic_id"]), p.state.job_cost(job)),
                                        "publish_slot_utc": slot, "publish_at": up["publish_at"]})
         return do_verify(p)
+    if action == "fetch":
+        # copy files from signed URLs (e.g. ElevenLabs generations) into a GitHub pre-release
+        import requests
+        name = re.sub(r"[^a-z0-9-]", "", req["name"])
+        d = ROOT / "build" / name
+        d.mkdir(parents=True, exist_ok=True)
+        files = []
+        for fn, url in (req.get("files") or {}).items():
+            fn = re.sub(r"[^A-Za-z0-9._-]", "", fn)
+            r = requests.get(url, timeout=300)
+            r.raise_for_status()
+            (d / fn).write_bytes(r.content)
+            files.append(str(d / fn))
+        tag = f"media-{name}"
+        if subprocess.run(["gh", "release", "view", tag], capture_output=True).returncode == 0:
+            gh("release", "upload", tag, *files, "--clobber")
+        else:
+            gh("release", "create", tag, *files, "--prerelease", "--title", tag, "--notes", "working media")
+        return 0
+    if action == "sketch":
+        spec = ROOT / req["spec"]
+        r = subprocess.run([sys.executable, str(ROOT / "scripts" / "sketch_assemble.py"), str(spec)],
+                           capture_output=True, text=True)
+        print(r.stdout, r.stderr[-3000:])
+        name = json.loads(spec.read_text())["name"]
+        d = ROOT / "build" / name
+        tag = f"media-{name}"
+        files = [str(p) for p in (d / "final.mp4", d / "timeline.json") if p.exists()]
+        if not files:
+            (d).mkdir(parents=True, exist_ok=True)
+            (d / "error.txt").write_text(r.stderr[-6000:] or "no output")
+            files = [str(d / "error.txt")]
+        if subprocess.run(["gh", "release", "view", tag], capture_output=True).returncode == 0:
+            gh("release", "upload", tag, *files, "--clobber")
+        else:
+            gh("release", "create", tag, *files, "--prerelease", "--title", tag, "--notes", "sketch render")
+        return r.returncode
     if action == "accounts":
         # provider balances (no secrets printed), reported on a GitHub issue
         import requests
