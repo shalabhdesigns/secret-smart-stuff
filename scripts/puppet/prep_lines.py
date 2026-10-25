@@ -15,7 +15,7 @@ import numpy as np
 SR = 48000
 
 
-def decode(p: Path, tempo: float = 1.08) -> np.ndarray:
+def decode(p: Path, tempo: float = float(__import__("os").environ.get("TEMPO", "1.08"))) -> np.ndarray:
     raw = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", str(p), "-af", f"atempo={tempo}", "-f", "f32le", "-ac", "1", "-ar", str(SR), "-"],
                          capture_output=True, check=True).stdout
     return np.frombuffer(raw, np.float32).copy()
