@@ -1,0 +1,33 @@
+{
+  "scores": {
+    "hook": 2,
+    "payoff": 2,
+    "visual_match": 1,
+    "accuracy": 1,
+    "originality": 1
+  },
+  "total": 7,
+  "problems": [
+    {
+      "issue": "The 'sits on the shelf for hours' claim is cited to the explorejapaninsider page, which in the results only says the three-step wrapper keeps seaweed crisp. The 'hours' detail appears in a different source (foodinjapan's onigiri guide), which says rice contact makes nori lose crispness within hours.",
+      "fix": "Re-point the fact's source to the foodinjapan onigiri guide (onigiri-japanese-rice-balls-guide), or add it alongside explorejapaninsider. Keep the wording as 'loses crispness within hours of touching rice' rather than implying the konbini product itself is tested for hours on a shelf.",
+      "severity": "minor"
+    },
+    {
+      "issue": "Beat b7 labels tab 2 as the 'bottom right' flap and tab 3 as the 'bottom left' flap. The facts block says the script 'names no side' because sources differ on layout, so the marker targets contradict the script's own note. Sources also disagree on whether the corners are at the top or bottom.",
+      "fix": "Change the marker targets to neutral wording such as 'the corner flap marked 2' and 'the corner flap marked 3', with no side or top/bottom position. Keep the callout numbers only.",
+      "severity": "minor"
+    },
+    {
+      "issue": "The 1978 Seven-Eleven claim is supported by several sources, but one source says research started in 1976 and products launched in 1978, and another calls the company 'widely credited' rather than the sole inventor.",
+      "fix": "Keep the 1978 date but soften b5 to 'Seven-Eleven Japan rolled out packaged onigiri in 1978' or add 'after research began in 1976' for precision. Avoid the word 'invented'.",
+      "severity": "minor"
+    },
+    {
+      "issue": "Originality is limited. The explanation is clear and accurate, but the core fact (a film separates nori from rice until opening) is widely known.",
+      "fix": "Add one lesser-known detail, such as the Seven-Eleven 'Paricco Film' name for the wrapper or the point that the film lets you roll the nori yourself, and tie it to b8 or b9.",
+      "severity": "minor"
+    }
+  ],
+  "verdict": "fix"
+}

@@ -1,0 +1,340 @@
+{
+  "viable": true,
+  "reason_if_not": "",
+  "title": "Why onigiri hides its seaweed behind plastic",
+  "thumb_text": "Crisp Secret",
+  "hook_card": "Hidden Seaweed",
+  "hooks": [
+    "Why does this onigiri hide its seaweed behind plastic?",
+    "Why is the seaweed on this rice ball kept separate?",
+    "Why do convenience store onigiri come with numbered plastic tabs?",
+    "Why does a konbini rice ball need three numbered pulls?",
+    "Why is the seaweed on this onigiri behind a plastic film?"
+  ],
+  "chosen_hook": 0,
+  "images": {
+    "img1": "Realistic close-up photo, front view, of a single triangular Japanese convenience-store onigiri sealed in its clear plastic wrapper. A white rice triangle sits inside. A dark black-green sheet of nori seaweed is clearly visible behind a thin clear plastic film, separated from the rice. The wrapper is plain and blank, with no text, no logos and no numbers. Soft daylight on a plain light wooden table, shallow depth of field, no people.",
+    "img2": "Realistic photo of a chilled convenience-store shelf in Japan holding a neat row of triangular onigiri, each in a clear plastic wrapper with a dark nori sheet visible. Packaging is plain and blank, with no readable text and no logos. Bright even shop lighting, no people.",
+    "img3": "Realistic photo of a single triangular white rice ball on a small plain plate. A limp, wet, wrinkled, dull dark seaweed sheet droops sadly over the edge of the plate and sticks damply to the rice. Soft window light, plain background, no text, no people.",
+    "img4": "Realistic top-down photo of one whole triangular onigiri wrapper, front-on, point facing up, lying flat on a plain light table. The nori and rice ball are visible inside the clear packaging. A narrow plastic pull strip runs down from the top centre. Two separate small plastic pull flaps sit at the left and right bottom corners. All three parts are clearly separate and visible. Wrapper is blank: no text, no numbers, no logos. No people.",
+    "img5": "Realistic photo of an unwrapped triangular onigiri on a small plain plate. A crisp, dry, dark glossy nori sheet is wrapped snugly around the white rice. Two empty pieces of clear plastic film lie crumpled beside the plate. Soft daylight, plain background, no text, no people.",
+    "img6": "Realistic close-up photo of a triangular convenience-store onigiri with its wrapper half opened. On one side the clear plastic film has been slid away from between the rice and seaweed, and the dark nori now covers that half of the white rice. The other half is still inside the film and wrapper. Plain blank packaging, no text, no logos, no hands, plain light table, soft daylight."
+  },
+  "scenes": [
+    {
+      "id": "b1",
+      "narration": "Why does this onigiri hide its seaweed behind plastic?",
+      "image": "img1",
+      "focus": "the dark seaweed sheet behind the clear film",
+      "motion": "push",
+      "transition": "cut",
+      "callout": null,
+      "pop": null,
+      "arrow": null,
+      "card_text": null,
+      "tone": "normal",
+      "markers": null
+    },
+    {
+      "id": "b2",
+      "narration": "Seaweed turns soft when it touches rice.",
+      "image": "img3",
+      "focus": "the damp seaweed pressed against the rice",
+      "motion": "punch",
+      "transition": "cut",
+      "callout": null,
+      "pop": "soft",
+      "arrow": null,
+      "card_text": null,
+      "tone": "normal",
+      "markers": null
+    },
+    {
+      "id": "b3",
+      "narration": "Soggy seaweed makes for a sad lunch.",
+      "image": "img3",
+      "focus": "the limp seaweed drooping over the plate edge",
+      "motion": "drift",
+      "transition": "cut",
+      "callout": null,
+      "pop": null,
+      "arrow": null,
+      "card_text": null,
+      "tone": "witty",
+      "markers": null
+    },
+    {
+      "id": "b4",
+      "narration": "A thin film keeps them apart.",
+      "image": "img1",
+      "focus": "the thin plastic film between the seaweed and the rice",
+      "motion": "push",
+      "transition": "whip",
+      "callout": "Inner film",
+      "pop": null,
+      "arrow": {
+        "from": "the seaweed sheet",
+        "to": "the white rice behind the film"
+      },
+      "card_text": null,
+      "tone": "normal",
+      "markers": null
+    },
+    {
+      "id": "b5",
+      "narration": "Seven-Eleven Japan launched packaged onigiri in 1978.",
+      "image": "img2",
+      "focus": "a row of triangular onigiri on the shelf",
+      "motion": "drift",
+      "transition": "cut",
+      "callout": null,
+      "pop": null,
+      "arrow": null,
+      "card_text": null,
+      "tone": "normal",
+      "markers": null
+    },
+    {
+      "id": "b6",
+      "narration": "Tab one pulls down from the top.",
+      "image": "img4",
+      "focus": "the top pull strip",
+      "motion": "push",
+      "transition": "zoom_cut",
+      "callout": "Pull strip",
+      "pop": null,
+      "arrow": null,
+      "card_text": null,
+      "tone": "normal",
+      "markers": [
+        {
+          "label": "1",
+          "target": "the top pull strip"
+        }
+      ]
+    },
+    {
+      "id": "b7",
+      "narration": "Tabs two and three are the corners.",
+      "image": "img4",
+      "focus": "the two bottom corner flaps",
+      "motion": "pull",
+      "transition": "cut",
+      "callout": null,
+      "pop": null,
+      "arrow": null,
+      "card_text": null,
+      "tone": "normal",
+      "markers": [
+        {
+          "label": "2",
+          "target": "the bottom right corner flap"
+        },
+        {
+          "label": "3",
+          "target": "the bottom left corner flap"
+        }
+      ]
+    },
+    {
+      "id": "b8",
+      "narration": "Each pull slides the film out.",
+      "image": "img6",
+      "focus": "the clear film sliding away from the rice",
+      "motion": "push",
+      "transition": "cut",
+      "callout": null,
+      "pop": null,
+      "arrow": null,
+      "card_text": null,
+      "tone": "normal",
+      "markers": null
+    },
+    {
+      "id": "b9",
+      "narration": "Then the seaweed hugs the rice.",
+      "image": "img5",
+      "focus": "the crisp seaweed wrapped around the rice",
+      "motion": "drift",
+      "transition": "cut",
+      "callout": null,
+      "pop": null,
+      "arrow": null,
+      "card_text": null,
+      "tone": "witty",
+      "markers": null
+    },
+    {
+      "id": "b10",
+      "narration": "It can wait on a shelf for hours.",
+      "image": "img2",
+      "focus": "one onigiri sitting in its wrapper on the shelf",
+      "motion": "push",
+      "transition": "whip",
+      "callout": null,
+      "pop": null,
+      "arrow": null,
+      "card_text": null,
+      "tone": "normal",
+      "markers": null
+    },
+    {
+      "id": "b11",
+      "narration": "The film keeps wet rice and crisp seaweed apart.",
+      "image": "img1",
+      "focus": "the film between the rice and the seaweed",
+      "motion": "pull",
+      "transition": "cut",
+      "callout": null,
+      "pop": "apart",
+      "arrow": null,
+      "card_text": null,
+      "tone": "normal",
+      "markers": null
+    },
+    {
+      "id": "b12",
+      "narration": "So next time someone asks you...",
+      "image": "img1",
+      "focus": "the whole wrapped onigiri",
+      "motion": "hold",
+      "transition": "cut",
+      "callout": null,
+      "pop": null,
+      "arrow": null,
+      "card_text": null,
+      "tone": "normal",
+      "markers": null
+    }
+  ],
+  "facts": [
+    {
+      "claim": "Seaweed goes soft quickly when it touches rice; konbini onigiri can sit on the shelf for hours, so the packaging keeps seaweed and rice separate until opening.",
+      "sources": [
+        "https://explorejapaninsider.com/how-to-open-onigiri-japan/"
+      ],
+      "main": true
+    },
+    {
+      "claim": "Convenience store rice balls purposely separate the rice and seaweed so the seaweed does not lose its crispness.",
+      "sources": [
+        "https://matcha-jp.com/en/732"
+      ],
+      "main": true
+    },
+    {
+      "claim": "A layer of film between the rice and seaweed prevents the seaweed from getting moist and sticking to the rice.",
+      "sources": [
+        "https://apeachyplate.com/japanese-onigiri-rice-triangles/"
+      ],
+      "main": true
+    },
+    {
+      "claim": "The film is designed to be removed when eating, and keeps the nori crunchy.",
+      "sources": [
+        "https://www.nippon.com/en/japan-data/h01982/"
+      ],
+      "main": false
+    },
+    {
+      "claim": "Seven-Eleven Japan launched packaged onigiri in 1978 (nippon.com: onigiri packed in special film separating rice from nori; Food in Japan: first packaged onigiri line in 1978).",
+      "sources": [
+        "https://www.nippon.com/en/japan-data/h01982/",
+        "https://www.foodinjapan.org/japan/convenience-store-onigiri/"
+      ],
+      "main": false
+    },
+    {
+      "claim": "Tab 1 is pulled down from the top and around the onigiri. Tabs 2 and 3 then slide the film out from each half, leaving the seaweed wrapped around the rice. Exact tab layout varies slightly by brand, and sources differ on which side comes first, so the script names no side.",
+      "sources": [
+        "https://www.japanesefoodguide.com/onigiri-fillings/",
+        "https://livejapan.com/en/article-a0001721/",
+        "https://matcha-jp.com/en/732",
+        "https://explorejapaninsider.com/how-to-open-onigiri-japan/"
+      ],
+      "main": false
+    },
+    {
+      "claim": "The numbers printed on the film tell you the order of the three steps.",
+      "sources": [
+        "https://paqupeljapan.com/articles/7-eleven-onigiri"
+      ],
+      "main": false
+    }
+  ],
+  "description": "Convenience-store onigiri keep the seaweed behind a thin plastic film so it stays crisp until you open it. The numbered tabs show the order to pull the film out.",
+  "hashtags": [
+    "#onigiri",
+    "#japan",
+    "#packagingdesign"
+  ],
+  "affiliate_product": null,
+  "cited_sources": [],
+  "hook_scores": [
+    {
+      "hook": "Why does this onigiri hide its seaweed behind plastic?",
+      "verdict": 38,
+      "band": "WEAK",
+      "properties": {
+        "SPECIFICITY": 34,
+        "ADDRESS": 26,
+        "STAKES": 22,
+        "CURIOSITY": 59,
+        "BREVITY": 100
+      },
+      "formula": "The Question"
+    },
+    {
+      "hook": "Why is the seaweed on this rice ball kept separate?",
+      "verdict": 38,
+      "band": "WEAK",
+      "properties": {
+        "SPECIFICITY": 34,
+        "ADDRESS": 26,
+        "STAKES": 22,
+        "CURIOSITY": 59,
+        "BREVITY": 100
+      },
+      "formula": "The Question"
+    },
+    {
+      "hook": "Why do convenience store onigiri come with numbered plastic tabs?",
+      "verdict": 38,
+      "band": "WEAK",
+      "properties": {
+        "SPECIFICITY": 34,
+        "ADDRESS": 26,
+        "STAKES": 22,
+        "CURIOSITY": 59,
+        "BREVITY": 100
+      },
+      "formula": "The Question"
+    },
+    {
+      "hook": "Why does a konbini rice ball need three numbered pulls?",
+      "verdict": 38,
+      "band": "WEAK",
+      "properties": {
+        "SPECIFICITY": 34,
+        "ADDRESS": 26,
+        "STAKES": 22,
+        "CURIOSITY": 59,
+        "BREVITY": 100
+      },
+      "formula": "The Question"
+    },
+    {
+      "hook": "Why is the seaweed on this onigiri behind a plastic film?",
+      "verdict": 38,
+      "band": "WEAK",
+      "properties": {
+        "SPECIFICITY": 34,
+        "ADDRESS": 26,
+        "STAKES": 22,
+        "CURIOSITY": 59,
+        "BREVITY": 100
+      },
+      "formula": "The Question"
+    }
+  ]
+}

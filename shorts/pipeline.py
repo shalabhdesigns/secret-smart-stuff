@@ -554,7 +554,8 @@ class Pipeline:
                 info = out["images"][sc["image"]]
                 a = self._look(Path(info["path"]), sc["arrow"].get("from", ""), images[sc["image"]], job_id)
                 b = self._look(Path(info["path"]), sc["arrow"].get("to", ""), images[sc["image"]], job_id)
-                if a.get("found") and b.get("found"):
+                # an arrow shorter than ~12% of the frame reads as a stray mark, so drop it
+                if a.get("found") and b.get("found") and ((a["x"] - b["x"]) ** 2 + (a["y"] - b["y"]) ** 2) ** 0.5 >= 0.12:
                     entry["arrow"] = [[a["x"], a["y"]], [b["x"], b["y"]]]
             out["beats"][sc["id"]] = entry
         for info in out["images"].values():

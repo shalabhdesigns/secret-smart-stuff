@@ -1,0 +1,35 @@
+{
+  "title": "Why onigiri hides its seaweed behind plastic",
+  "description": "Convenience-store onigiri keep the seaweed behind a thin plastic film so it stays crisp until you open it. The numbered tabs show the order to pull the film out.\n\nSources:\n- https://explorejapaninsider.com/how-to-open-onigiri-japan/\n- https://matcha-jp.com/en/732\n- https://apeachyplate.com/japanese-onigiri-rice-triangles/\n- https://www.nippon.com/en/japan-data/h01982/\n- https://www.foodinjapan.org/japan/convenience-store-onigiri/\n- https://www.japanesefoodguide.com/onigiri-fillings/\n\nVisuals are AI-generated illustrations; narration is an AI voice. Facts are checked against the sources above.\n\n#onigiri #japan #packagingdesign #design",
+  "tags": [
+    "onigiri",
+    "japan",
+    "packagingdesign",
+    "design"
+  ],
+  "category_id": "27",
+  "language": "en",
+  "made_for_kids": false,
+  "contains_synthetic_media": true,
+  "title_lint": {
+    "title": "Why onigiri hides its seaweed behind plastic",
+    "chars": 44,
+    "score": 80,
+    "issues": [
+      {
+        "kind": "mobile",
+        "detail": "a mobile feed shows about \"Why onigiri hides its seaweed behind...\" - check the subject survives"
+      },
+      {
+        "kind": "no-number",
+        "detail": "no number, date or name - the most reliable single fix"
+      }
+    ],
+    "good": [
+      "44 characters, inside the 60-character desktop cut",
+      "thumbnail and title carry different words"
+    ]
+  },
+  "thumb_text": "Crisp Secret",
+  "affiliate_product": null
+}

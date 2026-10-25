@@ -1,0 +1,48 @@
+# Operations: budgets, schedule, providers. Secrets are NOT here - they come from environment variables.
+mode: dry_run            # dry_run (fake providers, no spend) | live
+
+budget_usd:
+  per_video: 2.00
+  daily: 12.00         # testing phase (owner OK 2026-10-25); set back to 4.00 when daily runs go hands-off
+  monthly: 45.00         # ElevenLabs plan is paid separately and not counted here
+
+schedule:
+  timezone: Asia/Kolkata
+  produce_per_day: 1
+  publish_slots_utc: ["13:30"]   # 19:00 IST ≈ 08:30 US Eastern; treated as an experiment
+  analytics_every_hours: 6
+
+approval:
+  mode: manual           # manual: owner approves each video in a GitHub issue | auto: score >= auto_publish_score
+  privacy_on_upload: private
+
+providers:
+  llm:
+    vendor: anthropic
+    model_script: claude-sonnet-5-5
+    model_routine: claude-haiku-5-5
+    web_search_tool: web_search_20250305   # basic search; the newer version's code-execution filtering used up output tokens
+    max_searches_per_video: 6
+    # USD per million tokens (input, output) - update when prices change
+    prices: {claude-sonnet-5-5: [2.0, 10.0], claude-haiku-5-5: [0.10, 0.50]}
+    web_search_usd_each: 0.01
+  tts:
+    vendor: elevenlabs
+    usd_per_1k_chars: 0.18     # measured 2026-10-24: ~337 credits ≈ $0.061 for 331 chars
+  images:
+    vendor: bfl
+    model: flux-2-klein-4b
+    fallback_model: flux-2-pro
+    usd_each: {flux-2-klein-4b: 0.015, flux-2-pro: 0.03}
+    width: 1088                 # multiples of 16, near 9:16
+    height: 1920
+  video_clips:
+    enabled: false              # off in the pilot
+
+retries:
+  max_attempts: 3
+  backoff_seconds: [5, 30, 120]
+
+paths:
+  state_db: state/live.db
+  build_dir: build

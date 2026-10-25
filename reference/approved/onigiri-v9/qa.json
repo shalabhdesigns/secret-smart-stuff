@@ -1,0 +1,88 @@
+{
+  "path": "/home/runner/work/secret-smart-stuff/secret-smart-stuff/build/onigiri-rice-ball-wrapper-v9/final.mp4",
+  "passed": true,
+  "checks": [
+    {
+      "name": "has_video",
+      "ok": true,
+      "detail": "video stream present",
+      "hard": true
+    },
+    {
+      "name": "has_audio",
+      "ok": true,
+      "detail": "audio stream present",
+      "hard": true
+    },
+    {
+      "name": "resolution",
+      "ok": true,
+      "detail": "1080x1920 (want 1080x1920)",
+      "hard": true
+    },
+    {
+      "name": "frame_rate",
+      "ok": true,
+      "detail": "30.00 fps",
+      "hard": true
+    },
+    {
+      "name": "codec",
+      "ok": true,
+      "detail": "h264",
+      "hard": true
+    },
+    {
+      "name": "duration",
+      "ok": true,
+      "detail": "36.20s (allowed 8.0-60.0s)",
+      "hard": true
+    },
+    {
+      "name": "narration_fits",
+      "ok": true,
+      "detail": "video 36.20s vs narration 36.08s",
+      "hard": true
+    },
+    {
+      "name": "loudness",
+      "ok": true,
+      "detail": "integrated -14.4 LUFS (want about -14)",
+      "hard": true
+    },
+    {
+      "name": "no_clipping",
+      "ok": true,
+      "detail": "true peak -1.4 dBFS (want <= -0.5)",
+      "hard": true
+    },
+    {
+      "name": "no_long_silence",
+      "ok": true,
+      "detail": "no silence over 1.2s",
+      "hard": true
+    },
+    {
+      "name": "instant_start",
+      "ok": true,
+      "detail": "audio starts immediately",
+      "hard": false
+    },
+    {
+      "name": "no_black_frames",
+      "ok": true,
+      "detail": "no black segments",
+      "hard": true
+    },
+    {
+      "name": "no_frozen_video",
+      "ok": true,
+      "detail": "no frozen segments over 3s",
+      "hard": false
+    }
+  ],
+  "image_flags": [
+    "img2: distorted shapes (after 2 tries)",
+    "b4: image may not match the words (The image shows an onigiri in its clear outer wrapper, but no separate thin film is visible between the nori and the rice. The nori sits directly against the rice, and the only plastic visible is the outer wrapping. A viewer would not clearly see a film keeping the seaweed and rice apart.)"
+  ]
+}

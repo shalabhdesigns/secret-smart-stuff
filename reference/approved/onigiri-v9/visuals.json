@@ -1,0 +1,215 @@
+{
+  "images": {
+    "img1": {
+      "path": "/home/runner/work/secret-smart-stuff/secret-smart-stuff/build/onigiri-rice-ball-wrapper-v9/img1.png",
+      "check": {
+        "found": true,
+        "x": 0.52,
+        "y": 0.54,
+        "w": 0.63,
+        "h": 0.41,
+        "has_text_or_logo": false,
+        "artifacts": false,
+        "matches_prompt": true
+      }
+    },
+    "img2": {
+      "path": "/home/runner/work/secret-smart-stuff/secret-smart-stuff/build/onigiri-rice-ball-wrapper-v9/img2.png",
+      "check": {
+        "found": true,
+        "x": 0.5,
+        "y": 0.63,
+        "w": 1.0,
+        "h": 0.72,
+        "has_text_or_logo": false,
+        "artifacts": true,
+        "matches_prompt": false
+      }
+    },
+    "img3": {
+      "path": "/home/runner/work/secret-smart-stuff/secret-smart-stuff/build/onigiri-rice-ball-wrapper-v9/img3.png",
+      "check": {
+        "found": true,
+        "x": 0.34,
+        "y": 0.61,
+        "w": 0.23,
+        "h": 0.24,
+        "has_text_or_logo": false,
+        "artifacts": false,
+        "matches_prompt": false
+      }
+    },
+    "img4": {
+      "path": "/home/runner/work/secret-smart-stuff/secret-smart-stuff/build/onigiri-rice-ball-wrapper-v9/img4.png",
+      "check": {
+        "found": true,
+        "x": 0.5,
+        "y": 0.5,
+        "w": 0.04,
+        "h": 0.69,
+        "has_text_or_logo": false,
+        "artifacts": false,
+        "matches_prompt": false
+      }
+    },
+    "img5": {
+      "path": "/home/runner/work/secret-smart-stuff/secret-smart-stuff/build/onigiri-rice-ball-wrapper-v9/img5.png",
+      "check": {
+        "found": true,
+        "x": 0.51,
+        "y": 0.47,
+        "w": 0.61,
+        "h": 0.36,
+        "has_text_or_logo": false,
+        "artifacts": false,
+        "matches_prompt": true
+      }
+    },
+    "img6": {
+      "path": "/home/runner/work/secret-smart-stuff/secret-smart-stuff/build/onigiri-rice-ball-wrapper-v9/img6.png",
+      "check": {
+        "found": false,
+        "x": 0.51,
+        "y": 0.48,
+        "w": 0.78,
+        "h": 0.6,
+        "has_text_or_logo": false,
+        "artifacts": false,
+        "matches_prompt": false
+      }
+    },
+    "b2_fix": {
+      "path": "/home/runner/work/secret-smart-stuff/secret-smart-stuff/build/onigiri-rice-ball-wrapper-v9/b2_fix.png",
+      "check": {}
+    },
+    "b3_fix": {
+      "path": "/home/runner/work/secret-smart-stuff/secret-smart-stuff/build/onigiri-rice-ball-wrapper-v9/b3_fix.png",
+      "check": {}
+    },
+    "b4_fix": {
+      "path": "/home/runner/work/secret-smart-stuff/secret-smart-stuff/build/onigiri-rice-ball-wrapper-v9/b4_fix.png",
+      "check": {}
+    }
+  },
+  "beats": {
+    "b1": {
+      "focus": [
+        0.52,
+        0.54,
+        0.63,
+        0.41
+      ]
+    },
+    "b2": {
+      "focus": [
+        0.27,
+        0.3,
+        0.53,
+        0.46
+      ],
+      "image": "b2_fix"
+    },
+    "b3": {
+      "focus": [
+        0.5,
+        0.57,
+        0.81,
+        0.51
+      ],
+      "image": "b3_fix"
+    },
+    "b4": {
+      "image": "b4_fix",
+      "focus": null,
+      "arrow": [
+        [
+          0.5,
+          0.54
+        ],
+        [
+          0.5,
+          0.56
+        ]
+      ]
+    },
+    "b5": {
+      "focus": [
+        0.5,
+        0.63,
+        1.0,
+        0.72
+      ]
+    },
+    "b6": {
+      "focus": [
+        0.5,
+        0.5,
+        0.04,
+        0.69
+      ],
+      "markers": [
+        {
+          "label": "1",
+          "pos": [
+            0.5,
+            0.2
+          ]
+        }
+      ]
+    },
+    "b7": {
+      "focus": [
+        0.51,
+        0.77,
+        0.72,
+        0.09
+      ],
+      "markers": [
+        {
+          "label": "2",
+          "pos": [
+            0.646,
+            0.693
+          ]
+        },
+        {
+          "label": "3",
+          "pos": [
+            0.354,
+            0.685
+          ]
+        }
+      ]
+    },
+    "b8": {},
+    "b9": {
+      "focus": [
+        0.51,
+        0.47,
+        0.61,
+        0.36
+      ]
+    },
+    "b10": {
+      "focus": [
+        0.47,
+        0.74,
+        0.36,
+        0.22
+      ]
+    },
+    "b11": {},
+    "b12": {
+      "focus": [
+        0.495,
+        0.497,
+        0.8,
+        0.56
+      ]
+    }
+  },
+  "flags": [
+    "img2: distorted shapes (after 2 tries)",
+    "b4: image may not match the words (The image shows an onigiri in its clear outer wrapper, but no separate thin film is visible between the nori and the rice. The nori sits directly against the rice, and the only plastic visible is the outer wrapping. A viewer would not clearly see a film keeping the seaweed and rice apart.)"
+  ]
+}
