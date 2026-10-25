@@ -85,6 +85,15 @@ class Pipeline:
             from .providers.llm import FakeLLM
             from .providers.tts import FakeTTS
             self.llm, self.tts, self.images = FakeLLM(), FakeTTS(), FakeImages()
+        vc = pc.get("video_clips") or {}
+        self.clips_on = bool(vc.get("enabled"))
+        if self.clips_on and self.cfg.live:
+            from .providers.video import BFLVideo
+            rate = (vc.get("usd_per_second") or {}).get("draft" if vc.get("draft", True) else "full")
+            self.video = BFLVideo(self.cfg.secret("BFL_API_KEY"), draft=vc.get("draft", True), usd_per_second=rate)
+        else:
+            from .providers.video import FakeVideo
+            self.video = FakeVideo()
 
     def _llm(self, prompt: str, job_id: str | None, what: str, est: float = 0.05, **kw):
         if self.cfg.live:
@@ -651,8 +660,112 @@ class Pipeline:
             out["beats"][sc["id"]] = entry
         for info in out["images"].values():
             info.pop("focus_cache", None)
+        if self.clips_on:
+            self._make_clips(job_id, script, out, d, old_vis if pr else {}, old_script if pr else {}, pr)
         (d / "visuals.json").write_text(json.dumps(out, indent=2))
         return {"file": str(d / "visuals.json"), "flags": out["flags"]}
+
+    # ---- E (part 2): real-motion clips (image-to-video) from the checked stills
+    def _beat_durations(self, script: dict) -> list[float]:
+        words = json.loads(Path(self._art_path("voice", "words")).read_text()) if self._art_path("voice", "words") else []
+        counts = [len(sc["narration"].split()) for sc in script["scenes"]]
+        starts, wi = [], 0
+        for c in counts:
+            starts.append(words[min(wi, len(words) - 1)]["start"] if (wi and words) else 0.0)
+            wi += c
+        end = (words[-1]["end"] + 0.12) if words else sum(counts) / 2.6
+        return [(starts[i + 1] if i + 1 < len(starts) else end) - starts[i] for i in range(len(starts))]
+
+    def _art_path(self, stage: str, key: str) -> str | None:
+        job = getattr(self, "_current_job", None)
+        if not job:
+            return None
+        return (self.state.get_job(job)["artifacts"].get(stage) or {}).get(key)
+
+    def _make_clips(self, job_id: str, script: dict, out: dict, d: Path, old_vis: dict, old_script: dict,
+                    pr: Path | None) -> None:
+        import shutil
+        vc = self.cfg.pipeline["providers"]["video_clips"]
+        rate = (vc.get("usd_per_second") or {}).get("draft" if vc.get("draft", True) else "full", 0.06)
+        self._current_job = job_id
+        durs = self._beat_durations(script)
+        scenes = script["scenes"]
+        need: dict[str, float] = {}
+        said: dict[str, list[str]] = {}
+        for k, sc in enumerate(scenes):
+            if k == len(scenes) - 1:
+                continue                      # the last beat replays the opening clip backwards (loop)
+            key = (out["beats"].get(sc["id"]) or {}).get("image") or sc.get("image")
+            if not key or sc.get("markers"):
+                continue                      # numbered markers need a still picture to stay on target
+            need[key] = need.get(key, 0) + durs[k]
+            said.setdefault(key, []).append(sc["narration"])
+        out["clips"] = {}
+        total, regen_left = 0, int(vc.get("max_regenerations", 2))
+        motions = script.get("motions") or {}
+        for key in sorted(need, key=lambda k: (k != scenes[0].get("image"), -need[k])):   # opening clip first
+            secs = 5 if need[key] <= 5.5 else 10
+            if len(out["clips"]) >= vc.get("max_clips", 8) or total + secs > vc.get("max_seconds", 55):
+                out["flags"].append(f"{key}: no clip (per-video clip limit); shown as a still")
+                continue
+            motion = motions.get(key) or (f"Show this happening: {' '.join(x.rstrip('.') for x in said[key])}. "
+                                          "Slow, realistic motion with a gentle camera push-in.")
+            motion = motion.strip().rstrip(".")
+            prompt = (f"{motion}. Photorealistic, smooth and slow, real-world physics, the object keeps its exact "
+                      f"shape, nothing morphs or appears from nowhere, no text, no faces.")
+            path = d / f"clip_{key}.mp4"
+            old = (old_vis.get("clips") or {}).get(key) if old_vis else None
+            if pr and old and old.get("prompt") == prompt and (pr / path.name).exists() \
+                    and (old_script.get("images") or {}).get(key) == (script.get("images") or {}).get(key):
+                shutil.copy(pr / path.name, path)
+                out["clips"][key] = {**old, "path": str(path), "reused": True}
+                total += old.get("seconds", secs)
+                continue
+            still = Path(out["images"][key]["path"])
+            chk: dict = {}
+            for attempt in range(2):
+                if self.cfg.live:
+                    self.budget.authorize(secs * rate, "video", job_id)
+                clip, usd = self.video.image_to_video(still, prompt if attempt == 0 else
+                                                      prompt + " Keep every object exactly as in the first frame.",
+                                                      path, seconds=secs)
+                if usd:
+                    self.state.add_cost("bfl", "video_seconds", secs, usd, job_id)
+                chk = self._check_clip(clip, prompt, " ".join(said[key]), job_id)
+                if chk.get("ok", True) or regen_left <= 0:
+                    break
+                regen_left -= 1
+                self.state.log(f"clip {key} failed check ({chk.get('problems')}); regenerating", "warn", job_id)
+            if not chk.get("ok", True):
+                out["flags"].append(f"clip {key}: {chk.get('problems', 'quality issue')}")
+            out["clips"][key] = {"path": str(path), "seconds": secs, "prompt": prompt, "check": chk}
+            total += secs
+
+    def _check_clip(self, clip: Path, prompt: str, narration: str, job_id: str) -> dict:
+        import subprocess
+        import tempfile
+        try:
+            dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
+                                        str(clip)], capture_output=True, text=True).stdout.strip() or 5)
+            frames = []
+            with tempfile.TemporaryDirectory() as td:
+                for i, f in enumerate((0.25, 0.5, 0.75)):
+                    fp = Path(td) / f"{i}.png"
+                    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{dur * f:.2f}", "-i", str(clip),
+                                    "-frames:v", "1", "-vf", "scale=288:512", str(fp)], check=True)
+                    frames.append(Image.open(fp).convert("RGB"))
+            sheet = Image.new("RGB", (288 * 3, 512))
+            for i, im in enumerate(frames):
+                sheet.paste(im, (288 * i, 0))
+            buf = io.BytesIO()
+            sheet.save(buf, "PNG")
+            r = self._llm(P.CLIPCHECK.format(prompt=prompt, narration=narration), job_id, "clipcheck", est=0.01,
+                          images=[buf.getvalue()], model=self.cfg.pipeline["providers"]["llm"]["model_routine"],
+                          max_tokens=400)
+            return r.data or {"ok": True}
+        except Exception as e:  # noqa: BLE001
+            self.state.log(f"clip check skipped: {e}", "warn", job_id)
+            return {"ok": True, "problems": f"not checked ({e})"}
 
     def _match(self, img: Path, sc: dict, prompt: str, job_id: str) -> dict:
         im = Image.open(img).convert("RGB")
@@ -700,6 +813,8 @@ class Pipeline:
         whip_every = rng.choice([3, 4])
         motions_cycle = ["punch", "push", "drift_l", "pull", "drift_r"]
         rng.shuffle(motions_cycle)
+        clips = vis.get("clips") or {}
+        clip_cursor: dict[str, float] = {}
         # Indicators: only where a beat points at a specific detail, at most 3 per video, never on
         # neighbouring beats, never on the loop beats, and a different style each time.
         indicator_at: dict[int, str] = {}
@@ -763,8 +878,21 @@ class Pipeline:
             if sc.get("card_text") and not img and not chime_used:
                 chime_used = True
                 sfx_events.append(("chime", b_start + 0.1, -18.0))
+            clip, clip_from, clip_dir = None, 0.0, 1
+            ck = clips.get(img_key) if img_key else None
+            if k == len(scenes) - 1 and scenes[0].get("image") and clips.get((vis["beats"].get(scenes[0]["id"]) or {}).get("image") or scenes[0]["image"]):
+                # loop: play the opening clip backwards so the last frame IS the first frame
+                first_key = (vis["beats"].get(scenes[0]["id"]) or {}).get("image") or scenes[0]["image"]
+                clip, clip_from, clip_dir = Path(clips[first_key]["path"]), b_end - b_start, -1
+            elif ck and not markers and img:
+                clip, clip_from = Path(ck["path"]), clip_cursor.get(img_key, 0.0)
+                clip_cursor[img_key] = clip_from + (b_end - b_start)
+            if clip and arrow:
+                arrow = None                          # still-based overlays would drift off target
+                sfx_events = [e for e in sfx_events if not (e[0] == "swipe" and abs(e[1] - (b_start + 0.35)) < 1e-6)]
             beats.append(Beat(start=b_start, end=b_end, image=img, focus=focus, motion=motion, transition=trans,
-                              callout_label=(sc.get("callout") or "") if (focus and k in indicator_at) else None,
+                              clip=clip, clip_from=clip_from, clip_dir=clip_dir,
+                              callout_label=(sc.get("callout") or "") if (focus and k in indicator_at and not clip) else None,
                               indicator=indicator_at.get(k, "ring"),
                               callout_at=b_start + 0.25, pops=pops, arrow=arrow,
                               card_text=(sc.get("card_text") or "") if not img else "", markers=markers,

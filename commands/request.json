@@ -1,1 +1,1 @@
-{"action": "retire", "jobs": ["escalator-step-edge-comb-plate-v1"], "nonce": "retire-escalator-v1"}
+{"action": "produce", "topic": "escalator-step-edge-comb-plate", "fresh": true, "nonce": "v4-video-test-1"}

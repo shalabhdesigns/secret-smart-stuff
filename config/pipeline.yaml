@@ -2,8 +2,8 @@
 mode: dry_run            # dry_run (fake providers, no spend) | live
 
 budget_usd:
-  per_video: 2.00
-  daily: 12.00         # testing phase (owner OK 2026-10-25); set back to 4.00 when daily runs go hands-off
+  per_video: 4.00     # v4 video clips: ~$2.5-3 per video
+  daily: 16.00         # testing (owner OK 2026-10-25, incl. the video-clip test); set back after testing
   monthly: 45.00         # ElevenLabs plan is paid separately and not counted here
 
 # Fixed monthly costs shown on the dashboard (not per-video). Edit to match your real bills.
@@ -44,7 +44,14 @@ providers:
     width: 1088                 # multiples of 16, near 9:16
     height: 1920
   video_clips:
-    enabled: false              # off in the pilot
+    enabled: true               # v4 format (owner chose real motion over stills, 25 Oct 2026)
+    vendor: bfl
+    model: flux-3-video         # image-to-video from our checked still
+    draft: true                 # draft render: $0.06/s (full render $0.17/s)
+    usd_per_second: {draft: 0.06, full: 0.17}
+    max_clips: 8                # per video, including replacements
+    max_seconds: 40             # per video (~$2.40 at draft rate)
+    max_regenerations: 2        # clips redone after a failed quality check
 
 retries:
   max_attempts: 3

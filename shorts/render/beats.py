@@ -61,6 +61,9 @@ class Beat:
     split_at: float | None = None       # diagonal reveal of image2 starting at this time
     labels: tuple[str, str] = ("", "")  # split labels
     markers: list[Marker] = field(default_factory=list)   # numbered badges drawn on the image
+    clip: Path | None = None            # real-motion video clip (replaces the still + camera move)
+    clip_from: float = 0.0              # seconds into the clip where this beat starts
+    clip_dir: int = 1                   # 1 forward, -1 backward (the loop's last beat)
 
 
 # ---------------- camera ----------------
@@ -312,6 +315,30 @@ def render(beats: list[Beat], total: float, out: Path, pal: Palette, caption_y: 
 
     first_zoom = 1.0
     n = round(total * FPS)
+    import tempfile
+    tmp = Path(tempfile.mkdtemp(prefix="clips_"))
+    clip_frames: dict[Path, list[Path]] = {}
+    frame_cache: dict[Path, Image.Image] = {}
+
+    def clip_frame(clip: Path, tc: float) -> Image.Image:
+        if clip not in clip_frames:
+            outdir = tmp / f"c{len(clip_frames)}"
+            outdir.mkdir()
+            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(clip), "-vf",
+                            f"fps={FPS},scale={W}:{H}:force_original_aspect_ratio=increase:flags=lanczos,crop={W}:{H}",
+                            "-q:v", "2", str(outdir / "%05d.jpg")], check=True)
+            clip_frames[clip] = sorted(outdir.glob("*.jpg"))
+        fr = clip_frames[clip]
+        length = len(fr) / FPS
+        tc = tc % (2 * length) if length else 0.0
+        if tc > length:                      # ping-pong if a beat runs past the clip's end
+            tc = 2 * length - tc
+        f = fr[min(len(fr) - 1, max(0, int(round(tc * FPS))))]
+        if f not in frame_cache:
+            if len(frame_cache) > 12:
+                frame_cache.pop(next(iter(frame_cache)))
+            frame_cache[f] = Image.open(f).convert("RGB")
+        return frame_cache[f]
     proc = subprocess.Popen(
         ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
          "-r", str(FPS), "-i", "-", "-c:v", "libx264", "-preset", "veryfast", "-crf", "18",
@@ -323,6 +350,9 @@ def render(beats: list[Beat], total: float, out: Path, pal: Palette, caption_y: 
         if b.card_text and not b.image:
             fr = _blueprint_card(b.card_text, p, pal).convert("RGB")
             return fr, (lambda fx, fy: (fx * W, fy * H))
+        if b.clip:
+            tc = b.clip_from + b.clip_dir * (t - b.start)
+            return clip_frame(b.clip, max(0.0, tc)).copy(), (lambda fx, fy: (fx * W, fy * H))
         z, cx, cy = _cam_params(b, p, first_zoom)
         fr, to_out = _render_cam(load(b.image), z, cx, cy)  # type: ignore[arg-type]
         if b.image2 and b.split_at is not None and t >= b.split_at:

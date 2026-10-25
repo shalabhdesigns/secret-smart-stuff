@@ -85,6 +85,13 @@ Format rules (these come from retention research, follow them exactly):
   They must not state new facts, must be kind (no jokes about people, cultures or groups) and
   should get their own playful-but-realistic image (e.g. "a single limp, soggy sheet of seaweed
   drooping sadly over the edge of a plate").
+- VIDEO: every image becomes a short real-motion video clip (image-to-video), so this is footage,
+  not a slideshow. For each image write a "motions" line: ONE clear physical action or change that
+  matches what the narration says over that image (e.g. "a hand pulls the centre strip down and the
+  clear film slides out from between the rice and the seaweed"; "the escalator steps glide up and
+  slip between the comb teeth"), plus a gentle camera move. Real-world physics only, slow and
+  smooth, nothing morphs, appears from nowhere or changes shape; hands are fine, no faces, no text.
+  Images for numbered-part beats (markers) stay still, so give them a camera-only motion.
 - IMAGE = WORDS: every beat's image must visibly show what that beat SAYS. If a beat names steps or
   numbered parts ("pull tab 1, then 2 and 3"), the image must show the WHOLE real object front-on
   (e.g. the full triangular wrapper, not a flat packet), with each of those physical parts clearly
@@ -99,6 +106,7 @@ Return JSON:
  "hook_card": "2-3 words",
  "hooks": [5 alternative spoken opening questions, 8-12 words each], "chosen_hook": index,
  "images": {{"img1": "prompt", "img2": "prompt", ...}},
+ "motions": {{"img1": "what MOVES in this image's video clip", "img2": "...", ...}},
  "scenes": [{{"id": "b1", "narration": str, "image": "img1"|null, "focus": str|null,
    "motion": "punch"|"push"|"pull"|"drift"|"hold", "transition": "cut"|"whip"|"zoom_cut",
    "callout": str|null, "pop": str|null, "arrow": {{"from": str, "to": str}}|null,
@@ -182,3 +190,15 @@ a corner of the wrapper). A badge must sit ON the object, never on empty backgro
 is not visibly on the object, use confidence "low". Items: {markers}
 Return JSON: {{"markers": [{{"label": str, "x": float, "y": float,
  "confidence": "high"|"medium"|"low"}}]}}"""
+
+
+CLIPCHECK = """TASK: clipcheck
+These are 3 frames (left to right: 25%, 50%, 75% through) of a short AI-generated video clip for a
+YouTube Short. It was asked to show: "{prompt}". The narrator says over it: "{narration}".
+Be strict. Answer JSON:
+{{"ok": bool (true only if nothing below is wrong),
+ "morphing": bool (objects melt, change shape, extra/missing parts, impossible physics),
+ "text_or_logo": bool (letters, numbers or brand marks appear),
+ "faces": bool (a human face is visible),
+ "shows_action": bool (the requested action/change is visible),
+ "problems": "one short sentence"}}"""

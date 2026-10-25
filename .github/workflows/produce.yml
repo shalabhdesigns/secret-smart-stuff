@@ -1,8 +1,8 @@
 # Daily production: make ONE Short and send it to the owner's Telegram for review.
 name: produce
 on:
-  schedule:
-    - cron: "17 0 * * *"        # 05:47 IST daily (off the hour: GitHub delays :00 jobs most)
+  # Daily schedule ON HOLD (owner, 25 Oct 2026) until the video-clip format is approved.
+  # To resume, restore:  schedule: [{cron: "17 0 * * *"}]   (05:47 IST)
   workflow_dispatch:
 concurrency: { group: shorts-state, cancel-in-progress: false, queue: max }
 permissions: { contents: write, issues: write }
