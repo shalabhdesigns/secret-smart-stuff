@@ -427,6 +427,28 @@ def main(path: str) -> int:
         gh("issue", "create", "--title", "Accounts check", "--label", "audio", "--body", "\n".join(f"- {x}" for x in lines), check=False)
         print(lines)
         return 0
+    if action == "whoami":
+        # which YouTube channel the stored login uploads to (no secrets printed)
+        import requests
+        try:
+            tok = requests.post("https://oauth2.googleapis.com/token", data={
+                "client_id": os.environ.get("YT_CLIENT_ID", ""), "client_secret": os.environ.get("YT_CLIENT_SECRET", ""),
+                "refresh_token": os.environ.get("YT_REFRESH_TOKEN", ""), "grant_type": "refresh_token"}, timeout=30)
+            if tok.status_code != 200:
+                msg = f"Login check FAILED: {tok.status_code} {tok.json().get('error', '')} {tok.json().get('error_description', '')}"
+            else:
+                body = tok.json()
+                r = requests.get("https://www.googleapis.com/youtube/v3/channels", params={"part": "snippet,status", "mine": "true"},
+                                 headers={"Authorization": f"Bearer {body['access_token']}"}, timeout=30).json()
+                items = r.get("items") or []
+                msg = "\n".join(f"- Channel: {c['snippet'].get('title')} | handle: {c['snippet'].get('customUrl')} | id: {c['id']} | "
+                                f"madeForKids: {c.get('status', {}).get('madeForKids')}" for c in items) or f"- No channel found: {str(r)[:300]}"
+                msg = f"Login OK. Scopes: {body.get('scope', '')}\n{msg}"
+        except Exception as e:  # noqa: BLE001
+            msg = f"Login check error: {e}"
+        gh("issue", "create", "--title", "YouTube login check", "--body", msg, check=False)
+        print(msg)
+        return 0
     if action == "retire":
         for old in req.get("jobs") or []:
             jj = p.state.get_job(old)
