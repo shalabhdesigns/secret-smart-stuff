@@ -652,13 +652,13 @@ class Pipeline:
                               callout_at=b_start + 0.25, pops=pops, arrow=arrow,
                               card_text=(sc.get("card_text") or "") if not img else "", markers=markers,
                               hook_text=(script.get("hook_card") or "") if k == 0 else ""))
-        video = render_beats(beats, end, d / "video.mp4", self.pal)
+        boxes = [b.focus for b in beats if b.focus]
+        y_cap = 1360 if any(0.50 <= f[1] <= 0.70 for f in boxes) else 1200
+        video = render_beats(beats, end, d / "video.mp4", self.pal, caption_y=y_cap)
         lib = build_library()
         sfx = [(lib[name], max(0.0, t), gain) for name, t, gain in sfx_events if name in lib]
         music = pick_music(job_id)
         audio = A.mix_audio(A.AudioPlan(Path(voice["audio"]), music, music_gain_db=-17.0, sfx=sfx), end, d / "mix.wav")
-        boxes = [b.focus for b in beats if b.focus]
-        y_cap = 1360 if any(0.50 <= f[1] <= 0.70 for f in boxes) else 1200
         ass = write_ass(words, d / "captions.ass", y_center=y_cap,
                         font=self.cfg.channel["style"]["caption_font"],
                         font_size=self.cfg.channel["style"]["caption_size"])

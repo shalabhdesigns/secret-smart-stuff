@@ -207,12 +207,33 @@ def _callout(frame: Image.Image, beat: Beat, to_out, t: float, pal: Palette) -> 
     d = ImageDraw.Draw(frame, "RGBA")
     d.arc([cx - rx, cy - ry, cx + rx, cy + ry], start=-90, end=-90 + 360 * p, fill=pal.accent + (255,), width=10)
     if beat.callout_label and p > 0.5:
-        ly = cy - ry - 120
-        if ly < SAFE_TOP + 40 or CAPTION_BAND[0] - 60 < ly < CAPTION_BAND[1] + 60:
-            ly = cy + ry + 120
-        ly = min(max(ly, SAFE_TOP + 40), SAFE_BOTTOM - 60)
+        ly = _label_y(beat, to_out, cx, cy, ry, t)
+        if ly is None:          # nowhere clean to put it: the ring alone says enough
+            return
         d.line([(cx, cy - ry if ly < cy else cy + ry), (cx, ly)], fill=pal.ink + (255,), width=6)
         _label_box(d, beat.callout_label, (cx, ly), pal, ease((p - 0.5) / 0.5))
+
+
+CAPTION_Y = 1200    # set by render(); captions sit in a ~170 px band around this
+
+
+def _label_y(beat: Beat, to_out, cx: float, cy: float, ry: float, t: float) -> float | None:
+    """Pick a label row that clears the captions, keyword pops and numbered markers."""
+    blocked = [(CAPTION_Y - 130, CAPTION_Y + 130)]
+    if any(pp.at - 0.1 <= t <= pp.at + pp.hold + 0.3 for pp in beat.pops):
+        blocked.append((440, 690))                       # pop text band
+    if beat.hook_text and t - beat.start < 1.8:
+        blocked.append((280, 620))
+    mk_xy = [to_out(*mk.pos) for mk in beat.markers]
+    for ly in (cy - ry - 120, cy + ry + 120):
+        if not (SAFE_TOP + 40 <= ly <= SAFE_BOTTOM - 60):
+            continue
+        if any(lo - 50 < ly < hi + 50 for lo, hi in blocked):
+            continue
+        if any(abs(my - ly) < 130 and abs(mx - cx) < 330 for mx, my in mk_xy):
+            continue
+        return ly
+    return None
 
 
 def _split(base: Image.Image, other: Image.Image, p: float, labels: tuple[str, str], pal: Palette) -> Image.Image:
@@ -236,7 +257,9 @@ def _split(base: Image.Image, other: Image.Image, p: float, labels: tuple[str, s
 
 # ---------------- main render ----------------
 
-def render(beats: list[Beat], total: float, out: Path, pal: Palette) -> Path:
+def render(beats: list[Beat], total: float, out: Path, pal: Palette, caption_y: int = 1200) -> Path:
+    global CAPTION_Y
+    CAPTION_Y = caption_y
     beats = sorted(beats, key=lambda b: b.start)
     cache: dict[Path, Image.Image] = {}
 
