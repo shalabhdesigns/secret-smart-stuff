@@ -94,6 +94,30 @@ def main(path: str) -> int:
                   f"<!-- job:{job} -->\nstatus: **{j['status']}** · last finished stage: `{j['stage']}`\n\n"
                   f"error: `{j['error']}`\n\nrecent events:\n" + "\n".join(f"- {r['message']}" for r in ev))
         return 0
+    if action == "rerender":
+        # Re-run only render -> qa -> package from the saved media (no new images or voice).
+        job = req["job"]
+        if not re.fullmatch(r"[a-z0-9-]+", job):
+            raise SystemExit("bad job id")
+        j = p.state.get_job(job)
+        d = ROOT / "build" / job
+        d.mkdir(parents=True, exist_ok=True)
+        got = subprocess.run(["gh", "release", "download", f"review-{job}", "-p", "media.tgz", "-D", str(d),
+                              "--clobber"], capture_output=True, text=True)
+        if got.returncode != 0 or not j:
+            alert(f"Pipeline problem: {job}", f"<!-- job:{job} -->\nNo saved media for `{job}`; "
+                  "a fresh version is needed instead.\n\n" + got.stderr[-500:])
+            return 1
+        subprocess.run(["tar", "-xzf", str(d / "media.tgz"), "-C", str(d)], check=True)
+        p.state.db.execute("UPDATE jobs SET stage='visuals', status='failed', error=NULL WHERE id=?", (job,))
+        p.state.db.commit()
+        job = p.produce(j["topic_id"])
+        j = p.state.get_job(job)
+        if j["status"] == "review" and not j["error"]:
+            subprocess.run([str(ROOT / "scripts" / "open_review.sh"), job], check=True)
+        else:
+            alert(f"Pipeline problem: {job}", f"<!-- job:{job} -->\nre-render failed: `{j['error']}`")
+        return 0
     if action == "build_audio":
         # One-time: original music beds + curated sound effects, committed to the repo.
         from shorts.providers.music import generate_library, generate_sfx

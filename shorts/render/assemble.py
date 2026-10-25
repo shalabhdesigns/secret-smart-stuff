@@ -95,25 +95,16 @@ def mix_audio(plan: AudioPlan, duration: float, out: Path) -> Path:
     idx = 1
     if plan.music:
         inputs += ["-stream_loop", "-1", "-i", str(plan.music)]
-        if plan.loop:
-            # Seamless replay: the music that would follow the last frame is cross-faded into the
-            # first second, so when the Short loops the music carries on instead of jumping.
-            c = 1.0
-            filters.append(
-                f"[{idx}:a]aformat=sample_rates=48000:channel_layouts=stereo,"
-                f"volume={plan.music_gain_db}dB,atrim=0:{duration + c:.3f},asplit=2[mh][mt]"
-            )
-            filters.append(f"[mh]atrim=0:{duration:.3f},afade=t=in:st=0:d={c}:curve=qsin[mhead]")
-            filters.append(f"[mt]atrim={duration:.3f}:{duration + c:.3f},asetpts=PTS-STARTPTS,"
-                           f"afade=t=out:st=0:d={c}:curve=qsin[mtail]")
-            filters.append("[mhead][mtail]amix=inputs=2:duration=first:normalize=0[mraw]")
-        else:
-            filters.append(
-                f"[{idx}:a]aformat=sample_rates=48000:channel_layouts=stereo,"
-                f"volume={plan.music_gain_db}dB,atrim=0:{duration:.3f}[mraw]"
-            )
+        music_in = _loop_bed(plan.music, duration, out.with_suffix(".bed.wav")) if plan.loop else plan.music
+        inputs[-1] = str(music_in)
+        filters.append(
+            f"[{idx}:a]aformat=sample_rates=48000:channel_layouts=stereo,"
+            f"volume={plan.music_gain_db}dB,atrim=start=0:end={duration:.3f}[mraw]"
+        )
         # duck the music further whenever the narrator speaks
-        filters.append("[mraw][key]sidechaincompress=threshold=0.03:ratio=8:attack=20:release=300[music]")
+        # the key (voice) is padded to full length, or the compressor would stop the music when the voice ends
+        filters.append(f"[key]apad=whole_dur={duration:.3f}[keyp]")
+        filters.append("[mraw][keyp]sidechaincompress=threshold=0.03:ratio=8:attack=20:release=300[music]")
         mix_in.append("[music]")
         idx += 1
     else:
@@ -128,7 +119,7 @@ def mix_audio(plan: AudioPlan, duration: float, out: Path) -> Path:
         mix_in.append(f"[s{idx}]")
         idx += 1
     filters.append(
-        f"{''.join(mix_in)}amix=inputs={len(mix_in)}:duration=first:normalize=0,"
+        f"{''.join(mix_in)}amix=inputs={len(mix_in)}:duration=longest:normalize=0,"
         f"apad,atrim=0:{duration:.3f},"
         f"loudnorm=I={plan.target_lufs}:TP={plan.true_peak}:LRA=11[out]"
     )
@@ -148,4 +139,29 @@ def finalize(video: Path, audio: Path, ass: Path | None, out: Path) -> Path:
          "-c:v", "libx264", "-preset", "medium", "-crf", "19", "-profile:v", "high",
          "-r", str(FPS), "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
          "-movflags", "+faststart", "-shortest", str(out)])
+    return out
+
+
+def _loop_bed(music: Path, duration: float, out: Path, fade: float = 1.0) -> Path:
+    """Music bed exactly `duration` long whose end flows into its start: the second of music that
+    would follow the last frame is cross-faded (equal power) over the first second, so a looping
+    Short never jumps in the music."""
+    import numpy as np
+    sr = 48000
+    raw = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", str(music), "-f", "f32le", "-ac", "2",
+                          "-ar", str(sr), "-"], capture_output=True, check=True).stdout
+    x = np.frombuffer(raw, np.float32).reshape(-1, 2)
+    n, c = int(round(duration * sr)), int(fade * sr)
+    reps = (n + c) // len(x) + 1
+    m = np.tile(x, (reps, 1))[: n + c].copy()
+    head, tail = m[:n].copy(), m[n:n + c]
+    t = np.linspace(0, np.pi / 2, c, dtype=np.float32)[:, None]
+    head[:c] = head[:c] * np.sin(t) + tail * np.cos(t)
+    pcm = (np.clip(head, -1, 1) * 32767).astype("<i2").tobytes()
+    import wave
+    with wave.open(str(out), "wb") as f:
+        f.setnchannels(2)
+        f.setsampwidth(2)
+        f.setframerate(sr)
+        f.writeframes(pcm)
     return out
