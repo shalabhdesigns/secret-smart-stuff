@@ -61,10 +61,20 @@ Status markers:
      regenerated.
    - Fixes the overwrite bug.
 5. **Publishing package:**
-   - Title, description with sources, AI-disclosure line, hashtags (#Shorts + 2–3 topical), tags, category
-     (Education), language, made-for-kids = no, `containsSyntheticMedia` = true.
-   - A custom thumbnail and playlist are added if the research confirms they work for Shorts through the API
-     (§5).
+   - Title (≤100 characters, checked for the mobile cut-off) and a description with sources and an
+     AI-disclosure line.
+   - 2–3 topical hashtags. Only 3 show by the title, and more than 60 are ignored.
+   - A few tags. YouTube says tags play a "minimal role".
+   - Category Education, language, made-for-kids = no, `containsSyntheticMedia` = true. Disclosure does not
+     reduce reach, per YouTube Help.
+   - **Not automated, by evidence:**
+     - **Custom thumbnails for Shorts:** YouTube Help says they can only be added in YouTube Studio on a
+       computer. They never show in the Shorts feed (only on the homepage and channel pages), and need a
+       verified account. Optional manual step.
+     - **Caption files:** captions are already burned into the video. Uploading a caption file would need an
+       extra Google permission, for little benefit on Shorts.
+     - **Playlists:** need an extra Google permission. Worth adding later, with one YouTube sign-in, once there
+       are enough videos per series.
 6. **Publish verification:**
    - Checks the video after its scheduled time.
    - Sends Telegram "✅ live: link", or "⚠️ problem: reason" if it stayed private, was rejected or failed
@@ -90,6 +100,9 @@ Status markers:
    - Lessons reach the writer only when the evidence is strong enough. Thresholds are in the experiment rules.
    - Experiments live in `docs/EXPERIMENTS.md`: hypothesis, change, arms, sample needed, result, decision.
 9. **First experiment (owner asked): publish time.**
+   - Evidence: Buffer (≈1.8M videos, Jul 2026) found Shorts do best in the local evening, 6–11 pm.
+     Adobe (24k Shorts, 2025) found 8–10 am weakest. Both are averages across many channels, so our own test
+     decides.
    - Three slots rotate in balanced order:
      - 19:00 IST (morning US East);
      - 22:30 IST (US lunchtime, late evening India);
@@ -124,6 +137,29 @@ Settings → Secrets.
 | YouTube Data API | free | 10,000 units/day; an upload is about 1,600 units. **Uploads from an unverified Google project may be forced private** — today's 19:00 publish is the test. If it stays private, the Google API audit is needed (form, takes weeks). |
 | Telegram Bot API | free | 50 MB per uploaded video (ours are ~13 MB) |
 | Cloudflare Workers + KV | free | Daily request limits far above our use |
+
+**Facts checked on 25 Oct 2026** (sources in `research/platform_facts_2026-10.md`):
+- **Upload quota is no longer a constraint.** Since Jun 2026 uploads have their own bucket: 100 per day at
+  1 unit each.
+- **The YouTube Analytics API has no impressions or click-through rate.** Those exist only in bulk Reporting
+  API files. The dashboard shows views, engaged views, watch time, % viewed, retention, traffic sources,
+  likes, comments, shares and subscribers, and says that impressions and CTR are YouTube Studio only.
+- Analytics data lags 48–72 h.
+- **Money — important:**
+  - From 1 Feb 2027, joining the Partner Program through Shorts needs **20M Shorts views in 90 days**
+    (or 8,000 long-form watch hours a year).
+  - Earning Shorts ad revenue needs **10M Shorts views in 90 days**.
+  - So Shorts alone will not pay for a long time. Long-form episodes (the earlier strategy note) are the
+    realistic route to income.
+- **Policy risk:** YouTube's "inauthentic content" rule (clarified Jul 2026) does not monetise "AI-generated
+  content made with generic or unoriginal templates" or "image slideshows with minimal narrative". Our
+  defences:
+  - a researched, sourced narrative;
+  - varied structure per video;
+  - wit;
+  - specific visuals.
+
+  This still needs watching.
 
 **Remaining risks:**
 - YouTube policy changes (inauthentic content; Partner Program Shorts rule from Feb 2027).
