@@ -205,7 +205,7 @@ def main(spec_path: str) -> int:
         f.writeframes((np.clip(mix, -1, 1) * 32767).astype("<i2").tobytes())
     norm = tmp / "mix_norm.wav"
     run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(raw), "-af",
-         f"loudnorm=I=-14:TP=-1.5:LRA=11,apad=whole_dur={total:.3f},atrim=0:{total:.3f}", "-ar", str(SR), str(norm)])
+         f"loudnorm=I=-14:TP=-1.5:LRA=11,alimiter=limit=0.84:level=false,apad=whole_dur={total:.3f},atrim=0:{total:.3f}", "-ar", str(SR), str(norm)])
     ass = captions(spec, starts, durs, tmp / "caps.ass")
     outdir = ROOT / "build" / name
     outdir.mkdir(parents=True, exist_ok=True)
