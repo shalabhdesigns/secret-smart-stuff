@@ -69,11 +69,16 @@ def main(path: str) -> int:
                 p.state.db.execute("UPDATE topics SET title=? WHERE id=?", (req["question"], tid))
                 p.state.db.commit()
         if req.get("reset"):
-            # owner/Claude asked to retry a job that had hit the attempt limit
-            for jj in p.state.jobs():
-                if jj["topic_id"] == tid:
-                    p.state.db.execute("UPDATE jobs SET attempts=0, status='failed' WHERE id=?", (jj["id"],))
-                    p.state.db.commit()
+            # retry the topic's latest job from its last good stage; older versions stay closed
+            mine = [jj for jj in p.state.jobs() if jj["topic_id"] == tid]
+            if mine:
+                latest = max(mine, key=lambda jj: jj["created_at"])
+                for jj in mine:
+                    if jj["id"] == latest["id"]:
+                        p.state.db.execute("UPDATE jobs SET attempts=0, status='failed' WHERE id=?", (jj["id"],))
+                    elif jj["status"] in ("failed", "paused", "running"):
+                        p.state.db.execute("UPDATE jobs SET status='rejected' WHERE id=?", (jj["id"],))
+                p.state.db.commit()
         job = p.produce(tid, fresh=bool(req.get("fresh")))
         j = p.state.get_job(job)
         tries = 1
