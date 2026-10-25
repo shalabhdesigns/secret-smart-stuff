@@ -20,8 +20,8 @@
      "who": "rocky",
      "pose": "rocky_hips",
      "x": 300,
-     "floor": 1800,
-     "size": 200,
+     "floor": 1850,
+     "size": 1210,
      "expr": "proud",
      "look": [
       0.6,
@@ -42,11 +42,10 @@
     },
     {
      "who": "dev",
-     "head": "dev_bowl",
-     "pose": "dev_seated",
+     "pose": "dev_seated_bowl",
      "x": 800,
-     "floor": 1830,
-     "size": 190,
+     "floor": 1745,
+     "size": 960,
      "expr": "grin",
      "grin": true,
      "look": [
@@ -92,11 +91,10 @@
    "actors": [
     {
      "who": "dev",
-     "head": "dev_bowl",
-     "pose": "dev_seated",
+     "pose": "dev_seated_bowl",
      "x": 540,
      "neck_y": 1000,
-     "size": 400,
+     "size": 2425,
      "expr": "nervous",
      "look": [
       0,
@@ -128,11 +126,10 @@
    "actors": [
     {
      "who": "dev",
-     "head": "dev_bowl",
-     "pose": "dev_seated",
+     "pose": "dev_seated_bowl",
      "x": 540,
      "neck_y": 1080,
-     "size": 520,
+     "size": 3152,
      "expr": "panic",
      "dart": true
     }
@@ -182,11 +179,10 @@
    "actors": [
     {
      "who": "dev",
-     "head": "dev_bowl",
-     "pose": "dev_seated",
+     "pose": "dev_seated_bowl",
      "x": 560,
      "neck_y": 1040,
-     "size": 430,
+     "size": 2607,
      "expr": "worried",
      "look": [
       -0.8,
@@ -235,9 +231,8 @@
     {
      "who": "rocky",
      "pose": "rocky_hips",
-     "x": 540,
-     "neck_y": 760,
-     "size": 210,
+     "x": 560,
+     "size": 1130,
      "expr": "proud",
      "look": [
       0,
@@ -266,24 +261,33 @@
        "t": 3.6,
        "expr": "sly"
       }
-     ]
+     ],
+     "floor": 1850
     }
    ],
    "fx": [
     {
+     "t": 0,
+     "cam": {
+      "zoom": 1.2,
+      "cx": 540,
+      "cy": 1150
+     }
+    },
+    {
      "t": 1.95,
      "cam": {
-      "zoom": 1.6,
+      "zoom": 1.0,
       "cx": 540,
-      "cy": 640
+      "cy": 960
      }
     },
     {
      "t": 3.55,
      "cam": {
-      "zoom": 1.0,
+      "zoom": 1.2,
       "cx": 540,
-      "cy": 960
+      "cy": 1150
      }
     }
    ]
@@ -300,8 +304,8 @@
      "who": "rocky",
      "pose": "rocky_hips",
      "x": 300,
-     "floor": 1800,
-     "size": 200,
+     "floor": 1850,
+     "size": 1210,
      "expr": "worried",
      "look": [
       1,
@@ -311,11 +315,10 @@
     },
     {
      "who": "dev",
-     "head": "dev_tuft",
-     "pose": "dev_seated",
+     "pose": "dev_seated_tuft",
      "x": 800,
-     "floor": 1830,
-     "size": 190,
+     "floor": 1745,
+     "size": 960,
      "expr": "defeated",
      "look": [
       0,
@@ -348,9 +351,9 @@
     {
      "t": 1.5,
      "cam": {
-      "zoom": 1.6,
-      "cx": 790,
-      "cy": 1000
+      "zoom": 2.2,
+      "cx": 805,
+      "cy": 1010
      },
      "over": 1.5
     }
@@ -360,18 +363,17 @@
    "dur": 5.4,
    "bg": "barber_empty",
    "bg_view": {
-    "zoom": 1.4,
-    "cx": 0.3,
+    "zoom": 1.0,
+    "cx": 0.5,
     "cy": 0.5,
-    "blur": 6
+    "blur": 0
    },
    "actors": [
     {
      "who": "rocky",
      "pose": "rocky_phone",
      "x": 540,
-     "neck_y": 720,
-     "size": 280,
+     "size": 1210,
      "expr": "happy",
      "look": [
       0,
@@ -382,10 +384,19 @@
        "line": "h8",
        "at": 0.15
       }
-     ]
+     ],
+     "floor": 1850
     }
    ],
    "fx": [
+    {
+     "t": 0,
+     "cam": {
+      "zoom": 1.7,
+      "cx": 540,
+      "cy": 1000
+     }
+    },
     {
      "t": 5.15,
      "flash": 0.25
@@ -396,17 +407,17 @@
    "dur": 3.8,
    "bg": "flat",
    "bg_view": {
-    "zoom": 1.2,
-    "cx": 0.45,
-    "cy": 0.6
+    "zoom": 1.0,
+    "cx": 0.5,
+    "cy": 0.5,
+    "blur": 0
    },
    "actors": [
     {
      "who": "meera",
      "pose": "meera_chips",
      "x": 540,
-     "neck_y": 760,
-     "size": 300,
+     "size": 1210,
      "expr": "deadpan",
      "look": [
       0,
@@ -417,7 +428,18 @@
        "line": "h9",
        "at": 0.45
       }
-     ]
+     ],
+     "floor": 1860
+    }
+   ],
+   "fx": [
+    {
+     "t": 0,
+     "cam": {
+      "zoom": 1.9,
+      "cx": 540,
+      "cy": 1000
+     }
     }
    ]
   },
@@ -429,8 +451,8 @@
      "who": "meera",
      "pose": "meera_arms",
      "x": 285,
-     "floor": 1850,
-     "size": 170,
+     "floor": 1860,
+     "size": 1210,
      "expr": "deadpan",
      "look": [
       1,
@@ -439,11 +461,10 @@
     },
     {
      "who": "dev",
-     "head": "dev_tuft",
-     "pose": "dev_point",
+     "pose": "dev_point_tuft",
      "x": 730,
-     "floor": 1870,
-     "size": 185,
+     "floor": 1860,
+     "size": 1210,
      "expr": "shout",
      "look": [
       -0.6,
@@ -458,7 +479,7 @@
      "events": [
       {
        "t": 1.35,
-       "pose": "dev_nono"
+       "pose": "dev_nono_tuft"
       },
       {
        "t": 1.35,
@@ -495,8 +516,8 @@
     {
      "t": 0.1,
      "cam": {
-      "zoom": 1.45,
-      "cx": 730,
+      "zoom": 1.8,
+      "cx": 790,
       "cy": 1050
      }
     },
@@ -519,8 +540,8 @@
      "who": "rocky",
      "pose": "rocky_scissors",
      "x": 300,
-     "floor": 1800,
-     "size": 200,
+     "floor": 1850,
+     "size": 1210,
      "expr": "sly",
      "look": [
       0.6,
@@ -535,11 +556,10 @@
     },
     {
      "who": "dev",
-     "head": "dev_tuft",
-     "pose": "dev_seated",
+     "pose": "dev_seated_tuft",
      "x": 800,
-     "floor": 1830,
-     "size": 190,
+     "floor": 1745,
+     "size": 960,
      "expr": "sheepish",
      "grin": true,
      "look": [

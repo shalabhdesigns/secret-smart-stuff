@@ -138,43 +138,6 @@
    "chin": 1088,
    "chin_x": 475
   },
-  "rocky_phone": {
-   "file": "rocky_body_phone.png",
-   "single": true,
-   "eyes": [
-    [
-     336,
-     176
-    ],
-    [
-     466,
-     176
-    ]
-   ],
-   "eye_r": 21,
-   "mouth": [
-    401,
-    350
-   ],
-   "mouth_w": 66,
-   "neck": [
-    413,
-    1330
-   ],
-   "brow_gap": 1.75,
-   "skin_at": [
-    300,
-    330
-   ],
-   "stache": {
-    "file": "rocky_stache.png",
-    "at": [
-     401,
-     300
-    ],
-    "width": 250
-   }
-  },
   "meera": {
    "file": "meera_head.png",
    "eyes": [
@@ -207,101 +170,142 @@
    "chin_x": 605
   }
  },
- "bodies": {
-  "dev_cape": {
-   "file": "dev_body_cape.png",
-   "socket": [
-    421,
-    70
-   ]
-  },
-  "dev_hoodie": {
-   "file": "dev_body_hoodie.png",
-   "socket": [
-    381,
-    118
-   ],
-   "erase": [
-    [
-     335,
-     0,
-     432,
-     82
-    ]
-   ]
-  },
-  "rocky_proud": {
-   "file": "rocky_body_proud.png",
-   "socket": [
-    505,
-    300
-   ],
-   "erase": [
-    [
-     440,
-     40,
-     575,
-     250
-    ]
-   ]
-  },
-  "meera_tee": {
-   "file": "meera_body.png",
-   "socket": [
-    594,
-    95
-   ]
-  }
- },
  "characters": {
   "dev": {
-   "primary_head": "dev_messy"
+   "primary_head": "dev_messy",
+   "chin": 600,
+   "stand_pose": "dev_stand",
+   "height": 1.0
   },
   "rocky": {
    "primary_head": "rocky",
-   "face_scale": 1.21
+   "chin": 1095,
+   "stand_pose": "rocky_hips",
+   "height": 0.95
   },
   "meera": {
    "primary_head": "meera",
-   "face_scale": 0.83
+   "chin": 1012,
+   "stand_pose": "meera_chips",
+   "height": 0.9
   }
  },
  "figures": {
   "dev_seated": {
    "file": "dev_seated.png"
   },
+  "dev_seated_bowl": {
+   "file": "dev_seated_bowl.png",
+   "align_as_file": "dev_seated.png"
+  },
+  "dev_seated_tuft": {
+   "file": "dev_seated_tuft.png",
+   "align_as_file": "dev_seated.png"
+  },
   "dev_stand": {
    "file": "dev_stand.png"
+  },
+  "dev_stand_bowl": {
+   "file": "dev_stand_bowl.png",
+   "align_as_file": "dev_stand.png"
+  },
+  "dev_stand_tuft": {
+   "file": "dev_stand_tuft.png",
+   "align_as_file": "dev_stand.png"
   },
   "dev_point": {
    "file": "dev_point.png"
   },
+  "dev_point_bowl": {
+   "file": "dev_point_bowl.png",
+   "align_as_file": "dev_point.png"
+  },
+  "dev_point_tuft": {
+   "file": "dev_point_tuft.png",
+   "align_as_file": "dev_point.png"
+  },
   "dev_nono": {
    "file": "dev_nono.png"
+  },
+  "dev_nono_bowl": {
+   "file": "dev_nono_bowl.png",
+   "align_as_file": "dev_nono.png"
+  },
+  "dev_nono_tuft": {
+   "file": "dev_nono_tuft.png",
+   "align_as_file": "dev_nono.png"
   },
   "dev_thumbs": {
    "file": "dev_thumbs.png"
   },
-  "rocky_tada": {
-   "file": "rocky_tada.png"
+  "dev_thumbs_bowl": {
+   "file": "dev_thumbs_bowl.png",
+   "align_as_file": "dev_thumbs.png"
   },
-  "rocky_phone": {
-   "file": "rocky_phone.png"
+  "dev_thumbs_tuft": {
+   "file": "dev_thumbs_tuft.png",
+   "align_as_file": "dev_thumbs.png"
   },
   "rocky_hips": {
    "file": "rocky_hips.png"
   },
+  "rocky_phone": {
+   "file": "rocky_phone.png"
+  },
   "rocky_scissors": {
    "file": "rocky_scissors.png"
+  },
+  "rocky_tada": {
+   "file": "rocky_tada.png"
+  },
+  "meera_arms": {
+   "file": "meera_arms.png",
+   "feat": {
+    "eyes": [
+     [
+      558,
+      612
+     ],
+     [
+      834,
+      612
+     ]
+    ],
+    "mouth": [
+     735,
+     865
+    ]
+   },
+   "paint": [
+    [
+     463,
+     530,
+     52,
+     16
+    ]
+   ]
   },
   "meera_chips": {
    "file": "meera_chips.png"
   },
-  "meera_arms": {
-   "file": "meera_arms.png"
-  },
   "meera_point": {
-   "file": "meera_point.png"
+   "file": "meera_point.png",
+   "feat": {
+    "eyes": [
+     [
+      525,
+      601
+     ],
+     [
+      807,
+      601
+     ]
+    ],
+    "mouth": [
+     693,
+     852
+    ]
+   }
   }
  }
 }

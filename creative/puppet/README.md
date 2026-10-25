@@ -2,16 +2,23 @@
 
 How the characters stay identical from video 1 to video 1,000:
 
-1. **Master heads** (`assets/puppet/parts/*_head_*.png`, `rocky_head.png`, `meera_head.png`) are drawn once with
-   blank faces. Every video uses these exact files. Eyes, brows, mouths, glasses and the moustache are drawn by
-   code (`scripts/puppet/puppet.py`), so expressions never change the design.
-2. **Pose library** (`dev_*`, `rocky_*`, `meera_*` full-body figures) is drawn once per pose, from the master
-   sheets, with correct proportions. In the video the drawn head is removed (skin/hair pixels above the chin only;
-   clothing is never touched) and the master head is placed on top, scaled to the face width.
-3. **Videos never redraw characters.** A new pose or outfit is added only after `scripts/puppet/posecheck.py`
-   renders it with the master head and it passes a visual check (proportions, neck join, no clipped clothing).
-   Rejected so far: `meera_pockets` (tilted head merges into the shoulders).
-4. **Staging rules:** full figures stand on the floor in wide shots; nothing is cut by the frame edge except in
-   deliberate close-ups, which crop at the chest.
-
-Relative sizes (`face_scale` in rig.json): Dev 1.0, Rocky 1.21, Meera 0.83 (all on-screen sizes are Dev-equivalent).
+1. **Pose library = whole drawings.** Each pose (`assets/puppet/parts/dev_*`, `rocky_*`, `meera_*`) is one
+   complete drawing, head and body together, drawn once with a blank face. Heads are **never** cut off or
+   replaced at render time. (v2 did that and it caused neck seams, ghost outlines and torn collars.)
+2. **Faces are drawn by code** (`scripts/puppet/puppet.py`, `FigureActor`): eyes, brows, mouth, glasses,
+   moustache. Their positions come from the character's master head (`*_head*.png`), mapped onto each pose by
+   outline matching (`scripts/puppet/align.py`, cached in `assets/puppet/parts/align_cache.json`).
+   Poses with a slightly turned head carry hand-checked anchors (`feat`) in `creative/puppet/rig.json`;
+   a drawn mouth is covered with skin via `paint`.
+3. **Hair variants** (bowl cut, tuft) are baked once into new pose files (`dev_<pose>_bowl.png`,
+   `dev_<pose>_tuft.png`) with `scripts/puppet/bake_variant.py`, then checked at full size.
+4. **Head motion** is a soft bend about the base of the neck that fades to zero at the collar. No cut line
+   exists, so no seam can appear.
+5. **Sizes:** all poses of a character have the same head size. Characters keep real relative heights
+   (`height` in rig.json): Dev 1.0, Rocky 0.95, Meera 0.9. Scene `size` = on-screen height (px) of a
+   1.0-tall standing character. Someone seated in the barber chair is staged further back (smaller size).
+6. **Adding a pose:** generate it from the master sheet, add it to rig.json, run
+   `scripts/puppet/qa_faces.py rig.json out.jpg <pose>` and check the face at full size. Only then use it.
+7. **Staging rules:** in wide and medium shots, people stand on the floor (`floor`), never float. The frame
+   cuts a body only as a deliberate camera framing (waist-up, chest-up). Wide gestures (arms out) get a wide
+   camera. Every shot is checked at 4+ frames before assembly.

@@ -394,60 +394,7 @@ class Actor:
             paste(canvas, hl, hx, hy)
 
 
-# ----------------------------------------------------------------------------- locked heads on full-body poses
-def central_widths(alpha: np.ndarray, cx: int) -> np.ndarray:
-    """Width of the opaque run through column cx, per row (0 where cx is transparent)."""
-    a = alpha > 128
-    w = np.zeros(a.shape[0], np.int32)
-    for y in range(a.shape[0]):
-        row = a[y]
-        if not row[cx]:
-            continue
-        l = cx
-        while l > 0 and row[l - 1]:
-            l -= 1
-        r = cx
-        while r < len(row) - 1 and row[r + 1]:
-            r += 1
-        w[y] = r - l + 1
-    return w
-
-
-def analyze_head(rgba: np.ndarray, search_frac: float = 0.5) -> dict:
-    """Find the head in an image: top, neck_top (just under the chin), centre x and ear-level width."""
-    a = rgba[..., 3] > 128
-    ys, xs = np.nonzero(a)
-    top = int(ys.min())
-    band = a[top: top + max(8, int((ys.max() - top) * 0.12))].astype(np.uint8)
-    nb, lb, sb, cb = cv2.connectedComponentsWithStats(band, 8)
-    big = 1 + int(np.argmax(sb[1:, 4]))  # the head is the biggest blob at the top (not a raised hand)
-    cx = int(cb[big][0])
-    top = top + int(sb[big][1])
-    w = central_widths(rgba[..., 3], cx)
-    lim = top + int((ys.max() - top) * search_frac)
-    ymax = top + int(np.argmax(w[top:lim]))
-    maxw = int(w[ymax])
-    bottom = int(ys.max())
-    win_end = min(bottom - int((bottom - top) * 0.04), ymax + int((ymax - top) * 1.3) + 2)  # skip the neck's end cap
-    seg = w[ymax:win_end].astype(np.float32)
-    seg[seg == 0] = 1e9
-    mn = float(seg.min())
-    near = np.nonzero(seg <= mn * 1.08 + 2)[0]
-    neck = ymax + int(near[0])  # first row that reaches the neck's width = just under the chin
-    neck_min = ymax + int(np.argmin(seg))
-    span = neck - top
-    lo, hi = top + int(span * 0.45), top + int(span * 0.95)
-    ear_w = int(w[lo:hi].max()) if hi > lo else maxw
-    row = a[neck]
-    l = cx
-    while l > 0 and row[l - 1]:
-        l -= 1
-    r = cx
-    while r < len(row) - 1 and row[r + 1]:
-        r += 1
-    return {"top": top, "neck": neck, "neck_min": max(neck, neck_min), "cx": (l + r) / 2, "ear_w": ear_w}
-
-
+# ----------------------------------------------------------------------------- whole-figure characters
 def analyze_face(rgba: np.ndarray, region_frac: float = 1.0) -> dict:
     """Locate the blank face by skin colour: the face is the biggest skin blob near the top, enclosed by
     its outline, so its lowest row is the chin. Returns top, chin, cx (chin centre), face_w, neck_min."""
@@ -475,89 +422,112 @@ def analyze_face(rgba: np.ndarray, region_frac: float = 1.0) -> dict:
             "face_box": (int(x0), int(y0), int(w0), int(h0))}
 
 
-def erase_head(rgba: np.ndarray, info: dict) -> np.ndarray:
-    """Remove the drawn head: only skin / hair / outline-coloured pixels above the chin that are connected
-    to the face. Clothing (collars, hoods, capes, shirts) and the chair are never touched."""
-    out = rgba.copy()
-    cut = info["neck"] + 3
-    reg = out[:cut]
-    hsv = cv2.cvtColor(np.ascontiguousarray(reg[..., :3]), cv2.COLOR_RGB2HSV)
-    h, sat, v = hsv[..., 0].astype(int), hsv[..., 1].astype(int), hsv[..., 2].astype(int)
-    alpha = reg[..., 3] > 20
-    skin = (h >= 3) & (h <= 17) & (sat >= 60) & (sat <= 215) & (v >= 120)
-    dark = v < 95                                     # black hair and the outline
-    grey = (sat < 45) & (v >= 95) & (v <= 205)        # grey temples
-    teal = (h >= 78) & (h <= 100) & (sat > 70)        # Meera's streak
-    cand = alpha & (skin | dark | grey | teal)
-    cols = np.abs(np.arange(out.shape[1]) - info["cx"]) <= 0.8 * info["ear_w"]
-    cand &= cols[None, :]
-    n, lab = cv2.connectedComponents(cand.astype(np.uint8), 8)
-    x0, y0, w0, h0 = info["face_box"]
-    fy, fx = y0 + h0 // 2, x0 + w0 // 2
-    keep = set()
-    if lab[fy, fx] > 0:
-        keep.add(lab[fy, fx])
-    top_rows = lab[info["top"]: info["top"] + max(3, (cut - info["top"]) // 6)]
-    keep.update(int(k) for k in np.unique(top_rows) if k > 0)
-    m = np.isin(lab, list(keep))
-    m = cv2.dilate(m.astype(np.uint8), np.ones((3, 3), np.uint8)).astype(bool) & cand  # tidy anti-aliased edges
-    reg[..., 3] = np.where(m, 0, reg[..., 3])
-    # halo: faint anti-aliased leftovers of the drawn head's outline just around what was removed
-    ring = cv2.dilate(m.astype(np.uint8), np.ones((9, 9), np.uint8)).astype(bool) & ~m
-    faint = ring & (reg[..., 3] < 250) & (cand | (reg[..., 3] < 160))
-    reg[..., 3] = np.where(faint, 0, reg[..., 3])
-    return out
+
+_ALIGN_CACHE: dict = {}
+
+
+def figure_alignment(parts_dir: Path, master_file: str, chin: int, fig_file: str) -> tuple[float, float, float]:
+    """master head -> figure mapping (scale, tx, ty), cached on disk next to the parts."""
+    cache_path = parts_dir / "align_cache.json"
+    if not _ALIGN_CACHE and cache_path.exists():
+        _ALIGN_CACHE.update(json.loads(cache_path.read_text()))
+    key = f"{master_file}|{chin}|{fig_file}|{(parts_dir / fig_file).stat().st_size}"
+    if key not in _ALIGN_CACHE:
+        from align import align
+        s, tx, ty, score = align(load_rgba(parts_dir / master_file), load_rgba(parts_dir / fig_file), chin)
+        _ALIGN_CACHE[key] = [s, tx, ty, score]
+        cache_path.write_text(json.dumps(_ALIGN_CACHE, indent=1))
+    s, tx, ty, _ = _ALIGN_CACHE[key]
+    return s, tx, ty
 
 
 class FigureActor(Actor):
-    """A full-body pose drawing with the character's locked head placed on it.
+    """A character drawn as one whole pose drawing. The head is never cut off or replaced.
 
-    Proportions come from the pose drawing; the face/hair are always the same head file, so the
-    character can never drift. Poses can be swapped mid-shot (pose events) for gestures.
+    - The face (eyes, brows, mouth, moustache) is drawn by code at positions taken from the character's
+      master head, mapped onto the drawing, so expressions look identical in every pose and every video.
+    - Head motion is a smooth bend: pixels of the head rotate a little about the base of the neck, with
+      the effect fading to zero at the collar. No seam is possible.
+    - Every pose of a character is scaled so its head is the same size; characters are scaled to their
+      real relative heights.
     """
 
     def __init__(self, rig: dict, parts_dir: Path, a: dict, shot_dur: float):
         self.spec = a
         self.who = a["who"]
         ch = rig["characters"][self.who]
-        head_key = a.get("head", ch["primary_head"])
-        size = float(a["size"]) * ch.get("face_scale", 1.0)  # on-screen face width, px (Dev-equivalent)
-        prim_spec = rig["heads"][ch["primary_head"]]
-        prim = load_rgba(parts_dir / prim_spec["file"])
-        pinfo = analyze_face(prim)
-        hk = size / pinfo["ear_w"]
-        head = rig["heads"][head_key]
-        himg = load_rgba(parts_dir / head["file"])
-        hinfo = analyze_face(himg)
-        head_h = (pinfo["neck"] - pinfo["top"]) * hk  # on-screen head height, top of hair to chin
-        fig_infos = {}
-        for pk in set([a["pose"]] + [e["pose"] for e in a.get("events", []) if "pose" in e]):
-            fig = load_rgba(parts_dir / rig["figures"][pk]["file"])
-            fi = analyze_face(fig, 0.35)
-            fi.update({k: v for k, v in rig["figures"][pk].items() if k in ("neck", "neck_min", "cx", "ear_w", "top")})
-            fig_infos[pk] = (fig, fi)
-        gap = max(((fi["neck_min"] - fi["neck"]) / (fi["neck"] - fi["top"]) * (pinfo["neck"] - pinfo["top"]) / pinfo["ear_w"])
-                  for _, fi in fig_infos.values())
-        cut = min(himg.shape[0], hinfo["neck"] + int(0.025 * hinfo["ear_w"]) + 3)  # keep the chin outline only
-        himg = himg[:cut].copy()
-        self.head = cv2.resize(himg, None, fx=hk, fy=hk, interpolation=cv2.INTER_AREA if hk < 1 else cv2.INTER_CUBIC)
-        self.neck = np.array([hinfo["cx"], hinfo["neck"]], np.float32) * hk
-        sk = head.get("skin_at")
-        skin = tuple(int(v) for v in load_rgba(parts_dir / head["file"])[sk[1], sk[0], :3]) if sk else (200, 120, 85)
-        self.face = Face(head, hk, skin)
-        self.stache = None
-        if head.get("stache"):
-            st = head["stache"]
-            simg = load_rgba(parts_dir / st["file"])
-            k = st["width"] * hk / simg.shape[1]
-            self.stache = (cv2.resize(simg, None, fx=k, fy=k, interpolation=cv2.INTER_AREA), np.array(st["at"], np.float32) * hk)
-        # poses
+        hspec = rig["heads"][ch["primary_head"]]
+        mfile, mchin = hspec["file"], int(ch["chin"])
+        master = load_rgba(parts_dir / mfile)
+        # one on-screen scale for this character: size = on-screen height (px) of a 1.0-tall character
+        sfig = rig["figures"][ch["stand_pose"]]
+        stand = load_rgba(parts_dir / sfig["file"])
+        ys = np.nonzero(stand[..., 3].max(1) > 128)[0]
+        s_stand = figure_alignment(parts_dir, mfile, mchin, sfig.get("align_as_file", sfig["file"]))[0]
+        head_k = float(a["size"]) * float(ch.get("height", 1.0)) / (ys.max() - ys.min()) * s_stand  # master px -> screen px
+        mmask = (master[..., 3] > 128).astype(np.uint8)
+        mmask[mchin:] = 0
+        mx0, my0, mw0, mh0 = analyze_face(master)["face_box"]
         self.poses = {}
-        for pk, (fig, finfo) in fig_infos.items():
-            body = erase_head(fig, finfo)
-            fk = hk * pinfo["ear_w"] / finfo["ear_w"]  # pose scaled so its face matches the master face width
-            body = cv2.resize(body, None, fx=fk, fy=fk, interpolation=cv2.INTER_AREA if fk < 1 else cv2.INTER_CUBIC)
-            self.poses[pk] = {"img": body, "neck": np.array([finfo["cx"], finfo["neck"]], np.float32) * fk}
+        for pk in set([a["pose"]] + [e["pose"] for e in a.get("events", []) if "pose" in e]):
+            fspec = rig["figures"][pk]
+            fig = load_rgba(parts_dir / fspec["file"])
+            s, tx, ty = figure_alignment(parts_dir, mfile, mchin, fspec.get("align_as_file", fspec["file"]))
+            fk = head_k / s                      # figure px -> screen px
+            img = cv2.resize(fig, None, fx=fk, fy=fk, interpolation=cv2.INTER_AREA if fk < 1 else cv2.INTER_CUBIC)
+            k = s * fk                           # master px -> screen px
+            ox, oy = tx * fk, ty * fk
+            feat = fspec.get("feat", {})
+            fdx, fdy, fks = feat.get("dx", 0.0) * k, feat.get("dy", 0.0) * k, feat.get("k", 1.0)
+            to = lambda p: [p[0] * k + ox + fdx, p[1] * k + oy + fdy]
+            # skin colour sampled from the drawing at the master's skin point
+            sx, sy = [int(v) for v in to(hspec["skin_at"])]
+            patch = img[max(0, sy - 4):sy + 5, max(0, sx - 4):sx + 5, :3].reshape(-1, 3)
+            skin = tuple(int(v) for v in np.median(patch, 0))
+            for x, y, rx, ry in fspec.get("paint", []):
+                cv2.ellipse(img, (int(x * fk), int(y * fk)), (int(rx * fk), int(ry * fk)), 0, 0, 360, (*skin, 255), -1, cv2.LINE_AA)
+            cx_chin = (mx0 + mw0 / 2) * k + ox
+            chin_y = mchin * k + oy
+            fw = mw0 * k
+            # head weight map: master silhouette mapped onto the figure, extended down the neck, soft edges
+            Wm = cv2.warpAffine(mmask * 255, np.float32([[k, 0, ox + fdx * 0], [0, k, oy]]), (img.shape[1], img.shape[0]))
+            Wm = np.maximum(Wm, 0)
+            neck = np.zeros_like(Wm)
+            x0n, x1n = int(cx_chin - 0.42 * fw), int(cx_chin + 0.42 * fw)
+            neck[max(0, int(chin_y - fw * 0.3)):int(chin_y + fw * 0.6), max(0, x0n):x1n] = 255
+            Wm = np.maximum(Wm, neck)
+            d = max(3, int(0.06 * fw)) | 1
+            Wm = cv2.dilate(Wm, np.ones((d, d), np.uint8))
+            Wm = cv2.GaussianBlur(Wm.astype(np.float32) / 255.0, (0, 0), max(1.0, 0.05 * fw))
+            yy = np.arange(img.shape[0], dtype=np.float32)[:, None]
+            v = np.clip((chin_y + 0.42 * fw - yy) / (0.42 * fw + 0.08 * fw), 0, 1)
+            v = v * v * (3 - 2 * v)
+            Wm = Wm * v
+            nz = np.nonzero(Wm > 0.002)
+            r0, r1 = max(0, nz[0].min() - 4), min(img.shape[0], nz[0].max() + 5)
+            c0, c1 = max(0, nz[1].min() - 4), min(img.shape[1], nz[1].max() + 5)
+            fs = dict(hspec)
+            fs["eyes"] = [[p[0] - c0, p[1] - r0] for p in map(to, hspec["eyes"])]
+            fs["eye_r"] = hspec["eye_r"] * k * fks
+            m = to(hspec["mouth"])
+            fs["mouth"] = [m[0] - c0, m[1] - r0]
+            fs["mouth_w"] = hspec["mouth_w"] * k * fks
+            if feat.get("eyes"):
+                fs["eyes"] = [[(p[0] * k + ox) - c0, (p[1] * k + oy) - r0] for p in feat["eyes"]]
+            if feat.get("mouth"):
+                fs["mouth"] = [feat["mouth"][0] * k + ox - c0, feat["mouth"][1] * k + oy - r0]
+            stache = None
+            if hspec.get("stache"):
+                st = hspec["stache"]
+                simg = load_rgba(parts_dir / st["file"])
+                sk = st["width"] * k * fks / simg.shape[1]
+                at = to(st["at"])
+                stache = (cv2.resize(simg, None, fx=sk, fy=sk, interpolation=cv2.INTER_AREA), np.array([at[0] - c0, at[1] - r0], np.float32))
+            self.poses[pk] = {"img": img, "roi": (r0, r1, c0, c1), "W": Wm[r0:r1, c0:c1].copy(),
+                              "pivot": np.array([cx_chin - c0, chin_y + 0.38 * fw - r0], np.float32),
+                              "face": Face(fs, 1.0, skin), "stache": stache, "chin": np.array([cx_chin, chin_y], np.float32),
+                              "fw": fw}
+            self.poses[pk]["grid"] = np.mgrid[0:r1 - r0, 0:c1 - c0].astype(np.float32)
         self.pose = a["pose"]
         self.x = a["x"]
         self.floor = a.get("floor")
@@ -583,45 +553,51 @@ class FigureActor(Actor):
                 pose, t_pose = e["pose"], e["t"]
         P = self.poses[pose]
         o = st["mouth"][0]
-        sway = 1.0 * math.sin(2 * math.pi * 0.33 * t + self.phase)
-        rot = sway + st["talk"] * (2.0 * math.sin(2 * math.pi * 1.25 * t + self.phase) + 2.2 * o * math.sin(2 * math.pi * 2.1 * t))
-        hdy = -0.02 * self.head.shape[0] * o * st["talk"]
+        rot = 0.8 * math.sin(2 * math.pi * 0.33 * t + self.phase)
+        rot += st["talk"] * (1.6 * math.sin(2 * math.pi * 1.25 * t + self.phase) + 1.6 * o * math.sin(2 * math.pi * 2.1 * t))
         if st["twitch"] > 0:
-            rot += 1.5 * math.sin(t * 90)
+            rot += 1.2 * math.sin(t * 90)
         rot += self.spec.get("tilt", 0)
+        nod = -0.035 * P["fw"] * o * st["talk"]
+        # face drawn on the head region, then the head region is bent softly about the neck
+        r0, r1, c0, c1 = P["roi"]
+        img = P["img"].copy()
+        roi = img[r0:r1, c0:c1].copy()
+        P["face"].draw(roi, st)
+        if P["stache"]:
+            simg, at = P["stache"]
+            sh, sw = simg.shape[:2]
+            lift = -o * sw * 0.04 + math.sin(t * 25) * sw * 0.01 * st["talk"]
+            tmp = roi[..., :3].astype(np.float32)
+            paste(tmp, simg, int(at[0] - sw / 2), int(at[1] - sh / 2 + lift))
+            roi[..., :3] = tmp.astype(np.uint8)
+        th = math.radians(rot) * P["W"]
+        gy, gx = P["grid"]
+        px, py = P["pivot"]
+        c, s = np.cos(th), np.sin(th)
+        dx, dy = gx - px, gy - py
+        mapx = px + c * dx - s * dy
+        mapy = py + s * dx + c * dy - nod * P["W"]
+        roi = cv2.remap(roi, mapx.astype(np.float32), mapy.astype(np.float32), cv2.INTER_LINEAR,
+                        borderMode=cv2.BORDER_CONSTANT, borderValue=(0, 0, 0, 0))
+        img[r0:r1, c0:c1] = roi
         breath = 1 + 0.006 * math.sin(2 * math.pi * 0.28 * t + self.phase)
         pop = 1.0
         if 0 <= t - t_pose < 0.14:  # pose change: tiny squash-and-settle
             pop = 1 - 0.05 * math.sin((t - t_pose) / 0.14 * math.pi)
         jump = 0.0
         if st["jump"] is not None and st["jump"] <= t < st["jump"] + 0.35:
-            jump = -0.25 * self.head.shape[1] * math.sin((t - st["jump"]) / 0.35 * math.pi)
-        img = P["img"]
+            jump = -0.4 * P["fw"] * math.sin((t - st["jump"]) / 0.35 * math.pi)
         bh, bw = img.shape[:2]
         if self.floor is not None:
-            foot = (self.x - P["neck"][0] + bw / 2, self.floor)  # bottom-centre of the drawing on the floor
+            foot = (self.x - P["chin"][0] + bw / 2, self.floor)
             pivot = (bw / 2, bh)
         else:
             foot = (self.x, self.neck_y)
-            pivot = (P["neck"][0], P["neck"][1])
+            pivot = (P["chin"][0], P["chin"][1])
         sy = breath * pop
-        body_layer, bx, by = affine_layer(img, pivot, 0, 1 / pop ** 0.5, sy, (foot[0], foot[1] + jump))
-        # where the neck ended up after the body transform
-        nx = foot[0] + (P["neck"][0] - pivot[0]) / pop ** 0.5
-        ny = foot[1] + jump + (P["neck"][1] - pivot[1]) * sy
-        head = self.head.copy()
-        self.face.draw(head, st)
-        if self.stache:
-            simg, at = self.stache
-            sh, sw = simg.shape[:2]
-            lift = -o * sw * 0.04 + math.sin(t * 25) * sw * 0.01 * st["talk"]
-            tmp = head[..., :3].astype(np.float32)
-            paste(tmp, simg, int(at[0] - sw / 2), int(at[1] - sh / 2 + lift))
-            head[..., :3] = tmp.astype(np.uint8)
-        sq = 1 + 0.03 * o * st["talk"]
-        hl, hx, hy = affine_layer(head, (self.neck[0], self.neck[1]), rot, 1 / sq ** 0.5, sq, (nx, ny + hdy))
-        paste(canvas, body_layer, bx, by)
-        paste(canvas, hl, hx, hy)  # locked head on top, cut at the chin; the pose keeps its own neck and collar
+        layer, bx, by = affine_layer(img, pivot, 0, 1 / pop ** 0.5, sy, (foot[0], foot[1] + jump))
+        paste(canvas, layer, bx, by)
 
 
 # ----------------------------------------------------------------------------- backgrounds & fx
