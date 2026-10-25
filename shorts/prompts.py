@@ -81,7 +81,9 @@ Format rules (these come from retention research, follow them exactly):
   should get their own playful-but-realistic image (e.g. "a single limp, soggy sheet of seaweed
   drooping sadly over the edge of a plate").
 - IMAGE = WORDS: every beat's image must visibly show what that beat SAYS. If a beat names steps or
-  numbered parts ("pull tab 1, then 2 and 3"), the image must clearly show those physical parts and
+  numbered parts ("pull tab 1, then 2 and 3"), the image must show the WHOLE real object front-on
+  (e.g. the full triangular wrapper, not a flat packet), with each of those physical parts clearly
+  separate at its real position (e.g. the top pull strip and both bottom corner flaps), and
   you must add "markers": [{{"label": "1", "target": the exact visible part}}, ...] - numbers are
   drawn on by code, so NEVER ask the image model for numbers or text.
 
@@ -154,6 +156,7 @@ MARKERS = """TASK: markers
 The narrator says: "{narration}". We will draw numbered badges on this picture.
 For each item, give the point (fractions 0-1 of width/height) where the badge should sit: on the
 physical part it refers to, or the most sensible spot if that part is implied (e.g. "corner 2" =
-a corner of the wrapper). Items: {markers}
+a corner of the wrapper). A badge must sit ON the object, never on empty background; if the part
+is not visibly on the object, use confidence "low". Items: {markers}
 Return JSON: {{"markers": [{{"label": str, "x": float, "y": float,
  "confidence": "high"|"medium"|"low"}}]}}"""

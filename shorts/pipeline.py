@@ -495,8 +495,9 @@ class Pipeline:
                 if loc.get("found"):
                     entry["focus"] = [loc["x"], loc["y"], loc.get("w", 0.25), loc.get("h", 0.25)]
             # Does this picture show what this beat SAYS? If not, give the beat its own image.
-            is_last = sc is script["scenes"][-1]
-            if sc.get("image") and self._match_budget > 0 and not is_last:
+            # The first and last beats share one picture (that is the loop), so neither is swapped.
+            loop_end = sc is script["scenes"][-1] or sc is script["scenes"][0]
+            if sc.get("image") and self._match_budget > 0 and not loop_end:
                 key = sc["image"]
                 info = out["images"][key]
                 m = self._match(Path(info["path"]), sc, images.get(key, ""), job_id)
