@@ -172,9 +172,27 @@ def _blueprint_card(text: str, p: float, pal: Palette) -> Image.Image:
     for (x, y) in [(70, 300), (W - 130, 300), (70, 1560), (W - 130, 1560)]:  # corner registration marks
         d.line([(x, y + 30), (x + 60, y + 30)], fill=pal.ink + (255,), width=4)
         d.line([(x + 30, y), (x + 30, y + 60)], fill=pal.ink + (255,), width=4)
-    lines = [ln.strip() for ln in text.replace("·", "\n").split("\n") if ln.strip()]
-    f = _font(104 if len(lines) <= 3 else 84, "Black")
-    total = len(lines) * 130
+    raw = text.replace("·", "\n").replace(",", ",\n").replace(";", "\n")
+    lines = []
+    for ln in [x.strip() for x in raw.split("\n") if x.strip()]:
+        words, cur = ln.split(), ""
+        for w in words:                       # wrap at ~14 characters per line
+            if cur and len(cur) + 1 + len(w) > 14:
+                lines.append(cur)
+                cur = w
+            else:
+                cur = f"{cur} {w}".strip()
+        if cur:
+            lines.append(cur)
+    lines = lines[:5]
+    size = 104 if len(lines) <= 3 else 84
+    f = _font(size, "Black")
+    widest = max((d.textlength(ln.upper(), font=f) for ln in lines), default=1)
+    if widest > W - 140:                      # shrink until the widest line fits
+        size = int(size * (W - 140) / widest)
+        f = _font(size, "Black")
+    step = int(size * 1.25)
+    total = len(lines) * step
     y0 = 760 - total / 2
     for i, ln in enumerate(lines):
         li = ease((p * 1.6) - i * 0.18)
@@ -182,9 +200,9 @@ def _blueprint_card(text: str, p: float, pal: Palette) -> Image.Image:
             continue
         tw = d.textlength(ln.upper(), font=f)
         x = (W - tw) / 2
-        y = y0 + i * 130 + (1 - li) * 30
+        y = y0 + i * step + (1 - li) * 30
         d.text((x, y), ln.upper(), font=f, fill=pal.ink + (int(255 * li),))
-        d.line([(x, y + 118), (x + tw * li, y + 118)], fill=pal.accent + (255,), width=8)
+        d.line([(x, y + size * 1.13), (x + tw * li, y + size * 1.13)], fill=pal.accent + (255,), width=8)
     return img
 
 

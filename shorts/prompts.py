@@ -148,3 +148,12 @@ object is NOT a match when the sentence names a specific part or action.
 Return JSON: {{"matches": bool, "missing": str,
  "better_prompt": str (a realistic photo prompt that would show exactly what the sentence describes,
    the key part large and clear; never ask for text, numbers or letters in the image)}}"""
+
+
+MARKERS = """TASK: markers
+The narrator says: "{narration}". We will draw numbered badges on this picture.
+For each item, give the point (fractions 0-1 of width/height) where the badge should sit: on the
+physical part it refers to, or the most sensible spot if that part is implied (e.g. "corner 2" =
+a corner of the wrapper). Items: {markers}
+Return JSON: {{"markers": [{{"label": str, "x": float, "y": float,
+ "confidence": "high"|"medium"|"low"}}]}}"""

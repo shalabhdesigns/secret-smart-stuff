@@ -475,11 +475,13 @@ class Pipeline:
                     self.state.add_cost("bfl", "image", 1, usd, job_id)
                 chk = self._look(img, first_focus.get(key, prompt_text), prompt_text, job_id)
                 best = (img, chk)
-                if not (chk.get("has_text_or_logo") or chk.get("artifacts")) and chk.get("matches_prompt", True):
+                if not (chk.get("has_text_or_logo") or chk.get("artifacts")):
                     break
             img, chk = best  # type: ignore[misc]
-            if chk.get("has_text_or_logo") or chk.get("artifacts") or not chk.get("matches_prompt", True):
-                out["flags"].append(f"{key}: image check failed twice ({chk})")
+            if chk.get("has_text_or_logo") or chk.get("artifacts"):
+                what = ", ".join(x for x, v in (("visible text/logo", chk.get("has_text_or_logo")),
+                                                ("distorted shapes", chk.get("artifacts"))) if v)
+                out["flags"].append(f"{key}: {what} (after 2 tries)")
             out["images"][key] = {"path": str(img), "check": chk, "focus_cache": {first_focus.get(key, ""): chk}}
         for sc in script["scenes"]:
             entry: dict = {}
@@ -492,7 +494,8 @@ class Pipeline:
                 if loc.get("found"):
                     entry["focus"] = [loc["x"], loc["y"], loc.get("w", 0.25), loc.get("h", 0.25)]
             # Does this picture show what this beat SAYS? If not, give the beat its own image.
-            if sc.get("image") and self._match_budget > 0:
+            is_last = sc is script["scenes"][-1]
+            if sc.get("image") and self._match_budget > 0 and not is_last:
                 key = sc["image"]
                 info = out["images"][key]
                 m = self._match(Path(info["path"]), sc, images.get(key, ""), job_id)
@@ -522,10 +525,17 @@ class Pipeline:
                 key = entry.get("image") or sc["image"]
                 info = out["images"][key]
                 marks = []
-                for mk in sc["markers"][:4]:
-                    loc = self._look(Path(info["path"]), mk.get("target", ""), images.get(key, ""), job_id)
-                    if loc.get("found"):
-                        marks.append({"label": str(mk.get("label", ""))[:3], "pos": [loc["x"], loc["y"]]})
+                im = Image.open(info["path"]).convert("RGB")
+                im.thumbnail((576, 1024))
+                buf = io.BytesIO()
+                im.save(buf, "PNG")
+                spec = [{"label": str(m.get("label", ""))[:3], "target": m.get("target", "")} for m in sc["markers"][:4]]
+                r = self._llm(P.MARKERS.format(narration=sc.get("narration", ""), markers=json.dumps(spec)),
+                              job_id, "markers", est=0.01, images=[buf.getvalue()],
+                              model=self.cfg.pipeline["providers"]["llm"]["model_routine"], max_tokens=500)
+                for m in (r.data or {}).get("markers", []):
+                    if m.get("confidence") in ("high", "medium") and m.get("x") is not None:
+                        marks.append({"label": str(m.get("label", ""))[:3], "pos": [m["x"], m["y"]]})
                 if marks:
                     entry["markers"] = marks
                 elif sc["markers"]:

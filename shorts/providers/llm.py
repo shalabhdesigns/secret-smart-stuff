@@ -177,6 +177,7 @@ FAKE_RESPONSES: dict = {
     },
     "review": {"scores": {"hook": 2, "payoff": 2, "visual_match": 2, "accuracy": 1, "originality": 1},
                "total": 8, "problems": [], "verdict": "pass"},
+    "markers": {"markers": [{"label": "1", "x": 0.5, "y": 0.4, "confidence": "high"}]},
     "match": {"matches": True, "missing": "", "better_prompt": ""},
     "locate": {"found": True, "x": 0.5, "y": 0.55, "w": 0.4, "h": 0.2,
                "has_text_or_logo": False, "artifacts": False},
