@@ -75,12 +75,12 @@ def riser(path: Path, dur: float = 0.8) -> Path:
     return _write(path, 0.35 * hp * env)
 
 
-def build_library(folder: Path) -> dict[str, Path]:
-    folder.mkdir(parents=True, exist_ok=True)
-    lib = {"whoosh": whoosh(folder / "whoosh.wav"), "tick": tick(folder / "tick.wav"),
-           "pop": pop(folder / "pop.wav"), "ding": ding(folder / "ding.wav"),
-           "riser": riser(folder / "riser.wav")}
-    return lib
+def build_library(folder: Path | None = None) -> dict[str, Path]:
+    """Curated, generated-once sound effects in assets/sfx (name.mp3 -> name).
+    The synthetic tones above are kept only for offline tests; the owner found them
+    inappropriate, so real videos use the curated set or no effects at all."""
+    lib_dir = ASSETS / "sfx"
+    return {f.stem: f for f in sorted(lib_dir.glob("*.mp3"))} if lib_dir.exists() else {}
 
 
 def pick_music(job_id: str) -> Path | None:

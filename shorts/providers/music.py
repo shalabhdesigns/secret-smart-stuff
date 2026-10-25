@@ -48,3 +48,36 @@ def generate_library(api_key: str, folder: Path, length_ms: int = 45000) -> list
         out.write_bytes(r.content)
         made.append(out)
     return made
+
+
+SFX_ENDPOINT = "https://api.elevenlabs.io/v1/sound-generation"
+
+# Small, tasteful set. Used sparingly and quietly by the renderer.
+SFX = {
+    "whoosh": ("soft quick air whoosh for a fast video transition, clean, subtle, no reverb tail", 0.6),
+    "click": ("very soft, short UI click, clean and minimal, like a gentle tap", 0.5),
+    "pop": ("soft gentle bubble pop, light and friendly, clean", 0.5),
+    "chime": ("soft bright two-note chime for a positive reveal, clean, short", 1.2),
+    "swipe": ("short paper slide swipe, clean, subtle", 0.6),
+    "boing": ("short light comedic cartoon boing, playful, not loud", 0.7),
+    "record_scratch": ("quick short vinyl record scratch for a comedic pause, light", 0.6),
+}
+
+
+def generate_sfx(api_key: str, folder: Path) -> list[Path]:
+    folder.mkdir(parents=True, exist_ok=True)
+    made = []
+    for name, (prompt, secs) in SFX.items():
+        out = folder / f"{name}.mp3"
+        if out.exists():
+            continue
+        r = requests.post(SFX_ENDPOINT, params={"output_format": "mp3_44100_128"},
+                          headers={"xi-api-key": api_key, "content-type": "application/json"},
+                          json={"text": prompt, "duration_seconds": secs, "prompt_influence": 0.6}, timeout=300)
+        if r.status_code == 401:
+            raise PermissionError("ElevenLabs key lacks the sound_generation permission")
+        if r.status_code != 200:
+            raise RuntimeError(f"ElevenLabs SFX {r.status_code}: {r.text[:300]}")
+        out.write_bytes(r.content)
+        made.append(out)
+    return made

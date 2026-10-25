@@ -443,7 +443,8 @@ class Pipeline:
         style = self.cfg.channel["style"]["image_style"]
         rng = random.Random(job_id)
         out: dict = {"images": {}, "beats": {}, "flags": []}
-        images: dict = script.get("images") or {}
+        images: dict = dict(script.get("images") or {})
+        self._match_budget = 3          # at most 3 replacement images per video
         first_focus = {}
         for sc in script["scenes"]:
             if sc.get("image") and sc.get("focus") and sc["image"] not in first_focus:
@@ -483,6 +484,45 @@ class Pipeline:
                     info["focus_cache"][sc["focus"]] = loc
                 if loc.get("found"):
                     entry["focus"] = [loc["x"], loc["y"], loc.get("w", 0.25), loc.get("h", 0.25)]
+            # Does this picture show what this beat SAYS? If not, give the beat its own image.
+            if sc.get("image") and self._match_budget > 0:
+                key = sc["image"]
+                info = out["images"][key]
+                m = self._match(Path(info["path"]), sc, images.get(key, ""), job_id)
+                if not m.get("matches", True) and m.get("better_prompt"):
+                    self._match_budget -= 1
+                    new_key = f"{sc['id']}_fix"
+                    new_prompt = m["better_prompt"]
+                    path = d / f"{new_key}.png"
+                    if self.cfg.live:
+                        self.budget.authorize(0.03, "image", job_id)
+                    img, usd = self.images.generate(f"{new_prompt}. {style}. Vertical 9:16 composition, "
+                                                    f"key subject large and centred.", path,
+                                                    seed=rng.randint(1, 10**6))
+                    if usd:
+                        self.state.add_cost("bfl", "image", 1, usd, job_id)
+                    images[new_key] = new_prompt
+                    out["images"][new_key] = {"path": str(img), "check": {}, "focus_cache": {}}
+                    m2 = self._match(img, sc, new_prompt, job_id)
+                    if not m2.get("matches", True):
+                        out["flags"].append(f"{sc['id']}: image may not match the words ({m2.get('missing', '')})")
+                    entry["image"] = new_key
+                    loc = self._look(img, sc.get("focus") or new_prompt, new_prompt, job_id)
+                    entry["focus"] = [loc["x"], loc["y"], loc.get("w", 0.25), loc.get("h", 0.25)] if loc.get("found") else None
+                elif not m.get("matches", True):
+                    out["flags"].append(f"{sc['id']}: image may not match the words ({m.get('missing', '')})")
+            if sc.get("markers") and sc.get("image"):
+                key = entry.get("image") or sc["image"]
+                info = out["images"][key]
+                marks = []
+                for mk in sc["markers"][:4]:
+                    loc = self._look(Path(info["path"]), mk.get("target", ""), images.get(key, ""), job_id)
+                    if loc.get("found"):
+                        marks.append({"label": str(mk.get("label", ""))[:3], "pos": [loc["x"], loc["y"]]})
+                if marks:
+                    entry["markers"] = marks
+                elif sc["markers"]:
+                    out["flags"].append(f"{sc['id']}: numbered parts not visible in the image")
             if sc.get("arrow") and sc.get("image"):
                 info = out["images"][sc["image"]]
                 a = self._look(Path(info["path"]), sc["arrow"].get("from", ""), images[sc["image"]], job_id)
@@ -494,6 +534,16 @@ class Pipeline:
             info.pop("focus_cache", None)
         (d / "visuals.json").write_text(json.dumps(out, indent=2))
         return {"file": str(d / "visuals.json"), "flags": out["flags"]}
+
+    def _match(self, img: Path, sc: dict, prompt: str, job_id: str) -> dict:
+        im = Image.open(img).convert("RGB")
+        im.thumbnail((576, 1024))
+        buf = io.BytesIO()
+        im.save(buf, "PNG")
+        r = self._llm(P.MATCH.format(narration=sc.get("narration", ""), prompt=prompt, focus=sc.get("focus") or ""),
+                      job_id, "match", est=0.01, images=[buf.getvalue()],
+                      model=self.cfg.pipeline["providers"]["llm"]["model_routine"], max_tokens=500)
+        return r.data or {}
 
     def _look(self, img: Path, target: str, prompt: str, job_id: str) -> dict:
         im = Image.open(img).convert("RGB")
@@ -507,7 +557,7 @@ class Pipeline:
 
     # ---- E (part 2): render (v2 beat engine)
     def _stage_render(self, job_id: str, topic: dict, d: Path) -> dict:
-        from .render.beats import Arrow, Beat, Pop, render as render_beats
+        from .render.beats import Arrow, Beat, Marker, Pop, render as render_beats
         from .render.sfx import build_library, pick_music
         script = json.loads((d / "script.json").read_text())
         vis = json.loads((d / "visuals.json").read_text())
@@ -525,7 +575,8 @@ class Pipeline:
             wi += c
         end = words[-1].end + 0.45
         beats: list[Beat] = []
-        sfx_events: list[tuple[str, float]] = []
+        sfx_events: list[tuple[str, float, float]] = []
+        callouts_with_sound, comic_used, chime_used = 0, False, False
         whip_every = rng.choice([3, 4])
         motions_cycle = ["punch", "push", "drift_l", "pull", "drift_r"]
         rng.shuffle(motions_cycle)
@@ -533,9 +584,13 @@ class Pipeline:
             b_start = starts[k]
             b_end = starts[k + 1] if k + 1 < len(scenes) else end
             v = vis["beats"].get(sc["id"], {})
-            img = Path(vis["images"][sc["image"]]["path"]) if sc.get("image") else None
+            img_key = v.get("image") or sc.get("image")
+            img = Path(vis["images"][img_key]["path"]) if img_key else None
+            witty = sc.get("tone") == "witty"
             motion = {"punch": "punch", "push": "push", "pull": "pull", "hold": "hold",
                       "drift": motions_cycle[k % len(motions_cycle)]}.get(sc.get("motion") or "", motions_cycle[k % len(motions_cycle)])
+            if witty:
+                motion = "shake"
             if k == 0:
                 motion = "push"                                    # starts at zoom 1.0 (loop anchor)
             if k == len(scenes) - 1:
@@ -544,6 +599,8 @@ class Pipeline:
             if k == 0:
                 trans = "cut"
             focus = tuple(v["focus"]) if v.get("focus") else None
+            markers = [Marker(m["label"], tuple(m["pos"]), b_start + 0.3 + 0.35 * j)
+                       for j, m in enumerate(v.get("markers") or [])]
             if motion == "punch" and not focus:
                 motion = "push"
             pops = []
@@ -554,27 +611,35 @@ class Pipeline:
                         at = w.start
                         break
                 pops.append(Pop(sc["pop"], at))
-                sfx_events.append(("pop", at))
+                sfx_events.append(("pop", at, -20.0))
             arrow = None
             if v.get("arrow"):
                 (ax, ay), (bx, by) = v["arrow"]
                 arrow = Arrow((ax, ay), (bx, by), b_start + 0.4)
-            if sc.get("callout") and focus:
-                sfx_events.append(("tick", b_start + 0.25))
+                sfx_events.append(("swipe", b_start + 0.35, -22.0))
+            if sc.get("callout") and focus and callouts_with_sound < 3:
+                callouts_with_sound += 1
+                sfx_events.append(("click", b_start + 0.25, -22.0))
+            for mk in markers:
+                sfx_events.append(("click", mk.at, -22.0))
             if trans == "whip":
-                sfx_events.append(("whoosh", b_start - 0.12))
-            if sc.get("sfx") in ("ding", "tick", "pop"):
-                sfx_events.append((sc["sfx"], b_start + 0.15))
+                sfx_events.append(("whoosh", b_start - 0.15, -19.0))
+            if witty and not comic_used:
+                comic_used = True
+                sfx_events.append((rng.choice(["boing", "record_scratch"]), b_start + 0.05, -17.0))
+            if sc.get("card_text") and not img and not chime_used:
+                chime_used = True
+                sfx_events.append(("chime", b_start + 0.1, -18.0))
             beats.append(Beat(start=b_start, end=b_end, image=img, focus=focus, motion=motion, transition=trans,
                               callout_label=(sc.get("callout") or None) if focus else None,
                               callout_at=b_start + 0.25, pops=pops, arrow=arrow,
-                              card_text=(sc.get("card_text") or "") if not img else "",
+                              card_text=(sc.get("card_text") or "") if not img else "", markers=markers,
                               hook_text=(script.get("hook_card") or "") if k == 0 else ""))
         video = render_beats(beats, end, d / "video.mp4", self.pal)
-        lib = build_library(d / "sfx")
-        sfx = [(lib[name], max(0.0, t), -14.0) for name, t in sfx_events if name in lib]
+        lib = build_library()
+        sfx = [(lib[name], max(0.0, t), gain) for name, t, gain in sfx_events if name in lib]
         music = pick_music(job_id)
-        audio = A.mix_audio(A.AudioPlan(Path(voice["audio"]), music, music_gain_db=-21.0, sfx=sfx), end, d / "mix.wav")
+        audio = A.mix_audio(A.AudioPlan(Path(voice["audio"]), music, music_gain_db=-17.0, sfx=sfx), end, d / "mix.wav")
         boxes = [b.focus for b in beats if b.focus]
         y_cap = 1360 if any(0.50 <= f[1] <= 0.70 for f in boxes) else 1200
         ass = write_ass(words, d / "captions.ass", y_center=y_cap,

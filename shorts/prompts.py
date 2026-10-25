@@ -75,6 +75,15 @@ Format rules (these come from retention research, follow them exactly):
 - Use web search first: at least {min_sources} credible sources for the main reason. If the reason is
   disputed or folklore, say "the most common explanation is..." or mark the idea not viable.
 - Be conservative: no "most", "many people", "everyone", no superlatives, no "the only reason".
+- WIT: include 1-2 short, light, witty lines that fit the story (dry humour, playful personification
+  of the object, a relatable everyday moment, a funny understatement). Mark them "tone": "witty".
+  They must not state new facts, must be kind (no jokes about people, cultures or groups) and
+  should get their own playful-but-realistic image (e.g. "a single limp, soggy sheet of seaweed
+  drooping sadly over the edge of a plate").
+- IMAGE = WORDS: every beat's image must visibly show what that beat SAYS. If a beat names steps or
+  numbered parts ("pull tab 1, then 2 and 3"), the image must clearly show those physical parts and
+  you must add "markers": [{{"label": "1", "target": the exact visible part}}, ...] - numbers are
+  drawn on by code, so NEVER ask the image model for numbers or text.
 
 Return JSON:
 {{"viable": true|false, "reason_if_not": str,
@@ -86,7 +95,8 @@ Return JSON:
  "scenes": [{{"id": "b1", "narration": str, "image": "img1"|null, "focus": str|null,
    "motion": "punch"|"push"|"pull"|"drift"|"hold", "transition": "cut"|"whip"|"zoom_cut",
    "callout": str|null, "pop": str|null, "arrow": {{"from": str, "to": str}}|null,
-   "card_text": str|null, "sfx": "tick"|"pop"|"ding"|null}}],
+   "card_text": str|null, "tone": "normal"|"witty",
+   "markers": [{{"label": str, "target": str}}] | null}}],
  "facts": [{{"claim": str, "sources": [url, ...], "main": true|false}}],
  "description": "2 short sentences for the YouTube description (no sources here)",
  "hashtags": ["#..", "#.."] (3 max, relevant),
@@ -105,6 +115,8 @@ WRITTEN: "opening_line" is what the viewer hears first. Score 0-2 each, using th
   issues, nothing false; 0 = any claim false or unsupported.
 - originality: 2 = a fresh angle or detail most viewers won't know; 1 = a clear, well-made
   explanation of a known fact (acceptable for a Short); 0 = generic filler.
+Lines marked "tone": "witty" are intentional light humour: judge them only for taste and fit
+(kind, relevant, not misleading), not as factual claims.
 List concrete problems with the exact fix. Mark severity "blocker" only for false or unsupported
 claims, forbidden topics, brand/logo as subject or a misleading title; everything else is "minor".
 SCRIPT JSON:
@@ -125,3 +137,14 @@ Look at this image (a generated photo for a YouTube Short). Answer as JSON:
  "has_text_or_logo": bool (any letters, numbers, brand marks or watermarks visible?),
  "artifacts": bool (warped/melted shapes, extra parts, impossible geometry?),
  "matches_prompt": bool (does it show: {prompt}?)}}"""
+
+
+MATCH = """TASK: match
+This picture is shown while the narrator says: "{narration}"
+It was generated from: "{prompt}". The camera frames: "{focus}".
+Would a viewer clearly SEE what the sentence describes? Be strict about specific things the
+sentence names (numbered parts, actions, objects, before/after states). A generic shot of the
+object is NOT a match when the sentence names a specific part or action.
+Return JSON: {{"matches": bool, "missing": str,
+ "better_prompt": str (a realistic photo prompt that would show exactly what the sentence describes,
+   the key part large and clear; never ask for text, numbers or letters in the image)}}"""

@@ -83,6 +83,30 @@ def main(path: str) -> int:
                   f"<!-- job:{job} -->\nstatus: **{j['status']}** · last finished stage: `{j['stage']}`\n\n"
                   f"error: `{j['error']}`\n\nrecent events:\n" + "\n".join(f"- {r['message']}" for r in ev))
         return 0
+    if action == "build_audio":
+        # One-time: original music beds + curated sound effects, committed to the repo.
+        from shorts.providers.music import generate_library, generate_sfx
+        key = os.environ.get("ELEVENLABS_API_KEY", "")
+        notes = []
+        try:
+            notes.append(f"music: {len(generate_library(key, ROOT / 'assets' / 'music'))} new tracks")
+        except Exception as e:  # noqa: BLE001
+            notes.append(f"music failed: {e}")
+        try:
+            notes.append(f"sfx: {len(generate_sfx(key, ROOT / 'assets' / 'sfx'))} new effects")
+        except Exception as e:  # noqa: BLE001
+            notes.append(f"sfx failed: {e}")
+        subprocess.run(["git", "config", "user.name", "shorts-bot"], check=True)
+        subprocess.run(["git", "config", "user.email", "shorts-bot@users.noreply.github.com"], check=True)
+        subprocess.run(["git", "add", "assets/music", "assets/sfx"], check=False)
+        if subprocess.run(["git", "diff", "--cached", "--quiet"]).returncode != 0:
+            subprocess.run(["git", "commit", "-m", "Add generated audio library"], check=True)
+            subprocess.run(["git", "push", "origin", "HEAD:main"], check=True)
+        ok = all("failed" not in n for n in notes)
+        gh("label", "create", "audio", "--color", "5319E7", check=False)
+        gh("issue", "create", "--label", "audio" if ok else "alert",
+           "--title", "Audio library: " + ("ready" if ok else "problem"), "--body", "\n".join(f"- {n}" for n in notes))
+        return 0 if ok else 1
     if action in ("approve", "reject", "fix"):
         job = req["job"]
         if not re.fullmatch(r"[a-z0-9-]+", job):

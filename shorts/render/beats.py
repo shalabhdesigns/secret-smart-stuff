@@ -36,6 +36,13 @@ class Arrow:
 
 
 @dataclass
+class Marker:
+    label: str                # e.g. "1", "2"
+    pos: tuple[float, float]  # image fractions
+    at: float                 # absolute seconds when it pops in
+
+
+@dataclass
 class Beat:
     start: float
     end: float
@@ -52,6 +59,7 @@ class Beat:
     hook_text: str = ""                 # big headline shown over this beat (opening only)
     split_at: float | None = None       # diagonal reveal of image2 starting at this time
     labels: tuple[str, str] = ("", "")  # split labels
+    markers: list[Marker] = field(default_factory=list)   # numbered badges drawn on the image
 
 
 # ---------------- camera ----------------
@@ -63,6 +71,9 @@ def _cam_params(beat: Beat, p: float, first_zoom: float | None = None) -> tuple[
         fx, fy = beat.focus[0], beat.focus[1]
     e = ease(p)
     m = beat.motion
+    if m == "shake":                      # comic beat: quick jolt, then still
+        j = max(0.0, 1 - p * 4)
+        return 1.12, fx + 0.012 * math.sin(p * 90) * j, fy + 0.008 * math.cos(p * 70) * j
     if m == "push":
         return 1.0 + 0.14 * e, 0.5 + (fx - 0.5) * 0.5 * e, 0.5 + (fy - 0.5) * 0.5 * e
     if m == "pull":
@@ -117,6 +128,24 @@ def _pop(frame: Image.Image, pop: Pop, t: float, pal: Palette) -> None:
     for ox, oy in ((-6, 0), (6, 0), (0, -6), (0, 6), (-4, -4), (4, 4), (-4, 4), (4, -4)):
         d.text((x + ox, y + oy), text, font=f, fill=outline)
     d.text((x, y), text, font=f, fill=col)
+
+
+def _marker(frame: Image.Image, mk: Marker, to_out, t: float, pal: Palette) -> None:
+    """Numbered badge that pops onto a specific spot (e.g. pull-tab 1, 2, 3)."""
+    dt = t - mk.at
+    if dt < 0:
+        return
+    sc = min(1.0, 0.4 + 0.6 * ease(dt / 0.16)) if dt < 0.16 else (1.12 - 0.12 * ease((dt - 0.16) / 0.12) if dt < 0.28 else 1.0)
+    x, y = to_out(*mk.pos)
+    x = min(max(x, 90), W - 90)
+    y = min(max(y, SAFE_TOP + 60), SAFE_BOTTOM - 60)
+    r = 58 * sc
+    d = ImageDraw.Draw(frame, "RGBA")
+    d.ellipse([x - r - 6, y - r - 6, x + r + 6, y + r + 6], fill=pal.paper + (255,))
+    d.ellipse([x - r, y - r, x + r, y + r], fill=pal.accent + (255,))
+    f = _font(max(10, int(72 * sc)), "Black")
+    tw = d.textlength(mk.label, font=f)
+    d.text((x - tw / 2, y - 44 * sc), mk.label, font=f, fill=pal.paper + (255,))
 
 
 def _hook(frame: Image.Image, text: str, t: float, pal: Palette) -> None:
@@ -265,6 +294,8 @@ def render(beats: list[Beat], total: float, out: Path, pal: Palette) -> Path:
                 _callout(frame, b, to_out, t, pal)
             if b.arrow:
                 _arrow(frame, b.arrow, to_out, t, pal)
+            for mk in b.markers:
+                _marker(frame, mk, to_out, t, pal)
             for pop in b.pops:
                 _pop(frame, pop, t, pal)
             if b.hook_text:
