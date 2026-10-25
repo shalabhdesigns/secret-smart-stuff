@@ -342,6 +342,35 @@ def main(path: str) -> int:
         return do_rerender(p, req)
     if action == "status":
         return do_status(p)
+    if action == "backfill":
+        # videos published before features/experiments existed: record what they were made of
+        import time as _t
+        for up in p.state.db.execute("SELECT job_id, publish_at FROM uploads WHERE video_id IS NOT NULL").fetchall():
+            job = up["job_id"]
+            if p.state.db.execute("SELECT 1 FROM features WHERE job_id=?", (job,)).fetchone():
+                continue
+            d = ROOT / "build" / job
+            fetch_bundle(job, d)
+            if not (d / "script.json").exists():
+                continue
+            j = p.state.get_job(job)
+            slot = (up["publish_at"] or "T13:30")[11:16]
+            for e in X.load_experiments():
+                if e.get("variable") == "publish_slot_utc":
+                    arm = next((a for a, v in e["arms"].items() if v == slot), None)
+                    if arm:
+                        X.sync(p.state)
+                        with p.state.tx() as db:
+                            db.execute("INSERT OR IGNORE INTO assignments(experiment_id, job_id, arm, at) VALUES (?,?,?,?)",
+                                       (e["id"], job, arm, _t.time()))
+            vis = json.loads((d / "visuals.json").read_text()) if (d / "visuals.json").exists() else {}
+            words = json.loads((d / "words.json").read_text()) if (d / "words.json").exists() else []
+            from shorts.render.sfx import pick_music
+            render = {"duration": (words[-1]["end"] + 0.12) if words else 0, "music": str(pick_music(job) or "")}
+            p.state.set_features(job, {**X.features(json.loads((d / "script.json").read_text()), vis, render,
+                                                    p.state.get_topic(j["topic_id"]), p.state.job_cost(job)),
+                                       "publish_slot_utc": slot, "publish_at": up["publish_at"]})
+        return do_verify(p)
     if action == "retire":
         for old in req.get("jobs") or []:
             jj = p.state.get_job(old)
