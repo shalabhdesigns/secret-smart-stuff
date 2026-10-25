@@ -64,10 +64,10 @@ def main(path: str) -> int:
             notes["angle"] = req["angle"]
             if req.get("question"):
                 notes["question"] = req["question"]
-            fields = {"notes": json.dumps(notes), "status": "shortlisted"}
+            p.state.upsert_topic(tid, "", notes=json.dumps(notes), status="shortlisted")
             if req.get("question"):
-                fields["title"] = req["question"]
-            p.state.upsert_topic(tid, "", **fields)
+                p.state.db.execute("UPDATE topics SET title=? WHERE id=?", (req["question"], tid))
+                p.state.db.commit()
         if req.get("reset"):
             # owner/Claude asked to retry a job that had hit the attempt limit
             for jj in p.state.jobs():
