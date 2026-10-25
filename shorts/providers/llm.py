@@ -168,7 +168,7 @@ FAKE_RESPONSES: dict = {
             {"id": "b9", "narration": "Stones keep the sleepers dry and level.", "image": "img4", "focus": "the level rail", "motion": "pull", "transition": "cut", "callout": None, "pop": None, "arrow": None, "card_text": None, "sfx": None},
             {"id": "b10", "narration": "Machines shake them tight again every few years.", "image": "img6", "focus": "the tamping arms of the machine", "motion": "drift", "transition": "zoom_cut", "callout": "tamping", "pop": None, "arrow": None, "card_text": None, "sfx": None},
             {"id": "b11", "narration": "Locks, drains, holds.", "image": None, "focus": None, "motion": "hold", "transition": "cut", "callout": None, "pop": None, "arrow": None, "card_text": "LOCKS · DRAINS · HOLDS", "sfx": "ding"},
-            {"id": "b12", "narration": "So next time, look down beside the track.", "image": "img1", "focus": "the crushed stones beside the rail", "motion": "pull", "transition": "whip", "callout": None, "pop": None, "arrow": None, "card_text": None, "sfx": None},
+            {"id": "b12", "narration": "So next time you are on a platform...", "image": "img1", "focus": "the crushed stones beside the rail", "motion": "pull", "transition": "whip", "callout": None, "pop": None, "arrow": None, "card_text": None, "sfx": None},
         ],
         "facts": [{"claim": "Ballast holds sleepers in place", "sources": ["https://example.com/fake-source"], "main": True},
                   {"claim": "Ballast drains water", "sources": ["https://example.com/fake-source"]}],

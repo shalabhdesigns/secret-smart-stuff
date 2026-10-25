@@ -84,6 +84,7 @@ class AudioPlan:
     sfx: list[tuple[Path, float, float]] = field(default_factory=list)  # (file, start_s, gain_db)
     target_lufs: float = -14.0               # common loudness target for mobile
     true_peak: float = -1.5
+    loop: bool = False                       # cross-fade the music tail into the start
 
 
 def mix_audio(plan: AudioPlan, duration: float, out: Path) -> Path:
@@ -94,10 +95,23 @@ def mix_audio(plan: AudioPlan, duration: float, out: Path) -> Path:
     idx = 1
     if plan.music:
         inputs += ["-stream_loop", "-1", "-i", str(plan.music)]
-        filters.append(
-            f"[{idx}:a]aformat=sample_rates=48000:channel_layouts=stereo,"
-            f"volume={plan.music_gain_db}dB,atrim=0:{duration:.3f}[mraw]"
-        )
+        if plan.loop:
+            # Seamless replay: the music that would follow the last frame is cross-faded into the
+            # first second, so when the Short loops the music carries on instead of jumping.
+            c = 1.0
+            filters.append(
+                f"[{idx}:a]aformat=sample_rates=48000:channel_layouts=stereo,"
+                f"volume={plan.music_gain_db}dB,atrim=0:{duration + c:.3f},asplit=2[mh][mt]"
+            )
+            filters.append(f"[mh]atrim=0:{duration:.3f},afade=t=in:st=0:d={c}:curve=qsin[mhead]")
+            filters.append(f"[mt]atrim={duration:.3f}:{duration + c:.3f},asetpts=PTS-STARTPTS,"
+                           f"afade=t=out:st=0:d={c}:curve=qsin[mtail]")
+            filters.append("[mhead][mtail]amix=inputs=2:duration=first:normalize=0[mraw]")
+        else:
+            filters.append(
+                f"[{idx}:a]aformat=sample_rates=48000:channel_layouts=stereo,"
+                f"volume={plan.music_gain_db}dB,atrim=0:{duration:.3f}[mraw]"
+            )
         # duck the music further whenever the narrator speaks
         filters.append("[mraw][key]sidechaincompress=threshold=0.03:ratio=8:attack=20:release=300[music]")
         mix_in.append("[music]")

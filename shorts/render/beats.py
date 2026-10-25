@@ -51,7 +51,8 @@ class Beat:
     focus: tuple[float, float, float, float] | None = None   # x, y, w, h fractions to frame
     motion: str = "push"                # push | pull | punch | drift_l | drift_r | hold | settle_to_start
     transition: str = "cut"             # cut | whip | zoom_cut | reveal
-    callout_label: str | None = None    # circles `focus` with this label
+    callout_label: str | None = None    # marks `focus` (style below) with this label
+    indicator: str = "ring"             # ring | brackets | spotlight | pointer
     callout_at: float | None = None
     pops: list[Pop] = field(default_factory=list)
     arrow: Arrow | None = None
@@ -191,27 +192,65 @@ def _arrow(frame: Image.Image, ar: Arrow, to_out, t: float, pal: Palette) -> Non
                    fill=pal.accent + (255,), width=12)
 
 
-def _callout(frame: Image.Image, beat: Beat, to_out, t: float, pal: Palette) -> None:
+def _callout(frame: Image.Image, beat: Beat, to_out, t: float, pal: Palette) -> Image.Image:
+    """Point at `focus` with one of several indicator styles (varied across a video)."""
     at = beat.callout_at if beat.callout_at is not None else beat.start + 0.25
     p = ease((t - at) / 0.5)
     if p <= 0 or not beat.focus:
-        return
+        return frame
     fx, fy, fw, fh = beat.focus
     cx, cy = to_out(fx, fy)
     rx_e, _ = to_out(fx + fw / 2, fy)
     _, ry_e = to_out(fx, fy + fh / 2)
     rx = min(max(70, abs(rx_e - cx) * 1.1), W * 0.42)
     ry = min(max(70, abs(ry_e - cy) * 1.1), H * 0.22)
-    cx = min(max(cx, rx + 20), W - rx - 20)      # keep the ring on screen
+    cx = min(max(cx, rx + 20), W - rx - 20)      # keep it on screen
     cy = min(max(cy, SAFE_TOP + ry), SAFE_BOTTOM - ry)
+    style = beat.indicator
+    if style == "spotlight":                      # dim everything except the detail
+        mask = Image.new("L", (W, H), int(150 * p))
+        md = ImageDraw.Draw(mask)
+        md.ellipse([cx - rx * 1.15, cy - ry * 1.15, cx + rx * 1.15, cy + ry * 1.15], fill=0)
+        mask = mask.filter(ImageFilter.GaussianBlur(40))
+        dark = Image.new("RGBA", (W, H), (10, 12, 20, 255))
+        frame = Image.composite(dark, frame, mask)
     d = ImageDraw.Draw(frame, "RGBA")
-    d.arc([cx - rx, cy - ry, cx + rx, cy + ry], start=-90, end=-90 + 360 * p, fill=pal.accent + (255,), width=10)
+    col = pal.accent + (255,)
+    if style == "ring":
+        d.arc([cx - rx, cy - ry, cx + rx, cy + ry], start=-90, end=-90 + 360 * p, fill=col, width=10)
+    elif style == "brackets":                     # viewfinder corners that snap in
+        g = 1.25 - 0.25 * p
+        bx, by = rx * g, ry * g
+        arm = min(bx, by) * 0.45
+        for sx in (-1, 1):
+            for sy in (-1, 1):
+                x0, y0 = cx + sx * bx, cy + sy * by
+                d.line([(x0, y0), (x0 - sx * arm, y0)], fill=col, width=12)
+                d.line([(x0, y0), (x0, y0 - sy * arm)], fill=col, width=12)
+    elif style == "pointer":                      # short arrow pointing in at the detail
+        side = -1 if cx > W / 2 else 1
+        tx, ty = cx - side * rx * 0.55, cy - ry * 0.55
+        sx_, sy_ = tx - side * 230, ty - 230
+        ex, ey = sx_ + (tx - sx_) * p, sy_ + (ty - sy_) * p
+        d.line([(sx_, sy_), (ex, ey)], fill=col, width=12)
+        if p > 0.6:
+            ang = math.atan2(ty - sy_, tx - sx_)
+            for s_ in (-1, 1):
+                d.line([(ex, ey), (ex - 44 * math.cos(ang + s_ * 0.5), ey - 44 * math.sin(ang + s_ * 0.5))],
+                       fill=col, width=12)
+        if beat.callout_label and p > 0.5:
+            ly = min(max(sy_ - 60, SAFE_TOP + 40), SAFE_BOTTOM - 60)
+            if not any(lo - 50 < ly < hi + 50 for lo, hi in [(CAPTION_Y - 130, CAPTION_Y + 130)]):
+                _label_box(d, beat.callout_label, (sx_, ly), pal, ease((p - 0.5) / 0.5))
+        return frame
     if beat.callout_label and p > 0.5:
         ly = _label_y(beat, to_out, cx, cy, ry, t)
-        if ly is None:          # nowhere clean to put it: the ring alone says enough
-            return
-        d.line([(cx, cy - ry if ly < cy else cy + ry), (cx, ly)], fill=pal.ink + (255,), width=6)
+        if ly is None:          # nowhere clean to put it: the mark alone says enough
+            return frame
+        if style != "spotlight":
+            d.line([(cx, cy - ry if ly < cy else cy + ry), (cx, ly)], fill=pal.ink + (255,), width=6)
         _label_box(d, beat.callout_label, (cx, ly), pal, ease((p - 0.5) / 0.5))
+    return frame
 
 
 CAPTION_Y = 1200    # set by render(); captions sit in a ~170 px band around this
@@ -314,7 +353,7 @@ def render(beats: list[Beat], total: float, out: Path, pal: Palette, caption_y: 
                     ((int(W * q) - W) // 2, (int(H * q) - H) // 2, (int(W * q) - W) // 2 + W, (int(H * q) - H) // 2 + H))
             frame = frame.convert("RGBA")
             if b.focus and b.callout_label is not None:
-                _callout(frame, b, to_out, t, pal)
+                frame = _callout(frame, b, to_out, t, pal)
             if b.arrow:
                 _arrow(frame, b.arrow, to_out, t, pal)
             for mk in b.markers:

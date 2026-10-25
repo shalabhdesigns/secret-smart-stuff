@@ -61,17 +61,22 @@ Format rules (these come from retention research, follow them exactly):
 - Keep the TOTAL inside the word budget above; short beats, no filler.
 - First "aha" (the core reason, stated plainly) must land by beat 4 or 5. Then go one layer deeper
   (how it works, a date, a number, a comparison), then the full answer.
-- LAST beat: a closing line that leads naturally back into beat 1 (the video loops), and it reuses
-  image img1 (same picture as beat 1).
+- SECOND-TO-LAST beat: the answer in one plain line (the payoff).
+- LAST beat (the loop): the video replays straight into beat 1 with no pause, so the last beat is an
+  UNFINISHED lead-in, 3-7 words, that beat 1's question grammatically completes. Read them together:
+  "So next time someone asks you..." + "Why does this onigiri hide its seaweed behind plastic?"
+  It must NOT be a question or a full sentence, must end with "...", and it reuses image img1.
 - 6-7 images total, in "images": each a realistic photo prompt, NO text, NO logos, NO people's faces,
   the key detail clearly visible. Beats reuse images with a different "focus" (a different visible
   part to frame) - that is how we get 12 visual states from 7 pictures.
-- "focus": the exact visible thing in that image to frame/circle (e.g. "the thin plastic film between
-  the seaweed and rice"). Required on every image beat.
-- "callout": 1-3 word label for the focus, on at most 6 beats. "pop": ONE emphatic word spoken in that
+- "focus": the exact visible thing in that image for the camera to move toward (e.g. "the thin plastic
+  film between the seaweed and rice"). Required on every image beat.
+- "callout": 1-3 word label, ONLY when the beat points at a small detail a viewer could miss; at most
+  3 beats, never neighbouring beats, never beat 1 or the last beat. Leave it null otherwise - the
+  camera move alone is usually enough. "pop": ONE emphatic word spoken in that
   beat, on at most 2 beats total. "card_text": 2-4 words for a paper blueprint card, at most 1 beat
   (no image on that beat). "arrow": at most 1 beat, {{"from": visible thing, "to": visible thing}}.
-- "hook_card": 2-3 words shown on screen for the first 1.5 s, DIFFERENT words from the spoken question.
+- "hook_card": 2-3 words (used for the thumbnail only; nothing is shown over the opening frame).
 - Use web search first: at least {min_sources} credible sources for the main reason. If the reason is
   disputed or folklore, say "the most common explanation is..." or mark the idea not viable.
 - Be conservative: no "most", "many people", "everyone", no superlatives, no "the only reason".
@@ -111,6 +116,9 @@ WRITTEN: "opening_line" is what the viewer hears first. Score 0-2 each, using th
 - hook: 2 = the opening line names a specific odd detail and makes you want the answer;
   1 = clear but generic; 0 = vague or misleading.
 - payoff: 2 = the question is clearly answered by the end; 1 = answered but weakly; 0 = not answered.
+  The LAST beat is by design an unfinished lead-in that flows into beat 1 when the Short loops
+  (e.g. "So next time someone asks you..."); judge the payoff on the beat before it, and do not
+  ask for the last beat to restate the answer.
 - visual_match: 2 = every image prompt fits its narration and is factually right; 1 = minor
   mismatch; 0 = a visual that would mislead.
 - accuracy: 2 = every claim supported by a listed source or your check; 1 = only small wording

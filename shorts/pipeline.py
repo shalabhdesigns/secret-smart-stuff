@@ -353,6 +353,14 @@ class Pipeline:
         if scenes[-1].get("image") != scenes[0].get("image") and scenes[0].get("image"):
             scenes[-1]["image"] = scenes[0]["image"]          # loop: end on the opening picture
             scenes[-1]["card_text"] = None
+        # loop lead-in: never a question or a closed sentence, so the voice carries into beat 1
+        last = scenes[-1].get("narration", "").strip()
+        if last.endswith("?") or len(last.split()) > 8:
+            last = "So next time someone asks you"          # safe lead-in for a question opening
+        scenes[-1]["narration"] = re.sub(r"[.!,;:…\s]+$", "", last) + "..."
+        for sc in (scenes[0], scenes[-1]):
+            sc["callout"] = None
+            sc["pop"] = None
         facts = s.get("facts") or []
         if not facts:
             raise StageFailed("no fact list")
@@ -592,13 +600,27 @@ class Pipeline:
             starts.append(words[min(wi, len(words) - 1)].start if wi else 0.0)
             beat_words.append(words[wi:wi + c])
             wi += c
-        end = words[-1].end + 0.45
+        # Loop: stop ~a word-gap after the last word so the replay's first word follows naturally.
+        end = words[-1].end + 0.12
         beats: list[Beat] = []
         sfx_events: list[tuple[str, float, float]] = []
         callouts_with_sound, comic_used, chime_used = 0, False, False
         whip_every = rng.choice([3, 4])
         motions_cycle = ["punch", "push", "drift_l", "pull", "drift_r"]
         rng.shuffle(motions_cycle)
+        # Indicators: only where a beat points at a specific detail, at most 3 per video, never on
+        # neighbouring beats, never on the loop beats, and a different style each time.
+        indicator_at: dict[int, str] = {}
+        styles = ["spotlight", "brackets", "pointer", "ring"]
+        rng.shuffle(styles)
+        last_k = -9
+        for k, sc in enumerate(scenes):
+            v = vis["beats"].get(sc["id"], {})
+            if (0 < k < len(scenes) - 1 and sc.get("callout") and v.get("focus") and not v.get("markers")
+                    and not sc.get("pop") and not v.get("arrow") and sc.get("tone") != "witty"
+                    and k - last_k > 1 and len(indicator_at) < 3):
+                indicator_at[k] = styles[len(indicator_at)]
+                last_k = k
         for k, sc in enumerate(scenes):
             b_start = starts[k]
             b_end = starts[k + 1] if k + 1 < len(scenes) else end
@@ -636,7 +658,7 @@ class Pipeline:
                 (ax, ay), (bx, by) = v["arrow"]
                 arrow = Arrow((ax, ay), (bx, by), b_start + 0.4)
                 sfx_events.append(("swipe", b_start + 0.35, -22.0))
-            if sc.get("callout") and focus and callouts_with_sound < 3:
+            if k in indicator_at and focus and callouts_with_sound < 3:
                 callouts_with_sound += 1
                 sfx_events.append(("click", b_start + 0.25, -22.0))
             for mk in markers:
@@ -650,17 +672,20 @@ class Pipeline:
                 chime_used = True
                 sfx_events.append(("chime", b_start + 0.1, -18.0))
             beats.append(Beat(start=b_start, end=b_end, image=img, focus=focus, motion=motion, transition=trans,
-                              callout_label=(sc.get("callout") or None) if focus else None,
+                              callout_label=(sc.get("callout") or "") if (focus and k in indicator_at) else None,
+                              indicator=indicator_at.get(k, "ring"),
                               callout_at=b_start + 0.25, pops=pops, arrow=arrow,
                               card_text=(sc.get("card_text") or "") if not img else "", markers=markers,
-                              hook_text=(script.get("hook_card") or "") if k == 0 else ""))
+                              # no opening text card: it would pop in on every replay and break the loop
+                              hook_text=""))
         boxes = [b.focus for b in beats if b.focus]
         y_cap = 1360 if any(0.50 <= f[1] <= 0.70 for f in boxes) else 1200
         video = render_beats(beats, end, d / "video.mp4", self.pal, caption_y=y_cap)
         lib = build_library()
         sfx = [(lib[name], max(0.0, t), gain) for name, t, gain in sfx_events if name in lib]
         music = pick_music(job_id)
-        audio = A.mix_audio(A.AudioPlan(Path(voice["audio"]), music, music_gain_db=-17.0, sfx=sfx), end, d / "mix.wav")
+        audio = A.mix_audio(A.AudioPlan(Path(voice["audio"]), music, music_gain_db=-17.0, sfx=sfx,
+                                        loop=True), end, d / "mix.wav")
         ass = write_ass(words, d / "captions.ass", y_center=y_cap,
                         font=self.cfg.channel["style"]["caption_font"],
                         font_size=self.cfg.channel["style"]["caption_size"])
