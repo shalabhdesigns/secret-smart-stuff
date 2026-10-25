@@ -153,7 +153,8 @@ class Pipeline:
 
     def next_topic(self) -> dict | None:
         # Finish what was started first: a failed job resumes from its last good stage.
-        for j in self.state.jobs("failed"):
+        # A job paused by the daily budget is finished the next day before anything new starts.
+        for j in self.state.jobs("failed") + self.state.jobs("paused"):
             t = self.state.get_topic(j["topic_id"])
             if t:
                 return t
