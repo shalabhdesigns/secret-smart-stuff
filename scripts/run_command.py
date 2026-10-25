@@ -371,6 +371,25 @@ def main(path: str) -> int:
                                                     p.state.get_topic(j["topic_id"]), p.state.job_cost(job)),
                                        "publish_slot_utc": slot, "publish_at": up["publish_at"]})
         return do_verify(p)
+    if action == "accounts":
+        # provider balances (no secrets printed), reported on a GitHub issue
+        import requests
+        lines = []
+        try:
+            r = requests.get("https://api.elevenlabs.io/v1/user/subscription",
+                             headers={"xi-api-key": os.environ.get("ELEVENLABS_API_KEY", "")}, timeout=30).json()
+            lines.append(f"ElevenLabs: tier={r.get('tier')} used={r.get('character_count')} limit={r.get('character_limit')} "
+                         f"next_reset={r.get('next_character_count_reset_unix')} status={r.get('status')}")
+        except Exception as e:  # noqa: BLE001
+            lines.append(f"ElevenLabs: error {e}")
+        try:
+            r = requests.get("https://api.bfl.ai/v1/credits", headers={"x-key": os.environ.get("BFL_API_KEY", "")}, timeout=30)
+            lines.append(f"BFL: {r.status_code} {r.text[:200]}")
+        except Exception as e:  # noqa: BLE001
+            lines.append(f"BFL: error {e}")
+        gh("issue", "create", "--title", "Accounts check", "--label", "audio", "--body", "\n".join(f"- {x}" for x in lines), check=False)
+        print(lines)
+        return 0
     if action == "retire":
         for old in req.get("jobs") or []:
             jj = p.state.get_job(old)
