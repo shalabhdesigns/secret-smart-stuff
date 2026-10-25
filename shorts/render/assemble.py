@@ -87,46 +87,70 @@ class AudioPlan:
     loop: bool = False                       # cross-fade the music tail into the start
 
 
+def _decode(path: Path, sr: int = 48000):
+    import numpy as np
+    raw = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", str(path), "-f", "f32le", "-ac", "2",
+                          "-ar", str(sr), "-"], capture_output=True, check=True, timeout=120).stdout
+    return np.frombuffer(raw, np.float32).reshape(-1, 2).copy()
+
+
+def _fit(x, n: int):
+    import numpy as np
+    if len(x) >= n:
+        return x[:n]
+    return np.concatenate([x, np.zeros((n - len(x), 2), np.float32)])
+
+
 def mix_audio(plan: AudioPlan, duration: float, out: Path) -> Path:
-    """Narration + ducked music + sound effects, loudness-normalized, 48 kHz stereo."""
-    inputs = ["-i", str(plan.narration)]
-    # Every stream is made exactly `duration` long, and nothing loops forever, so ffmpeg always ends
-    # (an endless music input + amix "longest" hung on the runner's ffmpeg 6).
-    filters = [f"[0:a]aformat=sample_rates=48000:channel_layouts=stereo,apad=whole_dur={duration:.3f},"
-               f"atrim=start=0:end={duration:.3f},asplit=2[voice][key]"]
-    mix_in = ["[voice]"]
-    idx = 1
+    """Narration + ducked music + sound effects, loudness-normalized, 48 kHz stereo.
+
+    The mix itself is done in numpy (exact lengths, no ffmpeg filter-graph end-of-stream quirks,
+    which differ between ffmpeg versions and twice cut or hung the music on the build machine);
+    ffmpeg only decodes the inputs and applies the final loudness normalisation."""
+    import numpy as np
+    sr = 48000
+    n = int(round(duration * sr))
+    voice = _fit(_decode(plan.narration, sr), n)
+    mix = voice.copy()
     if plan.music:
         if plan.loop:
-            inputs += ["-i", str(_loop_bed(plan.music, duration, out.with_suffix(".bed.wav")))]
+            bed = _decode(_loop_bed(plan.music, duration, out.with_suffix(".bed.wav")), sr)
         else:
-            inputs += ["-stream_loop", "3", "-i", str(plan.music)]
-        filters.append(
-            f"[{idx}:a]aformat=sample_rates=48000:channel_layouts=stereo,"
-            f"volume={plan.music_gain_db}dB,atrim=start=0:end={duration:.3f}[mraw]"
-        )
-        # duck the music further whenever the narrator speaks
-        filters.append("[mraw][key]sidechaincompress=threshold=0.03:ratio=8:attack=20:release=300[music]")
-        mix_in.append("[music]")
-        idx += 1
-    else:
-        filters.append("[key]anullsink")
+            m = _decode(plan.music, sr)
+            bed = np.tile(m, (n // max(1, len(m)) + 1, 1))
+        bed = _fit(bed, n) * (10 ** (plan.music_gain_db / 20))
+        # duck the music a further ~7 dB while the narrator speaks (20 ms attack, 300 ms release)
+        level = np.abs(voice).max(axis=1)
+        hop = 240                                        # 5 ms blocks
+        blocks = level[: n // hop * hop].reshape(-1, hop).max(axis=1)
+        env = np.zeros_like(blocks)
+        a_att, a_rel = 1 - np.exp(-hop / (0.020 * sr)), 1 - np.exp(-hop / (0.300 * sr))
+        e = 0.0
+        for i, v in enumerate(blocks):
+            e += (v - e) * (a_att if v > e else a_rel)
+            env[i] = e
+        duck = 1 - 0.55 * np.clip(env / 0.05, 0, 1)
+        g = np.repeat(duck, hop)
+        g = np.concatenate([g, np.full(n - len(g), g[-1] if len(g) else 1.0)])
+        mix += bed * g[:, None]
     for (f, start, gain) in plan.sfx:
-        inputs += ["-i", str(f)]
-        ms = int(start * 1000)
-        filters.append(
-            f"[{idx}:a]aformat=sample_rates=48000:channel_layouts=stereo,volume={gain}dB,"
-            f"adelay={ms}|{ms}[s{idx}]"
-        )
-        mix_in.append(f"[s{idx}]")
-        idx += 1
-    filters.append(
-        f"{''.join(mix_in)}amix=inputs={len(mix_in)}:duration=first:normalize=0,"
-        f"atrim=start=0:end={duration:.3f},"
-        f"loudnorm=I={plan.target_lufs}:TP={plan.true_peak}:LRA=11[out]"
-    )
-    run(["ffmpeg", "-y", "-loglevel", "error", *inputs, "-filter_complex", ";".join(filters),
-         "-map", "[out]", "-ar", "48000", "-c:a", "pcm_s16le", str(out)], timeout=180)
+        fx = _decode(f, sr) * (10 ** (gain / 20))
+        i = int(max(0.0, start) * sr)
+        if i >= n:
+            continue
+        k = min(len(fx), n - i)
+        mix[i:i + k] += fx[:k]
+    raw = out.with_suffix(".raw.wav")
+    import wave
+    with wave.open(str(raw), "wb") as f:
+        f.setnchannels(2)
+        f.setsampwidth(2)
+        f.setframerate(sr)
+        f.writeframes((np.clip(mix, -1, 1) * 32767).astype("<i2").tobytes())
+    run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(raw),
+         "-af", f"loudnorm=I={plan.target_lufs}:TP={plan.true_peak}:LRA=11,"
+                f"apad=whole_dur={duration:.3f},atrim=start=0:end={duration:.3f}",
+         "-ar", "48000", "-c:a", "pcm_s16le", str(out)], timeout=180)
     return out
 
 
