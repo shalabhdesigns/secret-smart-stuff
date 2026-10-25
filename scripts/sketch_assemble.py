@@ -41,6 +41,11 @@ def run(cmd: list[str]) -> None:
 
 
 def fetch(src: str, out: Path) -> Path:
+    if src.startswith("release:"):                      # release:<tag>/<file> (kept media, no expiry)
+        tag, fn = src[len("release:"):].split("/", 1)
+        out = out.with_name(out.stem + "_" + Path(fn).name)
+        run(["gh", "release", "download", tag, "-p", fn, "-O", str(out), "--clobber"])
+        return out
     if src.startswith("http"):
         r = requests.get(src, timeout=300)
         r.raise_for_status()
@@ -175,7 +180,8 @@ def main(spec_path: str) -> int:
             x = decode(src) * (10 ** (float(snd.get("gain_db", 0)) / 20))
             if snd.get("reverb"):
                 x = reverb(x)
-            a = int((starts[i] + float(snd.get("at", 0))) * SR)
+            at = float(snd.get("at", 0)) + (durs[i] if snd.get("from_end") else 0.0)
+            a = max(0, int((starts[i] + at) * SR))
             if a >= n:
                 continue
             m = min(len(x), n - a)
