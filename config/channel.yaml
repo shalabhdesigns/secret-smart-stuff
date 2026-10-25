@@ -1,12 +1,17 @@
 # Channel identity and content rules. Edit freely; the pipeline reads this every run.
 channel:
-  name: Secret Smart Stuff
-  language: en
-  audience: "Curious adults and older teens (16-40), English-speaking, global (US, UK, CA, AU, IN)"
-  promise: "The secret smart reasons behind everyday things."
-  made_for_kids: false
-  youtube_category_id: "27"        # Education
-  default_hashtags: ["#design", "#everydaythings", "#didyouknow"]
+  name: Bhaukaali Toons
+  handle: "@BhaukaaliToons"         # confirm spelling in YouTube Studio
+  show: Sab Theek Hai                 # recurring sketch show: Dev, Rocky, Meera
+  google_account: bhaukaalitoons@gmail.com
+  instagram: "@bhaukaalitoons"        # confirm spelling; Reels posted manually for now
+  language: hi                        # Hinglish / UP Hindi dialogue, Roman Hinglish captions
+  audience: "Hindi-speaking adults 18-40 in India (UP, Delhi-NCR, Bihar, MP) who enjoy desi slice-of-life comedy"
+  promise: "Desi middle-class life, where nobody can say no and everything is 'theek'."
+  made_for_kids: false                # adult humour; cartoon style does not mean kids content
+  youtube_category_id: "23"          # Comedy
+  default_hashtags: ["#SabTheekHai", "#hindicomedy", "#desicomedy"]
+  previous: {name: Secret Smart Stuff, handle: "@secretsmartstuff", account: secretsmartstuff@gmail.com, status: retired Oct 2026}
 
 voice:
   provider: elevenlabs
