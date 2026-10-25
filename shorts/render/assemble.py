@@ -90,21 +90,23 @@ class AudioPlan:
 def mix_audio(plan: AudioPlan, duration: float, out: Path) -> Path:
     """Narration + ducked music + sound effects, loudness-normalized, 48 kHz stereo."""
     inputs = ["-i", str(plan.narration)]
-    filters = ["[0:a]aformat=sample_rates=48000:channel_layouts=stereo,asplit=2[voice][key]"]
+    # Every stream is made exactly `duration` long, and nothing loops forever, so ffmpeg always ends
+    # (an endless music input + amix "longest" hung on the runner's ffmpeg 6).
+    filters = [f"[0:a]aformat=sample_rates=48000:channel_layouts=stereo,apad=whole_dur={duration:.3f},"
+               f"atrim=start=0:end={duration:.3f},asplit=2[voice][key]"]
     mix_in = ["[voice]"]
     idx = 1
     if plan.music:
-        inputs += ["-stream_loop", "-1", "-i", str(plan.music)]
-        music_in = _loop_bed(plan.music, duration, out.with_suffix(".bed.wav")) if plan.loop else plan.music
-        inputs[-1] = str(music_in)
+        if plan.loop:
+            inputs += ["-i", str(_loop_bed(plan.music, duration, out.with_suffix(".bed.wav")))]
+        else:
+            inputs += ["-stream_loop", "3", "-i", str(plan.music)]
         filters.append(
             f"[{idx}:a]aformat=sample_rates=48000:channel_layouts=stereo,"
             f"volume={plan.music_gain_db}dB,atrim=start=0:end={duration:.3f}[mraw]"
         )
         # duck the music further whenever the narrator speaks
-        # the key (voice) is padded to full length, or the compressor would stop the music when the voice ends
-        filters.append(f"[key]apad=whole_dur={duration:.3f}[keyp]")
-        filters.append("[mraw][keyp]sidechaincompress=threshold=0.03:ratio=8:attack=20:release=300[music]")
+        filters.append("[mraw][key]sidechaincompress=threshold=0.03:ratio=8:attack=20:release=300[music]")
         mix_in.append("[music]")
         idx += 1
     else:
@@ -119,12 +121,12 @@ def mix_audio(plan: AudioPlan, duration: float, out: Path) -> Path:
         mix_in.append(f"[s{idx}]")
         idx += 1
     filters.append(
-        f"{''.join(mix_in)}amix=inputs={len(mix_in)}:duration=longest:normalize=0,"
-        f"apad,atrim=0:{duration:.3f},"
+        f"{''.join(mix_in)}amix=inputs={len(mix_in)}:duration=first:normalize=0,"
+        f"atrim=start=0:end={duration:.3f},"
         f"loudnorm=I={plan.target_lufs}:TP={plan.true_peak}:LRA=11[out]"
     )
     run(["ffmpeg", "-y", "-loglevel", "error", *inputs, "-filter_complex", ";".join(filters),
-         "-map", "[out]", "-ar", "48000", "-c:a", "pcm_s16le", str(out)])
+         "-map", "[out]", "-ar", "48000", "-c:a", "pcm_s16le", str(out)], timeout=180)
     return out
 
 
