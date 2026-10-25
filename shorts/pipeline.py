@@ -164,11 +164,21 @@ class Pipeline:
         return None
 
     # ---------- production ----------
-    def produce(self, topic_id: str) -> str:
+    def produce(self, topic_id: str, fresh: bool = False) -> str:
         topic = self.state.get_topic(topic_id)
         if not topic:
             raise KeyError(topic_id)
+        existing = [j for j in self.state.jobs() if j["topic_id"] == topic_id]
         job_id = f"{topic_id}-v1"
+        if existing:
+            latest = max(existing, key=lambda j: j["created_at"])
+            if fresh:
+                for j in existing:
+                    if j["status"] in ("review", "failed", "paused"):
+                        self.state.set_job_status(j["id"], "rejected", "superseded by a new version")
+                job_id = f"{topic_id}-v{len(existing) + 1}"
+            else:
+                job_id = latest["id"]
         job = self.state.start_job(job_id, topic_id)
         if job["status"] in ("review", "approved", "published"):
             return job_id
@@ -311,30 +321,46 @@ class Pipeline:
 
     def _validate_script(self, s: dict) -> None:
         scenes = s.get("scenes") or []
-        if not 3 <= len(scenes) <= 8:
-            raise StageFailed(f"script has {len(scenes)} scenes (want 4-7)")
+        if not 9 <= len(scenes) <= 14:
+            raise StageFailed(f"script has {len(scenes)} beats (want 11-13)")
         words = sum(len(sc.get("narration", "").split()) for sc in scenes)
         lo, hi = self.cfg.channel["rules"]["target_seconds"]
         wps = self.cfg.channel["rules"]["words_per_second"]
-        if words > hi * wps * 1.35 or words < lo * wps * 0.6:
-            raise StageFailed(f"script is {words} words, outside target")
+        if words > hi * wps * 1.08 or words < lo * wps * 0.75:
+            raise StageFailed(f"script is {words} words; target {int(lo*wps)}-{int(hi*wps)}")
+        images = s.get("images") or {}
+        if not 4 <= len(images) <= 9:
+            raise StageFailed(f"script has {len(images)} images (want 6-7)")
+        for sc in scenes:
+            if sc.get("image") and sc["image"] not in images:
+                raise StageFailed(f"beat {sc.get('id')} uses unknown image {sc['image']}")
+            if not sc.get("image") and not sc.get("card_text"):
+                raise StageFailed(f"beat {sc.get('id')} has neither image nor card")
+        if sum(1 for sc in scenes if sc.get("pop")) > 2:
+            for sc in scenes[::-1]:
+                if sc.get("pop") and sum(1 for x in scenes if x.get("pop")) > 2:
+                    sc["pop"] = None
+        if sum(1 for sc in scenes if sc.get("card_text") and not sc.get("image")) > 1:
+            raise StageFailed("more than one card beat")
+        if scenes[-1].get("image") != scenes[0].get("image") and scenes[0].get("image"):
+            scenes[-1]["image"] = scenes[0]["image"]          # loop: end on the opening picture
+            scenes[-1]["card_text"] = None
         facts = s.get("facts") or []
         if not facts:
             raise StageFailed("no fact list")
         main = [f for f in facts if f.get("main")] or facts[:1]
         need = self.cfg.channel["rules"]["min_sources_main_claim"]
+        if any(not f.get("sources") for f in facts):
+            raise StageFailed("a claim has no source")
         distinct = {u for f in facts for u in (f.get("sources") or [])}
         if self.cfg.live and (any(not f.get("sources") for f in main) or len(distinct) < need):
             raise StageFailed("main claim has too few sources")
-        if any(not f.get("sources") for f in facts):
-            raise StageFailed("a claim has no source")
         banned = self.cfg.channel["rules"]["banned_topics"]
         text = " ".join(sc.get("narration", "") for sc in scenes).lower()
         hits = [b for b in banned if re.search(rf"\b{re.escape(b)}\b", text)]
         if hits:
             raise StageFailed(f"script mentions banned topic words: {hits}")
 
-    # ---- F (part 1): independent review of the script, with one bounded repair
     def _stage_review(self, job_id: str, topic: dict, d: Path) -> dict:
         """Independent review, then up to 2 targeted repairs. If it still scores below the bar,
         the topic is dropped (QualityRejected) so the run can move on to a better topic."""
@@ -386,12 +412,8 @@ class Pipeline:
     # ---- D: voice
     def _stage_voice(self, job_id: str, topic: dict, d: Path) -> dict:
         script = json.loads((d / "script.json").read_text())
+        self._sync_hook(script)
         scenes = script["scenes"]
-        hooks = script.get("hooks") or []
-        idx = script.get("chosen_hook", 0)
-        # The chosen hook replaces scene 1's narration so the spoken opening is the scored winner.
-        if hooks and 0 <= idx < len(hooks):
-            scenes[0]["narration"] = hooks[idx]
         text = " ".join(sc["narration"].strip() for sc in scenes)
         for word, say in (self.cfg.channel["voice"].get("pronunciations") or {}).items():
             text = re.sub(rf"\b{re.escape(word)}\b", say, text)
@@ -401,56 +423,75 @@ class Pipeline:
         sp = self.tts.speak(text, d / "narration.mp3")
         if sp.usd:
             self.state.add_cost("elevenlabs", "tts_chars", sp.chars, sp.usd, job_id)
+        # Speech must start at second zero: trim leading silence and shift the word timings.
+        lead = max(0.0, (sp.words[0].start if sp.words else 0.0) - 0.05)
+        audio = sp.audio
+        if lead > 0.02:
+            trimmed = d / ("narration_trim" + sp.audio.suffix)
+            A.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{lead:.3f}", "-i", str(sp.audio),
+                   "-c", "copy" if sp.audio.suffix == ".wav" else "libmp3lame", str(trimmed)])
+            audio = trimmed
+            for w in sp.words:
+                w.start, w.end = max(0.0, w.start - lead), max(0.0, w.end - lead)
         (d / "script.json").write_text(json.dumps(script, indent=2, ensure_ascii=False))
         (d / "words.json").write_text(json.dumps([w.__dict__ for w in sp.words]))
-        return {"audio": str(sp.audio), "words": str(d / "words.json"), "duration": sp.duration}
+        return {"audio": str(audio), "words": str(d / "words.json"), "duration": sp.words[-1].end if sp.words else 0}
 
-    # ---- E (part 1): images + vision check + callout location
+    # ---- E (part 1): images + vision check + focus boxes
     def _stage_visuals(self, job_id: str, topic: dict, d: Path) -> dict:
         script = json.loads((d / "script.json").read_text())
         style = self.cfg.channel["style"]["image_style"]
         rng = random.Random(job_id)
-        out: dict = {"scenes": {}, "flags": []}
+        out: dict = {"images": {}, "beats": {}, "flags": []}
+        images: dict = script.get("images") or {}
+        first_focus = {}
         for sc in script["scenes"]:
-            if sc["type"] == "blueprint_card":
-                continue
+            if sc.get("image") and sc.get("focus") and sc["image"] not in first_focus:
+                first_focus[sc["image"]] = sc["focus"]
+        for key, prompt_text in images.items():
+            prompt = f"{prompt_text}. {style}. Vertical 9:16 composition, key subject large and centred."
+            path = d / f"{key}.png"
+            best = None
+            for attempt in range(2):
+                if self.cfg.live:
+                    self.budget.authorize(0.03, "image", job_id)
+                try:
+                    img, usd = self.images.generate(prompt, path, seed=rng.randint(1, 10**6))
+                except Exception as e:  # noqa: BLE001
+                    fb = self.cfg.pipeline["providers"]["images"].get("fallback_model")
+                    if not fb:
+                        raise
+                    self.state.log(f"image model failed ({e}); trying {fb}", "warn", job_id)
+                    img, usd = self.images.generate(prompt, path, seed=rng.randint(1, 10**6), model=fb)
+                if usd:
+                    self.state.add_cost("bfl", "image", 1, usd, job_id)
+                chk = self._look(img, first_focus.get(key, prompt_text), prompt_text, job_id)
+                best = (img, chk)
+                if not (chk.get("has_text_or_logo") or chk.get("artifacts")) and chk.get("matches_prompt", True):
+                    break
+            img, chk = best  # type: ignore[misc]
+            if chk.get("has_text_or_logo") or chk.get("artifacts") or not chk.get("matches_prompt", True):
+                out["flags"].append(f"{key}: image check failed twice ({chk})")
+            out["images"][key] = {"path": str(img), "check": chk, "focus_cache": {first_focus.get(key, ""): chk}}
+        for sc in script["scenes"]:
             entry: dict = {}
-            for key, slot in (("image_prompt", "image"), ("image2_prompt", "image2")):
-                if not sc.get(key):
-                    continue
-                prompt = f"{sc[key]}. {style}. Vertical 9:16 composition, key subject in the middle third."
-                path = d / f"{sc['id']}_{slot}.png"
-                best = None
-                for attempt in range(2):
-                    if self.cfg.live:
-                        self.budget.authorize(0.03, "image", job_id)
-                    try:
-                        img, usd = self.images.generate(prompt, path, seed=rng.randint(1, 10**6))
-                    except Exception as e:  # noqa: BLE001 - one try on the fallback model, then give up
-                        fb = self.cfg.pipeline["providers"]["images"].get("fallback_model")
-                        if not fb:
-                            raise
-                        self.state.log(f"image model failed ({e}); trying {fb}", "warn", job_id)
-                        img, usd = self.images.generate(prompt, path, seed=rng.randint(1, 10**6), model=fb)
-                    if usd:
-                        self.state.add_cost("bfl", "image", 1, usd, job_id)
-                    target = (sc.get("callouts") or [{}])[0].get("target", sc[key])
-                    chk = self._look(img, target, sc[key], job_id)
-                    best = (img, chk)
-                    if not (chk.get("has_text_or_logo") or chk.get("artifacts")) and chk.get("matches_prompt", True):
-                        break
-                img, chk = best  # type: ignore[misc]
-                if chk.get("has_text_or_logo") or chk.get("artifacts") or not chk.get("matches_prompt", True):
-                    out["flags"].append(f"{sc['id']} {slot}: image check failed twice ({chk})")
-                entry[slot] = str(img)
-                if slot == "image":
-                    entry["callouts"] = []
-                    for co in sc.get("callouts") or []:
-                        loc = chk if co.get("target") == target else self._look(img, co["target"], sc[key], job_id)
-                        if loc.get("found"):
-                            entry["callouts"].append({"box": [loc["x"], loc["y"], loc.get("w", 0.2), loc.get("h", 0.2)],
-                                                      "label": co.get("label", "")[:24]})
-            out["scenes"][sc["id"]] = entry
+            if sc.get("image") and sc.get("focus"):
+                info = out["images"][sc["image"]]
+                loc = info["focus_cache"].get(sc["focus"])
+                if loc is None:
+                    loc = self._look(Path(info["path"]), sc["focus"], images[sc["image"]], job_id)
+                    info["focus_cache"][sc["focus"]] = loc
+                if loc.get("found"):
+                    entry["focus"] = [loc["x"], loc["y"], loc.get("w", 0.25), loc.get("h", 0.25)]
+            if sc.get("arrow") and sc.get("image"):
+                info = out["images"][sc["image"]]
+                a = self._look(Path(info["path"]), sc["arrow"].get("from", ""), images[sc["image"]], job_id)
+                b = self._look(Path(info["path"]), sc["arrow"].get("to", ""), images[sc["image"]], job_id)
+                if a.get("found") and b.get("found"):
+                    entry["arrow"] = [[a["x"], a["y"]], [b["x"], b["y"]]]
+            out["beats"][sc["id"]] = entry
+        for info in out["images"].values():
+            info.pop("focus_cache", None)
         (d / "visuals.json").write_text(json.dumps(out, indent=2))
         return {"file": str(d / "visuals.json"), "flags": out["flags"]}
 
@@ -464,55 +505,83 @@ class Pipeline:
                       max_tokens=400)
         return r.data or {}
 
-    # ---- E (part 2): render
+    # ---- E (part 2): render (v2 beat engine)
     def _stage_render(self, job_id: str, topic: dict, d: Path) -> dict:
+        from .render.beats import Arrow, Beat, Pop, render as render_beats
+        from .render.sfx import build_library, pick_music
         script = json.loads((d / "script.json").read_text())
-        vis = json.loads((d / "visuals.json").read_text())["scenes"]
+        vis = json.loads((d / "visuals.json").read_text())
         voice = self._art(job_id, "voice")
         words = [A_word(**w) for w in json.loads(Path(voice["words"]).read_text())]
         scenes = script["scenes"]
+        rng = random.Random(job_id + "style")
+        # beat timing from the real word timings
         counts = [len(sc["narration"].split()) for sc in scenes]
-        starts, i = [], 0
+        starts, wi = [], 0
+        beat_words = []
         for c in counts:
-            starts.append(words[min(i, len(words) - 1)].start if i else 0.0)
-            i += c
-        end = words[-1].end + 0.6
-        motions = list(self.cfg.channel["style"]["variety"]["motions"])
-        random.Random(job_id).shuffle(motions)
-        clips = []
+            starts.append(words[min(wi, len(words) - 1)].start if wi else 0.0)
+            beat_words.append(words[wi:wi + c])
+            wi += c
+        end = words[-1].end + 0.45
+        beats: list[Beat] = []
+        sfx_events: list[tuple[str, float]] = []
+        whip_every = rng.choice([3, 4])
+        motions_cycle = ["punch", "push", "drift_l", "pull", "drift_r"]
+        rng.shuffle(motions_cycle)
         for k, sc in enumerate(scenes):
-            dur = (starts[k + 1] if k + 1 < len(scenes) else end) - starts[k]
-            v = vis.get(sc["id"], {})
-            kind = sc["type"] if sc["type"] in ("comparison", "blueprint_card") else "image"
-            if kind == "comparison" and not v.get("image2"):
-                kind = "image"
-            scene = Scene(
-                kind=kind, duration=max(dur, 0.8),
-                image=Path(v["image"]) if v.get("image") else None,
-                image2=Path(v["image2"]) if v.get("image2") else None,
-                labels=tuple((sc.get("labels") or ["", ""])[:2]),  # type: ignore[arg-type]
-                motion=motions[k % len(motions)],
-                callouts=[Callout(tuple(c["box"]), c["label"], 0.35 + 0.9 * j)  # type: ignore[arg-type]
-                          for j, c in enumerate(v.get("callouts", []))],
-                card_text=sc.get("card_text") or "",
-            )
-            if scene.kind == "image" and scene.image is None:
-                scene.kind, scene.card_text = "blueprint_card", sc.get("card_text") or sc.get("on_screen_text") or ""
-            clips.append(render_scene(scene, d / f"clip_{k:02d}.mp4", self.pal))
-        video = A.concat(clips, d / "video.mp4")
-        music = self.cfg.channel.get("music_file")
-        audio = A.mix_audio(A.AudioPlan(Path(voice["audio"]), Path(music) if music else None), end, d / "mix.wav")
-        hook_text = (scenes[0].get("on_screen_text") or "").strip()
-        # If a callout target sits in the default caption band, drop captions lower so they
-        # don't cover the circled detail (still above the phone's bottom title/buttons area).
-        boxes = [c["box"] for v in vis.values() for c in v.get("callouts", [])]
-        y_cap = 1360 if any(0.50 <= b[1] <= 0.70 for b in boxes) else 1180
+            b_start = starts[k]
+            b_end = starts[k + 1] if k + 1 < len(scenes) else end
+            v = vis["beats"].get(sc["id"], {})
+            img = Path(vis["images"][sc["image"]]["path"]) if sc.get("image") else None
+            motion = {"punch": "punch", "push": "push", "pull": "pull", "hold": "hold",
+                      "drift": motions_cycle[k % len(motions_cycle)]}.get(sc.get("motion") or "", motions_cycle[k % len(motions_cycle)])
+            if k == 0:
+                motion = "push"                                    # starts at zoom 1.0 (loop anchor)
+            if k == len(scenes) - 1:
+                motion = "settle_to_start"                         # lands on the opening frame
+            trans = sc.get("transition") or ("whip" if (k % whip_every == whip_every - 1) else ("zoom_cut" if k % 2 else "cut"))
+            if k == 0:
+                trans = "cut"
+            focus = tuple(v["focus"]) if v.get("focus") else None
+            if motion == "punch" and not focus:
+                motion = "push"
+            pops = []
+            if sc.get("pop"):
+                at = b_start + 0.3
+                for w in beat_words[k]:
+                    if re.sub(r"[^a-z0-9]", "", w.text.lower()) == re.sub(r"[^a-z0-9]", "", sc["pop"].lower()):
+                        at = w.start
+                        break
+                pops.append(Pop(sc["pop"], at))
+                sfx_events.append(("pop", at))
+            arrow = None
+            if v.get("arrow"):
+                (ax, ay), (bx, by) = v["arrow"]
+                arrow = Arrow((ax, ay), (bx, by), b_start + 0.4)
+            if sc.get("callout") and focus:
+                sfx_events.append(("tick", b_start + 0.25))
+            if trans == "whip":
+                sfx_events.append(("whoosh", b_start - 0.12))
+            if sc.get("sfx") in ("ding", "tick", "pop"):
+                sfx_events.append((sc["sfx"], b_start + 0.15))
+            beats.append(Beat(start=b_start, end=b_end, image=img, focus=focus, motion=motion, transition=trans,
+                              callout_label=(sc.get("callout") or None) if focus else None,
+                              callout_at=b_start + 0.25, pops=pops, arrow=arrow,
+                              card_text=(sc.get("card_text") or "") if not img else "",
+                              hook_text=(script.get("hook_card") or "") if k == 0 else ""))
+        video = render_beats(beats, end, d / "video.mp4", self.pal)
+        lib = build_library(d / "sfx")
+        sfx = [(lib[name], max(0.0, t), -14.0) for name, t in sfx_events if name in lib]
+        music = pick_music(job_id)
+        audio = A.mix_audio(A.AudioPlan(Path(voice["audio"]), music, music_gain_db=-21.0, sfx=sfx), end, d / "mix.wav")
+        boxes = [b.focus for b in beats if b.focus]
+        y_cap = 1360 if any(0.50 <= f[1] <= 0.70 for f in boxes) else 1200
         ass = write_ass(words, d / "captions.ass", y_center=y_cap,
                         font=self.cfg.channel["style"]["caption_font"],
-                        font_size=self.cfg.channel["style"]["caption_size"],
-                        overlays=[(0.0, min(2.2, end), hook_text.upper())] if hook_text else None)
+                        font_size=self.cfg.channel["style"]["caption_size"])
         final = A.finalize(video, audio, ass, d / "final.mp4")
-        return {"video": str(final), "duration": end}
+        return {"video": str(final), "duration": end, "beats": len(beats), "music": str(music) if music else None}
 
     # ---- F (part 2): media QA
     def _stage_qa(self, job_id: str, topic: dict, d: Path) -> dict:
@@ -558,7 +627,7 @@ class Pipeline:
         rv = json.loads((d / "review.json").read_text()) if (d / "review.json").exists() else {}
         qa = json.loads((d / "qa.json").read_text()) if (d / "qa.json").exists() else {}
         hooks = "\n".join(f"- {h['verdict']:>3} {h['band']:<8} {h['hook']}" for h in script.get("hook_scores", []))
-        scenes = "\n".join(f"{i+1}. **{s['type']}** — {s['narration']}" for i, s in enumerate(script["scenes"]))
+        scenes = "\n".join(f"{i+1}. {s['narration']}" + (f"  _(pop: {s['pop']})_" if s.get('pop') else "") for i, s in enumerate(script["scenes"]))
         facts = "\n".join(f"- {f['claim']} — " + ", ".join(f.get("sources", [])) for f in script.get("facts", []))
         checks = "\n".join(f"- {'✅' if c['ok'] else ('❌' if c['hard'] else '⚠️')} {c['name']}: {c['detail']}"
                            for c in qa.get("checks", []))

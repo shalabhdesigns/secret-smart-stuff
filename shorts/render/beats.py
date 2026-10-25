@@ -121,10 +121,10 @@ def _pop(frame: Image.Image, pop: Pop, t: float, pal: Palette) -> None:
 
 def _hook(frame: Image.Image, text: str, t: float, pal: Palette) -> None:
     """Opening headline: two lines, slams in, holds, slides up and out."""
-    if t > 2.4:
+    if t > 1.7:
         return
     p_in = ease(t / 0.22)
-    p_out = ease((t - 1.9) / 0.5) if t > 1.9 else 0.0
+    p_out = ease((t - 1.3) / 0.4) if t > 1.3 else 0.0
     lines = [ln.strip() for ln in text.split("\n") if ln.strip()][:2]
     f = _font(112, "Black")
     d = ImageDraw.Draw(frame, "RGBA")

@@ -63,7 +63,7 @@ def main(path: str) -> int:
                 if jj["topic_id"] == tid:
                     p.state.db.execute("UPDATE jobs SET attempts=0, status='failed' WHERE id=?", (jj["id"],))
                     p.state.db.commit()
-        job = p.produce(tid)
+        job = p.produce(tid, fresh=bool(req.get("fresh")))
         j = p.state.get_job(job)
         tries = 1
         while j["status"] == "rejected" and tries < 3 and not req.get("topic"):

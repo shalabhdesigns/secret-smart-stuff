@@ -47,39 +47,46 @@ Return JSON: {{"scores": {{"audience":n,"novelty":n,"hook":n,"story":n,"cost":n,
 "reason": one sentence}}"""
 
 SCRIPT = """TASK: script
-Research and write one Short.
+Research and write one Short in the channel's v2 format (question-first, fast-cut, light text).
 Object: {object}
 Question: {question}
 Angle: {angle}
 Pillar: {pillar}
-Target length: {seconds_lo}-{seconds_hi} seconds of narration (about {words_lo}-{words_hi} words).
+Target: {seconds_lo}-{seconds_hi} seconds of narration ({words_lo}-{words_hi} words total).
 
-Steps:
-1. Use web search to find at least {min_sources} credible sources for the MAIN reason
-   (manufacturer/standards bodies, museums, encyclopedias, engineering references, reputable
-   publications). If the reason is disputed or only folklore, say so honestly in the script
-   ("the most common explanation is...") or answer that the idea is not viable.
-2. Write 5 different opening hooks (spoken, 8-18 words, the object + the odd detail + a question
-   or a wrong guess). No "did you know".
-3. Write the script as 4-7 scenes. Each scene: 1-2 short sentences of narration, a visual.
-   Scene types: hero (object, wide), detail (close-up of the key detail), context (object in use /
-   in its real setting), comparison (two versions side by side - give image_prompt and
-   image2_prompt and two short labels), blueprint_card (paper/grid card with 1-3 short words -
-   use for the key takeaway, at most once).
-   For image scenes give an image_prompt describing a realistic photo with NO text, NO logos,
-   NO people's faces, and the key detail clearly visible. Give 0-2 callouts per image scene:
-   {{"target": the exact visible thing to circle, "label": 1-3 words}}.
-4. The last line must pay off the hook and loop naturally back to the first line.
-5. List every factual claim with the source URLs that support it.
+Format rules (these come from retention research, follow them exactly):
+- BEAT 1 is the spoken question, 8-12 words, specific, names the odd detail. The voice starts at
+  second zero. No "did you know", no intro.
+- 11-13 beats total. Each beat = ONE short sentence (5-9 words) and ONE visual state.
+- Keep the TOTAL inside the word budget above; short beats, no filler.
+- First "aha" (the core reason, stated plainly) must land by beat 4 or 5. Then go one layer deeper
+  (how it works, a date, a number, a comparison), then the full answer.
+- LAST beat: a closing line that leads naturally back into beat 1 (the video loops), and it reuses
+  image img1 (same picture as beat 1).
+- 6-7 images total, in "images": each a realistic photo prompt, NO text, NO logos, NO people's faces,
+  the key detail clearly visible. Beats reuse images with a different "focus" (a different visible
+  part to frame) - that is how we get 12 visual states from 7 pictures.
+- "focus": the exact visible thing in that image to frame/circle (e.g. "the thin plastic film between
+  the seaweed and rice"). Required on every image beat.
+- "callout": 1-3 word label for the focus, on at most 6 beats. "pop": ONE emphatic word spoken in that
+  beat, on at most 2 beats total. "card_text": 2-4 words for a paper blueprint card, at most 1 beat
+  (no image on that beat). "arrow": at most 1 beat, {{"from": visible thing, "to": visible thing}}.
+- "hook_card": 2-3 words shown on screen for the first 1.5 s, DIFFERENT words from the spoken question.
+- Use web search first: at least {min_sources} credible sources for the main reason. If the reason is
+  disputed or folklore, say "the most common explanation is..." or mark the idea not viable.
+- Be conservative: no "most", "many people", "everyone", no superlatives, no "the only reason".
 
 Return JSON:
 {{"viable": true|false, "reason_if_not": str,
- "title": "<=60 chars, accurate, a question or clear statement, no all-caps spam",
+ "title": "<=60 chars, accurate, a question or clear statement",
  "thumb_text": "2-3 words, different words from the title",
- "hooks": [5 strings], "chosen_hook": index,
- "scenes": [{{"id":"s1","type":...,"narration":...,"on_screen_text": (first scene only, 2-4 words,
-   different words from the narration),"image_prompt":...,"image2_prompt":..., "labels":[..,..],
-   "card_text": ..., "callouts":[...]}}],
+ "hook_card": "2-3 words",
+ "hooks": [5 alternative spoken opening questions, 8-12 words each], "chosen_hook": index,
+ "images": {{"img1": "prompt", "img2": "prompt", ...}},
+ "scenes": [{{"id": "b1", "narration": str, "image": "img1"|null, "focus": str|null,
+   "motion": "punch"|"push"|"pull"|"drift"|"hold", "transition": "cut"|"whip"|"zoom_cut",
+   "callout": str|null, "pop": str|null, "arrow": {{"from": str, "to": str}}|null,
+   "card_text": str|null, "sfx": "tick"|"pop"|"ding"|null}}],
  "facts": [{{"claim": str, "sources": [url, ...], "main": true|false}}],
  "description": "2 short sentences for the YouTube description (no sources here)",
  "hashtags": ["#..", "#.."] (3 max, relevant),

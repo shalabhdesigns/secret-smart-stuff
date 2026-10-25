@@ -18,7 +18,7 @@ voice:
 style:
   palette: {paper: "#F4EFE6", ink: "#14213D", accent: "#F26B1D"}
   caption_font: Inter
-  caption_size: 86
+  caption_size: 72                  # lighter captions (text overlays cost retention on speech-led Shorts)
   image_style: >-
     clean editorial product photograph, soft natural light, shallow depth of field,
     realistic materials, uncluttered background, no text, no letters, no logos, no watermark
@@ -35,7 +35,7 @@ pillars:
   - {id: india_asia,   name: "From India and Asia, for the world", share: 0.10}
 
 rules:
-  target_seconds: [25, 40]          # pilot also tests ~50 s variants
+  target_seconds: [28, 36]          # v2 format: 11-13 beats
   words_per_second: 2.6
   min_sources_main_claim: 2
   min_sources_other_claims: 1
