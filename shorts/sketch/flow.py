@@ -306,7 +306,7 @@ def send_review(p, req: dict) -> int:
     video = _get(ep["video_asset"], ROOT / "build" / "send")
     if not video:
         return 1
-    ep.pop("hold", None)
+    ep["hold"] = 0
     E.save(p.state, ep)
     qa = ep.get("qa") or {"tech": {"issues": []}, "visual": {"issues": []}}
     info = {"video": video, "version": ep["version"], "seconds": float((qa.get("tech") or {}).get("seconds") or 0),
@@ -348,7 +348,7 @@ def produce(p, req: dict) -> int:
         notify.send(p.state, f"⏸ Budget reached ({why}). No new episode today.")
         return 0
     number = E.next_number(p.state)
-    ep = {"id": f"ep{number:03d}", "number": number, "status": "writing", **({"hold": True} if req.get("hold") else {}),
+    ep = {"id": E.new_id(p.state, number), "number": number, "status": "writing", **({"hold": True} if req.get("hold") else {}),
           "slot": E.next_free_slot(p.state).isoformat().replace("+00:00", "Z"), "version": 0, "cost": 0.0}
     E.log(ep, "start", req.get("idea", ""))
     E.save(p.state, ep)

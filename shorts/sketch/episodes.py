@@ -37,9 +37,16 @@ CREATE TABLE IF NOT EXISTS episodes (
 """
 
 
+EXTRA_COLS = {"hold": "INTEGER DEFAULT 0"}     # columns added after the first release (migrated in place)
+
+
 def init(state) -> None:
     with state.tx() as c:
         c.executescript(SCHEMA)
+        have = {r[1] for r in c.execute("PRAGMA table_info(episodes)").fetchall()}
+        for col, typ in EXTRA_COLS.items():
+            if col not in have:
+                c.execute(f"ALTER TABLE episodes ADD COLUMN {col} {typ}")
 
 
 def _row(r) -> dict | None:
@@ -115,8 +122,17 @@ def pipeline_days_covered(state) -> int:
 
 
 def next_number(state) -> int:
-    eps = all_eps(state)
+    """Dropped or failed episodes don't use up a number: their replacement takes it."""
+    eps = [e for e in all_eps(state) if e["status"] not in ("rejected", "failed")]
     return max([1] + [e["number"] for e in eps]) + 1        # Ep 1 is the pilot
+
+
+def new_id(state, number: int) -> str:
+    base = f"ep{number:03d}"
+    taken = {e["id"] for e in all_eps(state)}
+    if base not in taken:
+        return base
+    return next(f"{base}{c}" for c in "bcdefghijklmnopqrstuvwxyz" if f"{base}{c}" not in taken)
 
 
 def fmt_ist(iso_utc: str) -> str:
