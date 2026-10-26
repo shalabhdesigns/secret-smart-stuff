@@ -38,8 +38,11 @@ evidence (`docs/EXPERIMENTS.md`) or owner approval, and log changes at the botto
   captions readable and inside the safe area.
 - Full contact sheet, loudness, first vs last frame (loop), 3× loop preview.
 
-## 7. Delivery
-- Owner reviews → approves → upload as **private** with title, description, hashtags → owner publishes or schedules.
+## 7. Delivery (automatic, see CLAUDE.md "The automatic daily loop")
+- Each episode reaches the owner's Telegram 3 days before its 7:30 PM IST slot (docs/METADATA.md).
+- ✏️ Fix + note → revised version; 🗑 Drop → replacement; ✅ Approve → private upload with publishAt = slot.
+- Not approved by 2 h before the slot → it does NOT go out; it moves to the next free slot and the owner is told.
 
 ## Change log
+- 2026-10-27: Automatic loop live (writer/director/voices/QA/Telegram); faces v2 and lip sync from research (docs/craft/).
 - 2026-10-26: Created from the approved pilot (2D puppet format replaces the archived explainer playbook).
