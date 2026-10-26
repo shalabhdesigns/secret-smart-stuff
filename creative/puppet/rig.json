@@ -314,6 +314,9 @@
   },
   "meera_phone": {
    "file": "meera_phone.png"
+  },
+  "dev_holdup": {
+   "file": "dev_holdup.png"
   }
  }
 }

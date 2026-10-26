@@ -116,6 +116,12 @@
    "kind": "stand",
    "desc": "standing, holding a smartphone to her right ear with her right hand, a chips packet in her left hand",
    "added": "2026-10-26"
+  },
+  "dev_holdup": {
+   "who": "dev",
+   "kind": "stand",
+   "desc": "standing, right hand raising a small object at shoulder height as if showing it, left hand holding a smartphone flat at chest height on speaker",
+   "added": "2026-10-26"
   }
  },
  "hair_variants": {
