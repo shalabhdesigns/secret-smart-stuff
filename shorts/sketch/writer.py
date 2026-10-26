@@ -202,7 +202,7 @@ def write(llm, history: list[dict], feedback: list[dict], number: int, idea: str
             "as directions.\nPREMISE:\n" + json.dumps(byid.get(t["id"], t), ensure_ascii=False) +
             "\nPANEL NOTE: " + t.get("make_it_funnier", "") +
             "\nReturn JSON {\"title_idea\": \"...\", \"premise\": \"...\", \"game\": \"...\", "
-            "\"new_characters\": [...], \"new_sets\": [...], \"lines\": [{\"who\": \"id\", \"hi\": "
+            "\"new_characters\": [...], \"new_sets\": [...], \"new_poses\": [...], \"lines\": [{\"who\": \"id\", \"hi\": "
             "\"Devanagari with audio tags\", \"cap\": \"Roman Hinglish caption\", \"direction\": \"what we see / "
             "how faces react\"}]}", 7000)
         scripts.append(sc)
@@ -231,7 +231,7 @@ def write(llm, history: list[dict], feedback: list[dict], number: int, idea: str
         "Keep every line exactly (ids l1, l2, ...). Stage it for maximum comedy: hook shot first, reaction close-ups on "
         "the laughs, the punch and the button marked, faces that match every beat.\nSCRIPT:\n"
         + json.dumps(best, ensure_ascii=False), 12000)
-    for k in ("new_characters", "new_sets", "game"):
+    for k in ("new_characters", "new_sets", "new_poses", "game"):
         if best.get(k) and not plan.get(k):
             plan[k] = best[k]
     plan = _fix_loop(llm, plan, system, cost)
