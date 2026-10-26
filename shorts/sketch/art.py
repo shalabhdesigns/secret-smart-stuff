@@ -270,20 +270,21 @@ def generate_pose(p, who: str, pose_id: str, desc: str, kind: str = "stand") -> 
     if who not in rg["characters"]:
         return False
     stand = rg["figures"][rg["characters"][who]["stand_pose"]]["file"]
-    other = next((rg["figures"][c["stand_pose"]]["file"] for k, c in rg["characters"].items() if k != who), stand)
     look = lib["characters"].get(who, {}).get("desc", "")
     prompts = [
-        ("Draw the cartoon character from image 1 again, in the same flat 2D cartoon show style as both reference "
-         f"images (same outline thickness, cel shading and colours). Character: {look} Keep the head, hair, skin tone, "
-         f"clothes and proportions identical to image 1. New pose: {desc}. " + BLANK + FIGURE),
-        (f"A flat 2D cartoon character illustration in the style of the reference images: {look} Same design as the "
-         f"character in image 1. Pose: {desc}. Simple cartoon face with only a nose drawn (eyes and mouth are added "
-         "later in animation). Full body, upright head facing the viewer, plain flat green background."),
+        ("Draw the cartoon character from the reference image again, in the same flat 2D cartoon show style as the reference "
+         f"image (same outline thickness, cel shading and colours). Character: {look} Keep the head, hair, skin tone, "
+         f"clothes and proportions identical to the reference. New pose: {desc}. " + BLANK + FIGURE),
+        (f"A flat 2D cartoon character illustration, same character design and style as the reference image: {look} "
+         f"Pose: {desc}. Simple cartoon face with only a nose drawn (eyes and mouth are added later in animation). "
+         "Full body, upright head facing the viewer, plain flat green background."),
     ]
-    for attempt in range(2):
+    margin = (" Leave clear empty green space above the head and below the feet; the whole figure fits inside the "
+              "middle 85% of the image height. Do not add any text or print on clothes.")
+    for attempt in range(3):
         raw = WORK / f"pose_{pose_id}_{attempt}.png"
         try:
-            flux(p, f"pose {pose_id}", prompts[attempt], [PARTS / stand, PARTS / other], raw, 1088, 1952)
+            flux(p, f"pose {pose_id}", prompts[attempt % 2 if attempt < 2 else 1] + margin, [PARTS / stand], raw, 1088, 1952)
             fname = f"{pose_id}.png"
             key_out(raw, PARTS / fname)
             score = _alignment_score(rg, who, fname)
@@ -337,7 +338,8 @@ def generate_character(p, cid: str, name: str, desc: str, look: str, height: flo
         raw = WORK / f"char_{cid}_{attempt}.png"
         prompt = ("Draw ONE new character for the same flat 2D cartoon show as the reference images - exactly the "
                   "same drawing style, outline thickness, soft cel shading, skin rendering and colour feel, but a "
-                  f"DIFFERENT person: {look}. Standing relaxed, arms down by the sides. " + BLANK + FIGURE)
+                  f"DIFFERENT person: {look}. Standing relaxed, arms down by the sides. " + BLANK + FIGURE +
+                  " Leave clear empty green space above the head and below the feet. No text on clothes.")
         fname = f"{cid}_stand.png"
         try:
             flux(p, f"character {cid}", prompt, style, raw, 1088, 1952)
