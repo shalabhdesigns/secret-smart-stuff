@@ -315,6 +315,63 @@ def graft_legs(rg: dict, who: str, new_file: str, cut: float = 0.88, band: int =
     Image.fromarray(out).save(PARTS / new_file)
 
 
+def graft_head(rg: dict, who: str, new_file: str) -> None:
+    """Image editors redraw hair a little differently. Put the approved head back (placed by matching the head),
+    keeping from the new drawing only what passes in front of it: the raised arm, hand and phone, i.e. the changed
+    regions that connect down to the body."""
+    import puppet as pp
+    from align import align
+    ch = rg["characters"][who]
+    h = rg["heads"][ch["primary_head"]]
+    master = pp.load_rgba(PARTS / h["file"])
+    stand = pp.load_rgba(PARTS / rg["figures"][ch["stand_pose"]]["file"])
+    new = pp.load_rgba(PARTS / new_file)
+    chin_m = int(ch["chin"])
+    s1, tx1, ty1, _ = align(master, stand, chin_m)
+    s2, tx2, ty2, _ = align(master, new, chin_m)
+    k = s2 / s1
+    M = np.float32([[k, 0, tx2 - tx1 * k], [0, k, ty2 - ty1 * k]])
+    Hn, Wn = new.shape[:2]
+    warped = cv2.warpAffine(stand, M, (Wn, Hn), flags=cv2.INTER_CUBIC, borderValue=(0, 0, 0, 0))
+    fw = pp.analyze_face(master)["face_box"][2] * s2
+    chin = chin_m * s2 + ty2
+    neck = int(chin + 0.12 * fw)                       # head (incl. hair) above this row comes from the approved drawing
+    shoulder = int(chin + 0.45 * fw)
+    an, aw = new[..., 3] > 128, warped[..., 3] > 128
+    diff = np.abs(new[..., :3].astype(np.int16) - warped[..., :3].astype(np.int16)).max(2) > 70
+    changed = an & (~aw | diff)
+    changed[shoulder + 1:] = False
+    changed = cv2.morphologyEx(changed.astype(np.uint8), cv2.MORPH_OPEN, np.ones((5, 5), np.uint8))
+    n, lab, st, _ = cv2.connectedComponentsWithStats(changed, 8)
+    arm = np.zeros((Hn, Wn), bool)
+    for i in range(1, n):
+        x, y, w, hh, area = st[i]
+        if y + hh >= shoulder - 2 and area > 0.02 * fw * fw:   # comes up from the body: arm / hand / phone
+            arm |= lab == i
+    # grow the arm into nearby weaker changes (a dark phone over dark hair differs only a little)
+    weak = an & (~aw | (np.abs(new[..., :3].astype(np.int16) - warped[..., :3].astype(np.int16)).max(2) > 22))
+    weak[shoulder + 1:] = False
+    nw, lw, _, _ = cv2.connectedComponentsWithStats(weak.astype(np.uint8), 8)
+    hit = np.unique(lw[arm & weak])
+    arm |= np.isin(lw, hit[hit > 0])
+    arm = cv2.dilate(arm.astype(np.uint8), np.ones((7, 7), np.uint8)).astype(bool) & an
+    out = new.copy()
+    rows = np.arange(Hn)[:, None]
+    head_zone = rows < neck
+    use_old = head_zone & ~arm
+    out[use_old] = warped[use_old]
+    # soft join just below the neck line
+    band = int(0.06 * fw) + 4
+    wgt = np.clip((rows - neck) / band, 0, 1).astype(np.float32)
+    zone = (rows >= neck) & (rows < neck + band) & ~arm & aw & an
+    zz = np.broadcast_to(zone, (Hn, Wn))
+    ww = np.broadcast_to(wgt, (Hn, Wn))[zz][:, None]
+    out[zz] = (warped[zz].astype(np.float32) * (1 - ww) + new[zz].astype(np.float32) * ww).astype(np.uint8)
+    ys = np.nonzero(out[..., 3].max(1) > 0)[0]
+    out = out[max(0, ys.min() - 12):]
+    Image.fromarray(out).save(PARTS / new_file)
+
+
 def _render_sheet(rg: dict, who: str, poses: list[str], out: Path, exprs=("neutral", "happy", "shock")) -> Path:
     import puppet as pp
     tiles = []
@@ -385,6 +442,8 @@ def generate_pose(p, who: str, pose_id: str, desc: str, kind: str = "stand") -> 
             flux(p, f"pose {pose_id}", prompt, [PARTS / stand], raw, 1088, 1952, model=model)
             fname = f"{pose_id}.png"
             key_out(raw, PARTS / fname)
+            if model.startswith("flux-kontext"):          # edits keep the layout: restore the approved head
+                graft_head(rg, who, fname)
             if kind == "stand" and not any(w_ in desc.lower() for w_ in LEG_WORDS):
                 graft_legs(rg, who, fname)
             score = _alignment_score(rg, who, fname)
