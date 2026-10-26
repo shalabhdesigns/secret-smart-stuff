@@ -249,6 +249,30 @@ def _look_at(src_x: float, dst_x: float, dy: float) -> list[float]:
     return [d, 0.3 if dy > 60 else (-0.3 if dy < -60 else 0.0)]
 
 
+# ----------------------------------------------------------------------------- continuity
+def keep_continuity(plan: dict) -> dict:
+    """An inner-voice close-up shows the character exactly as they are in the scene around it
+    (same pose, e.g. still sitting in the barber chair), never a different outfit or posture."""
+    shots = [dict(s) for s in plan["shots"]]
+    for i, s in enumerate(shots):
+        if s["type"] != "inner" or not s.get("cast"):
+            continue
+        who = s["cast"][0]["who"]
+        near = None
+        for j in list(range(i - 1, -1, -1)) + list(range(i + 1, len(shots))):
+            o = shots[j]
+            if o["type"] in ("inner", "black"):
+                continue
+            c = next((c for c in o.get("cast", []) if c["who"] == who), None)
+            if c:
+                poses = [c["pose"]] + [e["pose"] for e in c.get("events", []) if "pose" in e]
+                near = poses[-1] if j < i else poses[0]
+                break
+        if near:
+            s["cast"] = [{**s["cast"][0], "pose": near, "events": [e for e in s["cast"][0].get("events", []) if "pose" not in e]}]
+    return {**plan, "shots": shots}
+
+
 # ----------------------------------------------------------------------------- long-shot splitting
 NEXT_SIZE = {"wide": "close", "medium": "close", "close": "medium"}
 
@@ -333,6 +357,7 @@ def build(plan: dict, lines_dir: Path, shots_dir: Path, name: str, seed: int = 0
     rng = random.Random(seed)
     lines = {ln["id"]: ln for ln in plan["lines"]}
     durs = {lid: wav_seconds(lines_dir / f"{lid}.wav") for lid in lines}
+    plan = keep_continuity(plan)
     plan = split_long(plan, durs, lines_dir)
     scene = {"lines_dir": str(lines_dir), "lines": list(lines), "shots": []}
     asm = {"name": name, "music": {"file": f"assets/music/{plan.get('music') or rng.choice(MUSIC)}.mp3",

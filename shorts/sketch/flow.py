@@ -286,7 +286,7 @@ def _finish_version(p, ep: dict, plan: dict, work: Path, summary: str = "") -> i
         _fail(p, ep, "render", e)
         return 1
     _cost(p, ep, f"v{info['version']} voices+checks", info["cost"])
-    if not ep.get("meta") or summary:
+    if not ep.get("meta") or (summary and [l["cap"] for l in info["plan"]["lines"]] != [l["cap"] for l in (ep.get("plan") or {}).get("lines", [])]):
         try:
             meta, c = Wr.metadata(_llm(p), info["plan"], ep["number"])
             _cost(p, ep, "metadata", c)
@@ -326,6 +326,16 @@ def fix(p, req: dict) -> int:
         _fail(p, ep, "revise", e)
         return 1
     return _finish_version(p, ep, plan, work, summary or "as requested")
+
+
+def rerender(p, req: dict) -> int:
+    """Re-render an episode's current plan with the latest animation engine (voices reused, no AI cost)."""
+    ep = E.get(p.state, req["job"])
+    if not ep or not ep.get("plan"):
+        return 1
+    work = ROOT / "build" / "work" / ep["id"]
+    work.mkdir(parents=True, exist_ok=True)
+    return _finish_version(p, ep, ep["plan"], work, req.get("note") or "animation improved, same script")
 
 
 def reject(p, req: dict) -> int:

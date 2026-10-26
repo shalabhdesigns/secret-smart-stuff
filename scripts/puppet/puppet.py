@@ -145,10 +145,10 @@ def lipsync(path: Path) -> list[tuple[float, str]]:
     if sylls:
         for sy in sylls:
             f0, f1 = int(round(sy["t0"] * FPS)), max(int(round(sy["t0"] * FPS)) + 1, int(round(sy["t1"] * FPS)))
-            on = max(1, int(0.3 * (f1 - f0))) if sy["onset"] else 0
+            on = max(1, int(0.3 * (f1 - f0))) if sy["onset"] else (1 if f1 - f0 >= 4 else 0)
             for f in range(max(0, f0), min(nfr, f1)):
                 if f - f0 < on:
-                    track[f] = (sy["onset"], 0.0 if sy["onset"] == "X" else 0.2)
+                    track[f] = (sy["onset"], 0.0 if sy["onset"] == "X" else 0.2) if sy["onset"] else ("E", 0.18)
                 else:
                     track[f] = (sy["shape"], sy["open"])
     else:                                                   # audio only
@@ -160,7 +160,7 @@ def lipsync(path: Path) -> list[tuple[float, str]]:
         if not voiced[f]:
             shape, op = "X", 0.0
         o = op * (0.45 + 0.55 * float(level[f])) if shape != "X" else 0.0
-        if shape != last and hold < 2:                      # every drawing stays at least 2 frames
+        if shape != last and hold < 2 and op > 0.25:        # vowel drawings stay at least 2 frames
             shape, o = last, out[-1][0] if out else 0.0
         hold = hold + 1 if shape == last else 0
         last = shape
