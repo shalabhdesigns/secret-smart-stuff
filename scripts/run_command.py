@@ -427,6 +427,16 @@ def main(path: str) -> int:
         gh("issue", "create", "--title", "Accounts check", "--label", "audio", "--body", "\n".join(f"- {x}" for x in lines), check=False)
         print(lines)
         return 0
+    if action == "diag":
+        # run CLI subcommands and post the tail of their output (no secrets are printed by these)
+        out = []
+        for sub in req.get("run") or ["analytics", "learn"]:
+            r = subprocess.run([sys.executable, "-m", "shorts.cli", sub], capture_output=True, text=True, timeout=600)
+            tail = (r.stdout + "\n" + r.stderr).strip().splitlines()[-30:]
+            out.append(f"### `{sub}` → exit {r.returncode}\n```\n" + "\n".join(tail) + "\n```")
+        gh("issue", "create", "--title", "Diagnostics", "--body", "\n\n".join(out), check=False)
+        print("\n".join(out))
+        return 0
     if action == "whoami":
         # which YouTube channel the stored login uploads to (no secrets printed)
         import requests
