@@ -94,9 +94,27 @@ def main() -> int:
         "index.js": ("index.js", code, "application/javascript+module"),
     })
     cf("POST", f"/accounts/{acc}/workers/scripts/{NAME}/subdomain", json={"enabled": True})
-    hook = notify.call("setWebhook", {"url": f"{url}/tg", "secret_token": tg_secret,
-                                     "allowed_updates": json.dumps(["message", "callback_query"]),
-                                     "drop_pending_updates": "true"})
+    # a brand-new workers.dev subdomain takes a few minutes to appear in DNS: wait for /health first
+    import time
+    for _ in range(40):
+        try:
+            if requests.get(f"{url}/health", timeout=10).text.strip() == "ok":
+                break
+        except requests.RequestException:
+            pass
+        time.sleep(15)
+    hook, last = None, None
+    for _ in range(10):
+        try:
+            hook = notify.call("setWebhook", {"url": f"{url}/tg", "secret_token": tg_secret,
+                                             "allowed_updates": json.dumps(["message", "callback_query"]),
+                                             "drop_pending_updates": "true"})
+            break
+        except RuntimeError as e:          # Telegram's resolver can lag behind ours
+            last = e
+            time.sleep(30)
+    if hook is None:
+        raise RuntimeError(f"webhook not set: {last}")
     notify.call("setMyCommands", {"commands": json.dumps([
         {"command": "status", "description": "What's happening now"},
         {"command": "produce", "description": "Make a video now"},
