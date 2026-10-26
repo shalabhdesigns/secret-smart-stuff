@@ -1,23 +1,71 @@
 {
  "_note": "The show's world: who exists, where things happen, what has happened. The writer reads this every episode and the system updates it after every approved episode. Edit freely.",
  "characters": {
-  "dev": {"name": "Dev", "drawn": true, "role": "lead",
-          "desc": "Mid-20s IT employee from a small UP town, now working in the city. Polite to a fault, cannot say no, over-thinks; his panicky inner voice is braver than he is. Says 'haan haan, bilkul' while dying inside.",
-          "relations": {"meera": "flatmate (shares a rented flat)", "rocky": "his neighbourhood barber"}},
-  "meera": {"name": "Meera", "drawn": true, "role": "lead",
-            "desc": "Mid-20s, Dev's flatmate. Deadpan, few words, always eating chips, sees through everyone. Works from home; nobody knows exactly what she does.",
-            "relations": {"dev": "flatmate"}},
-  "rocky": {"name": "Rocky", "drawn": true, "role": "recurring",
-            "desc": "40s barber who owns 'Bhaukaal Hair Studio'. Overconfident Kanpur showman, never admits a mistake, self-appointed expert on everything. Use him ONLY when a story naturally involves a haircut, his shop, the neighbourhood, or his 'expert advice'.",
-            "relations": {"dev": "regular customer he experiments on"}}
+  "dev": {
+   "name": "Dev",
+   "drawn": true,
+   "role": "lead",
+   "desc": "Mid-20s IT employee from a small UP town, now working in the city. Polite to a fault, cannot say no, over-thinks; his panicky inner voice is braver than he is. Says 'haan haan, bilkul' while dying inside.",
+   "relations": {
+    "meera": "flatmate (shares a rented flat)",
+    "rocky": "his neighbourhood barber"
+   }
+  },
+  "meera": {
+   "name": "Meera",
+   "drawn": true,
+   "role": "lead",
+   "desc": "Mid-20s, Dev's flatmate. Deadpan, few words, always eating chips, sees through everyone. Works from home; nobody knows exactly what she does.",
+   "relations": {
+    "dev": "flatmate"
+   }
+  },
+  "rocky": {
+   "name": "Rocky",
+   "drawn": true,
+   "role": "recurring",
+   "desc": "40s barber who owns 'Bhaukaal Hair Studio'. Overconfident Kanpur showman, never admits a mistake, self-appointed expert on everything. Use him ONLY when a story naturally involves a haircut, his shop, the neighbourhood, or his 'expert advice'.",
+   "relations": {
+    "dev": "regular customer he experiments on"
+   }
+  },
+  "mummy": {
+   "name": "Mummy",
+   "drawn": false,
+   "role": "supporting",
+   "voice_type": "older_woman",
+   "voice": "fTfuemKGBjYqG4ni4gw3",
+   "desc": "Dev's mother back home in UP. Has never thrown anything away. Her logic is instant, total and unarguable: the more absurd the item, the faster and calmer her answer. She isn't hoarding out of love. She is waiting for the right rate, and she knows every kabadi trick. Respects a good bargain more than her own son.",
+   "relations": {
+    "dev": "mother",
+    "meera": "new bargaining partner"
+   },
+   "pending": "ep002b"
+  }
  },
  "voice_pool": {
   "_note": "Voices for NEW characters. A new character gets one of these the first time they appear and keeps it forever (recorded in characters).",
-  "older_woman": ["fTfuemKGBjYqG4ni4gw3", "rqIg3iVrlZOAkxCMdelQ"],
-  "older_man": ["iLpGCYkFnnGoa4bBSlqm", "xZp4zaaBzoWhWxxrcAij"],
-  "young_woman": ["0VYKG6D7F62aQxdckt3c", "JG3V6gojK42M5cRu9q07"],
-  "young_man": ["0oZaNvOUQnpeHSZr7Nzi", "7M0JpWdLkoBBL8M1moPi", "HBZPYXXu7MHBOUlDZtD6"],
-  "service_voice": ["1H72DEBQwEbyKT5J6Nul", "CY9MfRNUmJcbr6mcD2Yx"]
+  "older_woman": [
+   "fTfuemKGBjYqG4ni4gw3",
+   "rqIg3iVrlZOAkxCMdelQ"
+  ],
+  "older_man": [
+   "iLpGCYkFnnGoa4bBSlqm",
+   "xZp4zaaBzoWhWxxrcAij"
+  ],
+  "young_woman": [
+   "0VYKG6D7F62aQxdckt3c",
+   "JG3V6gojK42M5cRu9q07"
+  ],
+  "young_man": [
+   "0oZaNvOUQnpeHSZr7Nzi",
+   "7M0JpWdLkoBBL8M1moPi",
+   "HBZPYXXu7MHBOUlDZtD6"
+  ],
+  "service_voice": [
+   "1H72DEBQwEbyKT5J6Nul",
+   "CY9MfRNUmJcbr6mcD2Yx"
+  ]
  },
  "places": {
   "flat": "Dev and Meera's rented 2BHK: living room with orange sofa, sleeping cat, fairy lights.",
