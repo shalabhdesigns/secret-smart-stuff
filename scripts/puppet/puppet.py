@@ -37,47 +37,131 @@ def read_wav(path: Path) -> tuple[np.ndarray, int]:
     return x, sr
 
 
-def lipsync(path: Path) -> list[tuple[float, str]]:
-    """Per video frame: (openness 0..1, mouth shape). Shapes: X closed, A wide, E teeth, O round, U small."""
+# ----------------------------------------------------------------------------- lip sync
+# Mouth shapes come from the WORDS (Devanagari syllables), timed by the voice:
+#  1. a real character alignment from ElevenLabs (<line>.align.json), or
+#  2. the known text spread over the voiced parts of the audio (<line>.txt), or
+#  3. the audio alone (fallback).
+# Loudness only scales how wide each shape opens; silence always closes the mouth.
+_CONS = set(range(0x0915, 0x093A)) | set(range(0x0958, 0x0960))
+_LABIAL = set("पफबभम")
+_VOWEL_SIGN = {"ा": ("A", 0.95, 1.3), "ि": ("E", 0.5, 1.0), "ी": ("E", 0.55, 1.3), "ु": ("U", 0.35, 1.0),
+               "ू": ("U", 0.4, 1.3), "ृ": ("E", 0.4, 1.0), "े": ("E", 0.6, 1.3), "ै": ("E", 0.7, 1.3),
+               "ो": ("O", 0.7, 1.3), "ौ": ("O", 0.8, 1.3), "ॉ": ("O", 0.75, 1.3), "ॅ": ("E", 0.6, 1.2)}
+_VOWEL_IND = {"अ": ("A", 0.55, 1.0), "आ": ("A", 0.95, 1.3), "इ": ("E", 0.5, 1.0), "ई": ("E", 0.55, 1.3),
+              "उ": ("U", 0.35, 1.0), "ऊ": ("U", 0.4, 1.3), "ए": ("E", 0.6, 1.3), "ऐ": ("E", 0.7, 1.3),
+              "ओ": ("O", 0.7, 1.3), "औ": ("O", 0.8, 1.3), "ऑ": ("O", 0.75, 1.3), "ऋ": ("E", 0.4, 1.0)}
+_LATIN = {"a": ("A", 0.8, 1.0), "e": ("E", 0.55, 1.0), "i": ("E", 0.5, 1.0), "o": ("O", 0.7, 1.0), "u": ("U", 0.4, 1.0)}
+
+
+def syllables(text: str) -> list[dict]:
+    """Split spoken text into syllables: {onset: 'X' (lips closed) | 'U' (v/f) | None, shape, open, weight}."""
+    import re
+    text = re.sub(r"\[[^\]]*\]", " ", text)
+    out, i, n = [], 0, len(text)
+    while i < n:
+        ch = text[i]
+        if ord(ch) in _CONS:
+            onset = "X" if ch in _LABIAL else ("U" if ch == "व" else None)
+            j, ncons = i + 1, 1
+            while j < n and text[j] == "़":
+                j += 1
+            while j + 1 < n and text[j] == "्" and ord(text[j + 1]) in _CONS:      # conjunct
+                j += 2
+                ncons += 1
+                while j < n and text[j] == "़":
+                    j += 1
+            if j < n and text[j] in _VOWEL_SIGN:
+                shape, op, w = _VOWEL_SIGN[text[j]]
+                j += 1
+            elif j < n and text[j] == "्":
+                shape, op, w = "E", 0.25, 0.5
+                j += 1
+            else:
+                end_of_word = j >= n or not (ord(text[j]) in _CONS or text[j] in _VOWEL_IND)
+                shape, op, w = ("E", 0.3, 0.55) if end_of_word else ("A", 0.55, 1.0)   # schwa deletion
+            while j < n and text[j] in "ंँः":
+                j += 1
+            out.append({"onset": onset, "shape": shape, "open": op, "w": w + 0.15 * (ncons - 1), "i0": i, "i1": j})
+            i = j
+        elif ch in _VOWEL_IND:
+            shape, op, w = _VOWEL_IND[ch]
+            j = i + 1
+            while j < n and text[j] in "ंँः":
+                j += 1
+            out.append({"onset": None, "shape": shape, "open": op, "w": w, "i0": i, "i1": j})
+            i = j
+        elif ch.lower() in _LATIN:
+            shape, op, w = _LATIN[ch.lower()]
+            out.append({"onset": None, "shape": shape, "open": op, "w": w, "i0": i, "i1": i + 1})
+            i += 1
+        elif ch.isalpha():
+            out.append({"onset": "X" if ch.lower() in "mbp" else None, "shape": "E", "open": 0.35, "w": 0.5, "i0": i, "i1": i + 1})
+            i += 1
+        else:
+            i += 1
+    return out
+
+
+def _envelope(path: Path) -> np.ndarray:
     x, sr = read_wav(path)
     hop = sr // FPS
-    win = int(sr * 0.045)
-    frames = []
-    for i in range(0, max(1, len(x) // hop)):
-        seg = x[max(0, i * hop - win // 2): i * hop + win // 2]
-        if len(seg) < 32:
-            frames.append((0.0, 0.0, 0.0))
-            continue
-        rms = float(np.sqrt((seg ** 2).mean()) + 1e-9)
-        spec = np.abs(np.fft.rfft(seg * np.hanning(len(seg))))
-        freqs = np.fft.rfftfreq(len(seg), 1 / sr)
-        cen = float((spec * freqs).sum() / (spec.sum() + 1e-9))
-        zcr = float(np.mean(np.abs(np.diff(np.sign(seg)))) / 2)
-        frames.append((rms, cen, zcr))
-    rms = np.array([f[0] for f in frames])
-    db = 20 * np.log10(rms + 1e-9)
-    peak = np.percentile(db, 97) if len(db) else -20
-    open_ = np.clip((db - (peak - 28)) / 22, 0, 1)
-    # attack fast, release a little slower -> natural chatter
-    sm = np.zeros_like(open_)
-    for i, v in enumerate(open_):
-        prev = sm[i - 1] if i else 0
-        sm[i] = prev + (v - prev) * (0.85 if v > prev else 0.55)
-    out = []
-    last, hold = "X", 0
-    for i, (o, (r, cen, zcr)) in enumerate(zip(sm, frames)):
-        if o < 0.12:
-            shape = "X"
-        elif zcr > 0.18 and o < 0.55:
-            shape = "E"
-        elif cen < 900 and o > 0.25:
-            shape = "O"
-        elif o < 0.3:
-            shape = "U"
-        else:
-            shape = "A"
-        if shape != last and hold < 3 and shape != "X":
-            shape = last
+    win = int(sr * 0.04)
+    env = np.array([float(np.sqrt((x[max(0, i * hop - win // 2): i * hop + win // 2] ** 2).mean() + 1e-12))
+                    for i in range(max(1, len(x) // hop))])
+    db = 20 * np.log10(env + 1e-9)
+    peak = np.percentile(db, 95) if len(db) else -20
+    voiced = db > peak - 26
+    level = np.clip((db - (peak - 26)) / 20, 0, 1)
+    return voiced, level
+
+
+def lipsync(path: Path) -> list[tuple[float, str]]:
+    """Per video frame: (openness 0..1, mouth shape X closed / A wide / E flat / O round / U small)."""
+    import json as _json
+    voiced, level = _envelope(path)
+    nfr = len(voiced)
+    track = [("X", 0.0)] * nfr
+    align_p, text_p = path.with_suffix(".align.json"), path.with_suffix(".txt")
+    sylls = None
+    if align_p.exists():                                    # real timings from the TTS engine
+        al = _json.loads(align_p.read_text())
+        chars, st, en = al["chars"], al["starts"], al["ends"]
+        sylls = syllables("".join(chars))
+        for sy in sylls:
+            idx = [k for k in range(sy["i0"], min(sy["i1"], len(st)))]
+            sy["t0"], sy["t1"] = (st[idx[0]], en[idx[-1]]) if idx else (0, 0)
+    elif text_p.exists():                                   # spread syllables over the voiced audio
+        sylls = syllables(text_p.read_text())
+        vidx = np.nonzero(voiced)[0]
+        if len(sylls) and len(vidx):
+            tot = sum(s["w"] for s in sylls)
+            cum = 0.0
+            for sy in sylls:
+                a = int(cum / tot * len(vidx))
+                cum += sy["w"]
+                b = max(a + 1, int(cum / tot * len(vidx)))
+                sy["t0"], sy["t1"] = vidx[a] / FPS, (vidx[min(b, len(vidx)) - 1] + 1) / FPS
+    if sylls:
+        for sy in sylls:
+            f0, f1 = int(round(sy["t0"] * FPS)), max(int(round(sy["t0"] * FPS)) + 1, int(round(sy["t1"] * FPS)))
+            on = max(1, int(0.3 * (f1 - f0))) if sy["onset"] else 0
+            for f in range(max(0, f0), min(nfr, f1)):
+                if f - f0 < on:
+                    track[f] = (sy["onset"], 0.0 if sy["onset"] == "X" else 0.2)
+                else:
+                    track[f] = (sy["shape"], sy["open"])
+    else:                                                   # audio only
+        for f in range(nfr):
+            track[f] = ("A", 0.7) if level[f] > 0.6 else (("E", 0.45) if level[f] > 0.25 else ("U", 0.3))
+    out, last, hold = [], "X", 9
+    for f in range(nfr):
+        shape, op = track[f]
+        if not voiced[f]:
+            shape, op = "X", 0.0
+        o = op * (0.45 + 0.55 * float(level[f])) if shape != "X" else 0.0
+        if shape != last and hold < 2:                      # every drawing stays at least 2 frames
+            shape, o = last, out[-1][0] if out else 0.0
         hold = hold + 1 if shape == last else 0
         last = shape
         out.append((float(o), shape))
@@ -325,7 +409,7 @@ class Actor:
         self.events = sorted(evs, key=lambda e: e["t"])
         rng = np.random.default_rng(sum(map(ord, self.who)) * 7919 + int(a.get("seed", 0)))
         # blinks: on thought changes and head moves, plus a sparse fallback so long holds never look dead
-        marks = sorted([e["t"] - 0.04 for e in self.events if "expr" in e or "look" in e or "move" in e])
+        marks = sorted([e["t"] - 0.04 for e in self.events if ("expr" in e and e["expr"] not in F.BIG) or "look" in e])
         bl, last = [], -9.0
         for m in marks:
             if m - last > 0.6:
@@ -356,10 +440,10 @@ class Actor:
             return ease(f / 6.0), 0.0, 0.0
         if f < 5:
             q = math.sin(f / 5 * math.pi / 2)
-            return -0.18 * q, 0.55 * q, 0.03 * q
+            return -0.18 * q, 0.3 * q, 0.02 * q
         if f < 8:
             q = ease((f - 5) / 3)
-            return -0.18 + 1.43 * q, 0.55 * (1 - q), 0.03 * (1 - q)
+            return -0.18 + 1.43 * q, 0.3 * (1 - q), 0.02 * (1 - q)
         if f < 17:
             return 1.25 - 0.25 * ease((f - 8) / 9), 0.0, 0.0
         return 1.0, 0.0, 0.0
@@ -422,7 +506,7 @@ class Actor:
         # mouth from voice lines: the drawing leads the sound by 2 frames
         o, shape, talk = 0.0, "X", 0.0
         for ln in self.lines:
-            i = int((t - ln["at"]) * FPS) + 2
+            i = int((t - ln["at"]) * FPS) + 1
             if 0 <= i < len(ln["lips"]):
                 o, shape = ln["lips"][i]
                 talk = 1.0
@@ -649,9 +733,9 @@ class FigureActor(Actor):
                 band = np.zeros_like(Wm)
                 band[y_top:int(chin_y), xa:xb] = (img[y_top:int(chin_y), xa:xb, 3] > 40).astype(np.uint8) * 255
                 Wm = np.maximum(Wm, band)
-            d = max(3, int(0.06 * fw)) | 1
+            d = max(3, int(0.16 * fw)) | 1
             Wm = cv2.dilate(Wm, np.ones((d, d), np.uint8))
-            Wm = cv2.GaussianBlur(Wm.astype(np.float32) / 255.0, (0, 0), max(1.0, 0.05 * fw))
+            Wm = cv2.GaussianBlur(Wm.astype(np.float32) / 255.0, (0, 0), max(1.0, 0.04 * fw))
             yy = np.arange(img.shape[0], dtype=np.float32)[:, None]
             v = np.clip((chin_y + 0.42 * fw - yy) / (0.42 * fw + 0.08 * fw), 0, 1)
             v = v * v * (3 - 2 * v)
@@ -747,7 +831,7 @@ class FigureActor(Actor):
         breath = 1 + 0.006 * math.sin(2 * math.pi * 0.28 * t + self.phase)
         pop = 1.0
         if 0 <= t - t_pose < 0.14:  # pose change: tiny squash-and-settle
-            pop = 1 - 0.05 * math.sin((t - t_pose) / 0.14 * math.pi)
+            pop = 1 - 0.015 * math.sin((t - t_pose) / 0.14 * math.pi)
         jump = 0.0
         if st["jump"] is not None and st["jump"] <= t < st["jump"] + 0.35:
             jump = -0.4 * P["fw"] * math.sin((t - st["jump"]) / 0.35 * math.pi)

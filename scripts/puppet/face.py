@@ -52,9 +52,9 @@ EMOTIONS: dict[str, dict] = {
     "listening": dict(**_corners(0.12), tilt=3),
     "happy": dict(**_sym(0.2, 0.1, 0.4), **_eyes(0.85), lower=0.45, mstyle=1, **_corners(0.7), mw=1.05),
     "laugh": dict(**_sym(0.3, 0.1, 0.5), eye_style=1, mstyle=2, mopen=0.8, **_corners(1.0), mw=1.15, bounce=1.0, tilt=-5),
-    "proud": dict(**_sym(0.2, 0.2, 0.3), **_eyes(0.62), lower=0.3, mstyle=0, c_l=0.6, c_r=0.12, tilt=-4),
-    "smug": dict(**_sym(0.15, 0.25, 0.3), **_eyes(0.55), lower=0.3, mstyle=0, c_l=0.65, c_r=0.05, mshift=-0.15, tilt=5),
-    "sly": dict(**_sym(-0.35, 0.3, 0.0), **_eyes(0.55), lower=0.4, pupil=0.85, mstyle=1, c_l=0.75, c_r=0.4, mw=1.2, tilt=6),
+    "proud": dict(**_sym(0.3, 0.25, 0.3), **_eyes(0.92), lower=0.35, mstyle=0, c_l=0.6, c_r=0.12, tilt=-4),
+    "smug": dict(**_sym(0.15, 0.25, 0.3), **_eyes(0.75), lower=0.3, mstyle=0, c_l=0.65, c_r=0.05, mshift=-0.15, tilt=5),
+    "sly": dict(**_sym(-0.45, 0.35, 0.0), **_eyes(0.72), lower=0.35, pupil=0.85, mstyle=1, c_l=0.75, c_r=0.4, mw=1.2, tilt=6),
     "excited": dict(**_sym(0.6, 0.5, 0.6), **_eyes(1.25), pupil=1.15, hl=1.0, mstyle=2, mopen=0.55, **_corners(0.9),
                     mw=1.1, bounce=0.45),
     "nervous": dict(**_sym(0.5, 0.0, 0.1), **_eyes(1.05), pupil=0.85, darts=1.0, mstyle=6, **_corners(-0.1), sweat=1.0),
@@ -82,7 +82,7 @@ EMOTIONS: dict[str, dict] = {
     "disgust": dict(**_sym(-0.4, -0.2, 0.0), **_eyes(0.65), lower=0.6, mstyle=5, **_corners(-0.6), mw=0.95, scrunch=1.0,
                     tilt=-7),
     "sad": dict(**_sym(0.6, -0.3, 0.1), **_eyes(0.75), slant=-0.5, pupil=1.1, mstyle=0, **_corners(-0.6), tilt=-4),
-    "defeated": dict(**_sym(0.3, -0.4, 0.0), **_eyes(0.5), slant=-0.3, mstyle=0, **_corners(-0.25), mw=0.9, tilt=-7),
+    "defeated": dict(**_sym(0.3, -0.4, 0.0), **_eyes(0.62), slant=-0.2, mstyle=0, **_corners(-0.25), mw=0.9, tilt=-7),
     "embarrassed": dict(**_sym(0.4, 0.0, 0.1), **_eyes(0.85), lower=0.3, mstyle=6, **_corners(0.2), blush=1.0, tilt=-6),
     "sheepish": dict(**_sym(0.4, 0.0, 0.1), **_eyes(0.8), lower=0.4, mstyle=1, c_l=0.55, c_r=0.3, sweat=1.0, tilt=8),
     "confused": dict(bi_l=0.5, bo_l=0.55, bi_r=-0.2, bo_r=0.1, bc=0.6, open_l=1.0, open_r=0.9, pupil=0.9, mstyle=3,
@@ -139,7 +139,7 @@ class Face:
         self.r = spec["eye_r"] * scale
         self.brow_y = spec.get("brow_gap", 1.9) * self.r
         self.mouth = np.array(spec["mouth"], np.float32) * scale
-        self.mw = spec["mouth_w"] * scale * 1.2      # mouths read bigger on a phone
+        self.mw = spec["mouth_w"] * scale * 1.1      # mouths read a bit bigger on a phone
         self.glasses = spec.get("glasses", False)
         self.brow_col = tuple(spec.get("brow_color", (30, 24, 22)))
         self.skin = tuple(int(v) for v in skin)
@@ -221,6 +221,8 @@ class Face:
                     ang = math.pi * (1.0 + roll)
                     lx, ly = math.cos(ang) * 0.85, -0.8 + 0.2 * math.sin(roll * math.pi)
                 px, py = cx + lx * rx * 0.42, cy + ly * ry * 0.38
+                droop = max(0.0, (1 - min(op, 1.0)) - 0.12)        # heavy lids: pupils sit low, lid cuts their top
+                py += droop * ry * 0.75 * (1 if roll is None else 0)
                 pr = r * 0.46 * e["pupil"]
                 pm = np.zeros_like(mask)
                 cv2.circle(pm, (int(px), int(py)), max(2, int(pr)), 255, -1, cv2.LINE_AA)
@@ -318,9 +320,12 @@ class Face:
         style = int(e["mstyle"])
         cl, cr = e["c_l"], e["c_r"]
         talking = talk > 0 and o > 0.12
-        open_ = max(o if talk else 0.0, e["mopen"])
+        open_ = o if talking else e["mopen"]
         if st.get("grin") and not talking:
             style = 8
+        if talk > 0 and not talking:                          # between syllables the lips meet
+            style = 1 if (cl + cr) / 2 > 0.3 else 0
+            open_ = 0.0
 
         def corner_pts(hw, y):
             return (mx - hw, y - cl * w * 0.15), (mx + hw, y - cr * w * 0.15)
@@ -373,9 +378,9 @@ class Face:
 
         # ---- open mouth (talking, or an open style)
         dims = {"A": (0.52, 0.55), "E": (0.58, 0.26), "O": (0.3, 0.42), "U": (0.26, 0.24), "X": (0.5, 0.4)}[shape if talking else "X"]
-        stress = 1.0 + 0.3 * max(0.0, o - 0.7) / 0.3 if talking else 1.0
-        hw = w * dims[0] * (0.75 + 0.25 * open_)
-        hh = w * dims[1] * (0.35 + 0.65 * open_) * stress
+        talk_k = 0.82 if talking else 1.0                     # speech shapes stay smaller than shouted takes
+        hw = w * dims[0] * (0.75 + 0.25 * open_) * talk_k
+        hh = w * dims[1] * (0.3 + 0.7 * open_) * talk_k
         if style == 3 and not talking:
             hw, hh = w * 0.3 * (0.8 + 0.4 * open_), w * 0.38 * (0.8 + 0.5 * open_)
         elif style == 4:
