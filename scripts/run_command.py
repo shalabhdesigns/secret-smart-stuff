@@ -334,8 +334,24 @@ def main(path: str) -> int:
     req = json.loads(Path(path).read_text())
     action = req.get("action")
     p = Pipeline(load())
-    if action == "produce":
-        return do_produce(p, req)
+    # ---- Sab Theek Hai sketch episodes (the live format) ----
+    from shorts.sketch import flow as SK
+    sk_job = str(req.get("job", "")).startswith("ep")
+    if action in ("daily", "sketch_daily"):
+        return SK.daily(p, req)
+    if action in ("produce", "sketch_produce"):
+        return SK.produce(p, {**req, "force": req.get("force", action == "produce")})
+    if action == "approve" and sk_job:
+        return SK.approve(p, req)
+    if action == "fix" and sk_job:
+        return SK.fix(p, req)
+    if action == "reject" and sk_job:
+        return SK.reject(p, req)
+    if action == "status":
+        notify.send(p.state, "📋 " + SK.status(p))
+        print(SK.status(p))
+        return 0
+    # ---- retired explainer format (kept for reference) ----
     if action in ("approve", "reject", "fix"):
         return do_decision(p, req)
     if action == "rerender":
