@@ -5,18 +5,28 @@ The automatic writer reads this page. Edit it to change how the show is written.
 ## The show
 - A 35–45 second cartoon sketch on YouTube Shorts, one a day, on the channel **Bhaukaali Toons**.
 - Hindi/Hinglish with a UP (Kanpur/Lucknow) flavour.
-- Everyday desi middle-class life: a small situation that everybody recognises and that goes wrong
-  because nobody can say no, nobody admits a mistake, and everyone says "sab theek hai".
+- Everyday desi middle-class life: family, relatives, flatmates, office, neighbours, festivals, money, phones.
+  A small situation that everybody recognises and that goes wrong because nobody can say no, nobody admits a
+  mistake, and everyone says "sab theek hai".
 - Audience: Indian adults 18–34 on their phones. They should feel *"yeh toh mere saath hua hai"* and
   send it to a friend.
 
-## Characters (never change them)
+## Owner's standing rule (most important)
+- Every episode must make people laugh out loud and want to send it to someone. Deeply relatable to ordinary
+  Indian viewers, sharp wit, real laugh-out-loud moments, high shareability and rewatchability.
+- **Story first.** Use the characters and places the story needs. Reuse people and places when they fit; never
+  force a character or a place into a story where it has no reason to be.
+- New people and places are created whenever the story needs them, then remembered (creative/world.json) and kept
+  consistent in later episodes.
+
+## Main characters (never change them)
 - **Dev** (mid-20s, IT job, mustard hoodie, office ID badge).
   - Polite to a fault. Cannot say no, cannot complain, apologises when wronged.
   - Says "haan haan, bilkul" while dying inside.
   - His **inner voice** (panic spiral) is braver than he is and shouts at him.
   - He speaks softly and hesitantly, with English office words ("actually", "no issues", "chill hai").
-- **Rocky** (40s, barber, pink shirt, apron, moustache, belly).
+- **Rocky** (40s, barber, pink shirt, apron, moustache, belly). Recurring, NOT in every episode: only when the
+  story is about a haircut, his shop, the neighbourhood, or his "expert advice".
   - Overconfident Kanpur showman. Sells every disaster as a masterpiece ("bhaukaal hai, guru!").
   - Has an answer for everything and never admits a mistake.
   - Loud, warm, never mean. Uses "guru", "kaahe", "ekdam", "tension na lo".
@@ -26,13 +36,11 @@ The automatic writer reads this page. Edit it to change how the show is written.
   - Deadpan. Few words. She sees through everyone instantly.
   - Her one-liners land the joke or twist the knife. She is not cruel; she is just right.
 
-## Places available now
-- Rocky's barber shop. Dev can sit in the barber chair.
-- Dev and Meera's flat (living room).
-
-Other places can be added to the library later. Write within what exists; a sketch can be about anything
-that happens in, or is discussed in, these places (a phone call, a wedding invite, a delivery, an exam
-result, a relative, the landlord, an office WhatsApp group).
+## Supporting characters and places
+- Listed in the WORLD MEMORY given with every episode (who they are, how they talk, what happened before).
+- New people: voice-only (phone/video call, a voice from another room) or, at most one per episode, drawn
+  automatically as a new on-screen character in the show style. Their voice stays the same forever.
+- New places are drawn automatically (one per episode at most).
 
 ## Comedy rules
 1. **Hook in the first 2 seconds.** Open in the middle of the situation with a line that makes people stop.
@@ -48,17 +56,18 @@ result, a relative, the landlord, an office WhatsApp group).
    - no stage-play Hindi;
    - no forced catchphrases. "Sab theek hai" may appear at most once, and only where it really lands.
 4. **Smart, not loud.** The audience is clever. The best laugh comes from character logic (Dev's
-   politeness trapping him, Rocky's confidence, Meera's precision), not from shouting or slapstick.
+   politeness trapping him, a parent's logic, a boss's double standards, Meera's precision), not from shouting
+   or slapstick.
 5. **A callback or twist at the end**, then the **loop**: the final line leads straight back into the
    first shot so the video replays seamlessly.
 6. 9–13 lines in total. Most lines are under 12 words. Leave room for reactions: a silent look is a
    joke too.
 7. Nothing mean about religion, caste, region, gender, body, or disability. No politics, no real people,
-   no brands, no adult jokes. Rocky's belly and moustache are fine; mocking them is not.
+   no brands, no adult jokes. Nobody's body is the joke.
 8. Every episode must be clearly different from earlier ones: a new situation, a new joke mechanism,
    new shots.
 
-## Example: Episode 1, "The Haircut" (approved by the owner)
+## Example: Episode 1, "The Haircut" (approved by the owner; an example of tone, not a template to copy)
 Captions as shown on screen:
 - **Rocky:** Lo guru! Dekho zara... ekdam Korean hero! Bhaukaal hai, bhaukaal!
 - **Dev:** Haan... achha hai... bahut... alag hai.

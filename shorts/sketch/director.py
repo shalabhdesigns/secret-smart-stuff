@@ -59,17 +59,41 @@ def wav_seconds(p: Path) -> float:
 
 
 # ----------------------------------------------------------------------------- validation
-def validate(plan: dict, lib: dict | None = None) -> list[str]:
-    """Problems that would make the plan unrenderable. Empty list = OK."""
+WORLD = ROOT / "creative" / "world.json"
+
+
+def voice_only_ids(plan: dict | None = None) -> set[str]:
+    """Characters that are heard but not drawn (phone calls, voices from another room)."""
+    w = json.loads(WORLD.read_text()) if WORLD.exists() else {"characters": {}}
+    lib = library()
+    out = {k for k, c in w["characters"].items() if k not in lib["characters"]}
+    for c in (plan or {}).get("new_characters", []):
+        cid = c.get("id")
+        if cid and cid not in lib["characters"]:
+            if c.get("on_screen"):
+                out.discard(cid)
+            else:
+                out.add(cid)
+    return out
+
+
+def validate(plan: dict, lib: dict | None = None, extra: dict | None = None) -> list[str]:
+    """Problems that would make the plan unrenderable. Empty list = OK.
+    extra: {"sets": [set ids that will be drawn before render], "poses": {pose id: who}} (writing time only)."""
     lib = lib or library()
+    extra = extra or {}
     errs: list[str] = []
     rg = rig()
+    sets_ok = set(lib["sets"]) | set(extra.get("sets", []))
+    new_poses = extra.get("poses", {})
+    new_chars = set(extra.get("chars", []))
+    voice_only = voice_only_ids(plan)
     lines = {ln.get("id"): ln for ln in plan.get("lines", [])}
     if not lines:
         errs.append("no lines")
     for ln in lines.values():
-        if ln.get("who") not in lib["characters"]:
-            errs.append(f"line {ln.get('id')}: unknown speaker {ln.get('who')}")
+        if ln.get("who") not in lib["characters"] and ln.get("who") not in voice_only and ln.get("who") not in new_chars:
+            errs.append(f"line {ln.get('id')}: unknown speaker {ln.get('who')} (new people must be in new_characters)")
         if not ln.get("hi") or not ln.get("cap"):
             errs.append(f"line {ln.get('id')}: needs 'hi' (Devanagari) and 'cap' (Roman caption)")
     used = []
@@ -79,7 +103,7 @@ def validate(plan: dict, lib: dict | None = None) -> list[str]:
         if typ not in ("wide", "medium", "close", "inner", "black"):
             errs.append(f"shot {i}: bad type {typ}")
             continue
-        if typ != "black" and s.get("set") not in lib["sets"] and typ != "inner":
+        if typ != "black" and s.get("set") not in sets_ok and typ != "inner":
             errs.append(f"shot {i}: unknown set {s.get('set')}")
         cast = s.get("cast", [])
         if typ == "black":
@@ -96,6 +120,16 @@ def validate(plan: dict, lib: dict | None = None) -> list[str]:
             errs.append(f"shot {i}: a character appears twice")
         for c in cast:
             pose = c.get("pose")
+            if c.get("who") in voice_only:
+                errs.append(f"shot {i}: {c.get('who')} is voice-only and can't be in a shot's cast")
+                continue
+            if pose in new_poses:
+                if new_poses[pose] != c.get("who"):
+                    errs.append(f"shot {i}: new pose {pose} is not {c.get('who')}'s")
+                for e in c.get("events", []):
+                    if "pose" in e:
+                        errs.append(f"shot {i}: no pose changes from a new pose")
+                continue
             if pose not in rg["figures"]:
                 errs.append(f"shot {i}: unknown pose {pose}")
                 continue
@@ -128,6 +162,9 @@ def validate(plan: dict, lib: dict | None = None) -> list[str]:
         if ln:
             if ln not in lines:
                 errs.append(f"shot {i}: unknown line {ln}")
+            elif lines[ln]["who"] in voice_only:
+                if typ in ("black", "inner"):
+                    errs.append(f"shot {i}: a voice-only line needs a shot of someone listening")
             elif lines[ln]["who"] not in whos and not (typ == "black"):
                 errs.append(f"shot {i}: speaker {lines[ln]['who']} is not in the shot")
             used.append(ln)
@@ -357,6 +394,10 @@ def build(plan: dict, lines_dir: Path, shots_dir: Path, name: str, seed: int = 0
     rng = random.Random(seed)
     lines = {ln["id"]: ln for ln in plan["lines"]}
     durs = {lid: wav_seconds(lines_dir / f"{lid}.wav") for lid in lines}
+    voice_only = voice_only_ids(plan)
+    wnames = json.loads(WORLD.read_text())["characters"] if WORLD.exists() else {}
+    names = {c["id"]: c.get("name", c["id"]) for c in plan.get("new_characters", []) if c.get("id")}
+    names.update({k: v.get("name", k) for k, v in wnames.items()})
     plan = keep_continuity(plan)
     plan = split_long(plan, durs, lines_dir)
     scene = {"lines_dir": str(lines_dir), "lines": list(lines), "shots": []}
@@ -471,8 +512,10 @@ def build(plan: dict, lines_dir: Path, shots_dir: Path, name: str, seed: int = 0
         scene["shots"].append(shot)
         sounds = []
         if lid and not off:                                   # a split line's audio plays once, across the cut
+            via = lines[lid].get("via", "phone") if speaker in voice_only else ""
             sounds.append({"url": str(lines_dir / f"{lid}.wav"), "at": round(lead, 3), "voice": True,
-                           "gain_db": 3 if typ == "inner" else 0, **({"reverb": True} if typ == "inner" else {})})
+                           "gain_db": 3 if typ == "inner" else 0, **({"reverb": True} if typ == "inner" else {}),
+                           **({"phone": True} if via == "phone" else {}), **({"offscreen": True} if via == "offscreen" else {})})
         if typ == "inner":
             sounds.append({"url": "assets/sfx/spiral.mp3", "at": 0, "gain_db": -11})
         for fx in s.get("sfx", []):
@@ -481,6 +524,8 @@ def build(plan: dict, lines_dir: Path, shots_dir: Path, name: str, seed: int = 0
         ash = {"url": str(shots_dir / f"shot{i:02d}.mp4"), "speaker": speaker, "keep_audio": False, "sounds": sounds}
         if lid:
             ash["caption"] = s.get("cap") or lines[lid]["cap"]
+            if speaker in voice_only and not off:
+                ash["caption"] = f"{names.get(speaker, speaker.title())}: " + ash["caption"]
             ash["caption_at"] = max(0.0, round(lead - 0.05, 2))
             if typ == "inner":
                 ash["inner"] = True

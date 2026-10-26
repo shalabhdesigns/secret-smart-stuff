@@ -80,6 +80,32 @@ def reverb(x: np.ndarray) -> np.ndarray:
     return out * 0.8
 
 
+def _biquad(x: np.ndarray, kind: str, f0: float, q: float = 0.707) -> np.ndarray:
+    from scipy.signal import lfilter
+    w = 2 * np.pi * f0 / SR
+    al = np.sin(w) / (2 * q)
+    c = np.cos(w)
+    if kind == "hp":
+        b = [(1 + c) / 2, -(1 + c), (1 + c) / 2]
+    else:
+        b = [(1 - c) / 2, 1 - c, (1 - c) / 2]
+    a = [1 + al, -2 * c, 1 - al]
+    return lfilter(np.array(b) / a[0], np.array(a) / a[0], x, axis=0).astype(np.float32)
+
+
+def phone(x: np.ndarray) -> np.ndarray:
+    """Telephone voice: 300-3400 Hz band, a little drive."""
+    y = _biquad(_biquad(_biquad(_biquad(x, "hp", 320), "hp", 320), "lp", 3300), "lp", 3300)
+    y = np.tanh(y * 2.2) / np.tanh(2.2)
+    peak = float(np.abs(x).max() or 1) / max(1e-6, float(np.abs(y).max()))
+    return y * min(peak, 2.5) * 0.9
+
+
+def offscreen(x: np.ndarray) -> np.ndarray:
+    """Voice from the next room: muffled, a bit of room."""
+    return reverb(_biquad(_biquad(x, "lp", 1800), "lp", 1800)) * 0.85
+
+
 def segment(i: int, shot: dict, tmp: Path) -> tuple[Path, float]:
     out = tmp / f"seg{i:02d}.mp4"
     vf_scale = f"scale={W}:{H}:force_original_aspect_ratio=increase:flags=lanczos,crop={W}:{H},setsar=1"
@@ -180,6 +206,10 @@ def main(spec_path: str) -> int:
             x = decode(src) * (10 ** (float(snd.get("gain_db", 0)) / 20))
             if snd.get("reverb"):
                 x = reverb(x)
+            if snd.get("phone"):
+                x = phone(x)
+            if snd.get("offscreen"):
+                x = offscreen(x)
             at = float(snd.get("at", 0)) + (durs[i] if snd.get("from_end") else 0.0)
             a = max(0, int((starts[i] + at) * SR))
             if a >= n:

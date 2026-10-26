@@ -23,14 +23,25 @@ OUTPUT: one JSON object, no prose around it:
  "title_idea": "short English working title",
  "premise": "one sentence: the situation and why it is funny",
  "music": one of ["quirky_funk","bright_pop","curious_pluck","clockwork"],
+ "new_characters": [optional, only people NOT in world memory: {"id": "short_id", "name": "Mummy", "desc": "who
+    they are and their comic trait", "voice_type": "older_woman|older_man|young_woman|young_man|service_voice",
+    "relations": {"dev": "mother"}, "on_screen": false, "look": "only if on_screen: age, build, hair, clothes,
+    colours (drawn automatically in the show style)", "height": 0.85-1.05 (only if on_screen; Dev is 1.0)}],
+    At most ONE new on-screen person per episode; the rest are voice-only (phone/video call, voice from another
+    room). A new on-screen person can only use the pose "<id>_stand" (standing, arms down) in this episode.
+ "new_poses": [optional, at most 2 poses an EXISTING drawn character needs for this story: {"id": "dev_phone",
+    "who": "dev", "desc": "standing, holding a phone to his right ear with his right hand, left arm down"}]
+    (standing poses only; drawn automatically). Prefer existing poses; ask for a new one only when the story needs it.
+ "new_sets": [optional, at most ONE place that has no drawn set yet: {"id": "short_id", "desc": "what the place looks
+    like (it will be drawn automatically in the show style, empty, eye level)"}],
  "lines": [
-   {"id": "l1", "who": "dev|rocky|meera",
+   {"id": "l1", "who": "a character id (drawn or voice-only)", "via": "phone|offscreen (voice-only speakers only)",
     "hi": "Devanagari Hindi as spoken, with 1-3 English audio tags in square brackets where the delivery changes, e.g. [nervous, quiet] [booming, proud, Kanpur accent] [deadpan] [whispering] [laughs]. Use ... for comic pauses. English words written in Devanagari as said (क्लाइंट, ऑफिस).",
     "cap": "the same line in Roman Hinglish for the on-screen caption. Max 2 lines separated by \\n, max ~36 characters per line. Break so the funny word is at the end."}
  ],
  "shots": [
    {"type": "wide|medium|close|inner|black",
-    "set": "a set id (not needed for inner/black)",
+    "set": "a drawn set id or your new_sets id (not needed for inner/black)",
     "cast": [{"who": "...", "pose": "a pose id of that character", "expr": "starting expression",
               "look": optional "left|right|camera|down|up" (wide shots aim eyes automatically),
               "events": [ {"at": 0.0-1.0, "expr": "..."} | {"at": .., "pose": "another pose of the same character and kind"} |
@@ -45,28 +56,21 @@ OUTPUT: one JSON object, no prose around it:
  ]
 }
 
-WRITING RULES (research: docs/craft/WRITING_AND_EDITING.md)
+WRITING RULES (research: docs/craft/COMEDY_WRITING.md, docs/craft/WRITING_AND_EDITING.md)
+- STORY FIRST. Pick the cast and the place the story needs. Dev is the usual lead; Meera when the story is at home
+  or needs her deadpan; Rocky and the barber shop ONLY when the story is about them. New people and places are
+  welcome (see new_characters / new_sets).
 - ONE game per sketch. Base reality in 1-2 lines, then THREE escalating beats (change the lever each time:
-  specifics, emotion, stakes), one false victory or reversal, the punch, then a BUTTON that loops back to the
-  first second (callback to a word or prop from the first 5 seconds).
-- Status drives it: Dev low status (accepts every offer), Rocky high status (never concedes, turns every
-  mistake into genius), Meera relaxed high status (still, fewest words, lowers others with one line). The
-  biggest laugh is a status reversal.
+  specifics, emotion, stakes), a twist or reversal, the punch, then a BUTTON that loops back to the first second.
+- Status drives it: whoever is high status falls; the biggest laugh is a status reversal.
 - Funny word LAST: Hindi is verb-final, so restructure, or put the reveal in a separate short tag line.
 - Rule of three: pattern, pattern, SHORT break. Misdirection at most once.
 - Lines 3-10 words (never over 12). Real people interrupt, trail off ("haan wo... matlab..."), answer a question
   with a question. Office/tech words in English, feelings in Hindi. No stage Hindi (kripya, parantu, atyant).
-  At most one UP marker (kaahe, bhaukaal, chaukas, guru) every 2-3 lines. Nobody names the joke or the emotion.
-  "Sab theek hai" at most once, only as an ironic button. Every joke must be a real observation a person in
-  Kanpur would recognise; no generic "vibes" jokes, no punchline that doesn't pay off its setup.
+  Light UP flavour. Nobody names the joke or the emotion. Every joke is a real observation an ordinary Indian
+  viewer recognises; no generic "vibes" jokes, no punchline that doesn't pay off its setup.
 - Dev's inner voice says the truth his outer voice hides; at most 3 times, more panicked each time; never exposition.
-- Meera: at most 3 lines, each lands.
 - 85-110 spoken words in total, 35-45 s.
-STRUCTURES that fit: A "Haan Ki Seedhi" (Dev says yes to bigger and bigger asks; outer voice calmer, inner voice
-louder; button: he finally says "nahi"... to Meera's trivial ask). B "Galti Nahi, Style Hai" (Rocky's mistake gets
-grander justifications; the client starts believing; Meera's one fact collapses it). C "Status Ka Jhoola" (the high
-one humiliates the low one; a small reveal flips it; the former high one begs). D "Ulta Pada" (staging points to an
-obvious outcome; the final reveal reframes it; Meera treats it as normal). Invent others when they fit better.
 
 STAGING / EDITING RULES
 - Shot 1 has a line (the hook) spoken at 0 s, 8 words or fewer, showing the conflict. No greetings.
@@ -103,11 +107,13 @@ def _library_brief() -> str:
 
 
 def _system() -> str:
+    from . import world as Wd
     bible = (ROOT / "docs" / "SHOW_BIBLE.md").read_text()
+    craft = (ROOT / "docs" / "craft" / "COMEDY_WRITING.md").read_text()
     return ("You are the head writer and director of a hit Hindi cartoon sketch show for YouTube Shorts. "
             "You write sharp, natural, genuinely funny Hindi/Hinglish dialogue with a UP flavour, and you "
-            "stage it for a 2D puppet animation system.\n\n" + bible + "\n\nLIBRARY (the only things that exist):\n"
-            + _library_brief() + "\n" + GRAMMAR)
+            "stage it for a 2D puppet animation system.\n\n" + bible + "\n\n" + craft + "\n\n" + Wd.brief() +
+            "\n\nANIMATION LIBRARY (poses, expressions, sounds that exist):\n" + _library_brief() + "\n" + GRAMMAR)
 
 
 def _history_brief(history: list[dict], feedback: list[dict]) -> str:
@@ -118,7 +124,7 @@ def _history_brief(history: list[dict], feedback: list[dict]) -> str:
 
 def _fix_loop(llm, plan: dict, system: str, cost: list[float], tries: int = 3) -> dict:
     for _ in range(tries):
-        errs = D.validate(plan)
+        errs = D.validate(plan, extra=_extra(plan))
         if not errs:
             return plan
         r = llm.ask("TASK: repair\nThis plan breaks library rules. Fix ONLY these problems, keep everything else "
@@ -126,34 +132,110 @@ def _fix_loop(llm, plan: dict, system: str, cost: list[float], tries: int = 3) -
                     + json.dumps(plan, ensure_ascii=False), system=system, model=WRITER_MODEL, max_tokens=12000)
         cost[0] += r.usd
         plan = r.data
-    errs = D.validate(plan)
+    errs = D.validate(plan, extra=_extra(plan))
     if errs:
         raise D.PlanError("; ".join(errs))
     return plan
 
 
+def _extra(plan: dict) -> dict:
+    """Art the plan asks for that will be drawn before render: new sets, new poses, one new on-screen person."""
+    lib = D.library()
+    poses = {x["id"]: x.get("who") for x in plan.get("new_poses", [])[:2] if x.get("id") and x.get("who") in lib["characters"]}
+    chars = [c["id"] for c in plan.get("new_characters", []) if c.get("id") and c.get("on_screen")][:1]
+    for cid in chars:
+        poses[f"{cid}_stand"] = cid
+    return {"sets": [x["id"] for x in plan.get("new_sets", []) if x.get("id")][:1], "poses": poses, "chars": chars}
+
+
+PANEL = ("Five real Indian Shorts viewers: Ankit (19, college student, Lucknow), Priya (26, IT employee, Noida), "
+         "Sunita (36, homemaker, Kanpur), Ramesh (48, shop owner, Kanpur), Zoya (23, works in a call centre, Bhopal). "
+         "They scroll fast, they've seen every cliché, they laugh only at things that are TRUE about their lives and "
+         "said in a way they couldn't have said themselves. They share only what makes them say 'yeh toh bilkul "
+         "mummy/papa/mera dost hai'.")
+
+
+def _today() -> str:
+    import datetime as dt
+    return dt.date.today().strftime("%d %B %Y")
+
+
 def write(llm, history: list[dict], feedback: list[dict], number: int, idea: str = "") -> tuple[dict, float]:
     system = _system()
     cost = [0.0]
-    ask = (f"TASK: write\nWrite episode {number} of Sab Theek Hai.\n" + _history_brief(history, feedback) +
-           (f"\nThe owner asked for this idea: {idea}\n" if idea else
-            "\nFirst think of 5 fresh, very relatable situations that fit the places available, pick the one with "
-            "the strongest hook and the best twist, then write it.\n") +
-           "Return only the JSON plan.")
-    r = llm.ask(ask, system=system, model=WRITER_MODEL, max_tokens=12000)
-    cost[0] += r.usd
-    draft = r.data
-    edit = llm.ask(
-        "TASK: punchup\nYou are now the show's toughest comedy editor. Read this draft as a viewer scrolling Shorts in "
-        "Kanpur would, then check every item: one game stated and served by every beat; first line <= 8 words and "
-        "shows the conflict; three escalating beats on different levers; every punch ends on its funny word and is "
-        "never explained; a status shift or reversal; a button that loops to the first second; Meera <= 3 lines, "
-        "inner voice <= 3; no stage Hindi, no line over 12 words, no forced catchphrase; reaction shots on the big "
-        "laughs; each face shows one clear idea that matches the line; 85-110 words. Rewrite whatever fails, keep "
-        "what works. Return the full improved JSON plan only.\n\nDRAFT:\n"
-        + json.dumps(draft, ensure_ascii=False), system=system, model=WRITER_MODEL, max_tokens=12000)
-    cost[0] += edit.usd
-    plan = _fix_loop(llm, edit.data, system, cost)
+
+    def ask(prompt: str, tokens: int = 8000) -> dict:
+        r = llm.ask(prompt, system=system, model=WRITER_MODEL, max_tokens=tokens)
+        cost[0] += r.usd
+        return r.data
+
+    hist = _history_brief(history, feedback)
+    # 1. ideas
+    ideas = ask(
+        f"TASK: ideate\nToday is {_today()}. Pitch 12 DIFFERENT premises for episode {number}.\n{hist}\n"
+        + (f"The owner asked for: {idea}\n" if idea else "") +
+        "Rules: start from a real, specific moment almost every Indian has lived (family, relatives, WhatsApp groups, "
+        "landlords, exams and results, office and bosses, shaadi season, festivals coming up, trains, cricket, "
+        "money, food, neighbours, delivery apps, friends, siblings, parents and technology...). Choose the cast and "
+        "place the STORY needs - Rocky and the barber shop only if the story is truly about them. Each premise must "
+        "have a twist nobody sees coming and a button that makes people replay it. No premise may repeat an earlier "
+        "episode's situation or joke engine.\nReturn JSON {\"ideas\": [{\"id\": 1, \"moment\": \"the real-life "
+        "moment\", \"game\": \"the comic engine in one line\", \"beats\": [\"beat 1\", \"beat 2\", \"beat 3\"], "
+        "\"twist\": \"...\", \"button\": \"...\", \"cast\": [\"ids\"], \"place\": \"...\", \"share_trigger\": "
+        "\"who would forward this to whom, and the caption they'd write\"}]}", 9000)["ideas"]
+    # 2. audience panel picks
+    pick = ask(
+        f"TASK: panel\n{PANEL}\nEach panelist rates every premise 1-10 for: relatable (has this happened to me or my "
+        "family?), lol (would I actually laugh out loud?), share (would I forward it?). Be harsh: average ideas get 4-6. "
+        "Then pick the TWO premises with the highest combined score and say what would make each funnier.\n"
+        "IDEAS:\n" + json.dumps(ideas, ensure_ascii=False) +
+        "\nReturn JSON {\"scores\": [{\"id\": 1, \"total\": 0}], \"top\": [{\"id\": 1, \"why\": \"...\", "
+        "\"make_it_funnier\": \"...\"}]}", 5000)
+    top = pick["top"][:2]
+    byid = {x["id"]: x for x in ideas}
+    # 3. two full scripts
+    scripts = []
+    for t in top:
+        sc = ask(
+            "TASK: screenplay\nWrite the full 35-45 s script for this premise. Comedy first: every line must earn its "
+            "place; the funniest version of each joke; real Hinglish people speak. Include expressions and reactions "
+            "as directions.\nPREMISE:\n" + json.dumps(byid.get(t["id"], t), ensure_ascii=False) +
+            "\nPANEL NOTE: " + t.get("make_it_funnier", "") +
+            "\nReturn JSON {\"title_idea\": \"...\", \"premise\": \"...\", \"game\": \"...\", "
+            "\"new_characters\": [...], \"new_sets\": [...], \"lines\": [{\"who\": \"id\", \"hi\": "
+            "\"Devanagari with audio tags\", \"cap\": \"Roman Hinglish caption\", \"direction\": \"what we see / "
+            "how faces react\"}]}", 7000)
+        scripts.append(sc)
+    # 4. table read + 5. punch-up (+ one more round if still not good enough)
+    best = None
+    for rnd in range(2):
+        cands = scripts if best is None else [best]
+        tr = ask(
+            f"TASK: tableread\n{PANEL}\nThey watch these scripts as if they were finished Shorts. For each: score 1-10 "
+            "for relatable, lol, share, rewatch; quote the lines that got a real laugh and the lines that got nothing; "
+            "then the head writer lists exact fixes (sharper word choices, a better twist, a tighter button, cuts).\n"
+            "SCRIPTS:\n" + json.dumps(cands, ensure_ascii=False) +
+            "\nReturn JSON {\"winner\": 0, \"scores\": [{\"relatable\": 0, \"lol\": 0, \"share\": 0, "
+            "\"rewatch\": 0}], \"fixes\": [\"...\"]}", 5000)
+        win = cands[int(tr.get("winner", 0)) if int(tr.get("winner", 0)) < len(cands) else 0]
+        sc_ = (tr.get("scores") or [{}])[int(tr.get("winner", 0)) if int(tr.get("winner", 0)) < len(tr.get("scores") or [1]) else 0]
+        best = ask(
+            "TASK: punchup\nApply every fix below to the winning script and make it the funniest possible version. "
+            "Keep what got laughs. Return the same JSON shape.\nFIXES:\n- " + "\n- ".join(tr.get("fixes") or []) +
+            "\nSCRIPT:\n" + json.dumps(win, ensure_ascii=False), 7000)
+        if min(sc_.get("lol", 0), sc_.get("relatable", 0)) >= 8:
+            break
+    # 6. staging
+    plan = ask(
+        "TASK: stage\nTurn this final script into the full production JSON plan (OUTPUT format in the system prompt). "
+        "Keep every line exactly (ids l1, l2, ...). Stage it for maximum comedy: hook shot first, reaction close-ups on "
+        "the laughs, the punch and the button marked, faces that match every beat.\nSCRIPT:\n"
+        + json.dumps(best, ensure_ascii=False), 12000)
+    for k in ("new_characters", "new_sets", "game"):
+        if best.get(k) and not plan.get(k):
+            plan[k] = best[k]
+    plan = _fix_loop(llm, plan, system, cost)
+    plan["writers_room"] = {"ideas": len(ideas), "picked": [t.get("why", "") for t in top]}
     return plan, cost[0]
 
 
@@ -187,7 +269,7 @@ def shorten(llm, plan: dict, seconds: float, durs: dict) -> tuple[dict, float]:
 META_RULES = """
 Write YouTube Shorts metadata for this episode. Research-based rules (docs/METADATA.md):
 - title: 40-60 characters, Roman Hinglish, a relatable situation people recognise ("Jab ...", "POV: ...",
-  "Har ... ka ek dost", "Rocky vs ..."), may use one emoji, ends with " | Sab Theek Hai". No clickbait lies,
+  "Har ... ka ek dost", "Mummy vs ..."), may use one emoji, ends with " | Sab Theek Hai". No clickbait lies,
   no brand or real-person names, no ALL CAPS.
 - description: 3 short lines. Line 1 hooks with the situation (Hinglish). Line 2: the series line
   "Dev ko 'na' bolna nahi aata, Rocky ko sab aata hai, Meera sab samajhti hai. Roz naya episode."

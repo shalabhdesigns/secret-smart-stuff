@@ -89,62 +89,12 @@ Return JSON {{"ok": true|false, "reasons": ["..."]}}. Be strict."""
 
 
 def grow(p, count: int = 1) -> list[str]:
-    from shorts.providers.llm import AnthropicLLM
-    st = p.state
-    cap = float(p.cfg.pipeline.get("budget_usd", {}).get("art_weekly", 5.0))
-    lib = D.library()
-    have = set(lib["sets"])
-    todo = [i for i in IDEAS if i[0] not in have][:count]
-    key = os.environ.get("BFL_API_KEY", "")
-    cfg = dict(p.cfg.pipeline["providers"]["llm"])
-    llm = AnthropicLLM(os.environ["ANTHROPIC_API_KEY"], cfg)
-    ref = BG_DIR / "flat.jpg"
+    """Weekly: add a generally useful place the show doesn't have yet (stories can also ask for one any day)."""
+    from . import art as A
+    have = set(D.library()["sets"])
     added = []
-    for sid, desc, short in todo:
-        for attempt in range(2):
-            if _weekly_art_spend(st) + USD_EACH > cap:
-                notify.send(st, f"🎨 Weekly art budget (${cap:.0f}) reached; new sets resume next week.")
-                return added
-            out = ROOT / "build" / "grow" / f"{sid}_{attempt}.png"
-            out.parent.mkdir(parents=True, exist_ok=True)
-            prompt = ("Using exactly the same flat 2D cartoon illustration style, outline thickness, soft shading and warm "
-                      f"colour palette as the reference image, draw a different empty location: {desc}. Vertical 9:16 "
-                      "background for an animated show, straight-on eye-level view, the floor/ground clearly visible "
-                      "across the bottom quarter, open empty space in the lower centre, no people, no characters, "
-                      "no text, no letters, no logos.")
-            try:
-                _flux(key, prompt, ref, out)
-            except Exception as e:  # noqa: BLE001
-                st.log(f"grow {sid}: {e}", "warn")
-                continue
-            st.add_cost("art", f"set {sid}", 1, USD_EACH)
-            ref_png = out.with_suffix(".cmp.png")
-            Image.open(ref).convert("RGB").resize((544, 976)).save(ref_png)
-            new_png = out.with_suffix(".new.png")
-            Image.open(out).convert("RGB").resize((544, 976)).save(new_png)
-            r = llm.ask(QA.format(desc=desc), model=QA_MODEL, max_tokens=800,
-                        images=[ref_png.read_bytes(), new_png.read_bytes()])
-            st.add_cost("anthropic", f"set qa {sid}", 1, r.usd)
-            verdict = r.data if isinstance(r.data, dict) else {"ok": False}
-            if not verdict.get("ok"):
-                st.log(f"grow {sid} rejected: {verdict.get('reasons')}", "info")
-                continue
-            dst = BG_DIR / f"{sid}.jpg"
-            Image.open(out).convert("RGB").save(dst, quality=93)
-            rg = json.loads(D.RIG.read_text())
-            rg["backgrounds"][sid] = f"../backgrounds/{sid}.jpg"
-            D.RIG.write_text(json.dumps(rg, indent=1, ensure_ascii=False))
-            lib = D.library()
-            lib["sets"][sid] = {"bg": sid, "floor": 1850, "desc": short, "added": dt.date.today().isoformat()}
-            D.LIB.write_text(json.dumps(lib, indent=1, ensure_ascii=False))
+    for sid, desc, short in [i for i in IDEAS if i[0] not in have][:count]:
+        if A.generate_set(p, sid, desc, short):
             added.append(sid)
-            notify.send_photo(st, dst, f"🎨 New set added to the show: <b>{notify.esc(short)}</b>")
-            break
-    if added:
-        subprocess.run(["git", "config", "user.name", "shorts-bot"], check=True)
-        subprocess.run(["git", "config", "user.email", "shorts-bot@users.noreply.github.com"], check=True)
-        subprocess.run(["git", "add", str(BG_DIR), str(D.RIG), str(D.LIB)], check=True)
-        subprocess.run(["git", "commit", "-m", f"Library: new sets {', '.join(added)}"], check=True)
-        subprocess.run(["git", "pull", "--rebase", "origin", "main"], check=False)
-        subprocess.run(["git", "push", "origin", "HEAD:main"], check=True)
+            notify.send_photo(p.state, BG_DIR / f"{sid}.jpg", f"🎨 New set added to the show: <b>{notify.esc(short)}</b>")
     return added

@@ -22,6 +22,7 @@ from . import director as D
 from . import episodes as E
 from . import qa as Q
 from . import voices as V
+from . import world as Wd
 from . import writer as Wr
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -42,9 +43,88 @@ def _llm(p):
     return AnthropicLLM(os.environ["ANTHROPIC_API_KEY"], cfg)
 
 
-def _voices() -> dict:
+def _voices(plan: dict | None = None) -> dict:
+    return Wd.voices_for(plan or {})
+
+
+def prepare_art(p, ep: dict, plan: dict, llm) -> dict:
+    """Draw whatever new art the story asked for (set, poses, one on-screen person) and fix every new person's
+    voice. Anything that can't be drawn is taken out and the episode is restaged without it."""
+    from . import art as A
     lib = D.library()
-    return {k: v["voice"] for k, v in lib["characters"].items()}
+    w = Wd.register_new(plan, ep_id=ep["id"])
+    failed, made = [], []
+    for c in plan.get("new_characters", []):
+        cid = c.get("id")
+        if not cid or cid in lib["characters"] or not c.get("on_screen"):
+            continue
+        rec = w["characters"].setdefault(cid, {"name": c.get("name", cid), "pending": ep["id"]})
+        rec.update(name=c.get("name", cid), desc=c.get("desc", ""), relations=c.get("relations", {}),
+                   voice_type=c.get("voice_type", ""), look=c.get("look", ""))
+        rec["voice"] = rec.get("voice") or Wd.cast_voice(cid, c.get("voice_type", ""), w)
+        ok = False
+        try:
+            ok = A.generate_character(p, cid, c.get("name", cid), c.get("desc", ""), c.get("look", ""),
+                                      float(c.get("height") or 0.95), rec["voice"])
+        except Exception as e:  # noqa: BLE001
+            p.state.log(f"character {cid}: {e}", "warn")
+        if ok:
+            rec["drawn"] = True
+            made.append(f"new character {c.get('name', cid)}")
+        else:
+            c["on_screen"] = False
+            failed.append(f"{c.get('name', cid)} could not be drawn, so {cid} is VOICE-ONLY now (phone call or a voice "
+                          "from another room; not in any shot's cast)")
+    Wd.save(w)
+    Wd.commit(f"World: characters for {ep['id']}")
+    for x in plan.get("new_sets", [])[:1]:
+        if x.get("id") in D.library()["sets"]:
+            continue
+        ok = False
+        try:
+            ok = A.generate_set(p, x["id"], x.get("desc", ""), x.get("desc", "")[:120])
+        except Exception as e:  # noqa: BLE001
+            p.state.log(f"set {x.get('id')}: {e}", "warn")
+        if ok:
+            made.append(f"new place {x['id']}")
+        else:
+            failed.append(f"the place {x['id']} could not be drawn; use an existing set")
+            plan["new_sets"] = [y for y in plan["new_sets"] if y is not x]
+    for x in list(plan.get("new_poses", []))[:2]:
+        if x.get("id") in D.rig()["figures"]:
+            continue
+        ok = False
+        try:
+            ok = A.generate_pose(p, x.get("who", ""), x["id"], x.get("desc", ""))
+        except Exception as e:  # noqa: BLE001
+            p.state.log(f"pose {x.get('id')}: {e}", "warn")
+        if ok:
+            made.append(f"new pose {x['id']}")
+        else:
+            failed.append(f"the pose {x['id']} could not be drawn; use existing poses")
+            plan["new_poses"] = [y for y in plan["new_poses"] if y is not x]
+    if made:
+        E.log(ep, "art", ", ".join(made))
+    if failed:
+        note = ("Some new art could not be made: " + "; ".join(failed) + ". Restage the episode without it. Keep "
+                "the story, the lines and the jokes exactly where possible.")
+        E.log(ep, "art_failed", note)
+        plan, _s, c = Wr.revise(llm, _only_existing(plan), note, _history(p, ep["id"]), _feedback(p))
+        cost = [c]
+        plan = Wr._fix_loop(llm, _only_existing(plan), Wr._system(), cost)
+        _cost(p, ep, "restage", cost[0])
+    return plan
+
+
+def _only_existing(plan: dict) -> dict:
+    """Keep only new-art requests that now exist in the library (so nothing missing reaches the renderer)."""
+    lib, rg = D.library(), D.rig()
+    plan = dict(plan)
+    plan["new_sets"] = [x for x in plan.get("new_sets", []) if x.get("id") in lib["sets"]]
+    plan["new_poses"] = [x for x in plan.get("new_poses", []) if x.get("id") in rg["figures"]]
+    plan["new_characters"] = [{**c, "on_screen": bool(c.get("on_screen")) and c.get("id") in lib["characters"]}
+                              for c in plan.get("new_characters", [])]
+    return plan
 
 
 def _feedback(p) -> list[dict]:
@@ -131,7 +211,7 @@ def render(p, ep: dict, plan: dict, work: Path) -> dict:
     llm = _llm(p) if not fake else None
     tempo = 1.08
     for attempt in range(3):
-        vr = V.make(plan["lines"], _voices(), cache, lines_dir, key, tempo=tempo, fake=fake)
+        vr = V.make(plan["lines"], _voices(plan), cache, lines_dir, key, tempo=tempo, fake=fake)
         cost += vr["usd"]
         scene, asm = D.build(plan, lines_dir, shots_dir, ep["id"], seed=ep["number"])
         total = D.total_seconds(scene)
@@ -258,6 +338,9 @@ def produce(p, req: dict) -> int:
         _cost(p, ep, "script", c)
         ep.update(plan=plan, title=plan.get("title_idea"), premise=plan.get("premise"))
         E.save(p.state, ep)
+        plan = prepare_art(p, ep, plan, llm)
+        ep["plan"] = plan
+        E.save(p.state, ep)
     except Exception as e:  # noqa: BLE001
         _fail(p, ep, "write", e)
         return 1
@@ -319,8 +402,10 @@ def fix(p, req: dict) -> int:
     work = ROOT / "build" / "work" / ep["id"]
     work.mkdir(parents=True, exist_ok=True)
     try:
-        plan, summary, c = Wr.revise(_llm(p), ep["plan"], note, _history(p, ep["id"]), _feedback(p))
+        llm = _llm(p)
+        plan, summary, c = Wr.revise(llm, ep["plan"], note, _history(p, ep["id"]), _feedback(p))
         _cost(p, ep, "revision script", c)
+        plan = prepare_art(p, ep, plan, llm)
     except Exception as e:  # noqa: BLE001
         ep["status"] = "review"
         _fail(p, ep, "revise", e)
@@ -346,6 +431,11 @@ def reject(p, req: dict) -> int:
     ep["status"] = "rejected"
     E.log(ep, "rejected", req.get("note", ""))
     E.save(p.state, ep)
+    try:
+        Wd.forget_pending(ep["id"])
+        Wd.commit(f"World: forget characters from dropped {ep['id']}")
+    except Exception as e:  # noqa: BLE001
+        p.state.log(f"world forget: {e}", "warn")
     notify.send(p.state, f"🗑 Ep {ep['number']} dropped. Making a replacement now; it will arrive here.")
     return produce(p, {"force": True})
 
@@ -382,6 +472,13 @@ def approve(p, req: dict) -> int:
     E.log(ep, "scheduled", ep["slot"])
     E.save(p.state, ep)
     p.state.add_feedback(ep["id"], "approve", "")
+    try:                                            # remember what this episode established, for continuity
+        c = Wd.learn(_llm(p), ep["plan"], ep["number"], ep["id"])
+        _cost(p, ep, "world memory", c)
+        E.save(p.state, ep)
+        Wd.commit(f"World: learn from {ep['id']}")
+    except Exception as e:  # noqa: BLE001
+        p.state.log(f"world learn: {e}", "warn")
     pin = m.get("pinned_comment")
     notify.send(p.state, f"✅ Ep {ep['number']} uploaded (private). It goes public <b>{E.fmt_ist(ep['slot'])}</b>.\n"
                 f"{res.get('url')}" + (f"\n\nOptional pinned comment:\n{notify.esc(pin)}" if pin else ""))
@@ -413,8 +510,9 @@ def daily(p, req: dict) -> int:
     # grow the set library: weekly, or faster while the show has few places
     try:
         from . import grow as G
-        if dt.datetime.now(E.IST).weekday() == 0 or len(D.library()["sets"]) < 6:
-            G.grow(p, 1)
+        from . import art as A
+        if dt.datetime.now(E.IST).weekday() == 0 and A.weekly_spend(p.state) < 2.0:
+            G.grow(p, 1)                             # stories ask for their own places; this is a small extra
     except Exception as e:  # noqa: BLE001
         p.state.log(f"library growth skipped: {e}", "warn")
     return produce(p, req)

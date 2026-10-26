@@ -484,6 +484,48 @@ def main(path: str) -> int:
         gh("issue", "create", "--title", f"Upload: {req['title'][:60]}", "--body", msg, check=False)
         print(msg)
         return 0 if msg.startswith("Uploaded") else 1
+    if action == "voice_test":
+        import requests as _rq
+        from shorts.sketch import world as _W
+        key = os.environ["ELEVENLABS_API_KEY"]
+        out = Path("build/voice_test"); out.mkdir(parents=True, exist_ok=True)
+        rows, files = [], []
+        for kind, ids in _W.load()["voice_pool"].items():
+            if kind.startswith("_"):
+                continue
+            for vid in ids:
+                info = _rq.get(f"https://api.elevenlabs.io/v1/voices/{vid}", headers={"xi-api-key": key}, timeout=30)
+                lab = info.json().get("labels", {}) if info.ok else {}
+                name = info.json().get("name", "?") if info.ok else f"info {info.status_code}"
+                r = _rq.post(f"https://api.elevenlabs.io/v1/text-to-speech/{vid}", params={"output_format": "mp3_44100_128"},
+                             headers={"xi-api-key": key}, json={"text": "अरे बेटा, खाना खाया कि नहीं? सच सच बताना।",
+                                                                 "model_id": "eleven_v4"}, timeout=120)
+                ok = r.status_code == 200
+                if ok:
+                    f = out / f"{kind}_{vid}.mp3"; f.write_bytes(r.content); files.append(f)
+                rows.append(f"- {kind} {vid}: {name} {lab} tts={'ok' if ok else r.status_code} {'' if ok else r.text[:150]}")
+        if files:
+            gh("release", "create", "voice-test", "--prerelease", "--title", "voice test", "--notes", "pool voices", check=False)
+            gh("release", "upload", "voice-test", *[str(f) for f in files], "--clobber", check=False)
+        gh("issue", "create", "--title", "Voice pool test", "--body", "\n".join(rows), check=False)
+        print("\n".join(rows))
+        return 0
+    if action == "art_test":
+        from shorts.sketch import art as _A
+        res = []
+        for pid, who, desc in req.get("poses", []):
+            res.append(f"pose {pid}: {_A.generate_pose(p, who, pid, desc)}")
+        for c in req.get("characters", []):
+            res.append(f"character {c['id']}: " + str(_A.generate_character(p, c["id"], c["name"], c["desc"], c["look"],
+                                                                         c.get("height", 0.95), c.get("voice", ""), save=c.get("save", False))))
+        files = [f for f in Path("build/art").glob("*") if f.suffix in (".png",) and ("sheet" in f.name or f.name.startswith(("pose_", "char_")))]
+        gh("release", "create", "art-test", "--prerelease", "--title", "art test", "--notes", "art test outputs", check=False)
+        if files:
+            gh("release", "upload", "art-test", *[str(f) for f in files], "--clobber", check=False)
+        logs = [r["message"] for r in p.state.db.execute("SELECT message FROM events ORDER BY rowid DESC LIMIT 40").fetchall()]
+        gh("issue", "create", "--title", "Art test", "--body", "\n".join(res) + "\n\nLog:\n" + "\n".join(f"- {x}" for x in reversed(logs))[:60000], check=False)
+        print(res)
+        return 0
     if action == "video_status":
         import requests as _rq
         from shorts.publish.youtube import access_token
