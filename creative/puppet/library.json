@@ -120,7 +120,7 @@
   "dev_holdup": {
    "who": "dev",
    "kind": "stand",
-   "desc": "standing, right hand raising a small object at shoulder height as if showing it, left hand holding a smartphone flat at chest height on speaker",
+   "desc": "standing, right hand holding up a small blue card (like an ATM/ID card) at shoulder height, left hand holding a smartphone flat at chest height on speaker. The card is the only object he can show in this pose.",
    "added": "2026-10-26"
   }
  },
