@@ -66,7 +66,8 @@ def main() -> int:
     state = State(cfg.path("state_db"))
     owner = notify.setup_from_updates(state)
     if not owner:
-        print(json.dumps({"ok": False, "why": "press Start in the Telegram bot first"}))
+        me = notify.call("getMe")
+        print(json.dumps({"ok": False, "why": f"open @{me.get('username')} in Telegram and send /start first"}))
         return 2
     owner_user = state.get_setting("telegram_owner_user_id") or owner
     ns = kv_namespace(acc)
