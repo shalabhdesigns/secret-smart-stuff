@@ -482,6 +482,18 @@ def main(path: str) -> int:
         gh("issue", "create", "--title", f"Upload: {req['title'][:60]}", "--body", msg, check=False)
         print(msg)
         return 0 if msg.startswith("Uploaded") else 1
+    if action == "video_status":
+        import requests as _rq
+        from shorts.publish.youtube import access_token
+        ids = ",".join(req["ids"])
+        r = _rq.get("https://www.googleapis.com/youtube/v3/videos", params={"part": "status,snippet", "id": ids},
+                    headers={"Authorization": f"Bearer {access_token()}"}, timeout=60)
+        rows = [f"- {v['id']}: {v['snippet']['title']} | privacy={v['status'].get('privacyStatus')} | "
+                f"publishAt={v['status'].get('publishAt')} | upload={v['status'].get('uploadStatus')}"
+                for v in r.json().get("items", [])] or [f"no data: {r.status_code} {r.text[:200]}"]
+        gh("issue", "create", "--title", "Video status", "--body", "\n".join(rows), check=False)
+        print(rows)
+        return 0
     if action == "diag":
         # run CLI subcommands and post the tail of their output (no secrets are printed by these)
         out = []
