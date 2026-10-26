@@ -522,7 +522,7 @@ def main(path: str) -> int:
         gh("release", "create", "art-test", "--prerelease", "--title", "art test", "--notes", "art test outputs", check=False)
         if files:
             gh("release", "upload", "art-test", *[str(f) for f in files], "--clobber", check=False)
-        logs = [r["message"] for r in p.state.db.execute("SELECT message FROM events ORDER BY rowid DESC LIMIT 40").fetchall()]
+        logs = [r["message"] for r in p.state.db.execute("SELECT message FROM events ORDER BY at DESC LIMIT 25").fetchall()]
         gh("issue", "create", "--title", "Art test", "--body", "\n".join(res) + "\n\nLog:\n" + "\n".join(f"- {x}" for x in reversed(logs))[:60000], check=False)
         print(res)
         return 0

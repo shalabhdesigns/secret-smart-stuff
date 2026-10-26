@@ -1,6 +1,3 @@
 {"action": "art_test",
  "poses": [["dev_phone", "dev", "standing, holding a smartphone to his right ear with his right hand, left arm relaxed by his side"],
-           ["meera_phone", "meera", "standing, holding a smartphone to her right ear with her right hand, a chips packet in her left hand"]],
- "characters": [{"id": "test_mummy", "name": "Mummy", "desc": "Dev's mother: loving, nosy, dramatic",
-                 "look": "an Indian woman in her early 50s, slightly plump, black hair with a few grey strands tied in a low bun, maroon salwar kameez with a mustard dupatta over one shoulder, gold bangles, simple flat sandals",
-                 "height": 0.9, "save": false}]}
+           ["meera_phone", "meera", "standing, holding a smartphone to her right ear with her right hand, a chips packet in her left hand"]]}

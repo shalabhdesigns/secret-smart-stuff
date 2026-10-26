@@ -123,21 +123,34 @@ def _small(path: Path, out: Path, h: int = 1100) -> Path:
 
 
 def key_out(png: Path, out: Path) -> np.ndarray:
-    """Flat green -> transparent; keep the biggest drawing; crop with a small margin."""
-    from extract_parts import key_green
-    rgb = np.array(Image.open(png).convert("RGB"))
-    rgba = key_green(rgb)
-    a = (rgba[..., 3] > 128).astype(np.uint8)
-    n, lab, st, _ = cv2.connectedComponentsWithStats(cv2.dilate(a, np.ones((15, 15), np.uint8)), 8)
+    """Flat green -> transparent with no green/teal fringe; keep the biggest drawing; crop with a small margin.
+    Edge pixels are un-mixed from the measured background colour, then the edge is pulled in by 1 px."""
+    rgb = np.array(Image.open(png).convert("RGB")).astype(np.float32)
+    H, W = rgb.shape[:2]
+    border = np.concatenate([rgb[:8].reshape(-1, 3), rgb[-8:].reshape(-1, 3), rgb[:, :8].reshape(-1, 3), rgb[:, -8:].reshape(-1, 3)])
+    bg = np.median(border, 0)
+    r, g, b = rgb[..., 0], rgb[..., 1], rgb[..., 2]
+    green = g - np.maximum(r, b)
+    gbg = bg[1] - max(bg[0], bg[2])
+    alpha = np.clip(1.0 - (green - 0.12 * gbg) / (0.75 * gbg), 0.0, 1.0)
+    # biggest drawing only
+    solid = (alpha > 0.5).astype(np.uint8)
+    n, lab, st, _ = cv2.connectedComponentsWithStats(cv2.dilate(solid, np.ones((15, 15), np.uint8)), 8)
     if n <= 1:
         raise ArtError("nothing drawn")
     best = 1 + int(np.argmax(st[1:, 4]))
-    keep = (lab == best)
-    rgba[..., 3] = (rgba[..., 3] * keep).astype(np.uint8)
+    alpha *= (lab == best)
     x, y, w, h, _ = st[best]
-    H, W = a.shape
     if y <= 2 or y + h >= H - 2:
         raise ArtError("figure is cut by the image edge (head or feet missing)")
+    # un-mix: C = a*F + (1-a)*BG  ->  F = (C - (1-a)*BG) / a
+    a3 = np.maximum(alpha, 1e-3)[..., None]
+    fg = np.clip((rgb - (1 - a3) * bg) / a3, 0, 255)
+    fg[..., 1] = np.minimum(fg[..., 1], np.maximum(fg[..., 0], fg[..., 2]) + 25)   # any leftover spill
+    a8 = (alpha * 255).astype(np.uint8)
+    a8 = cv2.erode(a8, np.ones((3, 3), np.uint8))                                   # pull the edge in 1 px
+    a8[a8 < 20] = 0
+    rgba = np.dstack([fg.astype(np.uint8), a8])
     m = 12
     rgba = rgba[max(0, y - m):y + h + m, max(0, x - m):x + w + m]
     Image.fromarray(rgba).save(out)
@@ -257,13 +270,20 @@ def generate_pose(p, who: str, pose_id: str, desc: str, kind: str = "stand") -> 
     if who not in rg["characters"]:
         return False
     stand = rg["figures"][rg["characters"][who]["stand_pose"]]["file"]
+    other = next((rg["figures"][c["stand_pose"]]["file"] for k, c in rg["characters"].items() if k != who), stand)
+    look = lib["characters"].get(who, {}).get("desc", "")
+    prompts = [
+        ("Draw the cartoon character from image 1 again, in the same flat 2D cartoon show style as both reference "
+         f"images (same outline thickness, cel shading and colours). Character: {look} Keep the head, hair, skin tone, "
+         f"clothes and proportions identical to image 1. New pose: {desc}. " + BLANK + FIGURE),
+        (f"A flat 2D cartoon character illustration in the style of the reference images: {look} Same design as the "
+         f"character in image 1. Pose: {desc}. Simple cartoon face with only a nose drawn (eyes and mouth are added "
+         "later in animation). Full body, upright head facing the viewer, plain flat green background."),
+    ]
     for attempt in range(2):
         raw = WORK / f"pose_{pose_id}_{attempt}.png"
-        prompt = ("Redraw EXACTLY the same cartoon character as in the reference image - same head, hair, skin tone, "
-                  "clothes, colours, body proportions, line weight and flat 2D cartoon style - in a new pose: "
-                  f"{desc}. " + BLANK + FIGURE)
         try:
-            flux(p, f"pose {pose_id}", prompt, [PARTS / stand], raw, 1088, 1952)
+            flux(p, f"pose {pose_id}", prompts[attempt], [PARTS / stand, PARTS / other], raw, 1088, 1952)
             fname = f"{pose_id}.png"
             key_out(raw, PARTS / fname)
             score = _alignment_score(rg, who, fname)
