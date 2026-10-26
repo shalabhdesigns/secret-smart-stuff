@@ -284,10 +284,11 @@ def generate_pose(p, who: str, pose_id: str, desc: str, kind: str = "stand") -> 
         return False
     stand = rg["figures"][rg["characters"][who]["stand_pose"]]["file"]
     look = lib["characters"].get(who, {}).get("desc", "")
-    edit = (f"Change only the pose of this cartoon character: {desc}. Keep everything else exactly the same: the same "
-            "character, head, hair, face (a blank face with only a nose - do not add eyes, eyebrows, mouth or glasses), "
-            "skin colour, clothes, colours, outline style and the flat green background. Full body visible from head to "
-            "shoes with empty green space above and below. No text.")
+    edit = (f"Change only the pose of this cartoon character: {desc}. Keep everything else pixel-identical: the same "
+            "head and hair (do not restyle or smooth the hair), the same blank face with only a nose (do not add eyes, "
+            "eyebrows, mouth or glasses), the same skin colour, the same clothes and the SAME FOOTWEAR in the same colour, "
+            "the same outline style and the same flat green background with no shadow on the ground. Full body visible "
+            "from head to feet with empty green space above and below. No text.")
     prompts = [
         ("Draw the cartoon character from the reference image again, in the same flat 2D cartoon show style as the reference "
          f"image (same outline thickness, cel shading and colours). Character: {look} Keep the head, hair, skin tone, "
