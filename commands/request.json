@@ -1,1 +1,20 @@
-{"action":"sketch_produce","force":true}
+{
+ "action": "upload_sketch",
+ "job": "ep001-v3",
+ "episode": 1,
+ "path": "episodes/ep01-the-haircut.mp4",
+ "title": "Naai ko 'na' nahi bol paaya 😭 | Sab Theek Hai",
+ "description": "Bas side se thoda sa kam karwana tha... 💇‍♂️\nDev ko 'na' bolna nahi aata, Rocky ko sab aata hai, Meera sab samajhti hai. Roz naya episode.\nAapke saath bhi hua hai? 1 = haan, 2 = abhi tak bach gaye 👇\n\n#SabTheekHai #HindiComedy #DesiComedy #Kanpur",
+ "tags": [
+  "Sab Theek Hai",
+  "Bhaukaali Toons",
+  "hindi cartoon comedy",
+  "desi comedy",
+  "barber comedy",
+  "haircut fail",
+  "kanpur comedy",
+  "Dev Rocky Meera",
+  "hindi animation"
+ ],
+ "publish_at": "2026-10-27T14:00:00Z"
+}

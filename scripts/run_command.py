@@ -468,6 +468,17 @@ def main(path: str) -> int:
             msg = f"Uploaded as PRIVATE: {res['url']} (video id {res['video_id']}). Publish or schedule it in YouTube Studio."
         except Exception as e:  # noqa: BLE001
             msg = f"Upload failed: {e}"
+        if msg.startswith("Uploaded") and req.get("episode"):     # record it in the episode calendar
+            from shorts.sketch import episodes as E
+            num = int(req["episode"])
+            ep = E.get(p.state, f"ep{num:03d}") or {"id": f"ep{num:03d}", "number": num, "history": []}
+            ep.update(status="scheduled" if req.get("publish_at") else "uploaded", slot=req.get("publish_at") or "",
+                      title=req["title"], yt_video_id=res.get("video_id"), meta={"title": req["title"],
+                      "description": req["description"], "tags": req.get("tags", [])})
+            E.log(ep, "scheduled", req.get("publish_at") or "")
+            E.save(p.state, ep)
+            when = E.fmt_ist(req["publish_at"]) if req.get("publish_at") else "not scheduled"
+            notify.send(p.state, f"✅ Ep {num} uploaded (private). Goes public <b>{when}</b>.\n{res.get('url')}")
         gh("issue", "create", "--title", f"Upload: {req['title'][:60]}", "--body", msg, check=False)
         print(msg)
         return 0 if msg.startswith("Uploaded") else 1

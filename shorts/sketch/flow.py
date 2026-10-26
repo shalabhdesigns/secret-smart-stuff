@@ -199,8 +199,19 @@ def _fail(p, ep: dict, stage: str, err: Exception) -> None:
 
 
 # ----------------------------------------------------------------------------- actions
+def _clear_stale(p) -> None:
+    """Episodes left half-made by a crashed or cancelled run are marked failed so they don't block the queue."""
+    import time as _t
+    for ep in E.all_eps(p.state, ("writing", "revising")):
+        if _t.time() - float(ep.get("updated") or 0) > 3 * 3600:
+            ep["status"] = "failed" if ep["status"] == "writing" else "review"
+            E.log(ep, "stale", "run did not finish")
+            E.save(p.state, ep)
+
+
 def produce(p, req: dict) -> int:
     E.init(p.state)
+    _clear_stale(p)
     live = E.pipeline_days_covered(p.state)
     if live >= MAX_LIVE and not req.get("force"):
         print(f"{live} episodes already waiting; nothing to make today")
