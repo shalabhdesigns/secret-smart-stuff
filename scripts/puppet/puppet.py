@@ -20,6 +20,9 @@ from pathlib import Path
 import cv2
 import numpy as np
 
+sys.path.insert(0, str(Path(__file__).parent))
+import face as F  # noqa: E402
+
 W, H, FPS = 1080, 1920, 30
 OUTLINE = (40, 22, 18)
 
@@ -309,12 +312,23 @@ class Actor:
             self.blinks.append(t)
             t += rng.uniform(1.8, 3.8)
         self.darts = rng.uniform(-1, 1, size=(400, 2))
+        self.flashes = []
+        for ln in self.lines:
+            lp, last = ln["lips"], -9.0
+            for i in range(6, len(lp)):
+                if lp[i][0] > 0.55 and max(x[0] for x in lp[i - 6:i]) < 0.15:
+                    tt = ln["at"] + i / FPS
+                    if tt - last > 1.2 and rng.uniform() < 0.8:
+                        self.flashes.append(tt - 0.05)
+                        last = tt
 
     def state(self, t: float) -> dict:
-        expr_name, prev_name, t_change = self.spec.get("expr", "neutral"), self.spec.get("expr", "neutral"), -9.0
+        expr_name = prev_name = self.spec.get("expr", "neutral")
+        t_change = -9.0
         look = list(self.spec.get("look", [0, 0]))
         twitch_t, twitch_d, jump_t, dart = None, 0.0, None, self.spec.get("dart", False)
         grin = self.spec.get("grin", False)
+        moves, roll, wiggle, shiver = [], None, 0.0, 0.0
         for e in self.events:
             if e["t"] > t:
                 break
@@ -330,8 +344,22 @@ class Actor:
                 grin = e["grin"]
             if "dart" in e:
                 dart = e["dart"]
-        k = ease((t - t_change) / 0.18)
-        expr = blend_expr(EXPR[prev_name], EXPR[expr_name], k)
+            d = e.get("dur", 0.6)
+            if "move" in e and t < e["t"] + d:
+                moves.append((e["move"], (t - e["t"]) / d))
+            if "eyeroll" in e and t < e["t"] + d:
+                roll = (t - e["t"]) / d
+            if "wiggle" in e and t < e["t"] + d:
+                wiggle = 1.0
+            if "shiver" in e and t < e["t"] + d:
+                shiver = 1.0
+        k = ease((t - t_change) / 0.16)
+        # a little overshoot on a change of emotion makes the "take" read
+        over = 0.12 * math.sin(min(1.0, max(0.0, (t - t_change) / 0.3)) * math.pi) if t_change > -9 else 0.0
+        emo = F.blend(F.emotion(prev_name), F.emotion(expr_name), min(1.0, k + over))
+        if self.spec.get("emo_mod"):
+            for kk, vv in self.spec["emo_mod"].items():
+                emo[kk] = vv
         # mouth from voice lines
         o, shape, talk = 0.0, "X", 0.0
         for ln in self.lines:
@@ -347,10 +375,15 @@ class Actor:
         if twitch_t is not None and twitch_t <= t < twitch_t + twitch_d:
             twitch = 0.55 + 0.45 * abs(math.sin((t - twitch_t) * 2 * math.pi * 7))
         if dart:
-            d = self.darts[int(t * 4) % len(self.darts)]
-            look = [float(d[0]), float(d[1]) * 0.5]
-        return {"expr": expr, "mouth": (o, shape), "talk": talk, "blink": blink, "twitch": twitch,
-                "look": look, "jump": jump_t, "grin": grin}
+            dd = self.darts[int(t * 4) % len(self.darts)]
+            look = [float(dd[0]), float(dd[1]) * 0.5]
+        flash = 0.0                                   # brows lift on stressed syllables
+        for ft in self.flashes:
+            if ft <= t < ft + 0.3:
+                flash = 0.3 * math.sin((t - ft) / 0.3 * math.pi)
+        return {"expr": emo, "emo": emo, "mouth": (o, shape), "talk": talk, "blink": blink, "twitch": twitch,
+                "look": look, "jump": jump_t, "grin": grin, "t": t, "moves": moves, "eyeroll": roll,
+                "brow_wiggle": wiggle, "shiver": shiver, "brow_flash": flash}
 
     def render(self, canvas: np.ndarray, t: float) -> None:
         st = self.state(t)
@@ -421,6 +454,43 @@ def analyze_face(rgba: np.ndarray, region_frac: float = 1.0) -> dict:
     return {"top": head_top, "neck": chin, "neck_min": chin + int(0.06 * w0), "cx": cx, "ear_w": int(w0),
             "face_box": (int(x0), int(y0), int(w0), int(h0))}
 
+
+
+def ear_masks(master: np.ndarray, chin: int) -> list:
+    """Ear regions of a master head (float masks, master coords): skin blobs beside the face at eye level."""
+    a = master[..., 3] > 128
+    hsv = cv2.cvtColor(np.ascontiguousarray(master[..., :3]), cv2.COLOR_RGB2HSV)
+    h, sat, v = hsv[..., 0], hsv[..., 1], hsv[..., 2]
+    skin = ((h >= 3) & (h <= 17) & (sat >= 60) & (sat <= 215) & (v >= 80) & a).astype(np.uint8)
+    skin[chin:] = 0
+    n, lab, st, cen = cv2.connectedComponentsWithStats(skin, 8)
+    if n <= 2:
+        return []
+    order = np.argsort(-st[1:, 4]) + 1
+    face = order[0]
+    fx, fy, fw, fh, fa = st[face]
+    out = []
+    for i in order[1:]:
+        x, y, w, hh, area = st[i]
+        cx, cy = cen[i]
+        if area < 0.01 * fa or area > 0.25 * fa:
+            continue
+        if not (fy + 0.15 * fh < cy < fy + 0.85 * fh):
+            continue
+        if fx + 0.2 * fw < cx < fx + 0.8 * fw:
+            continue
+        m = (lab == i).astype(np.uint8)
+        m = cv2.dilate(m, np.ones((5, 5), np.uint8))
+        out.append(cv2.GaussianBlur(m.astype(np.float32), (0, 0), 2.0))
+    if not out:   # ears drawn joined to the face: take the outer side bands of the face blob at ear height
+        fm = (lab == face)
+        for x0, x1 in ((fx, fx + int(0.13 * fw)), (fx + int(0.87 * fw), fx + fw)):
+            m = np.zeros_like(skin)
+            y0, y1 = fy + int(0.22 * fh), fy + int(0.62 * fh)
+            m[y0:y1, x0:x1] = fm[y0:y1, x0:x1]
+            if m.sum() > 0.005 * fa:
+                out.append(cv2.GaussianBlur(m.astype(np.float32), (0, 0), 3.0))
+    return out[:2]
 
 
 _ALIGN_CACHE: dict = {}
@@ -523,9 +593,11 @@ class FigureActor(Actor):
                 sk = st["width"] * k * fks / simg.shape[1]
                 at = to(st["at"])
                 stache = (cv2.resize(simg, None, fx=sk, fy=sk, interpolation=cv2.INTER_AREA), np.array([at[0] - c0, at[1] - r0], np.float32))
+            fs["ears"] = [{"mask": cv2.warpAffine(em, np.float32([[k, 0, ox], [0, k, oy]]), (img.shape[1], img.shape[0]))[r0:r1, c0:c1]}
+                          for em in ear_masks(master, mchin)]
             self.poses[pk] = {"img": img, "roi": (r0, r1, c0, c1), "W": Wm[r0:r1, c0:c1].copy(),
                               "pivot": np.array([cx_chin - c0, chin_y + 0.38 * fw - r0], np.float32),
-                              "face": Face(fs, 1.0, skin), "stache": stache, "chin": np.array([cx_chin, chin_y], np.float32),
+                              "face": F.Face(fs, 1.0, skin), "stache": stache, "chin": np.array([cx_chin, chin_y], np.float32),
                               "fw": fw}
             self.poses[pk]["grid"] = np.mgrid[0:r1 - r0, 0:c1 - c0].astype(np.float32)
         self.pose = a["pose"]
@@ -542,6 +614,15 @@ class FigureActor(Actor):
             self.blinks.append(t)
             t += rng.uniform(1.8, 3.8)
         self.darts = rng.uniform(-1, 1, size=(400, 2))
+        self.flashes = []
+        for ln in self.lines:
+            lp, last = ln["lips"], -9.0
+            for i in range(6, len(lp)):
+                if lp[i][0] > 0.55 and max(x[0] for x in lp[i - 6:i]) < 0.15:
+                    tt = ln["at"] + i / FPS
+                    if tt - last > 1.2 and rng.uniform() < 0.8:
+                        self.flashes.append(tt - 0.05)
+                        last = tt
 
     def render(self, canvas: np.ndarray, t: float) -> None:
         st = self.state(t)
@@ -559,6 +640,10 @@ class FigureActor(Actor):
             rot += 1.2 * math.sin(t * 90)
         rot += self.spec.get("tilt", 0)
         nod = -0.035 * P["fw"] * o * st["talk"]
+        mv = F.motion(st["emo"], st, t)
+        rot += mv["rot"]
+        nod += mv["dy"] * P["fw"]
+        shx = mv["dx"] * P["fw"]
         # face drawn on the head region, then the head region is bent softly about the neck
         r0, r1, c0, c1 = P["roi"]
         img = P["img"].copy()
@@ -576,7 +661,7 @@ class FigureActor(Actor):
         px, py = P["pivot"]
         c, s = np.cos(th), np.sin(th)
         dx, dy = gx - px, gy - py
-        mapx = px + c * dx - s * dy
+        mapx = px + c * dx - s * dy - shx * P["W"]
         mapy = py + s * dx + c * dy - nod * P["W"]
         roi = cv2.remap(roi, mapx.astype(np.float32), mapy.astype(np.float32), cv2.INTER_LINEAR,
                         borderMode=cv2.BORDER_CONSTANT, borderValue=(0, 0, 0, 0))
