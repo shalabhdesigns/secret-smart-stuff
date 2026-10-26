@@ -96,5 +96,6 @@ def make(lines: list[dict], voices: dict[str, str], cache: Path, out: Path, api_
                     usd += len(ln["hi"]) / 1000 * USD_PER_1K_CHARS
             new.append(ln["id"])
         secs[ln["id"]] = round(to_wav(mp3, out / f"{ln['id']}.wav", tempo), 3)
+        (out / f"{ln['id']}.txt").write_text(ln["hi"])          # words drive the mouth shapes (lip sync)
         shutil.copy(mp3, out / f"{ln['id']}.mp3")
     return {"usd": round(usd, 4), "seconds": secs, "new": new}
