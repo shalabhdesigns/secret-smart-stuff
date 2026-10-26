@@ -237,6 +237,84 @@ FIGURE = ("Full body from the top of the head to the shoes, standing on nothing,
           "(#00B140) filling the whole image, no shadow on the ground, no text, nothing else in the image.")
 
 
+LEG_WORDS = ("leg", "feet", "foot", "walk", "run", "sit", "kneel", "jump", "kick", "squat", "dance", "lying", "bend",
+             "crouch", "step", "tiptoe", "shoe")
+
+
+def graft_legs(rg: dict, who: str, new_file: str, cut: float = 0.88, band: int = 30) -> None:
+    """Image editors keep the body but like to change shoes. When a pose doesn't involve the legs, take the lower
+    legs and feet from the character's approved standing drawing (placed by matching the head), blended in."""
+    import puppet as pp
+    from align import align
+    ch = rg["characters"][who]
+    h = rg["heads"][ch["primary_head"]]
+    master = pp.load_rgba(PARTS / h["file"])
+    stand = pp.load_rgba(PARTS / rg["figures"][ch["stand_pose"]]["file"])
+    new = pp.load_rgba(PARTS / new_file)
+    s1, tx1, ty1, _ = align(master, stand, int(ch["chin"]))
+    s2, tx2, ty2, _ = align(master, new, int(ch["chin"]))
+    k = s2 / s1                                         # stand px -> new px
+    M = np.float32([[k, 0, tx2 - tx1 * k], [0, k, ty2 - ty1 * k]])
+    ys = np.nonzero(stand[..., 3].max(1) > 128)[0]
+    cut_y = (ys.min() + cut * (ys.max() - ys.min())) * k + ty2 - ty1 * k
+    foot_y = ys.max() * k + ty2 - ty1 * k
+    Hn = int(max(new.shape[0], foot_y + 20))
+    canvas = np.zeros((Hn, new.shape[1], 4), np.uint8)
+    canvas[:new.shape[0]] = new
+    warped = cv2.warpAffine(stand, M, (new.shape[1], Hn), flags=cv2.INTER_CUBIC, borderValue=(0, 0, 0, 0))
+    # fine-align the legs themselves: best shift/scale so both drawings' legs overlap just above the cut
+    y0, y1 = int(cut_y - 3 * band), int(cut_y - band / 2)
+    a_new = (canvas[y0:y1, :, 3] > 128).astype(np.float32)
+    best = (-1.0, 0, 0, 1.0)
+    for sc in (0.98, 1.0, 1.02):
+        cx = new.shape[1] / 2
+        Ms = np.float32([[sc, 0, cx * (1 - sc)], [0, sc, cut_y * (1 - sc)]])
+        ws = cv2.warpAffine(warped[..., 3], Ms, (new.shape[1], Hn))
+        for dy in range(-40, 41, 4):
+            for dx in range(-60, 61, 3):
+                ys0, ys1 = y0 - dy, y1 - dy
+                if ys0 < 0 or ys1 > Hn:
+                    continue
+                b = (np.roll(ws[ys0:ys1], dx, axis=1) > 128).astype(np.float32)
+                inter = (a_new * b).sum()
+                iou = inter / max(1.0, a_new.sum() + b.sum() - inter)
+                if iou > best[0]:
+                    best = (iou, dx, dy, sc)
+    _, dx, dy, sc = best
+    Ms = np.float32([[sc, 0, new.shape[1] / 2 * (1 - sc) + dx], [0, sc, cut_y * (1 - sc) + dy]])
+    warped = cv2.warpAffine(warped, Ms, (new.shape[1], Hn), flags=cv2.INTER_CUBIC, borderValue=(0, 0, 0, 0))
+    # the seam goes at the lowest row (not below the ankles) where both drawings still show the same thing
+    yA, yB = int(cut_y - 0.25 * (foot_y - cut_y) - 3 * band), int(cut_y)
+    if yB - yA > 10:
+        both = (canvas[yA:yB, :, 3] > 200) & (warped[yA:yB, :, 3] > 200)
+        diff = np.abs(canvas[yA:yB, :, :3].astype(np.float32) - warped[yA:yB, :, :3].astype(np.float32)).mean(2)
+        rowd = np.where(both.sum(1) > 20, (diff * both).sum(1) / np.maximum(1, both.sum(1)), 999)
+        rowd = np.convolve(rowd, np.ones(9) / 9, mode="same")
+        ok = np.nonzero(rowd < 45)[0]
+        if len(ok):
+            cut_y = yA + int(ok.max()) - band / 2
+    # only the legs: below the cut, keep the parts connected to the feet (drops hanging fingertips etc.)
+    low = (warped[..., 3] > 0).astype(np.uint8)
+    low[:max(0, int(cut_y - band))] = 0
+    n, lab, st, _ = cv2.connectedComponentsWithStats(low, 8)
+    if n > 1:
+        bottom = st[1:, 1] + st[1:, 3]
+        keep = [i + 1 for i, b in enumerate(bottom) if b >= bottom.max() - 25]
+        warped[..., 3] = (warped[..., 3] * np.isin(lab, keep)).astype(np.uint8)
+    w = np.clip((np.arange(Hn) - (cut_y - band / 2)) / band, 0, 1).astype(np.float32)[:, None]
+    an, aw = canvas[..., 3].astype(np.float32) / 255, warped[..., 3].astype(np.float32) / 255
+    wn, ww = an * (1 - w), aw * w
+    started = w > 0                                    # from the seam down, the approved legs define the outline
+    wn = np.where(started & (aw < 0.5), 0.0, wn)
+    ww = np.where(started & (an < 0.5), aw, ww)
+    col = (canvas[..., :3] * wn[..., None] + warped[..., :3] * ww[..., None]) / np.maximum(wn + ww, 1e-4)[..., None]
+    alpha = wn + ww
+    out = np.dstack([np.clip(col, 0, 255), np.clip(alpha * 255, 0, 255)]).astype(np.uint8)
+    ys2 = np.nonzero(out[..., 3].max(1) > 0)[0]
+    out = out[:ys2.max() + 12]
+    Image.fromarray(out).save(PARTS / new_file)
+
+
 def _render_sheet(rg: dict, who: str, poses: list[str], out: Path, exprs=("neutral", "happy", "shock")) -> Path:
     import puppet as pp
     tiles = []
@@ -248,7 +326,8 @@ def _render_sheet(rg: dict, who: str, poses: list[str], out: Path, exprs=("neutr
             canvas = np.full((pp.H, pp.W, 3), (225, 225, 225), np.float32)
             act.render(canvas, 1.0)
             tiles.append(canvas.astype(np.uint8)[60:1900:2, ::2])
-    rows = [np.hstack(tiles[i:i + 3]) for i in range(0, len(tiles), 3)]
+    per = len(exprs)
+    rows = [np.hstack(tiles[i:i + per]) for i in range(0, len(tiles), per)]
     Image.fromarray(np.vstack(rows)).save(out)
     return out
 
@@ -306,6 +385,8 @@ def generate_pose(p, who: str, pose_id: str, desc: str, kind: str = "stand") -> 
             flux(p, f"pose {pose_id}", prompt, [PARTS / stand], raw, 1088, 1952, model=model)
             fname = f"{pose_id}.png"
             key_out(raw, PARTS / fname)
+            if kind == "stand" and not any(w_ in desc.lower() for w_ in LEG_WORDS):
+                graft_legs(rg, who, fname)
             score = _alignment_score(rg, who, fname)
             if score < 0.72:
                 raise ArtError(f"head doesn't match the character (score {score:.2f})")
