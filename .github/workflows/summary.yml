@@ -34,6 +34,7 @@ jobs:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
         with: { python-version: "3.12", cache: pip }
-      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
+      - run: scripts/install_ffmpeg.sh
+        timeout-minutes: 15
       - run: pip install -q -r requirements.txt && python -m pytest -q
       - run: node worker/test.mjs
