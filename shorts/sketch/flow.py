@@ -275,7 +275,11 @@ def _review_text(ep: dict, info: dict, summary: str = "") -> str:
 
 def _send_review(p, ep: dict, info: dict, summary: str = "") -> None:
     text = _review_text(ep, info, summary)
-    msg = notify.send_video(p.state, info["video"], text, notify.review_buttons(ep["id"]))
+    if ep.get("hold"):                     # checked by Claude first; sent later with the send_review action
+        msg = None
+        E.log(ep, "held", "waiting for a check before it goes to the owner")
+    else:
+        msg = notify.send_video(p.state, info["video"], text, notify.review_buttons(ep["id"]))
     m = ep.get("meta") or {}
     body = (text.replace("<b>", "**").replace("</b>", "**").replace("<code>", "`").replace("</code>", "`")
             + f"\n\nVideo file (GitHub release): `{info["asset"]}`\n\n**Title:** {m.get('title')}\n\n"
@@ -290,8 +294,26 @@ def _send_review(p, ep: dict, info: dict, summary: str = "") -> None:
     else:
         gh("issue", "create", "--label", "review", "--title", f"Review Ep {ep['number']}: {m.get('title', '')}"[:120],
            "--body", body, check=False)
-    if not msg:
+    if not msg and not ep.get("hold"):
         p.state.log(f"{ep['id']}: Telegram not configured, review posted as a GitHub issue", "warn")
+
+
+def send_review(p, req: dict) -> int:
+    """Send a held episode to the owner's Telegram (after it was checked)."""
+    ep = E.get(p.state, req["job"])
+    if not ep or not ep.get("video_asset"):
+        return 1
+    video = _get(ep["video_asset"], ROOT / "build" / "send")
+    if not video:
+        return 1
+    ep.pop("hold", None)
+    E.save(p.state, ep)
+    qa = ep.get("qa") or {"tech": {"issues": []}, "visual": {"issues": []}}
+    info = {"video": video, "version": ep["version"], "seconds": float((qa.get("tech") or {}).get("seconds") or 0),
+            "qa": qa, "asset": ep["video_asset"], "plan": ep["plan"]}
+    text = _review_text(ep, info, req.get("note", ""))
+    notify.send_video(p.state, video, text, notify.review_buttons(ep["id"]))
+    return 0
 
 
 def _fail(p, ep: dict, stage: str, err: Exception) -> None:
@@ -326,7 +348,7 @@ def produce(p, req: dict) -> int:
         notify.send(p.state, f"⏸ Budget reached ({why}). No new episode today.")
         return 0
     number = E.next_number(p.state)
-    ep = {"id": f"ep{number:03d}", "number": number, "status": "writing",
+    ep = {"id": f"ep{number:03d}", "number": number, "status": "writing", **({"hold": True} if req.get("hold") else {}),
           "slot": E.next_free_slot(p.state).isoformat().replace("+00:00", "Z"), "version": 0, "cost": 0.0}
     E.log(ep, "start", req.get("idea", ""))
     E.save(p.state, ep)
@@ -437,7 +459,7 @@ def reject(p, req: dict) -> int:
     except Exception as e:  # noqa: BLE001
         p.state.log(f"world forget: {e}", "warn")
     notify.send(p.state, f"🗑 Ep {ep['number']} dropped. Making a replacement now; it will arrive here.")
-    return produce(p, {"force": True})
+    return produce(p, {"force": True, "hold": req.get("hold", False)})
 
 
 def approve(p, req: dict) -> int:

@@ -347,6 +347,8 @@ def main(path: str) -> int:
         return SK.fix(p, req)
     if action == "rerender" and sk_job:
         return SK.rerender(p, req)
+    if action == "send_review" and sk_job:
+        return SK.send_review(p, req)
     if action == "reject" and sk_job:
         return SK.reject(p, req)
     if action == "grow":
