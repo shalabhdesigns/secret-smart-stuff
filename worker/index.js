@@ -99,14 +99,14 @@ async function telegram(req, env) {
       await tg(env, "sendMessage", {
         chat_id: chat, parse_mode: "HTML",
         text: `✏️ What should change? Reply to this message in your own words.\n<code>fix job:${job}</code>`,
-        reply_markup: { force_reply: true, input_field_placeholder: "e.g. the 3rd picture should show the tabs" },
+        reply_markup: { force_reply: true, input_field_placeholder: "e.g. Meera's last line should be funnier" },
       });
       return ack(env, cq, "Reply with what to change");
     }
     if (kind === "d") {
       await tg(env, "sendMessage", {
         chat_id: chat, parse_mode: "HTML",
-        text: `🗑 Why drop this topic? Reply to this message (or reply "skip").\n<code>drop job:${job}</code>`,
+        text: `🗑 Why drop this episode? Reply to this message (or reply "skip"). I'll make a replacement.\n<code>drop job:${job}</code>`,
         reply_markup: { force_reply: true },
       });
       return ack(env, cq, "Reply with the reason");
@@ -127,21 +127,21 @@ async function telegram(req, env) {
     if (marker[1] === "fix" && !note) return say(env, chat, "Please say what to change.");
     request = { action: marker[1] === "fix" ? "fix" : "reject", job: marker[2], note };
     reply = marker[1] === "fix"
-      ? "👍 Got it. Making the changes; the new version will arrive here."
-      : "👍 Dropped. Your reason is saved so future topics avoid it.";
-  } else if (reviewJob && /^(fix|change)\b/i.test(text)) {
+      ? "👍 Got it. Making the changes; the new version arrives here in about 15 minutes."
+      : "👍 Dropped. Your reason is saved, and a replacement episode is on its way.";
+  } else if (reviewJob && JOB.test(reviewJob)) {   // any reply to a video = what to change
     request = { action: "fix", job: reviewJob, note: text.replace(/^(fix|change)\s*:?\s*/i, "").slice(0, 1500) };
-    reply = "👍 Making the changes.";
+    reply = "👍 Got it. Making the changes; the new version arrives here in about 15 minutes.";
   } else if (/^\/start\b/.test(text) || /^\/help\b/.test(text)) {
     return say(env, chat,
-      "I send each new Short here for your review.\n\n" +
-      "Buttons: ✅ Approve (asks to confirm) · ✏️ Fix · 🗑 Drop topic\n\n" +
-      "Commands:\n/status – what's happening now\n/produce – make a video now\n" +
+      "Every new Sab Theek Hai episode arrives here 3 days before it goes live.\n\n" +
+      "Buttons: ✅ Approve (asks to confirm, then uploads it privately, scheduled for its slot) · ✏️ Fix (tell me what to change) · 🗑 Drop\n\n" +
+      "Commands:\n/status – the queue\n/produce – make an extra episode now\n" +
       "/dash – dashboard link\n/revenue 2026-11 12.50 – record revenue for a month (USD)");
   } else if (/^\/status\b/.test(text)) {
     request = { action: "status" }; reply = "⏳ Checking…";
   } else if (/^\/produce\b/.test(text)) {
-    request = { action: "produce" }; reply = "🎬 Starting a new video. It takes about 10–15 minutes.";
+    request = { action: "produce" }; reply = "🎬 Writing and animating a new episode. It takes about 15 minutes.";
   } else if (/^\/dash\b/.test(text)) {
     return say(env, chat, `📊 Dashboard: https://${new URL(env.SELF_URL).host}/dash`);
   } else if (/^\/revenue\b/.test(text)) {
@@ -162,7 +162,7 @@ async function telegram(req, env) {
 function reviewButtons(job) {
   return { inline_keyboard: [
     [{ text: "✅ Approve", callback_data: `a:${job}` }, { text: "✏️ Fix", callback_data: `f:${job}` }],
-    [{ text: "🗑 Drop topic", callback_data: `d:${job}` }],
+    [{ text: "🗑 Drop episode", callback_data: `d:${job}` }],
   ] };
 }
 
