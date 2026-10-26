@@ -378,7 +378,7 @@ class Face:
 
         # ---- open mouth (talking, or an open style)
         dims = {"A": (0.52, 0.55), "E": (0.58, 0.26), "O": (0.3, 0.42), "U": (0.26, 0.24), "X": (0.5, 0.4)}[shape if talking else "X"]
-        talk_k = 0.82 if talking else 1.0                     # speech shapes stay smaller than shouted takes
+        talk_k = 0.9 if talking else 1.0                     # speech shapes stay smaller than shouted takes
         hw = w * dims[0] * (0.75 + 0.25 * open_) * talk_k
         hh = w * dims[1] * (0.3 + 0.7 * open_) * talk_k
         if style == 3 and not talking:

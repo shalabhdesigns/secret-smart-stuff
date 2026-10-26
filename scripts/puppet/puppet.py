@@ -159,7 +159,7 @@ def lipsync(path: Path) -> list[tuple[float, str]]:
         shape, op = track[f]
         if not voiced[f]:
             shape, op = "X", 0.0
-        o = op * (0.45 + 0.55 * float(level[f])) if shape != "X" else 0.0
+        o = op * (0.6 + 0.4 * float(level[f])) if shape != "X" else 0.0
         if shape != last and hold < 2 and op > 0.25:        # vowel drawings stay at least 2 frames
             shape, o = last, out[-1][0] if out else 0.0
         hold = hold + 1 if shape == last else 0
