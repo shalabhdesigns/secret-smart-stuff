@@ -420,14 +420,14 @@ def motion(e: dict, st: dict, t: float) -> dict:
     dx = 0.0
     if e["bounce"] > 0.02:                                     # laugh: 2-3 bounces of ~7 frames
         ph = t * 2 * math.pi * 4.3
-        dy += -abs(math.sin(ph)) * 0.05 * e["bounce"]
+        dy += -abs(math.sin(ph)) * 0.025 * e["bounce"]
         rot += math.sin(ph) * 2.0 * e["bounce"]
     tr = e["tremble"] + st.get("shiver", 0.0)
     if tr > 0.02:
         dx += (1 if int(t * 15) % 2 else -1) * 0.008 * tr
     for kind, p in st.get("moves", []):
         if kind == "nod":                                      # one clear nod: down, up, settle (~0.4 s)
-            dy += math.sin(min(1.0, p * 1.6) * math.pi) * 0.06
+            dy += math.sin(min(1.0, p * 1.6) * math.pi) * 0.035
             rot += math.sin(min(1.0, p * 1.6) * math.pi) * 1.5
         elif kind == "shake":                                  # three cycles of ~7 frames
             env = 1 - p
@@ -435,8 +435,8 @@ def motion(e: dict, st: dict, t: float) -> dict:
             dx += math.sin(p * math.pi * 6) * 0.035 * env
         elif kind == "recoil":                                 # snap back 5-10 deg, ease out
             env = math.sin(min(1, p * 3) * math.pi / 2) * (1 - p) ** 0.6
-            dy += -0.10 * env
-            rot += -7 * env
+            dy += -0.035 * env
+            rot += -6 * env
         elif kind == "lean":
             env = math.sin(p * math.pi)
             dx += 0.06 * env

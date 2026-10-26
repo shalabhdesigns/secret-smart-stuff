@@ -737,7 +737,7 @@ class FigureActor(Actor):
             Wm = cv2.dilate(Wm, np.ones((d, d), np.uint8))
             Wm = cv2.GaussianBlur(Wm.astype(np.float32) / 255.0, (0, 0), max(1.0, 0.04 * fw))
             yy = np.arange(img.shape[0], dtype=np.float32)[:, None]
-            v = np.clip((chin_y + 0.42 * fw - yy) / (0.42 * fw + 0.08 * fw), 0, 1)
+            v = np.clip((chin_y + 0.30 * fw - yy) / (0.22 * fw), 0, 1)       # whole face rigid; only the neck bends
             v = v * v * (3 - 2 * v)
             Wm = Wm * v
             nz = np.nonzero(Wm > 0.002)
@@ -764,7 +764,7 @@ class FigureActor(Actor):
             fs["ears"] = [{"mask": cv2.warpAffine(em, np.float32([[k, 0, ox], [0, k, oy]]), (img.shape[1], img.shape[0]))[r0:r1, c0:c1]}
                           for em in ear_masks(master, mchin)]
             self.poses[pk] = {"img": img, "roi": (r0, r1, c0, c1), "W": Wm[r0:r1, c0:c1].copy(),
-                              "pivot": np.array([cx_chin - c0, chin_y + 0.38 * fw - r0], np.float32),
+                              "pivot": np.array([cx_chin - c0, chin_y + 0.06 * fw - r0], np.float32),
                               "face": F.Face(fs, 1.0, skin), "stache": stache, "chin": np.array([cx_chin, chin_y], np.float32),
                               "fw": fw}
             self.poses[pk]["grid"] = np.mgrid[0:r1 - r0, 0:c1 - c0].astype(np.float32)
