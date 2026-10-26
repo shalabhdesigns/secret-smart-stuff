@@ -35,10 +35,13 @@ jobs:
       - name: Produce one Short
         run: |
           echo '{"action": "produce"}' > "$RUNNER_TEMP/req.json"
-          python scripts/run_command.py "$RUNNER_TEMP/req.json"
+          set -o pipefail
+          python scripts/run_command.py "$RUNNER_TEMP/req.json" 2>&1 | tee "$RUNNER_TEMP/out.log"
       - name: Save state
         if: always()
         run: scripts/state_sync.sh push
       - name: Tell the owner if this run crashed
         if: failure()
-        run: python scripts/notify_failure.py "daily production run ${{ github.run_id }} failed"
+        run: |
+          python scripts/post_failure_log.py "$RUNNER_TEMP/out.log" "Run ${{ github.run_id }} failed (produce)"
+          python scripts/notify_failure.py "daily production run ${{ github.run_id }} failed"
