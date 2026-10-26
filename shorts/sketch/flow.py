@@ -58,22 +58,47 @@ def _history(p, exclude: str = "") -> list[dict]:
     return pilot + [e for e in E.all_eps(p.state) if e["id"] != exclude and e["status"] != "failed"]
 
 
-def _ensure_release() -> None:
-    if subprocess.run(["gh", "release", "view", RELEASE], capture_output=True).returncode != 0:
-        gh("release", "create", RELEASE, "--prerelease", "--title", "Episode renders",
-           "--notes", "Every rendered version of every episode (kept for revisions and uploads).")
+MAX_ASSETS = 950          # GitHub allows 1000 files per release (no total-size limit); roll over before that
 
 
-def _put(files: list[Path]) -> None:
-    _ensure_release()
-    gh("release", "upload", RELEASE, *[str(f) for f in files], "--clobber")
+def _release_tags() -> list[str]:
+    out = gh("release", "list", "--limit", "200", "--json", "tagName", "-q", ".[].tagName", check=False)
+    tags = [t for t in out.splitlines() if t == RELEASE or t.startswith(RELEASE + "-")]
+    return sorted(tags, key=lambda t: int(t.split("-")[-1]) if t != RELEASE else 1)
+
+
+def _current_release(extra: int) -> str:
+    tags = _release_tags()
+    tag = tags[-1] if tags else RELEASE
+    if tags:
+        n = int(gh("release", "view", tag, "--json", "assets", "-q", ".assets | length", check=False) or 0)
+        if n + extra > MAX_ASSETS:
+            tag = f"{RELEASE}-{len(tags) + 1}"
+            tags = []
+    if not tags or tag not in tags:
+        if subprocess.run(["gh", "release", "view", tag], capture_output=True).returncode != 0:
+            gh("release", "create", tag, "--prerelease", "--title", f"Episode renders ({tag})",
+               "--notes", "Every rendered version of every episode (kept for revisions and uploads).")
+    return tag
+
+
+def _put(files: list[Path]) -> str:
+    tag = _current_release(len(files))
+    gh("release", "upload", tag, *[str(f) for f in files], "--clobber")
+    return tag
 
 
 def _get(name: str, into: Path) -> Path | None:
+    """name may be 'tag/file' or a bare file name (searched in every episodes release, newest first)."""
     into.mkdir(parents=True, exist_ok=True)
-    r = subprocess.run(["gh", "release", "download", RELEASE, "-p", name, "-D", str(into), "--clobber"],
-                       capture_output=True, text=True)
-    return into / name if r.returncode == 0 else None
+    tags = [name.split("/", 1)[0]] if "/" in name else list(reversed(_release_tags()))
+    fname = name.split("/", 1)[-1]
+    for tag in tags:
+        r = subprocess.run(["gh", "release", "download", tag, "-p", fname, "-D", str(into), "--clobber"],
+                           capture_output=True, text=True)
+        if r.returncode == 0:
+            return into / fname
+    return None
 
 
 def _spent_month(p) -> float:
@@ -149,8 +174,8 @@ def render(p, ep: dict, plan: dict, work: Path) -> dict:
     with zipfile.ZipFile(zp, "w") as f:
         for m in cache.glob("*.mp3"):
             f.write(m, m.name)
-    _put([final, zp, sheet])
-    return {"plan": plan, "version": ver, "video": final, "asset": final.name, "seconds": tech["seconds"],
+    tag = _put([final, zp, sheet])
+    return {"plan": plan, "version": ver, "video": final, "asset": f"{tag}/{final.name}", "seconds": tech["seconds"],
             "qa": {"tech": tech, "visual": vis}, "cost": cost}
 
 
@@ -173,7 +198,7 @@ def _send_review(p, ep: dict, info: dict, summary: str = "") -> None:
     msg = notify.send_video(p.state, info["video"], text, notify.review_buttons(ep["id"]))
     m = ep.get("meta") or {}
     body = (text.replace("<b>", "**").replace("</b>", "**").replace("<code>", "`").replace("</code>", "`")
-            + f"\n\nVideo: release `{RELEASE}`, file `{info['asset']}`\n\n**Title:** {m.get('title')}\n\n"
+            + f"\n\nVideo file (GitHub release): `{info["asset"]}`\n\n**Title:** {m.get('title')}\n\n"
             f"**Description:**\n{m.get('description')}\n\n**Tags:** {', '.join(m.get('tags') or [])}\n\n"
             "**Script:**\n" + "\n".join(f"- {ln['who']}: {ln['cap']}".replace("\n", " ") for ln in info["plan"]["lines"])
             + f"\n\n<!-- job:{ep['id']} -->")
