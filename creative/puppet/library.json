@@ -104,6 +104,12 @@
    "kind": "stand",
    "desc": "holding chips, pointing to the side (at someone)",
    "wide": true
+  },
+  "dev_phone": {
+   "who": "dev",
+   "kind": "stand",
+   "desc": "standing, holding a smartphone to his right ear with his right hand, left arm relaxed by his side",
+   "added": "2026-10-26"
   }
  },
  "hair_variants": {

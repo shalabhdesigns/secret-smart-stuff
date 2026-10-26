@@ -308,6 +308,9 @@
      852
     ]
    }
+  },
+  "dev_phone": {
+   "file": "dev_phone.png"
   }
  }
 }
