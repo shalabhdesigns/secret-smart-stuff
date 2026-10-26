@@ -18,47 +18,76 @@ META_MODEL = "claude-sonnet-5-5"
 GRAMMAR = """
 OUTPUT: one JSON object, no prose around it:
 {
+ "game": "the one unusual thing that drives the sketch, in one sentence",
+ "structure": "which structure you used (A Haan Ki Seedhi / B Galti Nahi Style Hai / C Status Ka Jhoola / D Ulta Pada / other)",
  "title_idea": "short English working title",
  "premise": "one sentence: the situation and why it is funny",
- "mechanism": "the joke mechanism in a few words (e.g. 'politeness trap + deadpan reveal')",
  "music": one of ["quirky_funk","bright_pop","curious_pluck","clockwork"],
  "lines": [
    {"id": "l1", "who": "dev|rocky|meera",
-    "hi": "Devanagari Hindi as spoken, with 1-3 English audio tags in square brackets at the start or where the delivery changes, e.g. [nervous, quiet] or [booming, proud, Kanpur accent] or [deadpan] or [whispering] or [laughs]. Use ... for comic pauses. English words written in Devanagari the way they are said (क्लाइंट, ऑफिस).",
-    "cap": "the same line in Roman Hinglish as the on-screen caption. Max 2 lines separated by \\n, max ~38 characters per line."}
+    "hi": "Devanagari Hindi as spoken, with 1-3 English audio tags in square brackets where the delivery changes, e.g. [nervous, quiet] [booming, proud, Kanpur accent] [deadpan] [whispering] [laughs]. Use ... for comic pauses. English words written in Devanagari as said (क्लाइंट, ऑफिस).",
+    "cap": "the same line in Roman Hinglish for the on-screen caption. Max 2 lines separated by \\n, max ~36 characters per line. Break so the funny word is at the end."}
  ],
  "shots": [
    {"type": "wide|medium|close|inner|black",
     "set": "a set id (not needed for inner/black)",
-    "cast": [{"who": "...", "pose": "a pose id of that character",
-              "expr": "starting expression",
-              "look": optional "left|right|camera|down|up" (wide shots aim eyes automatically; set it only to override),
+    "cast": [{"who": "...", "pose": "a pose id of that character", "expr": "starting expression",
+              "look": optional "left|right|camera|down|up" (wide shots aim eyes automatically),
               "events": [ {"at": 0.0-1.0, "expr": "..."} | {"at": .., "pose": "another pose of the same character and kind"} |
                           {"at": .., "move": "nod|shake|recoil|lean|double_take"} | {"at": .., "eyeroll": 1} |
-                          {"at": .., "wiggle": 1} | {"at": .., "shiver": 1} | {"at": .., "twitch": 1} |
-                          {"at": .., "look": "left|right|camera|down|up"} ] }],
+                          {"at": .., "wiggle": 1} | {"at": .., "shiver": 1} | {"at": .., "look": "left|right|camera|down|up"} ] }],
     "line": "line id spoken in this shot, or omit for a silent reaction shot",
-    "hold": optional seconds to stay on the shot after the line (default 0.35; silent shots default 1.2),
-    "camera": optional "punch_in" (fast push-in at 60% for a big reaction),
-    "fx": optional [{"at": .., "fx": "shake|flash|speedlines"}],
+    "punch": true only on the main punch line and the button (adds the comic beat before it and drops the music),
+    "hold": optional seconds to stay after the line (default 0.2; reaction shots 0.6-1.2; the punch reaction 1.0-2.0),
+    "camera": optional "punch_in" (fast push-in at 60% for the single biggest reaction),
+    "fx": optional [{"at": .., "fx": "shake|flash"}],
     "sfx": optional [{"at": .., "name": a sound id}]}
  ]
 }
-SHOT RULES
-- wide: 1-3 characters, whole bodies, same set. medium/close: exactly one character. inner: exactly one
-  character (Dev's panic inner voice; the line is that character's inner voice; spiral background; Dev only).
-  black: no cast, a comic beat or time cut (0.6-1.5 s), usually with a sound.
-- Every line is used in exactly one shot, by a character who is in that shot. Shots follow line order.
-- 'at' is a fraction of the shot (0 = start, 1 = end). Put expression changes and gestures exactly where the
-  line or the reaction turns: characters must feel alive (eyebrows, eye-rolls, double takes, nods, recoils,
-  wiggles, blushes via 'embarrassed', sweating via 'nervous'/'panic'). 2-4 events per character per shot is typical.
-- Listeners react too: give the non-speaking characters in a wide shot expressions and events.
-- Vary shot types: open on a close or medium on the hook line, use wides to show relationships, cut to a
-  silent close reaction for the biggest laughs.
-- Use only ids from the LIBRARY. Poses marked solo only in a shot alone. Pose changes only within the same
-  character and the same kind (stand<->stand).
-- Target 35-45 seconds total: about 9-13 lines plus 2-4 silent reaction/black beats. Spoken Hindi runs at
-  about 2.5 words per second.
+
+WRITING RULES (research: docs/craft/WRITING_AND_EDITING.md)
+- ONE game per sketch. Base reality in 1-2 lines, then THREE escalating beats (change the lever each time:
+  specifics, emotion, stakes), one false victory or reversal, the punch, then a BUTTON that loops back to the
+  first second (callback to a word or prop from the first 5 seconds).
+- Status drives it: Dev low status (accepts every offer), Rocky high status (never concedes, turns every
+  mistake into genius), Meera relaxed high status (still, fewest words, lowers others with one line). The
+  biggest laugh is a status reversal.
+- Funny word LAST: Hindi is verb-final, so restructure, or put the reveal in a separate short tag line.
+- Rule of three: pattern, pattern, SHORT break. Misdirection at most once.
+- Lines 3-10 words (never over 12). Real people interrupt, trail off ("haan wo... matlab..."), answer a question
+  with a question. Office/tech words in English, feelings in Hindi. No stage Hindi (kripya, parantu, atyant).
+  At most one UP marker (kaahe, bhaukaal, chaukas, guru) every 2-3 lines. Nobody names the joke or the emotion.
+  "Sab theek hai" at most once, only as an ironic button. Every joke must be a real observation a person in
+  Kanpur would recognise; no generic "vibes" jokes, no punchline that doesn't pay off its setup.
+- Dev's inner voice says the truth his outer voice hides; at most 3 times, more panicked each time; never exposition.
+- Meera: at most 3 lines, each lands.
+- 85-110 spoken words in total, 35-45 s.
+STRUCTURES that fit: A "Haan Ki Seedhi" (Dev says yes to bigger and bigger asks; outer voice calmer, inner voice
+louder; button: he finally says "nahi"... to Meera's trivial ask). B "Galti Nahi, Style Hai" (Rocky's mistake gets
+grander justifications; the client starts believing; Meera's one fact collapses it). C "Status Ka Jhoola" (the high
+one humiliates the low one; a small reveal flips it; the former high one begs). D "Ulta Pada" (staging points to an
+obvious outcome; the final reveal reframes it; Meera treats it as normal). Invent others when they fit better.
+
+STAGING / EDITING RULES
+- Shot 1 has a line (the hook) spoken at 0 s, 8 words or fewer, showing the conflict. No greetings.
+- A wide shot of the set early (by shot 2-3) so geography reads. Wides for physical/spatial gags, close-ups for
+  reactions and punch lines. Never three shots of the same size in a row; when cutting to the same character,
+  change shot size. Dialogue shots ~1.5-4 s; long lines are split automatically.
+- Silent reaction close-ups (0.6-1.2 s) are where many laughs live; give the punch reaction 1-2 s.
+- inner: Dev only, at most 3. black: at most one 0.4-0.8 s beat, never first or last.
+- SOUND: at most 3 sound effects in the whole video, each only for a visible action (scissors on screen, a photo
+  being taken). No decorative sounds.
+ACTING RULES (research: docs/craft/EXPRESSIONS.md)
+- Change a character's expression once per change of THOUGHT (about every 2-4 s), never more often than every
+  0.5 s. Each face shows ONE clear idea. Speakers change more than listeners; listeners mostly react with one
+  clear expression change at the right moment, e.g. a slow burn annoyed -> angry, or neutral -> shock.
+- Use: listening (neutral, attentive), forced_smile (Dev's polite agony), deadpan/unimpressed/skeptical (Meera),
+  proud/smug/sly/excited (Rocky), shock with a recoil for big takes, double_take for a delayed realisation,
+  embarrassed/sheepish after getting caught, defeated for the end of a loss, laugh for real joy.
+- Gestures: nod on agreement, shake on refusal, recoil on shock, lean when pushing, eyeroll only for Meera,
+  wiggle (eyebrow wiggle) only for Rocky being sly. At most one gesture per character per shot.
+- Use ONLY ids from the LIBRARY. Poses marked solo only in a shot alone. Pose changes only within the same character
+  and kind (stand<->stand). Every line is used in exactly one shot, by a character who is in that shot, in order.
 """
 
 
@@ -116,9 +145,12 @@ def write(llm, history: list[dict], feedback: list[dict], number: int, idea: str
     draft = r.data
     edit = llm.ask(
         "TASK: punchup\nYou are now the show's toughest comedy editor. Read this draft as a viewer scrolling Shorts in "
-        "Kanpur would. Fix: a weak hook, any line that sounds written rather than spoken, any forced catchphrase, "
-        "any joke explained twice, a soft ending, a broken loop, dead reaction shots, missing listener reactions, "
-        "and anything over 45 seconds. Keep what already works. Return the full improved JSON plan only.\n\nDRAFT:\n"
+        "Kanpur would, then check every item: one game stated and served by every beat; first line <= 8 words and "
+        "shows the conflict; three escalating beats on different levers; every punch ends on its funny word and is "
+        "never explained; a status shift or reversal; a button that loops to the first second; Meera <= 3 lines, "
+        "inner voice <= 3; no stage Hindi, no line over 12 words, no forced catchphrase; reaction shots on the big "
+        "laughs; each face shows one clear idea that matches the line; 85-110 words. Rewrite whatever fails, keep "
+        "what works. Return the full improved JSON plan only.\n\nDRAFT:\n"
         + json.dumps(draft, ensure_ascii=False), system=system, model=WRITER_MODEL, max_tokens=12000)
     cost[0] += edit.usd
     plan = _fix_loop(llm, edit.data, system, cost)

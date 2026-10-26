@@ -138,7 +138,7 @@ def captions(spec: dict, starts: list[float], durs: list[float], out: Path) -> P
              "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, "
              "Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, "
              "MarginL, MarginR, MarginV, Encoding",
-             "Style: Cap,Inter,64,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,7,3,2,80,80,420,1",
+             "Style: Cap,Inter,64,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,7,3,2,80,80,560,1",
              "", "[Events]", "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text"]
     for s, st, d in zip(spec["shots"], starts, durs):
         if not s.get("caption"):
@@ -194,6 +194,19 @@ def main(spec_path: str) -> int:
         for lo, hi in mu.get("mute_shots", []):            # e.g. the thriller spiral
             a, b = int(starts[lo] * SR), int((starts[hi] + durs[hi]) * SR)
             env[a:b] = 0.0
+        for lo, hi in mu.get("mute_ranges", []):           # silence before a punch line (seconds)
+            env[max(0, int(lo * SR)):max(0, int(hi * SR))] = 0.0
+        if mu.get("duck_db"):                              # duck under speech (attack ~150 ms, release ~400 ms)
+            speech = np.zeros(n, np.float32)
+            for i, shot in enumerate(spec["shots"]):
+                for snd in shot.get("sounds") or []:
+                    if snd.get("voice"):
+                        src = fetch(snd.get("url") or snd["file"], tmp / f"v{i}.audio")
+                        a = max(0, int((starts[i] + float(snd.get("at", 0))) * SR))
+                        speech[a:min(n, a + len(decode(src)))] = 1.0
+            k = int(0.3 * SR)
+            speech = np.convolve(speech, np.ones(k) / k, mode="same").astype(np.float32)
+            env *= (1 - (1 - 10 ** (-float(mu["duck_db"]) / 20)) * np.clip(speech * 1.5, 0, 1))
         fade = int(0.08 * SR)
         env = np.convolve(env, np.ones(fade) / fade, mode="same").astype(np.float32)
         mix += bed * env[:, None]

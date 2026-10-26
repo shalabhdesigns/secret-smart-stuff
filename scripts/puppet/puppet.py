@@ -76,7 +76,7 @@ def lipsync(path: Path) -> list[tuple[float, str]]:
             shape = "U"
         else:
             shape = "A"
-        if shape != last and hold < 2 and shape != "X":
+        if shape != last and hold < 3 and shape != "X":
             shape = last
         hold = hold + 1 if shape == last else 0
         last = shape
@@ -303,41 +303,97 @@ class Actor:
             k = st["width"] * hs / simg.shape[1]
             self.stache = (cv2.resize(simg, None, fx=k, fy=k, interpolation=cv2.INTER_AREA), np.array(st["at"], np.float32) * hs)
         self.lines = a.get("lines", [])  # [{"lips": [...], "at": t}]
+        self._plan_timing(a, shot_dur)
+
+    # ------------------------------------------------------------------ acting timing (docs/craft/EXPRESSIONS.md)
+    def _plan_timing(self, a: dict, shot_dur: float) -> None:
         self.phase = (sum(map(ord, self.who)) % 100) / 17.0
-        self.events = sorted(a.get("events", []), key=lambda e: e["t"])
+        evs = []
+        for e in a.get("events", []):
+            if "twitch" in e:                              # retired: one-eye twitch reads as nothing on a phone
+                continue
+            if e.get("move") == "double_take":             # look -> away -> beat -> snap back + take
+                t0 = e["t"]
+                base = a.get("look", [0, 0])
+                away = [-0.8 if (base[0] if base else 0) >= 0 else 0.8, 0.0]
+                evs += [{"t": t0, "look": away}, {"t": t0 + 0.33, "look": list(base) if base else [0, 0]},
+                        {"t": t0 + 0.36, "move": "recoil", "dur": 0.5}]
+                if not any("expr" in x and abs(x["t"] - t0) < 0.6 for x in a.get("events", [])):
+                    evs.append({"t": t0 + 0.36, "expr": "shock"})
+                continue
+            evs.append(e)
+        self.events = sorted(evs, key=lambda e: e["t"])
         rng = np.random.default_rng(sum(map(ord, self.who)) * 7919 + int(a.get("seed", 0)))
-        self.blinks = []
-        t = rng.uniform(0.4, 1.6)
+        # blinks: on thought changes and head moves, plus a sparse fallback so long holds never look dead
+        marks = sorted([e["t"] - 0.04 for e in self.events if "expr" in e or "look" in e or "move" in e])
+        bl, last = [], -9.0
+        for m in marks:
+            if m - last > 0.6:
+                bl.append((m, "n"))
+                last = m
+        t = rng.uniform(0.6, 1.8)
         while t < shot_dur:
-            self.blinks.append(t)
-            t += rng.uniform(1.8, 3.8)
-        self.darts = rng.uniform(-1, 1, size=(400, 2))
-        self.flashes = []
+            if all(abs(t - b[0]) > 1.8 for b in bl):
+                bl.append((t, "l" if self.spec.get("expr") in ("deadpan", "unimpressed") else "n"))
+            t += rng.uniform(3.5, 5.5)
+        self.blinks = sorted(bl)
+        self.dart_seq = rng.uniform(-1, 1, size=(400, 2))
+        self.flashes = []                                   # brow accents on 1-2 stressed words per sentence
         for ln in self.lines:
             lp, last = ln["lips"], -9.0
             for i in range(6, len(lp)):
-                if lp[i][0] > 0.55 and max(x[0] for x in lp[i - 6:i]) < 0.15:
+                if lp[i][0] > 0.6 and max(x[0] for x in lp[i - 6:i]) < 0.15:
                     tt = ln["at"] + i / FPS
-                    if tt - last > 1.2 and rng.uniform() < 0.8:
-                        self.flashes.append(tt - 0.05)
+                    if tt - last > 1.4 and rng.uniform() < 0.7:
+                        self.flashes.append(tt - 0.1)      # brows lead the sound by ~3 frames
                         last = tt
 
+    @staticmethod
+    def _take_k(f: float, big: bool) -> tuple[float, float, float]:
+        """Blend factor prev->new expression at frame f after the change, plus eye squeeze and head dip.
+        Big changes: anticipation (5 fr, slightly the other way) -> accent (3 fr, 125%) -> settle (9 fr)."""
+        if not big:
+            return ease(f / 6.0), 0.0, 0.0
+        if f < 5:
+            q = math.sin(f / 5 * math.pi / 2)
+            return -0.18 * q, 0.55 * q, 0.03 * q
+        if f < 8:
+            q = ease((f - 5) / 3)
+            return -0.18 + 1.43 * q, 0.55 * (1 - q), 0.03 * (1 - q)
+        if f < 17:
+            return 1.25 - 0.25 * ease((f - 8) / 9), 0.0, 0.0
+        return 1.0, 0.0, 0.0
+
+    def _emo_at(self, t: float) -> tuple[dict, dict]:
+        cur = prev = self.spec.get("expr", "neutral")
+        tc = -9.0
+        for e in self.events:
+            if e["t"] > t:
+                break
+            if "expr" in e:
+                prev, cur, tc = cur, e["expr"], e["t"]
+        f = (t - tc) * FPS
+        k, squeeze, dip = self._take_k(f, cur in F.BIG and tc > -9) if tc > -9 else (1.0, 0.0, 0.0)
+        emo = F.blend(F.emotion(prev), F.emotion(cur), k)
+        for kk in ("open_l", "open_r", "pupil", "mw"):
+            emo[kk] = max(0.05, emo[kk])
+        if self.spec.get("emo_mod"):
+            emo.update(self.spec["emo_mod"])
+        return emo, {"cur": cur, "tc": tc, "squeeze": squeeze, "dip": dip}
+
     def state(self, t: float) -> dict:
-        expr_name = prev_name = self.spec.get("expr", "neutral")
-        t_change = -9.0
+        emo, info = self._emo_at(t)
+        emo_brow, _ = self._emo_at(t + 0.1)                 # brows lead the face by ~3 frames
         look = list(self.spec.get("look", [0, 0]))
-        twitch_t, twitch_d, jump_t, dart = None, 0.0, None, self.spec.get("dart", False)
+        look_set = "look" in self.spec
+        jump_t, dart = None, self.spec.get("dart", False)
         grin = self.spec.get("grin", False)
         moves, roll, wiggle, shiver = [], None, 0.0, 0.0
         for e in self.events:
             if e["t"] > t:
                 break
-            if "expr" in e:
-                prev_name, expr_name, t_change = expr_name, e["expr"], e["t"]
             if "look" in e:
-                look = e["look"]
-            if "twitch" in e:
-                twitch_t, twitch_d = e["t"], e.get("dur", 0.7)
+                look, look_set = list(e["look"]), True
             if "jump" in e:
                 jump_t = e["t"]
             if "grin" in e:
@@ -353,37 +409,51 @@ class Actor:
                 wiggle = 1.0
             if "shiver" in e and t < e["t"] + d:
                 shiver = 1.0
-        k = ease((t - t_change) / 0.16)
-        # a little overshoot on a change of emotion makes the "take" read
-        over = 0.12 * math.sin(min(1.0, max(0.0, (t - t_change) / 0.3)) * math.pi) if t_change > -9 else 0.0
-        emo = F.blend(F.emotion(prev_name), F.emotion(expr_name), min(1.0, k + over))
-        if self.spec.get("emo_mod"):
-            for kk, vv in self.spec["emo_mod"].items():
-                emo[kk] = vv
-        # mouth from voice lines
+        if not look_set and info["cur"] in F.GAZE and (look == [0, 0] or look == [0.0, 0.0]):
+            look = list(F.GAZE[info["cur"]])
+        # nervous eyes dart: a new spot every ~7 frames, 3-frame move
+        if dart or emo["darts"] > 0.3:
+            fr = t * FPS
+            n = int(fr // 7)
+            q = min(1.0, (fr - n * 7) / 3)
+            p0, p1 = self.dart_seq[n % 400], self.dart_seq[(n + 1) % 400]
+            amt = 0.8 if dart else 0.55 * emo["darts"]
+            look = [look[0] * 0.4 + amt * (p0[0] + (p1[0] - p0[0]) * q), look[1] * 0.4 + amt * 0.5 * (p0[1] + (p1[1] - p0[1]) * q)]
+        # mouth from voice lines: the drawing leads the sound by 2 frames
         o, shape, talk = 0.0, "X", 0.0
         for ln in self.lines:
-            i = int((t - ln["at"]) * FPS)
+            i = int((t - ln["at"]) * FPS) + 2
             if 0 <= i < len(ln["lips"]):
                 o, shape = ln["lips"][i]
                 talk = 1.0
+        # blinks: 3 close / 1 hold / 4 open frames (long: 4/2/5); none for angry stares or shock
         blink = 0.0
-        for b in self.blinks:
-            if b <= t < b + 0.14:
-                blink = math.sin((t - b) / 0.14 * math.pi)
-        twitch = 0.0
-        if twitch_t is not None and twitch_t <= t < twitch_t + twitch_d:
-            twitch = 0.55 + 0.45 * abs(math.sin((t - twitch_t) * 2 * math.pi * 7))
-        if dart:
-            dd = self.darts[int(t * 4) % len(self.darts)]
-            look = [float(dd[0]), float(dd[1]) * 0.5]
-        flash = 0.0                                   # brows lift on stressed syllables
+        if emo["blinks"] >= 0.5:
+            for b, kind in self.blinks:
+                c, h, op = (4, 2, 5) if kind == "l" else (3, 1, 4)
+                f = (t - b) * FPS
+                if 0 <= f < c:
+                    blink = f / c
+                elif c <= f < c + h:
+                    blink = 1.0
+                elif c + h <= f < c + h + op:
+                    blink = 1 - (f - c - h) / op
+        blink = max(blink, info["squeeze"])
+        flash = 0.0
         for ft in self.flashes:
-            if ft <= t < ft + 0.3:
-                flash = 0.3 * math.sin((t - ft) / 0.3 * math.pi)
-        return {"expr": emo, "emo": emo, "mouth": (o, shape), "talk": talk, "blink": blink, "twitch": twitch,
-                "look": look, "jump": jump_t, "grin": grin, "t": t, "moves": moves, "eyeroll": roll,
-                "brow_wiggle": wiggle, "shiver": shiver, "brow_flash": flash}
+            f = (t - ft) * FPS
+            if 0 <= f < 4:
+                flash = 0.32 * ease(f / 4)
+            elif 4 <= f < 14:
+                flash = 0.32 * (1 - 0.3 * ease((f - 4) / 10)) * (1 - ease((f - 4) / 10))
+        st_t = t - info["tc"] if info["tc"] > -9 else t
+        sym = min(1.0, max(0.0, (st_t - 0.12) / 0.1)) * (1.0 if st_t < 1.6 else max(0.0, 1 - (st_t - 1.6) / 0.4))
+        if info["tc"] <= -9:                                # a starting expression shows its symbol early on
+            sym = 1.0 if t < 1.6 else max(0.0, 1 - (t - 1.6) / 0.4)
+        return {"expr": emo, "emo": emo, "emo_brow": emo_brow, "mouth": (o, shape), "talk": talk, "blink": blink,
+                "twitch": 0.0, "look": look, "jump": jump_t, "grin": grin, "t": t, "moves": moves, "eyeroll": roll,
+                "brow_wiggle": wiggle, "shiver": shiver, "brow_flash": flash, "sym": sym, "sym_t": st_t,
+                "tilt_sign": (1.0 if look[0] >= 0 else -1.0), "take_dip": info["dip"]}
 
     def render(self, canvas: np.ndarray, t: float) -> None:
         st = self.state(t)
@@ -547,6 +617,10 @@ class FigureActor(Actor):
             img = cv2.resize(fig, None, fx=fk, fy=fk, interpolation=cv2.INTER_AREA if fk < 1 else cv2.INTER_CUBIC)
             k = s * fk                           # master px -> screen px
             ox, oy = tx * fk, ty * fk
+            # transparent margin above/beside the drawing so a moving head never runs off the image edge
+            pad = int(0.45 * mw0 * k) + 8
+            img = np.pad(img, ((pad, 0), (pad, pad), (0, 0)))
+            ox, oy = ox + pad, oy + pad
             feat = fspec.get("feat", {})
             fdx, fdy, fks = feat.get("dx", 0.0) * k, feat.get("dy", 0.0) * k, feat.get("k", 1.0)
             to = lambda p: [p[0] * k + ox + fdx, p[1] * k + oy + fdy]
@@ -555,7 +629,7 @@ class FigureActor(Actor):
             patch = img[max(0, sy - 4):sy + 5, max(0, sx - 4):sx + 5, :3].reshape(-1, 3)
             skin = tuple(int(v) for v in np.median(patch, 0))
             for x, y, rx, ry in fspec.get("paint", []):
-                cv2.ellipse(img, (int(x * fk), int(y * fk)), (int(rx * fk), int(ry * fk)), 0, 0, 360, (*skin, 255), -1, cv2.LINE_AA)
+                cv2.ellipse(img, (int(x * fk) + pad, int(y * fk) + pad), (int(rx * fk), int(ry * fk)), 0, 0, 360, (*skin, 255), -1, cv2.LINE_AA)
             cx_chin = (mx0 + mw0 / 2) * k + ox
             chin_y = mchin * k + oy
             fw = mw0 * k
@@ -566,6 +640,15 @@ class FigureActor(Actor):
             x0n, x1n = int(cx_chin - 0.42 * fw), int(cx_chin + 0.42 * fw)
             neck[max(0, int(chin_y - fw * 0.3)):int(chin_y + fw * 0.6), max(0, x0n):x1n] = 255
             Wm = np.maximum(Wm, neck)
+            # the whole drawn head (hair, crown, ears) must move together: add the figure's own pixels
+            # inside the head's band, so nothing above the mapped master silhouette stays behind
+            hy, hx = np.nonzero(Wm > 0)
+            if len(hy):
+                y_top = int(max(0, hy.min() - 0.45 * fw))
+                xa, xb = int(max(0, hx.min() - 0.08 * fw)), int(min(img.shape[1], hx.max() + 0.08 * fw))
+                band = np.zeros_like(Wm)
+                band[y_top:int(chin_y), xa:xb] = (img[y_top:int(chin_y), xa:xb, 3] > 40).astype(np.uint8) * 255
+                Wm = np.maximum(Wm, band)
             d = max(3, int(0.06 * fw)) | 1
             Wm = cv2.dilate(Wm, np.ones((d, d), np.uint8))
             Wm = cv2.GaussianBlur(Wm.astype(np.float32) / 255.0, (0, 0), max(1.0, 0.05 * fw))
@@ -574,8 +657,9 @@ class FigureActor(Actor):
             v = v * v * (3 - 2 * v)
             Wm = Wm * v
             nz = np.nonzero(Wm > 0.002)
-            r0, r1 = max(0, nz[0].min() - 4), min(img.shape[0], nz[0].max() + 5)
-            c0, c1 = max(0, nz[1].min() - 4), min(img.shape[1], nz[1].max() + 5)
+            mg = int(0.3 * fw) + 4                # room inside the region for the head to move into
+            r0, r1 = max(0, nz[0].min() - mg), min(img.shape[0], nz[0].max() + 5)
+            c0, c1 = max(0, nz[1].min() - mg), min(img.shape[1], nz[1].max() + mg)
             fs = dict(hspec)
             fs["eyes"] = [[p[0] - c0, p[1] - r0] for p in map(to, hspec["eyes"])]
             fs["eye_r"] = hspec["eye_r"] * k * fks
@@ -605,24 +689,7 @@ class FigureActor(Actor):
         self.floor = a.get("floor")
         self.neck_y = a.get("neck_y")
         self.lines = a.get("lines", [])
-        self.phase = (sum(map(ord, self.who)) % 100) / 17.0
-        self.events = sorted(a.get("events", []), key=lambda e: e["t"])
-        rng = np.random.default_rng(sum(map(ord, self.who)) * 7919 + int(a.get("seed", 0)))
-        self.blinks = []
-        t = rng.uniform(0.4, 1.6)
-        while t < shot_dur:
-            self.blinks.append(t)
-            t += rng.uniform(1.8, 3.8)
-        self.darts = rng.uniform(-1, 1, size=(400, 2))
-        self.flashes = []
-        for ln in self.lines:
-            lp, last = ln["lips"], -9.0
-            for i in range(6, len(lp)):
-                if lp[i][0] > 0.55 and max(x[0] for x in lp[i - 6:i]) < 0.15:
-                    tt = ln["at"] + i / FPS
-                    if tt - last > 1.2 and rng.uniform() < 0.8:
-                        self.flashes.append(tt - 0.05)
-                        last = tt
+        self._plan_timing(a, shot_dur)
 
     def geometry(self, pose: str | None = None) -> dict:
         """Where this figure lands on the canvas (no motion): chin point, face width, silhouette box."""
@@ -648,12 +715,9 @@ class FigureActor(Actor):
                 pose, t_pose = e["pose"], e["t"]
         P = self.poses[pose]
         o = st["mouth"][0]
-        rot = 0.8 * math.sin(2 * math.pi * 0.33 * t + self.phase)
-        rot += st["talk"] * (1.6 * math.sin(2 * math.pi * 1.25 * t + self.phase) + 1.6 * o * math.sin(2 * math.pi * 2.1 * t))
-        if st["twitch"] > 0:
-            rot += 1.2 * math.sin(t * 90)
+        rot = 0.4 * math.sin(2 * math.pi * 0.25 * t + self.phase)       # breathing-level idle, no bobbing
         rot += self.spec.get("tilt", 0)
-        nod = -0.035 * P["fw"] * o * st["talk"]
+        nod = -0.018 * P["fw"] * o * st["talk"] + 0.035 * P["fw"] * st["brow_flash"] / 0.32  # small nod on accents
         mv = F.motion(st["emo"], st, t)
         rot += mv["rot"]
         nod += mv["dy"] * P["fw"]

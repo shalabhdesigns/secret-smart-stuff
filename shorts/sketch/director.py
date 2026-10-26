@@ -32,7 +32,11 @@ LIB = ROOT / "creative" / "puppet" / "library.json"
 MUSIC = ["quirky_funk", "bright_pop", "curious_pluck", "clockwork"]
 WIDE_SIZE = 1210          # on-screen height of a 1.0-tall standing character in a wide shot
 SEATED = {"size": 960, "floor_shift": -105}   # the barber chair sits further back
-LINE_AT = 0.1
+LINE_AT = 0.08          # speech starts this long into a shot (first shot: 0.03)
+PUNCH_PAUSE = 0.38      # beat before the main punch line (docs/craft/WRITING_AND_EDITING.md)
+HOLD = 0.2              # default gap after a line (the enemy of comedy is the unnecessary pause)
+MAX_SHOT = 4.8          # longer dialogue shots are split on a pause, cutting to the next shot size
+SFX_MAX = 3
 OVERLAP = 70          # px two neighbours may overlap in a crowded wide shot
 MIN_SHOT = 1.0
 
@@ -130,6 +134,27 @@ def validate(plan: dict, lib: dict | None = None) -> list[str]:
         for fx in s.get("sfx", []):
             if fx.get("name") not in lib["sfx"]:
                 errs.append(f"shot {i}: unknown sound {fx.get('name')}")
+    shots = plan.get("shots", [])
+    kinds = [s.get("type") for s in shots]
+    if kinds.count("black") > 1:
+        errs.append("at most one black beat")
+    if kinds and (kinds[0] == "black" or kinds[-1] == "black"):
+        errs.append("a black beat can't be the first or the last shot (it kills the hook / the loop)")
+    if kinds.count("inner") > 3:
+        errs.append("at most 3 inner-voice shots")
+    if sum(len(s.get("sfx", [])) for s in shots) > SFX_MAX:
+        errs.append(f"at most {SFX_MAX} sound effects in the whole video")
+    if shots and not shots[0].get("line"):
+        errs.append("the first shot must start with a line (hook at 0 s)")
+    run = 1
+    for k in range(1, len(kinds)):
+        same = kinds[k] == kinds[k - 1] and kinds[k] in ("wide", "medium", "close")
+        run = run + 1 if same else 1
+        if run > 2:
+            errs.append(f"shots {k - 2}-{k}: three {kinds[k]} shots in a row; vary the shot size")
+            break
+    if sum(1 for s in shots if s.get("punch")) > 2:
+        errs.append("mark at most 2 shots as punch (the main punch and the button)")
     missing = set(lines) - set(used)
     if missing:
         errs.append(f"lines never used: {sorted(missing)}")
@@ -224,6 +249,79 @@ def _look_at(src_x: float, dst_x: float, dy: float) -> list[float]:
     return [d, 0.3 if dy > 60 else (-0.3 if dy < -60 else 0.0)]
 
 
+# ----------------------------------------------------------------------------- long-shot splitting
+NEXT_SIZE = {"wide": "close", "medium": "close", "close": "medium"}
+
+
+def _pauses(wav: Path) -> list[float]:
+    """Mid-points of silent gaps (>= 0.12 s) inside a voice line."""
+    import numpy as np
+    with wave.open(str(wav)) as f:
+        x = np.frombuffer(f.readframes(f.getnframes()), np.int16).astype(np.float32) / 32768
+        sr = f.getframerate()
+    hop = sr // 100
+    env = np.array([np.sqrt((x[i:i + hop] ** 2).mean() + 1e-12) for i in range(0, len(x) - hop, hop)])
+    if not len(env):
+        return []
+    quiet = 20 * np.log10(env + 1e-9) < (20 * np.log10(np.percentile(env, 95) + 1e-9) - 30)
+    out, start = [], None
+    for i, q in enumerate(quiet):
+        if q and start is None:
+            start = i
+        if not q and start is not None:
+            if i - start >= 12:
+                out.append((start + i) / 2 / 100)
+            start = None
+    return out
+
+
+def split_long(plan: dict, durs: dict, lines_dir: Path) -> dict:
+    """Cut dialogue shots longer than MAX_SHOT at a natural pause, the second part one shot size closer."""
+    out = []
+    caps = {ln["id"]: ln["cap"] for ln in plan["lines"]}
+    for s in plan["shots"]:
+        lid, typ = s.get("line"), s["type"]
+        if not lid or typ not in NEXT_SIZE:
+            out.append(s)
+            continue
+        d = durs[lid]
+        total = LINE_AT + d + float(s.get("hold", HOLD))
+        if total <= MAX_SHOT:
+            out.append(s)
+            continue
+        cands = [p for p in _pauses(lines_dir / f"{lid}.wav") if 0.3 * d <= p <= 0.72 * d]
+        if not cands:
+            out.append(s)
+            continue
+        sp = min(cands, key=lambda p: abs(p - d / 2))
+        cut = LINE_AT + sp
+        speaker = next((c for c in s["cast"] if c["who"] == next(ln["who"] for ln in plan["lines"] if ln["id"] == lid)), s["cast"][0])
+        a = {**s, "line_end": sp, "hold": 0.0}
+        b = {**s, "type": NEXT_SIZE[typ], "line_offset": sp, "punch": False, "punch_tail": bool(s.get("punch")),
+             "sfx": [], "fx": [], "camera": None,
+             "cast": [dict(speaker)]}
+        b.pop("camera", None)
+        parts = caps[lid].split("\n")
+        if len(parts) >= 2:
+            a["cap"], b["cap"] = parts[0], "\n".join(parts[1:])
+        # events go to the part they fall in
+        def side(c, first):
+            evs = []
+            for e in c.get("events", []):
+                t = float(e.get("at", 0)) * total
+                if (t < cut) == first:
+                    evs.append({**e, "at": round(t / cut if first else (t - cut) / max(0.1, total - cut), 3)})
+            return evs
+        a["cast"] = [{**c, "events": side(c, True)} for c in s["cast"]]
+        b["cast"] = [{**speaker, "events": side(speaker, False)}]
+        # the second part starts from the expression the speaker ended the first part with
+        last = [e["expr"] for e in speaker.get("events", []) if "expr" in e and float(e.get("at", 0)) * total < cut]
+        if last:
+            b["cast"][0]["expr"] = last[-1]
+        out += [a, b]
+    return {**plan, "shots": out}
+
+
 # ----------------------------------------------------------------------------- build
 def build(plan: dict, lines_dir: Path, shots_dir: Path, name: str, seed: int = 0) -> tuple[dict, dict]:
     """Return (scene, assemble_spec). Lines must already be in lines_dir as <id>.wav."""
@@ -235,15 +333,28 @@ def build(plan: dict, lines_dir: Path, shots_dir: Path, name: str, seed: int = 0
     rng = random.Random(seed)
     lines = {ln["id"]: ln for ln in plan["lines"]}
     durs = {lid: wav_seconds(lines_dir / f"{lid}.wav") for lid in lines}
+    plan = split_long(plan, durs, lines_dir)
     scene = {"lines_dir": str(lines_dir), "lines": list(lines), "shots": []}
     asm = {"name": name, "music": {"file": f"assets/music/{plan.get('music') or rng.choice(MUSIC)}.mp3",
-                                   "gain_db": -24, "mute_shots": []}, "shots": []}
+                                   "gain_db": -22, "duck_db": 4, "mute_shots": [], "mute_ranges": []}, "shots": []}
+    clock = 0.0
     for i, s in enumerate(plan["shots"]):
         typ = s["type"]
         lid = s.get("line")
-        talk = durs[lid] if lid else 0.0
-        hold = float(s.get("hold", 0.35 if lid else 1.2))
-        dur = round(max(MIN_SHOT if typ != "black" else 0.5, (LINE_AT + talk + hold) if lid else hold), 2)
+        off = float(s.get("line_offset", 0.0))
+        end = float(s.get("line_end", durs[lid])) if lid else 0.0
+        talk = (end - off) if lid else 0.0
+        lead = 0.0 if off else (0.03 if i == 0 else (PUNCH_PAUSE if s.get("punch") else LINE_AT))
+        line_at = lead - off                                  # where the line starts relative to this shot
+        if typ == "black":
+            hold = min(0.8, max(0.4, float(s.get("hold", 0.6))))
+        else:
+            hold = float(s.get("hold", HOLD if lid else 1.0))
+            if (s.get("punch") and "line_end" not in s) or s.get("punch_tail"):
+                hold = max(hold, 0.9)                         # let the punch land before the cut
+        dur = round(max(MIN_SHOT if typ != "black" else 0.4, (lead + talk + hold) if lid else hold), 2)
+        if s.get("punch") and lid and not off:                # drop the music just before the punch
+            asm["music"]["mute_ranges"].append([round(clock + lead - 0.4, 2), round(clock + dur, 2)])
         speaker = lines[lid]["who"] if lid else ""
         shot: dict = {"dur": dur}
         actors = []
@@ -307,17 +418,23 @@ def build(plan: dict, lines_dir: Path, shots_dir: Path, name: str, seed: int = 0
                     if isinstance(lk, str) else lk
             a.setdefault("look", [0, 0])
             if c["who"] == speaker and lid:
-                a["lines"] = [{"line": lid, "at": LINE_AT}]
-            evs = []
-            for e in c.get("events", []):
+                a["lines"] = [{"line": lid, "at": round(line_at, 3)}]
+            evs, last_expr = [], -9.0
+            for e in sorted(c.get("events", []), key=lambda e: float(e.get("at", 0))):
+                if "twitch" in e:
+                    continue
+                if "expr" in e:                                # an expression must hold >= ~0.45 s to read
+                    if dur * float(e.get("at", 0)) - last_expr < 0.45:
+                        continue
+                    last_expr = dur * float(e.get("at", 0))
                 t = round(dur * float(e.get("at", 0)), 2)
                 ee = {k: v for k, v in e.items() if k != "at"}
                 if "move" in ee:
                     ee.setdefault("dur", 0.6)
-                for key in ("eyeroll", "wiggle", "shiver", "twitch"):
+                for key in ("eyeroll", "wiggle", "shiver"):
                     if key in ee:
                         ee[key] = 1
-                        ee.setdefault("dur", {"eyeroll": 0.75, "wiggle": 0.7, "shiver": 0.7, "twitch": 0.6}[key])
+                        ee.setdefault("dur", {"eyeroll": 0.75, "wiggle": 0.7, "shiver": 0.7}[key])
                 if "look" in ee and isinstance(ee["look"], str):
                     ee["look"] = {"left": [-0.8, 0], "right": [0.8, 0], "camera": [0, 0], "down": [0, 0.7], "up": [0, -0.6]}.get(ee["look"], [0, 0])
                 evs.append({"t": t, **ee})
@@ -328,8 +445,8 @@ def build(plan: dict, lines_dir: Path, shots_dir: Path, name: str, seed: int = 0
             shot["actors"] = out_actors
         scene["shots"].append(shot)
         sounds = []
-        if lid:
-            sounds.append({"url": str(lines_dir / f"{lid}.wav"), "at": LINE_AT + (0.05 if typ == "inner" else 0),
+        if lid and not off:                                   # a split line's audio plays once, across the cut
+            sounds.append({"url": str(lines_dir / f"{lid}.wav"), "at": round(lead, 3), "voice": True,
                            "gain_db": 3 if typ == "inner" else 0, **({"reverb": True} if typ == "inner" else {})})
         if typ == "inner":
             sounds.append({"url": "assets/sfx/spiral.mp3", "at": 0, "gain_db": -11})
@@ -338,10 +455,12 @@ def build(plan: dict, lines_dir: Path, shots_dir: Path, name: str, seed: int = 0
                            "gain_db": float(fx.get("gain_db", -4))})
         ash = {"url": str(shots_dir / f"shot{i:02d}.mp4"), "speaker": speaker, "keep_audio": False, "sounds": sounds}
         if lid:
-            ash["caption"] = lines[lid]["cap"]
+            ash["caption"] = s.get("cap") or lines[lid]["cap"]
+            ash["caption_at"] = max(0.0, round(lead - 0.05, 2))
             if typ == "inner":
                 ash["inner"] = True
         asm["shots"].append(ash)
+        clock += dur
     return scene, asm
 
 
