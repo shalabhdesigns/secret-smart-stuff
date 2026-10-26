@@ -70,15 +70,20 @@ def _b64_small(path: Path, box=(768, 1376)) -> str:
     return base64.b64encode(tmp.read_bytes()).decode()
 
 
-def flux(p, what: str, prompt: str, refs: list[Path], out: Path, w: int = 1088, h: int = 1952) -> None:
+def flux(p, what: str, prompt: str, refs: list[Path], out: Path, w: int = 1088, h: int = 1952,
+         model: str = MODEL) -> None:
     if not can_spend(p):
         raise ArtError(f"weekly art budget (${_cap(p):.0f}) reached")
     key = os.environ.get("BFL_API_KEY", "")
-    body = {"prompt": prompt, "width": w, "height": h, "output_format": "png"}
-    for i, r in enumerate(refs[:4]):
-        body["input_image" if i == 0 else f"input_image_{i + 1}"] = _b64_small(r)
+    if model.startswith("flux-kontext"):          # image editing model: keeps the reference, changes what's asked
+        body = {"prompt": prompt, "aspect_ratio": "9:16", "output_format": "png", "safety_tolerance": 2,
+                "input_image": _b64_small(refs[0], (1024, 1820))}
+    else:
+        body = {"prompt": prompt, "width": w, "height": h, "output_format": "png"}
+        for i, r in enumerate(refs[:4]):
+            body["input_image" if i == 0 else f"input_image_{i + 1}"] = _b64_small(r)
     hd = {"x-key": key, "accept": "application/json", "content-type": "application/json"}
-    r = requests.post("https://api.bfl.ai/v1/" + MODEL, json=body, headers=hd, timeout=60)
+    r = requests.post("https://api.bfl.ai/v1/" + model, json=body, headers=hd, timeout=60)
     if r.status_code != 200:
         raise ArtError(f"BFL {r.status_code}: {r.text[:200]}")
     p.state.add_cost("art", what, 1, USD_EACH)
@@ -153,6 +158,13 @@ def key_out(png: Path, out: Path) -> np.ndarray:
     rgba = np.dstack([fg.astype(np.uint8), a8])
     m = 12
     rgba = rgba[max(0, y - m):y + h + m, max(0, x - m):x + w + m]
+    if rgba.shape[0] < 2200:                       # match the resolution of the hand-made library (~2700 px tall)
+        k = 2600 / rgba.shape[0]
+        up = cv2.resize(rgba, None, fx=k, fy=k, interpolation=cv2.INTER_CUBIC)
+        col = up[..., :3].astype(np.float32)
+        blur = cv2.GaussianBlur(col, (0, 0), 1.6)
+        up[..., :3] = np.clip(col + 0.6 * (col - blur), 0, 255).astype(np.uint8)   # keep outlines crisp
+        rgba = up
     Image.fromarray(rgba).save(out)
     return rgba
 
@@ -242,8 +254,9 @@ def _render_sheet(rg: dict, who: str, poses: list[str], out: Path, exprs=("neutr
 
 
 POSE_QA = """TASK: poseqa
-Image 1: our approved cartoon character in their standard pose. Image 2: the SAME character in a NEW pose,
-rendered by our animation software with code-drawn eyes, brows and mouth (3 expressions per pose).
+Image 1: our approved cartoon character in their standard pose. Image 2: the SAME character in a NEW pose.
+Both are rendered by our animation software, which draws the eyes, brows, mouth (and glasses, for characters who
+wear them) by code, in 3 expressions each. Left/right mirroring of the pose is fine.
 The new pose should be: @DESC
 Check strictly:
 1. same character: identical head shape, hair, skin tone, clothes, colours, proportions and outline style
@@ -271,6 +284,10 @@ def generate_pose(p, who: str, pose_id: str, desc: str, kind: str = "stand") -> 
         return False
     stand = rg["figures"][rg["characters"][who]["stand_pose"]]["file"]
     look = lib["characters"].get(who, {}).get("desc", "")
+    edit = (f"Change only the pose of this cartoon character: {desc}. Keep everything else exactly the same: the same "
+            "character, head, hair, face (a blank face with only a nose - do not add eyes, eyebrows, mouth or glasses), "
+            "skin colour, clothes, colours, outline style and the flat green background. Full body visible from head to "
+            "shoes with empty green space above and below. No text.")
     prompts = [
         ("Draw the cartoon character from the reference image again, in the same flat 2D cartoon show style as the reference "
          f"image (same outline thickness, cel shading and colours). Character: {look} Keep the head, hair, skin tone, "
@@ -281,10 +298,11 @@ def generate_pose(p, who: str, pose_id: str, desc: str, kind: str = "stand") -> 
     ]
     margin = (" Leave clear empty green space above the head and below the feet; the whole figure fits inside the "
               "middle 85% of the image height. Do not add any text or print on clothes.")
-    for attempt in range(3):
+    plan = [("flux-kontext-pro", edit), ("flux-kontext-pro", edit), (MODEL, prompts[0] + margin), (MODEL, prompts[1] + margin)]
+    for attempt, (model, prompt) in enumerate(plan):
         raw = WORK / f"pose_{pose_id}_{attempt}.png"
         try:
-            flux(p, f"pose {pose_id}", prompts[attempt % 2 if attempt < 2 else 1] + margin, [PARTS / stand], raw, 1088, 1952)
+            flux(p, f"pose {pose_id}", prompt, [PARTS / stand], raw, 1088, 1952, model=model)
             fname = f"{pose_id}.png"
             key_out(raw, PARTS / fname)
             score = _alignment_score(rg, who, fname)
@@ -298,7 +316,8 @@ def generate_pose(p, who: str, pose_id: str, desc: str, kind: str = "stand") -> 
         rg2 = json.loads(json.dumps(rg))
         rg2["figures"][pose_id] = {"file": fname}
         sheet = _render_sheet(rg2, who, [pose_id], WORK / f"pose_{pose_id}_sheet.png")
-        v = _vision(p, POSE_QA.replace("@DESC", desc), [_small(PARTS / stand, WORK / "pose_ref.png"),
+        ref_sheet = _render_sheet(rg2, who, [rg["characters"][who]["stand_pose"]], WORK / f"pose_{who}_ref_sheet.png")
+        v = _vision(p, POSE_QA.replace("@DESC", desc), [_small(ref_sheet, WORK / "pose_ref.png", 900),
                                                          _small(sheet, WORK / "pose_new.png", 900)])
         p.state.log(f"pose {pose_id} qa: {json.dumps(v)[:400]}", "info")
         if not v.get("ok"):
