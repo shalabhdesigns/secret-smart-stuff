@@ -34,7 +34,7 @@ jobs:
         run: python scripts/collect_signals.py || echo "signals skipped"
       - name: Produce one Short
         run: |
-          echo '{"action": "produce"}' > "$RUNNER_TEMP/req.json"
+          echo '{"action": "daily"}' > "$RUNNER_TEMP/req.json"
           set -o pipefail
           python scripts/run_command.py "$RUNNER_TEMP/req.json" 2>&1 | tee "$RUNNER_TEMP/out.log"
       - name: Save state
