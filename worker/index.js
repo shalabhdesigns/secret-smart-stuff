@@ -1,4 +1,4 @@
-// Secret Smart Stuff studio Worker (Cloudflare, free plan).
+// Bhaukaali Toons studio Worker (Cloudflare, free plan).
 //
 // 1. /tg   Telegram webhook: the owner's button taps and replies become GitHub runs
 //          (workflow_dispatch on command.yml). Nobody else is obeyed.
@@ -46,7 +46,7 @@ async function dispatch(env, request) {
       headers: {
         authorization: `Bearer ${env.GH_TOKEN}`,
         accept: "application/vnd.github+json",
-        "user-agent": "secretsmartstuff-worker",
+        "user-agent": "bhaukaalitoons-worker",
         "x-github-api-version": "2022-11-28",
       },
       body: JSON.stringify({ ref: "main", inputs: { request: JSON.stringify(request) } }),
@@ -207,7 +207,7 @@ async function dash(req, env, url) {
     const sent = url.searchParams.get("sent");
     const bad = url.searchParams.get("bad");
     return page(
-      `<h2>Secret Smart Stuff · Studio</h2>` +
+      `<h2>Bhaukaali Toons · Studio</h2>` +
       (sent
         ? `<p>A code was sent to your Telegram.</p><form method="post" action="/dash/login"><input name="code" inputmode="numeric" autocomplete="one-time-code" placeholder="6-digit code" required><button>Open dashboard</button></form>`
         : `<p>Private dashboard. A login code will be sent to the owner's Telegram.</p><form method="post" action="/dash/code"><button>Send me a code</button></form>`) +

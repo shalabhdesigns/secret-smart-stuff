@@ -1,6 +1,6 @@
 # What makes 30–35 s faceless explainer Shorts/Reels retain viewers — evidence review
 
-Prepared 2026-10-25 for the "Secret Smart Stuff" channel (hidden design reasons behind everyday objects).
+Prepared 2026-10-25 for the previous explainer format (archived). General Shorts retention evidence still applies to Bhaukaali Toons.
 Current production: AI stills + Ken Burns + AI voiceover + captions + blueprint callouts, no music, 6 scenes / 36 s, ~$0.50–1.50 per video.
 
 Method: WebSearch + WebFetch only. Every claim has a URL + date. Evidence grades:
@@ -176,7 +176,7 @@ Rule from evidence: whichever you pick, the **voice must be speaking by second 1
 
 ---
 
-## 10. The 10 rules this evidence supports for Secret Smart Stuff (36 s, stills-based)
+## 10. The 10 rules this evidence supported for the old explainer format (36 s, stills-based)
 
 1. Voice speaks the question in the first second; no music-only or silent opening. (Emplifi; YouTube guide; Instagram tip)
 2. Frame 1 is the object in close-up with the "hidden" part visible; the question is answerable in 30 s and the video ends when it is answered. (Zack D. Films structure; Bytecap)

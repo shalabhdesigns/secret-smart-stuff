@@ -24,8 +24,8 @@ from shorts.config import load     # noqa: E402
 from shorts.state import State     # noqa: E402
 
 CF = "https://api.cloudflare.com/client/v4"
-NAME = "secretsmartstuff-studio"
-KV_TITLE = "secretsmartstuff-studio"
+NAME = "bhaukaalitoons-studio"
+KV_TITLE = "bhaukaalitoons-studio"
 
 
 def cf(method: str, path: str, **kw) -> dict:
@@ -52,7 +52,7 @@ def subdomain(acc: str) -> str:
             return sub
     except RuntimeError:
         pass
-    for cand in ("secretsmartstuff", f"secretsmartstuff-{secrets.token_hex(2)}"):
+    for cand in ("bhaukaalitoons", f"bhaukaalitoons-{secrets.token_hex(2)}"):
         try:
             return cf("PUT", f"/accounts/{acc}/workers/subdomain", json={"subdomain": cand})["subdomain"]
         except RuntimeError:

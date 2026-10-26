@@ -427,6 +427,30 @@ def main(path: str) -> int:
         gh("issue", "create", "--title", "Accounts check", "--label", "audio", "--body", "\n".join(f"- {x}" for x in lines), check=False)
         print(lines)
         return 0
+    if action == "upload_sketch":
+        # Upload an approved sketch as PRIVATE (owner publishes/schedules it in YouTube Studio).
+        from shorts.publish.youtube import VideoMeta, upload
+        if req.get("path"):                       # a master file committed in the repo
+            src = ROOT / req["path"]
+            d, fname = src.parent, src.name
+        else:                                     # or a file on a GitHub release
+            tag, fname = req["release"], req["file"]
+            d = ROOT / "build" / "upload"
+            d.mkdir(parents=True, exist_ok=True)
+            gh("release", "download", tag, "-p", fname, "-D", str(d), "--clobber")
+        ch = (p.cfg.channel or {}).get("channel", {})
+        meta = VideoMeta(title=req["title"], description=req["description"], tags=req.get("tags", []),
+                         category_id=str(ch.get("youtube_category_id", "23")), language=ch.get("language", "hi"),
+                         made_for_kids=False, contains_synthetic_media=bool(req.get("synthetic", False)),
+                         publish_at=req.get("publish_at"))
+        try:
+            res = upload(p.state, req["job"], d / fname, meta)
+            msg = f"Uploaded as PRIVATE: {res['url']} (video id {res['video_id']}). Publish or schedule it in YouTube Studio."
+        except Exception as e:  # noqa: BLE001
+            msg = f"Upload failed: {e}"
+        gh("issue", "create", "--title", f"Upload: {req['title'][:60]}", "--body", msg, check=False)
+        print(msg)
+        return 0 if msg.startswith("Uploaded") else 1
     if action == "diag":
         # run CLI subcommands and post the tail of their output (no secrets are printed by these)
         out = []

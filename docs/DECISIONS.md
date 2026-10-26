@@ -87,3 +87,16 @@ Each entry: date, decision, who decided, why. Newest at the bottom.
 | Handle | **@secretsmartstuff** (claimed by owner) | Owner |
 | Channel Gmail | secretsmartstuff@gmail.com (separate account, as recommended) | Owner |
 | Tagline | "The secret smart reasons behind everyday things." | Recommendation |
+
+## 26 Oct 2026 — new channel: Bhaukaali Toons
+
+| Decision | Choice | Who |
+|---|---|---|
+| Format | Hindi/Hinglish 2D cartoon sketch show "Sab Theek Hai" (replaces the English explainer format) | Owner |
+| Channel name / handle | **Bhaukaali Toons** · @bhaukaalitoons | Owner |
+| Account | bhaukaalitoons@gmail.com (separate Google account) | Owner |
+| Instagram | @bhaukaalitoons, Reels posted manually for now | Owner |
+| Repo | renamed `secret-smart-stuff` → `bhaukaali-toons` | Owner |
+| Google app | new project `bhaukaali-toons`, app published (In production), site on Vercel | Owner |
+| Sketch length | 35–45 s target, 60 s hard cap | Owner (after evidence) |
+| Old explainer docs | moved to `docs/archive/secret-smart-stuff/` | Owner |

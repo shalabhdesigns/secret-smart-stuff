@@ -93,7 +93,7 @@ def collect(state, cfg) -> dict:
     return {
         "generated_at": _iso(now),
         "metrics_fetched_at": _iso(last_metrics),
-        "channel": cfg.channel.get("name") if hasattr(cfg, "channel") else "Secret Smart Stuff",
+        "channel": cfg.channel.get("name") if hasattr(cfg, "channel") else "Bhaukaali Toons",
         "jobs": [{**j, "title": topics.get(j["topic_id"], {}).get("title"), "cost": round(cost_by_job.get(j["id"], 0), 3),
                   "reached_review": j["id"] in first_review,
                   "created": _iso(j["created_at"]), "updated": _iso(j["updated_at"])} for j in jobs],

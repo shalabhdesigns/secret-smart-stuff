@@ -1,47 +1,32 @@
-# Secret Smart Stuff — automated YouTube Shorts system
+# Bhaukaali Toons — production and upload system
 
-"The secret smart reasons behind everyday things."
+Hindi (Hinglish / UP Hindi) cartoon sketch comedy for YouTube Shorts. Home of the sketch show
+**Sab Theek Hai**: Dev can never say "no", Rocky the barber never listens, Meera never misses a chance.
 
-A small, reliable pipeline that researches topics, writes sourced scripts, voices
-them (ElevenLabs), illustrates them (FLUX), renders vertical Shorts with
-blueprint-style callouts and captions (FFmpeg), checks quality, asks the owner to
-approve, uploads to YouTube as private + scheduled, and learns from analytics.
-It runs on GitHub Actions, so no computer needs to stay on.
+- YouTube: [@bhaukaalitoons](https://www.youtube.com/@bhaukaalitoons) · Instagram: @bhaukaalitoons
+- Account: bhaukaalitoons@gmail.com · Site (privacy policy for the Google app): https://bhaukaali-toons.vercel.app
 
 ## Start here
 
 | Doc | What it covers |
 |---|---|
-| [docs/SETUP.md](docs/SETUP.md) | One-time setup: accounts, keys, first runs |
-| [docs/OPERATIONS.md](docs/OPERATIONS.md) | Daily rhythm, pause/resume, troubleshooting |
-| [docs/STATUS.md](docs/STATUS.md) | What is built, tested, untested, planned |
-| [docs/01_NICHE_REPORT.md](docs/01_NICHE_REPORT.md) | Why this niche |
-| [docs/02_CONTENT_STRATEGY.md](docs/02_CONTENT_STRATEGY.md) | Pillars, hooks, quality bar, pilot plan |
-| [docs/03_ARCHITECTURE.md](docs/03_ARCHITECTURE.md) | Stages, limits, failure handling |
-| [docs/COSTS.md](docs/COSTS.md) | Cost per Short and monthly scenarios |
-| [docs/RISKS.md](docs/RISKS.md) | Risks, hard limits, what cannot be verified |
-| [docs/DECISIONS.md](docs/DECISIONS.md) | Every decision with who made it and why |
-
-## Try it locally (no keys, no spending)
-
-```bash
-pip install -r requirements.txt          # also needs ffmpeg installed
-python -m shorts.cli discover            # dry-run ideas
-python -m shorts.cli produce             # renders a DRY RUN Short into build/<job>/final.mp4
-python -m shorts.cli status
-python -m pytest -q                      # reliability tests
-```
+| [CLAUDE.md](CLAUDE.md) | Standing rules for every session |
+| [docs/PLAYBOOK.md](docs/PLAYBOOK.md) | How a sketch is written, voiced, animated, checked and delivered |
+| [docs/SETUP.md](docs/SETUP.md) | Accounts, keys, Google app, GitHub secrets — and how to redo the YouTube login |
+| [docs/STATUS.md](docs/STATUS.md) | What works, what is manual, what is planned |
+| [docs/OPERATIONS.md](docs/OPERATIONS.md) | Runner commands and troubleshooting |
+| [creative/puppet/README.md](creative/puppet/README.md) | The locked character library (consistency rules) |
+| [docs/DECISIONS.md](docs/DECISIONS.md) | Decisions log |
 
 ## Layout
 
 ```
-config/            channel.yaml (identity, rules) · pipeline.yaml (budgets, schedule, providers)
-shorts/            pipeline.py · cli.py · state.py · budget.py · analytics.py · prompts.py
-  providers/       llm.py (Claude) · tts.py (ElevenLabs) · images.py (FLUX/BFL) - each with a dry-run fake
-  render/          compose.py (scenes) · captions.py · assemble.py (FFmpeg)
-  qa/              media.py (technical gate)
-  publish/         youtube.py (resumable, idempotent upload)
-scripts/           youtube_auth.py · collect_signals.py · open_review.sh · run_command.py · deploy_worker.py · state_sync.sh
-.github/workflows  produce · review · analytics · summary
-vendor/ytskill/    hook scorer, title linter (MIT, from youtube-agent-skill)
+creative/puppet/   rig.json (characters, poses) · scenes · assembly specs
+assets/puppet/     locked character art (poses, heads, hair variants) · voice lines
+scripts/puppet/    puppet.py (2D engine) · align.py · bake_variant.py · qa_faces.py · prep_lines.py
+scripts/           sketch_assemble.py (captions, sound, music, loudness) · run_command.py (runner actions)
+config/            channel.yaml (identity) · pipeline.yaml
+shorts/            upload, analytics, state (shared with the retired explainer pipeline)
+site/              public home page + privacy policy (Vercel)
+docs/archive/      the retired "Secret Smart Stuff" explainer format
 ```
