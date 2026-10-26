@@ -1,9 +1,11 @@
 {
  "parts_dir": "../../assets/puppet/parts",
  "backgrounds": {
-  "barber": "release:media-puppet-haircut/bg_barber.png",
-  "barber_empty": "release:media-puppet-library/bg_barber_nochair.png",
-  "flat": "release:media-puppet-haircut/bg_flat.png"
+  "barber_shop": "../backgrounds/barber_shop.jpg",
+  "barber_chair": "../backgrounds/barber_chair.jpg",
+  "flat": "../backgrounds/flat.jpg",
+  "barber": "../backgrounds/barber_chair.jpg",
+  "barber_empty": "../backgrounds/barber_shop.jpg"
  },
  "heads": {
   "dev_messy": {

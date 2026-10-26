@@ -501,8 +501,11 @@ def main(path: str) -> int:
         r = subprocess.run([sys.executable, str(ROOT / "scripts" / "deploy_worker.py")], capture_output=True, text=True)
         print(r.stdout, r.stderr[-2000:])
         if r.returncode == 0:
-            notify.send(p.state, "🤝 Connected. New videos will arrive here for review.\nSend /help to see what I can do.")
-            do_dashboard(p)
+            notify.send(p.state, "🤝 Connected. New Bhaukaali Toons episodes will arrive here for your review.\nSend /help to see what I can do.")
+            try:
+                do_dashboard(p)
+            except Exception as e:  # noqa: BLE001
+                print("dashboard skipped:", e)
         else:
             alert(p, "Studio setup problem", r.stdout[-1500:] + "\n" + r.stderr[-1500:])
         return r.returncode

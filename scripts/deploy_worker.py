@@ -61,8 +61,8 @@ def subdomain(acc: str) -> str:
 
 
 def main() -> int:
-    acc = os.environ["CLOUDFLARE_ACCOUNT_ID"].strip()
     cfg = load()
+    acc = (os.environ.get("CLOUDFLARE_ACCOUNT_ID") or str(cfg.pipeline.get("cloudflare_account_id", ""))).strip()
     state = State(cfg.path("state_db"))
     owner = notify.setup_from_updates(state)
     if not owner:

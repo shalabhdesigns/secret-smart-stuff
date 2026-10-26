@@ -13,6 +13,9 @@ fixed_costs_usd_month:
   cloudflare: 0.00         # free plan
   telegram: 0.00
 
+# Cloudflare account (bhaukaalitoons@gmail.com) that runs the Telegram/dashboard Worker. Not a secret.
+cloudflare_account_id: a741d1d4877261452def869b39c7e4bc
+
 schedule:
   timezone: Asia/Kolkata
   produce_per_day: 1

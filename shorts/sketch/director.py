@@ -1,0 +1,349 @@
+"""Turn a written episode plan into an exact puppet scene + assembly spec.
+
+The writer (an LLM) only chooses *what* happens: set, shot type, who is in it, poses, expressions,
+gestures, which line is spoken, sound effects. Everything about *where* things go — positions, sizes,
+floor lines, camera framing, timing — is computed here from tested rules and the real figure
+geometry, so the model can never float a character, crop a head or break relative heights.
+
+Shot types
+  wide    1-3 characters on the floor of the set, full bodies, slight camera push.
+  medium  one character, waist up (re-rendered larger, not upscaled), background softened.
+  close   one character, head and shoulders, background blurred.
+  inner   the panic spiral: one character's face, thriller background, line with reverb.
+  black   a beat of black (comic pause / time cut), optional sound effect.
+Event times in the plan are fractions (0..1) of the shot; real times come from the voice lengths.
+"""
+from __future__ import annotations
+
+import json
+import random
+import sys
+import wave
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "scripts" / "puppet"))
+
+import puppet as PU  # noqa: E402
+
+W, H = PU.W, PU.H
+RIG = ROOT / "creative" / "puppet" / "rig.json"
+LIB = ROOT / "creative" / "puppet" / "library.json"
+MUSIC = ["quirky_funk", "bright_pop", "curious_pluck", "clockwork"]
+WIDE_SIZE = 1210          # on-screen height of a 1.0-tall standing character in a wide shot
+SEATED = {"size": 960, "floor_shift": -105}   # the barber chair sits further back
+LINE_AT = 0.1
+OVERLAP = 70          # px two neighbours may overlap in a crowded wide shot
+MIN_SHOT = 1.0
+
+
+class PlanError(ValueError):
+    pass
+
+
+def library() -> dict:
+    return json.loads(LIB.read_text())
+
+
+def rig() -> dict:
+    return json.loads(RIG.read_text())
+
+
+def wav_seconds(p: Path) -> float:
+    with wave.open(str(p)) as f:
+        return f.getnframes() / f.getframerate()
+
+
+# ----------------------------------------------------------------------------- validation
+def validate(plan: dict, lib: dict | None = None) -> list[str]:
+    """Problems that would make the plan unrenderable. Empty list = OK."""
+    lib = lib or library()
+    errs: list[str] = []
+    rg = rig()
+    lines = {ln.get("id"): ln for ln in plan.get("lines", [])}
+    if not lines:
+        errs.append("no lines")
+    for ln in lines.values():
+        if ln.get("who") not in lib["characters"]:
+            errs.append(f"line {ln.get('id')}: unknown speaker {ln.get('who')}")
+        if not ln.get("hi") or not ln.get("cap"):
+            errs.append(f"line {ln.get('id')}: needs 'hi' (Devanagari) and 'cap' (Roman caption)")
+    used = []
+    emotions = set(PU.F.EMOTIONS)
+    for i, s in enumerate(plan.get("shots", [])):
+        typ = s.get("type")
+        if typ not in ("wide", "medium", "close", "inner", "black"):
+            errs.append(f"shot {i}: bad type {typ}")
+            continue
+        if typ != "black" and s.get("set") not in lib["sets"] and typ != "inner":
+            errs.append(f"shot {i}: unknown set {s.get('set')}")
+        cast = s.get("cast", [])
+        if typ == "black":
+            if cast:
+                errs.append(f"shot {i}: black shot has no cast")
+        elif not cast:
+            errs.append(f"shot {i}: no cast")
+        if typ in ("medium", "close", "inner") and len(cast) != 1:
+            errs.append(f"shot {i}: {typ} shot needs exactly one character")
+        if typ == "wide" and len(cast) > 3:
+            errs.append(f"shot {i}: at most 3 characters")
+        whos = [c.get("who") for c in cast]
+        if len(set(whos)) != len(whos):
+            errs.append(f"shot {i}: a character appears twice")
+        for c in cast:
+            pose = c.get("pose")
+            if pose not in rg["figures"]:
+                errs.append(f"shot {i}: unknown pose {pose}")
+                continue
+            base = pose.replace("_bowl", "").replace("_tuft", "")
+            meta = lib["poses"].get(base)
+            if not meta or meta["who"] != c.get("who"):
+                errs.append(f"shot {i}: pose {pose} is not {c.get('who')}'s")
+                continue
+            if meta.get("sets") and typ != "inner" and s.get("set") not in meta["sets"]:
+                errs.append(f"shot {i}: pose {pose} only works in {meta['sets']}")
+            if meta.get("solo") and len(cast) > 1:
+                errs.append(f"shot {i}: pose {pose} only in a shot alone")
+            if c.get("expr", "neutral") not in emotions:
+                errs.append(f"shot {i}: unknown expression {c.get('expr')}")
+            for e in c.get("events", []):
+                if "expr" in e and e["expr"] not in emotions:
+                    errs.append(f"shot {i}: unknown expression {e['expr']}")
+                if "pose" in e:
+                    pb = e["pose"].replace("_bowl", "").replace("_tuft", "")
+                    pm = lib["poses"].get(pb)
+                    if e["pose"] not in rg["figures"] or not pm or pm["who"] != c.get("who") or pm["kind"] != meta["kind"]:
+                        errs.append(f"shot {i}: bad pose change {e['pose']}")
+                    elif pm.get("solo") and len(cast) > 1:
+                        errs.append(f"shot {i}: pose {e['pose']} only in a shot alone")
+                if "move" in e and e["move"] not in ("nod", "shake", "recoil", "lean", "double_take"):
+                    errs.append(f"shot {i}: unknown move {e['move']}")
+                if not 0 <= float(e.get("at", 0)) <= 1:
+                    errs.append(f"shot {i}: event 'at' must be 0..1")
+        ln = s.get("line")
+        if ln:
+            if ln not in lines:
+                errs.append(f"shot {i}: unknown line {ln}")
+            elif lines[ln]["who"] not in whos and not (typ == "black"):
+                errs.append(f"shot {i}: speaker {lines[ln]['who']} is not in the shot")
+            used.append(ln)
+        for fx in s.get("sfx", []):
+            if fx.get("name") not in lib["sfx"]:
+                errs.append(f"shot {i}: unknown sound {fx.get('name')}")
+    missing = set(lines) - set(used)
+    if missing:
+        errs.append(f"lines never used: {sorted(missing)}")
+    dup = {x for x in used if used.count(x) > 1}
+    if dup:
+        errs.append(f"lines used twice: {sorted(dup)}")
+    return errs
+
+
+# ----------------------------------------------------------------------------- layout
+def _geom(rg: dict, parts: Path, who: str, pose: str, x: float, floor: float, size: float) -> dict:
+    a = PU.FigureActor(rg, parts, {"who": who, "pose": pose, "x": x, "floor": floor, "size": size}, 1.0)
+    return a.geometry()
+
+
+def _pose_set(c: dict) -> list[str]:
+    return [c["pose"]] + [e["pose"] for e in c.get("events", []) if "pose" in e]
+
+
+def _union_geom(rg, parts, c, x, floor, size) -> dict:
+    gs = [_geom(rg, parts, c["who"], p, x, floor, size) for p in _pose_set(c)]
+    box = (min(g["box"][0] for g in gs), min(g["box"][1] for g in gs), max(g["box"][2] for g in gs), max(g["box"][3] for g in gs))
+    return {"chin": gs[0]["chin"], "fw": gs[0]["fw"], "box": box}
+
+
+def layout_wide(rg: dict, parts: Path, lib: dict, set_name: str, cast: list[dict]) -> list[dict]:
+    """x / floor / size for each character so that nobody overlaps and nobody leaves the frame."""
+    floor0 = lib["sets"][set_name]["floor"]
+    size = WIDE_SIZE * (0.92 if len(cast) == 3 else 1.0)
+    for _ in range(12):
+        placed, widths = [], []
+        for c in cast:
+            seated = lib["poses"][c["pose"].replace("_bowl", "").replace("_tuft", "")]["kind"] == "seated"
+            sz = size * SEATED["size"] / WIDE_SIZE if seated else size
+            fl = floor0 + (SEATED["floor_shift"] if seated else 0)
+            g = _union_geom(rg, parts, c, 0.0, fl, sz)
+            widths.append(g["box"][2] - g["box"][0])
+            placed.append({"size": sz, "floor": fl, "left_off": g["box"][0], "chin_y": g["chin"][1], "top": g["box"][1]})
+        n = len(cast)
+        gap = (W - 40 - sum(widths)) / (n + 1)
+        if gap >= 14 or size < 900:
+            break
+        if n > 1 and (W - 40 - sum(widths) + OVERLAP * (n - 1)) >= 0 and size < 1080:
+            break                                        # small overlap (one stands just behind the other)
+        size *= 0.95
+    if gap >= 0:
+        xs, cur, step = [], 20 + gap, gap
+    else:                                                # overlap evenly, never past the frame edges
+        step = (W - 40 - sum(widths)) / max(1, len(cast) - 1)
+        xs, cur = [], 20.0
+    for p, w in zip(placed, widths):
+        xs.append(cur - p["left_off"])                 # chin x so the box starts at cur
+        cur += w + step
+    return [{"x": round(float(x), 1), "floor": p["floor"], "size": round(p["size"], 1), "chin_y": p["chin_y"], "top": p["top"]}
+            for x, p in zip(xs, placed)]
+
+
+def frame_single(rg: dict, parts: Path, lib: dict, set_name: str, c: dict, typ: str) -> dict:
+    """Re-render one character larger instead of zooming the camera (keeps lines crisp)."""
+    floor0 = lib["sets"][set_name]["floor"]
+    seated = lib["poses"][c["pose"].replace("_bowl", "").replace("_tuft", "")]["kind"] == "seated"
+    size = SEATED["size"] if seated else WIDE_SIZE * 0.95
+    fl = floor0 + (SEATED["floor_shift"] if seated else 0)
+    g = _union_geom(rg, parts, c, W / 2, fl, size)
+    fw = g["fw"]
+    Z = {"medium": 1.45, "close": 2.1}[typ] * (WIDE_SIZE * 0.95 / size)
+    bw = g["box"][2] - g["box"][0]
+    Z = max(1.0, min(Z, (W - 40) / bw if typ == "medium" else Z))   # wide poses: keep both arms in frame
+    chin_target = {"medium": 0.40, "close": 0.47}[typ] * H
+    # canvas point (cx, cy) maps to the screen centre; chin must land at chin_target
+    cx = g["chin"][0]
+    cy = g["chin"][1] - (chin_target - H / 2) / Z
+    cx = min(max(cx, W / (2 * Z)), W - W / (2 * Z))
+    cy = min(max(cy, H / (2 * Z)), H - H / (2 * Z))
+    x2 = W / 2 + (W / 2 - cx) * Z          # character drawn at canvas centre before scaling
+    floor2 = H / 2 + (fl - cy) * Z
+    blur = {"medium": 4, "close": 7}[typ]
+    return {"x": round(x2, 1), "floor": round(floor2, 1), "size": round(size * Z, 1),
+            "bg_view": {"zoom": round(Z, 3), "cx": round(cx / W, 4), "cy": round(cy / H, 4), "blur": blur},
+            "head_y": round(H / 2 + (g["chin"][1] - 0.55 * fw - cy) * Z, 1)}
+
+
+def frame_inner(rg: dict, parts: Path, c: dict) -> dict:
+    a = PU.FigureActor(rg, parts, {"who": c["who"], "pose": c["pose"], "x": W / 2, "neck_y": 1000, "size": 1000}, 1.0)
+    fw = a.geometry()["fw"]
+    size = 1000 * 470.0 / fw
+    return {"x": W / 2, "neck_y": 1080, "size": round(size, 1)}
+
+
+def _look_at(src_x: float, dst_x: float, dy: float) -> list[float]:
+    d = 0.7 if dst_x > src_x else -0.7
+    return [d, 0.3 if dy > 60 else (-0.3 if dy < -60 else 0.0)]
+
+
+# ----------------------------------------------------------------------------- build
+def build(plan: dict, lines_dir: Path, shots_dir: Path, name: str, seed: int = 0) -> tuple[dict, dict]:
+    """Return (scene, assemble_spec). Lines must already be in lines_dir as <id>.wav."""
+    lib, rg = library(), rig()
+    errs = validate(plan, lib)
+    if errs:
+        raise PlanError("; ".join(errs))
+    parts = RIG.parent / rg.get("parts_dir", ".")
+    rng = random.Random(seed)
+    lines = {ln["id"]: ln for ln in plan["lines"]}
+    durs = {lid: wav_seconds(lines_dir / f"{lid}.wav") for lid in lines}
+    scene = {"lines_dir": str(lines_dir), "lines": list(lines), "shots": []}
+    asm = {"name": name, "music": {"file": f"assets/music/{plan.get('music') or rng.choice(MUSIC)}.mp3",
+                                   "gain_db": -24, "mute_shots": []}, "shots": []}
+    for i, s in enumerate(plan["shots"]):
+        typ = s["type"]
+        lid = s.get("line")
+        talk = durs[lid] if lid else 0.0
+        hold = float(s.get("hold", 0.35 if lid else 1.2))
+        dur = round(max(MIN_SHOT if typ != "black" else 0.5, (LINE_AT + talk + hold) if lid else hold), 2)
+        speaker = lines[lid]["who"] if lid else ""
+        shot: dict = {"dur": dur}
+        actors = []
+        if typ == "black":
+            shot["bg"] = "black"
+            asm["music"]["mute_shots"].append([i, i])
+        elif typ == "inner":
+            shot["bg"] = "spiral"
+            c = s["cast"][0]
+            f = frame_inner(rg, parts, c)
+            actors.append({"who": c["who"], "pose": c["pose"], **f, "expr": c.get("expr", "panic"), "dart": True, "c": c})
+            shot["fx"] = [{"t": 0, "cam": {"zoom": 1.12, "cx": 540, "cy": 760}, "over": dur - 0.1},
+                          {"t": 0, "shake": 0.5, "amp": 14},
+                          {"t": round(dur * 0.15, 2), "sweat": 1, "x": 880, "y": 420, "size": 46, "dur": 2.0}]
+            asm["music"]["mute_shots"].append([i, i])
+        elif typ == "wide":
+            shot["bg"] = lib["sets"][s["set"]]["bg"]
+            pos = layout_wide(rg, parts, lib, s["set"], s["cast"])
+            for c, p in zip(s["cast"], pos):
+                actors.append({"who": c["who"], "pose": c["pose"], "x": p["x"], "floor": p["floor"], "size": p["size"],
+                               "expr": c.get("expr", "neutral"), "c": c, "_chin_y": p["chin_y"]})
+            # look at whoever is speaking (speaker looks at the nearest other person)
+            for a in actors:
+                if "look" in a["c"]:
+                    continue
+                others = [o for o in actors if o is not a]
+                if not others:
+                    a["look"] = [0, 0]
+                    continue
+                tgt = next((o for o in others if o["who"] == speaker), None) or min(others, key=lambda o: abs(o["x"] - a["x"]))
+                a["look"] = _look_at(a["x"], tgt["x"], tgt["_chin_y"] - a["_chin_y"])
+            top = min(a["_chin_y"] for a in actors)
+            shot["fx"] = [{"t": 0, "cam": {"zoom": 1.03, "cx": 540, "cy": 1000}},
+                          {"t": 0, "cam": {"zoom": 1.07, "cx": 540, "cy": max(900, min(1100, top + 300))}, "over": dur}]
+        else:
+            shot["bg"] = lib["sets"][s["set"]]["bg"]
+            c = s["cast"][0]
+            f = frame_single(rg, parts, lib, s["set"], c, typ)
+            shot["bg_view"] = f.pop("bg_view")
+            f.pop("head_y")
+            actors.append({"who": c["who"], "pose": c["pose"], **f, "expr": c.get("expr", "neutral"), "c": c})
+        cam = s.get("camera")
+        if cam == "punch_in" and typ in ("medium", "close", "wide"):
+            at = round(dur * float(s.get("camera_at", 0.6)), 2)
+            shot.setdefault("fx", []).append({"t": at, "cam": {"zoom": 1.25, "cx": 540, "cy": 760}, "over": 0.25})
+        for fx in s.get("fx", []):
+            t = round(dur * float(fx.get("at", 0)), 2)
+            if fx.get("fx") == "shake":
+                shot.setdefault("fx", []).append({"t": t, "shake": 0.45, "amp": 16})
+            elif fx.get("fx") == "flash":
+                shot.setdefault("fx", []).append({"t": t, "flash": 0.25})
+            elif fx.get("fx") == "speedlines":
+                shot.setdefault("fx", []).append({"t": t, "speedlines": 0.6})
+        out_actors = []
+        for a in actors:
+            c = a.pop("c")
+            a.pop("_chin_y", None)
+            if "look" in c:
+                lk = c["look"]
+                a["look"] = {"left": [-0.8, 0], "right": [0.8, 0], "camera": [0, 0], "down": [0, 0.7], "up": [0, -0.6]}.get(lk, lk) \
+                    if isinstance(lk, str) else lk
+            a.setdefault("look", [0, 0])
+            if c["who"] == speaker and lid:
+                a["lines"] = [{"line": lid, "at": LINE_AT}]
+            evs = []
+            for e in c.get("events", []):
+                t = round(dur * float(e.get("at", 0)), 2)
+                ee = {k: v for k, v in e.items() if k != "at"}
+                if "move" in ee:
+                    ee.setdefault("dur", 0.6)
+                for key in ("eyeroll", "wiggle", "shiver", "twitch"):
+                    if key in ee:
+                        ee[key] = 1
+                        ee.setdefault("dur", {"eyeroll": 0.75, "wiggle": 0.7, "shiver": 0.7, "twitch": 0.6}[key])
+                if "look" in ee and isinstance(ee["look"], str):
+                    ee["look"] = {"left": [-0.8, 0], "right": [0.8, 0], "camera": [0, 0], "down": [0, 0.7], "up": [0, -0.6]}.get(ee["look"], [0, 0])
+                evs.append({"t": t, **ee})
+            a["events"] = evs
+            a["seed"] = i
+            out_actors.append(a)
+        if out_actors:
+            shot["actors"] = out_actors
+        scene["shots"].append(shot)
+        sounds = []
+        if lid:
+            sounds.append({"url": str(lines_dir / f"{lid}.wav"), "at": LINE_AT + (0.05 if typ == "inner" else 0),
+                           "gain_db": 3 if typ == "inner" else 0, **({"reverb": True} if typ == "inner" else {})})
+        if typ == "inner":
+            sounds.append({"url": "assets/sfx/spiral.mp3", "at": 0, "gain_db": -11})
+        for fx in s.get("sfx", []):
+            sounds.append({"url": f"assets/sfx/{fx['name']}.mp3", "at": round(dur * float(fx.get("at", 0)), 2),
+                           "gain_db": float(fx.get("gain_db", -4))})
+        ash = {"url": str(shots_dir / f"shot{i:02d}.mp4"), "speaker": speaker, "keep_audio": False, "sounds": sounds}
+        if lid:
+            ash["caption"] = lines[lid]["cap"]
+            if typ == "inner":
+                ash["inner"] = True
+        asm["shots"].append(ash)
+    return scene, asm
+
+
+def total_seconds(scene: dict) -> float:
+    return round(sum(s["dur"] for s in scene["shots"]), 2)

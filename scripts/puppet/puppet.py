@@ -624,6 +624,20 @@ class FigureActor(Actor):
                         self.flashes.append(tt - 0.05)
                         last = tt
 
+    def geometry(self, pose: str | None = None) -> dict:
+        """Where this figure lands on the canvas (no motion): chin point, face width, silhouette box."""
+        P = self.poses[pose or self.spec["pose"]]
+        bh, bw = P["img"].shape[:2]
+        cx, cy = float(P["chin"][0]), float(P["chin"][1])
+        if self.floor is not None:
+            left, top = self.x - cx, self.floor - bh
+        else:
+            left, top = self.x - cx, self.neck_y - cy
+        a = P["img"][..., 3] > 128
+        ys, xs = np.nonzero(a.any(1))[0], np.nonzero(a.any(0))[0]
+        return {"chin": (left + cx, top + cy), "fw": float(P["fw"]),
+                "box": (left + xs.min(), top + ys.min(), left + xs.max(), top + ys.max())}
+
     def render(self, canvas: np.ndarray, t: float) -> None:
         st = self.state(t)
         pose, t_pose = self.spec["pose"], -9.0
