@@ -110,3 +110,15 @@ def setup_from_updates(state) -> str | None:
             state.set_setting("telegram_owner_user_id", str(m.get("from", {}).get("id", cid)))
             return cid
     return None
+
+
+def send_photo(state, path: Path, caption: str) -> dict | None:
+    if not enabled(state):
+        return None
+    try:
+        with open(path, "rb") as f:
+            return call("sendPhoto", {"chat_id": chat_id(state), "caption": caption[:1000], "parse_mode": "HTML"},
+                        files={"photo": (path.name, f, "image/jpeg")})
+    except Exception as e:  # noqa: BLE001
+        state.log(f"telegram photo failed: {e}", "warn")
+        return send(state, caption)

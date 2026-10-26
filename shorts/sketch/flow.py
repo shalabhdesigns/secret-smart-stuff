@@ -364,6 +364,13 @@ def daily(p, req: dict) -> int:
         if slot < now:
             ep["status"] = "published"
             E.save(p.state, ep)
+    # grow the set library: weekly, or faster while the show has few places
+    try:
+        from . import grow as G
+        if dt.datetime.now(E.IST).weekday() == 0 or len(D.library()["sets"]) < 6:
+            G.grow(p, 1)
+    except Exception as e:  # noqa: BLE001
+        p.state.log(f"library growth skipped: {e}", "warn")
     return produce(p, req)
 
 

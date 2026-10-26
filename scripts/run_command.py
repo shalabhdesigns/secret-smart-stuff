@@ -347,6 +347,10 @@ def main(path: str) -> int:
         return SK.fix(p, req)
     if action == "reject" and sk_job:
         return SK.reject(p, req)
+    if action == "grow":
+        from shorts.sketch import grow as G
+        print(G.grow(p, int(req.get("count", 1))))
+        return 0
     if action == "status":
         notify.send(p.state, "📋 " + SK.status(p))
         print(SK.status(p))

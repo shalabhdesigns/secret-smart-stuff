@@ -138,8 +138,7 @@ def grow(p, count: int = 1) -> list[str]:
             lib["sets"][sid] = {"bg": sid, "floor": 1850, "desc": short, "added": dt.date.today().isoformat()}
             D.LIB.write_text(json.dumps(lib, indent=1, ensure_ascii=False))
             added.append(sid)
-            notify.send_photo(st, dst, f"🎨 New set added to the show: <b>{notify.esc(short)}</b>") \
-                if hasattr(notify, "send_photo") else notify.send(st, f"🎨 New set added: {short}")
+            notify.send_photo(st, dst, f"🎨 New set added to the show: <b>{notify.esc(short)}</b>")
             break
     if added:
         subprocess.run(["git", "config", "user.name", "shorts-bot"], check=True)
