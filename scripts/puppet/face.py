@@ -232,6 +232,8 @@ class Face:
                                -1, cv2.LINE_AA)
                 # upper lid: closes from the top; slant tilts it (angry: down toward the nose; sad: outer droop)
                 lid = max(0.0, min(1.0, 1 - min(op, 1.0)))
+                if st.get("eyeroll") is not None:                # "ugh": heavy lids while the eyes roll
+                    lid = max(lid, 0.42 * math.sin(min(1.0, st["eyeroll"]) * math.pi) + 0.2)
                 lid = max(lid, blink)
                 if lid > 0.01:
                     base = cy - ry + lid * 2 * ry * (0.92 if lid < 0.99 else 1.0)
