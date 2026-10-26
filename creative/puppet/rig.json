@@ -311,6 +311,9 @@
   },
   "dev_phone": {
    "file": "dev_phone.png"
+  },
+  "meera_phone": {
+   "file": "meera_phone.png"
   }
  }
 }

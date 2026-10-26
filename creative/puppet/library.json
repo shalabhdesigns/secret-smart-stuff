@@ -110,6 +110,12 @@
    "kind": "stand",
    "desc": "standing, holding a smartphone to his right ear with his right hand, left arm relaxed by his side",
    "added": "2026-10-26"
+  },
+  "meera_phone": {
+   "who": "meera",
+   "kind": "stand",
+   "desc": "standing, holding a smartphone to her right ear with her right hand, a chips packet in her left hand",
+   "added": "2026-10-26"
   }
  },
  "hair_variants": {
