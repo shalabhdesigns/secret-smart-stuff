@@ -279,7 +279,31 @@ class Pipeline:
             out.append("\n\nLessons from this channel's own analytics (evidence-backed):\n" + lessons[:1500])
         return "".join(out)
 
+    def _probe_visual(self, job_id: str, topic: dict, d: Path) -> None:
+        """Before paying for a script: can the image model draw this object credibly at all?
+        One cheap picture + the credibility check (~$0.02). Two failures drop the topic."""
+        idea = json.loads(topic.get("notes") or "{}")
+        obj = idea.get("object") or topic["title"]
+        style = self.cfg.channel["style"]["image_style"]
+        fails = []
+        for attempt in range(2):
+            prompt = (f"Realistic photo of a typical, complete {obj}, whole object clearly visible from a natural angle, "
+                      f"plain background. {style}. Vertical 9:16 composition.")
+            if self.cfg.live:
+                self.budget.authorize(0.03, "probe", job_id)
+            img, usd = self.images.generate(prompt, d / f"probe{attempt}.png", seed=random.randint(1, 10**6),
+                                            model=self.cfg.pipeline["providers"]["images"].get("fallback_model"))
+            if usd:
+                self.state.add_cost("bfl", "image", 1, usd, job_id)
+            real = self._realism(img, f"a typical, complete {obj}", topic["title"], job_id)
+            if real.get("ok", True):
+                return
+            fails.append("; ".join(real.get("blocking") or [])[:200])
+        raise QualityRejected(f"visual probe: the image model can't draw '{obj}' credibly ({' | '.join(fails)})")
+
     def _stage_script(self, job_id: str, topic: dict, d: Path) -> dict:
+        if self.cfg.pipeline["providers"]["images"].get("probe_topics", True):
+            self._probe_visual(job_id, topic, d)
         idea = json.loads(topic.get("notes") or "{}")
         r_ = self.cfg.channel["rules"]
         lo, hi = r_["target_seconds"]
@@ -533,6 +557,10 @@ class Pipeline:
         images: dict = dict(script.get("images") or {})
         self._match_budget = 3          # at most 3 replacement images per video
         self._regen_budget = 4          # at most 4 extra tries for pictures that look wrong (cost cap)
+        if (d / "critique.json").exists():
+            # a self-review fix chose these pictures on purpose: automatic replacements would undo it
+            # (28 Oct test: MATCH re-created the rejected "dripping pot" picture twice)
+            self._match_budget = 0
         first_focus = {}
         for sc in script["scenes"]:
             if sc.get("image") and sc.get("focus") and sc["image"] not in first_focus:
@@ -1113,8 +1141,21 @@ class Pipeline:
                 text += f"- improve {b.get('beat')}: {b.get('problem')} → {b.get('fix')}\n"
         md.write_text(text, encoding="utf-8")
 
-    def fix_note(self, c: dict) -> str:
+    def fix_note(self, c: dict, job_id: str | None = None) -> str:
         items = [f"{b.get('beat')}: {b.get('problem')} FIX: {b.get('fix')}" for b in (c.get("blocking") or [])]
+        if job_id:
+            d = self.build / job_id
+            hist = json.loads((d / "critique.json").read_text()) if (d / "critique.json").exists() else []
+            beats = {}
+            for h in hist:
+                for b in h.get("blocking") or []:
+                    beats[b.get("beat")] = beats.get(b.get("beat"), 0) + 1
+            again = sorted(k for k, n in beats.items() if n >= 2 and k)
+            if again:
+                items.append(f"RULE: the pictures for {', '.join(again)} failed twice; the image model cannot draw them. "
+                             "Do NOT ask for a new picture there. Point those beats at an existing picture that "
+                             "looked right (usually img1, with a different focus) and reword the line so that picture "
+                             "fits; or cut the beat if the video still makes sense")
         items += [f"{b.get('beat')}: {b.get('problem')} FIX: {b.get('fix')}" for b in (c.get("improvements") or [])[:2]]
         items += [f"{f} FIX: write a new, simpler photo prompt for that image that a viewer will accept as a real photo"
                   for f in c.get("hard_flags") or []]

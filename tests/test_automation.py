@@ -121,6 +121,7 @@ def test_self_review_fixes_then_passes(tmp_path, monkeypatch):
         return real_ask(prompt, **kw)
     p.llm.ask = ask
     d = ROOT / "build" / job
+    (d / "critique.json").unlink(missing_ok=True)     # build/ survives between local test runs
     c = rc.self_review(p, job)
     assert c["passed"] and calls["n"] == 2
     hist = json.loads((d / "critique.json").read_text())

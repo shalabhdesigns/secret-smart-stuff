@@ -124,6 +124,16 @@ def report_failure(p: Pipeline, job: str) -> None:
 
 # ---------------- actions ----------------
 
+def keep_rejected(job: str) -> None:
+    """Save a video that failed the final review (video, contact sheet, review notes) for inspection."""
+    d = ROOT / "build" / job
+    files = [str(d / f) for f in ("final.mp4", "contact_sheet.jpg", "critique.json", "review.md", "script.json")
+             if (d / f).exists()]
+    if files and os.environ.get("SHORTS_NO_GITHUB") != "1":
+        gh("release", "create", f"rejected-{job}", *files, "--prerelease", "--title", f"Rejected by self-review: {job}",
+           "--notes", "Not sent to the owner. Kept to learn from.", check=False)
+
+
 def self_review(p: Pipeline, job: str, rounds: int = 3) -> dict:
     """Claude's final review of the finished video, with up to `rounds` reviews (so at most rounds-1 targeted
     fixes). Only a video that passes reaches the owner. See Pipeline.critique for the bar."""
@@ -137,7 +147,7 @@ def self_review(p: Pipeline, job: str, rounds: int = 3) -> dict:
         if c.get("passed") or c.get("verdict") == "drop" or c.get("unshowable") or r == rounds:
             return c
         p.prepare_prior(job, c)
-        p.decide(job, "selffix", p.fix_note(c))
+        p.decide(job, "selffix", p.fix_note(c, job))
         p.produce(topic)
         j = p.state.get_job(job)
         if j["status"] != "review" or j["error"]:
@@ -218,6 +228,7 @@ def do_produce(p: Pipeline, req: dict) -> int:
         if c.get("passed"):
             break
         reason = f"self-review: {c.get('summary', '')}"[:400]
+        keep_rejected(job)
         p.decide(job, "reject", reason)
         p.state.log(f"{job} dropped by self-review: {reason}", "warn", job)
         topics_left -= 1
