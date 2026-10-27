@@ -334,32 +334,26 @@ def main(path: str) -> int:
     req = json.loads(Path(path).read_text())
     action = req.get("action")
     p = Pipeline(load())
-    # ---- Sab Theek Hai sketch episodes (the live format) ----
-    from shorts.sketch import flow as SK
-    sk_job = str(req.get("job", "")).startswith("ep")
-    if action in ("daily", "sketch_daily"):
-        return SK.daily(p, req)
-    if action in ("produce", "sketch_produce"):
-        return SK.produce(p, {**req, "force": req.get("force", action == "produce")})
-    if action == "approve" and sk_job:
-        return SK.approve(p, req)
-    if action == "fix" and sk_job:
-        return SK.fix(p, req)
-    if action == "rerender" and sk_job:
-        return SK.rerender(p, req)
-    if action == "send_review" and sk_job:
-        return SK.send_review(p, req)
-    if action == "reject" and sk_job:
-        return SK.reject(p, req)
-    if action == "grow":
-        from shorts.sketch import grow as G
-        print(G.grow(p, int(req.get("count", 1))))
+    # ---- Bhaukaali Toons / Sab Theek Hai was dropped by the owner on 28 Oct 2026 ----
+    if action == "retire_sketch":
+        from shorts.sketch import episodes as E
+        done = []
+        for ep in E.all_eps(p.state, ("writing", "review", "revising", "approved")):
+            ep["status"] = "rejected"
+            E.log(ep, "retired", "owner dropped the Bhaukaali Toons show (28 Oct 2026)")
+            E.save(p.state, ep)
+            done.append(ep["id"])
+        msg = ("🛑 Bhaukaali Toons is stopped. These episodes are cancelled and will never be uploaded: "
+               + (", ".join(done) or "none") + ". Their buttons no longer do anything.")
+        notify.send(p.state, msg)
+        print(msg)
         return 0
-    if action == "status":
-        notify.send(p.state, "📋 " + SK.status(p))
-        print(SK.status(p))
+    if str(req.get("job", "")).startswith("ep") or action in ("sketch_daily", "sketch_produce", "grow", "send_review"):
+        notify.send(p.state, "That Bhaukaali Toons episode was cancelled (the show is stopped). Nothing was done.")
         return 0
-    # ---- retired explainer format (kept for reference) ----
+    # ---- Secret Smart Stuff explainers (the live format) ----
+    if action in ("produce", "daily"):
+        return do_produce(p, req)
     if action in ("approve", "reject", "fix"):
         return do_decision(p, req)
     if action == "rerender":
