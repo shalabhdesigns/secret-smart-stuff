@@ -4,56 +4,60 @@
 
 | Time (IST) | Workflow | What happens |
 |---|---|---|
-| 05:47 | `produce` | Refresh competitor signals → top up topic backlog → make one Short → open a review issue |
-| when you comment | `review` | `approve` → upload private + schedule · `reject: …` · `fix: …` |
-| every 6 h | `analytics` | Pull YouTube Analytics for uploaded Shorts, update pillar insights |
-| 21:53 | `summary` | Comment on the "Daily summary" issue: videos, failures, spend |
+| 05:47 | `produce` | Refreshes competitor signals, tops up the topic backlog, makes one Short and sends it to your Telegram. It skips the day while a video is still waiting for you. |
+| when you tap | `command` | ✅ Approve → upload as private, scheduled for its slot · ✏️ Fix → minimal edit and a new version · 🗑 Drop → reason saved |
+| every 4 h + after each slot | `analytics` | YouTube Analytics for this channel's Shorts; checks uploads went live |
+| Monday 09:03 | `summary` | Weekly learning report (what worked, by pillar and publish time) |
 
-Times are slightly off the hour on purpose. GitHub delays jobs scheduled exactly on the hour.
-Even so, any run can start late.
+Times are slightly off the hour on purpose. GitHub delays jobs scheduled exactly on the hour, and any run can
+start late.
 
-## Your weekly 3–7 hours
+## Your time
 
-- **Daily, 2–5 minutes:** watch the review video on your phone and reply `approve`, `reject: reason` or `fix: change`.
-- **Weekly, about 30 minutes:**
-  - Read the summary issue.
+- **Daily, 2–5 minutes:** watch the video in Telegram, then tap ✅, ✏️ (say what to change) or 🗑.
+- **Weekly, about 15 minutes:**
   - In YouTube Studio, check "viewed vs swiped away" for the week's Shorts. That number is not in the API.
   - Reply to a few comments.
-- **Monthly, about 1 hour:**
-  - Check `data/insights.json` (on the `state` branch).
-  - Adjust pillar shares or hooks in `config/channel.yaml` if the data is clear.
+- **Monthly:** the dashboard (`/dash` in the bot) shows cost, views and what is working.
+
+## Bot commands
+
+| Command | What it does |
+|---|---|
+| /status | What is waiting, recent uploads, spend |
+| /produce | Make an extra video now |
+| /ytlogin | Connect or refresh the YouTube login (one tap) |
+| /dash | Dashboard link (login code sent to Telegram) |
+| /revenue 2026-11 12.50 | Record revenue for a month |
 
 ## How to…
 
 | Task | How |
 |---|---|
-| **Pause everything** | Repo → Actions → each workflow → "…" → **Disable workflow**. Or set the variable `SHORTS_MODE=dry_run` (no spending, no uploads). |
-| **Resume** | Enable the workflows again and set `SHORTS_MODE=live`. |
-| **Make a Short on a chosen topic** | Actions → produce → Run workflow → enter the topic ID (from `python -m shorts.cli topics`). |
-| **Change budget limits** | Edit `config/pipeline.yaml` → `budget_usd`. When a limit is hit, production pauses and an `alert` issue opens. |
-| **Change posting time** | `config/pipeline.yaml` → `schedule.publish_slots_utc` (UTC). 13:30 UTC = 19:00 IST. |
+| **Pause everything** | Set the repo variable `SHORTS_MODE=dry_run` (no spending, no uploads), or disable the `produce` workflow. |
+| **Resume** | Set `SHORTS_MODE=live` and enable the workflows again. |
+| **Make a Short on a chosen topic** | Claude pushes `{"action":"produce","topic":"<id>"}` to `commands/request.json`. Optionally add `angle` / `question`. |
+| **Change budget limits** | `config/pipeline.yaml` → `budget_usd`. When a limit is hit, production pauses and resumes on the next run. |
+| **Change posting times** | `config/experiments.yaml` (the publish-time experiment chooses the slot). |
 | **Change the voice** | `config/channel.yaml` → `voice.voice_id`. |
-| **Swap the image model** | `config/pipeline.yaml` → `providers.images.model` (for example `flux-2-pro`). |
-| **Switch to automatic publishing** | After about 30 good Shorts: set `approval.mode: auto` in `config/pipeline.yaml`. Shorts with review score ≥ 8 and no image flags publish on their own. The rest still wait for you. The review issue is opened either way, so you can always see what went out. |
-| **An upload says "started but did not confirm"** | Check YouTube Studio. If the video IS there: `python -m shorts.cli upload-resolve JOB --video-id ID`. If not: `python -m shorts.cli upload-resolve JOB`, then comment `approve` again. This guard stops double uploads. |
-| **Login expired** (`refresh token expired`) | Re-run `scripts/youtube_auth.py` and update the `YT_REFRESH_TOKEN` secret. Also check the consent screen still says "In production". |
-| **Look at everything locally** | `pip install -r requirements.txt`, then `python -m shorts.cli status / topics / summary` (dry-run needs no keys). |
+| **"YouTube login expired" / "login is for another channel"** | Send /ytlogin to the bot and pick Secret Smart Stuff (`docs/SETUP.md`). |
+| **An upload says "started but did not confirm"** | Check YouTube Studio. If the video IS there: `python -m shorts.cli upload-resolve JOB --video-id ID`. If not: `python -m shorts.cli upload-resolve JOB`, then approve again. This guard stops double uploads. |
+| **Redeploy the studio Worker** | Push `{"action":"setup_studio"}`. |
 
 ## Troubleshooting
 
 | Symptom | Likely cause | Fix |
 |---|---|---|
-| No review issue in the morning | Run delayed, failed, or budget pause | Check Actions for a red run, and look for an `alert` issue |
-| `alert`: "script has N words" or "review score X" | Script failed quality gates 3 times | Normal. The topic waits for you. Reject it or comment on it. |
-| `alert`: "BFL account has no credits left" | Image credit ran out | Top up at dashboard.bfl.ai |
-| `alert`: "ElevenLabs 401/quota" | Key revoked or monthly credits used up | Check the ElevenLabs plan or key |
-| Signals step says "skipped" | YouTube changed its pages, so yt-dlp broke | Nothing breaks. Discovery runs without fresh signals. Update yt-dlp in `requirements.txt`. |
-| Same kind of topic every day | Pillar shares drifted, or the backlog is full of one pillar | Reject a few, or edit the pillar shares |
+| No video in the morning | A video is still waiting for review, the run was delayed or failed, or the budget paused it | /status; check Actions for a red run and look for an `alert` |
+| "BFL account has no credits left" | Image credit ran out | Top up at dashboard.bfl.ai |
+| "ElevenLabs 401/quota" | Key revoked or monthly credits used up | Check the ElevenLabs plan or key |
+| Signals step says "skipped" | yt-dlp broke on a YouTube change | Nothing breaks. Update yt-dlp in `requirements.txt`. |
+| Same kind of topic every day | Pillar shares drifted | Drop a few with a reason, or edit the pillar shares |
 
 ## Where things are
 
-- **Code:** `shorts/` (pipeline, providers, render, QA, publish, analytics)
-- **Settings:** `config/channel.yaml` (identity and content rules), `config/pipeline.yaml` (budgets, schedule, providers)
-- **State (database, signals, insights):** the `state` branch, updated after every run
-- **Review videos:** repo **Releases** (pre-releases named `review-<job>`)
-- **Decisions and research:** `docs/` and `research/`
+- **Code:** `shorts/` (pipeline, providers, render, QA, publish, analytics), `worker/` (studio), `scripts/`.
+- **Settings:** `config/channel.yaml`, `config/pipeline.yaml`, `config/experiments.yaml`.
+- **State (database, signals, insights):** the `state` branch, updated after every run.
+- **Review videos:** repo Releases (pre-releases named `review-<job>`).
+- **Decisions, lessons and research:** `docs/` and `research/`.

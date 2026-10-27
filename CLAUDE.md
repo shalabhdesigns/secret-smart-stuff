@@ -1,51 +1,69 @@
-# Bhaukaali Toons — working notes for Claude
+# Secret Smart Stuff — working notes for Claude
 
-- Channel: **Bhaukaali Toons** (YouTube @bhaukaalitoons, Instagram @bhaukaalitoons, account
-  bhaukaalitoons@gmail.com). Show: **Sab Theek Hai** — Hindi/Hinglish (UP flavour) 2D cartoon sketches.
-  The earlier "Secret Smart Stuff" explainer format is retired; it lives only in `docs/archive/`.
-- **Read `docs/TEMPLATE.md` first** (production template v3) and follow it. Change it only with evidence or owner approval.
-- Owner: Shalabh. He wants short sentences, simple language, points; finished results, not process updates.
+- **Channel:** Secret Smart Stuff (YouTube @secretsmartstuff, account secretsmartstuff@gmail.com). English
+  explainer Shorts: "The secret smart reasons behind everyday things."
+- **History:** Bhaukaali Toons (a Hindi cartoon sketch show) ran from 26 to 28 Oct 2026. The owner dropped it.
+  - Its code is on branch `archive/bhaukaali-toons`.
+  - Its docs are in `docs/archive/bhaukaali-toons/`.
+  - Never restart it without the owner asking.
+- **Read `docs/PLAYBOOK.md` first.** It is the approved production process (baseline: onigiri v9, approved
+  25 Oct 2026). Follow it by default. Change it only with evidence (`docs/EXPERIMENTS.md`) or owner approval,
+  and log every change in its Change log.
+- **Read `docs/LESSONS.md`.** It holds everything learned so far, from both formats.
+- **Owner:** Shalabh. He wants:
+  - short sentences, simple language, points;
+  - finished results, not process updates;
+  - to be asked only for real decisions or access.
 
 ## Owner rules (standing)
-- **Approves every video before it is published** (Telegram ✅). On approval the system uploads it as private with
-  a scheduled publish time (7:30 PM IST slot). Never publish anything he has not approved.
-- Characters must stay **identical forever**: use only the locked library (`creative/puppet/README.md`).
-  Never cut/replace heads at render time; new poses pass `qa_faces.py` before use.
-- No floating characters, no limbs cut by the frame except deliberate camera framing; correct relative heights.
-- Dialogue: natural, witty, intelligent; catchphrases must never feel forced. Roman Hinglish captions.
-- Every sketch loops: the last beat leads back into the first.
-- Length: about 55 s (48–60 s); never clip or speed up dialogue to fit.
-- Original music only; tasteful sound effects only.
-- Flag cost and policy risks before spending. Don't claim something works until it has been tested.
+- **He approves every video before it is published.** Nothing goes public without his ✅ in Telegram.
+  - On approval the system uploads the video as private, scheduled for its publish slot (the publish-time
+    experiment, `config/experiments.yaml`).
+- **One video a day.** Daily production starts automatically; one video waits for review at a time.
+- **Format:** stills with camera moves (onigiri v9), 30–36 s.
+  - Real-motion AI clips are off. They cost about $2.50–3.50 more per video; test them only as an experiment.
+- **Feedback that is now a standing rule:**
+  - each picture shows exactly what is being said;
+  - original music always;
+  - only tasteful sound effects;
+  - 1–2 light witty lines;
+  - a seamless loop;
+  - few pointers (varied styles, none unless needed);
+  - never clip the first word.
+- **Flag cost and policy risks before spending.** Never claim something works until it has been tested.
 
 ## Before sending any video
-- Check 4+ frames of every shot at full size (seams, proportions, framing, captions).
-- Contact sheet of the full video; loudness about −15 LUFS, true peak below −1 dBTP.
-- Check Hindi pronunciation (transcribe) and say plainly what could not be checked.
+- A frame contact sheet, plus full-size frames of anything doubtful.
+- First frame vs last frame (the loop).
+- Music level at the end and start; no dropouts; the first word complete.
 - Send a 3× loop preview with it.
 
-## The automatic daily loop (shorts/sketch/)
-- `produce.yml` (daily) -> `run_command.py daily` -> `shorts/sketch/flow.py`: chase pending reviews, maybe add a new
-  set (grow.py, weekly, $5/week art cap), then write -> voice -> animate -> check -> send to Telegram, made 3 days
-  ahead of its slot. Max 4 episodes waiting at once.
-- Writers' room: `room.py` via `writer.py` (observe → premise → G1 judge → art first → script → G2/G3 judge+checks →
-  stage → G4), independent judge `judge.py`, hard checks `gates.py`, owner lessons `lessons.py`, real-audience memory `perf.py`. Director: `director.py` turns the
-  plan into exact shots (layout, framing, timing, continuity, long-shot splitting). Voices: `voices.py` (ElevenLabs
-  eleven_v4, unchanged lines reused). QA: `qa.py` (tech checks + Claude vision check). Calendar: `episodes.py`.
-- Owner's Telegram buttons -> Cloudflare Worker `bhaukaalitoons-studio` -> GitHub `command.yml` with
-  approve / fix (his note -> revise) / reject (makes a replacement). `rerender` re-renders the same plan for free.
-- Renders live in GitHub releases `episodes`, `episodes-2`, ... (auto rollover before 1000 files).
-- Faces/acting: `scripts/puppet/face.py` + `Actor.state` follow docs/craft/EXPRESSIONS.md. Lip sync comes from the
-  Devanagari syllables of each line (`<line>.txt`, or TTS alignment `<line>.align.json`).
-
 ## Systems
-- Code: private repo `shalabhdesigns/bhaukaali-toons`. Runs on GitHub Actions; nothing runs on the owner's laptop.
-- Claude drives the runner by pushing `commands/request.json` (actions in `scripts/run_command.py`, e.g.
-  `whoami`, `accounts`, `diag`, `sketch`).
-- Secrets live only in GitHub Actions secrets: `YT_CLIENT_ID`, `YT_CLIENT_SECRET`, `YT_REFRESH_TOKEN`
-  (Google Cloud project `bhaukaali-toons`, app "Bhaukaali Toons uploader", In production),
-  `ELEVENLABS_API_KEY`, `BFL_API_KEY`, `ANTHROPIC_API_KEY`, `TELEGRAM_BOT_TOKEN`, `CLOUDFLARE_API_TOKEN`,
-  `GH_DISPATCH_TOKEN`. Never put secrets in files or chat.
-- Voices: ElevenLabs flow F9Yu1qHGas1nIdxPh2yp, model eleven_v4, Devanagari text with audio tags.
-  Dev `ZjaFChlI14QPkGSR18mK`, Rocky `m9qrUtG4N193K879RHOm`, Meera `hHyd5z9VxRT4YKoDwPRl`.
-- Commit trailer: see the session's attribution instructions.
+- **Code:** private repo `shalabhdesigns/bhaukaali-toons`. The repo kept its Bhaukaali name; GitHub redirects
+  the old `secret-smart-stuff` name.
+  - Everything runs on GitHub Actions; nothing runs on the owner's laptop.
+  - State lives in SQLite on the `state` branch.
+  - Claude drives runs by pushing `commands/request.json` (actions in `scripts/run_command.py`). Use the REST
+    API only, because GraphQL is blocked.
+- **Daily loop:** `produce.yml` → `run_command.py daily` → `shorts/pipeline.py`:
+  1. topic;
+  2. sourced script;
+  3. independent review;
+  4. voice (ElevenLabs Alice);
+  5. images (FLUX.2);
+  6. render;
+  7. QA;
+  8. Telegram review.
+- **Owner's Telegram buttons:**
+  - Worker `secretsmartstuff-studio` (Cloudflare) → `command.yml`.
+  - Buttons: approve / fix (minimal edit, reuses unchanged media) / reject.
+- **YouTube login:**
+  - One tap: the owner sends `/ytlogin` to the studio bot.
+  - The refresh token is stored encrypted in the Worker's KV store.
+  - Uploads and analytics refuse any login that is not for the channel named in `config/channel.yaml`.
+- **Secrets:** only in GitHub Actions secrets (and the encrypted login in KV). Never in files or chat.
+  - The Google OAuth app is "Secret Smart Stuff uploader" in Google Cloud project `bhaukaali-toons` (owned by
+    bhaukaalitoons@gmail.com), In production.
+  - The Cloudflare account is also under bhaukaalitoons@gmail.com.
+  - Keep that Google account alive.
+- **Commit trailer:** see the session's attribution instructions.

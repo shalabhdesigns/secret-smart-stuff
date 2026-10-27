@@ -1,8 +1,8 @@
 # Daily production: make ONE Short and send it to the owner's Telegram for review.
 name: produce
 on:
-  # Daily schedule ON HOLD (owner, 25 Oct 2026) until the video-clip format is approved.
-  # To resume, restore:  schedule: [{cron: "17 0 * * *"}]   (05:47 IST)
+  # Daily at 05:47 IST (00:17 UTC). Makes nothing while a video still waits for the owner's review.
+  schedule: [{cron: "17 0 * * *"}]
   workflow_dispatch:
 concurrency: { group: shorts-state, cancel-in-progress: false, queue: max }
 permissions: { contents: write, issues: write }

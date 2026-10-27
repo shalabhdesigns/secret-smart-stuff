@@ -8,7 +8,7 @@ How experiments work:
 - An experiment concludes only when every arm reaches its minimum sample. The decision is recorded here
   and, if it changes the playbook, in the playbook's change log.
 
-## exp-001: publish time (CLOSED 27 Oct 2026: belonged to the retired explainer format; sketch experiments are queued in docs/PILOT.md §3)
+## exp-001: publish time (ACTIVE; paused 26–28 Oct during the Bhaukaali detour, resumed 28 Oct 2026)
 
 - **Why:** the owner asked to vary publish times and then double down on what works.
 - **Hypothesis:** the publish time changes early distribution for an English, worldwide audience.
@@ -33,6 +33,7 @@ How experiments work:
   - Topic strength (the biggest factor).
   - Day of week.
   - The channel's growing audience over time. Arms rotate daily, which spreads this out.
+- **Data so far:** onigiri v9 (arm a, 19:00 IST): 1,196 views at ~2.5 days.
 - **Result:** pending.
 - **Decision:** pending.
 
@@ -42,5 +43,5 @@ How experiments work:
 |---|---|---|
 | Hook style: question vs. bold statement | A spoken question in second one holds viewers better | Our baseline is the question; evidence grade B |
 | Length: ~28 s vs. ~36 s | Shorter keeps more of the audience to the end | Needs many videos; topic noise is high |
-| One AI video clip (FLUX 3) vs. stills only | Real motion lifts retention | Costs about $0.30 more per video; test only after timing is settled |
+| Real-motion AI clips (FLUX 3) vs. stills only | Real motion lifts retention | Measured cost: +$2.50–3.50 per video (escalator test, 25 Oct). Test only after 10+ stills videos give a baseline |
 | Wit lines: 1 vs. 2 | More humour keeps viewers without hurting trust | Owner wants a lighter tone; measure % viewed |

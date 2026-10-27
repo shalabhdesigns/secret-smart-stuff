@@ -475,7 +475,9 @@ class Pipeline:
         if sp.usd:
             self.state.add_cost("elevenlabs", "tts_chars", sp.chars, sp.usd, job_id)
         # Speech must start at second zero: trim leading silence and shift the word timings.
-        lead = max(0.0, (sp.words[0].start if sp.words else 0.0) - 0.05)
+        # Keep 0.12 s before the aligned first word: alignment can mark a word's start after its first
+        # consonant, and a tighter cut clipped first words (owner flagged it 3 times, Oct 2026).
+        lead = max(0.0, (sp.words[0].start if sp.words else 0.0) - 0.12)
         audio = sp.audio
         if lead > 0.02:
             trimmed = d / ("narration_trim" + sp.audio.suffix)

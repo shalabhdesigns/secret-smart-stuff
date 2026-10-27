@@ -100,3 +100,23 @@ Each entry: date, decision, who decided, why. Newest at the bottom.
 | Google app | new project `bhaukaali-toons`, app published (In production), site on Vercel | Owner |
 | Sketch length | 35–45 s target, 60 s hard cap | Owner (after evidence) |
 | Old explainer docs | moved to `docs/archive/secret-smart-stuff/` | Owner |
+
+## 28 Oct 2026 — back to Secret Smart Stuff (owner)
+
+| Decision | Choice | Who |
+|---|---|---|
+| Format | Drop Bhaukaali Toons entirely; Secret Smart Stuff English explainers are the only focus | Owner |
+| Why | Comedy was too hard and too expensive to iterate; the onigiri explainer reached 1.1k+ views at ~$1 | Owner |
+| Visual format | Stills with camera moves (onigiri v9) by default; real-motion AI clips off (+$2.50–3.50/video), experiment only | Claude (owner: "cheaper format that already worked") |
+| Waiting sketch episodes | ep002b, ep003d, ep004 cancelled; never uploaded | Claude (owner instruction) |
+| Clip-format test (escalator v2, never sent) | Retired; topic stays in the backlog for the stills format | Claude |
+| Sketch code | Removed from `main`, kept on branch `archive/bhaukaali-toons`; docs in `docs/archive/bhaukaali-toons/` | Claude |
+| Bhaukaali data | Uploads, analytics and owner notes moved to `*_bhaukaali` tables, so they never feed this channel's writer or analytics | Claude |
+| YouTube login | One-tap `/ytlogin` via the studio Worker; token encrypted in KV; uploads/analytics refuse a login for any other channel | Claude |
+| Google app | Kept the working "In production" app (project `bhaukaali-toons`), renamed "Secret Smart Stuff uploader", new home/privacy pages on the Worker | Claude |
+| Studio | Worker renamed `secretsmartstuff-studio`; bot renamed "Secret Smart Stuff Studio"; old `bhaukaalitoons-studio` Worker removed | Claude |
+| Repo name | Kept `bhaukaali-toons` for now (renaming breaks the Worker's dispatch until it is redeployed); cosmetic | Claude |
+| Budgets | $2/video, $6/day, $45/month (October already used ~$39, mostly sketches; resets 1 Nov) | Claude |
+| First-word clipping | Voice keeps 0.12 s before the first word (was 0.05 s) — lesson from the sketch period | Claude |
+| Daily production | On again, 1 video/day, after the restored pipeline passed an end-to-end test | Claude |
+| Old accounts | Bhaukaali YouTube, Instagram, Gmail left dormant (nothing deleted); Ep 1 stays as is unless the owner says otherwise | Claude (deleting is the owner's call) |
