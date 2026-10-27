@@ -38,7 +38,7 @@ def extract_json(text: str):
         # trim trailing prose after the last closing bracket
         end = max(raw.rfind("}"), raw.rfind("]"))
         raw = raw[: end + 1]
-    return json.loads(raw)
+    return json.loads(raw, strict=False)          # strict=False: tolerate raw newlines/tabs inside strings
 
 
 class AnthropicLLM:
@@ -82,6 +82,7 @@ class AnthropicLLM:
         searches = 0
         attempt = 0
         continuations = 0
+        json_fail = 0
         while attempt < retries:
             r = requests.post(API, headers=headers, json=body, timeout=300)
             if r.status_code in (429, 500, 502, 503, 529):
@@ -125,7 +126,18 @@ class AnthropicLLM:
                             sources.append({"url": c["url"], "title": c.get("title", ""),
                                             "cited_text": c.get("cited_text", "")})
             text = "".join(text_parts)
-            data = extract_json(text) if json_out else None
+            try:
+                data = extract_json(text) if json_out else None
+            except (ValueError, LLMError) as e:
+                # malformed JSON (e.g. an unescaped quote inside Hindi dialogue): ask again, a few times
+                json_fail += 1
+                if json_fail > 2:
+                    raise LLMError(f"model returned invalid JSON 3 times: {e}")
+                body["messages"] = body["messages"][:1]
+                body["messages"][0]["content"][-1]["text"] = (prompt + "\n\nIMPORTANT: return strictly valid JSON. "
+                                                              "Escape any double quote inside a string as \\\".")
+                blocks, continuations = [], 0
+                continue
             usd = self._price(model, usage_total, searches)
             return LLMResult(text=text, data=data, usd=usd, sources=sources, model=model)
         raise LLMError(f"Anthropic kept failing: {last}")
