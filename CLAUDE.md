@@ -49,8 +49,8 @@
 - Send a 3× loop preview with it.
 
 ## Systems
-- **Code:** private repo `shalabhdesigns/bhaukaali-toons`. The repo kept its Bhaukaali name; GitHub redirects
-  the old `secret-smart-stuff` name.
+- **Code:** private repo `shalabhdesigns/secret-smart-stuff` (named `bhaukaali-toons` 26–28 Oct; GitHub redirects
+  the old name).
   - Everything runs on GitHub Actions; nothing runs on the owner's laptop.
   - State lives in SQLite on the `state` branch.
   - Claude drives runs by pushing `commands/request.json` (actions in `scripts/run_command.py`). Use the REST
@@ -74,6 +74,7 @@
 - **Secrets:** only in GitHub Actions secrets (and the encrypted login in KV). Never in files or chat.
   - The Google OAuth app is "Secret Smart Stuff uploader" in Google Cloud project `bhaukaali-toons` (owned by
     bhaukaalitoons@gmail.com), In production.
-  - The Cloudflare account is also under bhaukaalitoons@gmail.com.
-  - Keep that Google account alive.
+  - The Cloudflare account login is secretsmartstuff@gmail.com (since 28 Oct); Worker URL
+    https://secretsmartstuff-studio.secretsmartstuff.workers.dev.
+  - Keep bhaukaalitoons@gmail.com alive until the Google Cloud project has secretsmartstuff@gmail.com as an owner.
 - **Commit trailer:** see the session's attribution instructions.

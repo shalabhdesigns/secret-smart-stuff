@@ -115,8 +115,10 @@ Each entry: date, decision, who decided, why. Newest at the bottom.
 | YouTube login | One-tap `/ytlogin` via the studio Worker; token encrypted in KV; uploads/analytics refuse a login for any other channel | Claude |
 | Google app | Kept the working "In production" app (project `bhaukaali-toons`), renamed "Secret Smart Stuff uploader", new home/privacy pages on the Worker | Claude |
 | Studio | Worker renamed `secretsmartstuff-studio`; bot renamed "Secret Smart Stuff Studio"; old `bhaukaalitoons-studio` Worker removed | Claude |
-| Repo name | Kept `bhaukaali-toons` for now (renaming breaks the Worker's dispatch until it is redeployed); cosmetic | Claude |
+| Repo name | Renamed back to `secret-smart-stuff`; Worker redeployed to the new name | Owner |
 | Budgets | $2/video, $6/day, $45/month (October already used ~$39, mostly sketches; resets 1 Nov) | Claude |
 | First-word clipping | Voice keeps 0.12 s before the first word (was 0.05 s) — lesson from the sketch period | Claude |
 | Daily production | On again, 1 video/day, after the restored pipeline passed an end-to-end test | Claude |
 | Old accounts | Bhaukaali YouTube, Instagram, Gmail left dormant (nothing deleted); Ep 1 stays as is unless the owner says otherwise | Claude (deleting is the owner's call) |
+| Cloudflare | Login email changed to secretsmartstuff@gmail.com; workers.dev subdomain `secretsmartstuff` | Owner |
+| Telegram bot | Display name "Secret Smart Stuff Studio"; @username can't be renamed (new bot only if the owner wants) | Owner/Claude |

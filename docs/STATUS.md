@@ -16,7 +16,7 @@ Legend: ✅ works and was tested on the real service · 🟡 built, not yet prov
 | Real-motion AI clips | off | Tested 25 Oct (+$3.18 BFL on one video); experiment only |
 | Pronunciation check via speech-to-text | 🔜 | Needs speech-to-text permission on the ElevenLabs key; explainers use the voice service's word timings instead |
 | Weekly long-form compilation | 🔜 | Not built |
-| Repo rename back to `secret-smart-stuff` | 🔜 | Cosmetic; needs a Worker redeploy right after |
+| Repo renamed back to `secret-smart-stuff` | ✅ | 28 Oct; Worker redeployed |
 
 ## Budget
 - **Limits:** $2 per video, $6 per day, $45 per month (`config/pipeline.yaml`). The ElevenLabs plan is billed

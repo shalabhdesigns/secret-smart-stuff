@@ -8,28 +8,27 @@ Everything below is set up. Use this page if something has to be redone.
 |---|---|
 | YouTube channel | **Secret Smart Stuff** · @secretsmartstuff · English · Education · not made for kids |
 | Channel's Google account | secretsmartstuff@gmail.com |
-| GitHub repo | `shalabhdesigns/bhaukaali-toons` (private; the name dates from the Bhaukaali period) |
+| GitHub repo | `shalabhdesigns/secret-smart-stuff` (private) |
 | Studio bot (Telegram) | display name "Secret Smart Stuff Studio" (username @bhaukaalitoonsstudiobot; only BotFather can change the username) |
-| Studio Worker (Cloudflare) | `secretsmartstuff-studio` → https://secretsmartstuff-studio.bhaukaalitoons.workers.dev (home page, `/privacy`, `/dash`, Telegram webhook, YouTube login) |
-| Cloudflare account | under bhaukaalitoons@gmail.com (free plan) |
+| Studio Worker (Cloudflare) | `secretsmartstuff-studio` → https://secretsmartstuff-studio.secretsmartstuff.workers.dev (home page, `/privacy`, `/dash`, Telegram webhook, YouTube login) |
+| Cloudflare account | login secretsmartstuff@gmail.com (free plan; created as bhaukaalitoons@gmail.com, email changed 28 Oct) |
 | Google OAuth app | "Secret Smart Stuff uploader", Google Cloud project `bhaukaali-toons` (owned by bhaukaalitoons@gmail.com) |
 
-**Keep bhaukaalitoons@gmail.com alive.** It owns the Google Cloud project and the Cloudflare account that the
-automation uses.
+**Keep bhaukaalitoons@gmail.com alive** until secretsmartstuff@gmail.com is an Owner of the Google Cloud project.
 
 ## Google Cloud (project `bhaukaali-toons`, signed in as bhaukaalitoons@gmail.com)
 - **APIs:** YouTube Data API v3, YouTube Analytics API.
 - **Google Auth Platform:**
   - **Branding:**
     - App name "Secret Smart Stuff uploader".
-    - Home page: https://secretsmartstuff-studio.bhaukaalitoons.workers.dev/
-    - Privacy policy: https://secretsmartstuff-studio.bhaukaalitoons.workers.dev/privacy
+    - Home page: https://secretsmartstuff-studio.secretsmartstuff.workers.dev/
+    - Privacy policy: https://secretsmartstuff-studio.secretsmartstuff.workers.dev/privacy
     - Developer contacts: bhaukaalitoons@ and secretsmartstuff@gmail.com.
   - **Audience:** External, **In production**. In "Testing" the login would expire every 7 days.
   - **Data access:** youtube.upload, youtube.readonly, yt-analytics.readonly.
   - **Client "uploader" (Web application).** Redirect URIs:
-    - `https://secretsmartstuff-studio.bhaukaalitoons.workers.dev/oauth/callback` (the live one);
-    - `https://secretsmartstuff-studio.secretsmartstuff.workers.dev/oauth/callback` (spare);
+    - `https://secretsmartstuff-studio.secretsmartstuff.workers.dev/oauth/callback` (the live one);
+    - `https://secretsmartstuff-studio.bhaukaalitoons.workers.dev/oauth/callback` (old, unused);
     - the OAuth Playground;
     - `http://127.0.0.1:8765`.
 

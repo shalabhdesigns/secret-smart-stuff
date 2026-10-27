@@ -15,8 +15,8 @@ This pipeline:
 
 It runs on GitHub Actions, so no computer needs to stay on.
 
-The repo is still named `bhaukaali-toons`, from the 26–28 Oct 2026 detour into a Hindi cartoon sketch show
-(now dropped). That code is on branch `archive/bhaukaali-toons`.
+The 26–28 Oct 2026 detour into a Hindi cartoon sketch show (Bhaukaali Toons, now dropped) is on branch
+`archive/bhaukaali-toons`.
 
 ## Start here
 
