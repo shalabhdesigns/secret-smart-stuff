@@ -8,7 +8,7 @@ How experiments work:
 - An experiment concludes only when every arm reaches its minimum sample. The decision is recorded here
   and, if it changes the playbook, in the playbook's change log.
 
-## exp-001: publish time (active, started 25 Oct 2026)
+## exp-001: publish time (CLOSED 27 Oct 2026: belonged to the retired explainer format; sketch experiments are queued in docs/PILOT.md §3)
 
 - **Why:** the owner asked to vary publish times and then double down on what works.
 - **Hypothesis:** the publish time changes early distribution for an English, worldwide audience.

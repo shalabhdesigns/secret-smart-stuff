@@ -3,7 +3,7 @@
 - Channel: **Bhaukaali Toons** (YouTube @bhaukaalitoons, Instagram @bhaukaalitoons, account
   bhaukaalitoons@gmail.com). Show: **Sab Theek Hai** — Hindi/Hinglish (UP flavour) 2D cartoon sketches.
   The earlier "Secret Smart Stuff" explainer format is retired; it lives only in `docs/archive/`.
-- **Read `docs/PLAYBOOK.md` first** and follow it. Change it only with evidence or owner approval.
+- **Read `docs/TEMPLATE.md` first** (production template v3) and follow it. Change it only with evidence or owner approval.
 - Owner: Shalabh. He wants short sentences, simple language, points; finished results, not process updates.
 
 ## Owner rules (standing)
@@ -14,7 +14,7 @@
 - No floating characters, no limbs cut by the frame except deliberate camera framing; correct relative heights.
 - Dialogue: natural, witty, intelligent; catchphrases must never feel forced. Roman Hinglish captions.
 - Every sketch loops: the last beat leads back into the first.
-- Length: aim 35–45 s, never over 60 s.
+- Length: about 55 s (48–60 s); never clip or speed up dialogue to fit.
 - Original music only; tasteful sound effects only.
 - Flag cost and policy risks before spending. Don't claim something works until it has been tested.
 
@@ -28,7 +28,8 @@
 - `produce.yml` (daily) -> `run_command.py daily` -> `shorts/sketch/flow.py`: chase pending reviews, maybe add a new
   set (grow.py, weekly, $5/week art cap), then write -> voice -> animate -> check -> send to Telegram, made 3 days
   ahead of its slot. Max 4 episodes waiting at once.
-- Writer: `writer.py` (Claude API, rules from docs/SHOW_BIBLE.md + docs/craft/). Director: `director.py` turns the
+- Writers' room: `room.py` via `writer.py` (observe → premise → G1 judge → art first → script → G2/G3 judge+checks →
+  stage → G4), independent judge `judge.py`, hard checks `gates.py`, owner lessons `lessons.py`, real-audience memory `perf.py`. Director: `director.py` turns the
   plan into exact shots (layout, framing, timing, continuity, long-shot splitting). Voices: `voices.py` (ElevenLabs
   eleven_v4, unchanged lines reused). QA: `qa.py` (tech checks + Claude vision check). Calendar: `episodes.py`.
 - Owner's Telegram buttons -> Cloudflare Worker `bhaukaalitoons-studio` -> GitHub `command.yml` with

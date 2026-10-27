@@ -113,3 +113,58 @@ def script_text(plan: dict) -> str:
         d = f"   [{ln['direction']}]" if ln.get("direction") else ""
         out.append(f"{ln.get('id', '')} {names.get(ln['who'], ln['who'])}{via}: {ln['cap'].replace(chr(10), ' ')}{d}")
     return "\n".join(out)
+
+
+PREMISE_ANCHORS = {
+    "truth": "1 generic / 3 familiar but plain / 5 specific truth viewers have lived but never heard said",
+    "laughs": "1 no laugh in sight / 3 one clear laugh / 5 a turn that should get a real laugh plus smaller ones on the way",
+    "fresh": "1 a meme every desi page has posted / 3 familiar situation, new detail / 5 a take nobody has done",
+    "clarity": "1 needs explaining / 3 clear after setup / 5 a first-time viewer gets who/where/what in 5 s",
+    "showable": "1 can't be shown with our 2D puppets / 3 mostly talk / 5 the funniest moments are visible on screen",
+    "share": "1 nobody forwards it / 3 some would / 5 viewers will tag a specific person",
+}
+
+
+def premise_scores(llm, cards: list[dict], render, cost: list[float]) -> list[float]:
+    """Anchored absolute screening (more robust to surface distractors than pairwise; Tripathi et al. 2025).
+    Cards are scored in a shuffled order, each with evidence before the score."""
+    order = list(range(len(cards)))
+    random.Random(len(cards) * 7).shuffle(order)
+    text = "\n\n".join(f"CARD {k + 1}:\n{render(cards[i])}" for k, i in enumerate(order))
+    d = _ask(llm, "TASK: premise_screen\nScore every premise card on each dimension using ONLY these anchors (1-5). "
+                  "For each card first write one sentence of evidence, then the scores. Length and polish are not "
+                  "quality.\nANCHORS:\n" + "\n".join(f"- {k}: {v}" for k, v in PREMISE_ANCHORS.items()) +
+                  f"\n\n{text}\n\n" + 'Return JSON {"cards": [{"card": 1, "evidence": "...", "scores": {' +
+                  ", ".join(f'"{k}": 0' for k in PREMISE_ANCHORS) + "}}]}", cost, 4000)
+    out = [0.0] * len(cards)
+    for row in d.get("cards") or []:
+        try:
+            i = order[int(row["card"]) - 1]
+        except (KeyError, ValueError, IndexError):
+            continue
+        s = row.get("scores") or {}
+        # laughs and truth weigh double: they are what the owner asks for first
+        w = {"truth": 2, "laughs": 2, "fresh": 1.5, "clarity": 1, "showable": 1, "share": 1.5}
+        out[i] = sum(float(s.get(k, 0) or 0) * w[k] for k in w) / sum(w.values())
+    return out
+
+
+def storyboard_check(llm, plan: dict, cost: list[float]) -> dict:
+    """Does what we SEE match what we HEAR? Props, presence, continuity, logic (who knows what, who can hear whom)."""
+    from . import director as D
+    lib = D.library()
+    poses = {k: {"who": v["who"], "desc": v.get("desc", ""), "props": v.get("props", [])} for k, v in lib["poses"].items()}
+    lines = {ln["id"]: f"{ln['who']}{' (' + ln['via'] + ')' if ln.get('via') else ''}: {ln['cap']}" for ln in plan.get("lines", [])}
+    shots = [{"i": i, "beat": s.get("beat"), "type": s.get("type"), "set": s.get("set"),
+              "cast": [f"{c.get('who')}:{c.get('pose')}" for c in s.get("cast", [])], "line": lines.get(s.get("line"), "")}
+             for i, s in enumerate(plan.get("shots", []))]
+    d = _ask(llm, "TASK: storyboard_check\nYou are the continuity supervisor of a 2D animated sketch. For each shot you "
+                  "see who is on screen in which pose (pose descriptions list the props they hold) and the line heard. "
+                  "Find ONLY real problems a viewer would notice: a prop that is talked about but shown wrong or missing "
+                  "from the hands it should be in; a person who is physically present (in the room, at the door) but "
+                  "not on screen; someone hearing or answering a line they could not hear (e.g. a phone held to "
+                  "another person's ear); a line spoken by someone who isn't there; continuity jumps (pose/prop "
+                  "teleports between consecutive shots of the same moment); the last shot not matching the first shot "
+                  "for the loop. Ignore style.\nPOSES:\n" + json.dumps(poses, ensure_ascii=False) + "\nSHOTS:\n" +
+                  json.dumps(shots, ensure_ascii=False) + '\nReturn JSON {"problems": ["shot N: ..."]}', cost, 2000)
+    return {"problems": [p for p in (d.get("problems") or []) if isinstance(p, str)][:8]}

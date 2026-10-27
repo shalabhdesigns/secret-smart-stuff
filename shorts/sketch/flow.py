@@ -117,6 +117,53 @@ def prepare_art(p, ep: dict, plan: dict, llm) -> dict:
     return plan
 
 
+def art_for_premise(p, ep: dict, card: dict) -> dict:
+    """Stage 2b: draw the leading premise's new on-screen person and new place BEFORE the script is written, so the
+    script and staging use only what exists (owner: 'Gupta aunty is nowhere to be seen')."""
+    pseudo = {"new_characters": [{**c, "on_screen": True} for c in (card.get("new_people") or [])
+                                 if c.get("id") and c.get("look")][:1],
+              "new_sets": [card["new_place"]] if (card.get("new_place") or {}).get("id") else [],
+              "lines": []}
+    if not pseudo["new_characters"] and not pseudo["new_sets"]:
+        return {"made": [], "failed": []}
+    from . import art as A
+    made, failed = [], []
+    w = Wd.load()
+    for c in pseudo["new_characters"]:
+        cid = c["id"]
+        if cid in D.library()["characters"]:
+            continue
+        rec = w["characters"].setdefault(cid, {"name": c.get("name", cid), "pending": ep["id"]})
+        rec.update(name=c.get("name", cid), desc=c.get("desc", ""), relations=c.get("relations", {}),
+                   voice_type=c.get("voice_type", ""), look=c.get("look", ""))
+        rec["voice"] = rec.get("voice") or Wd.cast_voice(cid, c.get("voice_type", ""), w)
+        try:
+            ok = A.generate_character(p, cid, c.get("name", cid), c.get("desc", ""), c.get("look", ""),
+                                      float(c.get("height") or 0.95), rec["voice"])
+        except Exception as e:  # noqa: BLE001
+            p.state.log(f"character {cid}: {e}", "warn")
+            ok = False
+        if ok:
+            rec["drawn"] = True
+            made.append(f"{c.get('name', cid)} ({cid}) can be on screen, pose {cid}_stand")
+        else:
+            failed.append(f"{c.get('name', cid)} ({cid}) could not be drawn: keep them off-screen by design (behind the "
+                          "door, next room, on a call) or tell the story without them")
+    Wd.save(w)
+    Wd.commit(f"World: characters for {ep['id']}")
+    for x in pseudo["new_sets"]:
+        if x["id"] in D.library()["sets"]:
+            continue
+        try:
+            ok = A.generate_set(p, x["id"], x.get("desc", ""), x.get("desc", "")[:120])
+        except Exception as e:  # noqa: BLE001
+            p.state.log(f"set {x['id']}: {e}", "warn")
+            ok = False
+        (made if ok else failed).append(f"place {x['id']}" + ("" if ok else " could not be drawn: use an existing set"))
+    E.log(ep, "art_first", f"made {made}; failed {failed}")
+    return {"made": made, "failed": failed}
+
+
 def _only_existing(plan: dict) -> dict:
     """Keep only new-art requests that now exist in the library (so nothing missing reaches the renderer)."""
     lib, rg = D.library(), D.rig()
@@ -210,22 +257,16 @@ def render(p, ep: dict, plan: dict, work: Path) -> dict:
     key = os.environ.get("ELEVENLABS_API_KEY", "")
     cost = 0.0
     llm = _llm(p) if not fake else None
-    tempo = 1.08
+    tempo = 1.08                                      # fixed: never speed voices up or clip lines to fit a length
     for attempt in range(3):
         vr = V.make(plan["lines"], _voices(plan), cache, lines_dir, key, tempo=tempo, fake=fake)
         cost += vr["usd"]
         scene, asm = D.build(plan, lines_dir, shots_dir, ep["id"], seed=ep["number"])
         total = D.total_seconds(scene)
-        if total <= 46.5:
+        if total <= 60.5 or attempt == 2 or llm is None:
             break
-        if total <= 50 and tempo < TEMPO_FAST:
-            tempo = TEMPO_FAST                       # a touch faster is invisible; try that first
-            continue
-        if attempt == 2 or llm is None:
-            break
-        plan, c = Wr.shorten(llm, plan, total, vr["seconds"])
+        plan, c = Wr.shorten(llm, plan, total, vr["seconds"])   # too long: cut a weaker line, never speed up
         cost += c
-        tempo = 1.08
     (work / "scene.json").write_text(json.dumps(scene, ensure_ascii=False, indent=1))
     (work / "assemble.json").write_text(json.dumps(asm, ensure_ascii=False, indent=1))
     subprocess.run([sys.executable, str(ROOT / "scripts" / "puppet" / "puppet.py"), str(D.RIG),
@@ -241,7 +282,19 @@ def render(p, ep: dict, plan: dict, work: Path) -> dict:
                     "aresample=192000,alimiter=limit=0.70:level=false:attack=1:release=50,aresample=48000",
                     "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", str(final)], check=True)
     tl = json.loads((ROOT / "build" / ep["id"] / "timeline.json").read_text())
+    tl["beats"] = [sh.get("beat", "") for sh in asm["shots"]]
     tech = Q.technical(final)
+    from . import gates as G
+    tech["issues"] += G.captions(asm, {})
+    seam = Q.loop_seam(final, tech["seconds"])
+    tech["issues"] += seam["issues"]
+    if not fake and key:
+        try:
+            tr = Q.transcript(final, plan, key)
+            tech["issues"] += tr["issues"]
+            tech["transcript"] = {k: tr.get(k) for k in ("match", "cover")}
+        except Exception as e:  # noqa: BLE001
+            tech["issues"].append(f"(transcript check unavailable: {str(e)[:60]})")
     sheet = Q.contact_sheet(final, tl["starts"], tl["durs"], work / f"{ep['id']}-v{ver}-sheet.png")
     vis = {"ok": True, "issues": []}
     if llm is not None:
@@ -257,7 +310,7 @@ def render(p, ep: dict, plan: dict, work: Path) -> dict:
             f.write(m, m.name)
     tag = _put([final, zp, sheet])
     return {"plan": plan, "version": ver, "video": final, "asset": f"{tag}/{final.name}", "seconds": tech["seconds"],
-            "qa": {"tech": tech, "visual": vis}, "cost": cost}
+            "qa": {"tech": tech, "visual": vis, "timeline": tl}, "cost": cost}
 
 
 # ----------------------------------------------------------------------------- owner messages
@@ -267,6 +320,10 @@ def _review_text(ep: dict, info: dict, summary: str = "") -> str:
     out = [f"🎬 <b>Ep {ep['number']} · v{info['version']}</b>: {notify.esc(m.get('title') or ep.get('title') or '')}",
            f"Goes live <b>{E.fmt_ist(ep['slot'])}</b> if approved.",
            f"{info['seconds']:.0f}s · cost so far ${float(ep.get('cost') or 0):.2f}"]
+    sc = (info.get("plan") or {}).get("scorecard") or {}
+    if sc.get("scores"):
+        weakest = min(sc["scores"], key=lambda k: sc["scores"][k])
+        out.append(f"Script score {sc.get('total')}/5 (weakest: {weakest} {sc['scores'][weakest]})")
     if summary:
         out.append(f"Changed: {notify.esc(summary)}")
     out.append("Auto-check: " + ("✅ no problems found" if not issues else "⚠️ " + notify.esc("; ".join(issues)[:300])))
@@ -357,7 +414,19 @@ def produce(p, req: dict) -> int:
     work.mkdir(parents=True, exist_ok=True)
     try:
         llm = _llm(p)
-        plan, c = Wr.write(llm, _history(p, ep["id"]), _feedback(p), number, req.get("idea", ""))
+        from .room import NotGoodEnough
+        try:
+            plan, c = Wr.write(llm, _history(p, ep["id"]), _feedback(p), number, req.get("idea", ""), slot=ep["slot"],
+                               art_cb=lambda card: art_for_premise(p, ep, card),
+                               log=lambda m: (print(m), E.log(ep, "gate", m)))
+        except NotGoodEnough as e:
+            _cost(p, ep, "script (not good enough)", e.cost)
+            ep["status"] = "failed"
+            E.log(ep, "not_good_enough", str(e))
+            E.save(p.state, ep)
+            notify.send(p.state, "✍️ No script passed the comedy bar today, so nothing was sent (that protects your time). "
+                                 "I'll try again on the next run.")
+            return 0
         _cost(p, ep, "script", c)
         ep.update(plan=plan, title=plan.get("title_idea"), premise=plan.get("premise"))
         E.save(p.state, ep)
@@ -419,6 +488,7 @@ def fix(p, req: dict) -> int:
         notify.send(p.state, f"Ep {ep['number']} is already uploaded. Changes now would need a re-upload; tell me if you want that.")
         return 0
     p.state.add_feedback(ep["id"], "fix", note)
+    _learn(p, ep, "fix", note)
     ep["status"] = "revising"
     E.log(ep, "fix", note)
     E.save(p.state, ep)
@@ -434,6 +504,18 @@ def fix(p, req: dict) -> int:
         _fail(p, ep, "revise", e)
         return 1
     return _finish_version(p, ep, plan, work, diff_summary(ep["plan"], plan, ep.pop("_art", {}), summary))
+
+
+def _learn(p, ep: dict, decision: str, note: str) -> None:
+    """Owner note -> standing lessons (creative/lessons.json), committed so every later run reads them."""
+    if p.cfg.pipeline.get("mode") != "live" or not note:
+        return
+    try:
+        from . import lessons as L
+        _cost(p, ep, "lessons", L.add(_llm(p), decision, note))
+        Wd.commit(f"Lessons from the owner's note on {ep['id']}", [L.LESSONS])
+    except Exception as e:  # noqa: BLE001
+        p.state.log(f"lessons: {e}", "warn")
 
 
 def diff_summary(old: dict, new: dict, art: dict, claimed: str = "") -> str:
@@ -477,6 +559,7 @@ def reject(p, req: dict) -> int:
     if not ep:
         return 1
     p.state.add_feedback(ep["id"], "reject", req.get("note", ""))
+    _learn(p, ep, "drop", req.get("note", ""))
     ep["status"] = "rejected"
     E.log(ep, "rejected", req.get("note", ""))
     E.save(p.state, ep)
@@ -556,6 +639,13 @@ def daily(p, req: dict) -> int:
         if slot < now:
             ep["status"] = "published"
             E.save(p.state, ep)
+    # learn from real viewers: map stored analytics onto each episode's beats (creative/performance.json)
+    try:
+        from . import perf as P
+        P.update(p)
+        Wd.commit("Performance memory update", [P.PERF])
+    except Exception as e:  # noqa: BLE001
+        p.state.log(f"perf update skipped: {e}", "warn")
     # grow the set library: weekly, or faster while the show has few places
     try:
         from . import grow as G

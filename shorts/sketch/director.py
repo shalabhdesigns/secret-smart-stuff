@@ -33,7 +33,7 @@ MUSIC = ["quirky_funk", "bright_pop", "curious_pluck", "clockwork"]
 WIDE_SIZE = 1210          # on-screen height of a 1.0-tall standing character in a wide shot
 SEATED = {"size": 960, "floor_shift": -105}   # the barber chair sits further back
 LINE_AT = 0.08          # speech starts this long into a shot (first shot: 0.03)
-PUNCH_PAUSE = 0.38      # beat before the main punch line (docs/craft/WRITING_AND_EDITING.md)
+PUNCH_PAUSE = 0.50     # stillness + silence before the main punch (docs/craft/STAGING_CARD.md; tune with retention)
 HOLD = 0.2              # default gap after a line (the enemy of comedy is the unnecessary pause)
 MAX_SHOT = 4.8          # longer dialogue shots are split on a pause, cutting to the next shot size
 SFX_MAX = 3
@@ -522,7 +522,8 @@ def build(plan: dict, lines_dir: Path, shots_dir: Path, name: str, seed: int = 0
         for fx in s.get("sfx", []):
             sounds.append({"url": f"assets/sfx/{fx['name']}.mp3", "at": round(dur * float(fx.get("at", 0)), 2),
                            "gain_db": float(fx.get("gain_db", -4))})
-        ash = {"url": str(shots_dir / f"shot{i:02d}.mp4"), "speaker": speaker, "keep_audio": False, "sounds": sounds}
+        ash = {"url": str(shots_dir / f"shot{i:02d}.mp4"), "speaker": speaker, "keep_audio": False, "sounds": sounds,
+               "beat": s.get("beat", ""), "_line_dur": round(talk, 3) if lid and not off else 0.0}
         if lid:
             ash["caption"] = s.get("cap") or lines[lid]["cap"]
             if speaker in voice_only and not off:
