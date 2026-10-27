@@ -184,7 +184,7 @@ async function ack(env, cq, text, alert = false) {
 }
 
 async function say(env, chat, text) {
-  await tg(env, "sendMessage", { chat_id: chat, text });
+  await tg(env, "sendMessage", { chat_id: chat, text, link_preview_options: { is_disabled: true } });
   return new Response("ok");
 }
 
@@ -289,7 +289,8 @@ async function oauthStart(env, url) {
   if (!/^[0-9a-f]{48}$/.test(n) || !(await env.KV.get(`oauth_link:${n}`))) {
     return publicPage(`<h1>Link expired</h1><p>Send /ytlogin to the studio bot for a new one.</p>`, 400);
   }
-  await env.KV.delete(`oauth_link:${n}`);
+  // Not deleted here: Telegram's link preview opens the link before the owner taps it. The link stays usable
+  // for its 30 minutes; the Google round trip is protected by the single-use `state` below.
   const state = randomId();
   await env.KV.put(`oauth_state:${state}`, "1", { expirationTtl: 1800 });
   const q = new URLSearchParams({

@@ -103,10 +103,15 @@ const login = async () => {
   const loc = new URL(rr.headers.get("location"));
   assert.equal(loc.searchParams.get("redirect_uri"), "https://studio.example.workers.dev/oauth/callback");
   assert.equal(loc.searchParams.get("access_type"), "offline");
-  // the link works once
-  assert.equal((await worker.fetch(new Request(`https://x/oauth/start?n=${link}`), env)).status, 400);
+  // a link preview (or a second tap) must not use the link up
+  assert.equal((await worker.fetch(new Request(`https://x/oauth/start?n=${link}`), env)).status, 302);
+  store.delete(`oauth_link:${link}`);
   return loc.searchParams.get("state");
 };
+// the bot's login message has no link preview
+await tgPost({ message: { from: { id: 42 }, text: "/ytlogin" } });
+assert.equal(calls.filter((c) => c.url.includes("sendMessage")).at(-1).body.link_preview_options.is_disabled, true);
+for (const k of [...store.keys()]) if (k.startsWith("oauth_link:")) store.delete(k);
 // forged state -> refused, nothing stored
 r = await worker.fetch(new Request("https://x/oauth/callback?state=" + "a".repeat(48) + "&code=c"), env);
 assert.equal(r.status, 400); assert.equal(store.get("yt_refresh.enc"), undefined);
