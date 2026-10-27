@@ -317,6 +317,9 @@
   },
   "dev_holdup": {
    "file": "dev_holdup.png"
+  },
+  "dev_videocall": {
+   "file": "dev_videocall.png"
   }
  }
 }

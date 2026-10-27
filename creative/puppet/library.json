@@ -122,6 +122,12 @@
    "kind": "stand",
    "desc": "standing, right hand holding up a small blue card (like an ATM/ID card) at shoulder height, left hand holding a smartphone flat at chest height on speaker. The card is the only object he can show in this pose.",
    "added": "2026-10-26"
+  },
+  "dev_videocall": {
+   "who": "dev",
+   "kind": "stand",
+   "desc": "standing, holding a smartphone up in front of his chest with both hands, screen facing himself, as if on a video call",
+   "added": "2026-10-27"
   }
  },
  "hair_variants": {
