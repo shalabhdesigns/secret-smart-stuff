@@ -186,7 +186,8 @@ class Pipeline:
         job_id = f"{topic_id}-v1"
         if existing:
             latest = max(existing, key=lambda j: j["created_at"])
-            if fresh:
+            if fresh or latest["status"] == "rejected":
+                # a retired or dropped version is never resumed: the topic gets a new version
                 for j in existing:
                     if j["status"] in ("review", "failed", "paused"):
                         self.state.set_job_status(j["id"], "rejected", "superseded by a new version")
