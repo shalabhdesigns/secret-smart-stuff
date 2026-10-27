@@ -79,7 +79,9 @@ def save(state, ep: dict) -> None:
     for k in ("plan", "meta", "qa", "history"):
         if k in ep and not isinstance(ep[k], str) and ep[k] is not None:
             ep[k] = json.dumps(ep[k], ensure_ascii=False)
-    cols = list(ep)
+    with state.tx() as c:
+        have = {r[1] for r in c.execute("PRAGMA table_info(episodes)").fetchall()}
+    cols = [k for k in ep if k in have]           # private/working keys (e.g. "_art") are never stored
     with state.tx() as c:
         c.execute(f"INSERT INTO episodes ({','.join(cols)}) VALUES ({','.join('?' * len(cols))}) "
                   f"ON CONFLICT(id) DO UPDATE SET {','.join(f'{k}=excluded.{k}' for k in cols if k != 'id')}",
