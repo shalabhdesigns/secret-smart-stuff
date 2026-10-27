@@ -553,11 +553,27 @@ def main(path: str) -> int:
         import requests as _rq
         from shorts.publish.youtube import access_token
         ids = ",".join(req["ids"])
-        r = _rq.get("https://www.googleapis.com/youtube/v3/videos", params={"part": "status,snippet", "id": ids},
+        r = _rq.get("https://www.googleapis.com/youtube/v3/videos",
+                    params={"part": "status,snippet,statistics,contentDetails", "id": ids},
                     headers={"Authorization": f"Bearer {access_token()}"}, timeout=60)
-        rows = [f"- {v['id']}: {v['snippet']['title']} | privacy={v['status'].get('privacyStatus')} | "
-                f"publishAt={v['status'].get('publishAt')} | upload={v['status'].get('uploadStatus')}"
+        rows = [f"- {v['id']}: {v['snippet']['title']} | channel={v['snippet'].get('channelTitle')} | "
+                f"privacy={v['status'].get('privacyStatus')} | publishAt={v['status'].get('publishAt')} | "
+                f"published={v['snippet'].get('publishedAt')} | madeForKids={v['status'].get('madeForKids')} | "
+                f"lang={v['snippet'].get('defaultAudioLanguage')} | dur={v['contentDetails'].get('duration')} | "
+                f"views={v['statistics'].get('viewCount')} likes={v['statistics'].get('likeCount')} "
+                f"comments={v['statistics'].get('commentCount')} | tags={v['snippet'].get('tags')}"
                 for v in r.json().get("items", [])] or [f"no data: {r.status_code} {r.text[:200]}"]
+        ch = _rq.get("https://www.googleapis.com/youtube/v3/channels", params={"part": "snippet,statistics,brandingSettings",
+                     "mine": "true"}, headers={"Authorization": f"Bearer {access_token()}"}, timeout=60).json()
+        for c in ch.get("items", []):
+            rows.append(f"- CHANNEL {c['snippet']['title']} | subs={c['statistics'].get('subscriberCount')} | "
+                        f"videos={c['statistics'].get('videoCount')} | views={c['statistics'].get('viewCount')} | "
+                        f"country={c['snippet'].get('country')} | lang={c['snippet'].get('defaultLanguage')}")
+        lst = _rq.get("https://www.googleapis.com/youtube/v3/search", params={"part": "snippet", "forMine": "true",
+                      "type": "video", "maxResults": 25, "order": "date"},
+                      headers={"Authorization": f"Bearer {access_token()}"}, timeout=60).json()
+        for it in lst.get("items", []):
+            rows.append(f"- recent: {it['id'].get('videoId')} {it['snippet']['publishedAt']} {it['snippet']['title']}")
         gh("issue", "create", "--title", "Video status", "--body", "\n".join(rows), check=False)
         print(rows)
         return 0
