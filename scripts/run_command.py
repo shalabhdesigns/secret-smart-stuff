@@ -181,6 +181,11 @@ def do_produce(p: Pipeline, req: dict) -> int:
         j = p.state.get_job(job)
         tries += 1
     if j["status"] == "review" and not j["error"]:
+        if req.get("hold"):
+            # Claude checks it frame by frame first, then sends it with {"action":"send_review","job":...}
+            subprocess.run([str(ROOT / "scripts" / "open_review.sh"), job], check=True)
+            print(f"held for checking: {job}")
+            return 0
         send_for_review(p, job)
         return 0
     if j["status"] == "paused":
@@ -356,7 +361,7 @@ def main(path: str) -> int:
     action = req.get("action")
     p = Pipeline(load())
     # ---- Bhaukaali Toons / Sab Theek Hai was dropped by the owner on 28 Oct 2026 ----
-    if re.fullmatch(r"ep\d{3}[a-z]?(-v\d+)?", str(req.get("job", ""))) or action in ("sketch_daily", "sketch_produce", "grow", "send_review"):
+    if re.fullmatch(r"ep\d{3}[a-z]?(-v\d+)?", str(req.get("job", ""))) or action in ("sketch_daily", "sketch_produce", "grow"):
         notify.send(p.state, "That Bhaukaali Toons episode was cancelled (the show is stopped). Nothing was done.")
         return 0
     # ---- Secret Smart Stuff explainers (the live format) ----
@@ -364,6 +369,17 @@ def main(path: str) -> int:
         return do_produce(p, req)
     if action in ("approve", "reject", "fix"):
         return do_decision(p, req)
+    if action == "send_review":
+        job = req.get("job", "")
+        if not JOB_RE.fullmatch(job) or not p.state.get_job(job) or p.state.get_job(job)["status"] != "review":
+            notify.send(p.state, f"I can't send {job}: it is not waiting for review.")
+            return 1
+        d = ROOT / "build" / job
+        fetch_bundle(job, d)
+        send_for_review(p, job)
+        if req.get("note"):
+            notify.send(p.state, req["note"], silent=True)
+        return 0
     if action == "rerender":
         return do_rerender(p, req)
     if action == "status":
