@@ -29,11 +29,14 @@ def tighten(x: np.ndarray, max_pause: float) -> np.ndarray:
     loud = db > thr
     if not loud.any():
         return x
-    first, last = np.argmax(loud), len(loud) - np.argmax(loud[::-1])
+    # The ends are found with a lower threshold and generous margins, so soft first sounds ("s", "h", "f",
+    # breathy starts) are never shaved off. Owner heard the first word clipped: never trim into a word.
+    soft = db > (np.percentile(db, 95) - 48)
+    first = max(0, int(np.argmax(soft)) - 12)                          # 120 ms pre-roll
+    last = min(len(loud), len(soft) - int(np.argmax(soft[::-1])) + 10)  # 100 ms tail
     keep = []
-    i = first
     run = 0
-    for i in range(max(0, first - 4), min(len(loud), last + 6)):
+    for i in range(first, last):
         if loud[i]:
             run = 0
             keep.append(i)

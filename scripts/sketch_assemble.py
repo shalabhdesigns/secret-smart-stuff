@@ -93,17 +93,26 @@ def _biquad(x: np.ndarray, kind: str, f0: float, q: float = 0.707) -> np.ndarray
     return lfilter(np.array(b) / a[0], np.array(a) / a[0], x, axis=0).astype(np.float32)
 
 
+def _match_level(y: np.ndarray, x: np.ndarray, boost_db: float = 1.5) -> np.ndarray:
+    """Filtering removes energy; bring the voice back to the original speech level (+ a little, since band-limited
+    voices sound quieter at equal RMS). Owner: a voice-only character was 'almost unhearable'."""
+    rx, ry = float(np.sqrt((x ** 2).mean()) or 1e-6), float(np.sqrt((y ** 2).mean()) or 1e-6)
+    out = y * (rx / ry) * (10 ** (boost_db / 20))
+    pk = float(np.abs(out).max() or 1)
+    return out * (0.95 / pk) if pk > 0.95 else out
+
+
 def phone(x: np.ndarray) -> np.ndarray:
-    """Telephone voice: 300-3400 Hz band, a little drive."""
-    y = _biquad(_biquad(_biquad(_biquad(x, "hp", 320), "hp", 320), "lp", 3300), "lp", 3300)
+    """Telephone voice: 300-3400 Hz band, a little drive, same loudness as normal speech."""
+    y = _biquad(_biquad(_biquad(_biquad(x, "hp", 320), "hp", 320), "lp", 3400), "lp", 3400)
     y = np.tanh(y * 2.2) / np.tanh(2.2)
-    peak = float(np.abs(x).max() or 1) / max(1e-6, float(np.abs(y).max()))
-    return y * min(peak, 2.5) * 0.9
+    return _match_level(y, x, 2.0)
 
 
 def offscreen(x: np.ndarray) -> np.ndarray:
-    """Voice from the next room: muffled, a bit of room."""
-    return reverb(_biquad(_biquad(x, "lp", 1800), "lp", 1800)) * 0.85
+    """Voice from the next room / doorway: slightly muffled, a bit of room, still clearly audible."""
+    y = reverb(_biquad(x, "lp", 3000))
+    return _match_level(y, x, 1.0)
 
 
 def segment(i: int, shot: dict, tmp: Path) -> tuple[Path, float]:
@@ -219,7 +228,11 @@ def main(spec_path: str) -> int:
     mu = spec.get("music")
     if mu:
         bed = decode(fetch(mu["file"], tmp / "music.audio"))
-        bed = np.tile(bed, (n // max(1, len(bed)) + 1, 1))[:n] * (10 ** (float(mu.get("gain_db", -20)) / 20))
+        X = int(0.6 * SR)                                   # loop seam: the music's end flows into its own start
+        bed = np.tile(bed, ((n + X) // max(1, len(bed)) + 1, 1))[:n + X]
+        fin = np.linspace(0, 1, X, dtype=np.float32)[:, None]
+        bed[:X] = bed[:X] * fin + bed[n:n + X] * (1 - fin)
+        bed = bed[:n] * (10 ** (float(mu.get("gain_db", -20)) / 20))
         env = np.ones(n, np.float32)
         for lo, hi in mu.get("mute_shots", []):            # e.g. the thriller spiral
             a, b = int(starts[lo] * SR), int((starts[hi] + durs[hi]) * SR)

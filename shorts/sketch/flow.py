@@ -103,6 +103,7 @@ def prepare_art(p, ep: dict, plan: dict, llm) -> dict:
         else:
             failed.append(f"the pose {x['id']} could not be drawn; use existing poses")
             plan["new_poses"] = [y for y in plan["new_poses"] if y is not x]
+    ep["_art"] = {"made": made, "failed": [f.split(" could not")[0] for f in failed]}
     if made:
         E.log(ep, "art", ", ".join(made))
     if failed:
@@ -432,7 +433,33 @@ def fix(p, req: dict) -> int:
         ep["status"] = "review"
         _fail(p, ep, "revise", e)
         return 1
-    return _finish_version(p, ep, plan, work, summary or "as requested")
+    return _finish_version(p, ep, plan, work, diff_summary(ep["plan"], plan, ep.pop("_art", {}), summary))
+
+
+def diff_summary(old: dict, new: dict, art: dict, claimed: str = "") -> str:
+    """What really changed (from the plans themselves), never only the writer's own description of its intent.
+    The owner once got 'Gupta Aunty is now drawn' when her drawing had failed."""
+    o = {ln["id"]: ln for ln in old.get("lines", [])}
+    n = {ln["id"]: ln for ln in new.get("lines", [])}
+    changed = [k for k in n if k in o and (n[k]["cap"] != o[k]["cap"] or n[k]["who"] != o[k]["who"])]
+    added = [k for k in n if k not in o]
+    removed = [k for k in o if k not in n]
+    parts = []
+    if changed or added or removed:
+        parts.append(f"lines changed {len(changed)}, added {len(added)}, removed {len(removed)} (of {len(n)})")
+    else:
+        parts.append("same lines")
+    so = [(s.get("type"), tuple(c.get("pose") for c in s.get("cast", []))) for s in old.get("shots", [])]
+    sn = [(s.get("type"), tuple(c.get("pose") for c in s.get("cast", []))) for s in new.get("shots", [])]
+    if so != sn:
+        parts.append("staging changed")
+    if art.get("made"):
+        parts.append("new art: " + ", ".join(art["made"]))
+    if art.get("failed"):
+        parts.append("could NOT draw: " + ", ".join(art["failed"]) + " (kept voice-only / existing poses)")
+    if claimed:
+        parts.append("writer's intent: " + claimed[:220])
+    return "; ".join(parts)
 
 
 def rerender(p, req: dict) -> int:

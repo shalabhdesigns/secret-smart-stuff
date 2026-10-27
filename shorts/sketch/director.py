@@ -39,6 +39,7 @@ MAX_SHOT = 4.8          # longer dialogue shots are split on a pause, cutting to
 SFX_MAX = 3
 OVERLAP = 70          # px two neighbours may overlap in a crowded wide shot
 MIN_SHOT = 1.0
+FIRST_LINE_AT = 0.30   # phones/players swallow the first ~0.1-0.2 s of audio on autoplay and loop; never start a word at 0
 
 
 class PlanError(ValueError):
@@ -410,7 +411,7 @@ def build(plan: dict, lines_dir: Path, shots_dir: Path, name: str, seed: int = 0
         off = float(s.get("line_offset", 0.0))
         end = float(s.get("line_end", durs[lid])) if lid else 0.0
         talk = (end - off) if lid else 0.0
-        lead = 0.0 if off else (0.03 if i == 0 else (PUNCH_PAUSE if s.get("punch") else LINE_AT))
+        lead = 0.0 if off else (FIRST_LINE_AT if i == 0 else (PUNCH_PAUSE if s.get("punch") else LINE_AT))
         line_at = lead - off                                  # where the line starts relative to this shot
         if typ == "black":
             hold = min(0.8, max(0.4, float(s.get("hold", 0.6))))
