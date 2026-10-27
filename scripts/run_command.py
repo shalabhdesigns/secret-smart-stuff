@@ -418,6 +418,14 @@ def main(path: str) -> int:
         return do_produce(p, req)
     if action in ("approve", "reject", "fix"):
         return do_decision(p, req)
+    if action == "drop_topics":
+        for tid in req.get("topics") or []:
+            for jj in p.state.jobs():
+                if jj["topic_id"] == tid and jj["status"] not in ("published", "approved"):
+                    p.state.set_job_status(jj["id"], "rejected", req.get("reason", "dropped"))
+            if p.state.get_topic(tid):
+                p.state.set_topic_status(tid, "rejected")
+        return 0
     if action == "self_review":
         job = req.get("job", "")
         if not JOB_RE.fullmatch(job) or not p.state.get_job(job):
