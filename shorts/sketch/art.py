@@ -483,10 +483,14 @@ Check strictly:
    brows above the eyes, mouth centred below the nose; nothing on the hair, ears or outside the face
 3. there is no second face, eyes or mouth from the drawing itself; hands complete; full body visible
 4. decent, non-offensive, not a caricature of any real person
+Classify problems as BLOCKING (wrong style; looks like Dev, Meera or Rocky; leftover items from another character
+such as an office ID badge; face placement wrong; second face/eyes/mouth; broken hands; body cut off; offensive) or
+MINOR (a small accessory from the description is missing, slightly different colours or age). Minor problems alone
+mean ok = true.
 If ONLY the face placement is off, say how: "eyes_up" (positive = move eyes up, as a fraction of face width,
 e.g. 0.04), "eyes_apart" (positive = further apart), "mouth_down" (positive = lower), "size" (multiply eyes/mouth).
-Return JSON {"ok": true|false, "face_only": true|false, "adjust": {"eyes_up": 0, "eyes_apart": 0,
-"mouth_down": 0, "size": 1.0}, "reasons": ["..."]}."""
+Return JSON {"ok": true|false, "blocking": ["..."], "minor": ["..."], "face_only": true|false, "adjust":
+{"eyes_up": 0, "eyes_apart": 0, "mouth_down": 0, "size": 1.0}, "reasons": ["..."]}."""
 
 
 def generate_character(p, cid: str, name: str, desc: str, look: str, height: float, voice: str, save: bool = True) -> bool:
@@ -500,7 +504,9 @@ def generate_character(p, cid: str, name: str, desc: str, look: str, height: flo
     base = PARTS / ("meera_arms.png" if female else "dev_stand.png")
     # 1st/2nd try: edit an approved figure into the new person (keeps style, size and framing -> no cut-off feet);
     # 3rd: draw from scratch with both style references.
-    edit = (f"Turn this cartoon character into a completely different person: {look}. Keep exactly the same flat 2D "
+    edit = (f"Turn this cartoon character into a completely different person: {look}. Nothing of the original person "
+            "may remain: no ID badge or lanyard, no hoodie, no glasses unless asked, different hair, face shape, body "
+            "shape and clothes. Keep exactly the same flat 2D "
             "cartoon drawing style, outline thickness, cel shading, framing, full-body size and flat green background. "
             "Standing relaxed, arms down by the sides, facing the viewer, head upright. " + BLANK +
             "No text on clothes, no shadow on the ground.")

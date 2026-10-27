@@ -54,7 +54,9 @@ class Fake:
             return R({"cards": [{"card": i + 1, "scores": {k: 3 + (i % 3) for k in J.PREMISE_ANCHORS}} for i in range(8)]})
         if t == "compare":
             return R({"winner": "X"})
-        if t in ("script", "punchup"):
+        if t == "punchup":
+            return R({"replace": {}, "why": "fake"})
+        if t == "script":
             p = plan_fixture()
             return R({k: v for k, v in p.items() if k != "shots"})
         if t == "rubric":

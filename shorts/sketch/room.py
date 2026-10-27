@@ -51,6 +51,34 @@ def _areas(history: list[dict], k: int = 7) -> list[str]:
     return (fresh + AREAS)[:k]
 
 
+def _apply_patch(sc: dict, patch: dict) -> dict:
+    sc = json.loads(json.dumps(sc))
+    lines = sc.get("lines", [])
+    rep = patch.get("replace") or {}
+    for ln in lines:
+        if ln.get("id") in rep and isinstance(rep[ln["id"]], dict):
+            ln.update({k: v for k, v in rep[ln["id"]].items() if v not in (None, "")})
+    dele = set(patch.get("delete") or [])
+    lines = [ln for ln in lines if ln.get("id") not in dele]
+    ins = patch.get("insert_after") or {}
+    out = []
+    for ln in lines:
+        out.append(ln)
+        for new in ins.get(ln.get("id"), []) or []:
+            if isinstance(new, dict) and new.get("cap"):
+                out.append(new)
+    used = set()
+    for i, ln in enumerate(out):                      # keep ids unique
+        if not ln.get("id") or ln["id"] in used:
+            ln["id"] = f"l{i + 1}x"
+        used.add(ln["id"])
+    sc["lines"] = out
+    for k, v in (patch.get("set") or {}).items():
+        if v:
+            sc[k] = v
+    return sc
+
+
 class NotGoodEnough(RuntimeError):
     def __init__(self, msg: str, cost: float = 0.0):
         super().__init__(msg)
@@ -77,7 +105,7 @@ def write(llm, history: list[dict], feedback: list[dict], number: int, idea: str
     obs = ask(
         f"TASK: observe\n{ctx}\n{hist}\n" + (f"The owner asked for: {idea}\n" if idea else "") +
         f"Life areas to mine today: {', '.join(_areas(history))}.\n"
-        "List 24 SPECIFIC behaviours that ordinary Indian people really do but rarely say out loud (WRITER CARD §1). "
+        "List 16 SPECIFIC behaviours that ordinary Indian people really do but rarely say out loud (WRITER CARD §1). "
         "Each must name a concrete object, phrase, number or ritual. Skip anything in the CLICHÉ list unless you have a "
         "genuinely new angle on it. No jokes yet - just true observations.\n"
         'Return JSON {"observations": [{"id": 1, "area": "...", "behaviour": "...", "unspoken_rule": "the rule '
@@ -87,7 +115,7 @@ def write(llm, history: list[dict], feedback: list[dict], number: int, idea: str
     # ---- 2. PREMISE
     cards = ask(
         f"TASK: premise\n{ctx}\nOBSERVATIONS:\n{json.dumps(obs, ensure_ascii=False)}\n"
-        "Pick the 8 observations with the most comic tension and turn each into a premise card (WRITER CARD §2). "
+        "Pick the 6 observations with the most comic tension and turn each into a premise card (WRITER CARD §2). "
         "Cast and place come from the story. Plan how every moment will be SHOWN with the animation library; list any "
         "new person/place you need (max 1 new on-screen person, 1 new place). A person who is physically present "
         "must be on screen.\n"
@@ -177,31 +205,29 @@ def write(llm, history: list[dict], feedback: list[dict], number: int, idea: str
     attempts = []
     for idx in order:
         sc = scripts[idx]
-        for rnd in range(2):
+        for rnd in range(4):
             hard = G.script(sc, history)
             r = J.rubric(llm, J.script_text(sc), cost, context=Wr.lessons_brief())
             attempts.append((r.get("total", 0), sc, r, hard))
             gate_log.append(f"G3 script {idx} round {rnd}: total {r.get('total')} min {r.get('min')} "
-                            f"flags {r.get('red_flags')} hard {hard[:3]}")
+                            f"flags {str(r.get('red_flags'))[:300]} hard {hard[:3]}")
             log(gate_log[-1])
-            if J.passes(r) and not hard:
+            if (J.passes(r) and not hard) or rnd == 3:
                 break
-            # ---- 4. PUNCH-UP with the judge's notes (same story)
-            sc = ask(
-                "TASK: punchup\nImprove this script WITHOUT changing the story, premise or cast (WRITER CARD §6). "
-                "Fix every problem below. For each weak line write 3 alternatives in your head and keep the funniest "
-                "complete natural one. Cut anything that doesn't earn a laugh or move the story. Keep ids of unchanged "
-                f"lines. Return the same JSON shape.\nJUDGE SCORES: {json.dumps(r.get('scores'))}\n"
-                f"RED FLAGS: {r.get('red_flags')}\nWEAKEST LINES: {r.get('weakest_lines')}\nFIXES: {r.get('fixes')}\n"
-                f"HARD CHECK PROBLEMS: {hard}\nSCRIPT:\n{json.dumps(sc, ensure_ascii=False)}", 9000)
-            for k in ("truth", "game", "loop", "relations_cue"):
-                sc.setdefault(k, scripts[idx].get(k))
-        else:
-            hard = G.script(sc, history)
-            r = J.rubric(llm, J.script_text(sc), cost, context=Wr.lessons_brief())
-            attempts.append((r.get("total", 0), sc, r, hard))
-            gate_log.append(f"G3 script {idx} final: total {r.get('total')} flags {r.get('red_flags')}")
-            log(gate_log[-1])
+            # ---- 4. PUNCH-UP as a PATCH: only the flagged/weak lines change, so fixes converge instead of
+            # rewriting the whole script and creating new problems.
+            patch = ask(
+                "TASK: punchup\nFix this script with the SMALLEST change (WRITER CARD §6). Do not change the story, "
+                "premise, cast or any line that isn't a problem. For each line you change, think of 3 alternatives and "
+                "keep the funniest complete, natural, logical one. Every red flag and hard-check problem must be "
+                "resolved; also improve the weakest dimension.\n"
+                f"JUDGE SCORES: {json.dumps(r.get('scores'))}\nRED FLAGS: {r.get('red_flags')}\n"
+                f"WEAKEST LINES: {r.get('weakest_lines')}\nFIXES: {r.get('fixes')}\nHARD CHECK PROBLEMS: {hard}\n"
+                f"SCRIPT:\n{json.dumps(sc, ensure_ascii=False)}\n"
+                'Return JSON {"replace": {"l7": {"who": "", "via": "", "beat": "", "hi": "", "cap": "", "direction": ""}}, '
+                '"delete": ["l9"], "insert_after": {"l3": [{"id": "l3b", "who": "", "beat": "", "hi": "", "cap": ""}]}, '
+                '"set": {"loop": {"bridge": ""}, "relations_cue": "", "truth": "", "game": ""}, "why": "one line"}', 5000)
+            sc = _apply_patch(sc, patch)
         if J.passes(r) and not hard:
             break
     total, script, rub, hard = max(attempts, key=lambda a: (J.passes(a[2]) and not a[3], a[0]))
