@@ -532,6 +532,7 @@ class Pipeline:
         out: dict = {"images": {}, "beats": {}, "flags": []}
         images: dict = dict(script.get("images") or {})
         self._match_budget = 3          # at most 3 replacement images per video
+        self._regen_budget = 4          # at most 4 extra tries for pictures that look wrong (cost cap)
         first_focus = {}
         for sc in script["scenes"]:
             if sc.get("image") and sc.get("focus") and sc["image"] not in first_focus:
@@ -558,7 +559,7 @@ class Pipeline:
             # Up to 3 tries: each picture must be free of text/logos AND pass a strict credibility check
             # (a real, correctly built object with no AI tells). A failed try rewrites the prompt.
             best, cur = None, prompt_text
-            for attempt in range(3):
+            for attempt in range(3 if self._regen_budget > 0 else 1):
                 full = f"{cur}. {style}. Vertical 9:16 composition, key subject large and centred."
                 if self.cfg.live:
                     self.budget.authorize(0.04, "image", job_id)
@@ -582,6 +583,9 @@ class Pipeline:
                                "warn", job_id)
                 if real.get("retry_prompt"):
                     cur = real["retry_prompt"]
+                self._regen_budget -= 1
+                if self._regen_budget <= 0:
+                    break
             img, chk, real, cur, good = best  # type: ignore[misc]
             if not good:
                 what = "; ".join(str(x) for x in ([("visible text/logo" if chk.get("has_text_or_logo") else "")]
@@ -798,13 +802,16 @@ class Pipeline:
     def _realism(self, img: Path, prompt: str, topic: str, job_id: str) -> dict:
         """Strict credibility check by the stronger model (cheap checks missed malformed objects)."""
         im = Image.open(img).convert("RGB")
-        im.thumbnail((768, 1365))
+        im.thumbnail((540, 960))
         buf = io.BytesIO()
-        im.save(buf, "PNG")
+        im.save(buf, "JPEG", quality=85)
         r = self._llm(P.REALISM.format(topic=topic, prompt=prompt), job_id, "realism", est=0.02,
                       images=[buf.getvalue()], model=self.cfg.pipeline["providers"]["llm"]["model_script"],
-                      max_tokens=700)
-        return r.data or {"ok": True}
+                      max_tokens=1200)
+        d = r.data or {"ok": True}
+        d.setdefault("ai_tells", d.get("blocking") or [])
+        d.setdefault("wrong_parts", [])
+        return d
 
     def _match(self, img: Path, sc: dict, prompt: str, job_id: str) -> dict:
         im = Image.open(img).convert("RGB")

@@ -86,7 +86,10 @@ Format rules (these come from retention research, follow them exactly):
   They must not state new facts, must be kind (no jokes about people, cultures or groups) and
   should get their own playful-but-realistic image (e.g. "a single limp, soggy sheet of seaweed
   drooping sadly over the edge of a plate").
-{video_rule}- IMAGE = WORDS: every beat's image must visibly show what that beat SAYS. If a beat names steps or
+{video_rule}- PICTURES AN AI MODEL CAN DRAW: prefer whole, common objects from a clear angle on a plain background, one
+  idea per picture. Avoid prompts that need transparent internals, liquids inside tubes, tiny holes, exact
+  part counts or precise mechanisms; show those through a simpler shot plus the narration, a marker or a pop.
+- IMAGE = WORDS: every beat's image must visibly show what that beat SAYS. If a beat names steps or
   numbered parts ("pull tab 1, then 2 and 3"), the image must show the WHOLE real object front-on
   (e.g. the full triangular wrapper, not a flat packet), with each of those physical parts clearly
   separate at its real position (e.g. the top pull strip and both bottom corner flaps), and
@@ -213,19 +216,18 @@ MOTIONS_FIELD = """ "motions": {"img1": "what MOVES in this image's video clip",
 # ---- credibility gate for every generated picture (added 28 Oct 2026 after the safety-pin test showed
 # malformed, obviously-AI objects passing the cheap checks)
 REALISM = """TASK: realism
-This AI-generated photo will appear in an educational YouTube Short about: {topic}.
-It should show: "{prompt}".
-Be strict, like a viewer who owns this object and is looking for reasons to call the video fake.
-Judge ONLY what is visible:
-- Is the main object instantly recognisable as a real, correctly built version of itself (right parts,
-  right shape, right proportions, parts connected the way they really are)?
-- Any AI tells: melted or impossible geometry, extra/missing/fused parts, wrong mechanism, garbled
-  text-like marks, plastic-looking surfaces, wrong physics?
-- Does it show the specific detail the prompt asks for, clearly?
-Return JSON: {{"ok": bool (true only if a knowledgeable viewer would find nothing wrong),
- "recognisable": bool, "ai_tells": [str], "wrong_parts": [str], "shows_detail": bool,
- "retry_prompt": str (a rewritten photo prompt that avoids these problems: describe the real object's exact
-   shape and parts plainly, simple composition, plain background; never ask for text or numbers)}}"""
+This AI-generated photo will appear for ~3 seconds in an educational YouTube Short about: {topic}.
+It was asked to show: "{prompt}".
+Question: would an ordinary viewer, glancing at it on a phone, think "that's wrong" or "that's fake AI"?
+BLOCKING (only these): the main object is malformed, unrecognisable or built wrong in a way people notice
+(e.g. a safety pin drawn as a bent wire, a spring as a flat spiral, extra or fused parts, melted shapes);
+garbled text or letters; physically impossible scenes; obviously plastic/CG look.
+NOT blocking: small deviations from the prompt's details, slightly simplified parts, lighting or style choices,
+things only an engineer would notice. Do not nitpick. Most decent product photos should pass.
+Keep every string under 20 words; at most 3 items per list.
+Return JSON: {{"ok": bool (false only if something BLOCKING is visible), "blocking": [str], "minor": [str],
+ "shows_detail": bool, "retry_prompt": str (only if not ok: a SIMPLER photo prompt for a common, whole,
+   real version of the object from a clear angle on a plain background; no text, no numbers)}}"""
 
 CRITIC = """TASK: critic
 You are the final quality reviewer for a YouTube Short on "Secret Smart Stuff" (English, faceless explainer:
