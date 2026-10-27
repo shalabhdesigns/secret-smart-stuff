@@ -47,12 +47,14 @@ class AnthropicLLM:
 
     def _price(self, model: str, usage: dict, searches: int) -> float:
         pin, pout = self.cfg["prices"].get(model, [3.0, 15.0])
-        usd = usage.get("input_tokens", 0) / 1e6 * pin + usage.get("output_tokens", 0) / 1e6 * pout
+        usd = (usage.get("input_tokens", 0) / 1e6 * pin + usage.get("output_tokens", 0) / 1e6 * pout
+               + usage.get("cache_creation_input_tokens", 0) / 1e6 * pin * 1.25      # prompt-cache write
+               + usage.get("cache_read_input_tokens", 0) / 1e6 * pin * 0.10)         # prompt-cache read
         return usd + searches * self.cfg.get("web_search_usd_each", 0.01)
 
     def ask(self, prompt: str, system: str = "", model: str | None = None, json_out: bool = True,
             web_search: bool = False, max_tokens: int = 4000, images: list[bytes] | None = None,
-            retries: int = 3) -> LLMResult:
+            retries: int = 3, temperature: float | None = None, cache_system: bool = False) -> LLMResult:
         model = model or self.cfg["model_routine"]
         content: list[dict] = []
         for img in images or []:
@@ -63,7 +65,11 @@ class AnthropicLLM:
         body: dict = {"model": model, "max_tokens": max_tokens,
                       "messages": [{"role": "user", "content": content}]}
         if system:
-            body["system"] = system
+            # cache_system: the same long system prompt is reused across a writers'-room run -> 90% cheaper reads
+            body["system"] = ([{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}]
+                              if cache_system else system)
+        if temperature is not None:
+            body["temperature"] = temperature
         if web_search:
             body["tools"] = [{"type": self.cfg["web_search_tool"], "name": "web_search",
                               "max_uses": self.cfg.get("max_searches_per_video", 6)}]
@@ -71,7 +77,8 @@ class AnthropicLLM:
                    "content-type": "application/json"}
         last = None
         blocks: list[dict] = []
-        usage_total = {"input_tokens": 0, "output_tokens": 0}
+        usage_total = {"input_tokens": 0, "output_tokens": 0, "cache_creation_input_tokens": 0,
+                       "cache_read_input_tokens": 0}
         searches = 0
         attempt = 0
         continuations = 0
@@ -82,12 +89,17 @@ class AnthropicLLM:
                 time.sleep(5 * (2 ** attempt))
                 attempt += 1
                 continue
+            if r.status_code == 400 and "temperature" in r.text and "temperature" in body:
+                body.pop("temperature")                     # some models fix sampling; retry without it
+                continue
             if r.status_code != 200:
                 raise LLMError(f"Anthropic {r.status_code}: {r.text[:300]}")
             msg = r.json()
             u = msg.get("usage", {})
             usage_total["input_tokens"] += u.get("input_tokens", 0)
             usage_total["output_tokens"] += u.get("output_tokens", 0)
+            usage_total["cache_creation_input_tokens"] += u.get("cache_creation_input_tokens", 0) or 0
+            usage_total["cache_read_input_tokens"] += u.get("cache_read_input_tokens", 0) or 0
             searches += (u.get("server_tool_use") or {}).get("web_search_requests", 0)
             blocks += msg.get("content", [])
             stop = msg.get("stop_reason")
