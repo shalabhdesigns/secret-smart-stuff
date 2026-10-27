@@ -59,13 +59,13 @@
   "tiwari_ji": {
    "name": "Tiwari ji",
    "pending": "ep003b",
-   "desc": "Dev and Meera's landlord, 60s. Never states his purpose; inspects with his eyes, says 'bas aise hi', and lets tenants talk themselves into paying more.",
+   "desc": "Dev and Meera's landlord. Announces every increase as a blessing, always with mithai in hand. Believes he is the kindest landlord in the city.",
    "relations": {
     "dev": "landlord",
     "meera": "landlord"
    },
    "voice_type": "older_man",
-   "look": "60s, slightly stooped, white kurta-pyjama with a grey sleeveless sweater, thinning grey hair, thick moustache, spectacles on a cord, cloth bag on shoulder",
+   "look": "60s, short and round, white kurta-pyjama with a brown Nehru jacket, grey side-parted hair, thick grey moustache, tilak on forehead",
    "voice": "iLpGCYkFnnGoa4bBSlqm"
   },
   "babu": {
