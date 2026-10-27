@@ -41,6 +41,19 @@
     "meera": "new bargaining partner"
    },
    "pending": "ep002b"
+  },
+  "gupta_aunty": {
+   "name": "Gupta Aunty",
+   "drawn": false,
+   "role": "supporting",
+   "voice_type": "older_woman",
+   "voice": "rqIg3iVrlZOAkxCMdelQ",
+   "desc": "Next-door neighbour in Dev and Meera's building. Warm, generous and very observant. She notices everything, says it sweetly, and turns every awkward moment into pity plus more food.",
+   "relations": {
+    "dev": "next-door neighbour",
+    "meera": "next-door neighbour"
+   },
+   "pending": "ep002b"
   }
  },
  "voice_pool": {
