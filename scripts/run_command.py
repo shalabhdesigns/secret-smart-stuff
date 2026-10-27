@@ -581,6 +581,39 @@ def main(path: str) -> int:
         gh("issue", "create", "--title", "Diagnostics", "--body", "\n\n".join(out), check=False)
         print("\n".join(out))
         return 0
+    if action == "probe":
+        # what each service account looks like right now (names, plans, permissions; never secret values)
+        import requests
+        out = []
+        def safe(label, fn):
+            try:
+                out.append(f"- {label}: {fn()}")
+            except Exception as e:  # noqa: BLE001
+                out.append(f"- {label}: ERROR {type(e).__name__}: {str(e)[:200]}")
+        repo = os.environ.get("GITHUB_REPOSITORY", "")
+        ght = os.environ.get("GH_DISPATCH_TOKEN", "")
+        H = {"authorization": f"Bearer {ght}", "accept": "application/vnd.github+json"}
+        safe("GH token can read secrets key", lambda: requests.get(f"https://api.github.com/repos/{repo}/actions/secrets/public-key", headers=H, timeout=30).status_code)
+        safe("GH token repo admin", lambda: requests.get(f"https://api.github.com/repos/{repo}", headers=H, timeout=30).json().get("permissions"))
+        safe("GH token type", lambda: "fine-grained" if ght.startswith("github_pat_") else ("classic" if ght.startswith("ghp_") else "other"))
+        tg = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+        safe("Telegram bot", lambda: {k: v for k, v in requests.get(f"https://api.telegram.org/bot{tg}/getMe", timeout=30).json().get("result", {}).items() if k in ("first_name", "username")})
+        safe("Telegram description", lambda: requests.get(f"https://api.telegram.org/bot{tg}/getMyDescription", timeout=30).json().get("result"))
+        safe("Telegram short description", lambda: requests.get(f"https://api.telegram.org/bot{tg}/getMyShortDescription", timeout=30).json().get("result"))
+        safe("Telegram webhook", lambda: requests.get(f"https://api.telegram.org/bot{tg}/getWebhookInfo", timeout=30).json().get("result", {}).get("url", "")[:80])
+        cft, acc = os.environ.get("CLOUDFLARE_API_TOKEN", ""), os.environ.get("CLOUDFLARE_ACCOUNT_ID", "")
+        CH = {"authorization": f"Bearer {cft}"}
+        safe("Cloudflare subdomain", lambda: requests.get(f"https://api.cloudflare.com/client/v4/accounts/{acc}/workers/subdomain", headers=CH, timeout=30).json().get("result"))
+        safe("Cloudflare workers", lambda: [w.get("id") for w in requests.get(f"https://api.cloudflare.com/client/v4/accounts/{acc}/workers/scripts", headers=CH, timeout=30).json().get("result") or []])
+        safe("Cloudflare account", lambda: [a.get("name") for a in requests.get("https://api.cloudflare.com/client/v4/accounts", headers=CH, timeout=30).json().get("result") or []])
+        el = {"xi-api-key": os.environ.get("ELEVENLABS_API_KEY", "")}
+        safe("ElevenLabs plan", lambda: {k: v for k, v in requests.get("https://api.elevenlabs.io/v1/user/subscription", headers=el, timeout=30).json().items() if k in ("tier", "character_count", "character_limit", "next_character_count_reset_unix", "voice_slots_used", "voice_limit", "status")})
+        safe("ElevenLabs own voices", lambda: [(v.get("name"), v.get("category")) for v in requests.get("https://api.elevenlabs.io/v1/voices", headers=el, timeout=30).json().get("voices", []) if v.get("category") != "premade"])
+        bfl = {"x-key": os.environ.get("BFL_API_KEY", "")}
+        safe("BFL credits", lambda: requests.get("https://api.bfl.ai/v1/credits", headers=bfl, timeout=30).json())
+        gh("issue", "create", "--title", "Accounts probe", "--body", "\n".join(out), check=False)
+        print("\n".join(out))
+        return 0
     if action == "whoami":
         # which YouTube channel the stored login uploads to (no secrets printed)
         import requests
