@@ -11,6 +11,8 @@ import io
 import json
 import random
 import re
+import subprocess
+import tempfile
 import time
 from pathlib import Path
 
@@ -553,30 +555,40 @@ class Pipeline:
                 out["images"][key] = info
                 reused_keys.add(key)
                 continue
-            best = None
-            for attempt in range(2):
+            # Up to 3 tries: each picture must be free of text/logos AND pass a strict credibility check
+            # (a real, correctly built object with no AI tells). A failed try rewrites the prompt.
+            best, cur = None, prompt_text
+            for attempt in range(3):
+                full = f"{cur}. {style}. Vertical 9:16 composition, key subject large and centred."
                 if self.cfg.live:
-                    self.budget.authorize(0.03, "image", job_id)
+                    self.budget.authorize(0.04, "image", job_id)
                 try:
-                    img, usd = self.images.generate(prompt, path, seed=rng.randint(1, 10**6))
+                    img, usd = self.images.generate(full, path, seed=rng.randint(1, 10**6))
                 except Exception as e:  # noqa: BLE001
                     fb = self.cfg.pipeline["providers"]["images"].get("fallback_model")
                     if not fb:
                         raise
                     self.state.log(f"image model failed ({e}); trying {fb}", "warn", job_id)
-                    img, usd = self.images.generate(prompt, path, seed=rng.randint(1, 10**6), model=fb)
+                    img, usd = self.images.generate(full, path, seed=rng.randint(1, 10**6), model=fb)
                 if usd:
                     self.state.add_cost("bfl", "image", 1, usd, job_id)
-                chk = self._look(img, first_focus.get(key, prompt_text), prompt_text, job_id)
-                best = (img, chk)
-                if not (chk.get("has_text_or_logo") or chk.get("artifacts")):
+                chk = self._look(img, first_focus.get(key, cur), cur, job_id)
+                real = self._realism(img, cur, topic.get("title", ""), job_id)
+                good = not (chk.get("has_text_or_logo") or chk.get("artifacts")) and real.get("ok", True)
+                best = (img, chk, real, cur, good)
+                if good:
                     break
-            img, chk = best  # type: ignore[misc]
-            if chk.get("has_text_or_logo") or chk.get("artifacts"):
-                what = ", ".join(x for x, v in (("visible text/logo", chk.get("has_text_or_logo")),
-                                                ("distorted shapes", chk.get("artifacts"))) if v)
-                out["flags"].append(f"{key}: {what} (after 2 tries)")
-            out["images"][key] = {"path": str(img), "check": chk, "focus_cache": {first_focus.get(key, ""): chk}}
+                self.state.log(f"{key} try {attempt + 1} not credible: {real.get('ai_tells')} {real.get('wrong_parts')}",
+                               "warn", job_id)
+                if real.get("retry_prompt"):
+                    cur = real["retry_prompt"]
+            img, chk, real, cur, good = best  # type: ignore[misc]
+            if not good:
+                what = "; ".join(str(x) for x in ([("visible text/logo" if chk.get("has_text_or_logo") else "")]
+                                                  + (real.get("ai_tells") or []) + (real.get("wrong_parts") or [])) if x)
+                out["flags"].append(f"BLOCKING {key}: not a credible photo after 3 tries ({what[:200]})")
+            out["images"][key] = {"path": str(img), "check": chk, "realism": real, "prompt_used": cur,
+                                  "focus_cache": {first_focus.get(key, ""): chk}}
         for sc in script["scenes"]:
             entry: dict = {}
             old_sc = old_scenes.get(sc["id"])
@@ -621,11 +633,22 @@ class Pipeline:
                     path = d / f"{new_key}.png"
                     if self.cfg.live:
                         self.budget.authorize(0.03, "image", job_id)
-                    img, usd = self.images.generate(f"{new_prompt}. {style}. Vertical 9:16 composition, "
-                                                    f"key subject large and centred.", path,
-                                                    seed=rng.randint(1, 10**6))
-                    if usd:
-                        self.state.add_cost("bfl", "image", 1, usd, job_id)
+                    for attempt in range(2):
+                        img, usd = self.images.generate(f"{new_prompt}. {style}. Vertical 9:16 composition, "
+                                                        f"key subject large and centred.", path,
+                                                        seed=rng.randint(1, 10**6))
+                        if usd:
+                            self.state.add_cost("bfl", "image", 1, usd, job_id)
+                        real = self._realism(img, new_prompt, topic.get("title", ""), job_id)
+                        if real.get("ok", True):
+                            break
+                        if attempt == 0 and real.get("retry_prompt"):
+                            new_prompt = real["retry_prompt"]
+                            if self.cfg.live:
+                                self.budget.authorize(0.04, "image", job_id)
+                    if not real.get("ok", True):
+                        out["flags"].append(f"BLOCKING {new_key}: not a credible photo "
+                                            f"({'; '.join((real.get('ai_tells') or []) + (real.get('wrong_parts') or []))[:200]})")
                     images[new_key] = new_prompt
                     out["images"][new_key] = {"path": str(img), "check": {}, "focus_cache": {}}
                     m2 = self._match(img, sc, new_prompt, job_id)
@@ -771,6 +794,17 @@ class Pipeline:
         except Exception as e:  # noqa: BLE001
             self.state.log(f"clip check skipped: {e}", "warn", job_id)
             return {"ok": True, "problems": f"not checked ({e})"}
+
+    def _realism(self, img: Path, prompt: str, topic: str, job_id: str) -> dict:
+        """Strict credibility check by the stronger model (cheap checks missed malformed objects)."""
+        im = Image.open(img).convert("RGB")
+        im.thumbnail((768, 1365))
+        buf = io.BytesIO()
+        im.save(buf, "PNG")
+        r = self._llm(P.REALISM.format(topic=topic, prompt=prompt), job_id, "realism", est=0.02,
+                      images=[buf.getvalue()], model=self.cfg.pipeline["providers"]["llm"]["model_script"],
+                      max_tokens=700)
+        return r.data or {"ok": True}
 
     def _match(self, img: Path, sc: dict, prompt: str, job_id: str) -> dict:
         im = Image.open(img).convert("RGB")
@@ -957,6 +991,150 @@ class Pipeline:
         return {"file": str(d / "metadata.json"), "review_md": str(d / "review.md"),
                 "cost_usd": round(self.state.job_cost(job_id), 4)}
 
+    # ---- H: final self-review (added 28 Oct 2026, owner: "only videos you are satisfied with reach me")
+    CRITIC_PASS = {"visual_credibility": 4, "image_word_match": 4, "hook_curiosity": 4, "accuracy": 4}
+    CRITIC_MEAN = 3.6
+
+    def _beat_frames(self, d: Path) -> tuple[list[dict], float]:
+        script = json.loads((d / "script.json").read_text())
+        words = json.loads((d / "words.json").read_text()) if (d / "words.json").exists() else []
+        vis = json.loads((d / "visuals.json").read_text()) if (d / "visuals.json").exists() else {}
+        end = (words[-1]["end"] + 0.12) if words else 30.0
+        out, wi = [], 0
+        for sc in script["scenes"]:
+            start = words[min(wi, len(words) - 1)]["start"] if (wi and words) else 0.0
+            wi += len(sc["narration"].split())
+            key = ((vis.get("beats") or {}).get(sc["id"]) or {}).get("image") or sc.get("image")
+            out.append({"id": sc["id"], "start": round(start, 2), "words": sc["narration"], "image": key,
+                        "meant": (script.get("images") or {}).get(sc.get("image") or "", "") if key == sc.get("image")
+                        else "(beat-specific replacement picture)", "tone": sc.get("tone", "normal")})
+        for i, b in enumerate(out):
+            b["end"] = out[i + 1]["start"] if i + 1 < len(out) else end
+        return out, end
+
+    def _frame(self, video: Path, t: float, w: int = 216) -> Image.Image:
+        dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
+                                    str(video)], capture_output=True, text=True).stdout.strip() or 0)
+        t = min(max(0.0, t), max(0.0, dur - 0.1))
+        with tempfile.TemporaryDirectory() as td:
+            fp = Path(td) / "f.png"
+            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{t:.2f}", "-i", str(video),
+                            "-frames:v", "1", "-vf", f"scale={w}:-2", str(fp)], check=True)
+            if not fp.exists():            # seeking at the very end can yield no frame
+                subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-sseof", "-0.3", "-i", str(video),
+                                "-frames:v", "1", "-vf", f"scale={w}:-2", str(fp)], check=True)
+            im = Image.open(fp).convert("RGB")
+            im.load()
+            return im
+
+    def contact_sheet(self, job_id: str) -> tuple[bytes, bytes, list[dict]]:
+        """One labelled frame per beat (middle of the beat) + first/last frame pair."""
+        from PIL import ImageDraw, ImageFont
+        d = self.build / job_id
+        video = d / "final.mp4"
+        beats, end = self._beat_frames(d)
+        tw, cols = 216, 6
+        th = int(tw * 16 / 9)
+        rows = (len(beats) + cols - 1) // cols
+        sheet = Image.new("RGB", (cols * tw, rows * (th + 26)), (255, 255, 255))
+        font = ImageFont.truetype(str(Path(__file__).resolve().parents[1] / "assets" / "fonts" / "Inter-Black.otf"), 18)
+        dr = ImageDraw.Draw(sheet)
+        for i, b in enumerate(beats):
+            fr = self._frame(video, (b["start"] + b["end"]) / 2, tw)
+            x, y = (i % cols) * tw, (i // cols) * (th + 26)
+            sheet.paste(fr, (x, y + 26))
+            dr.text((x + 6, y + 3), f"{b['id']}  {b['start']:.1f}s", font=font, fill=(0, 0, 0))
+        pair = Image.new("RGB", (2 * 360 + 20, 640), (255, 255, 255))
+        pair.paste(self._frame(video, 0.0, 360), (0, 0))
+        pair.paste(self._frame(video, max(0.0, end - 0.08), 360), (380, 0))
+        bufs = []
+        for im in (sheet, pair):
+            b = io.BytesIO()
+            im.save(b, "JPEG", quality=88)
+            bufs.append(b.getvalue())
+        sheet.save(d / "contact_sheet.jpg", quality=88)
+        return bufs[0], bufs[1], beats
+
+    def critique(self, job_id: str, round_: int, previous: dict | None = None) -> dict:
+        d = self.build / job_id
+        sheet, pair, beats = self.contact_sheet(job_id)
+        script = json.loads((d / "script.json").read_text())
+        rv = json.loads((d / "review.json").read_text()) if (d / "review.json").exists() else {}
+        qa = json.loads((d / "qa.json").read_text()) if (d / "qa.json").exists() else {}
+        flags = (json.loads((d / "visuals.json").read_text()).get("flags") if (d / "visuals.json").exists() else []) or []
+        lines = "\n".join(f"{b['id']} @{b['start']:.1f}s [{b['tone']}] \"{b['words']}\" | picture: {b['meant'][:220]}"
+                          for b in beats)
+        prev = ""
+        if previous:
+            prev = ("This is review round " + str(round_) + ". The previous round found: "
+                    + json.dumps(previous.get("blocking", []), ensure_ascii=False)[:1500]
+                    + "\nCheck those are fixed; do not invent new nitpicks unless they are real blocking problems.")
+        qa_s = "; ".join(f"{c['name']}={'ok' if c['ok'] else 'FAIL'}" for c in qa.get("checks", []))
+        r = self._llm(P.CRITIC.format(beats=lines, title=script.get("title", ""),
+                                      facts=json.dumps(script.get("facts", []), ensure_ascii=False)[:3000],
+                                      review=json.dumps(rv.get("problems", []), ensure_ascii=False)[:2000],
+                                      flags=json.dumps(flags, ensure_ascii=False)[:1500], qa=qa_s, previous=prev),
+                      job_id, f"critic{round_}", est=0.06, images=[sheet, pair],
+                      model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=3000)
+        c = r.data or {}
+        sc = {k: float(v) for k, v in (c.get("scores") or {}).items() if isinstance(v, (int, float))}
+        mean = sum(sc.values()) / len(sc) if sc else 0.0
+        hard = [f for f in flags if f.startswith("BLOCKING")]
+        ok = (not c.get("blocking") and not hard and c.get("verdict") != "drop" and not c.get("unshowable")
+              and all(sc.get(k, 0) >= v for k, v in self.CRITIC_PASS.items()) and mean >= self.CRITIC_MEAN)
+        c.update(round=round_, mean=round(mean, 2), passed=ok, hard_flags=hard)
+        hist = json.loads((d / "critique.json").read_text()) if (d / "critique.json").exists() else []
+        hist.append(c)
+        (d / "critique.json").write_text(json.dumps(hist, indent=2, ensure_ascii=False))
+        self._append_critique_md(d, hist)
+        self.state.log(f"self-review round {round_}: {'PASS' if ok else 'needs work'} (mean {mean:.2f}) "
+                       f"{c.get('summary', '')[:200]}", job_id=job_id)
+        return c
+
+    def _append_critique_md(self, d: Path, hist: list[dict]) -> None:
+        md = d / "review.md"
+        if not md.exists():
+            return
+        text = md.read_text(encoding="utf-8").split("\n### Self-review")[0].rstrip() + "\n\n### Self-review\n"
+        for c in hist:
+            sc = ", ".join(f"{k} {v}" for k, v in (c.get("scores") or {}).items())
+            text += (f"\n**Round {c.get('round')}: {'PASS' if c.get('passed') else 'fix needed'}** (mean {c.get('mean')}) "
+                     f"— {c.get('summary', '')}\n- scores: {sc}\n")
+            for b in c.get("blocking") or []:
+                text += f"- BLOCKING {b.get('beat')}: {b.get('problem')} → {b.get('fix')}\n"
+            for b in (c.get("improvements") or [])[:4]:
+                text += f"- improve {b.get('beat')}: {b.get('problem')} → {b.get('fix')}\n"
+        md.write_text(text, encoding="utf-8")
+
+    def fix_note(self, c: dict) -> str:
+        items = [f"{b.get('beat')}: {b.get('problem')} FIX: {b.get('fix')}" for b in (c.get("blocking") or [])]
+        items += [f"{b.get('beat')}: {b.get('problem')} FIX: {b.get('fix')}" for b in (c.get("improvements") or [])[:2]]
+        items += [f"{f} FIX: write a new, simpler photo prompt for that image that a viewer will accept as a real photo"
+                  for f in c.get("hard_flags") or []]
+        return " | ".join(items)[:3000]
+
+    def prepare_prior(self, job_id: str, c: dict) -> None:
+        """Keep this version's media as `prior` (reused where unchanged); pictures the review called
+        out are removed from it so they are generated again even if the prompt stays the same."""
+        import shutil
+        d = self.build / job_id
+        pr = d / "prior"
+        if pr.exists():
+            shutil.rmtree(pr)
+        pr.mkdir()
+        for f in d.iterdir():
+            if f.is_file():
+                shutil.copy(f, pr / f.name)
+        beats = {b["id"]: b for b in self._beat_frames(d)[0]}
+        bad = {beats[b["beat"]]["image"] for b in (c.get("blocking") or []) if b.get("beat") in beats and beats[b["beat"]]["image"]}
+        bad |= {f.split()[1].rstrip(":") for f in c.get("hard_flags") or [] if len(f.split()) > 1}
+        first = (beats.get("b1") or {}).get("image")
+        for key in bad:
+            (pr / f"{key}.png").unlink(missing_ok=True)
+        if first in bad:                   # the loop's last beat must re-use the new opening picture
+            self.state.log("opening picture will be regenerated", job_id=job_id)
+        self.state.log(f"self-review: regenerating pictures {sorted(bad)}", job_id=job_id)
+
     def _review_md(self, job_id: str, script: dict, meta: dict, d: Path) -> str:
         rv = json.loads((d / "review.json").read_text()) if (d / "review.json").exists() else {}
         qa = json.loads((d / "qa.json").read_text()) if (d / "qa.json").exists() else {}
@@ -1014,15 +1192,17 @@ class Pipeline:
             notes["rejected_reason"] = note
             self.state.upsert_topic(job["topic_id"], "", notes=json.dumps(notes))
             self.state.add_feedback(job_id, "drop", note)
-        elif decision == "fix":
-            # Apply the owner's request with minimal edits; unchanged pictures/voice are reused from
-            # build/<job>/prior (see _reuse_*), so a small fix costs cents, not a whole new video.
+        elif decision in ("fix", "selffix"):
+            # Apply the owner's request (fix) or the final review's fixes (selffix) with minimal edits;
+            # unchanged pictures/voice are reused from build/<job>/prior (see _reuse_*), so a small fix
+            # costs cents, not a whole new video.
             d = self.build / job_id
             script = json.loads((d / "script.json").read_text())
             script.pop("_revised", None)
-            fx = self._llm(P.OWNER_FIX.format(note=note, length_rule=json.dumps(self._length_rule()),
-                                              script=json.dumps(script, ensure_ascii=False)),
-                           job_id, "owner_fix", est=0.2, system=P.SYSTEM_WRITER,
+            tpl = P.OWNER_FIX if decision == "fix" else P.SELF_FIX
+            fx = self._llm(tpl.format(note=note, length_rule=json.dumps(self._length_rule()),
+                                      script=json.dumps(script, ensure_ascii=False)),
+                           job_id, "owner_fix" if decision == "fix" else "self_fix", est=0.2, system=P.SYSTEM_WRITER,
                            model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=12000).data or {}
             if not fx.get("scenes"):
                 raise StageFailed("the fix could not be applied (no script returned)")
@@ -1036,8 +1216,9 @@ class Pipeline:
             rv.setdefault("content", {})
             self.state.finish_stage(job_id, "review", rv)
             self.state.set_job_status(job_id, "running")
-            self.state.add_feedback(job_id, "fix", note)
-            self.state.log(f"owner fix applied: {fx.get('change_summary', '')}", job_id=job_id)
+            self.state.add_feedback(job_id, decision, note)
+            self.state.log(f"{'owner' if decision == 'fix' else 'self-review'} fix applied: "
+                           f"{fx.get('change_summary', '')}", job_id=job_id)
         else:
             raise ValueError(decision)
         self.state.log(f"owner decision: {decision} {note}", job_id=job_id)

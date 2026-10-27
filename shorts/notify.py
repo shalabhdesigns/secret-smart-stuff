@@ -83,8 +83,11 @@ def review_buttons(job: str) -> list[list[tuple[str, str]]]:
     return [[("✅ Approve", f"a:{job}"[:64]), ("✏️ Fix", f"f:{job}"[:64])], [("🗑 Drop", f"d:{job}"[:64])]]
 
 
-def review(state, job: str, video: Path, title: str, score, cost: float, flags: list[str], slot: str | None) -> None:
-    lines = [f"🎬 <b>{esc(title)}</b>", f"Review score {score}/10 · cost ${cost:.2f}"]
+def review(state, job: str, video: Path, title: str, score, cost: float, flags: list[str], slot: str | None,
+           extra: str = "") -> None:
+    lines = [f"🎬 <b>{esc(title)}</b>", f"Fact-check {score}/10 · cost ${cost:.2f}"]
+    if extra:
+        lines.append(esc(extra))
     if slot:
         lines.append(f"If approved: goes public {esc(slot)}")
     if flags:

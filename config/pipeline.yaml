@@ -42,8 +42,8 @@ providers:
     usd_per_1k_chars: 0.18     # measured 2026-10-24: ~337 credits ≈ $0.061 for 331 chars
   images:
     vendor: bfl
-    model: flux-2-klein-4b
-    fallback_model: flux-2-pro
+    model: flux-2-pro           # 28 Oct 2026: klein drew malformed objects (safety-pin test); pro + a strict
+    fallback_model: flux-2-klein-4b  # credibility check per picture. Fallback is only for API errors.
     usd_each: {flux-2-klein-4b: 0.015, flux-2-pro: 0.03}
     width: 1088                 # multiples of 16, near 9:16
     height: 1920

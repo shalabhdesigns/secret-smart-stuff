@@ -84,3 +84,47 @@ def test_produce_fix_reuses_media_then_approve(tmp_path):
     assert run_cmd({"action": "dashboard"}, tmp_path) == 0
     html = (ROOT / "build" / "dashboard.html").read_text()
     assert "Studio" in html and job in html
+
+
+@pytest.mark.slow
+def test_self_review_fixes_then_passes(tmp_path, monkeypatch):
+    """The final review rejects round 1 (a malformed picture), the targeted fix regenerates only that
+    picture, round 2 passes. Nothing reaches the owner before a pass."""
+    monkeypatch.setenv("SHORTS_MODE", "dry_run")
+    monkeypatch.setenv("SHORTS_NO_GITHUB", "1")
+    monkeypatch.setenv("TELEGRAM_BOT_TOKEN", "")
+    db = ROOT / "state" / "dryrun.db"
+    db.unlink(missing_ok=True)
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("rc", ROOT / "scripts" / "run_command.py")
+    rc = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(rc)
+    from shorts.config import load
+    from shorts.pipeline import Pipeline
+    p = Pipeline(load())
+    tid = p.discover(3)[0] if p.state.topics("shortlisted") == [] else p.state.topics("shortlisted")[0]["id"]
+    tid = tid["id"] if isinstance(tid, dict) else tid
+    job = p.produce(tid)
+    assert p.state.get_job(job)["status"] == "review"
+    calls = {"n": 0}
+    real_ask = p.llm.ask
+
+    def ask(prompt, **kw):
+        if "TASK: critic" in prompt:
+            calls["n"] += 1
+            if calls["n"] == 1:
+                from shorts.providers.llm import LLMResult
+                r = real_ask(prompt, **kw)
+                r.data = {**r.data, "blocking": [{"beat": "b2", "problem": "malformed object", "fix": "new photo"}],
+                          "verdict": "fix"}
+                return r
+        return real_ask(prompt, **kw)
+    p.llm.ask = ask
+    d = ROOT / "build" / job
+    c = rc.self_review(p, job)
+    assert c["passed"] and calls["n"] == 2
+    hist = json.loads((d / "critique.json").read_text())
+    assert [h["passed"] for h in hist] == [False, True]
+    assert "### Self-review" in (d / "review.md").read_text()
+    assert State(db).db.execute("SELECT COUNT(*) n FROM feedback WHERE decision='selffix'").fetchone()["n"] == 1
+    assert State(db).db.execute("SELECT COUNT(*) n FROM feedback WHERE decision='fix'").fetchone()["n"] == 0

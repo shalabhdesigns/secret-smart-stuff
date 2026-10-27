@@ -39,7 +39,8 @@ Score this Short idea for the channel (0-10 each):
 - novelty: is the reason genuinely surprising to most people?
 - hook: can the first 2 seconds be a sharp, specific question?
 - story: is there a wrong guess -> real reason -> payoff arc?
-- cost: can it be shown with object photos + simple diagrams (10 = easy)?
+- cost: can realistic AI photos show the object AND its key detail correctly (10 = common, simple shapes;
+  low = tiny mechanisms or exact geometry image models often get wrong, e.g. springs, coils, gears, clasps)?
 - policy: 10 = zero risk (no forbidden topic, no brand as subject, no real people, no danger).
 Idea: {idea}
 Return JSON: {{"scores": {{"audience":n,"novelty":n,"hook":n,"story":n,"cost":n,"policy":n}},
@@ -207,3 +208,80 @@ VIDEO_RULE = """- VIDEO: every image becomes a short real-motion video clip (ima
 """
 MOTIONS_FIELD = """ "motions": {"img1": "what MOVES in this image's video clip", "img2": "...", ...},
 """
+
+
+# ---- credibility gate for every generated picture (added 28 Oct 2026 after the safety-pin test showed
+# malformed, obviously-AI objects passing the cheap checks)
+REALISM = """TASK: realism
+This AI-generated photo will appear in an educational YouTube Short about: {topic}.
+It should show: "{prompt}".
+Be strict, like a viewer who owns this object and is looking for reasons to call the video fake.
+Judge ONLY what is visible:
+- Is the main object instantly recognisable as a real, correctly built version of itself (right parts,
+  right shape, right proportions, parts connected the way they really are)?
+- Any AI tells: melted or impossible geometry, extra/missing/fused parts, wrong mechanism, garbled
+  text-like marks, plastic-looking surfaces, wrong physics?
+- Does it show the specific detail the prompt asks for, clearly?
+Return JSON: {{"ok": bool (true only if a knowledgeable viewer would find nothing wrong),
+ "recognisable": bool, "ai_tells": [str], "wrong_parts": [str], "shows_detail": bool,
+ "retry_prompt": str (a rewritten photo prompt that avoids these problems: describe the real object's exact
+   shape and parts plainly, simple composition, plain background; never ask for text or numbers)}}"""
+
+CRITIC = """TASK: critic
+You are the final quality reviewer for a YouTube Short on "Secret Smart Stuff" (English, faceless explainer:
+"the secret smart reasons behind everyday things"). You did not make it. The owner will only see videos you
+pass, and he does not want to catch basic problems himself. Be strict and specific.
+
+IMAGE 1 is a contact sheet: one frame from the middle of every beat, in order, labelled with the beat id
+(captions are burned in, as the viewer sees them). IMAGE 2 is the FIRST frame (left) next to the LAST frame
+(right): they must match for a seamless loop.
+
+What a strong Short on this channel does (evidence: docs/04_FORMAT_V2, research/shorts_retention.md):
+1. Beat 1 is a spoken curiosity question about a specific odd detail, and frame 1 SHOWS that detail.
+2. The first "aha" (the core reason, stated plainly) lands by ~10 s; then one deeper layer (a date, number,
+   comparison or how-it-works detail); the second-to-last beat answers the opening question in one line.
+3. Every beat adds new information or a light, kind laugh; nothing is said twice; no filler.
+4. The last line is an unfinished lead-in ("So next time someone asks you...") that the opening question
+   completes, and the last frame equals the first frame, so the replay feels continuous.
+5. Every picture is a credible real-world photo of exactly what the words say. One malformed or obviously
+   AI-generated object destroys trust in the whole channel: that is ALWAYS blocking.
+6. Captions readable, never covering the key detail; overlays sparse (pointers only where they help).
+7. ~28-38 s. 1-2 witty lines max, kind and relevant.
+
+The script (beat id, start second, words, what the picture was meant to show):
+{beats}
+Title: {title}
+Facts and sources: {facts}
+Fact-checker notes: {review}
+Automatic flags: {flags}
+Automatic media checks: {qa}
+{previous}
+Score 1-5 (5 = excellent, 3 = acceptable but forgettable):
+ hook_curiosity, visual_credibility, image_word_match, payoff, flow_pacing, accuracy, loop,
+ rewatch (would people watch it twice?), share (would someone send it to a friend?).
+List BLOCKING problems (any frame with a wrong/malformed/obviously AI object; a picture that contradicts or
+does not show its words; an unsupported or misleading claim; a hook that is not a real curiosity question; a
+broken loop; repeated or empty beats that will lose viewers; unreadable/overlapping text). Everything else
+goes in "improvements" (only ones that would clearly raise retention or shares).
+For each problem give an exact fix the writer can apply: which beat, the new line (same length or shorter),
+or the new photo prompt for that beat's image (describe the real object's exact shape; plain background).
+If the object itself cannot be photographed credibly by an AI image model even with better prompts, say so.
+Return JSON: {{"scores": {{"hook_curiosity":n,"visual_credibility":n,"image_word_match":n,"payoff":n,
+ "flow_pacing":n,"accuracy":n,"loop":n,"rewatch":n,"share":n}},
+ "blocking": [{{"beat": str, "problem": str, "fix": str}}],
+ "improvements": [{{"beat": str, "problem": str, "fix": str}}],
+ "retention_risks": [str], "unshowable": bool,
+ "verdict": "send"|"fix"|"drop", "summary": "one sentence a busy owner can read"}}"""
+
+SELF_FIX = """TASK: script
+The final quality review of this Short found problems. Apply the fixes below and nothing else.
+Every beat, line, image prompt, focus, pop, marker and field the fixes do not touch must stay
+CHARACTER-FOR-CHARACTER identical (unchanged pictures and voice are reused). Keep the format rules:
+question first, the second-to-last line is the answer, the last line is the "..." lead-in into beat 1,
+the last beat uses img1. To replace a picture, change that image's prompt (describe the real object's exact
+shape and parts plainly; never ask for text or numbers). Facts must stay sourced; never invent facts.
+Fixes: {note}
+Other rule: {length_rule}
+Script: {script}
+Return the full revised script JSON (same schema) with one extra field
+"change_summary": one short sentence saying what you changed."""

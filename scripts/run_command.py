@@ -95,8 +95,17 @@ def send_for_review(p: Pipeline, job: str) -> None:
                                             if (d / "visuals.json").exists() else {},
                                             j["artifacts"].get("render"), topic, p.state.job_cost(job)),
                                "publish_slot_utc": slot})
+    crit = json.loads((d / "critique.json").read_text()) if (d / "critique.json").exists() else []
+    extra = ""
+    if crit:
+        c = crit[-1]
+        sc = c.get("scores") or {}
+        extra = (f"My review: {'passed' if c.get('passed') else 'NOT passed'} after {len(crit)} round(s) · "
+                 f"hook {sc.get('hook_curiosity', '?')}/5 · credibility {sc.get('visual_credibility', '?')}/5 · "
+                 f"rewatch {sc.get('rewatch', '?')}/5 · share {sc.get('share', '?')}/5\n{c.get('summary', '')}")
     notify.review(p.state, job, d / "final.mp4", meta.get("title") or job, rv.get("total", "?"),
-                  p.state.job_cost(job), vis.get("flags") or [], f"{when} UTC (≈ {ist(when)} IST)")
+                  p.state.job_cost(job), [f for f in (vis.get("flags") or []) if not f.startswith("BLOCKING")],
+                  f"{when} UTC (≈ {ist(when)} IST)", extra)
 
 
 def ist(iso: str) -> str:
@@ -114,6 +123,29 @@ def report_failure(p: Pipeline, job: str) -> None:
 
 
 # ---------------- actions ----------------
+
+def self_review(p: Pipeline, job: str, rounds: int = 3) -> dict:
+    """Claude's final review of the finished video, with up to `rounds` reviews (so at most rounds-1 targeted
+    fixes). Only a video that passes reaches the owner. See Pipeline.critique for the bar."""
+    d = ROOT / "build" / job
+    if not (d / "final.mp4").exists():
+        fetch_bundle(job, d)
+    topic = p.state.get_job(job)["topic_id"]
+    c, prev = {}, None
+    for r in range(1, rounds + 1):
+        c = p.critique(job, r, prev)
+        if c.get("passed") or c.get("verdict") == "drop" or c.get("unshowable") or r == rounds:
+            return c
+        p.prepare_prior(job, c)
+        p.decide(job, "selffix", p.fix_note(c))
+        p.produce(topic)
+        j = p.state.get_job(job)
+        if j["status"] != "review" or j["error"]:
+            c = {**c, "passed": False, "summary": f"fix round stopped: {j['status']} {j['error'] or ''}"}
+            return c
+        prev = c
+    return c
+
 
 def do_produce(p: Pipeline, req: dict) -> int:
     if req.get("owner_ok_extra_daily_usd"):
@@ -180,6 +212,22 @@ def do_produce(p: Pipeline, req: dict) -> int:
         job = p.produce(t["id"])
         j = p.state.get_job(job)
         tries += 1
+    topics_left = 2           # a topic that fails the final review is dropped; one more topic is tried
+    while j["status"] == "review" and not j["error"] and not req.get("skip_self_review"):
+        c = self_review(p, job)
+        if c.get("passed"):
+            break
+        reason = f"self-review: {c.get('summary', '')}"[:400]
+        p.decide(job, "reject", reason)
+        p.state.log(f"{job} dropped by self-review: {reason}", "warn", job)
+        topics_left -= 1
+        t = p.next_topic() if topics_left > 0 and not req.get("topic") else None
+        if not t:
+            notify.send(p.state, f"🔍 No video this time: it failed my final check ({c.get('summary', '')[:300]}). "
+                                 "I'll try a new topic on the next run.")
+            return 0
+        job = p.produce(t["id"])
+        j = p.state.get_job(job)
     if j["status"] == "review" and not j["error"]:
         if req.get("hold"):
             # Claude checks it frame by frame first, then sends it with {"action":"send_review","job":...}
@@ -189,7 +237,7 @@ def do_produce(p: Pipeline, req: dict) -> int:
         send_for_review(p, job)
         return 0
     if j["status"] == "paused":
-        notify.send(p.state, f"⏸ {job} paused: daily budget reached. It finishes automatically on the next run.")
+        notify.send(p.state, f"⏸ {job} paused: a budget limit was reached. It finishes automatically on the next run.")
         return 0
     report_failure(p, job)
     return 1
@@ -234,6 +282,7 @@ def do_decision(p: Pipeline, req: dict) -> int:
         p.produce(j["topic_id"])
         j2 = p.state.get_job(job)
         if j2["status"] == "review" and not j2["error"]:
+            self_review(p, job, rounds=2)
             send_for_review(p, job)
             extra = p.state.job_cost(job) - cost_before
             notify.send(p.state, f"✏️ Fixed version above (fix cost ${extra:.2f}).", silent=True)
@@ -369,6 +418,16 @@ def main(path: str) -> int:
         return do_produce(p, req)
     if action in ("approve", "reject", "fix"):
         return do_decision(p, req)
+    if action == "self_review":
+        job = req.get("job", "")
+        if not JOB_RE.fullmatch(job) or not p.state.get_job(job):
+            return 1
+        c = self_review(p, job, int(req.get("rounds", 3)))
+        subprocess.run([str(ROOT / "scripts" / "open_review.sh"), job], check=True)
+        print(json.dumps({k: c.get(k) for k in ("passed", "mean", "scores", "summary", "blocking")}, indent=1))
+        if not c.get("passed") and req.get("drop_if_failed"):
+            p.decide(job, "reject", f"self-review: {c.get('summary', '')}"[:400])
+        return 0
     if action == "send_review":
         job = req.get("job", "")
         if not JOB_RE.fullmatch(job) or not p.state.get_job(job) or p.state.get_job(job)["status"] != "review":

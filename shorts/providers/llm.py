@@ -59,7 +59,7 @@ class AnthropicLLM:
         content: list[dict] = []
         for img in images or []:
             import base64
-            content.append({"type": "image", "source": {"type": "base64", "media_type": "image/png",
+            content.append({"type": "image", "source": {"type": "base64", "media_type": "image/jpeg" if img[:3] == b"\xff\xd8\xff" else "image/png",
                                                           "data": base64.b64encode(img).decode()}})
         content.append({"type": "text", "text": prompt})
         body: dict = {"model": model, "max_tokens": max_tokens,
@@ -206,6 +206,11 @@ FAKE_RESPONSES: dict = {
     "clipcheck": {"ok": True, "morphing": False, "text_or_logo": False, "faces": False, "shows_action": True,
                   "problems": ""},
     "match": {"matches": True, "missing": "", "better_prompt": ""},
+    "realism": {"ok": True, "recognisable": True, "ai_tells": [], "wrong_parts": [], "shows_detail": True, "retry_prompt": ""},
+    "critic": {"scores": {"hook_curiosity": 4, "visual_credibility": 4, "image_word_match": 4, "payoff": 4,
+                          "flow_pacing": 4, "accuracy": 4, "loop": 4, "rewatch": 4, "share": 4},
+               "blocking": [], "improvements": [], "retention_risks": [], "unshowable": False,
+               "verdict": "send", "summary": "dry run"},
     "locate": {"found": True, "x": 0.5, "y": 0.55, "w": 0.4, "h": 0.2,
                "has_text_or_logo": False, "artifacts": False},
 }
