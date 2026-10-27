@@ -29,7 +29,14 @@ cliché without a fresh angle; needs a person on screen we can't draw (decided b
 | character | mouthpieces | clear wants | every line from a want and a flaw, consistent with bible |
 | shareability | nobody forwards | some would | viewers tag a specific person, quote the last line |
 | loop | dead stop | fine but jarring replay | last moment flows into the first; replay reveals more |
-**Pass:** average ≥ 3.8, no dimension < 3, funny ≥ 3.8, clarity ≥ 4, no red flag, all hard checks pass.
+**Pass (calibrated 27 Oct 2026):** average ≥ 3.2, no dimension < 2.5, funny ≥ 3.0, clarity ≥ 3.0, no BLOCKING problem,
+all hard checks pass.
+- **Calibration:** this judge scored the owner-approved pilot Ep 1 at 2.94 / 3.33 / 3.22 over three runs (mean 3.16).
+  It scored the two scripts the owner rejected at 2.72 and 2.33. The order matched the owner's, but the judge is harsh
+  and noisy (±0.3).
+- **What the bar means:** at least as good as what the owner approved.
+- **Raising the bar:** recalibrate it upwards as approved episodes accumulate (PILOT §4).
+- **Blocking vs notes:** the judge always finds some nitpicks, so only BLOCKING problems stop a script. A problem is blocking when most first-time viewers would be confused or offended, or when it is wrong Hindi. Notes still guide the punch-up.
 **Red flags (any one fails):** a line a first-time viewer would misunderstand · Hindi a native speaker wouldn't say
 (natural short replies like "Toh?" are fine) · identity-based target (caste, religion, region, body, disability, gender) ·
 real person/brand mocked · plot hole a viewer notices on first watch · same joke as a recent episode. Re-checks after a

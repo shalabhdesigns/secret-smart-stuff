@@ -31,6 +31,22 @@ LLM_TELLS = [                     # stock phrases that read as machine-written o
 ]
 
 
+def wrap(cap: str, width: int = TARGETS["cap_line_chars"]) -> str:
+    """Two balanced caption lines (Netflix: <=42 chars, bottom-heavy is fine); keeps an existing manual break."""
+    cap = cap.strip()
+    if "\n" in cap or len(cap) <= width:
+        return cap
+    words = cap.split()
+    best, cut = None, 1
+    for i in range(1, len(words)):
+        a, b = " ".join(words[:i]), " ".join(words[i:])
+        if len(a) <= width and len(b) <= width:
+            score = abs(len(a) - len(b)) - (3 if a.endswith((",", ".", "?", "!", "...")) else 0)
+            if best is None or score < best:
+                best, cut = score, i
+    return " ".join(words[:cut]) + "\n" + " ".join(words[cut:]) if best is not None else cap
+
+
 def _caps(plan: dict) -> list[str]:
     return [ln.get("cap", "").replace("\n", " ") for ln in plan.get("lines", [])]
 
@@ -51,9 +67,9 @@ def script(plan: dict, history: list[dict] | None = None) -> list[str]:
         n = len(c.split())
         if n > TARGETS["line_words_max"]:
             errs.append(f"{ln.get('id')}: {n} words (max {TARGETS['line_words_max']}); split it")
-        for part in ln.get("cap", "").split("\n"):
-            if len(part) > TARGETS["cap_line_chars"]:
-                errs.append(f"{ln.get('id')}: caption line over {TARGETS['cap_line_chars']} characters")
+        if len(wrap(ln.get("cap", ""))) > 2 * TARGETS["cap_line_chars"] + 1 or \
+                any(len(x) > TARGETS["cap_line_chars"] for x in wrap(ln.get("cap", "")).split("\n")):
+            errs.append(f"{ln.get('id')}: caption too long for 2 lines of {TARGETS['cap_line_chars']} characters; split the line")
         if any(w in ln.get("hi", "") for w in STAGE_HINDI):
             errs.append(f"{ln.get('id')}: stage Hindi word")
         low = c.lower()

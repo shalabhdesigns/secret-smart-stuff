@@ -525,7 +525,8 @@ def build(plan: dict, lines_dir: Path, shots_dir: Path, name: str, seed: int = 0
         ash = {"url": str(shots_dir / f"shot{i:02d}.mp4"), "speaker": speaker, "keep_audio": False, "sounds": sounds,
                "beat": s.get("beat", ""), "_line_dur": round(talk, 3) if lid and not off else 0.0}
         if lid:
-            ash["caption"] = s.get("cap") or lines[lid]["cap"]
+            from .gates import wrap
+            ash["caption"] = wrap(s.get("cap") or lines[lid]["cap"])
             if speaker in voice_only and not off:
                 ash["caption"] = f"{names.get(speaker, speaker.title())}: " + ash["caption"]
             ash["caption_at"] = max(0.0, round(lead - 0.05, 2))

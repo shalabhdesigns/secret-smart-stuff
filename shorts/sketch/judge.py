@@ -89,18 +89,21 @@ def rubric(llm, script_text: str, cost: list[float], context: str = "", previous
     keys = list(RUBRIC)
     focus = ""
     if previous:
-        focus = ("\nTHIS IS A RE-CHECK after a fix. Previous red flags: " + json.dumps(previous.get("red_flags"),
+        focus = ("\nTHIS IS A RE-CHECK after a fix. Previous blocking problems: " + json.dumps(previous.get("red_flags"),
                  ensure_ascii=False) + f". Lines changed: {changed}. Keep a red flag only if it is still present. Add a "
                  "NEW red flag only for a changed line, or for something clearly blocking you missed before. Don't "
                  "re-argue lines that were acceptable last time.")
     d = _ask(llm, "TASK: rubric\nScore this 60-second animated sketch script on each dimension using ONLY the "
-                  "anchored levels (1-5, halves allowed). Quote the line that justifies each score. Then list any red "
-                  "flags from this list that apply: " + "; ".join(RED_FLAGS) + ". Then give the 3 most valuable fixes."
+                  "anchored levels (1-5, halves allowed). Quote the line that justifies each score. Then list problems "
+                  "of these kinds: " + "; ".join(RED_FLAGS) + ". Put a problem in BLOCKING only if most first-time "
+                  "viewers would be confused or offended, or a native speaker would say it is wrong Hindi; everything "
+                  "else (taste, nitpicks, could-be-better) goes in NOTES. Then give the 3 most valuable fixes."
                   + focus + (f"\nCONTEXT:\n{context}" if context else "") + "\nANCHORS:\n" +
                   "\n".join(f"- {k}: {v}" for k, v in RUBRIC.items()) + "\nSCRIPT:\n" + script_text +
                   '\nReturn JSON {"scores": {' + ", ".join(f'"{k}": 0' for k in keys) +
-                  '}, "evidence": {"<dimension>": "quoted line"}, "red_flags": ["..."], "weakest_lines": ["id: why"], '
-                  '"fixes": ["..."]}', cost, 3000)
+                  '}, "evidence": {"<dimension>": "quoted line"}, "blocking": ["line id: problem"], '
+                  '"notes": ["line id: problem"], "weakest_lines": ["id: why"], "fixes": ["..."]}', cost, 3000)
+    d["red_flags"] = list(d.get("blocking") or [])              # only blocking problems stop a script
     sc = {k: float((d.get("scores") or {}).get(k, 0) or 0) for k in keys}
     d["scores"] = sc
     d["total"] = round(sum(sc.values()) / len(keys), 2)
@@ -108,10 +111,16 @@ def rubric(llm, script_text: str, cost: list[float], context: str = "", previous
     return d
 
 
-def passes(r: dict, bar: float = 3.8, floor: float = 3.0) -> bool:
-    """Script gate G3: no red flags, average >= bar, nothing below floor, and the comedy itself >= bar."""
+# Calibrated 27 Oct 2026 (docs/RUBRIC.md): with this judge the owner-approved pilot (Ep 1) scored 2.94/3.33/3.22
+# (mean 3.16); the two owner-rejected Ep 2 scripts scored 2.72 and 2.33. The bar = "at least as good as the approved
+# pilot". Raise it as approved episodes accumulate (docs/PILOT.md §4).
+BAR, FLOOR, FUNNY, CLARITY = 3.2, 2.5, 3.0, 3.0
+
+
+def passes(r: dict, bar: float = BAR, floor: float = FLOOR) -> bool:
+    """Script gate G3: no blocking problem, average >= bar, nothing below floor, funny and clarity at least 3."""
     return (not r.get("red_flags") and r.get("total", 0) >= bar and r.get("min", 0) >= floor
-            and r["scores"].get("funny", 0) >= bar and r["scores"].get("clarity", 0) >= 4)
+            and r["scores"].get("funny", 0) >= FUNNY and r["scores"].get("clarity", 0) >= CLARITY)
 
 
 def script_text(plan: dict) -> str:
@@ -120,6 +129,8 @@ def script_text(plan: dict) -> str:
     out = [f"PREMISE: {plan.get('premise', '')}", f"HUMAN TRUTH: {plan.get('truth', '')}"]
     for ln in plan.get("lines", []):
         via = f" ({ln['via']})" if ln.get("via") else ""
+        if "inner" in (ln.get("hi") or "").lower():
+            via = " (inner voice, heard only by the audience)"
         d = f"   [{ln['direction']}]" if ln.get("direction") else ""
         out.append(f"{ln.get('id', '')} {names.get(ln['who'], ln['who'])}{via}: {ln['cap'].replace(chr(10), ' ')}{d}")
     return "\n".join(out)

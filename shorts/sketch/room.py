@@ -235,7 +235,7 @@ def write(llm, history: list[dict], feedback: list[dict], number: int, idea: str
         if J.passes(r) and not hard:
             break
     total, script, rub, hard = max(attempts, key=lambda a: (J.passes(a[2]) and not a[3], a[0]))
-    if total < 3.3 or rub.get("red_flags"):
+    if not J.passes(rub) or hard:
         raise NotGoodEnough(f"no script reached the bar today (best {total}, flags {rub.get('red_flags')}); "
                             + " | ".join(gate_log[-4:]), cost[0])
 
