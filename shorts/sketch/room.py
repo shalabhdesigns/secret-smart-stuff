@@ -205,9 +205,10 @@ def write(llm, history: list[dict], feedback: list[dict], number: int, idea: str
     attempts = []
     for idx in order:
         sc = scripts[idx]
+        prev, changed = None, None
         for rnd in range(4):
             hard = G.script(sc, history)
-            r = J.rubric(llm, J.script_text(sc), cost, context=Wr.lessons_brief())
+            r = J.rubric(llm, J.script_text(sc), cost, context=Wr.lessons_brief(), previous=prev, changed=changed)
             attempts.append((r.get("total", 0), sc, r, hard))
             gate_log.append(f"G3 script {idx} round {rnd}: total {r.get('total')} min {r.get('min')} "
                             f"flags {str(r.get('red_flags'))[:300]} hard {hard[:3]}")
@@ -227,7 +228,10 @@ def write(llm, history: list[dict], feedback: list[dict], number: int, idea: str
                 'Return JSON {"replace": {"l7": {"who": "", "via": "", "beat": "", "hi": "", "cap": "", "direction": ""}}, '
                 '"delete": ["l9"], "insert_after": {"l3": [{"id": "l3b", "who": "", "beat": "", "hi": "", "cap": ""}]}, '
                 '"set": {"loop": {"bridge": ""}, "relations_cue": "", "truth": "", "game": ""}, "why": "one line"}', 5000)
+            before = {ln["id"]: ln.get("cap") for ln in sc.get("lines", [])}
             sc = _apply_patch(sc, patch)
+            changed = [ln["id"] for ln in sc.get("lines", []) if before.get(ln["id"]) != ln.get("cap")]
+            prev = r
         if J.passes(r) and not hard:
             break
     total, script, rub, hard = max(attempts, key=lambda a: (J.passes(a[2]) and not a[3], a[0]))

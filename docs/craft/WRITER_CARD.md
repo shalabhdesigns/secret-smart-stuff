@@ -25,6 +25,9 @@ specific person. Evidence: docs/research/R1–R5. [F] research · [E] expert · 
 - **Share trigger**: who forwards it to whom, and why ("this is literally my mother") [E Berger STEPPS]. Aim for
   energetic amusement and surprise; avoid sad or bitter endings [F Berger & Milkman; Teixeira et al.].
 - **Fresh angle**: one sentence on why no meme page has done this exact take.
+- **Simple and airtight**: the premise fits in one sentence, one place, at most 3 people. Before writing, ask "why
+  don't they just…?", "how does she know that?", "what time is it?" — fix every hole in the premise, not in the
+  dialogue. Make it funnier, never more complicated. (Pilot lesson: complicated premises failed the script gate on logic.)
 
 ## §3 Shape of a ~55-second sketch (beat labels used in scripts and shots)
 | beat | time | job |

@@ -13,7 +13,8 @@ bias, docs/research/R2). LLM scores are a coarse filter; the owner's decision an
 | clarity (×1) | needs explaining | clear after setup | who/where/what obvious in 5 s |
 | showable (×1) | can't be shown with our puppets | mostly talk | funniest moments are visible |
 | share (×1.5) | nobody forwards it | some would | viewers tag a specific person |
-Gate G1: top 3 by weighted score → blind pairwise (both orders) → 2 finalists. Hard drops: repeats a recent episode;
+| simple (×2) | many moving parts | needs one setup line | one sentence, one place, ≤3 people, airtight logic |
+Each logic hole the judge lists costs 0.4. Gate G1: top 3 by weighted score → blind pairwise (both orders) → 2 finalists. Hard drops: repeats a recent episode;
 cliché without a fresh angle; needs a person on screen we can't draw (decided before scripting).
 
 ## B. Script (G2/G3, before voices)
@@ -29,9 +30,10 @@ cliché without a fresh angle; needs a person on screen we can't draw (decided b
 | shareability | nobody forwards | some would | viewers tag a specific person, quote the last line |
 | loop | dead stop | fine but jarring replay | last moment flows into the first; replay reveals more |
 **Pass:** average ≥ 3.8, no dimension < 3, funny ≥ 3.8, clarity ≥ 4, no red flag, all hard checks pass.
-**Red flags (any one fails):** confusing/meaningless line · incomplete or ungrammatical Hindi · identity-based target
-(caste, religion, region, body, disability, gender) · real person/brand mocked · plot hole / impossible staging · same
-joke as a recent episode · overused meme situation with no new angle.
+**Red flags (any one fails):** a line a first-time viewer would misunderstand · Hindi a native speaker wouldn't say
+(natural short replies like "Toh?" are fine) · identity-based target (caste, religion, region, body, disability, gender) ·
+real person/brand mocked · plot hole a viewer notices on first watch · same joke as a recent episode. Re-checks after a
+fix only keep unresolved flags and new flags in changed lines (prevents a moving target).
 **Hard checks (gates.script):** 110–165 words · 12–24 lines · line ≤14 words · hook ≤9 words · caption line ≤42 chars ·
 no stage Hindi or stock phrases · inner voice ≤3 · truth, game and loop bridge stated.
 Fail → punch-up with the judge's notes (≤2 rounds) → second finalist → still below 3.3 or red flag: no episode today

@@ -75,18 +75,28 @@ RUBRIC = {
     "loop": "1 = ending is a dead stop; 3 = ending is fine but replay is jarring; 5 = the last moment flows "
             "straight into the first and the replay reveals something new",
 }
-RED_FLAGS = ["confusing or meaningless line", "incomplete or ungrammatical Hindi sentence", "joke depends on caste, "
-             "religion, region, body, disability or gender as the target", "a real named person or brand mocked",
-             "plot hole / physically impossible staging", "the same joke as a recent episode",
-             "a premise that every desi meme page has already done with no new angle"]
+RED_FLAGS = ["a line a first-time viewer would misunderstand (quote it and say what they would misunderstand)",
+             "ungrammatical or unnatural Hindi that a native speaker would not say (natural short replies such as "
+             "'Toh?', 'Mujhe kya.', 'Usi se?' are fine and are NOT fragments)",
+             "joke depends on caste, religion, region, body, disability or gender as the target",
+             "a real named person or brand mocked",
+             "plot hole that a viewer would notice on first watch (not a nitpick on rewatching)",
+             "the same joke as a recent episode"]
 
 
-def rubric(llm, script_text: str, cost: list[float], context: str = "") -> dict:
+def rubric(llm, script_text: str, cost: list[float], context: str = "", previous: dict | None = None,
+           changed: list[str] | None = None) -> dict:
     keys = list(RUBRIC)
+    focus = ""
+    if previous:
+        focus = ("\nTHIS IS A RE-CHECK after a fix. Previous red flags: " + json.dumps(previous.get("red_flags"),
+                 ensure_ascii=False) + f". Lines changed: {changed}. Keep a red flag only if it is still present. Add a "
+                 "NEW red flag only for a changed line, or for something clearly blocking you missed before. Don't "
+                 "re-argue lines that were acceptable last time.")
     d = _ask(llm, "TASK: rubric\nScore this 60-second animated sketch script on each dimension using ONLY the "
                   "anchored levels (1-5, halves allowed). Quote the line that justifies each score. Then list any red "
                   "flags from this list that apply: " + "; ".join(RED_FLAGS) + ". Then give the 3 most valuable fixes."
-                  + (f"\nCONTEXT:\n{context}" if context else "") + "\nANCHORS:\n" +
+                  + focus + (f"\nCONTEXT:\n{context}" if context else "") + "\nANCHORS:\n" +
                   "\n".join(f"- {k}: {v}" for k, v in RUBRIC.items()) + "\nSCRIPT:\n" + script_text +
                   '\nReturn JSON {"scores": {' + ", ".join(f'"{k}": 0' for k in keys) +
                   '}, "evidence": {"<dimension>": "quoted line"}, "red_flags": ["..."], "weakest_lines": ["id: why"], '
@@ -122,6 +132,8 @@ PREMISE_ANCHORS = {
     "clarity": "1 needs explaining / 3 clear after setup / 5 a first-time viewer gets who/where/what in 5 s",
     "showable": "1 can't be shown with our 2D puppets / 3 mostly talk / 5 the funniest moments are visible on screen",
     "share": "1 nobody forwards it / 3 some would / 5 viewers will tag a specific person",
+    "simple": "1 needs several moving parts or explanation / 3 needs one setup line / 5 anyone gets it in one sentence, "
+              "one place, at most 3 people, airtight logic",
 }
 
 
@@ -132,10 +144,10 @@ def premise_scores(llm, cards: list[dict], render, cost: list[float]) -> list[fl
     random.Random(len(cards) * 7).shuffle(order)
     text = "\n\n".join(f"CARD {k + 1}:\n{render(cards[i])}" for k, i in enumerate(order))
     d = _ask(llm, "TASK: premise_screen\nScore every premise card on each dimension using ONLY these anchors (1-5). "
-                  "For each card first write one sentence of evidence, then the scores. Length and polish are not "
-                  "quality.\nANCHORS:\n" + "\n".join(f"- {k}: {v}" for k, v in PREMISE_ANCHORS.items()) +
+                  "For each card first write one sentence of evidence, and list any logic hole a viewer would notice "
+                  "(who knows what, why don't they just..., timing), then the scores. Length and polish are not quality.\nANCHORS:\n" + "\n".join(f"- {k}: {v}" for k, v in PREMISE_ANCHORS.items()) +
                   f"\n\n{text}\n\n" + 'Return JSON {"cards": [{"card": 1, "evidence": "...", "scores": {' +
-                  ", ".join(f'"{k}": 0' for k in PREMISE_ANCHORS) + "}}]}", cost, 4000)
+                  ", ".join(f'"{k}": 0' for k in PREMISE_ANCHORS) + '}, "holes": ["..."]}]}', cost, 4000)
     out = [0.0] * len(cards)
     for row in d.get("cards") or []:
         try:
@@ -144,8 +156,8 @@ def premise_scores(llm, cards: list[dict], render, cost: list[float]) -> list[fl
             continue
         s = row.get("scores") or {}
         # laughs and truth weigh double: they are what the owner asks for first
-        w = {"truth": 2, "laughs": 2, "fresh": 1.5, "clarity": 1, "showable": 1, "share": 1.5}
-        out[i] = sum(float(s.get(k, 0) or 0) * w[k] for k in w) / sum(w.values())
+        w = {"truth": 2, "laughs": 2, "fresh": 1.5, "clarity": 1, "showable": 1, "share": 1.5, "simple": 2}
+        out[i] = sum(float(s.get(k, 0) or 0) * w[k] for k in w) / sum(w.values()) - 0.4 * len(row.get("holes") or [])
     return out
 
 
