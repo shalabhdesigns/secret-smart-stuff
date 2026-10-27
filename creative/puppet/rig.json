@@ -170,6 +170,36 @@
    "scale": 0.8,
    "chin": 1008,
    "chin_x": 605
+  },
+  "babu": {
+   "file": "babu_stand.png",
+   "eyes": [
+    [
+     262,
+     296
+    ],
+    [
+     549,
+     296
+    ]
+   ],
+   "eye_r": 46,
+   "mouth": [
+    406,
+    538
+   ],
+   "mouth_w": 136,
+   "neck": [
+    406,
+    860
+   ],
+   "brow_gap": 1.8,
+   "skin_at": [
+    222,
+    504
+   ],
+   "chin": 676,
+   "chin_x": 406
   }
  },
  "characters": {
@@ -190,6 +220,12 @@
    "chin": 1012,
    "stand_pose": "meera_chips",
    "height": 0.9
+  },
+  "babu": {
+   "primary_head": "babu",
+   "chin": 676,
+   "stand_pose": "babu_stand",
+   "height": 0.95
   }
  },
  "figures": {
@@ -320,6 +356,9 @@
   },
   "dev_videocall": {
    "file": "dev_videocall.png"
+  },
+  "babu_stand": {
+   "file": "babu_stand.png"
   }
  }
 }

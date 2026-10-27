@@ -35,6 +35,13 @@
    "height": 0.9,
    "caption_colour": "teal",
    "desc": "Meera, mid-20s, Dev's flatmate, black tee, checked pyjamas, teal hair streak, always eating chips. Deadpan, few words, devastating one-liners, sees through everyone."
+  },
+  "babu": {
+   "voice": "xZp4zaaBzoWhWxxrcAij",
+   "height": 0.95,
+   "caption_colour": "white",
+   "desc": "Verma ji: Middle-aged bank clerk who spends his 'lunch' standing in his own queue, giving expert theories about where the clerk is. Calm, unbothered, always right about 'how things work'.. 50s, thin, balding with side hair, square spectacles, cream half-sleeve shirt with a pen in the pocket, grey trousers",
+   "added": "2026-10-27"
   }
  },
  "poses": {
@@ -165,6 +172,11 @@
    "props": [
     "phone"
    ]
+  },
+  "babu_stand": {
+   "who": "babu",
+   "kind": "stand",
+   "desc": "standing, arms down"
   }
  },
  "hair_variants": {
