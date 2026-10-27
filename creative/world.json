@@ -67,6 +67,18 @@
    "voice_type": "older_man",
    "look": "60s, slightly stooped, white kurta-pyjama with a grey sleeveless sweater, thinning grey hair, thick moustache, spectacles on a cord, cloth bag on shoulder",
    "voice": "iLpGCYkFnnGoa4bBSlqm"
+  },
+  "babu": {
+   "name": "Verma ji",
+   "pending": "ep003c",
+   "desc": "Middle-aged bank clerk who spends his 'lunch' standing in his own queue, giving expert theories about where the clerk is. Calm, unbothered, always right about 'how things work'.",
+   "relations": {
+    "dev": "stranger in the queue, later the clerk"
+   },
+   "voice_type": "older_man",
+   "look": "50s, thin, balding with side hair, square spectacles, cream half-sleeve shirt with a pen in the pocket, grey trousers",
+   "voice": "xZp4zaaBzoWhWxxrcAij",
+   "drawn": true
   }
  },
  "voice_pool": {
