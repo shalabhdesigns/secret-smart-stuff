@@ -1,0 +1,117 @@
+{
+ "_note": "Standing lessons distilled from the owner's reviews (seeded 27 Oct 2026 from all notes so far). The writer, stager and judge read them every episode.",
+ "lessons": [
+  {
+   "id": "L001",
+   "stage": "sound",
+   "text": "Never clip or trim the start of any spoken word; the first word of the video must be fully audible. Lengthen the video instead of cutting dialogue.",
+   "count": 3,
+   "first": "2026-10-26",
+   "last": "2026-10-27"
+  },
+  {
+   "id": "L002",
+   "stage": "dialogue",
+   "text": "Every line is a complete, grammatical, natural Hindi/Hinglish sentence (e.g. 'almari mein hai', not 'almari mein'); no fragments or stock phrases like 'kitne sweet' or 'kyun takleef'.",
+   "count": 2,
+   "first": "2026-10-26",
+   "last": "2026-10-27"
+  },
+  {
+   "id": "L003",
+   "stage": "dialogue",
+   "text": "Every line must make immediate sense to a first-time viewer; cut any line whose meaning needs explaining.",
+   "count": 2,
+   "first": "2026-10-26",
+   "last": "2026-10-27"
+  },
+  {
+   "id": "L004",
+   "stage": "staging",
+   "text": "If a character is physically present in the scene, show them on screen; create and save a new character when the story needs one.",
+   "count": 3,
+   "first": "2026-10-26",
+   "last": "2026-10-27"
+  },
+  {
+   "id": "L005",
+   "stage": "staging",
+   "text": "Any object the dialogue is about (box, gift, phone) must be visible in the right hands, or the staging must make it clearly off-screen; never show the wrong prop.",
+   "count": 2,
+   "first": "2026-10-26",
+   "last": "2026-10-27"
+  },
+  {
+   "id": "L006",
+   "stage": "loop",
+   "text": "The ending must flow seamlessly into the opening (same framing, last line leads into the first, no audio jump).",
+   "count": 2,
+   "first": "2026-10-26",
+   "last": "2026-10-27"
+  },
+  {
+   "id": "L007",
+   "stage": "sound",
+   "text": "Voice-only characters (phone, next room, doorway) must be as loud and clear as on-screen speakers.",
+   "count": 1,
+   "first": "2026-10-26",
+   "last": "2026-10-27"
+  },
+  {
+   "id": "L008",
+   "stage": "revision",
+   "text": "When the owner asks for fixes, fix the same story with the smallest change; never write a new story unless the episode is dropped.",
+   "count": 1,
+   "first": "2026-10-26",
+   "last": "2026-10-27"
+  },
+  {
+   "id": "L009",
+   "stage": "writing",
+   "text": "Relationships must be clear to a first-time viewer within the first seconds through natural cues (how people address each other, the place), never through exposition.",
+   "count": 1,
+   "first": "2026-10-26",
+   "last": "2026-10-27"
+  },
+  {
+   "id": "L010",
+   "stage": "dialogue",
+   "text": "Back-and-forth must feel like real people talking: interruptions, reactions, uneven turns; no tidy line-for-line ping-pong.",
+   "count": 1,
+   "first": "2026-10-26",
+   "last": "2026-10-27"
+  },
+  {
+   "id": "L011",
+   "stage": "writing",
+   "text": "Trying to be funny is not enough: every episode needs at least one real laugh-out-loud turn and a story the owner would enjoy; relatable theme alone fails.",
+   "count": 2,
+   "first": "2026-10-26",
+   "last": "2026-10-27"
+  },
+  {
+   "id": "L012",
+   "stage": "ideation",
+   "text": "Use festivals, events and trends in India and the world when timely, mixed with evergreen everyday stories; choose per episode.",
+   "count": 1,
+   "first": "2026-10-26",
+   "last": "2026-10-27"
+  },
+  {
+   "id": "L013",
+   "stage": "ideation",
+   "text": "Never force recurring characters or places (e.g. Rocky, the barber shop) into a story where they have no reason to be.",
+   "count": 1,
+   "first": "2026-10-26",
+   "last": "2026-10-27"
+  },
+  {
+   "id": "L014",
+   "stage": "staging",
+   "text": "Expressions must be authentic and readable (one idea per face, symmetric eyes), lip sync must match the words, and heads must never distort.",
+   "count": 2,
+   "first": "2026-10-26",
+   "last": "2026-10-27"
+  }
+ ]
+}

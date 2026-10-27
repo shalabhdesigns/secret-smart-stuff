@@ -31,6 +31,7 @@ PARTS = ROOT / "assets" / "puppet" / "parts"
 WORK = ROOT / "build" / "art"
 MODEL = "flux-2-pro"
 USD_EACH = 0.07            # one FLUX.2 [pro] image with references, upper estimate
+PRICE = {"flux-kontext-pro": 0.04, "flux-2-pro": 0.07}
 QA_MODEL = "claude-sonnet-5-5"
 GREEN = (0, 177, 64)
 
@@ -86,7 +87,7 @@ def flux(p, what: str, prompt: str, refs: list[Path], out: Path, w: int = 1088, 
     r = requests.post("https://api.bfl.ai/v1/" + model, json=body, headers=hd, timeout=60)
     if r.status_code != 200:
         raise ArtError(f"BFL {r.status_code}: {r.text[:200]}")
-    p.state.add_cost("art", what, 1, USD_EACH)
+    p.state.add_cost("art", what, 1, PRICE.get(model, USD_EACH))
     poll = r.json()["polling_url"]
     t0 = time.time()
     while time.time() - t0 < 300:
@@ -494,15 +495,25 @@ def generate_character(p, cid: str, name: str, desc: str, look: str, height: flo
     if cid in rg["characters"]:
         return True
     style = [PARTS / "dev_stand.png", PARTS / "meera_arms.png"]
-    for attempt in range(2):
+    female = any(w in f"{look} {desc}".lower() for w in ("woman", "girl", "aunty", "aunt", "mother", "mummy", "mom",
+                                                          "sister", "didi", "grandmother", "dadi", "nani", "lady", "she "))
+    base = PARTS / ("meera_arms.png" if female else "dev_stand.png")
+    # 1st/2nd try: edit an approved figure into the new person (keeps style, size and framing -> no cut-off feet);
+    # 3rd: draw from scratch with both style references.
+    edit = (f"Turn this cartoon character into a completely different person: {look}. Keep exactly the same flat 2D "
+            "cartoon drawing style, outline thickness, cel shading, framing, full-body size and flat green background. "
+            "Standing relaxed, arms down by the sides, facing the viewer, head upright. " + BLANK +
+            "No text on clothes, no shadow on the ground.")
+    draw = ("Draw ONE new character for the same flat 2D cartoon show as the reference images - exactly the "
+            "same drawing style, outline thickness, soft cel shading, skin rendering and colour feel, but a "
+            f"DIFFERENT person: {look}. Standing relaxed, arms down by the sides. " + BLANK + FIGURE +
+            " Leave clear empty green space above the head and below the feet. No text on clothes.")
+    tries = [("flux-kontext-pro", edit, [base]), ("flux-kontext-pro", edit, [base]), (MODEL, draw, style)]
+    for attempt, (model, prompt, refs) in enumerate(tries):
         raw = WORK / f"char_{cid}_{attempt}.png"
-        prompt = ("Draw ONE new character for the same flat 2D cartoon show as the reference images - exactly the "
-                  "same drawing style, outline thickness, soft cel shading, skin rendering and colour feel, but a "
-                  f"DIFFERENT person: {look}. Standing relaxed, arms down by the sides. " + BLANK + FIGURE +
-                  " Leave clear empty green space above the head and below the feet. No text on clothes.")
         fname = f"{cid}_stand.png"
         try:
-            flux(p, f"character {cid}", prompt, style, raw, 1088, 1952)
+            flux(p, f"character {cid}", prompt, refs, raw, 1088, 1952, model=model)
             rgba = key_out(raw, PARTS / fname)
             anc = FF.anchors(rgba, region=0.4)
         except (ArtError, ValueError) as e:

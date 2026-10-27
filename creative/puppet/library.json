@@ -41,23 +41,27 @@
   "dev_stand": {
    "who": "dev",
    "kind": "stand",
-   "desc": "standing, arms down, neutral"
+   "desc": "standing, arms down, neutral",
+   "props": []
   },
   "dev_point": {
    "who": "dev",
    "kind": "stand",
    "desc": "one finger raised high: 'idea!' / 'ek minute'",
-   "wide": true
+   "wide": true,
+   "props": []
   },
   "dev_nono": {
    "who": "dev",
    "kind": "stand",
-   "desc": "both palms up in front: 'no no', defensive, protesting"
+   "desc": "both palms up in front: 'no no', defensive, protesting",
+   "props": []
   },
   "dev_thumbs": {
    "who": "dev",
    "kind": "stand",
-   "desc": "two thumbs up, forced approval"
+   "desc": "two thumbs up, forced approval",
+   "props": []
   },
   "dev_seated": {
    "who": "dev",
@@ -65,69 +69,102 @@
    "desc": "sitting in the red barber chair wearing a white cape (barber_shop set only)",
    "sets": [
     "barber_shop"
+   ],
+   "props": [
+    "barber cape",
+    "barber chair"
    ]
   },
   "rocky_hips": {
    "who": "rocky",
    "kind": "stand",
-   "desc": "hands on hips, proud"
+   "desc": "hands on hips, proud",
+   "props": []
   },
   "rocky_phone": {
    "who": "rocky",
    "kind": "stand",
-   "desc": "looking at his phone in both hands"
+   "desc": "looking at his phone in both hands",
+   "props": [
+    "phone"
+   ]
   },
   "rocky_scissors": {
    "who": "rocky",
    "kind": "stand",
-   "desc": "holding scissors up, other hand on belly, salesman mode"
+   "desc": "holding scissors up, other hand on belly, salesman mode",
+   "props": [
+    "scissors"
+   ]
   },
   "rocky_tada": {
    "who": "rocky",
    "kind": "stand",
    "desc": "arms flung wide: 'ta-da!' presentation (solo shots only)",
    "wide": true,
-   "solo": true
+   "solo": true,
+   "props": []
   },
   "meera_arms": {
    "who": "meera",
    "kind": "stand",
-   "desc": "arms crossed, leaning, judging"
+   "desc": "arms crossed, leaning, judging",
+   "props": []
   },
   "meera_chips": {
    "who": "meera",
    "kind": "stand",
-   "desc": "eating chips from a packet"
+   "desc": "eating chips from a packet",
+   "props": [
+    "chips"
+   ]
   },
   "meera_point": {
    "who": "meera",
    "kind": "stand",
    "desc": "holding chips, pointing to the side (at someone)",
-   "wide": true
+   "wide": true,
+   "props": [
+    "chips"
+   ]
   },
   "dev_phone": {
    "who": "dev",
    "kind": "stand",
    "desc": "standing, holding a smartphone to his right ear with his right hand, left arm relaxed by his side",
-   "added": "2026-10-26"
+   "added": "2026-10-26",
+   "props": [
+    "phone"
+   ]
   },
   "meera_phone": {
    "who": "meera",
    "kind": "stand",
    "desc": "standing, holding a smartphone to her right ear with her right hand, a chips packet in her left hand",
-   "added": "2026-10-26"
+   "added": "2026-10-26",
+   "props": [
+    "phone",
+    "chips"
+   ]
   },
   "dev_holdup": {
    "who": "dev",
    "kind": "stand",
    "desc": "standing, right hand holding up a small blue card (like an ATM/ID card) at shoulder height, left hand holding a smartphone flat at chest height on speaker. The card is the only object he can show in this pose.",
-   "added": "2026-10-26"
+   "added": "2026-10-26",
+   "props": [
+    "blue card",
+    "phone"
+   ]
   },
   "dev_videocall": {
    "who": "dev",
    "kind": "stand",
    "desc": "standing, holding a smartphone up in front of his chest with both hands, screen facing himself, as if on a video call",
-   "added": "2026-10-27"
+   "added": "2026-10-27",
+   "props": [
+    "phone"
+   ]
   }
  },
  "hair_variants": {
