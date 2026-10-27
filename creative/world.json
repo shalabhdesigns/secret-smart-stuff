@@ -48,13 +48,13 @@
    "role": "supporting",
    "voice_type": "older_woman",
    "voice": "rqIg3iVrlZOAkxCMdelQ",
-   "desc": "Next-door neighbour in Dev and Meera's building. Warm, generous and very observant. She notices everything, says it sweetly, and turns every awkward moment into pity plus more food. Speaks loudly and clearly, a bright carrying voice. Recurring neighbour: reuse whenever a story involves the building, festivals, food exchanges or neighbourhood gossip.",
+   "desc": "Next-door neighbour in Dev and Meera's building. Warm, generous and very observant. She notices everything, says it sweetly, and is secretly as practical as anyone (she re-gifts too). Speaks loudly and clearly, a bright carrying voice. Recurring neighbour: reuse whenever a story involves the building, festivals, food exchanges or neighbourhood gossip.",
    "relations": {
     "dev": "next-door neighbour",
     "meera": "next-door neighbour"
    },
    "pending": "ep002b",
-   "look": "Early 50s, medium build, black hair with grey streaks in a neat bun, small red bindi, maroon saree with a golden border, gold bangles, reading glasses hanging on a chain, warm round face, festive and cheerful"
+   "look": "Indian woman in her early 50s, medium build, black hair with grey streaks in a neat bun, small red bindi, maroon saree with a gold border, gold bangles on both wrists, friendly round face"
   }
  },
  "voice_pool": {
