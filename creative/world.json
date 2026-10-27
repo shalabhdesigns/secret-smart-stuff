@@ -55,6 +55,18 @@
    },
    "pending": "ep002b",
    "look": "Indian woman in her early 50s, medium build, black hair with grey streaks in a neat bun, small red bindi, maroon saree with a gold border, gold bangles on both wrists, friendly round face"
+  },
+  "tiwari_ji": {
+   "name": "Tiwari ji",
+   "pending": "ep003b",
+   "desc": "Dev and Meera's landlord, 60s. Never states his purpose; inspects with his eyes, says 'bas aise hi', and lets tenants talk themselves into paying more.",
+   "relations": {
+    "dev": "landlord",
+    "meera": "landlord"
+   },
+   "voice_type": "older_man",
+   "look": "60s, slightly stooped, white kurta-pyjama with a grey sleeveless sweater, thinning grey hair, thick moustache, spectacles on a cord, cloth bag on shoulder",
+   "voice": "iLpGCYkFnnGoa4bBSlqm"
   }
  },
  "voice_pool": {
