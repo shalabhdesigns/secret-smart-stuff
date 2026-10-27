@@ -418,6 +418,28 @@ def main(path: str) -> int:
         return do_produce(p, req)
     if action in ("approve", "reject", "fix"):
         return do_decision(p, req)
+    if action == "rename_repo":
+        # owner asked (28 Oct 2026): repo back to its Secret Smart Stuff name; then redeploy the Worker so its
+        # Telegram buttons dispatch to the new name (GitHub redirects git, but not workflow dispatch POSTs)
+        import requests
+        old, new = os.environ.get("GITHUB_REPOSITORY", ""), f"{os.environ.get('GITHUB_REPOSITORY_OWNER', 'shalabhdesigns')}/{req['name']}"
+        if old.lower() != new.lower():
+            r = requests.patch(f"https://api.github.com/repos/{old}", json={"name": req["name"]},
+                               headers={"authorization": f"Bearer {os.environ['GH_DISPATCH_TOKEN']}",
+                                        "accept": "application/vnd.github+json"}, timeout=30)
+            print("rename:", r.status_code, r.json().get("full_name") if r.ok else r.text[:300])
+            if not r.ok:
+                alert(p, "Repo rename failed", f"{r.status_code} {r.text[:500]}")
+                return 1
+        env = {**os.environ, "GITHUB_REPOSITORY": new}
+        d = subprocess.run([sys.executable, str(ROOT / "scripts" / "deploy_worker.py")], capture_output=True, text=True, env=env)
+        print(d.stdout, d.stderr[-2000:])
+        if d.returncode != 0:
+            alert(p, "Studio redeploy after rename failed", d.stdout[-1500:] + "\n" + d.stderr[-1500:])
+            return d.returncode
+        notify.send(p.state, f"🔧 Repo is now {new}; studio address: {p.state.get_setting('worker_url') or '?'}. "
+                             "Buttons and /ytlogin keep working; your YouTube login is unchanged.")
+        return 0
     if action == "drop_topics":
         for tid in req.get("topics") or []:
             for jj in p.state.jobs():
