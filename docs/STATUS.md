@@ -1,51 +1,27 @@
-# Build Status — 24 Oct 2026
+# Status — 28 Oct 2026 (back to Secret Smart Stuff)
 
-Legend: ✅ completed and tested · 🟡 written but not tested against the real service · 🔜 planned
+Legend: ✅ works and was tested on the real service · 🟡 built, not yet proven live · 🔜 planned
 
 | Area | Status | Evidence / note |
 |---|---|---|
-| Niche research and selection | ✅ | `docs/01_NICHE_REPORT.md`, `research/*.md` |
-| Content strategy | ✅ (draft, owner-reviewed name and voice) | `docs/02_CONTENT_STRATEGY.md` |
-| Architecture | ✅ | `docs/03_ARCHITECTURE.md` |
-| State DB, resume after crash, retry limits | ✅ | `tests/test_reliability.py` (8 tests pass) |
-| Budget guard | ✅ | Unit test |
-| Duplicate topic detection (own + competitor titles) | ✅ | Unit test |
-| Scene renderer (motion, blueprint callouts, cards, comparisons) | ✅ | Rendered and inspected frames |
-| Captions from word timings, safe-area layout | ✅ | Rendered and inspected |
-| Audio mix + loudness normalization | ✅ | QA reports −14 LUFS |
-| Media QA gate | ✅ | Passes good file; rejects wrong resolution |
-| End-to-end dry run (discover → package → review bundle) | ✅ | ~100 s per Short with fake providers |
-| Voice (ElevenLabs Alice) | ✅ voice chosen / 🟡 API adapter | Samples made via the ElevenLabs connector; the timestamp API adapter is untested here |
-| Script + research + review (Claude API) | 🟡 | Written to current docs (model IDs, web search tool); needs a live run |
-| Images (FLUX.2 via BFL) | 🟡 | Written to current docs; needs a live run |
-| Vision check + callout locating | 🟡 | Needs a live run |
-| YouTube upload (resumable, idempotent, private + schedule) | 🟡 | Idempotency logic tested offline; the real upload is untested |
-| YouTube Analytics snapshot + insights | 🟡 | Needs a live channel |
-| GitHub Actions workflows + state branch | 🟡 | YAML validated; state sync tested against a local git remote; not yet run on GitHub |
-| Review via GitHub issues (approve / reject / fix) | 🟡 | Script written; needs GitHub |
-| Auto-publish mode | 🟡 | Off by default |
-| Competitor signals (yt-dlp outliers) | 🟡 | Can't reach YouTube from here; best-effort by design |
-| Weekly long-form compilation | 🔜 | Strategy item; not built |
-| Pruning old review releases | 🔜 | Small script |
-| Hindi audio track | 🔜 | After the channel grows |
-| Optional AI video clips | 🔜 | Adapter not written; off in the pilot |
+| Daily production (topic → sourced script → review → voice → images → render → QA) | ✅ | onigiri v9 (approved, 1.1k+ views); live runs on GitHub Actions; restored 28 Oct |
+| Telegram review (approve / fix / drop) | ✅ | Worked for both formats; fixes are minimal edits that reuse unchanged media |
+| Upload private + scheduled after approval | ✅ | onigiri v9 went live on schedule (verify step) |
+| Publish-time experiment (3 slots) | 🟡 | Running again from 28 Oct; needs 8 videos per arm |
+| Analytics, weekly learning, dashboard | ✅ / 🟡 | Run on schedule; few data points so far |
+| One-tap YouTube login (`/ytlogin`) with encrypted token | 🟡 | Worker tests pass; the first live login is pending (fixed a link-preview bug on 28 Oct) |
+| Channel guard (no upload or analytics on the wrong channel) | 🟡 | Code in `shorts/publish/youtube.py`; proven once the login is done |
+| Hold-for-check before sending (`hold` + `send_review`) | 🟡 | Added 28 Oct for test videos |
+| Daily schedule | ✅ on | 05:47 IST; skips while a video waits for review |
+| Real-motion AI clips | off | Tested 25 Oct (+$3.18 BFL on one video); experiment only |
+| Pronunciation check via speech-to-text | 🔜 | Needs speech-to-text permission on the ElevenLabs key; explainers use the voice service's word timings instead |
+| Weekly long-form compilation | 🔜 | Not built |
+| Repo rename back to `secret-smart-stuff` | 🔜 | Cosmetic; needs a Worker redeploy right after |
 
-## Independent check (24 Oct 2026)
-
-A separate reviewer compared every live adapter and workflow with the current official docs.
-- No blockers were found.
-- Six likely bugs and four minor issues were found, and **all are fixed**:
-  - Approvals could be dropped while another run was queued.
-  - A failed upload start could block retries.
-  - Web searches were over-counted.
-  - Long server-tool turns (`pause_turn`) weren't handled.
-  - Analytics queries were missing a sort and batching.
-  - The review issue lookup could open duplicates.
-  - Also fixed: the TTS output format parameter, image polling robustness, YouTube text limits, and PKCE login.
-- Re-tested offline: 8/8 tests pass.
-
-## Next actions
-
-1. **Owner:** complete `docs/SETUP.md` Steps 1–6.
-2. **Claude:** push the code to the repo (if GitHub is connected) and watch the first dry run.
-3. **First live Short:** fix anything the real APIs reveal, then a pilot of 30 Shorts at 1 per day.
+## Budget
+- **Limits:** $2 per video, $6 per day, $45 per month (`config/pipeline.yaml`). The ElevenLabs plan is billed
+  separately.
+- **October:** about $39 used, mostly by the dropped sketch show. The cap resets on 1 Nov.
+- **BFL image credits:** 110.5 (about $1.10) on 28 Oct.
+  - That is enough for about 6–8 videos at $0.10–0.20 of images each.
+  - **Top-up needed within a week:** at dashboard.bfl.ai (owner).

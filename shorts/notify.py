@@ -80,7 +80,7 @@ def esc(s: str) -> str:
 
 def review_buttons(job: str) -> list[list[tuple[str, str]]]:
     # callback_data max 64 bytes: "a:" + job id (job ids are short slugs)
-    return [[("✅ Approve", f"a:{job}"[:64]), ("✏️ Fix", f"f:{job}"[:64])], [("🗑 Drop episode", f"d:{job}"[:64])]]
+    return [[("✅ Approve", f"a:{job}"[:64]), ("✏️ Fix", f"f:{job}"[:64])], [("🗑 Drop", f"d:{job}"[:64])]]
 
 
 def review(state, job: str, video: Path, title: str, score, cost: float, flags: list[str], slot: str | None) -> None:
