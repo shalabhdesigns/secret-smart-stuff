@@ -512,6 +512,27 @@ def main(path: str) -> int:
         gh("issue", "create", "--title", "Voice pool test", "--body", "\n".join(rows), check=False)
         print("\n".join(rows))
         return 0
+    if action == "judge_calibrate":
+        # score known episodes with the script judge (owner-approved vs owner-rejected) to set the gate bar
+        from shorts.sketch import episodes as _E, flow as _F, judge as _J, writer as _Wr
+        llm = _F._llm(p)
+        cost = [0.0]
+        rows = []
+        for item in req.get("scripts", []):
+            for k in range(int(req.get("repeats", 2))):
+                r = _J.rubric(llm, item["text"], cost, context=_Wr.lessons_brief())
+                rows.append(f"### {item['name']} (owner: {item['owner']}) run {k + 1}: total {r['total']} min {r['min']}\n"
+                            f"scores {r['scores']}\nflags {r.get('red_flags')}\n")
+        for ep_id in req.get("episodes", []):
+            ep = _E.get(p.state, ep_id)
+            if ep and ep.get("plan"):
+                r = _J.rubric(llm, _J.script_text(ep["plan"]), cost, context=_Wr.lessons_brief())
+                rows.append(f"### {ep_id} (status {ep['status']}): total {r['total']} min {r['min']}\nscores {r['scores']}\n"
+                            f"flags {r.get('red_flags')}\n")
+        p.state.add_cost("anthropic", "judge calibration", 1, cost[0])
+        gh("issue", "create", "--title", "Judge calibration", "--body", "\n".join(rows)[:60000] + f"\n\ncost ${cost[0]:.2f}", check=False)
+        print("\n".join(rows))
+        return 0
     if action == "art_test":
         from shorts.sketch import art as _A
         res = []
