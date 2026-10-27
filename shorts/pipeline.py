@@ -281,7 +281,9 @@ class Pipeline:
         r_ = self.cfg.channel["rules"]
         lo, hi = r_["target_seconds"]
         wps = r_["words_per_second"]
-        prompt = P.SCRIPT.format(object=idea.get("object", topic["title"]), question=topic["title"],
+        prompt = P.SCRIPT.format(video_rule=P.VIDEO_RULE if self.clips_on else "",
+                                 motions_field=P.MOTIONS_FIELD if self.clips_on else "",
+                                 object=idea.get("object", topic["title"]), question=topic["title"],
                                  angle=idea.get("angle", ""), pillar=topic.get("pillar"),
                                  seconds_lo=lo, seconds_hi=hi, words_lo=int(lo * wps), words_hi=int(hi * wps),
                                  min_sources=r_["min_sources_main_claim"])

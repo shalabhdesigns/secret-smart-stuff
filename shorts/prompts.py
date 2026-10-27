@@ -1,7 +1,7 @@
 """Prompt templates. Every prompt starts with `TASK: <name>` (the dry-run fake
 keys off it) and asks for strict JSON so code, not prose, drives the pipeline."""
 
-SYSTEM_WRITER = """You write scripts for a faceless YouTube Shorts explainer format (legacy, not used by Bhaukaali Toons) that
+SYSTEM_WRITER = """You write scripts for "Secret Smart Stuff", a faceless YouTube Shorts channel that
 explains the hidden design reasons behind everyday objects. Voice: calm, curious, warm, precise,
 like a friend who just noticed something clever. Short spoken sentences. No hype words
 (amazing, insane, crazy), no "did you know", no channel intro, no subscribe pitch.
@@ -85,14 +85,7 @@ Format rules (these come from retention research, follow them exactly):
   They must not state new facts, must be kind (no jokes about people, cultures or groups) and
   should get their own playful-but-realistic image (e.g. "a single limp, soggy sheet of seaweed
   drooping sadly over the edge of a plate").
-- VIDEO: every image becomes a short real-motion video clip (image-to-video), so this is footage,
-  not a slideshow. For each image write a "motions" line: ONE clear physical action or change that
-  matches what the narration says over that image (e.g. "a hand pulls the centre strip down and the
-  clear film slides out from between the rice and the seaweed"; "the escalator steps glide up and
-  slip between the comb teeth"), plus a gentle camera move. Real-world physics only, slow and
-  smooth, nothing morphs, appears from nowhere or changes shape; hands are fine, no faces, no text.
-  Images for numbered-part beats (markers) stay still, so give them a camera-only motion.
-- IMAGE = WORDS: every beat's image must visibly show what that beat SAYS. If a beat names steps or
+{video_rule}- IMAGE = WORDS: every beat's image must visibly show what that beat SAYS. If a beat names steps or
   numbered parts ("pull tab 1, then 2 and 3"), the image must show the WHOLE real object front-on
   (e.g. the full triangular wrapper, not a flat packet), with each of those physical parts clearly
   separate at its real position (e.g. the top pull strip and both bottom corner flaps), and
@@ -106,8 +99,7 @@ Return JSON:
  "hook_card": "2-3 words",
  "hooks": [5 alternative spoken opening questions, 8-12 words each], "chosen_hook": index,
  "images": {{"img1": "prompt", "img2": "prompt", ...}},
- "motions": {{"img1": "what MOVES in this image's video clip", "img2": "...", ...}},
- "scenes": [{{"id": "b1", "narration": str, "image": "img1"|null, "focus": str|null,
+{motions_field} "scenes": [{{"id": "b1", "narration": str, "image": "img1"|null, "focus": str|null,
    "motion": "punch"|"push"|"pull"|"drift"|"hold", "transition": "cut"|"whip"|"zoom_cut",
    "callout": str|null, "pop": str|null, "arrow": {{"from": str, "to": str}}|null,
    "card_text": str|null, "tone": "normal"|"witty",
@@ -202,3 +194,16 @@ Be strict. Answer JSON:
  "faces": bool (a human face is visible),
  "shows_action": bool (the requested action/change is visible),
  "problems": "one short sentence"}}"""
+
+
+# Only used when providers.video_clips.enabled is true (real-motion clips experiment).
+VIDEO_RULE = """- VIDEO: every image becomes a short real-motion video clip (image-to-video), so this is footage,
+  not a slideshow. For each image write a "motions" line: ONE clear physical action or change that
+  matches what the narration says over that image (e.g. "a hand pulls the centre strip down and the
+  clear film slides out from between the rice and the seaweed"; "the escalator steps glide up and
+  slip between the comb teeth"), plus a gentle camera move. Real-world physics only, slow and
+  smooth, nothing morphs, appears from nowhere or changes shape; hands are fine, no faces, no text.
+  Images for numbered-part beats (markers) stay still, so give them a camera-only motion.
+"""
+MOTIONS_FIELD = """ "motions": {"img1": "what MOVES in this image's video clip", "img2": "...", ...},
+"""

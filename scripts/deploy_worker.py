@@ -24,8 +24,10 @@ from shorts.config import load     # noqa: E402
 from shorts.state import State     # noqa: E402
 
 CF = "https://api.cloudflare.com/client/v4"
-NAME = "bhaukaalitoons-studio"
-KV_TITLE = "bhaukaalitoons-studio"
+NAME = "secretsmartstuff-studio"
+KV_TITLE = "secretsmartstuff-studio"
+SUBDOMAIN = "secretsmartstuff"
+OLD_NAMES = ["bhaukaalitoons-studio"]          # earlier names of this Worker/KV store (renamed or removed on deploy)
 
 
 def cf(method: str, path: str, **kw) -> dict:
@@ -42,17 +44,29 @@ def kv_namespace(acc: str) -> str:
     for ns in page:
         if ns["title"] == KV_TITLE:
             return ns["id"]
+    for ns in page:                       # keep the existing store (dashboard, logins) under the new name
+        if ns["title"] in OLD_NAMES:
+            cf("PUT", f"/accounts/{acc}/storage/kv/namespaces/{ns['id']}", json={"title": KV_TITLE})
+            return ns["id"]
     return cf("POST", f"/accounts/{acc}/storage/kv/namespaces", json={"title": KV_TITLE})["id"]
 
 
 def subdomain(acc: str) -> str:
+    """The account's workers.dev subdomain; moved to SUBDOMAIN when that name is free."""
+    sub = None
     try:
         sub = cf("GET", f"/accounts/{acc}/workers/subdomain").get("subdomain")
-        if sub:
-            return sub
     except RuntimeError:
         pass
-    for cand in ("bhaukaalitoons", f"bhaukaalitoons-{secrets.token_hex(2)}"):
+    if sub == SUBDOMAIN:
+        return sub
+    try:
+        return cf("PUT", f"/accounts/{acc}/workers/subdomain", json={"subdomain": SUBDOMAIN})["subdomain"]
+    except RuntimeError as e:
+        if sub:
+            print(f"keeping subdomain {sub}: {e}")
+            return sub
+    for cand in (f"{SUBDOMAIN}-{secrets.token_hex(2)}",):
         try:
             return cf("PUT", f"/accounts/{acc}/workers/subdomain", json={"subdomain": cand})["subdomain"]
         except RuntimeError:
@@ -86,6 +100,9 @@ def main() -> int:
             {"type": "plain_text", "name": "OWNER_ID", "text": owner_user},
             {"type": "plain_text", "name": "GH_REPO", "text": os.environ["GITHUB_REPOSITORY"]},
             {"type": "plain_text", "name": "SELF_URL", "text": url},
+            {"type": "secret_text", "name": "YT_CLIENT_ID", "text": os.environ.get("YT_CLIENT_ID", "").strip()},
+            {"type": "secret_text", "name": "YT_CLIENT_SECRET", "text": os.environ.get("YT_CLIENT_SECRET", "").strip()},
+            {"type": "plain_text", "name": "EXPECT_CHANNEL", "text": str(cfg.channel["channel"]["name"])},
         ],
     }
     code = (ROOT / "worker" / "index.js").read_bytes()
@@ -119,9 +136,25 @@ def main() -> int:
         {"command": "status", "description": "What's happening now"},
         {"command": "produce", "description": "Make a video now"},
         {"command": "dash", "description": "Dashboard link"},
+        {"command": "ytlogin", "description": "Connect the YouTube channel"},
         {"command": "revenue", "description": "Record revenue: /revenue 2026-11 12.50"},
         {"command": "help", "description": "How this works"},
     ])})
+    name = str(cfg.channel["channel"]["name"])
+    for method, data in (("setMyName", {"name": f"{name} Studio"}),
+                         ("setMyShortDescription", {"short_description": f"Review and approve {name} videos."}),
+                         ("setMyDescription", {"description": f"Private studio for the {name} YouTube channel. "
+                                               "Only the owner's messages are acted on."})):
+        try:
+            notify.call(method, data)
+        except RuntimeError as e:             # cosmetic; Telegram rate-limits name changes
+            print(f"{method} skipped: {e}")
+    for old in OLD_NAMES:                     # the old Worker would answer on a URL nobody uses any more
+        try:
+            cf("DELETE", f"/accounts/{acc}/workers/scripts/{old}")
+            print(f"removed old worker {old}")
+        except RuntimeError:
+            pass
     state.set_setting("worker_url", url)
     state.set_setting("cf_kv_namespace", ns)
     print(json.dumps({"ok": True, "url": url, "webhook": hook, "owner_chat": owner}))

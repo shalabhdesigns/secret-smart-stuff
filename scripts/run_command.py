@@ -330,25 +330,27 @@ def do_dashboard(p: Pipeline) -> int:
     return 0
 
 
+def _login_link(p: Pipeline) -> str:
+    """A one-time link to the Worker's YouTube login (same as sending /ytlogin to the bot)."""
+    import secrets as _s
+    import requests
+    acc = (os.environ.get("CLOUDFLARE_ACCOUNT_ID") or str(p.cfg.pipeline.get("cloudflare_account_id", ""))).strip()
+    ns, url = p.state.get_setting("cf_kv_namespace"), p.state.get_setting("worker_url")
+    n = _s.token_hex(24)
+    r = requests.put(f"https://api.cloudflare.com/client/v4/accounts/{acc}/storage/kv/namespaces/{ns}/values/oauth_link:{n}",
+                     params={"expiration_ttl": 1800}, data="1",
+                     headers={"Authorization": f"Bearer {os.environ['CLOUDFLARE_API_TOKEN']}"}, timeout=30)
+    if r.status_code != 200:
+        return "(could not make the link; send /ytlogin to this bot instead)"
+    return f"{url}/oauth/start?n={n}"
+
+
 def main(path: str) -> int:
     req = json.loads(Path(path).read_text())
     action = req.get("action")
     p = Pipeline(load())
     # ---- Bhaukaali Toons / Sab Theek Hai was dropped by the owner on 28 Oct 2026 ----
-    if action == "retire_sketch":
-        from shorts.sketch import episodes as E
-        done = []
-        for ep in E.all_eps(p.state, ("writing", "review", "revising", "approved")):
-            ep["status"] = "rejected"
-            E.log(ep, "retired", "owner dropped the Bhaukaali Toons show (28 Oct 2026)")
-            E.save(p.state, ep)
-            done.append(ep["id"])
-        msg = ("🛑 Bhaukaali Toons is stopped. These episodes are cancelled and will never be uploaded: "
-               + (", ".join(done) or "none") + ". Their buttons no longer do anything.")
-        notify.send(p.state, msg)
-        print(msg)
-        return 0
-    if str(req.get("job", "")).startswith("ep") or action in ("sketch_daily", "sketch_produce", "grow", "send_review"):
+    if re.fullmatch(r"ep\d{3}[a-z]?(-v\d+)?", str(req.get("job", ""))) or action in ("sketch_daily", "sketch_produce", "grow", "send_review"):
         notify.send(p.state, "That Bhaukaali Toons episode was cancelled (the show is stopped). Nothing was done.")
         return 0
     # ---- Secret Smart Stuff explainers (the live format) ----
@@ -408,24 +410,6 @@ def main(path: str) -> int:
         else:
             gh("release", "create", tag, *files, "--prerelease", "--title", tag, "--notes", "working media")
         return 0
-    if action == "sketch":
-        spec = ROOT / req["spec"]
-        r = subprocess.run([sys.executable, str(ROOT / "scripts" / "sketch_assemble.py"), str(spec)],
-                           capture_output=True, text=True)
-        print(r.stdout, r.stderr[-3000:])
-        name = json.loads(spec.read_text())["name"]
-        d = ROOT / "build" / name
-        tag = f"media-{name}"
-        files = [str(p) for p in (d / "final.mp4", d / "timeline.json") if p.exists()]
-        if not files:
-            (d).mkdir(parents=True, exist_ok=True)
-            (d / "error.txt").write_text(r.stderr[-6000:] or "no output")
-            files = [str(d / "error.txt")]
-        if subprocess.run(["gh", "release", "view", tag], capture_output=True).returncode == 0:
-            gh("release", "upload", tag, *files, "--clobber")
-        else:
-            gh("release", "create", tag, *files, "--prerelease", "--title", tag, "--notes", "sketch render")
-        return r.returncode
     if action == "accounts":
         # provider balances (no secrets printed), reported on a GitHub issue
         import requests
@@ -444,104 +428,6 @@ def main(path: str) -> int:
             lines.append(f"BFL: error {e}")
         gh("issue", "create", "--title", "Accounts check", "--label", "audio", "--body", "\n".join(f"- {x}" for x in lines), check=False)
         print(lines)
-        return 0
-    if action == "upload_sketch":
-        # Upload an approved sketch as PRIVATE (owner publishes/schedules it in YouTube Studio).
-        from shorts.publish.youtube import VideoMeta, upload
-        if req.get("path"):                       # a master file committed in the repo
-            src = ROOT / req["path"]
-            d, fname = src.parent, src.name
-        else:                                     # or a file on a GitHub release
-            tag, fname = req["release"], req["file"]
-            d = ROOT / "build" / "upload"
-            d.mkdir(parents=True, exist_ok=True)
-            gh("release", "download", tag, "-p", fname, "-D", str(d), "--clobber")
-        ch = (p.cfg.channel or {}).get("channel", {})
-        meta = VideoMeta(title=req["title"], description=req["description"], tags=req.get("tags", []),
-                         category_id=str(ch.get("youtube_category_id", "23")), language=ch.get("language", "hi"),
-                         made_for_kids=False, contains_synthetic_media=bool(req.get("synthetic", False)),
-                         publish_at=req.get("publish_at"))
-        try:
-            res = upload(p.state, req["job"], d / fname, meta)
-            msg = f"Uploaded as PRIVATE: {res['url']} (video id {res['video_id']}). Publish or schedule it in YouTube Studio."
-        except Exception as e:  # noqa: BLE001
-            msg = f"Upload failed: {e}"
-        if msg.startswith("Uploaded") and req.get("episode"):     # record it in the episode calendar
-            from shorts.sketch import episodes as E
-            num = int(req["episode"])
-            ep = E.get(p.state, f"ep{num:03d}") or {"id": f"ep{num:03d}", "number": num, "history": []}
-            ep.update(status="scheduled" if req.get("publish_at") else "uploaded", slot=req.get("publish_at") or "",
-                      title=req["title"], yt_video_id=res.get("video_id"), meta={"title": req["title"],
-                      "description": req["description"], "tags": req.get("tags", [])})
-            E.log(ep, "scheduled", req.get("publish_at") or "")
-            E.save(p.state, ep)
-            when = E.fmt_ist(req["publish_at"]) if req.get("publish_at") else "not scheduled"
-            notify.send(p.state, f"✅ Ep {num} uploaded (private). Goes public <b>{when}</b>.\n{res.get('url')}")
-        gh("issue", "create", "--title", f"Upload: {req['title'][:60]}", "--body", msg, check=False)
-        print(msg)
-        return 0 if msg.startswith("Uploaded") else 1
-    if action == "voice_test":
-        import requests as _rq
-        from shorts.sketch import world as _W
-        key = os.environ["ELEVENLABS_API_KEY"]
-        out = Path("build/voice_test"); out.mkdir(parents=True, exist_ok=True)
-        rows, files = [], []
-        for kind, ids in _W.load()["voice_pool"].items():
-            if kind.startswith("_"):
-                continue
-            for vid in ids:
-                info = _rq.get(f"https://api.elevenlabs.io/v1/voices/{vid}", headers={"xi-api-key": key}, timeout=30)
-                lab = info.json().get("labels", {}) if info.ok else {}
-                name = info.json().get("name", "?") if info.ok else f"info {info.status_code}"
-                r = _rq.post(f"https://api.elevenlabs.io/v1/text-to-speech/{vid}", params={"output_format": "mp3_44100_128"},
-                             headers={"xi-api-key": key}, json={"text": "अरे बेटा, खाना खाया कि नहीं? सच सच बताना।",
-                                                                 "model_id": "eleven_v4"}, timeout=120)
-                ok = r.status_code == 200
-                if ok:
-                    f = out / f"{kind}_{vid}.mp3"; f.write_bytes(r.content); files.append(f)
-                rows.append(f"- {kind} {vid}: {name} {lab} tts={'ok' if ok else r.status_code} {'' if ok else r.text[:150]}")
-        if files:
-            gh("release", "create", "voice-test", "--prerelease", "--title", "voice test", "--notes", "pool voices", check=False)
-            gh("release", "upload", "voice-test", *[str(f) for f in files], "--clobber", check=False)
-        gh("issue", "create", "--title", "Voice pool test", "--body", "\n".join(rows), check=False)
-        print("\n".join(rows))
-        return 0
-    if action == "judge_calibrate":
-        # score known episodes with the script judge (owner-approved vs owner-rejected) to set the gate bar
-        from shorts.sketch import episodes as _E, flow as _F, judge as _J, writer as _Wr
-        llm = _F._llm(p)
-        cost = [0.0]
-        rows = []
-        for item in req.get("scripts", []):
-            for k in range(int(req.get("repeats", 2))):
-                r = _J.rubric(llm, item["text"], cost, context=_Wr.lessons_brief())
-                rows.append(f"### {item['name']} (owner: {item['owner']}) run {k + 1}: total {r['total']} min {r['min']}\n"
-                            f"scores {r['scores']}\nflags {r.get('red_flags')}\n")
-        for ep_id in req.get("episodes", []):
-            ep = _E.get(p.state, ep_id)
-            if ep and ep.get("plan"):
-                r = _J.rubric(llm, _J.script_text(ep["plan"]), cost, context=_Wr.lessons_brief())
-                rows.append(f"### {ep_id} (status {ep['status']}): total {r['total']} min {r['min']}\nscores {r['scores']}\n"
-                            f"flags {r.get('red_flags')}\n")
-        p.state.add_cost("anthropic", "judge calibration", 1, cost[0])
-        gh("issue", "create", "--title", "Judge calibration", "--body", "\n".join(rows)[:60000] + f"\n\ncost ${cost[0]:.2f}", check=False)
-        print("\n".join(rows))
-        return 0
-    if action == "art_test":
-        from shorts.sketch import art as _A
-        res = []
-        for pid, who, desc in req.get("poses", []):
-            res.append(f"pose {pid}: {_A.generate_pose(p, who, pid, desc)}")
-        for c in req.get("characters", []):
-            res.append(f"character {c['id']}: " + str(_A.generate_character(p, c["id"], c["name"], c["desc"], c["look"],
-                                                                         c.get("height", 0.95), c.get("voice", ""), save=c.get("save", False))))
-        files = [f for f in Path("build/art").glob("*") if f.suffix in (".png",) and ("sheet" in f.name or f.name.startswith(("pose_", "char_")))]
-        gh("release", "create", "art-test", "--prerelease", "--title", "art test", "--notes", "art test outputs", check=False)
-        if files:
-            gh("release", "upload", "art-test", *[str(f) for f in files], "--clobber", check=False)
-        logs = [r["message"] for r in p.state.db.execute("SELECT message FROM events ORDER BY at DESC LIMIT 25").fetchall()]
-        gh("issue", "create", "--title", "Art test", "--body", "\n".join(res) + "\n\nLog:\n" + "\n".join(f"- {x}" for x in reversed(logs))[:60000], check=False)
-        print(res)
         return 0
     if action == "video_status":
         import requests as _rq
@@ -581,6 +467,53 @@ def main(path: str) -> int:
         gh("issue", "create", "--title", "Diagnostics", "--body", "\n\n".join(out), check=False)
         print("\n".join(out))
         return 0
+    if action == "migrate_sss":
+        # 28 Oct 2026: back to Secret Smart Stuff. Keep Bhaukaali Toons history in *_bhaukaali tables so
+        # it never mixes with this channel's analytics, owner notes or writer prompts.
+        db = p.state.db
+        bt_videos = [r["video_id"] for r in db.execute(
+            "SELECT video_id FROM uploads WHERE job_id LIKE 'ep%' OR job_id LIKE 'sab-theek%'") if r["video_id"]]
+        moves = {
+            "uploads": "job_id LIKE 'ep%' OR job_id LIKE 'sab-theek%'",
+            "feedback": "job_id LIKE 'ep%'",
+            "features": "job_id LIKE 'ep%'",
+            "assignments": "job_id LIKE 'ep%'",
+            "channel_daily": "1",            # channel totals were Bhaukaali's; refetched for this channel
+            "video_detail": "video_id IN (%s)" % ",".join("?" * len(bt_videos)) if bt_videos else "0",
+            "metrics": "video_id IN (%s)" % ",".join("?" * len(bt_videos)) if bt_videos else "0",
+        }
+        report = []
+        with p.state.tx() as c:
+            for table, where in moves.items():
+                args = bt_videos if "video_id IN" in where else []
+                c.execute(f"CREATE TABLE IF NOT EXISTS {table}_bhaukaali AS SELECT * FROM {table} WHERE 0")
+                n = c.execute(f"INSERT INTO {table}_bhaukaali SELECT * FROM {table} WHERE {where}", args).rowcount
+                c.execute(f"DELETE FROM {table} WHERE {where}", args)
+                report.append(f"{table}: {n} moved")
+        for jj in p.state.jobs():          # the clip-format test (never sent) is superseded by the stills format
+            if jj["status"] == "review" and jj["id"] in (req.get("retire_jobs") or []):
+                p.state.set_job_status(jj["id"], "rejected", "retired: superseded by the stills format")
+                p.state.set_topic_status(jj["topic_id"], "shortlisted")
+                report.append(f"retired {jj['id']}")
+        print("; ".join(report))
+        r = subprocess.run([sys.executable, str(ROOT / "scripts" / "deploy_worker.py")], capture_output=True, text=True)
+        print(r.stdout, r.stderr[-2000:])
+        if r.returncode != 0:
+            alert(p, "Studio setup problem", r.stdout[-1500:] + "\n" + r.stderr[-1500:])
+            return r.returncode
+        link = _login_link(p)
+        notify.send(p.state, "👋 This studio now makes <b>Secret Smart Stuff</b> videos again. Bhaukaali Toons is stopped.\n\n"
+                             "One last step: connect the YouTube channel. Tap the link, sign in as "
+                             "<b>secretsmartstuff@gmail.com</b>, pick <b>Secret Smart Stuff</b>, then Allow.\n" + link +
+                             "\n\n(The link works once, for 30 minutes. /ytlogin gives a new one.)")
+        try:
+            do_dashboard(p)
+        except Exception as e:  # noqa: BLE001
+            print("dashboard skipped:", e)
+        return 0
+    if action == "yt_login":
+        notify.send(p.state, "🔑 Connect the Secret Smart Stuff channel (link works once, 30 minutes):\n" + _login_link(p))
+        return 0
     if action == "probe":
         # what each service account looks like right now (names, plans, permissions; never secret values)
         import requests
@@ -617,22 +550,17 @@ def main(path: str) -> int:
     if action == "whoami":
         # which YouTube channel the stored login uploads to (no secrets printed)
         import requests
+        from shorts.publish.youtube import access_token
         try:
-            tok = requests.post("https://oauth2.googleapis.com/token", data={
-                "client_id": os.environ.get("YT_CLIENT_ID", ""), "client_secret": os.environ.get("YT_CLIENT_SECRET", ""),
-                "refresh_token": os.environ.get("YT_REFRESH_TOKEN", ""), "grant_type": "refresh_token"}, timeout=30)
-            if tok.status_code != 200:
-                msg = f"Login check FAILED: {tok.status_code} {tok.json().get('error', '')} {tok.json().get('error_description', '')}"
-            else:
-                body = tok.json()
-                r = requests.get("https://www.googleapis.com/youtube/v3/channels", params={"part": "snippet,status", "mine": "true"},
-                                 headers={"Authorization": f"Bearer {body['access_token']}"}, timeout=30).json()
-                items = r.get("items") or []
-                msg = "\n".join(f"- Channel: {c['snippet'].get('title')} | handle: {c['snippet'].get('customUrl')} | id: {c['id']} | "
-                                f"madeForKids: {c.get('status', {}).get('madeForKids')}" for c in items) or f"- No channel found: {str(r)[:300]}"
-                msg = f"Login OK. Scopes: {body.get('scope', '')}\n{msg}"
+            tok = access_token(check_channel=False)
+            r = requests.get("https://www.googleapis.com/youtube/v3/channels", params={"part": "snippet,status", "mine": "true"},
+                             headers={"Authorization": f"Bearer {tok}"}, timeout=30).json()
+            items = r.get("items") or []
+            msg = "\n".join(f"- Channel: {c['snippet'].get('title')} | handle: {c['snippet'].get('customUrl')} | id: {c['id']} | "
+                            f"madeForKids: {c.get('status', {}).get('madeForKids')}" for c in items) or f"- No channel found: {str(r)[:300]}"
+            msg = "Login OK.\n" + msg
         except Exception as e:  # noqa: BLE001
-            msg = f"Login check error: {e}"
+            msg = f"Login check: {e}"
         gh("issue", "create", "--title", "YouTube login check", "--body", msg, check=False)
         print(msg)
         return 0
@@ -654,7 +582,7 @@ def main(path: str) -> int:
         r = subprocess.run([sys.executable, str(ROOT / "scripts" / "deploy_worker.py")], capture_output=True, text=True)
         print(r.stdout, r.stderr[-2000:])
         if r.returncode == 0:
-            notify.send(p.state, "🤝 Connected. New Bhaukaali Toons episodes will arrive here for your review.\nSend /help to see what I can do.")
+            notify.send(p.state, "🤝 Connected. New Secret Smart Stuff videos will arrive here for your review.\nSend /help to see what I can do.")
             try:
                 do_dashboard(p)
             except Exception as e:  # noqa: BLE001

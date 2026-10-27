@@ -93,7 +93,7 @@ def collect(state, cfg) -> dict:
     return {
         "generated_at": _iso(now),
         "metrics_fetched_at": _iso(last_metrics),
-        "channel": cfg.channel.get("name") if hasattr(cfg, "channel") else "Bhaukaali Toons",
+        "channel": ((getattr(cfg, "channel", {}) or {}).get("channel") or {}).get("name", "Secret Smart Stuff"),
         "jobs": [{**j, "title": topics.get(j["topic_id"], {}).get("title"), "cost": round(cost_by_job.get(j["id"], 0), 3),
                   "reached_review": j["id"] in first_review,
                   "created": _iso(j["created_at"]), "updated": _iso(j["updated_at"])} for j in jobs],
@@ -119,7 +119,11 @@ def build(state, cfg) -> str:
 
 def upload(state, html: str) -> bool:
     """Put the page into the Worker's KV store (Cloudflare API). False if not configured."""
-    acc, token = os.environ.get("CLOUDFLARE_ACCOUNT_ID", "").strip(), os.environ.get("CLOUDFLARE_API_TOKEN", "").strip()
+    token = os.environ.get("CLOUDFLARE_API_TOKEN", "").strip()
+    acc = os.environ.get("CLOUDFLARE_ACCOUNT_ID", "").strip()
+    if not acc:                       # the account id is not secret; it lives in config/pipeline.yaml
+        from .config import load
+        acc = str(load().pipeline.get("cloudflare_account_id", "")).strip()
     ns = state.get_setting("cf_kv_namespace")
     if not (acc and token and ns):
         return False

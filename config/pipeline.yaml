@@ -2,8 +2,8 @@
 mode: dry_run            # dry_run (fake providers, no spend) | live
 
 budget_usd:
-  per_video: 4.00     # v4 video clips: ~$2.5-3 per video
-  daily: 16.00         # testing (owner OK 2026-10-25, incl. the video-clip test); set back after testing
+  per_video: 2.00     # stills format (onigiri v9): ~$1.00 per video measured; leaves room for one owner fix
+  daily: 6.00          # 1 video/day + fixes + retries; the monthly cap is the real limit
   monthly: 45.00         # ElevenLabs plan is paid separately and not counted here
 
 # Fixed monthly costs shown on the dashboard (not per-video). Edit to match your real bills.
@@ -13,7 +13,8 @@ fixed_costs_usd_month:
   cloudflare: 0.00         # free plan
   telegram: 0.00
 
-# Cloudflare account (bhaukaalitoons@gmail.com) that runs the Telegram/dashboard Worker. Not a secret.
+# Cloudflare account that runs the Telegram/dashboard/login Worker (secretsmartstuff-studio). Not a secret.
+# It was created under bhaukaalitoons@gmail.com during the Bhaukaali Toons period; the account login is still that email.
 cloudflare_account_id: a741d1d4877261452def869b39c7e4bc
 
 schedule:
@@ -47,7 +48,8 @@ providers:
     width: 1088                 # multiples of 16, near 9:16
     height: 1920
   video_clips:
-    enabled: true               # v4 format (owner chose real motion over stills, 25 Oct 2026)
+    enabled: false              # OFF: stills format (onigiri v9) is the default since 28 Oct 2026 (owner: cheaper format
+                                # that already worked). Clips cost ~$2.50-3.50 more per video; test only as an experiment.
     vendor: bfl
     model: flux-3-video         # image-to-video from our checked still
     draft: true                 # draft render: $0.06/s (full render $0.17/s)

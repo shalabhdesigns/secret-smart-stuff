@@ -58,23 +58,89 @@ def sha256(path: Path) -> str:
     return h.hexdigest()
 
 
-def access_token() -> str:
-    """Exchange the stored refresh token for a short-lived access token."""
-    need = ["YT_CLIENT_ID", "YT_CLIENT_SECRET", "YT_REFRESH_TOKEN"]
+_CACHE: dict = {}
+
+
+def _cf_kv(key: str) -> str | None:
+    """Read one value from the studio Worker's KV store (None if not configured or missing)."""
+    tok = os.environ.get("CLOUDFLARE_API_TOKEN", "").strip()
+    if not tok:
+        return None
+    try:
+        from ..config import load
+        cfg = load()
+        acc = (os.environ.get("CLOUDFLARE_ACCOUNT_ID") or str(cfg.pipeline.get("cloudflare_account_id", ""))).strip()
+        ns = State(cfg.path("state_db")).get_setting("cf_kv_namespace")
+    except Exception:  # noqa: BLE001
+        return None
+    if not (acc and ns):
+        return None
+    r = requests.get(f"https://api.cloudflare.com/client/v4/accounts/{acc}/storage/kv/namespaces/{ns}/values/{key}",
+                     headers={"Authorization": f"Bearer {tok}"}, timeout=30)
+    return r.text if r.status_code == 200 else None
+
+
+def _stored_refresh_token() -> str | None:
+    """The refresh token saved by the Worker's one-tap login (/ytlogin), encrypted with a key derived
+    from YT_CLIENT_SECRET (AES-GCM, iv || ciphertext+tag, base64). See worker/index.js `seal`."""
+    sealed = _cf_kv("yt_refresh.enc")
+    if not sealed:
+        return None
+    import base64
+
+    from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+    raw = base64.b64decode(sealed)
+    key = hashlib.sha256(("yt-refresh-v1:" + os.environ["YT_CLIENT_SECRET"]).encode()).digest()
+    return AESGCM(key).decrypt(raw[:12], raw[12:], None).decode()
+
+
+def expected_channel() -> str:
+    try:
+        from ..config import load
+        return str(load().channel["channel"]["name"])
+    except Exception:  # noqa: BLE001
+        return ""
+
+
+def access_token(check_channel: bool = True) -> str:
+    """Exchange the stored refresh token for a short-lived access token.
+
+    The token comes from the Worker's one-tap login when present, else from the GitHub secret
+    YT_REFRESH_TOKEN. With check_channel (the default) the token must belong to the channel named in
+    config/channel.yaml, so nothing is ever uploaded to, or measured from, the wrong channel."""
+    if "token" in _CACHE and _CACHE["exp"] > time.time() + 60:
+        return _CACHE["token"]
+    need = ["YT_CLIENT_ID", "YT_CLIENT_SECRET"]
     missing = [k for k in need if not os.environ.get(k)]
     if missing:
         raise UploadBlocked(f"missing secrets: {', '.join(missing)}")
+    try:
+        refresh = _stored_refresh_token()
+    except Exception as e:  # noqa: BLE001
+        raise UploadBlocked(f"the saved YouTube login could not be read ({e}); send /ytlogin in Telegram") from e
+    refresh = refresh or os.environ.get("YT_REFRESH_TOKEN", "")
+    if not refresh:
+        raise UploadBlocked("no YouTube login yet: send /ytlogin to the studio bot")
     r = requests.post(TOKEN_URL, data={
         "client_id": os.environ["YT_CLIENT_ID"],
         "client_secret": os.environ["YT_CLIENT_SECRET"],
-        "refresh_token": os.environ["YT_REFRESH_TOKEN"],
+        "refresh_token": refresh,
         "grant_type": "refresh_token",
     }, timeout=30)
     if r.status_code == 400 and "invalid_grant" in r.text:
-        raise UploadBlocked("refresh token expired or revoked - re-run scripts/youtube_auth.py "
-                            "(and make sure the OAuth consent screen is 'In production')")
+        raise UploadBlocked("YouTube login expired or revoked: send /ytlogin to the studio bot")
     r.raise_for_status()
-    return r.json()["access_token"]
+    token = r.json()["access_token"]
+    want = expected_channel()
+    if check_channel and want:
+        ch = requests.get("https://www.googleapis.com/youtube/v3/channels", params={"part": "snippet", "mine": "true"},
+                          headers={"Authorization": f"Bearer {token}"}, timeout=30).json()
+        titles = [c["snippet"]["title"] for c in ch.get("items", [])]
+        if want not in titles:
+            raise UploadBlocked(f"the YouTube login is for {titles or 'no channel'}, not '{want}': "
+                                "send /ytlogin to the studio bot and pick the right channel")
+    _CACHE.update(token=token, exp=time.time() + int(r.json().get("expires_in", 3600)))
+    return token
 
 
 def _clean(text: str, max_bytes: int) -> str:

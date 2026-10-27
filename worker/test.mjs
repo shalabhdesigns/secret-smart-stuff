@@ -3,10 +3,16 @@ import worker from "./index.js";
 import assert from "node:assert/strict";
 
 const calls = [];
+let channelTitle = "Secret Smart Stuff";
 globalThis.fetch = async (url, init = {}) => {
-  const body = init.body ? JSON.parse(init.body) : null;
+  let body = null;
+  try { body = init.body ? JSON.parse(init.body) : null; } catch { body = String(init.body); }
   calls.push({ url: String(url), body });
   if (String(url).includes("api.github.com")) return new Response(null, { status: 204 });
+  if (String(url).includes("oauth2.googleapis.com/token"))
+    return new Response(JSON.stringify({ refresh_token: "RT-123", access_token: "AT", scope: "x" }), { headers: { "content-type": "application/json" } });
+  if (String(url).includes("youtube/v3/channels"))
+    return new Response(JSON.stringify({ items: [{ id: "UCx", snippet: { title: channelTitle } }] }), { headers: { "content-type": "application/json" } });
   return new Response(JSON.stringify({ ok: true, result: {} }), { headers: { "content-type": "application/json" } });
 };
 const store = new Map();
@@ -16,7 +22,8 @@ const KV = {
   delete: async (k) => store.delete(k),
 };
 const env = { KV, TG_TOKEN: "t", TG_SECRET: "s3cret", OWNER_ID: "42", GH_TOKEN: "g", GH_REPO: "o/r",
-  COOKIE_KEY: "k".repeat(32), SELF_URL: "https://studio.example.workers.dev" };
+  COOKIE_KEY: "k".repeat(32), SELF_URL: "https://studio.example.workers.dev",
+  YT_CLIENT_ID: "cid", YT_CLIENT_SECRET: "csecret", EXPECT_CHANNEL: "Secret Smart Stuff" };
 const H = { "content-type": "application/json", "x-telegram-bot-api-secret-token": "s3cret" };
 const tgPost = (u, headers = H) => worker.fetch(new Request("https://x/tg", { method: "POST", headers, body: JSON.stringify(u) }), env);
 const gh = () => calls.filter((c) => c.url.includes("api.github.com"));
@@ -80,4 +87,44 @@ assert.ok(!(await r.text()).includes("SECRET"));
 // code works once
 r = await worker.fetch(new Request("https://x/dash/login", { method: "POST", body: form(code) }), env);
 assert.ok(r.headers.get("location").includes("bad=1"));
+
+// public pages
+r = await worker.fetch(new Request("https://x/"), env);
+assert.ok((await r.text()).includes("Secret Smart Stuff uploader"));
+r = await worker.fetch(new Request("https://x/privacy"), env);
+assert.ok((await r.text()).includes("Limited Use"));
+
+// one-tap YouTube login
+const login = async () => {
+  await tgPost({ message: { from: { id: 42 }, text: "/ytlogin" } });
+  const link = [...store.keys()].find((k) => k.startsWith("oauth_link:")).slice(11);
+  let rr = await worker.fetch(new Request(`https://x/oauth/start?n=${link}`), env);
+  assert.equal(rr.status, 302);
+  const loc = new URL(rr.headers.get("location"));
+  assert.equal(loc.searchParams.get("redirect_uri"), "https://studio.example.workers.dev/oauth/callback");
+  assert.equal(loc.searchParams.get("access_type"), "offline");
+  // the link works once
+  assert.equal((await worker.fetch(new Request(`https://x/oauth/start?n=${link}`), env)).status, 400);
+  return loc.searchParams.get("state");
+};
+// forged state -> refused, nothing stored
+r = await worker.fetch(new Request("https://x/oauth/callback?state=" + "a".repeat(48) + "&code=c"), env);
+assert.equal(r.status, 400); assert.equal(store.get("yt_refresh.enc"), undefined);
+// wrong channel -> not stored
+channelTitle = "Bhaukaali Toons";
+r = await worker.fetch(new Request(`https://x/oauth/callback?state=${await login()}&code=c`), env);
+assert.equal(r.status, 400); assert.equal(store.get("yt_refresh.enc"), undefined);
+// right channel -> stored encrypted (never in clear)
+channelTitle = "Secret Smart Stuff";
+r = await worker.fetch(new Request(`https://x/oauth/callback?state=${await login()}&code=c`), env);
+assert.equal(r.status, 200);
+const sealed = store.get("yt_refresh.enc");
+assert.ok(sealed && !sealed.includes("RT-123"));
+assert.equal(JSON.parse(store.get("yt_channel")).title, "Secret Smart Stuff");
+// decrypt like the runner does
+const raw = Uint8Array.from(atob(sealed), (ch) => ch.charCodeAt(0));
+const kraw = await crypto.subtle.digest("SHA-256", new TextEncoder().encode("yt-refresh-v1:csecret"));
+const key = await crypto.subtle.importKey("raw", kraw, { name: "AES-GCM" }, false, ["decrypt"]);
+const plain = new TextDecoder().decode(await crypto.subtle.decrypt({ name: "AES-GCM", iv: raw.slice(0, 12) }, key, raw.slice(12)));
+assert.equal(plain, "RT-123");
 console.log("worker tests passed");
