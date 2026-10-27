@@ -24,6 +24,12 @@ How each item is marked:
 - **One video is noise.** Judge a format on 10+ videos, against the channel's own median, never on one video's raw
   views. **[research: Salganik et al.; YouTube Help]**
 
+- **AI pictures can wreck credibility in one frame.** The safety-pin test (28 Oct) used the cheap image model.
+  - The opening "pin" was a bent wire, the "coil" was a flat spiral, and the "spring" looked like a slinky.
+  - Every automatic check passed it; only a human-level look caught it.
+  - It now takes a strict realism check per picture, the stronger image model, and a final review of the
+    finished video. **[data]**
+
 ## 2. Hook and retention (applies to every Short)
 
 - The voice must speak in the first second, and frame 1 must show something specific and strange. Viewers decide in

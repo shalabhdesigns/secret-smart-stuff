@@ -145,8 +145,15 @@ Every rule below comes from evidence in `docs/04_FORMAT_V2.md`.
 
 ## 4. Image generation
 
-- **Model:** Black Forest Labs FLUX.2 `flux-2-klein-4b` at $0.015/image, 1088×1920 PNG. Fallback: `flux-2-pro`
-  at $0.03.
+- **Model:** Black Forest Labs FLUX.2 `flux-2-pro` at $0.03/image, 1088×1920 PNG (since 28 Oct 2026).
+  - `flux-2-klein-4b` ($0.015) is now only the fallback for API errors.
+  - Why: klein drew malformed safety pins (wrong coils, a bent wire as the "whole pin"), and the cheap checks
+    passed them.
+- **Credibility gate on every picture** (`_realism`, Claude Sonnet vision, about $0.01 per picture):
+  - The question: would a viewer who owns this object find anything wrong? It checks for wrong or missing parts,
+    melted geometry and other AI tells, and whether the asked-for detail is shown.
+  - Failed pictures are regenerated with a rewritten prompt, up to 3 tries.
+  - If a picture still fails, it is flagged `BLOCKING` and the video cannot pass the final review.
 - **Style suffix on every prompt** (`channel.yaml → style.image_style`): "clean editorial product photograph, soft
   natural light, shallow depth of field, realistic materials, uncluttered background, no text, no letters, no
   logos, no watermark", plus "Vertical 9:16 composition, key subject large and centred."
@@ -300,7 +307,29 @@ The exact per-word times are in `reference/approved/onigiri-v9/words.json`.
 - description preview;
 - cost.
 
-**Claude's own inspection before sending** (this caught most of the problems in v4–v9):
+**Final self-review** (since 28 Oct 2026, owner: "the video should come to me only after you have
+completed your self-review"):
+- `Pipeline.critique` runs on the finished MP4. Claude Sonnet sees:
+  - a contact sheet with one labelled frame per beat, captions burned in;
+  - the first and last frame side by side;
+  - the script with timings, facts and sources, the fact-checker's notes, image flags and media checks.
+- **It scores 1–5:** hook curiosity, visual credibility, image–word match, payoff, flow and pacing, accuracy,
+  loop, rewatch and share. It also lists blocking problems with exact fixes, plus retention risks.
+- **Pass:** no blocking problem and no `BLOCKING` image flag; credibility, image match, hook and accuracy all ≥ 4;
+  mean ≥ 3.6.
+- **Not passed:** a targeted fix (`selffix`):
+  - only the named lines or picture prompts change;
+  - flagged pictures are regenerated;
+  - everything else is reused;
+  - then the video is reviewed again.
+- **Limits:**
+  - At most 3 reviews (2 fixes) per video.
+  - A video that still fails is dropped with the reason, and one other topic is tried.
+  - The owner is told only "no video this time" with the reason. He never receives a failing video.
+- After an owner fix, one more review (and at most one fix) runs before the new version is sent.
+- The scores and summary are in `review.md` and in the Telegram caption.
+
+**Claude's own inspection when Claude is in the session** (this caught most of the problems in v4–v9):
 - A contact sheet of about 19 frames.
 - The first and last frames compared (the loop).
 - Audio level near the end and start (music present across the join).
@@ -371,3 +400,6 @@ The exact per-word times are in `reference/approved/onigiri-v9/words.json`.
   as default (AI clips off). Voice keeps 0.12 s before the first word (was 0.05 s). Review, fixes and approval
   happen in Telegram; approval uploads private + scheduled for the publish-time experiment slot. Uploads and
   analytics refuse a YouTube login for any other channel. Lessons from both formats: `docs/LESSONS.md`.
+- 2026-10-28: Credibility first. FLUX.2 pro is the main image model, every picture passes a strict realism check
+  (3 tries), and every finished video passes a final self-review (max 3 rounds, targeted fixes) before the owner
+  sees it. Topic scoring now penalises objects whose key detail image models draw badly (springs, coils, gears).

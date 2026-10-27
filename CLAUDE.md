@@ -30,6 +30,16 @@
   - a seamless loop;
   - few pointers (varied styles, none unless needed);
   - never clip the first word.
+- **Lean format.** Images, captions, annotations and simple purposeful treatments; minimal AI video.
+- **Visual credibility above all.** Nothing that looks malformed, implausible or obviously AI. Animation only when
+  it helps understanding.
+- **Self-review every video before the owner sees it** (owner, 28 Oct 2026):
+  - check visuals, facts, flow, pacing, audio and captions;
+  - judge its potential (curiosity, retention, rewatch, share) using evidence;
+  - fix the real issues;
+  - at most 3 rounds.
+  - The code does this automatically (`Pipeline.critique`). When Claude is in the session, Claude also checks the
+    frames. The owner is the final approver, not the person who catches basic mistakes.
 - **Flag cost and policy risks before spending.** Never claim something works until it has been tested.
 
 ## Before sending any video
