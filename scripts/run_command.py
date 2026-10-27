@@ -116,6 +116,12 @@ def report_failure(p: Pipeline, job: str) -> None:
 # ---------------- actions ----------------
 
 def do_produce(p: Pipeline, req: dict) -> int:
+    if req.get("owner_ok_extra_daily_usd"):
+        # one-off, owner-approved extra room on the rolling 24 h limit (the monthly cap still applies)
+        extra = min(float(req["owner_ok_extra_daily_usd"]), 5.0)
+        spent_24h = p.state.spend_since(time.time() - 86400)
+        p.budget.limits.daily_usd = max(p.budget.limits.daily_usd, spent_24h + extra)
+        p.state.log(f"owner allowed +${extra:.2f} on today's daily limit for this run")
     for skip in req.get("skip") or []:
         for jj in p.state.jobs():
             if jj["topic_id"] == skip:
