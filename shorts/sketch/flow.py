@@ -110,9 +110,22 @@ def prepare_art(p, ep: dict, plan: dict, llm) -> dict:
         note = ("Some new art could not be made: " + "; ".join(failed) + ". Restage the episode without it. Keep "
                 "the story, the lines and the jokes exactly where possible.")
         E.log(ep, "art_failed", note)
+        card = plan.get("scorecard")
         plan, _s, c = Wr.revise(llm, _only_existing(plan), note, _history(p, ep["id"]), _feedback(p))
         cost = [c]
         plan = Wr._fix_loop(llm, _only_existing(plan), Wr._system(), cost)
+        # the restaged plan must pass the storyboard gate (G4) again: props/places it talks about must be shown
+        from . import gates as G
+        from . import judge as J
+        probs = G.storyboard(plan) + J.storyboard_check(llm, plan, cost).get("problems", [])
+        if probs:
+            plan, _s, c2 = Wr.revise(llm, plan, "Storyboard problems after restaging (fix the staging; if a key object "
+                                     "or place can't be shown, change the line so it isn't needed): " + "; ".join(probs),
+                                     _history(p, ep["id"]), _feedback(p))
+            cost[0] += c2
+            plan = Wr._fix_loop(llm, _only_existing(plan), Wr._system(), cost)
+        if card:
+            plan["scorecard"] = {**card, "restaged": True}
         _cost(p, ep, "restage", cost[0])
     return plan
 
