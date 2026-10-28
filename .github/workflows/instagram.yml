@@ -1,12 +1,13 @@
-# Posts queued videos to Instagram as Reels at their publish slot (Instagram's API cannot schedule).
+# Posts queued videos to Instagram as Reels at the same minute they go public on YouTube (Instagram's API
+# cannot schedule, so the run starts early, prepares the Reel, then publishes at the exact time).
 # Slots come from config/experiments.yaml (13:30, 17:00, 02:00 UTC); GitHub may start a few minutes late.
 # The analytics run also posts anything still due, so a missed run is caught up within 4 hours.
 name: instagram
 on:
   schedule:
-    - cron: "31 13 * * *"
-    - cron: "1 17 * * *"
-    - cron: "1 2 * * *"
+    - cron: "19 13 * * *"      # 13:30 slot: starts ~10 min early, waits, publishes at 13:30
+    - cron: "49 16 * * *"      # 17:00 slot
+    - cron: "49 1 * * *"       # 02:00 slot
   workflow_dispatch:
 concurrency: { group: shorts-state, cancel-in-progress: false, queue: max }
 permissions: { contents: write, issues: write }
@@ -14,7 +15,7 @@ jobs:
   post:
     if: vars.SHORTS_MODE == 'live'
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 45
     env:
       SHORTS_MODE: live
       YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}     # decrypts the stored Instagram login

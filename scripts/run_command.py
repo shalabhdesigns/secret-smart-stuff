@@ -653,6 +653,11 @@ def main(path: str) -> int:
         gh("issue", "create", "--title", "Instagram login check", "--body", msg, check=False)
         print(msg)
         return 0
+    if action == "ig_due":
+        # same as the instagram workflow: post what is due, preparing early and publishing at the exact minute
+        from shorts.publish import instagram as ig
+        print(json.dumps(ig.publish_due(p.state), default=str))
+        return 0
     if action == "ig_queue":
         # queue an already-uploaded YouTube video for Instagram at a given time (default: its YouTube publish time)
         from shorts.publish import instagram as ig

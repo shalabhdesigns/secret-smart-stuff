@@ -128,6 +128,7 @@ async function telegram(req, env) {
       return ack(env, cq, "OK, it will publish as planned");
     }
     if (kind === "S") {
+      await env.KV.put(`stop:${job}`, "1", { expirationTtl: 7 * 86400 });   // Instagram checks this right before posting
       const err = await dispatch(env, { action: "unpublish", job });
       if (err) return ack(env, cq, "Could not start: " + err, true);
       await tg(env, "editMessageReplyMarkup", { chat_id: chat, message_id: msg.message_id,

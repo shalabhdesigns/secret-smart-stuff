@@ -78,6 +78,7 @@ def _setup(tmp_path, monkeypatch):
     monkeypatch.setattr(ig, "_fetch", lambda job, into: (mp4, META))
     monkeypatch.setattr(ig.time, "sleep", lambda s: None)
     monkeypatch.setattr(ig.notify, "send", lambda *a, **k: None)
+    monkeypatch.setattr(ig, "_cf_kv", lambda k: None)
     return st, fake, puts
 
 
@@ -145,3 +146,22 @@ def test_postmortem_beats_accepts_old_count_format(tmp_path):
     st.start_job("t-v1", "t")
     st.set_features("t-v1", {"beats": 11, "seconds": 36})
     assert insights._beats(st, "t-v1") == []
+
+
+def test_prepared_early_published_at_exact_time_and_stop_while_waiting(tmp_path, monkeypatch):
+    st, fake, _ = _setup(tmp_path, monkeypatch)
+    clock = {"t": 1_000_000.0}
+    monkeypatch.setattr(ig.time, "time", lambda: clock["t"])
+    monkeypatch.setattr(ig.time, "sleep", lambda s: clock.__setitem__("t", clock["t"] + s))
+    due = clock["t"] + 600
+    import datetime as dt
+    iso = dt.datetime.fromtimestamp(due, dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    ig.queue(st, "t-v1", iso)
+    res = ig.publish_due(st)["posted"]
+    assert fake.published == 1 and res[0]["media_id"] == "M1"
+    assert clock["t"] >= due                                    # published at (not before) the YouTube minute
+    # Stop pressed in Telegram while the next Reel waits: the Worker's stop key cancels it
+    ig.queue(st, "t-v2", dt.datetime.fromtimestamp(clock["t"] + 600, dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
+    monkeypatch.setattr(ig, "_cf_kv", lambda k: "1" if k == "stop:t-v2" else None)
+    assert ig.publish_due(st)["posted"] == [] and fake.published == 1
+    assert st.db.execute("SELECT status FROM ig_posts WHERE job_id='t-v2'").fetchone()["status"] == "held"

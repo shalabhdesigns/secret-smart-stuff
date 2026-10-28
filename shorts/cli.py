@@ -72,7 +72,7 @@ def main(argv: list[str] | None = None) -> int:
         from . import dashboard
         from .publish import instagram as ig
         steps = [("verify uploads", lambda: verify(p.state)),
-                 ("instagram posts", lambda: ig.publish_due(p.state)),
+                 ("instagram catch-up", lambda: ig.publish_due(p.state, early_min=0)),   # only overdue posts; never waits
                  ("instagram metrics", lambda: ig.snapshot(p.state)),
                  ("video metrics", lambda: an.snapshot(p.state)),
                  ("channel daily", lambda: an.channel_daily(p.state)),

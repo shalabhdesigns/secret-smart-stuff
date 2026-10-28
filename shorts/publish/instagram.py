@@ -7,8 +7,9 @@ How it works
   Tokens last 60 days; `token()` refreshes them automatically when fewer than 20 days are left.
 - Guard: nothing is posted unless the login is for the account in config/channel.yaml (`instagram.handle`).
 - Posting: Instagram's API cannot schedule. When a video is uploaded to YouTube it is queued here with the same
-  publish time; `publish_due` (run by the instagram workflow at each slot, and by every analytics run) posts it
-  once that time has come, unless the owner pressed Stop.
+  publish time. The instagram workflow starts ~10 min before each slot: it prepares the Reel (upload +
+  processing) and publishes it at the exact YouTube minute. Every analytics run catches up anything missed.
+  Stop: the Worker writes stop:<job> to KV at once, so even a Reel that is waiting to publish is cancelled.
 - The video must be at a public URL for Instagram to fetch: the MP4 is put in the Worker's KV store for 6 hours
   under a random 32-hex key and served at <worker>/m/<key>.mp4. The repo stays private.
 - Idempotent: the container id is saved before publishing; a run that died half-way is finished, never repeated.
@@ -184,7 +185,7 @@ def hold(state, job_id: str) -> str:
     row = state.db.execute("SELECT status FROM ig_posts WHERE job_id=?", (job_id,)).fetchone()
     if not row:
         return "none"
-    if row["status"] in ("posted", "publishing"):
+    if row["status"] == "posted":
         return "posted"
     with state.tx() as db:
         db.execute("UPDATE ig_posts SET status='held' WHERE job_id=?", (job_id,))
@@ -232,8 +233,21 @@ def _worker_url(state) -> str:
     return u.rstrip("/")
 
 
-def post(state, job_id: str) -> dict:
-    """Post one queued video now. Safe to call again after a crash."""
+def _stopped(state, job_id: str) -> bool:
+    """Owner pressed Stop: the Worker writes stop:<job> at once (no queue), the runner marks the rows later."""
+    row = state.db.execute("SELECT p.status, u.status AS yt FROM ig_posts p LEFT JOIN uploads u ON u.job_id=p.job_id "
+                           "WHERE p.job_id=?", (job_id,)).fetchone()
+    if row and ("held" in (row["status"], row["yt"])):
+        return True
+    try:
+        return bool(_cf_kv(f"stop:{job_id}"))
+    except Exception:  # noqa: BLE001
+        return False
+
+
+def post(state, job_id: str, at_ts: float | None = None) -> dict:
+    """Post one queued video. With at_ts, the Reel is prepared now and published at exactly that time
+    (same minute as YouTube). Safe to call again after a crash."""
     _ensure(state)
     tok, acc = token()
     uid = acc["user_id"]
@@ -274,6 +288,14 @@ def post(state, job_id: str) -> dict:
         time.sleep(10)
     else:
         raise RuntimeError("Instagram is still processing the video after 10 minutes; will retry next run")
+    while at_ts and time.time() < at_ts:          # ready early: wait for the YouTube publish minute
+        if _stopped(state, job_id):
+            break
+        time.sleep(min(15, max(0.0, at_ts - time.time())))
+    if _stopped(state, job_id):
+        with state.tx() as db:
+            db.execute("UPDATE ig_posts SET status='held' WHERE job_id=?", (job_id,))
+        return {"job": job_id, "held": True}
     media = _api("POST", f"{uid}/media_publish", tok, creation_id=cont)["id"]
     return _record_published(state, job_id, tok, uid, media, cont)
 
@@ -289,8 +311,9 @@ def _record_published(state, job_id, tok, uid, media_id, cont) -> dict:
     return {"job": job_id, "media_id": media_id, "permalink": info.get("permalink")}
 
 
-def publish_due(state, grace_min: int = 5) -> dict:
-    """Post every queued video whose time has come (skips videos the owner stopped on YouTube)."""
+def publish_due(state, early_min: int = 30) -> dict:
+    """Post every queued video whose time has come. A video due within `early_min` minutes is prepared now and
+    published at its exact time, so Instagram and YouTube go live together. Skips videos the owner stopped."""
     if not enabled():
         return {"skipped": "instagram disabled"}
     _ensure(state)
@@ -305,10 +328,12 @@ def publish_due(state, grace_min: int = 5) -> dict:
             hold(state, r["job_id"])
             continue
         due = dt.datetime.fromisoformat((r["publish_at"] or "1970-01-01T00:00:00Z").replace("Z", "+00:00")).timestamp()
-        if r["status"] == "pending" and now < due - grace_min * 60:
+        if r["status"] == "pending" and now < due - early_min * 60:
             continue
         try:
-            res = post(state, r["job_id"])
+            res = post(state, r["job_id"], at_ts=due if due > time.time() else None)
+            if res.get("held"):
+                continue
             done.append(res)
             if not res.get("already"):
                 notify.send(state, f"📸 On Instagram now: {res.get('permalink') or '(link pending)'}", silent=True)
