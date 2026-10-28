@@ -13,6 +13,9 @@ Legend: ✅ works and was tested on the real service · 🟡 built, not yet prov
 | Channel guard (no upload or analytics on the wrong channel) | ✅ | Login check reports Secret Smart Stuff |
 | Final self-review (max 3 rounds) + can-we-draw-it probe | 🟡 | Live: first 2 topics correctly rejected; fixes added 28 Oct; next video is the proof |
 | Hold-for-check before sending (`hold` + `send_review`) | 🟡 | Added 28 Oct for test videos |
+| Auto-publish until 25 Nov (passes review → private + scheduled, Telegram note with ⏸ Stop it) | 🟡 | Tested with a fake upload (tests pass); first real one is the next daily video |
+| Per-video post-mortems (48 h, 7 d) + living `data/LEARNINGS.md` | 🟡 | Tested offline; first real one when the bus-shelter video is 48 h old (30–31 Oct) |
+| Old show data | ✅ | Exported to `archive/bhaukaali-toons`, removed from the live database (28 Oct) |
 | Daily schedule | ✅ on | 05:47 IST; skips while a video waits for review |
 | Real-motion AI clips | off | Tested 25 Oct (+$3.18 BFL on one video); experiment only |
 | Pronunciation check via speech-to-text | 🔜 | Needs speech-to-text permission on the ElevenLabs key; explainers use the voice service's word timings instead |
@@ -22,5 +25,5 @@ Legend: ✅ works and was tested on the real service · 🟡 built, not yet prov
 ## Budget
 - **Limits:** $2 per video, $6 per day, $45 per month (`config/pipeline.yaml`). October raised to $50 by the
   owner (28 Oct) to finish testing. The ElevenLabs plan is billed separately.
-- **October:** about $44.5 used by 28 Oct (the sketch show, then the Secret Smart Stuff tests). Resets on 1 Nov.
+- **October:** $49.0 of $50 used by 28 Oct (the sketch show, then the Secret Smart Stuff tests). Resets on 1 Nov.
 - **BFL image credits:** topped up by the owner on 28 Oct.
