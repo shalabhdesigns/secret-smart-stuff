@@ -62,7 +62,8 @@ class Pipeline:
         self.cfg = cfg
         self.state = State(cfg.path("state_db"))
         b = cfg.pipeline["budget_usd"]
-        self.budget = Budget(self.state, Limits(b["daily"], b["monthly"], b["per_video"]))
+        monthly = float((b.get("monthly_override") or {}).get(time.strftime("%Y-%m", time.gmtime()), b["monthly"]))
+        self.budget = Budget(self.state, Limits(b["daily"], monthly, b["per_video"]))
         self.build = cfg.path("build_dir")
         self.build.mkdir(parents=True, exist_ok=True)
         self.pal = Palette.from_cfg(cfg.channel["style"]["palette"])
