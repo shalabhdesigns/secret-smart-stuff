@@ -15,7 +15,7 @@ channel:
 instagram:
   enabled: false                    # switched on once the login is connected and a test post worked
   handle: "@secretsmartstuff"       # posts are refused for any other account
-  app_id: ""                        # the "Instagram app ID" of the Meta app (public, not a secret)
+  app_id: "1643545574174386"        # the "Instagram app ID" of the Meta app (public, not a secret)
 
 voice:
   provider: elevenlabs
