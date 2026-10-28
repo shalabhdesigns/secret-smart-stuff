@@ -2,7 +2,7 @@
 name: weekly
 on:
   schedule:
-    - cron: "33 3 * * 1"        # Monday 09:03 IST
+    - cron: "33 3 * * 1,4"      # Monday and Thursday 09:03 IST (learnings update)
   workflow_dispatch:
 concurrency: { group: shorts-state, cancel-in-progress: false, queue: max }
 permissions: { contents: write }

@@ -9,7 +9,6 @@ channel:
   made_for_kids: false
   youtube_category_id: "27"        # Education
   default_hashtags: ["#design", "#everydaythings", "#didyouknow"]
-  previous: {name: Bhaukaali Toons, account: bhaukaalitoons@gmail.com, status: "dropped 28 Oct 2026 (Hindi cartoon sketch show; see docs/archive/bhaukaali-toons)"}
 
 voice:
   provider: elevenlabs
@@ -45,7 +44,7 @@ rules:
   banned_topics: [politics, news, finance, crypto, religion, astrology, health, medicine, science research]
   banned_content: [logos as subject, real people's faces, brand names in titles, copyrighted music, fear bait]
   review_pass_score: 7              # out of 10, separate AI reviewer
-  auto_publish_score: 8             # used only when approval.mode == auto
+  auto_publish_score: 8             # legacy (cli auto-approve); auto mode now uses the final review (Pipeline.critique)
 
 # Competitors: used ONLY to (1) avoid repeating topics they already covered unless we have a
 # clearly different angle, and (2) learn which objects people care about (outlier multiples).

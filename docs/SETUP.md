@@ -11,7 +11,7 @@ Everything below is set up. Use this page if something has to be redone.
 | GitHub repo | `shalabhdesigns/secret-smart-stuff` (private) |
 | Studio bot (Telegram) | display name "Secret Smart Stuff Studio" (username @bhaukaalitoonsstudiobot; only BotFather can change the username) |
 | Studio Worker (Cloudflare) | `secretsmartstuff-studio` → https://secretsmartstuff-studio.secretsmartstuff.workers.dev (home page, `/privacy`, `/dash`, Telegram webhook, YouTube login) |
-| Cloudflare account | login secretsmartstuff@gmail.com (free plan; created as bhaukaalitoons@gmail.com, email changed 28 Oct) |
+| Cloudflare account | login secretsmartstuff@gmail.com (free plan; email changed from the old address on 28 Oct; the account's display name still shows the old address until the owner renames it) |
 | Google OAuth app | "Secret Smart Stuff uploader", Google Cloud project `bhaukaali-toons` (owned by bhaukaalitoons@gmail.com) |
 
 **Keep bhaukaalitoons@gmail.com alive** until secretsmartstuff@gmail.com is an Owner of the Google Cloud project.
@@ -23,12 +23,12 @@ Everything below is set up. Use this page if something has to be redone.
     - App name "Secret Smart Stuff uploader".
     - Home page: https://secretsmartstuff-studio.secretsmartstuff.workers.dev/
     - Privacy policy: https://secretsmartstuff-studio.secretsmartstuff.workers.dev/privacy
-    - Developer contacts: bhaukaalitoons@ and secretsmartstuff@gmail.com.
+    - Developer contact: secretsmartstuff@gmail.com. Authorized domain: secretsmartstuff.workers.dev only.
+    - Project display name "Secret Smart Stuff" (the project ID `bhaukaali-toons` can never be renamed).
   - **Audience:** External, **In production**. In "Testing" the login would expire every 7 days.
   - **Data access:** youtube.upload, youtube.readonly, yt-analytics.readonly.
   - **Client "uploader" (Web application).** Redirect URIs:
     - `https://secretsmartstuff-studio.secretsmartstuff.workers.dev/oauth/callback` (the live one);
-    - `https://secretsmartstuff-studio.bhaukaalitoons.workers.dev/oauth/callback` (old, unused);
     - the OAuth Playground;
     - `http://127.0.0.1:8765`.
 

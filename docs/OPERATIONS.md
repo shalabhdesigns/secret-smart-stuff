@@ -4,17 +4,17 @@
 
 | Time (IST) | Workflow | What happens |
 |---|---|---|
-| 05:47 | `produce` | Refreshes competitor signals, tops up the topic backlog, makes one Short and sends it to your Telegram. It skips the day while a video is still waiting for you. |
-| when you tap | `command` | ✅ Approve → upload as private, scheduled for its slot · ✏️ Fix → minimal edit and a new version · 🗑 Drop → reason saved |
-| every 4 h + after each slot | `analytics` | YouTube Analytics for this channel's Shorts; checks uploads went live |
-| Monday 09:03 | `summary` | Weekly learning report (what worked, by pillar and publish time) |
+| 05:47 | `produce` | Makes one Short. If it passes the final review it is uploaded private + scheduled for its slot (auto mode until 25 Nov 2026) and you get it in Telegram with a ⏸ Stop it button. If it fails, it is fixed or dropped and you are told. |
+| when you tap | `command` | ⏸ Stop it → keeps that video private · (manual mode) ✅ Approve / ✏️ Fix / 🗑 Drop |
+| every 4 h + after each slot | `analytics` | YouTube Analytics for every video; confirms uploads went live; post-mortems at 48 h and 7 days (short Telegram note each) |
+| Monday and Thursday 09:03 | `summary` | Learnings update: rules for the writer, topic guidance, proposals for you; `data/LEARNINGS.md` |
 
 Times are slightly off the hour on purpose. GitHub delays jobs scheduled exactly on the hour, and any run can
 start late.
 
 ## Your time
 
-- **Daily, 2–5 minutes:** watch the video in Telegram, then tap ✅, ✏️ (say what to change) or 🗑.
+- **Daily, optional:** watch the new video in Telegram; tap ⏸ Stop it only if something is wrong.
 - **Weekly, about 15 minutes:**
   - In YouTube Studio, check "viewed vs swiped away" for the week's Shorts. That number is not in the API.
   - Reply to a few comments.

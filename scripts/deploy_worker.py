@@ -27,7 +27,7 @@ CF = "https://api.cloudflare.com/client/v4"
 NAME = "secretsmartstuff-studio"
 KV_TITLE = "secretsmartstuff-studio"
 SUBDOMAIN = "secretsmartstuff"
-OLD_NAMES = ["bhaukaalitoons-studio"]          # earlier names of this Worker/KV store (renamed or removed on deploy)
+OLD_NAMES: list[str] = []      # earlier names of this Worker/KV store (renamed or removed on deploy)
 
 
 def cf(method: str, path: str, **kw) -> dict:

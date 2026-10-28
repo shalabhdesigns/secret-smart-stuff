@@ -396,6 +396,38 @@ completed your self-review"):
   with this; the flag was accepted by the owner.
 - **The ElevenLabs cost per video is estimated** from plan credits, not billed per call.
 
+## 14. Publishing and the learning loop (since 28 Oct 2026)
+
+**Publishing (auto mode, until `approval.auto_until`, 25 Nov 2026):**
+1. The daily run makes one video.
+2. The final self-review decides: pass → upload private, scheduled for the next free slot of the publish-time
+   experiment.
+3. The owner gets the video in Telegram with the review scores and a **⏸ Stop it** button. Stop keeps it
+   private and unscheduled.
+4. A video that fails is fixed (at most 3 review rounds) or dropped. One more topic is tried; otherwise the
+   owner is told "no video today" with the reason. It is saved as a `rejected-<job>` release.
+5. Upload, then live: the verify step confirms each video went public and says so in Telegram.
+
+**Learning loop:**
+- **Every 4 h (`analytics`):**
+  - YouTube Analytics per video: views, engaged views, watch time, average view duration and %, likes,
+    comments, shares, subscribers.
+  - Retention curve and traffic sources; channel daily totals.
+- **48 h and 7 days after a video goes public (`shorts/insights.py`):** a post-mortem.
+  - Its numbers vs the channel's median at the same age.
+  - The retention curve mapped onto the script's beats.
+  - Claude's verdict, what worked, what didn't, drop points and lessons.
+  - The owner gets a short Telegram note.
+- **Monday and Thursday (`learn.weekly`):**
+  - Statistics by pillar, publish slot, hook formula, length, wit and music, at equal age (medians, n shown).
+  - Plus the post-mortems.
+  - The output updates **rules for the writer** (`lessons_for_writer`, used in every script prompt) and
+    **topic guidance** (`topic_guidance`, used when new ideas are generated).
+  - Lessons are marked "hypothesis" until there is a pattern (n ≥ 5 per group, ≥ 1.3× difference).
+  - Anything that would change this playbook is sent to the owner as a proposal, not applied.
+- **The living record:** `data/LEARNINGS.md` on the `state` branch, plus the dashboard. It holds every
+  analysis and the current rules.
+
 ## Change log
 
 - 2026-10-25: Playbook created from the approved onigiri v9. Arrows under 12% of the frame are now dropped.
@@ -409,3 +441,5 @@ completed your self-review"):
 - 2026-10-28: Review bar calibrated to onigiri level (owner). Pictures: at most 6, each one simple whole object;
   parts are shown with focus, markers or labels, never with complex AI scenes. A cheap "can we draw it" probe
   runs before each script. Image model stays FLUX.2 pro (bake-off vs FLUX.2 max and FLUX 3: no clear winner).
+- 2026-10-28: Auto-publishing for 28 days (owner); per-video post-mortems at 48 h / 7 d; learnings update twice a
+  week and feed both the writer and topic choice; living learnings file.

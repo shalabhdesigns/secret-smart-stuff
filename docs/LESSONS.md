@@ -147,7 +147,6 @@ How each item is marked:
 
 | What | Where |
 |---|---|
-| Sketch pipeline code (writers' room, judge, gates, puppet engine, art) | git branch `archive/bhaukaali-toons` |
-| Sketch docs: template, rubric, show bible, audit, craft cards, comedy/screenwriting/animation research | `docs/archive/bhaukaali-toons/` |
+| Sketch pipeline code, docs and research (writers' room, judge, gates, puppet engine) | git branch `archive/bhaukaali-toons` |
 | Retention, platform and LLM-judging research (still applies) | `docs/research/R2_*`, `docs/research/R4_*`, `docs/research/BIBLIOGRAPHY.md`, `research/` |
-| Bhaukaali analytics, uploads and owner notes | `*_bhaukaali` tables in the state database |
+| Its analytics, uploads and owner notes | `data/state_export_28oct2026.json` on that branch |

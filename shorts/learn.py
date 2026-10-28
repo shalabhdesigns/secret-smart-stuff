@@ -101,9 +101,15 @@ music, wit · Costs · Experiments (progress per arm; if ready_to_conclude, say 
 much) · Owner feedback themes · Next: repeat / change / stop / test.
 Then a final section "## Proposals for the owner" listing at most 3 concrete changes to the production
 playbook that the evidence supports (or "None yet").
-Also return, after the markdown, a line "LESSONS_FOR_WRITER:" followed by at most 4 one-line
-lessons that are directly supported by the "lessons" list (empty if the list is empty).
+Also return, after the markdown:
+- a line "LESSONS_FOR_WRITER:" followed by at most 5 one-line lessons for the next scripts (hooks, story,
+  pacing, visuals, captions, titles). Use the statistical "lessons" list first; then the per-video analyses
+  when two or more videos point the same way. Mark each line "(pattern, n=..)" or "(hypothesis)". Never
+  contradict docs/PLAYBOOK.md rules (question hook, loop, sourced facts, simple pictures) — refine within them.
+- a line "TOPIC_GUIDANCE:" followed by at most 4 lines: which kinds of objects/pillars to double down on,
+  keep, or drop, each with its evidence (n, views vs median).
 Data: {data}
+Per-video analyses (latest first): {analyses}
 Owner feedback (latest): {feedback}"""
 
 
@@ -111,22 +117,29 @@ def weekly(p) -> dict:
     st = stats(p.state)
     fb = [dict(r) for r in p.state.db.execute(
         "SELECT decision, note FROM feedback WHERE note != '' ORDER BY at DESC LIMIT 15")]
-    if st["videos_at_7d"] == 0:
-        md = ("# Learnings\n\nNo video is 7 days old yet, so there is nothing to compare. "
-              "The first report comes 7 days after the first video goes public.\n")
+    from . import insights
+    analyses = insights.recent_lessons(p.state)
+    if st["videos_at_7d"] == 0 and not analyses:
+        md = ("# Learnings\n\nNo video is old enough to analyse yet. "
+              "The first analysis comes 48 hours after the first video goes public.\n")
         p.state.set_setting("learnings_md", md)
         return {"videos": 0}
-    r = p._llm(REPORT.format(min_n=MIN_N, data=json.dumps(st)[:12000], feedback=json.dumps(fb)[:3000]),
+    r = p._llm(REPORT.format(min_n=MIN_N, data=json.dumps(st)[:12000], feedback=json.dumps(fb)[:3000],
+                             analyses=json.dumps(analyses, ensure_ascii=False)[:6000]),
                None, "learnings", est=0.05, model=p.cfg.pipeline["providers"]["llm"]["model_script"],
                max_tokens=3000, json_out=False)
     text = r.text or ""
-    md, _, lessons = text.partition("LESSONS_FOR_WRITER:")
+    md, _, rest = text.partition("LESSONS_FOR_WRITER:")
+    lessons, _, topics = rest.partition("TOPIC_GUIDANCE:")
     md = f"# Learnings ({time.strftime('%Y-%m-%d', time.gmtime())})\n\n" + md.strip()
     p.state.set_setting("learnings_md", md)
-    if st["lessons"] and lessons.strip():
+    if lessons.strip():
         p.state.set_setting("lessons_for_writer", lessons.strip()[:1500])
+    if topics.strip():
+        p.state.set_setting("topic_guidance", topics.strip()[:1200])
+    insights.write_learnings(p)
     head = md.split("## Proposals for the owner")
     tail = head[1].strip()[:700] if len(head) > 1 else ""
     notify.send(p.state, f"📈 Weekly learnings are on the dashboard ({st['videos_at_7d']} videos at 7 days)."
                          + (f"\n\nProposals:\n{tail}" if tail and "None" not in tail[:20] else ""))
-    return {"videos": st["videos_at_7d"], "lessons": len(st["lessons"])}
+    return {"videos": st["videos_at_7d"], "lessons": len(st["lessons"]), "analyses": len(analyses)}

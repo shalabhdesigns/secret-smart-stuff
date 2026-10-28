@@ -129,3 +129,43 @@ def test_self_review_fixes_then_passes(tmp_path, monkeypatch):
     assert "### Self-review" in (d / "review.md").read_text()
     assert State(db).db.execute("SELECT COUNT(*) n FROM feedback WHERE decision='selffix'").fetchone()["n"] == 1
     assert State(db).db.execute("SELECT COUNT(*) n FROM feedback WHERE decision='fix'").fetchone()["n"] == 0
+    # auto mode: a passing video is approved and published at its experiment slot, with features recorded
+    calls2 = {}
+    def fake_publish(j, publish_at=None):
+        calls2["when"] = publish_at
+        p.state.set_job_status(j, "published")
+        return {"url": "https://youtube.com/shorts/x"}
+    p.publish = fake_publish
+    assert rc.auto_publish(p, job) == 0
+    assert calls2["when"] and p.state.get_job(job)["status"] == "published"
+    feats = json.loads(p.state.db.execute("SELECT data FROM features WHERE job_id=?", (job,)).fetchone()["data"])
+    assert feats["beats"] and feats["self_review"]["rounds"] == 2 and feats["publish_at"] == calls2["when"]
+
+
+def test_postmortem_writes_learnings(tmp_path, monkeypatch):
+    """A public video with 48 h metrics + retention gets one analysis, a Telegram note and a LEARNINGS.md entry."""
+    monkeypatch.setenv("SHORTS_MODE", "dry_run")
+    monkeypatch.setenv("TELEGRAM_BOT_TOKEN", "")
+    from shorts.config import load
+    from shorts.pipeline import Pipeline
+    from shorts import insights
+    p = Pipeline(load())
+    p.state = State(tmp_path / "s.db")
+    st = p.state
+    st.upsert_topic("t1", "Why do bus shelters have dots?")
+    st.start_job("t1-v1", "t1")
+    st.record_upload("t1-v1", "h1", "uploaded", video_id="VID1", url="u", publish_at="2026-10-20T13:30:00Z")
+    st.db.execute("UPDATE uploads SET status='live'"); st.db.commit()
+    st.set_features("t1-v1", {"seconds": 36, "beats": [{"id": "b1", "start": 0, "words": "Why?"},
+                                                        {"id": "b2", "start": 4, "words": "Because."}]})
+    st.add_metrics("VID1", {"views": 500, "averageViewPercentage": 80, "likes": 9, "shares": 2}, 50)
+    with st.tx() as db:
+        db.execute("INSERT INTO video_detail(video_id, kind, data, at) VALUES (?,?,?,?)",
+                   ("VID1", "retention", json.dumps([{"elapsedVideoTimeRatio": i / 100, "audienceWatchRatio": 1 - i / 200}
+                                                     for i in range(100)]), 0))
+    monkeypatch.setattr(p.cfg, "root", tmp_path)
+    r = insights.postmortems(p)
+    assert r["analysed"] == [("VID1", "48h")]
+    assert insights.postmortems(p)["analysed"] == []          # only once per age
+    md = (tmp_path / "data" / "LEARNINGS.md").read_text()
+    assert "t1-v1 (48h)" in md and "cut repeats" in md

@@ -14,8 +14,7 @@ fixed_costs_usd_month:
   cloudflare: 0.00         # free plan
   telegram: 0.00
 
-# Cloudflare account that runs the Telegram/dashboard/login Worker (secretsmartstuff-studio). Not a secret.
-# It was created under bhaukaalitoons@gmail.com during the Bhaukaali Toons period; the account login is still that email.
+# Cloudflare account (login secretsmartstuff@gmail.com) that runs the studio Worker. Not a secret.
 cloudflare_account_id: a741d1d4877261452def869b39c7e4bc
 
 schedule:
@@ -25,7 +24,11 @@ schedule:
   analytics_every_hours: 6
 
 approval:
-  mode: manual           # manual: owner approves each video in a GitHub issue | auto: score >= auto_publish_score
+  # auto (owner, 28 Oct 2026): a video that passes the final review (Pipeline.critique, onigiri-level bar) is
+  # uploaded private + scheduled for its slot without waiting for the owner; he gets a message with a
+  # "Stop it" button. After auto_until the system goes back to manual approval by itself.
+  mode: auto
+  auto_until: "2026-11-25"
   privacy_on_upload: private
 
 providers:

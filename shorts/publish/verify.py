@@ -42,7 +42,7 @@ def classify(item: dict, publish_at: str | None, now: float) -> tuple[str, str]:
 def run(state) -> list[dict]:
     out = []
     now = time.time()
-    rows = state.db.execute("SELECT * FROM uploads WHERE video_id IS NOT NULL AND status NOT IN ('live','failed')").fetchall()
+    rows = state.db.execute("SELECT * FROM uploads WHERE video_id IS NOT NULL AND status NOT IN ('live','failed','held')").fetchall()
     for r in rows:
         try:
             item = processing_status(r["video_id"])

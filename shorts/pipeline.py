@@ -124,8 +124,11 @@ class Pipeline:
         sig = json.dumps((signals or [])[:30], ensure_ascii=False) if signals else "(none)"
         drops = [r["note"] for r in self.state.db.execute(
             "SELECT note FROM feedback WHERE decision='drop' AND note != '' ORDER BY at DESC LIMIT 8")]
-        extra = ("\n\nThe owner dropped earlier topics for these reasons - avoid ideas with the same problem:\n"
-                 + "\n".join(f"- {x[:200]}" for x in drops)) if drops else ""
+        extra = ("\n\nEarlier topics were dropped for these reasons (owner or final review) - avoid ideas with "
+                 "the same problem:\n" + "\n".join(f"- {x[:200]}" for x in drops)) if drops else ""
+        guide = self.state.get_setting("topic_guidance")
+        if guide:
+            extra += "\n\nWhat this channel's own analytics say about topics (follow it, keep some variety):\n" + guide[:1200]
         r = self._llm(P.IDEAS.format(n=n, quotas=quotas, avoid=avoid, covered=covered, signals=sig) + extra, None, "ideas",
                       system=P.SYSTEM_WRITER, model=self.cfg.pipeline["providers"]["llm"]["model_routine"])
         added = []
@@ -536,7 +539,7 @@ class Pipeline:
                     old = re.sub(rf"\b{re.escape(word)}\b", say, old)
             except Exception:  # noqa: BLE001
                 return None
-        audio = next((pr / n for n in ("narration_trim.mp3", "narration_trim.wav", "narration.mp3")
+        audio = next((pr / n for n in ("narration_trim.mp3", "narration_trim.wav", "narration.mp3", "narration.wav")
                       if (pr / n).exists()), None)
         if old != text or not audio or not (pr / "words.json").exists():
             return None

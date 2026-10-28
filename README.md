@@ -9,14 +9,13 @@ This pipeline:
 - illustrates them (FLUX);
 - renders vertical Shorts with captions, camera moves and original music;
 - checks quality;
-- sends each video to the owner's Telegram for approval;
-- uploads it to YouTube as private and scheduled;
-- learns from analytics.
+- reviews each finished video against a calibrated quality bar (up to 3 fix rounds);
+- uploads passing videos to YouTube as private + scheduled (auto mode) and tells the owner on Telegram;
+- analyses every video at 48 h and 7 days and feeds the lessons into the next scripts and topics.
 
 It runs on GitHub Actions, so no computer needs to stay on.
 
-The 26–28 Oct 2026 detour into a Hindi cartoon sketch show (Bhaukaali Toons, now dropped) is on branch
-`archive/bhaukaali-toons`.
+A dropped format from 26–28 Oct 2026 is kept only on branch `archive/bhaukaali-toons`.
 
 ## Start here
 

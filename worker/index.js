@@ -104,6 +104,29 @@ async function telegram(req, env) {
       });
       return ack(env, cq, "Approved. I'll message you when it's uploaded.");
     }
+    if (kind === "s") {
+      // stop an auto-published video: ask once, publishing is the default
+      await tg(env, "editMessageReplyMarkup", {
+        chat_id: chat, message_id: msg.message_id,
+        reply_markup: { inline_keyboard: [[
+          { text: "⏸ Yes, keep it private", callback_data: `S:${job}` },
+          { text: "↩️ No, publish", callback_data: `k:${job}` },
+        ]] },
+      });
+      return ack(env, cq, "Tap 'Yes' to keep it private");
+    }
+    if (kind === "k") {
+      await tg(env, "editMessageReplyMarkup", { chat_id: chat, message_id: msg.message_id,
+        reply_markup: { inline_keyboard: [[{ text: "⏸ Stop it", callback_data: `s:${job}` }]] } });
+      return ack(env, cq, "OK, it will publish as planned");
+    }
+    if (kind === "S") {
+      const err = await dispatch(env, { action: "unpublish", job });
+      if (err) return ack(env, cq, "Could not start: " + err, true);
+      await tg(env, "editMessageReplyMarkup", { chat_id: chat, message_id: msg.message_id,
+        reply_markup: { inline_keyboard: [[{ text: "⏳ Stopping…", callback_data: "noop:x" }]] } });
+      return ack(env, cq, "Stopping. I'll confirm in a minute.");
+    }
     if (kind === "f") {
       await tg(env, "sendMessage", {
         chat_id: chat, parse_mode: "HTML",
@@ -143,8 +166,8 @@ async function telegram(req, env) {
     reply = "👍 Got it. Making the changes; the new version arrives here in about 15 minutes.";
   } else if (/^\/start\b/.test(text) || /^\/help\b/.test(text)) {
     return say(env, chat,
-      "Every new Secret Smart Stuff video arrives here for your review.\n\n" +
-      "Buttons: ✅ Approve (asks to confirm, then uploads it privately, scheduled for its slot) · ✏️ Fix (tell me what to change) · 🗑 Drop\n\n" +
+      "Every new Secret Smart Stuff video is checked by my final review and, if it passes, uploaded and scheduled automatically (until 25 Nov 2026). You get a message for each one.\n\n" +
+      "Buttons: ⏸ Stop it (keeps that video private) · ✅ Approve / ✏️ Fix / 🗑 Drop (for videos that need your review)\n\n" +
       "Commands:\n/status – the queue\n/produce – make an extra video now\n" +
       "/dash – dashboard link\n/ytlogin – connect the YouTube channel (one tap)\n/revenue 2026-11 12.50 – record revenue for a month (USD)");
   } else if (/^\/ytlogin\b/.test(text)) {

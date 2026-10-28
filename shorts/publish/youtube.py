@@ -249,3 +249,15 @@ def processing_status(video_id: str) -> dict:
     r.raise_for_status()
     items = r.json().get("items", [])
     return items[0] if items else {}
+
+
+def unschedule(video_id: str) -> dict:
+    """Keep a video private and remove its scheduled publish time (owner's "Stop it" button)."""
+    token = access_token()
+    body = {"id": video_id, "status": {"privacyStatus": "private", "selfDeclaredMadeForKids": False,
+                                       "embeddable": True, "containsSyntheticMedia": True}}
+    r = requests.put(VIDEOS_URL, params={"part": "status"}, json=body,
+                     headers={"Authorization": f"Bearer {token}"}, timeout=30)
+    if r.status_code >= 400:
+        raise UploadBlocked(f"could not stop {video_id}: {r.status_code} {r.text[:200]}")
+    return r.json()

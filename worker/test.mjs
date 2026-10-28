@@ -40,6 +40,12 @@ await tgPost({ callback_query: { id: "1", from: { id: 42 }, data: "a:onigiri-v9"
 assert.equal(gh().length, 0);
 await tgPost({ callback_query: { id: "2", from: { id: 42 }, data: "A:onigiri-v9", message: { message_id: 5 } } });
 assert.deepEqual({ ...lastReq(), nonce: undefined }, { action: "approve", job: "onigiri-v9", nonce: undefined });
+// stop an auto-published video: confirm first, then dispatch
+let nstop = gh().length;
+await tgPost({ callback_query: { id: "9", from: { id: 42 }, data: "s:bus-v1", message: { message_id: 7 } } });
+assert.equal(gh().length, nstop);
+await tgPost({ callback_query: { id: "10", from: { id: 42 }, data: "S:bus-v1", message: { message_id: 7 } } });
+assert.equal(lastReq().action, "unpublish"); assert.equal(lastReq().job, "bus-v1");
 // bad job id rejected
 const before = gh().length;
 await tgPost({ callback_query: { id: "3", from: { id: 42 }, data: "A:../../x", message: { message_id: 5 } } });
@@ -116,7 +122,7 @@ for (const k of [...store.keys()]) if (k.startsWith("oauth_link:")) store.delete
 r = await worker.fetch(new Request("https://x/oauth/callback?state=" + "a".repeat(48) + "&code=c"), env);
 assert.equal(r.status, 400); assert.equal(store.get("yt_refresh.enc"), undefined);
 // wrong channel -> not stored
-channelTitle = "Bhaukaali Toons";
+channelTitle = "Some Other Channel";
 r = await worker.fetch(new Request(`https://x/oauth/callback?state=${await login()}&code=c`), env);
 assert.equal(r.status, 400); assert.equal(store.get("yt_refresh.enc"), undefined);
 // right channel -> stored encrypted (never in clear)

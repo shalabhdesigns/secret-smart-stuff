@@ -12,7 +12,7 @@ if [[ "$cmd" == "pull" ]]; then
     git fetch -q origin "$BR"
     mkdir -p state data
     for db in live.db dryrun.db; do git show "origin/$BR:state/$db" > "state/$db" 2>/dev/null || rm -f "state/$db"; done
-    for f in signals.json insights.json; do git show "origin/$BR:data/$f" > "data/$f" 2>/dev/null || rm -f "data/$f"; done
+    for f in signals.json insights.json LEARNINGS.md; do git show "origin/$BR:data/$f" > "data/$f" 2>/dev/null || rm -f "data/$f"; done
     echo "state restored"
   else
     echo "no state branch yet - starting fresh"
@@ -29,7 +29,7 @@ elif [[ "$cmd" == "push" ]]; then
     fi
     mkdir -p .state-wt/state .state-wt/data
     cp "$tmp"/state/*.db .state-wt/state/ 2>/dev/null || true
-    cp "$tmp"/data/*.json .state-wt/data/ 2>/dev/null || true
+    cp "$tmp"/data/*.json "$tmp"/data/*.md .state-wt/data/ 2>/dev/null || true
     (cd .state-wt && git add -A && (git diff --cached --quiet || git commit -qm "state: $(date -u +%FT%TZ) ${GITHUB_WORKFLOW:-local}") && git push -q origin "$BR") && break
     echo "push conflict, retrying ($attempt)"; sleep $((attempt * 5))
   done

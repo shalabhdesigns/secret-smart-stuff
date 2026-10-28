@@ -2,10 +2,8 @@
 
 - **Channel:** Secret Smart Stuff (YouTube @secretsmartstuff, account secretsmartstuff@gmail.com). English
   explainer Shorts: "The secret smart reasons behind everyday things."
-- **History:** Bhaukaali Toons (a Hindi cartoon sketch show) ran from 26 to 28 Oct 2026. The owner dropped it.
-  - Its code is on branch `archive/bhaukaali-toons`.
-  - Its docs are in `docs/archive/bhaukaali-toons/`.
-  - Never restart it without the owner asking.
+- **History:** a Hindi cartoon sketch format was tried 26–28 Oct 2026 and dropped. Everything from it (code, docs,
+  data) is on branch `archive/bhaukaali-toons` only; nothing of it runs. Never restart it unless the owner asks.
 - **Read `docs/PLAYBOOK.md` first.** It is the approved production process (baseline: onigiri v9, approved
   25 Oct 2026). Follow it by default. Change it only with evidence (`docs/EXPERIMENTS.md`) or owner approval,
   and log every change in its Change log.
@@ -16,9 +14,10 @@
   - to be asked only for real decisions or access.
 
 ## Owner rules (standing)
-- **He approves every video before it is published.** Nothing goes public without his ✅ in Telegram.
-  - On approval the system uploads the video as private, scheduled for its publish slot (the publish-time
-    experiment, `config/experiments.yaml`).
+- **Auto-publishing until 25 Nov 2026** (owner, 28 Oct): a video that passes the final review is uploaded
+  private + scheduled for its slot without waiting for him; he gets each video in Telegram with a "⏸ Stop it"
+  button. A video that fails is never published: it is fixed (≤3 review rounds) or dropped and he is told.
+  After `approval.auto_until` the system returns to manual ✅ by itself.
 - **One video a day.** Daily production starts automatically; one video waits for review at a time.
 - **Format:** stills with camera moves (onigiri v9), 30–36 s.
   - Real-motion AI clips are off. They cost about $2.50–3.50 more per video; test them only as an experiment.

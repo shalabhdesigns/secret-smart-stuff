@@ -81,6 +81,68 @@ def fetch_bundle(job: str, into: Path) -> bool:
     return r.returncode == 0
 
 
+def record_features(p: Pipeline, job: str) -> tuple[str, str]:
+    """What the video is made of (for the learning loop) + its publish slot. Returns (slot, publish time)."""
+    j = p.state.get_job(job)
+    d = ROOT / "build" / job
+    script = json.loads((d / "script.json").read_text())
+    slot = X.slot_for(p.state, job)
+    when = X.next_publish_time(p.state, slot, margin_minutes=30)
+    topic = p.state.get_topic(j["topic_id"])
+    feats = X.features(script, json.loads((d / "visuals.json").read_text()) if (d / "visuals.json").exists() else {},
+                       j["artifacts"].get("render"), topic, p.state.job_cost(job))
+    try:
+        beats, end = p._beat_frames(d)
+        feats["beats"] = [{"id": b["id"], "start": b["start"], "words": b["words"]} for b in beats]
+        feats.setdefault("seconds", round(end, 1))
+    except Exception as e:  # noqa: BLE001
+        p.state.log(f"beat timings not recorded: {e}", "warn", job)
+    crit = json.loads((d / "critique.json").read_text()) if (d / "critique.json").exists() else []
+    if crit:
+        feats["self_review"] = {"rounds": len(crit), "mean": crit[-1].get("mean"), "scores": crit[-1].get("scores")}
+    p.state.set_features(job, {**feats, "publish_slot_utc": slot})
+    return slot, when
+
+
+def auto_mode(p: Pipeline) -> bool:
+    """Owner (28 Oct 2026): publish without his approval for 28 days when the video passes the final review."""
+    a = p.cfg.pipeline.get("approval") or {}
+    until = str(a.get("auto_until") or "")
+    on = a.get("mode") == "auto" and p.cfg.live and (not until or time.strftime("%Y-%m-%d", time.gmtime()) <= until)
+    if a.get("mode") == "auto" and not on and until and not p.state.get_setting(f"auto_ended:{until}"):
+        p.state.set_setting(f"auto_ended:{until}", "1")
+        notify.send(p.state, f"🔔 The automatic publishing period ended ({until}). New videos now wait for your ✅ "
+                             "again. Tell me if you want to extend it.")
+    return on
+
+
+def auto_publish(p: Pipeline, job: str) -> int:
+    subprocess.run([str(ROOT / "scripts" / "open_review.sh"), job], check=True)     # record: release + issue
+    d = ROOT / "build" / job
+    slot, when = record_features(p, job)
+    crit = json.loads((d / "critique.json").read_text()) if (d / "critique.json").exists() else [{}]
+    c = crit[-1]
+    p.decide(job, "approve", f"auto: passed the final review (mean {c.get('mean')})")
+    try:
+        rec = p.publish(job, publish_at=when)
+    except Exception as e:  # noqa: BLE001
+        p.state.set_job_status(job, "approved", str(e))
+        alert(p, f"Upload failed: {job}", f"{e}\n\nNothing was published. It will be retried on the next run.")
+        return 1
+    feats = p.state.db.execute("SELECT data FROM features WHERE job_id=?", (job,)).fetchone()
+    if feats:
+        p.state.set_features(job, {**json.loads(feats["data"]), "publish_at": when})
+    meta = json.loads((d / "metadata.json").read_text())
+    sc = c.get("scores") or {}
+    cap = (f"✅ <b>{notify.esc(meta.get('title', job))}</b>\nUploaded. Goes public {ist(when)} IST.\n"
+           f"{rec.get('url')}\nMy review: {c.get('mean')}/5 · hook {sc.get('hook_curiosity', '?')} · "
+           f"credibility {sc.get('visual_credibility', '?')} · share {sc.get('share', '?')} · cost ${p.state.job_cost(job):.2f}\n"
+           f"{notify.esc(c.get('summary', ''))}\n<code>job:{job}</code>")
+    notify.send_video(p.state, d / "final.mp4", cap, [[("⏸ Stop it", f"s:{job}"[:64])]])
+    comment(job, f"✅ Auto-published (private until {when} UTC). {rec.get('url')}", close=True)
+    return 0
+
+
 def send_for_review(p: Pipeline, job: str) -> None:
     """Publish the review bundle (release + issue) and send the video to the owner's phone."""
     subprocess.run([str(ROOT / "scripts" / "open_review.sh"), job], check=True)
@@ -89,14 +151,7 @@ def send_for_review(p: Pipeline, job: str) -> None:
     meta = json.loads((d / "metadata.json").read_text()) if (d / "metadata.json").exists() else {}
     rv = (j["artifacts"].get("review") or {}).get("content") or {}
     vis = j["artifacts"].get("visuals") or {}
-    script = json.loads((d / "script.json").read_text())
-    slot = X.slot_for(p.state, job)
-    when = X.next_publish_time(p.state, slot, margin_minutes=30)
-    topic = p.state.get_topic(j["topic_id"])
-    p.state.set_features(job, {**X.features(script, json.loads((d / "visuals.json").read_text())
-                                            if (d / "visuals.json").exists() else {},
-                                            j["artifacts"].get("render"), topic, p.state.job_cost(job)),
-                               "publish_slot_utc": slot})
+    slot, when = record_features(p, job)
     crit = json.loads((d / "critique.json").read_text()) if (d / "critique.json").exists() else []
     extra = ""
     if crit:
@@ -240,6 +295,8 @@ def do_produce(p: Pipeline, req: dict) -> int:
         job = p.produce(t["id"])
         j = p.state.get_job(job)
     if j["status"] == "review" and not j["error"]:
+        if auto_mode(p) and not req.get("hold"):
+            return auto_publish(p, job)
         if req.get("hold"):
             # Claude checks it frame by frame first, then sends it with {"action":"send_review","job":...}
             subprocess.run([str(ROOT / "scripts" / "open_review.sh"), job], check=True)
@@ -426,10 +483,6 @@ def main(path: str) -> int:
         spent_24h = p.state.spend_since(time.time() - 86400)
         p.budget.limits.daily_usd = max(p.budget.limits.daily_usd, spent_24h + extra)
         p.state.log(f"owner allowed +${extra:.2f} on today's daily limit for this run")
-    # ---- Bhaukaali Toons / Sab Theek Hai was dropped by the owner on 28 Oct 2026 ----
-    if re.fullmatch(r"ep\d{3}[a-z]?(-v\d+)?", str(req.get("job", ""))) or action in ("sketch_daily", "sketch_produce", "grow"):
-        notify.send(p.state, "That Bhaukaali Toons episode was cancelled (the show is stopped). Nothing was done.")
-        return 0
     # ---- Secret Smart Stuff explainers (the live format) ----
     if action in ("produce", "daily"):
         return do_produce(p, req)
@@ -456,6 +509,29 @@ def main(path: str) -> int:
             return d.returncode
         notify.send(p.state, f"🔧 Repo is now {new}; studio address: {p.state.get_setting('worker_url') or '?'}. "
                              "Buttons and /ytlogin keep working; your YouTube login is unchanged.")
+        return 0
+    if action == "archive_old_show_data":
+        # one-off (28 Oct 2026): move the dropped sketch show's rows out of the live database into a JSON file on
+        # the archive branch, then remove those tables, so nothing of it is left in the live system
+        tables = [r[0] for r in p.state.db.execute("SELECT name FROM sqlite_master WHERE type='table' AND "
+                                                   "(name LIKE '%_bhaukaali' OR name='episodes')")]
+        dump = {t: [dict(r) for r in p.state.db.execute(f"SELECT * FROM {t}")] for t in tables}
+        wt = ROOT / ".archive-wt"
+        subprocess.run(["git", "config", "user.name", "shorts-bot"], check=True)
+        subprocess.run(["git", "config", "user.email", "shorts-bot@users.noreply.github.com"], check=True)
+        subprocess.run(["git", "fetch", "-q", "origin", "archive/bhaukaali-toons"], check=True)
+        subprocess.run(["git", "worktree", "add", "-q", str(wt), "FETCH_HEAD"], check=True)
+        (wt / "data").mkdir(exist_ok=True)
+        (wt / "data" / "state_export_28oct2026.json").write_text(json.dumps(dump, indent=1, default=str, ensure_ascii=False))
+        subprocess.run(["git", "-C", str(wt), "add", "data"], check=True)
+        subprocess.run(["git", "-C", str(wt), "commit", "-qm", "Archive: live-database rows of the dropped show"], check=True)
+        subprocess.run(["git", "-C", str(wt), "push", "-q", "origin", "HEAD:refs/heads/archive/bhaukaali-toons"], check=True)
+        subprocess.run(["git", "worktree", "remove", "--force", str(wt)], check=True)
+        with p.state.tx() as db:
+            for t in tables:
+                db.execute(f"DROP TABLE {t}")
+            db.execute("DELETE FROM settings WHERE key LIKE 'publish_slot_ist%' OR key LIKE 'art_%' OR key LIKE 'sketch%'")
+        print({t: len(v) for t, v in dump.items()})
         return 0
     if action == "drop_topics":
         for tid in req.get("topics") or []:
@@ -540,6 +616,24 @@ def main(path: str) -> int:
         print(json.dumps({k: c.get(k) for k in ("passed", "mean", "scores", "summary", "blocking")}, indent=1))
         if not c.get("passed") and req.get("drop_if_failed"):
             p.decide(job, "reject", f"self-review: {c.get('summary', '')}"[:400])
+        return 0
+    if action == "unpublish":
+        # owner tapped "Stop it": keep the video private and cancel its scheduled publish
+        from shorts.publish.youtube import unschedule
+        up = p.state.db.execute("SELECT * FROM uploads WHERE job_id=?", (req.get("job", ""),)).fetchone()
+        if not up or not up["video_id"]:
+            notify.send(p.state, "I can't find that upload.")
+            return 1
+        try:
+            unschedule(up["video_id"])
+        except Exception as e:  # noqa: BLE001
+            alert(p, "Could not stop the video", f"{up['url']}: {e}")
+            return 1
+        with p.state.tx() as db:
+            db.execute("UPDATE uploads SET status='held', privacy='private' WHERE job_id=?", (up["job_id"],))
+        p.state.add_feedback(up["job_id"], "stop", req.get("note", ""))
+        notify.send(p.state, f"⏸ Stopped. {up['url']} stays private (not scheduled). Reply to this message with "
+                             "what was wrong if you want; I'll learn from it.")
         return 0
     if action == "send_review":
         job = req.get("job", "")
@@ -660,50 +754,6 @@ def main(path: str) -> int:
             out.append(f"### `{sub}` → exit {r.returncode}\n```\n" + "\n".join(tail) + "\n```")
         gh("issue", "create", "--title", "Diagnostics", "--body", "\n\n".join(out), check=False)
         print("\n".join(out))
-        return 0
-    if action == "migrate_sss":
-        # 28 Oct 2026: back to Secret Smart Stuff. Keep Bhaukaali Toons history in *_bhaukaali tables so
-        # it never mixes with this channel's analytics, owner notes or writer prompts.
-        db = p.state.db
-        bt_videos = [r["video_id"] for r in db.execute(
-            "SELECT video_id FROM uploads WHERE job_id LIKE 'ep%' OR job_id LIKE 'sab-theek%'") if r["video_id"]]
-        moves = {
-            "uploads": "job_id LIKE 'ep%' OR job_id LIKE 'sab-theek%'",
-            "feedback": "job_id LIKE 'ep%'",
-            "features": "job_id LIKE 'ep%'",
-            "assignments": "job_id LIKE 'ep%'",
-            "channel_daily": "1",            # channel totals were Bhaukaali's; refetched for this channel
-            "video_detail": "video_id IN (%s)" % ",".join("?" * len(bt_videos)) if bt_videos else "0",
-            "metrics": "video_id IN (%s)" % ",".join("?" * len(bt_videos)) if bt_videos else "0",
-        }
-        report = []
-        with p.state.tx() as c:
-            for table, where in moves.items():
-                args = bt_videos if "video_id IN" in where else []
-                c.execute(f"CREATE TABLE IF NOT EXISTS {table}_bhaukaali AS SELECT * FROM {table} WHERE 0")
-                n = c.execute(f"INSERT INTO {table}_bhaukaali SELECT * FROM {table} WHERE {where}", args).rowcount
-                c.execute(f"DELETE FROM {table} WHERE {where}", args)
-                report.append(f"{table}: {n} moved")
-        for jj in p.state.jobs():          # the clip-format test (never sent) is superseded by the stills format
-            if jj["status"] == "review" and jj["id"] in (req.get("retire_jobs") or []):
-                p.state.set_job_status(jj["id"], "rejected", "retired: superseded by the stills format")
-                p.state.set_topic_status(jj["topic_id"], "shortlisted")
-                report.append(f"retired {jj['id']}")
-        print("; ".join(report))
-        r = subprocess.run([sys.executable, str(ROOT / "scripts" / "deploy_worker.py")], capture_output=True, text=True)
-        print(r.stdout, r.stderr[-2000:])
-        if r.returncode != 0:
-            alert(p, "Studio setup problem", r.stdout[-1500:] + "\n" + r.stderr[-1500:])
-            return r.returncode
-        link = _login_link(p)
-        notify.send(p.state, "👋 This studio now makes <b>Secret Smart Stuff</b> videos again. Bhaukaali Toons is stopped.\n\n"
-                             "One last step: connect the YouTube channel. Tap the link, sign in as "
-                             "<b>secretsmartstuff@gmail.com</b>, pick <b>Secret Smart Stuff</b>, then Allow.\n" + link +
-                             "\n\n(The link works once, for 30 minutes. /ytlogin gives a new one.)")
-        try:
-            do_dashboard(p)
-        except Exception as e:  # noqa: BLE001
-            print("dashboard skipped:", e)
         return 0
     if action == "yt_login":
         notify.send(p.state, "🔑 Connect the Secret Smart Stuff channel (link works once, 30 minutes):\n" + _login_link(p))
