@@ -12,11 +12,11 @@ Everything below is set up. Use this page if something has to be redone.
 | Studio bot (Telegram) | display name "Secret Smart Stuff Studio" (username @bhaukaalitoonsstudiobot; only BotFather can change the username) |
 | Studio Worker (Cloudflare) | `secretsmartstuff-studio` → https://secretsmartstuff-studio.secretsmartstuff.workers.dev (home page, `/privacy`, `/dash`, Telegram webhook, YouTube login) |
 | Cloudflare account | login secretsmartstuff@gmail.com (free plan; email changed from the old address on 28 Oct; the account's display name still shows the old address until the owner renames it) |
-| Google OAuth app | "Secret Smart Stuff uploader", Google Cloud project `bhaukaali-toons` (owned by bhaukaalitoons@gmail.com) |
+| Google OAuth app | "Secret Smart Stuff uploader", Google Cloud project `bhaukaali-toons` (Owners: secretsmartstuff@gmail.com and bhaukaalitoons@gmail.com) |
 
-**Keep bhaukaalitoons@gmail.com alive** until secretsmartstuff@gmail.com is an Owner of the Google Cloud project.
+secretsmartstuff@gmail.com became an Owner of the Google Cloud project on 28 Oct (YouTube login re-checked: OK).
 
-## Google Cloud (project `bhaukaali-toons`, signed in as bhaukaalitoons@gmail.com)
+## Google Cloud (project `bhaukaali-toons`, sign in as secretsmartstuff@gmail.com)
 - **APIs:** YouTube Data API v3, YouTube Analytics API.
 - **Google Auth Platform:**
   - **Branding:**

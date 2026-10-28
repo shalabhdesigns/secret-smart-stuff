@@ -71,9 +71,9 @@
   - The refresh token is stored encrypted in the Worker's KV store.
   - Uploads and analytics refuse any login that is not for the channel named in `config/channel.yaml`.
 - **Secrets:** only in GitHub Actions secrets (and the encrypted login in KV). Never in files or chat.
-  - The Google OAuth app is "Secret Smart Stuff uploader" in Google Cloud project `bhaukaali-toons` (owned by
+  - The Google OAuth app is "Secret Smart Stuff uploader" in Google Cloud project `bhaukaali-toons` (Owners: secretsmartstuff@gmail.com since 28 Oct, and
     bhaukaalitoons@gmail.com), In production.
   - The Cloudflare account login is secretsmartstuff@gmail.com (since 28 Oct); Worker URL
     https://secretsmartstuff-studio.secretsmartstuff.workers.dev.
-  - Keep bhaukaalitoons@gmail.com alive until the Google Cloud project has secretsmartstuff@gmail.com as an owner.
+  - secretsmartstuff@gmail.com is an Owner of the Google Cloud project (28 Oct); the old account is a second Owner.
 - **Commit trailer:** see the session's attribution instructions.
