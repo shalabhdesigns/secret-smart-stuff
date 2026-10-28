@@ -164,12 +164,6 @@ def self_review(p: Pipeline, job: str, rounds: int = 3) -> dict:
 
 
 def do_produce(p: Pipeline, req: dict) -> int:
-    if req.get("owner_ok_extra_daily_usd"):
-        # one-off, owner-approved extra room on the rolling 24 h limit (the monthly cap still applies)
-        extra = min(float(req["owner_ok_extra_daily_usd"]), 5.0)
-        spent_24h = p.state.spend_since(time.time() - 86400)
-        p.budget.limits.daily_usd = max(p.budget.limits.daily_usd, spent_24h + extra)
-        p.state.log(f"owner allowed +${extra:.2f} on today's daily limit for this run")
     for skip in req.get("skip") or []:
         for jj in p.state.jobs():
             if jj["topic_id"] == skip:
@@ -426,6 +420,12 @@ def main(path: str) -> int:
     req = json.loads(Path(path).read_text())
     action = req.get("action")
     p = Pipeline(load())
+    if req.get("owner_ok_extra_daily_usd"):
+        # one-off, owner-approved extra room on the rolling 24 h limit (the monthly cap still applies)
+        extra = min(float(req["owner_ok_extra_daily_usd"]), 5.0)
+        spent_24h = p.state.spend_since(time.time() - 86400)
+        p.budget.limits.daily_usd = max(p.budget.limits.daily_usd, spent_24h + extra)
+        p.state.log(f"owner allowed +${extra:.2f} on today's daily limit for this run")
     # ---- Bhaukaali Toons / Sab Theek Hai was dropped by the owner on 28 Oct 2026 ----
     if re.fullmatch(r"ep\d{3}[a-z]?(-v\d+)?", str(req.get("job", ""))) or action in ("sketch_daily", "sketch_produce", "grow"):
         notify.send(p.state, "That Bhaukaali Toons episode was cancelled (the show is stopped). Nothing was done.")
