@@ -494,8 +494,12 @@ def main(path: str) -> int:
                 except Exception as e:  # noqa: BLE001
                     rows.append(f"- p{i + 1} {m}: ERROR {str(e)[:200]}")
         if files:
-            gh("release", "create", "bakeoff-1", *files, "--prerelease", "--title", "Image model bake-off",
-               "--notes", "same prompts, several models", check=False)
+            tag = req.get("tag", "bakeoff-1")
+            if subprocess.run(["gh", "release", "view", tag], capture_output=True).returncode == 0:
+                gh("release", "upload", tag, *files, "--clobber", check=False)
+            else:
+                gh("release", "create", tag, *files, "--prerelease", "--title", "Image model bake-off",
+                   "--notes", "same prompts, several models", check=False)
         gh("issue", "create", "--title", "Image model bake-off", "--body", "\n".join(rows), check=False)
         print("\n".join(rows))
         return 0
