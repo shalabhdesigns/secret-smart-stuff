@@ -37,8 +37,8 @@ secretsmartstuff@gmail.com became an Owner of the Google Cloud project on 28 Oct
 - `YT_CLIENT_ID`, `YT_CLIENT_SECRET`
 - `TELEGRAM_BOT_TOKEN`, `CLOUDFLARE_API_TOKEN`, `GH_DISPATCH_TOKEN`
 - Variable `SHORTS_MODE=live`.
-- `YT_REFRESH_TOKEN` is only a fallback. It still holds the old Bhaukaali login, which the channel guard refuses.
-  The real login is the encrypted one in the Worker (below).
+- The YouTube login is not a GitHub secret: it is the encrypted one in the Worker (below). The old
+  `YT_REFRESH_TOKEN` secret was deleted on 28 Oct.
 
 ## YouTube login (one tap; redo whenever uploads say "send /ytlogin")
 1. Send **/ytlogin** to the studio bot. It replies with a one-time link (valid 30 minutes).
