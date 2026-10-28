@@ -52,7 +52,9 @@ def issue_for(job: str, label: str = "review") -> str | None:
 
 
 def alert(p: Pipeline, title: str, body: str) -> None:
-    notify.send(p.state, f"⚠️ {title}\n{body[:900]}")
+    import re as _re
+    clean = _re.sub(r"<!--.*?-->", "", body).strip()
+    notify.send(p.state, f"⚠️ {notify.esc(title)}\n{notify.esc(clean[:900])}")
     gh("label", "create", "alert", "--color", "B60205", check=False)
     gh("issue", "create", "--label", "alert", "--title", title[:120], "--body", body[:60000], check=False)
 

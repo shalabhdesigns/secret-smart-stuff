@@ -288,12 +288,11 @@ class Pipeline:
         style = self.cfg.channel["style"]["image_style"]
         fails = []
         for attempt in range(2):
-            prompt = (f"Realistic photo of a typical, complete {obj}, whole object clearly visible from a natural angle, "
-                      f"plain background. {style}. Vertical 9:16 composition.")
+            prompt = (f"Realistic photo of {obj} as people see it in everyday life (the whole everyday object it belongs "
+                      f"to, clearly visible from a natural angle), plain background. {style}. Vertical 9:16 composition.")
             if self.cfg.live:
                 self.budget.authorize(0.03, "probe", job_id)
-            img, usd = self.images.generate(prompt, d / f"probe{attempt}.png", seed=random.randint(1, 10**6),
-                                            model=self.cfg.pipeline["providers"]["images"].get("fallback_model"))
+            img, usd = self.images.generate(prompt, d / f"probe{attempt}.png", seed=random.randint(1, 10**6))
             if usd:
                 self.state.add_cost("bfl", "image", 1, usd, job_id)
             real = self._realism(img, f"a typical, complete {obj}", topic["title"], job_id)
