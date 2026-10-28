@@ -23,7 +23,7 @@ secretsmartstuff@gmail.com became an Owner of the Google Cloud project on 28 Oct
     - App name "Secret Smart Stuff uploader".
     - Home page: https://secretsmartstuff-studio.secretsmartstuff.workers.dev/
     - Privacy policy: https://secretsmartstuff-studio.secretsmartstuff.workers.dev/privacy
-    - Developer contact: secretsmartstuff@gmail.com. Authorized domain: secretsmartstuff.workers.dev only.
+    - User support email and developer contact: secretsmartstuff@gmail.com. Authorized domain: secretsmartstuff.workers.dev only.
     - Project display name "Secret Smart Stuff" (the project ID `bhaukaali-toons` can never be renamed).
   - **Audience:** External, **In production**. In "Testing" the login would expire every 7 days.
   - **Data access:** youtube.upload, youtube.readonly, yt-analytics.readonly.
