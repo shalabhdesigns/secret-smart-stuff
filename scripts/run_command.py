@@ -144,8 +144,12 @@ def self_review(p: Pipeline, job: str, rounds: int = 3) -> dict:
         fetch_bundle(job, d)
     topic = p.state.get_job(job)["topic_id"]
     c, prev = {}, None
+    from shorts.budget import BudgetExceeded
     for r in range(1, rounds + 1):
-        c = p.critique(job, r, prev)
+        try:
+            c = p.critique(job, r, prev)
+        except BudgetExceeded as e:
+            return {**(prev or {}), "passed": False, "summary": f"stopped: budget limit reached before review round {r} ({e})"}
         if c.get("passed") or c.get("verdict") == "drop" or c.get("unshowable") or r == rounds:
             return c
         p.prepare_prior(job, c)
@@ -460,6 +464,19 @@ def main(path: str) -> int:
                     p.state.set_job_status(jj["id"], "rejected", req.get("reason", "dropped"))
             if p.state.get_topic(tid):
                 p.state.set_topic_status(tid, "rejected")
+        return 0
+    if action == "critic_only":
+        # calibration: score an existing video with the final review, no fixes, nothing sent
+        job = req.get("job", "")
+        if not JOB_RE.fullmatch(job) or not p.state.get_job(job):
+            return 1
+        d = ROOT / "build" / job
+        fetch_bundle(job, d)
+        c = p.critique(job, 1)
+        body = json.dumps({k: c.get(k) for k in ("passed", "mean", "scores", "summary", "blocking", "improvements",
+                                                  "retention_risks")}, indent=1, ensure_ascii=False)
+        gh("issue", "create", "--title", f"Calibration: final review of {job}", "--body", body[:60000], check=False)
+        print(body)
         return 0
     if action == "self_review":
         job = req.get("job", "")
