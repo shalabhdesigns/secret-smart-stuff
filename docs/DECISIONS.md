@@ -125,3 +125,10 @@ Each entry: date, decision, who decided, why. Newest at the bottom.
 | Quality bar | Onigiri level: only glance-obvious problems block; calibrated on onigiri v9 (passes at 3.44) | Owner |
 | Image model | Keep FLUX.2 pro; bake-off vs FLUX.2 max and FLUX 3 on 4 hard objects showed no clear winner at 2× the price | Claude |
 | October cap | $50 (owner raised by $5 to finish testing) | Owner |
+
+## 28 Oct 2026 — budget for auto mode
+
+| Item | Decision | By |
+|---|---|---|
+| October cap | $56 (from $50), so daily videos run 29–31 Oct | Owner |
+| November cap | $60 (from $45), one auto-published video a day | Owner |

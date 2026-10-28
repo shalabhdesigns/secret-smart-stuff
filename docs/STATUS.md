@@ -23,7 +23,7 @@ Legend: ✅ works and was tested on the real service · 🟡 built, not yet prov
 | Repo renamed back to `secret-smart-stuff` | ✅ | 28 Oct; Worker redeployed |
 
 ## Budget
-- **Limits:** $2 per video, $6 per day, $45 per month (`config/pipeline.yaml`). October raised to $50 by the
-  owner (28 Oct) to finish testing. The ElevenLabs plan is billed separately.
+- **Limits:** $2 per video, $6 per day, $45 per month (`config/pipeline.yaml`). Owner overrides (28 Oct): October $56, November $60
+  (one video a day in auto mode). The ElevenLabs plan is billed separately.
 - **October:** $49.0 of $50 used by 28 Oct (the sketch show, then the Secret Smart Stuff tests). Resets on 1 Nov.
 - **BFL image credits:** topped up by the owner on 28 Oct.

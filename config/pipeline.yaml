@@ -5,7 +5,7 @@ budget_usd:
   per_video: 2.00     # stills format (onigiri v9): ~$1.00 per video measured; leaves room for one owner fix
   daily: 6.00          # 1 video/day + fixes + retries; the monthly cap is the real limit
   monthly: 45.00         # ElevenLabs plan is paid separately and not counted here
-  monthly_override: {"2026-10": 50.00}   # owner raised October by $5 (28 Oct 2026) to finish testing; Nov back to 45
+  monthly_override: {"2026-10": 56.00, "2026-11": 60.00}   # owner, 28 Oct 2026: Oct $56 (daily videos 29–31 Oct), Nov $60 (one video a day in auto mode)
 
 # Fixed monthly costs shown on the dashboard (not per-video). Edit to match your real bills.
 fixed_costs_usd_month:
