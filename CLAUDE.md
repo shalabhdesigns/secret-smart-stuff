@@ -70,6 +70,9 @@
   - One tap: the owner sends `/ytlogin` to the studio bot.
   - The refresh token is stored encrypted in the Worker's KV store.
   - Uploads and analytics refuse any login that is not for the channel named in `config/channel.yaml`.
+- **Instagram (since 28 Oct 2026):** @secretsmartstuff. Each published video is posted as a Reel at its YouTube
+  slot (`shorts/publish/instagram.py`, `instagram.yml`). Login: `/iglogin` (Meta app "Secret Smart Stuff Publisher",
+  dev mode; see `docs/SETUP.md`). Stop cancels a pending post; a posted Reel can only be deleted in the app.
 - **Secrets:** only in GitHub Actions secrets (and the encrypted login in KV). Never in files or chat.
   - The Google OAuth app is "Secret Smart Stuff uploader" in Google Cloud project `bhaukaali-toons` (Owners: secretsmartstuff@gmail.com since 28 Oct, and
     bhaukaalitoons@gmail.com), In production.
