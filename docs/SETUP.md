@@ -11,7 +11,7 @@ Everything below is set up. Use this page if something has to be redone.
 | GitHub repo | `shalabhdesigns/secret-smart-stuff` (private) |
 | Studio bot (Telegram) | display name "Secret Smart Stuff Studio" (username @bhaukaalitoonsstudiobot; only BotFather can change the username) |
 | Studio Worker (Cloudflare) | `secretsmartstuff-studio` → https://secretsmartstuff-studio.secretsmartstuff.workers.dev (home page, `/privacy`, `/dash`, Telegram webhook, YouTube login) |
-| Cloudflare account | login secretsmartstuff@gmail.com (free plan; email changed from the old address on 28 Oct; the account's display name still shows the old address until the owner renames it) |
+| Cloudflare account | login secretsmartstuff@gmail.com (free plan; account name "Secret Smart Stuff"; email and name changed 28 Oct) |
 | Google OAuth app | "Secret Smart Stuff uploader", Google Cloud project `bhaukaali-toons` (Owners: secretsmartstuff@gmail.com and bhaukaalitoons@gmail.com) |
 
 secretsmartstuff@gmail.com became an Owner of the Google Cloud project on 28 Oct (YouTube login re-checked: OK).
