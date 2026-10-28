@@ -653,6 +653,17 @@ def main(path: str) -> int:
         gh("issue", "create", "--title", "Instagram login check", "--body", msg, check=False)
         print(msg)
         return 0
+    if action == "ig_queue":
+        # queue an already-uploaded YouTube video for Instagram at a given time (default: its YouTube publish time)
+        from shorts.publish import instagram as ig
+        job = req.get("job", "")
+        up = p.state.db.execute("SELECT status, publish_at FROM uploads WHERE job_id=?", (job,)).fetchone()
+        if not up or up["status"] == "held":
+            notify.send(p.state, f"I can't queue {job} for Instagram: it is not a published YouTube video.")
+            return 1
+        ig.queue(p.state, job, req.get("at") or up["publish_at"])
+        print(json.dumps(dict(p.state.db.execute("SELECT * FROM ig_posts WHERE job_id=?", (job,)).fetchone())))
+        return 0
     if action == "ig_post":
         # post one already-published YouTube video to Instagram NOW (owner-approved test or catch-up)
         from shorts.publish import instagram as ig
