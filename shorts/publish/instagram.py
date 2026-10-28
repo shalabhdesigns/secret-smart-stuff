@@ -76,6 +76,17 @@ def _kv_put(key: str, data: bytes | str, ttl: int | None = None) -> None:
         raise RuntimeError(f"KV write {key}: {r.status_code} {r.text[:200]}")
 
 
+def kv_keys() -> list[str]:
+    """Names of the keys in the Worker's store (for diagnostics; values are never read here)."""
+    t = _kv_target()
+    if not t:
+        raise NotReady("the studio Worker's store is not configured")
+    tok, acc, ns = t
+    r = requests.get(f"https://api.cloudflare.com/client/v4/accounts/{acc}/storage/kv/namespaces/{ns}/keys",
+                     headers={"Authorization": f"Bearer {tok}"}, params={"limit": 1000}, timeout=30)
+    return [k["name"] for k in (r.json().get("result") or [])]
+
+
 def _key() -> bytes:
     return hashlib.sha256(("ig-token-v1:" + os.environ["YT_CLIENT_SECRET"]).encode()).digest()
 

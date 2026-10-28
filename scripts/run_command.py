@@ -646,6 +646,10 @@ def main(path: str) -> int:
             msg = "Instagram login OK.\n" + json.dumps(ig.whoami(), indent=1)
         except Exception as e:  # noqa: BLE001
             msg = f"Instagram login check: {e}"
+            try:      # which login keys the Worker's store holds (names only, never values)
+                msg += "\nStore keys: " + ", ".join(k for k in ig.kv_keys() if not k.startswith(("media:", "oauth_", "ig_state:", "dash")))
+            except Exception as e2:  # noqa: BLE001
+                msg += f"\nStore keys: unavailable ({e2})"
         gh("issue", "create", "--title", "Instagram login check", "--body", msg, check=False)
         print(msg)
         return 0
