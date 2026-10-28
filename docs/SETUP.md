@@ -66,6 +66,7 @@ How it works:
 ## Old Bhaukaali accounts (dormant, nothing runs on them)
 - YouTube "Bhaukaali Toons" still has Ep 1 public, plus one private test upload.
 - Instagram @bhaukaalitoons.
-- Vercel project `bhaukaali-toons`: its `site/` pages now point to Secret Smart Stuff. It can be deleted; the
-  Google app no longer uses it.
-- ElevenLabs voices Dev, Rocky, Meera: unused, cost nothing.
+- Gmail bhaukaalitoons@gmail.com: second Owner of the Google Cloud project; keep it (deleting it also deletes
+  the old YouTube channel).
+- Deleted on 28 Oct: the Vercel project, the old releases, the `YT_REFRESH_TOKEN` secret.
+- ElevenLabs: the sketch cast used library voices Varun, Yash – punchy and Rhea – animated (unused now).
