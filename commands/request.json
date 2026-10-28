@@ -1,1 +1,1 @@
-{"action":"produce","hold":true,"owner_ok_extra_daily_usd":3,"nonce":"t4"}
+{"action": "claude_fix", "job": "bus-shelter-glass-with-a-pattern-of-small-printe-v1", "note": "b7 only: its picture (a grey panel with a blurry spotlight blob, dots barely visible) looks odd. Point b7 at img1 (the hero shelter with clearly visible white dots) with focus on the dot pattern on the glass, remove any indicator/spotlight effect, keep the callout 'CLOSE SPACING'. Change nothing else.", "owner_ok_extra_daily_usd": 1}

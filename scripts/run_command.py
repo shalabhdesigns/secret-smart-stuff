@@ -503,6 +503,21 @@ def main(path: str) -> int:
         gh("issue", "create", "--title", "Image model bake-off", "--body", "\n".join(rows), check=False)
         print("\n".join(rows))
         return 0
+    if action == "claude_fix":
+        # Claude's own frame check found something: targeted fix, re-review once, keep it held for Claude
+        job, note = req.get("job", ""), (req.get("note") or "").strip()
+        j = p.state.get_job(job) if JOB_RE.fullmatch(job) else None
+        if not j or not note or j["status"] != "review":
+            return 1
+        d = ROOT / "build" / job
+        fetch_bundle(job, d)
+        fetch_bundle(job, d / "prior")
+        p.decide(job, "selffix", note)
+        p.produce(j["topic_id"])
+        c = p.critique(job, 9)
+        subprocess.run([str(ROOT / "scripts" / "open_review.sh"), job], check=True)
+        print(json.dumps({k: c.get(k) for k in ("passed", "mean", "scores", "summary", "blocking")}, indent=1))
+        return 0
     if action == "critic_only":
         # calibration: score an existing video with the final review, no fixes, nothing sent
         job = req.get("job", "")
