@@ -135,3 +135,13 @@ def test_insights_drop_unsupported_metric(tmp_path, monkeypatch):
     d = json.loads(st.db.execute("SELECT data FROM ig_metrics").fetchone()["data"])
     assert d["views"] == 321 and "error" not in d
     assert ig.near(st, "t-v1", 0)["likes"] == 12
+
+
+def test_postmortem_beats_accepts_old_count_format(tmp_path):
+    """Older feature rows store beats as a count (int); the post-mortem must fall back, not crash."""
+    from shorts import insights
+    st = State(tmp_path / "s.db")
+    st.upsert_topic("t", "T")
+    st.start_job("t-v1", "t")
+    st.set_features("t-v1", {"beats": 11, "seconds": 36})
+    assert insights._beats(st, "t-v1") == []

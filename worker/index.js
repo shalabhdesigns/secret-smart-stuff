@@ -161,14 +161,15 @@ async function telegram(req, env) {
   const reviewJob = (replied.match(/job:([a-z0-9-]+)/) || [])[1];
 
   let request = null, reply = "";
-  if (marker && JOB.test(marker[2])) {
+  const isCommand = /^\/[a-z]+\b/i.test(text);   // a /command always wins, even when sent as a reply
+  if (!isCommand && marker && JOB.test(marker[2])) {
     const note = /^skip$/i.test(text) ? "" : text.slice(0, 1500);
     if (marker[1] === "fix" && !note) return say(env, chat, "Please say what to change.");
     request = { action: marker[1] === "fix" ? "fix" : "reject", job: marker[2], note };
     reply = marker[1] === "fix"
       ? "👍 Got it. Making the changes; the new version arrives here in about 15 minutes."
       : "👍 Dropped. Your reason is saved; the next video comes with the next daily run (or send /produce).";
-  } else if (reviewJob && JOB.test(reviewJob)) {   // any reply to a video = what to change
+  } else if (!isCommand && reviewJob && JOB.test(reviewJob)) {   // any reply to a video = what to change
     request = { action: "fix", job: reviewJob, note: text.replace(/^(fix|change)\s*:?\s*/i, "").slice(0, 1500) };
     reply = "👍 Got it. Making the changes; the new version arrives here in about 15 minutes.";
   } else if (/^\/start\b/.test(text) || /^\/help\b/.test(text)) {

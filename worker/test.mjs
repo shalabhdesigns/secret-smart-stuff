@@ -147,6 +147,12 @@ const key = await crypto.subtle.importKey("raw", kraw, { name: "AES-GCM" }, fals
 const plain = new TextDecoder().decode(await crypto.subtle.decrypt({ name: "AES-GCM", iv: raw.slice(0, 12) }, key, raw.slice(12)));
 assert.equal(plain, "RT-123");
 
+// a command sent as a reply to a video message is still a command (bug seen 28 Oct: /iglogin became a "fix")
+let nfix = gh().length;
+await tgPost({ message: { from: { id: 42 }, text: "/iglogin", reply_to_message: { text: "Review…\njob:ep002b" } } });
+assert.equal(gh().length, nfix);
+assert.ok(calls.filter((c) => c.url.includes("sendMessage")).at(-1).body.text.includes("/ig/start?n="));
+
 // one-tap Instagram login
 const igLogin = async () => {
   for (const k of [...store.keys()]) if (k.startsWith("oauth_link:")) store.delete(k);

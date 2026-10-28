@@ -65,7 +65,7 @@ def _medians(state, hours: float, exclude: str) -> tuple[dict, int]:
 def _beats(state, job_id: str) -> list[dict]:
     f = state.db.execute("SELECT data FROM features WHERE job_id=?", (job_id,)).fetchone()
     feats = json.loads(f["data"]) if f else {}
-    if feats.get("beats"):
+    if isinstance(feats.get("beats"), list) and feats["beats"]:   # older rows store only the beat COUNT
         return feats["beats"]
     job = state.get_job(job_id) or {}
     script = ((job.get("artifacts") or {}).get("review") or {}).get("script") or {}
