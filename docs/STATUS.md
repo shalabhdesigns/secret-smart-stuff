@@ -9,8 +9,9 @@ Legend: ✅ works and was tested on the real service · 🟡 built, not yet prov
 | Upload private + scheduled after approval | ✅ | onigiri v9 went live on schedule (verify step) |
 | Publish-time experiment (3 slots) | 🟡 | Running again from 28 Oct; needs 8 videos per arm |
 | Analytics, weekly learning, dashboard | ✅ / 🟡 | Run on schedule; few data points so far |
-| One-tap YouTube login (`/ytlogin`) with encrypted token | 🟡 | Worker tests pass; the first live login is pending (fixed a link-preview bug on 28 Oct) |
-| Channel guard (no upload or analytics on the wrong channel) | 🟡 | Code in `shorts/publish/youtube.py`; proven once the login is done |
+| One-tap YouTube login (`/ytlogin`) with encrypted token | ✅ | Owner connected Secret Smart Stuff on 28 Oct; survived the Worker move |
+| Channel guard (no upload or analytics on the wrong channel) | ✅ | Login check reports Secret Smart Stuff |
+| Final self-review (max 3 rounds) + can-we-draw-it probe | 🟡 | Live: first 2 topics correctly rejected; fixes added 28 Oct; next video is the proof |
 | Hold-for-check before sending (`hold` + `send_review`) | 🟡 | Added 28 Oct for test videos |
 | Daily schedule | ✅ on | 05:47 IST; skips while a video waits for review |
 | Real-motion AI clips | off | Tested 25 Oct (+$3.18 BFL on one video); experiment only |
@@ -19,9 +20,7 @@ Legend: ✅ works and was tested on the real service · 🟡 built, not yet prov
 | Repo renamed back to `secret-smart-stuff` | ✅ | 28 Oct; Worker redeployed |
 
 ## Budget
-- **Limits:** $2 per video, $6 per day, $45 per month (`config/pipeline.yaml`). The ElevenLabs plan is billed
-  separately.
-- **October:** about $39 used, mostly by the dropped sketch show. The cap resets on 1 Nov.
-- **BFL image credits:** 110.5 (about $1.10) on 28 Oct.
-  - That is enough for about 6–8 videos at $0.10–0.20 of images each.
-  - **Top-up needed within a week:** at dashboard.bfl.ai (owner).
+- **Limits:** $2 per video, $6 per day, $45 per month (`config/pipeline.yaml`). October raised to $50 by the
+  owner (28 Oct) to finish testing. The ElevenLabs plan is billed separately.
+- **October:** about $44.5 used by 28 Oct (the sketch show, then the Secret Smart Stuff tests). Resets on 1 Nov.
+- **BFL image credits:** topped up by the owner on 28 Oct.
