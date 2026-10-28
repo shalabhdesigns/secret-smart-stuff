@@ -30,7 +30,8 @@
   - few pointers (varied styles, none unless needed);
   - never clip the first word.
 - **Brand (29 Oct 2026):** Pull Tab logo; ultramarine #1F3BFF + blush #FFD6E0 + white; Archivo. Never return to
-  orange/navy/cream or other "AI default" palettes. See `assets/brand/README.md`.
+  orange/navy/cream or other "AI default" palettes. See the brand design system (https://claude.ai/artifact/TUm2uFFjQQvvaYaQoLRqLB; read its
+  `project/README.md`) and `assets/brand/README.md`.
 - **Lean format.** Images, captions, annotations and simple purposeful treatments; minimal AI video.
 - **Visual credibility above all.** Nothing that looks malformed, implausible or obviously AI. Animation only when
   it helps understanding.

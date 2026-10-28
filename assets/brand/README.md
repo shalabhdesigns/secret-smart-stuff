@@ -1,5 +1,9 @@
 # Secret Smart Stuff brand (29 Oct 2026)
 
+**Source of truth:** the "Secret Smart Stuff" design system on claude.ai
+(https://claude.ai/artifact/TUm2uFFjQQvvaYaQoLRqLB): logo rules, colour and type tokens, video graphics, platform
+files. This folder holds copies of the files; if the two ever differ, the design system wins.
+
 - **Logo:** "Pull Tab", the ring-pull from a drinks can (concept 6 of the 29 Oct exploration; chosen by the owner
   "for now"). Concept by Claude; the final drawing should be refined by a human designer or the owner before any
   copyright/trademark filing (purely AI-made artwork generally can't get copyright in the US). Run a trademark
