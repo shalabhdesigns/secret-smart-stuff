@@ -1027,8 +1027,10 @@ class Pipeline:
                 "cost_usd": round(self.state.job_cost(job_id), 4)}
 
     # ---- H: final self-review (added 28 Oct 2026, owner: "only videos you are satisfied with reach me")
-    CRITIC_PASS = {"visual_credibility": 4, "image_word_match": 4, "hook_curiosity": 4, "accuracy": 4}
-    CRITIC_MEAN = 3.6
+    # Calibrated 28 Oct 2026 (owner: "onigiri level"): the approved onigiri v9 scored hook 4, accuracy 4, loop 4,
+    # credibility 2, image match 2, mean 3.0 under the strict prompt. Gross problems are BLOCKING instead.
+    CRITIC_PASS = {"hook_curiosity": 4, "accuracy": 4, "loop": 3, "visual_credibility": 2, "image_word_match": 2}
+    CRITIC_MEAN = 3.0
 
     def _beat_frames(self, d: Path) -> tuple[list[dict], float]:
         script = json.loads((d / "script.json").read_text())

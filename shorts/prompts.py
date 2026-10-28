@@ -86,8 +86,10 @@ Format rules (these come from retention research, follow them exactly):
   They must not state new facts, must be kind (no jokes about people, cultures or groups) and
   should get their own playful-but-realistic image (e.g. "a single limp, soggy sheet of seaweed
   drooping sadly over the edge of a plate").
-{video_rule}- PICTURES AN AI MODEL CAN DRAW: prefer whole, common objects from a clear angle on a plain background, one
-  idea per picture. Avoid prompts that need transparent internals, liquids inside tubes, tiny holes, exact
+{video_rule}- PICTURES AN AI MODEL CAN DRAW: at most 6 pictures. Each is ONE whole, common object or simple everyday scene
+  from a clear angle on a plain background, described plainly (shape, material, colour). Never ask for
+  actions, before/after states, wet/dripping/steaming effects, motion, hands doing things, or close-ups of
+  small parts: show the whole object and let the camera focus, a marker, a label or a pop point at the part. Avoid prompts that need transparent internals, liquids inside tubes, tiny holes, exact
   part counts or precise mechanisms; show those through a simpler shot plus the narration, a marker or a pop.
 - IMAGE = WORDS: every beat's image must visibly show what that beat SAYS. If a beat names steps or
   numbered parts ("pull tab 1, then 2 and 3"), the image must show the WHOLE real object front-on
@@ -261,10 +263,17 @@ Automatic media checks: {qa}
 Score 1-5 (5 = excellent, 3 = acceptable but forgettable):
  hook_curiosity, visual_credibility, image_word_match, payoff, flow_pacing, accuracy, loop,
  rewatch (would people watch it twice?), share (would someone send it to a friend?).
-List BLOCKING problems (any frame with a wrong/malformed/obviously AI object; a picture that contradicts or
-does not show its words; an unsupported or misleading claim; a hook that is not a real curiosity question; a
-broken loop; repeated or empty beats that will lose viewers; unreadable/overlapping text). Everything else
-goes in "improvements" (only ones that would clearly raise retention or shares).
+Calibration: the owner approved, and viewers liked (1.1k views), a video whose AI photos were imperfect (a
+slightly odd wrapper shape, simplified parts). That level is acceptable. Score honestly, but only call
+something BLOCKING when most viewers would notice it at a glance and it would hurt trust or understanding:
+- the object is unrecognisable, clearly the wrong object, or visibly broken/melted (e.g. a safety pin drawn
+  as a bent wire);
+- garbled text or fake labels on screen;
+- a picture that clearly contradicts its words (shows the opposite, or a different object);
+- a false or unsupported claim; a hook that is not a curiosity question; a broken loop; unreadable or
+  overlapping text.
+Imperfect-but-recognisable AI photos, repetition, slow beats and missed opportunities go in "improvements"
+(only ones that would clearly raise retention or shares).
 For each problem give an exact fix the writer can apply: which beat, the new line (same length or shorter),
 or the new photo prompt for that beat's image (describe the real object's exact shape; plain background).
 If the object itself cannot be photographed credibly by an AI image model even with better prompts, say so.
