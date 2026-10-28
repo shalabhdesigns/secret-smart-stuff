@@ -1,9 +1,21 @@
 {
- "collected_at": "2026-10-25T04:38:32Z",
+ "collected_at": "2026-10-28T05:53:36Z",
  "errors": [
   "@simplethingshistories: ERROR: [youtube:tab] @simplethingshistories: This channel does not have a shorts tab"
  ],
  "all_titles": [
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Concrete and Cinder Blocks Differ?"
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Countries Use Different Voltages?"
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Cranes Can Lift Other Cranes?"
+  },
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Someone Built a Jet-Powered Car?"
@@ -1193,16 +1205,8 @@
    "title": "Did You Know Popcorn Is Thousands Of Years Old? 🍿⏳"
   },
   {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Potatoes Can Fix Salty Food? 🥔😮"
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Ketchup Was Once Medicine? 🍅💊"
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know WiFi Isn’t Short For Anything? 📶🤯"
+   "channel": "@nameexplain",
+   "title": "Why Do Austria & Australia Have Such Similar Names?"
   },
   {
    "channel": "@nameexplain",
@@ -1655,19 +1659,19 @@
    "title": "How Did Austria Get Its Name? #Shorts",
    "views": 290000,
    "url": "https://www.youtube.com/shorts/FL3QhU8Qnk0",
-   "multiple": 34.9
+   "multiple": 34.7
   },
   {
    "channel": "@nameexplain",
    "title": "How Did Albania Get Its Name? #Short",
    "views": 148000,
    "url": "https://www.youtube.com/shorts/ZBhLog20r7A",
-   "multiple": 17.8
+   "multiple": 17.7
   },
   {
    "channel": "@nameexplain",
    "title": "How Did Finland Get Its Name?",
-   "views": 138000,
+   "views": 139000,
    "url": "https://www.youtube.com/shorts/9TfBENxGKM0",
    "multiple": 16.6
   },
@@ -1676,7 +1680,7 @@
    "title": "Why Slovakia & Slovenia Have Similar Names",
    "views": 117000,
    "url": "https://www.youtube.com/shorts/HVPXShUrUIc",
-   "multiple": 14.1
+   "multiple": 14.0
   },
   {
    "channel": "@historyofsimplethings",
@@ -1735,18 +1739,18 @@
    "multiple": 4.1
   },
   {
-   "channel": "@nameexplain",
-   "title": "How Did Canada Get Its Name? #Shorts",
-   "views": 32000,
-   "url": "https://www.youtube.com/shorts/pvt4HXh-drg",
-   "multiple": 3.9
-  },
-  {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Roads Can Be Recycled? 🛣️♻️",
    "views": 12000,
    "url": "https://www.youtube.com/shorts/TkMGzDism50",
    "multiple": 3.9
+  },
+  {
+   "channel": "@nameexplain",
+   "title": "How Did Canada Get Its Name? #Shorts",
+   "views": 32000,
+   "url": "https://www.youtube.com/shorts/pvt4HXh-drg",
+   "multiple": 3.8
   },
   {
    "channel": "@nameexplain",
@@ -1802,7 +1806,7 @@
    "title": "Grapes & Grapefruit!?",
    "views": 27000,
    "url": "https://www.youtube.com/shorts/2zV94ObpQgc",
-   "multiple": 3.3
+   "multiple": 3.2
   },
   {
    "channel": "@historyofsimplethings",
@@ -1842,7 +1846,7 @@
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Aluminum Doesn’t Rust Like Iron? ✨",
-   "views": 9500,
+   "views": 9600,
    "url": "https://www.youtube.com/shorts/58rlT470JyU",
    "multiple": 3.1
   },
@@ -1896,16 +1900,9 @@
    "multiple": 2.8
   },
   {
-   "channel": "@nameexplain",
-   "title": "How  Did Czechia Get Its Name? #Shorts",
-   "views": 22000,
-   "url": "https://www.youtube.com/shorts/kii5SIsYPH0",
-   "multiple": 2.7
-  },
-  {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Glass Is Made From Melted Sand?",
-   "views": 8300,
+   "views": 8400,
    "url": "https://www.youtube.com/shorts/UY0magmo8dQ",
    "multiple": 2.7
   },
@@ -1922,6 +1919,13 @@
    "views": 8300,
    "url": "https://www.youtube.com/shorts/bXD-q4_E0gs",
    "multiple": 2.7
+  },
+  {
+   "channel": "@nameexplain",
+   "title": "How  Did Czechia Get Its Name? #Shorts",
+   "views": 22000,
+   "url": "https://www.youtube.com/shorts/kii5SIsYPH0",
+   "multiple": 2.6
   },
   {
    "channel": "@historyofsimplethings",
@@ -2009,13 +2013,6 @@
   },
   {
    "channel": "@historyofsimplethings",
-   "title": "Did You Know Potatoes Can Fix Salty Food? 🥔😮",
-   "views": 7100,
-   "url": "https://www.youtube.com/shorts/WOr3o2nuEyk",
-   "multiple": 2.3
-  },
-  {
-   "channel": "@historyofsimplethings",
    "title": "Did You Know Saltwater Destroys Iron Faster? 🌊",
    "views": 6900,
    "url": "https://www.youtube.com/shorts/TRm5hFjWhgI",
@@ -2068,6 +2065,13 @@
    "title": "Did You Know Castles Had Cliff Toilets? 🏰😳",
    "views": 6500,
    "url": "https://www.youtube.com/shorts/MHZ5SF-OyJA",
+   "multiple": 2.1
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Modern Cars Hide Antennas In Shark Fins?",
+   "views": 6500,
+   "url": "https://www.youtube.com/shorts/flpLoTpsF0g",
    "multiple": 2.1
   }
  ]
