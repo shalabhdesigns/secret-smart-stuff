@@ -315,8 +315,11 @@ completed your self-review"):
   - the script with timings, facts and sources, the fact-checker's notes, image flags and media checks.
 - **It scores 1–5:** hook curiosity, visual credibility, image–word match, payoff, flow and pacing, accuracy,
   loop, rewatch and share. It also lists blocking problems with exact fixes, plus retention risks.
-- **Pass:** no blocking problem and no `BLOCKING` image flag; credibility, image match, hook and accuracy all ≥ 4;
-  mean ≥ 3.6.
+- **Pass (calibrated 28 Oct on the approved onigiri v9, which scores 3.44):**
+  - no blocking problem (only glance-obvious ones: wrong or broken object, garbled text, a picture that
+    contradicts its words, a false claim, no curiosity hook, a broken loop) and no `BLOCKING` image flag;
+  - hook ≥ 4, accuracy ≥ 4, loop ≥ 3, credibility ≥ 2, image match ≥ 2;
+  - mean ≥ 3.0.
 - **Not passed:** a targeted fix (`selffix`):
   - only the named lines or picture prompts change;
   - flagged pictures are regenerated;
@@ -403,3 +406,6 @@ completed your self-review"):
 - 2026-10-28: Credibility first. FLUX.2 pro is the main image model, every picture passes a strict realism check
   (3 tries), and every finished video passes a final self-review (max 3 rounds, targeted fixes) before the owner
   sees it. Topic scoring now penalises objects whose key detail image models draw badly (springs, coils, gears).
+- 2026-10-28: Review bar calibrated to onigiri level (owner). Pictures: at most 6, each one simple whole object;
+  parts are shown with focus, markers or labels, never with complex AI scenes. A cheap "can we draw it" probe
+  runs before each script. Image model stays FLUX.2 pro (bake-off vs FLUX.2 max and FLUX 3: no clear winner).

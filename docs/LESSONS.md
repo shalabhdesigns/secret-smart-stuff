@@ -30,6 +30,17 @@ How each item is marked:
   - It now takes a strict realism check per picture, the stronger image model, and a final review of the
     finished video. **[data]**
 
+- **28 Oct test day ($8, 0 videos sent):**
+  - Five topics failed; none reached the owner, which is correct.
+  - The causes, in order: complex picture requests (states, drips, hands, small parts); a review bar stricter
+    than the owner (it failed the approved onigiri video too); an automatic picture swap that undid the fixes.
+  - **Bake-off** on 4 hard objects, comparing FLUX.2 pro ($0.03), FLUX.2 max ($0.07) and FLUX 3 ($0.07). No
+    model was clearly better. FLUX.2 pro draws simple, whole objects well.
+  - **Fix: ask for simple, whole objects and point at parts with annotations.** Calibrate the review against
+    the owner-approved video before trusting it. **[data]**
+- **Calibrate any AI judge on a known-good example first.** The strict review scored onigiri v9 at 3.0/5 and
+  failed it. After calibration (only glance-obvious problems block), it passes at 3.44. **[data]**
+
 ## 2. Hook and retention (applies to every Short)
 
 - The voice must speak in the first second, and frame 1 must show something specific and strange. Viewers decide in

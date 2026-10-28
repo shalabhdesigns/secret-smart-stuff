@@ -122,3 +122,6 @@ Each entry: date, decision, who decided, why. Newest at the bottom.
 | Old accounts | Bhaukaali YouTube, Instagram, Gmail left dormant (nothing deleted); Ep 1 stays as is unless the owner says otherwise | Claude (deleting is the owner's call) |
 | Cloudflare | Login email changed to secretsmartstuff@gmail.com; workers.dev subdomain `secretsmartstuff` | Owner |
 | Telegram bot | Display name "Secret Smart Stuff Studio"; @username can't be renamed (new bot only if the owner wants) | Owner/Claude |
+| Quality bar | Onigiri level: only glance-obvious problems block; calibrated on onigiri v9 (passes at 3.44) | Owner |
+| Image model | Keep FLUX.2 pro; bake-off vs FLUX.2 max and FLUX 3 on 4 hard objects showed no clear winner at 2× the price | Claude |
+| October cap | $50 (owner raised by $5 to finish testing) | Owner |
