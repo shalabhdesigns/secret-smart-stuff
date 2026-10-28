@@ -127,7 +127,7 @@ def _pop(frame: Image.Image, pop: Pop, t: float, pal: Palette) -> None:
         tw = d.textlength(text, font=f)
     x, y = (W - tw) / 2, 560 - size / 2
     a = int(255 * max(0.0, min(1.0, alpha)))
-    col = (pal.accent if pop.accent else pal.paper) + (a,)
+    col = (pal.hi if pop.accent else pal.paper) + (a,)
     outline = pal.ink + (a,)
     for ox, oy in ((-6, 0), (6, 0), (0, -6), (0, 6), (-4, -4), (4, 4), (-4, 4), (4, -4)):
         d.text((x + ox, y + oy), text, font=f, fill=outline)
@@ -175,8 +175,8 @@ def _hook(frame: Image.Image, text: str, t: float, pal: Palette) -> None:
         y = y0 + i * 140
         pad = 18
         d.rounded_rectangle([x - pad, y - 6, x + tw + pad, y + 124], radius=18,
-                            fill=(pal.ink if i == 0 else pal.accent) + (int(a * 0.92),))
-        d.text((x, y), ln, font=f2, fill=pal.paper + (a,))
+                            fill=(pal.ink if i == 0 else pal.hi) + (int(a * 0.92),))
+        d.text((x, y), ln, font=f2, fill=(pal.paper if i == 0 else pal.accent) + (a,))
 
 
 def _arrow(frame: Image.Image, ar: Arrow, to_out, t: float, pal: Palette) -> None:

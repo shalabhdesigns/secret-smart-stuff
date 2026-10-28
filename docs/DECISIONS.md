@@ -140,3 +140,12 @@ Each entry: date, decision, who decided, why. Newest at the bottom.
 | Instagram | New @secretsmartstuff (Creator); every video also posted as a Reel at its YouTube time | Owner |
 | How | Official Instagram API (Instagram Login, no Facebook Page), own Meta app in development mode; $0 | Claude |
 | First post | Bus shelter video at 22:30 IST, 28 Oct (full automatic path) | Owner |
+
+## 29 Oct 2026 — brand
+
+| Item | Decision | By |
+|---|---|---|
+| Logo | "Pull Tab" (drinks-can ring-pull), for now; final drawing to be refined by a human before any filing | Owner |
+| Palette | Ultramarine #1F3BFF + blush #FFD6E0 + white; old orange/navy/cream dropped (reads as AI-made) | Owner (after research) |
+| Videos | Captions, pointers and pops switched to the brand palette and Archivo | Owner |
+| Profile pictures | YouTube (picture + banner) and Instagram updated | Claude, on owner's request |

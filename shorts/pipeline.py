@@ -985,7 +985,8 @@ class Pipeline:
                                         loop=True), end, d / "mix.wav")
         ass = write_ass(words, d / "captions.ass", y_center=y_cap,
                         font=self.cfg.channel["style"]["caption_font"],
-                        font_size=self.cfg.channel["style"]["caption_size"])
+                        font_size=self.cfg.channel["style"]["caption_size"],
+                        highlight=ass_colour(self.cfg.channel["style"].get("caption_highlight", "#FFE500")))
         final = A.finalize(video, audio, ass, d / "final.mp4")
         return {"video": str(final), "duration": end, "beats": len(beats), "music": str(music) if music else None}
 
@@ -1315,6 +1316,12 @@ class Pipeline:
             lines.append("- Problems (24 h):")
             lines += [f"  - {r['job_id'] or '-'}: {r['message'][:160]}" for r in errs]
         return "\n".join(lines)
+
+
+def ass_colour(hex_rgb: str) -> str:
+    """#RRGGBB -> ASS &H00BBGGRR."""
+    h = hex_rgb.lstrip("#")
+    return f"&H00{h[4:6]}{h[2:4]}{h[0:2]}".upper()
 
 
 def A_word(text: str, start: float, end: float):

@@ -200,13 +200,12 @@ Every rule below comes from evidence in `docs/04_FORMAT_V2.md`.
 ## 7. On-screen text and annotations
 
 **Captions:**
-- Inter, 72 px, white with a black outline, 2–3 words per chunk (max 18 characters).
-- The word being spoken is highlighted yellow (`&H0000E5FF`).
+- Archivo Bold, 72 px, white with a black outline, the spoken word in blush #FFD6E0; 2–3 words per chunk (max 18 characters).
 - Captions sit at y = 1200 px, or 1360 px when beats focus on the middle of the frame.
 - They are never stacked on a label.
 
 **Keyword pops:**
-- At most 2 per video: one spoken word, big orange (#F26B1D) with an ink outline.
+- At most 2 per video: one spoken word, big blush (#FFD6E0) with an ultramarine outline.
 - Pops at the moment the word is spoken, holds 0.9 s (v9: "SOFT", "APART").
 
 **Numbered markers:**
@@ -231,7 +230,7 @@ Every rule below comes from evidence in `docs/04_FORMAT_V2.md`.
 **Arrows:**
 - At most 1. Dropped if shorter than 12% of the frame (v9 drew a stray 2% arrow; fixed after approval).
 
-**Palette:** paper #F4EFE6, ink #14213D, accent #F26B1D.
+**Palette (brand, 29 Oct 2026):** white #FFFFFF, ultramarine #1F3BFF (rings, arrows, badges, boxes, outlines), blush #FFD6E0 (highlights). Type: Archivo. See `assets/brand/README.md`.
 
 ## 8. Audio and voice
 
@@ -443,3 +442,4 @@ completed your self-review"):
   runs before each script. Image model stays FLUX.2 pro (bake-off vs FLUX.2 max and FLUX 3: no clear winner).
 - 2026-10-28: Auto-publishing for 28 days (owner); per-video post-mortems at 48 h / 7 d; learnings update twice a
   week and feed both the writer and topic choice; living learnings file.
+- 2026-10-29: New brand (owner): Pull Tab logo, ultramarine #1F3BFF + blush #FFD6E0 + white, Archivo type. Videos switched from orange/navy/cream + Inter (that palette reads as AI-made). Checked on a local re-render of the bus shelter video.

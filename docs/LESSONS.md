@@ -135,7 +135,17 @@ How each item is marked:
 - **The built-in browser loses sign-ins** between devices. Google, GitHub, Vercel and Cloudflare all needed a
   fresh sign-in by the owner on 28 Oct.
 
-## 9. Working with the owner
+## 9. Brand and design
+
+- **Research before drawing.** Two rounds of logo sketches were rejected as generic. The useful round started from
+  what similar channels already own (Vox yellow/black, TED red, Kurzgesagt navy) and from real everyday-object
+  details (tear notches, frit dots, barcodes, ring-pulls). **[owner; data]**
+- **Avoid the "AI default" look:** cream + clay/orange + navy, indigo/purple gradients, Inter/Geist fonts. **[owner;
+  research]**
+- **AI-made logos generally can't get copyright** in the US; a human should refine the final drawing, and a trademark
+  search is needed before filing. **[research: Bloomberg Law]**
+
+## 10. Working with the owner
 
 - Short sentences, simple words, points. Results, not process updates. **[owner]**
 - Ask only for real decisions or access. Otherwise decide, do it, and say what was decided. **[owner]**

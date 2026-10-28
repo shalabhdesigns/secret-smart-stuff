@@ -480,14 +480,15 @@ function esc(s) {
 function publicPage(body, status = 200) {
   return new Response(
     `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">` +
-    `<title>Secret Smart Stuff</title><style>body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#F4EFE6;color:#14213D}` +
-    `main{max-width:680px;margin:0 auto;padding:40px 20px}h1{margin:0 0 8px}a{color:#C4551A}footer{margin-top:40px;font-size:.9rem;color:#555}</style>` +
+    `<title>Secret Smart Stuff</title><style>body{margin:0;font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#FFFFFF;color:#111}` +
+    `main{max-width:680px;margin:0 auto;padding:40px 20px}h1{margin:0 0 8px;color:#1F3BFF}a{color:#1F3BFF}footer{margin-top:40px;font-size:.9rem;color:#555}</style>` +
     `</head><body><main>${body}</main></body></html>`,
     { status, headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store" } },
   );
 }
 
-const HOME = `<h1>Secret Smart Stuff</h1>
+const HOME = `<svg role="img" aria-label="Secret Smart Stuff logo" width="72" height="72" viewBox="0 0 200 200" style="border-radius:50%;background:#1F3BFF"><path fill-rule="evenodd" fill="#FFD6E0" d="M100 33 C125 33 140 48 140 72 L140 128 C140 150 124 164 100 164 C76 164 60 150 60 128 L60 72 C60 48 75 33 100 33 Z M100 46 C117 46 126 56 126 71 L126 85 C126 95 119 101 110 101 L90 101 C81 101 74 95 74 85 L74 71 C74 56 83 46 100 46 Z M90 115 L110 115 C115 115 117 118 117 122 L117 129 C117 134 113 137 108 137 L92 137 C87 137 83 134 83 129 L83 122 C83 118 85 115 90 115 Z"/></svg>
+<h1>Secret Smart Stuff</h1>
 <p><b>The secret smart reasons behind everyday things.</b> Short videos that explain the hidden design of objects you use every day.</p>
 <p>Watch on YouTube: <a href="https://www.youtube.com/@secretsmartstuff">youtube.com/@secretsmartstuff</a></p>
 <h2>Secret Smart Stuff uploader</h2>

@@ -25,7 +25,14 @@ SAFE_TOP, SAFE_BOTTOM = 260, 1480  # top bar / bottom title+buttons on phones
 SAFE_RIGHT = W - 150
 
 
+FONT_FAMILY = "Archivo"     # brand typeface (29 Oct 2026); files in assets/fonts as <Family>-<Weight>.ttf|otf
+
+
 def _font(size: int, weight: str = "ExtraBold") -> ImageFont.FreeTypeFont:
+    for ext in ("ttf", "otf"):
+        p = FONTS / f"{FONT_FAMILY}-{weight}.{ext}"
+        if p.exists():
+            return ImageFont.truetype(str(p), size)
     return ImageFont.truetype(str(FONTS / f"Inter-{weight}.otf"), size)
 
 
@@ -60,13 +67,16 @@ class Scene:
 
 @dataclass
 class Palette:
-    paper: tuple[int, int, int] = (244, 239, 230)
-    ink: tuple[int, int, int] = (20, 33, 61)
-    accent: tuple[int, int, int] = (242, 107, 29)
+    """paper = light text · ink = outlines and dark boxes · accent = rings, arrows, badges, boxes ·
+    hi = the highlight colour (emphasised words, second hook line)."""
+    paper: tuple[int, int, int] = (255, 255, 255)
+    ink: tuple[int, int, int] = (31, 59, 255)
+    accent: tuple[int, int, int] = (31, 59, 255)
+    hi: tuple[int, int, int] = (255, 214, 224)
 
     @classmethod
     def from_cfg(cls, d: dict) -> "Palette":
-        return cls(_hex(d["paper"]), _hex(d["ink"]), _hex(d["accent"]))
+        return cls(_hex(d["paper"]), _hex(d["ink"]), _hex(d["accent"]), _hex(d.get("highlight", d["accent"])))
 
 
 # ---------------- camera ----------------
