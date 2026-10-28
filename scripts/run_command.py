@@ -465,6 +465,40 @@ def main(path: str) -> int:
             if p.state.get_topic(tid):
                 p.state.set_topic_status(tid, "rejected")
         return 0
+    if action == "image_bakeoff":
+        # same hard prompts on several BFL models; images + credibility checks go to a release and an issue
+        from shorts.providers.images import BFLImages
+        ic = p.cfg.pipeline["providers"]["images"]
+        prices = {**ic["usd_each"], **(req.get("prices") or {})}
+        gen = BFLImages(p.cfg.secret("BFL_API_KEY"), ic["model"], ic["width"], ic["height"], prices)
+        d = ROOT / "build" / "bakeoff"
+        d.mkdir(parents=True, exist_ok=True)
+        style = p.cfg.channel["style"]["image_style"]
+        rows, files = [], []
+        for i, pr in enumerate(req["prompts"]):
+            for m in req["models"]:
+                out = d / f"p{i + 1}_{m}.png"
+                try:
+                    if p.cfg.live:
+                        p.budget.authorize(float(prices.get(m, 0.08)), "bakeoff", None)
+                    img, usd = gen.generate(f"{pr}. {style}. Vertical 9:16 composition.", out, seed=1234 + i, model=m)
+                    p.state.add_cost("bfl", "image", 1, usd, "bakeoff")
+                    real = p._realism(img, pr, "image model comparison", "bakeoff")
+                    rows.append(f"- p{i + 1} {m}: ok={real.get('ok')} blocking={real.get('blocking')}")
+                    from PIL import Image as _I
+                    im = _I.open(img).convert("RGB")
+                    im.thumbnail((720, 1280))
+                    jp = out.with_suffix(".jpg")
+                    im.save(jp, quality=88)
+                    files.append(str(jp))
+                except Exception as e:  # noqa: BLE001
+                    rows.append(f"- p{i + 1} {m}: ERROR {str(e)[:200]}")
+        if files:
+            gh("release", "create", "bakeoff-1", *files, "--prerelease", "--title", "Image model bake-off",
+               "--notes", "same prompts, several models", check=False)
+        gh("issue", "create", "--title", "Image model bake-off", "--body", "\n".join(rows), check=False)
+        print("\n".join(rows))
+        return 0
     if action == "critic_only":
         # calibration: score an existing video with the final review, no fixes, nothing sent
         job = req.get("job", "")
