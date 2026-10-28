@@ -1,0 +1,38 @@
+# Posts queued videos to Instagram as Reels at their publish slot (Instagram's API cannot schedule).
+# Slots come from config/experiments.yaml (13:30, 17:00, 02:00 UTC); GitHub may start a few minutes late.
+# The analytics run also posts anything still due, so a missed run is caught up within 4 hours.
+name: instagram
+on:
+  schedule:
+    - cron: "31 13 * * *"
+    - cron: "1 17 * * *"
+    - cron: "1 2 * * *"
+  workflow_dispatch:
+concurrency: { group: shorts-state, cancel-in-progress: false, queue: max }
+permissions: { contents: write, issues: write }
+jobs:
+  post:
+    if: vars.SHORTS_MODE == 'live'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      SHORTS_MODE: live
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}     # decrypts the stored Instagram login
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      GH_TOKEN: ${{ github.token }}                         # downloads the video from its review release
+    steps:
+      - uses: actions/checkout@v5
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -q -r requirements.txt
+      - run: scripts/state_sync.sh pull
+      - run: |
+          set -o pipefail
+          python -m shorts.cli instagram 2>&1 | tee "$RUNNER_TEMP/out.log"
+      - if: failure()
+        run: python scripts/post_failure_log.py "$RUNNER_TEMP/out.log" "Run ${{ github.run_id }} failed (instagram)"
+      - if: always()
+        run: scripts/state_sync.sh push

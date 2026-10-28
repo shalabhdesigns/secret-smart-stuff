@@ -31,7 +31,7 @@ def main(argv: list[str] | None = None) -> int:
     s = sub.add_parser("publish"); s.add_argument("job"); s.add_argument("--at")
     sub.add_parser("status"); sub.add_parser("summary"); sub.add_parser("topics")
     s = sub.add_parser("run-daily"); s.add_argument("--min-backlog", type=int, default=5)
-    sub.add_parser("analytics"); sub.add_parser("learn")
+    sub.add_parser("analytics"); sub.add_parser("learn"); sub.add_parser("instagram")
     s = sub.add_parser("upload-resolve"); s.add_argument("job")
     s.add_argument("--video-id", help="the video ID if YouTube Studio shows the upload did finish")
     s = sub.add_parser("next-slot")
@@ -70,7 +70,10 @@ def main(argv: list[str] | None = None) -> int:
         from . import analytics as an
         from .publish.verify import run as verify
         from . import dashboard
+        from .publish import instagram as ig
         steps = [("verify uploads", lambda: verify(p.state)),
+                 ("instagram posts", lambda: ig.publish_due(p.state)),
+                 ("instagram metrics", lambda: ig.snapshot(p.state)),
                  ("video metrics", lambda: an.snapshot(p.state)),
                  ("channel daily", lambda: an.channel_daily(p.state)),
                  ("retention + traffic", lambda: an.video_details(p.state)),
@@ -84,6 +87,9 @@ def main(argv: list[str] | None = None) -> int:
             except Exception as e:  # noqa: BLE001
                 p.state.log(f"analytics step '{name}' failed: {e}", "warn")
                 print(name, "FAILED", e)
+    elif a.cmd == "instagram":
+        from .publish import instagram as ig
+        print(json.dumps(ig.publish_due(p.state), default=str))
     elif a.cmd == "learn":
         from . import learn, dashboard
         print(json.dumps(learn.weekly(p), default=str))

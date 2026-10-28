@@ -8,9 +8,13 @@
 //             client secret, which only this Worker and the GitHub runner hold). Only a login for the
 //             expected channel (EXPECT_CHANNEL) is kept.
 // 4. / and /privacy  Public home page and privacy policy for the Google OAuth app.
+// 5. /ig/*    One-tap Instagram login (Business Login for Instagram). Long-lived token stored ENCRYPTED in KV
+//             (key from YT_CLIENT_SECRET, label "ig-token-v1:"); only the expected account (EXPECT_IG) is kept.
+// 6. /m/<key>.mp4  Serves a video the runner put in KV for a few hours, so Instagram can fetch it.
 //
 // Bindings (set by scripts/deploy_worker.py): KV (namespace), TG_TOKEN, TG_SECRET, OWNER_ID,
-// GH_TOKEN, GH_REPO, COOKIE_KEY, SELF_URL, YT_CLIENT_ID, YT_CLIENT_SECRET, EXPECT_CHANNEL.
+// GH_TOKEN, GH_REPO, COOKIE_KEY, SELF_URL, YT_CLIENT_ID, YT_CLIENT_SECRET, EXPECT_CHANNEL,
+// IG_APP_ID, IG_APP_SECRET, EXPECT_IG.
 
 const enc = new TextEncoder();
 
@@ -25,6 +29,9 @@ export default {
       if (url.pathname === "/dash") return await dash(req, env, url);
       if (url.pathname === "/oauth/start") return await oauthStart(env, url);
       if (url.pathname === "/oauth/callback") return await oauthCallback(env, url);
+      if (url.pathname === "/ig/start") return await igStart(env, url);
+      if (url.pathname === "/ig/callback") return await igCallback(env, url);
+      if (url.pathname.startsWith("/m/")) return await media(req, env, url);
       if (url.pathname === "/privacy") return publicPage(PRIVACY);
       if (url.pathname === "/") return publicPage(HOME);
       if (url.pathname === "/health") return new Response("ok");
@@ -169,10 +176,14 @@ async function telegram(req, env) {
       "Every new Secret Smart Stuff video is checked by my final review and, if it passes, uploaded and scheduled automatically (until 25 Nov 2026). You get a message for each one.\n\n" +
       "Buttons: ⏸ Stop it (keeps that video private) · ✅ Approve / ✏️ Fix / 🗑 Drop (for videos that need your review)\n\n" +
       "Commands:\n/status – the queue\n/produce – make an extra video now\n" +
-      "/dash – dashboard link\n/ytlogin – connect the YouTube channel (one tap)\n/revenue 2026-11 12.50 – record revenue for a month (USD)");
+      "/dash – dashboard link\n/ytlogin – connect the YouTube channel (one tap)\n/iglogin – connect Instagram (one tap)\n/revenue 2026-11 12.50 – record revenue for a month (USD)");
   } else if (/^\/ytlogin\b/.test(text)) {
     return say(env, chat, "🔑 Tap to connect the Secret Smart Stuff channel (link works once, for 30 minutes):\n" + await loginLink(env) +
       "\n\nSign in as secretsmartstuff@gmail.com, choose the Secret Smart Stuff channel, then Allow.");
+  } else if (/^\/iglogin\b/.test(text)) {
+    if (!env.IG_APP_ID) return say(env, chat, "Instagram is not set up yet (the app ID is missing).");
+    return say(env, chat, "📸 Tap to connect Instagram (link works for 30 minutes):\n" + await loginLink(env, "/ig/start") +
+      `\n\nLog in as @${env.EXPECT_IG || "secretsmartstuff"} and tap Allow.`);
   } else if (/^\/status\b/.test(text)) {
     request = { action: "status" }; reply = "⏳ Checking…";
   } else if (/^\/produce\b/.test(text)) {
@@ -301,10 +312,10 @@ function randomId(n = 24) {
   return [...crypto.getRandomValues(new Uint8Array(n))].map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
-async function loginLink(env) {
+async function loginLink(env, path = "/oauth/start") {
   const n = randomId();
   await env.KV.put(`oauth_link:${n}`, "1", { expirationTtl: 1800 });
-  return `${env.SELF_URL}/oauth/start?n=${n}`;
+  return `${env.SELF_URL}${path}?n=${n}`;
 }
 
 async function oauthStart(env, url) {
@@ -323,14 +334,14 @@ async function oauthStart(env, url) {
   return Response.redirect(`${GOOGLE_AUTH}?${q}`, 302);
 }
 
-async function aesKey(env) {
-  const raw = await crypto.subtle.digest("SHA-256", enc.encode("yt-refresh-v1:" + env.YT_CLIENT_SECRET));
+async function aesKey(env, label = "yt-refresh-v1:") {
+  const raw = await crypto.subtle.digest("SHA-256", enc.encode(label + env.YT_CLIENT_SECRET));
   return crypto.subtle.importKey("raw", raw, { name: "AES-GCM" }, false, ["encrypt"]);
 }
 
-async function seal(env, text) {
+async function seal(env, text, label = "yt-refresh-v1:") {
   const iv = crypto.getRandomValues(new Uint8Array(12));
-  const ct = new Uint8Array(await crypto.subtle.encrypt({ name: "AES-GCM", iv }, await aesKey(env), enc.encode(text)));
+  const ct = new Uint8Array(await crypto.subtle.encrypt({ name: "AES-GCM", iv }, await aesKey(env, label), enc.encode(text)));
   const all = new Uint8Array(iv.length + ct.length);
   all.set(iv); all.set(ct, iv.length);
   return btoa(String.fromCharCode(...all));
@@ -374,6 +385,90 @@ async function oauthCallback(env, url) {
   return publicPage(`<h1>Connected ✅</h1><p>${esc(title)} is connected. You can close this page.</p>`);
 }
 
+// ---------------- Instagram login (one tap) + video hand-off ----------------
+
+const IG_SCOPES = "instagram_business_basic,instagram_business_content_publish,instagram_business_manage_insights";
+
+async function igStart(env, url) {
+  const n = url.searchParams.get("n") || "";
+  if (!/^[0-9a-f]{48}$/.test(n) || !(await env.KV.get(`oauth_link:${n}`))) {
+    return publicPage(`<h1>Link expired</h1><p>Send /iglogin to the studio bot for a new one.</p>`, 400);
+  }
+  const state = randomId();
+  await env.KV.put(`ig_state:${state}`, "1", { expirationTtl: 1800 });
+  const q = new URLSearchParams({
+    enable_fb_login: "0", force_authentication: "1", client_id: env.IG_APP_ID,
+    redirect_uri: `${env.SELF_URL}/ig/callback`, response_type: "code", scope: IG_SCOPES, state,
+  });
+  return Response.redirect(`https://www.instagram.com/oauth/authorize?${q}`, 302);
+}
+
+async function igCallback(env, url) {
+  const state = url.searchParams.get("state") || "";
+  if (!/^[0-9a-f]{48}$/.test(state) || !(await env.KV.get(`ig_state:${state}`))) {
+    return publicPage(`<h1>Link expired</h1><p>Send /iglogin to the studio bot for a new one.</p>`, 400);
+  }
+  await env.KV.delete(`ig_state:${state}`);
+  if (url.searchParams.get("error")) {
+    await say(env, env.OWNER_ID, `⚠️ Instagram login was cancelled (${url.searchParams.get("error_reason") || url.searchParams.get("error")}). Send /iglogin to try again.`);
+    return publicPage(`<h1>Cancelled</h1><p>Nothing was changed.</p>`, 400);
+  }
+  const code = (url.searchParams.get("code") || "").replace(/#_$/, "");
+  const r = await fetch("https://api.instagram.com/oauth/access_token", {
+    method: "POST",
+    headers: { "content-type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      client_id: env.IG_APP_ID, client_secret: env.IG_APP_SECRET, grant_type: "authorization_code",
+      redirect_uri: `${env.SELF_URL}/ig/callback`, code,
+    }),
+  });
+  const j = await r.json();
+  const short = (j.data && j.data[0]) || j;
+  if (!short.access_token) {
+    await say(env, env.OWNER_ID, `⚠️ Instagram login failed (${(j.error && (j.error.message || j.error)) || j.error_message || r.status}). Send /iglogin to try again.`);
+    return publicPage(`<h1>Login failed</h1><p>Nothing was changed. Try again from the bot.</p>`, 400);
+  }
+  const ll = await (await fetch(`https://graph.instagram.com/access_token?${new URLSearchParams({
+    grant_type: "ig_exchange_token", client_secret: env.IG_APP_SECRET, access_token: short.access_token })}`)).json();
+  if (!ll.access_token) {
+    await say(env, env.OWNER_ID, `⚠️ Instagram login step 2 failed (${(ll.error && ll.error.message) || "no token"}). Send /iglogin to try again.`);
+    return publicPage(`<h1>Login failed</h1><p>Nothing was changed. Try again from the bot.</p>`, 400);
+  }
+  const me = await (await fetch(`https://graph.instagram.com/me?fields=user_id,username&access_token=${encodeURIComponent(ll.access_token)}`)).json();
+  const want = String(env.EXPECT_IG || "").replace(/^@/, "").toLowerCase();
+  if (!me.username || (want && me.username.toLowerCase() !== want)) {
+    await say(env, env.OWNER_ID, `⚠️ That login was for @${me.username || "?"}, not @${want}. Nothing was saved. Send /iglogin and log in as @${want}.`);
+    return publicPage(`<h1>Wrong account</h1><p>Please try again as @${esc(want)}.</p>`, 400);
+  }
+  const now = Date.now() / 1000;
+  await env.KV.put("ig_token.enc", await seal(env, ll.access_token, "ig-token-v1:"));
+  await env.KV.put("ig_account", JSON.stringify({
+    user_id: String(me.user_id || short.user_id), username: me.username, at: new Date().toISOString(), at_ts: now,
+    expires_at: now + Number(ll.expires_in || 5184000), permissions: short.permissions || "",
+  }));
+  await say(env, env.OWNER_ID, `✅ Instagram connected: @${me.username}. Each new video will also be posted there as a Reel at its YouTube time.`);
+  return publicPage(`<h1>Connected ✅</h1><p>@${esc(me.username)} is connected. You can close this page.</p>`);
+}
+
+async function media(req, env, url) {
+  const m = url.pathname.match(/^\/m\/([0-9a-f]{32})\.mp4$/);
+  if (!m) return new Response("not found", { status: 404 });
+  const buf = await env.KV.get(`media:${m[1]}`, { type: "arrayBuffer" });
+  if (!buf) return new Response("not found", { status: 404 });
+  const size = buf.byteLength;
+  const base = { "content-type": "video/mp4", "accept-ranges": "bytes", "cache-control": "no-store" };
+  const range = (req.headers.get("range") || "").match(/^bytes=(\d*)-(\d*)$/);
+  if (range && (range[1] || range[2])) {
+    let start = range[1] ? Number(range[1]) : size - Number(range[2]);
+    let end = range[1] && range[2] ? Number(range[2]) : size - 1;
+    start = Math.max(0, start); end = Math.min(size - 1, end);
+    if (start > end) return new Response(null, { status: 416, headers: { "content-range": `bytes */${size}` } });
+    return new Response(req.method === "HEAD" ? null : buf.slice(start, end + 1), { status: 206,
+      headers: { ...base, "content-range": `bytes ${start}-${end}/${size}`, "content-length": String(end - start + 1) } });
+  }
+  return new Response(req.method === "HEAD" ? null : buf, { headers: { ...base, "content-length": String(size) } });
+}
+
 // ---------------- Public pages (Google OAuth app home page + privacy policy) ----------------
 
 function esc(s) {
@@ -394,17 +489,19 @@ const HOME = `<h1>Secret Smart Stuff</h1>
 <p><b>The secret smart reasons behind everyday things.</b> Short videos that explain the hidden design of objects you use every day.</p>
 <p>Watch on YouTube: <a href="https://www.youtube.com/@secretsmartstuff">youtube.com/@secretsmartstuff</a></p>
 <h2>Secret Smart Stuff uploader</h2>
-<p>"Secret Smart Stuff uploader" is a private tool used only by the owner of the Secret Smart Stuff channel. It uploads the channel's own videos to YouTube and reads the channel's own statistics. It is not offered to the public, and no other users can sign in to it.</p>
+<p>"Secret Smart Stuff uploader" (and its Instagram counterpart "Secret Smart Stuff Publisher") is a private tool used only by the owner of Secret Smart Stuff. It posts the channel's own videos to its own YouTube channel and Instagram account and reads their own statistics. It is not offered to the public, and no other users can sign in to it.</p>
+<p>Watch on Instagram: <a href="https://www.instagram.com/secretsmartstuff/">instagram.com/secretsmartstuff</a></p>
 <p>Read the <a href="/privacy">Privacy Policy</a>.</p>
 <footer>Contact: <a href="mailto:secretsmartstuff@gmail.com">secretsmartstuff@gmail.com</a></footer>`;
 
 const PRIVACY = `<h1>Privacy Policy</h1>
 <p>Last updated: 28 October 2026</p>
-<p>This policy covers "Secret Smart Stuff uploader", a private tool used only by the owner of the Secret Smart Stuff YouTube channel.</p>
+<p>This policy covers "Secret Smart Stuff uploader" and "Secret Smart Stuff Publisher", private tools used only by the owner of Secret Smart Stuff (YouTube channel and Instagram account).</p>
 <h2>What the tool accesses</h2>
 <ul><li>Permission to upload videos to the owner's own YouTube channel (youtube.upload).</li>
 <li>Read-only access to the owner's own channel and video details (youtube.readonly).</li>
-<li>Read-only access to the owner's own channel statistics (yt-analytics.readonly).</li></ul>
+<li>Read-only access to the owner's own channel statistics (yt-analytics.readonly).</li>
+<li>Instagram: basic profile of the owner's own professional account, permission to publish its own Reels, and its own insights (instagram_business_basic, instagram_business_content_publish, instagram_business_manage_insights).</li></ul>
 <h2>How the data is used</h2>
 <p>Only to upload the channel's own videos, schedule them, and measure how they perform. Data is never sold, shared with third parties, or used for advertising.</p>
 <h2>Storage and security</h2>
@@ -412,5 +509,7 @@ const PRIVACY = `<h1>Privacy Policy</h1>
 <h2>Google API Services</h2>
 <p>The tool's use of information received from Google APIs follows the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
 <h2>Revoking access</h2>
-<p>The owner can revoke access at any time at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</p>
+<p>The owner can revoke access at any time at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a> (Google) and in Instagram under Settings → Website permissions → Apps and websites.</p>
+<h2>Data deletion</h2>
+<p>To delete everything the tool stores (sign-in tokens and statistics), email <a href="mailto:secretsmartstuff@gmail.com">secretsmartstuff@gmail.com</a>; it is deleted within 7 days.</p>
 <footer>Contact: <a href="mailto:secretsmartstuff@gmail.com">secretsmartstuff@gmail.com</a> · <a href="/">Home</a></footer>`;

@@ -1287,6 +1287,11 @@ class Pipeline:
         vm = VideoMeta(meta["title"], meta["description"], meta["tags"], meta["category_id"],
                        meta["language"], meta["made_for_kids"], meta["contains_synthetic_media"], publish_at)
         rec = upload(self.state, job_id, Path(job["artifacts"]["render"]["video"]), vm)
+        try:                                  # Instagram posts it later, at the same time (see publish/instagram.py)
+            from .publish import instagram
+            instagram.queue(self.state, job_id, publish_at)
+        except Exception as e:  # noqa: BLE001
+            self.state.log(f"instagram queue failed: {e}", "warn", job_id)
         self.state.set_job_status(job_id, "published")
         self.state.set_topic_status(job["topic_id"], "published")
         return rec

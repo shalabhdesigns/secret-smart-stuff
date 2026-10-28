@@ -4,6 +4,7 @@ import assert from "node:assert/strict";
 
 const calls = [];
 let channelTitle = "Secret Smart Stuff";
+let igUser = "secretsmartstuff";
 globalThis.fetch = async (url, init = {}) => {
   let body = null;
   try { body = init.body ? JSON.parse(init.body) : null; } catch { body = String(init.body); }
@@ -13,6 +14,12 @@ globalThis.fetch = async (url, init = {}) => {
     return new Response(JSON.stringify({ refresh_token: "RT-123", access_token: "AT", scope: "x" }), { headers: { "content-type": "application/json" } });
   if (String(url).includes("youtube/v3/channels"))
     return new Response(JSON.stringify({ items: [{ id: "UCx", snippet: { title: channelTitle } }] }), { headers: { "content-type": "application/json" } });
+  if (String(url).includes("api.instagram.com/oauth/access_token"))
+    return new Response(JSON.stringify({ data: [{ access_token: "IGS-short", user_id: "1789", permissions: "instagram_business_basic" }] }));
+  if (String(url).includes("graph.instagram.com/access_token"))
+    return new Response(JSON.stringify({ access_token: "IGL-long", token_type: "bearer", expires_in: 5184000 }));
+  if (String(url).includes("graph.instagram.com/me"))
+    return new Response(JSON.stringify({ user_id: "1789", username: igUser, id: "app-scoped" }));
   return new Response(JSON.stringify({ ok: true, result: {} }), { headers: { "content-type": "application/json" } });
 };
 const store = new Map();
@@ -23,7 +30,8 @@ const KV = {
 };
 const env = { KV, TG_TOKEN: "t", TG_SECRET: "s3cret", OWNER_ID: "42", GH_TOKEN: "g", GH_REPO: "o/r",
   COOKIE_KEY: "k".repeat(32), SELF_URL: "https://studio.example.workers.dev",
-  YT_CLIENT_ID: "cid", YT_CLIENT_SECRET: "csecret", EXPECT_CHANNEL: "Secret Smart Stuff" };
+  YT_CLIENT_ID: "cid", YT_CLIENT_SECRET: "csecret", EXPECT_CHANNEL: "Secret Smart Stuff",
+  IG_APP_ID: "igapp", IG_APP_SECRET: "igsecret", EXPECT_IG: "secretsmartstuff" };
 const H = { "content-type": "application/json", "x-telegram-bot-api-secret-token": "s3cret" };
 const tgPost = (u, headers = H) => worker.fetch(new Request("https://x/tg", { method: "POST", headers, body: JSON.stringify(u) }), env);
 const gh = () => calls.filter((c) => c.url.includes("api.github.com"));
@@ -138,4 +146,47 @@ const kraw = await crypto.subtle.digest("SHA-256", new TextEncoder().encode("yt-
 const key = await crypto.subtle.importKey("raw", kraw, { name: "AES-GCM" }, false, ["decrypt"]);
 const plain = new TextDecoder().decode(await crypto.subtle.decrypt({ name: "AES-GCM", iv: raw.slice(0, 12) }, key, raw.slice(12)));
 assert.equal(plain, "RT-123");
+
+// one-tap Instagram login
+const igLogin = async () => {
+  for (const k of [...store.keys()]) if (k.startsWith("oauth_link:")) store.delete(k);
+  await tgPost({ message: { from: { id: 42 }, text: "/iglogin" } });
+  assert.ok(calls.filter((c) => c.url.includes("sendMessage")).at(-1).body.text.includes("/ig/start?n="));
+  const link = [...store.keys()].find((k) => k.startsWith("oauth_link:")).slice(11);
+  const rr = await worker.fetch(new Request(`https://x/ig/start?n=${link}`), env);
+  assert.equal(rr.status, 302);
+  const loc = new URL(rr.headers.get("location"));
+  assert.equal(loc.host, "www.instagram.com");
+  assert.equal(loc.searchParams.get("client_id"), "igapp");
+  assert.equal(loc.searchParams.get("redirect_uri"), "https://studio.example.workers.dev/ig/callback");
+  assert.ok(loc.searchParams.get("scope").includes("instagram_business_content_publish"));
+  return loc.searchParams.get("state");
+};
+r = await worker.fetch(new Request("https://x/ig/callback?state=" + "b".repeat(48) + "&code=c"), env);
+assert.equal(r.status, 400); assert.equal(store.get("ig_token.enc"), undefined);
+igUser = "someone_else";
+r = await worker.fetch(new Request(`https://x/ig/callback?state=${await igLogin()}&code=c#_`), env);
+assert.equal(r.status, 400); assert.equal(store.get("ig_token.enc"), undefined);
+igUser = "secretsmartstuff";
+r = await worker.fetch(new Request(`https://x/ig/callback?state=${await igLogin()}&code=c`), env);
+assert.equal(r.status, 200);
+const igSealed = store.get("ig_token.enc");
+assert.ok(igSealed && !igSealed.includes("IGL-long"));
+const acct = JSON.parse(store.get("ig_account"));
+assert.equal(acct.user_id, "1789"); assert.equal(acct.username, "secretsmartstuff");
+assert.ok(acct.expires_at > Date.now() / 1000 + 50 * 86400);
+const igRaw = Uint8Array.from(atob(igSealed), (ch) => ch.charCodeAt(0));
+const igK = await crypto.subtle.importKey("raw", await crypto.subtle.digest("SHA-256", new TextEncoder().encode("ig-token-v1:csecret")),
+  { name: "AES-GCM" }, false, ["decrypt"]);
+assert.equal(new TextDecoder().decode(await crypto.subtle.decrypt({ name: "AES-GCM", iv: igRaw.slice(0, 12) }, igK, igRaw.slice(12))), "IGL-long");
+// video hand-off: only the exact random key, whole file and byte ranges
+store.set("media:" + "c".repeat(32), new Uint8Array([1, 2, 3, 4, 5]).buffer);
+r = await worker.fetch(new Request("https://x/m/" + "c".repeat(32) + ".mp4"), env);
+assert.equal(r.status, 200); assert.equal(r.headers.get("content-type"), "video/mp4");
+assert.equal((await r.arrayBuffer()).byteLength, 5);
+r = await worker.fetch(new Request("https://x/m/" + "c".repeat(32) + ".mp4", { headers: { range: "bytes=1-2" } }), env);
+assert.equal(r.status, 206); assert.equal(r.headers.get("content-range"), "bytes 1-2/5");
+assert.deepEqual([...new Uint8Array(await r.arrayBuffer())], [2, 3]);
+assert.equal((await worker.fetch(new Request("https://x/m/" + "d".repeat(32) + ".mp4"), env)).status, 404);
+assert.equal((await worker.fetch(new Request("https://x/m/../ig_token.enc"), env)).status, 404);
 console.log("worker tests passed");

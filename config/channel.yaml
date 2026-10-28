@@ -10,6 +10,13 @@ channel:
   youtube_category_id: "27"        # Education
   default_hashtags: ["#design", "#everydaythings", "#didyouknow"]
 
+# Instagram Reels (added 28 Oct 2026): each video is also posted as a Reel at its YouTube publish time.
+# Login: /iglogin in the studio bot. The app secret is the GitHub secret IG_APP_SECRET (never here).
+instagram:
+  enabled: false                    # switched on once the login is connected and a test post worked
+  handle: "@secretsmartstuff"       # posts are refused for any other account
+  app_id: ""                        # the "Instagram app ID" of the Meta app (public, not a secret)
+
 voice:
   provider: elevenlabs
   voice_id: Xb7hH8MSUJpSbSDYk0k2   # Alice (premade) - chosen by owner 2026-10-24

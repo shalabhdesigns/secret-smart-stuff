@@ -30,6 +30,8 @@ Retention: fraction of viewers still watching at each point (1.0 = everyone; abo
 the beat that was on screen: {retention}
 Script beats (start second, words): {beats}
 Production features: {features}
+If the video also has "instagram_reel" numbers, compare the two platforms briefly in the summary or lessons
+(same video, so a big gap points to the platform/audience, not the content).
 Return JSON: {{"verdict": "above"|"at"|"below" (vs the channel median),
  "summary": "one sentence a busy owner can read",
  "what_worked": [str], "what_didnt": [str],
@@ -116,6 +118,10 @@ def postmortems(p) -> dict:
                                      "WHERE j.id=?", (job,)).fetchone()
             video = {"title": (topic["title"] if topic else job), "pillar": topic["pillar"] if topic else None,
                      "url": r["url"], **snap}
+            from .publish.instagram import near as ig_near
+            igm = ig_near(state, job, hours)
+            if igm:
+                video["instagram_reel"] = igm     # same video as an Instagram Reel, same age
             res = p._llm(PROMPT.format(tag=tag, video=json.dumps(video), medians=json.dumps(med), n=n,
                                        retention=json.dumps(_retention(state, vid, beats, secs)),
                                        beats=json.dumps(beats)[:4000],
@@ -132,7 +138,10 @@ def postmortems(p) -> dict:
             notify.send(state, f"📊 {tag} check: {notify.esc(video['title'])}\n"
                                f"{v} views (channel median {med.get('views', '-')}, n={n}) · "
                                f"{snap.get('averageViewPercentage', '-')}% viewed · {snap.get('likes', 0)} likes · "
-                               f"{snap.get('shares', 0)} shares\n{notify.esc(data.get('summary', ''))}"
+                               f"{snap.get('shares', 0)} shares"
+                               + (f"\nInstagram: {igm.get('views', '-')} views · {igm.get('likes', 0)} likes · "
+                                  f"{igm.get('shares', 0)} shares · {igm.get('saved', 0)} saves" if igm else "")
+                               + f"\n{notify.esc(data.get('summary', ''))}"
                                + (f"\nLesson: {notify.esc(les)}" if les else ""), silent=True)
     write_learnings(p)
     return {"analysed": done}

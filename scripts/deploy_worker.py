@@ -88,6 +88,7 @@ def main() -> int:
     sub = subdomain(acc)
     url = f"https://{NAME}.{sub}.workers.dev"
     tg_secret = secrets.token_urlsafe(32)
+    ig = cfg.channel.get("instagram") or {}
     meta = {
         "main_module": "index.js",
         "compatibility_date": "2026-09-01",
@@ -103,6 +104,9 @@ def main() -> int:
             {"type": "secret_text", "name": "YT_CLIENT_ID", "text": os.environ.get("YT_CLIENT_ID", "").strip()},
             {"type": "secret_text", "name": "YT_CLIENT_SECRET", "text": os.environ.get("YT_CLIENT_SECRET", "").strip()},
             {"type": "plain_text", "name": "EXPECT_CHANNEL", "text": str(cfg.channel["channel"]["name"])},
+            {"type": "plain_text", "name": "IG_APP_ID", "text": str(ig.get("app_id") or "")},
+            {"type": "secret_text", "name": "IG_APP_SECRET", "text": os.environ.get("IG_APP_SECRET", "").strip()},
+            {"type": "plain_text", "name": "EXPECT_IG", "text": str(ig.get("handle", "")).lstrip("@")},
         ],
     }
     code = (ROOT / "worker" / "index.js").read_bytes()
@@ -137,6 +141,7 @@ def main() -> int:
         {"command": "produce", "description": "Make a video now"},
         {"command": "dash", "description": "Dashboard link"},
         {"command": "ytlogin", "description": "Connect the YouTube channel"},
+        {"command": "iglogin", "description": "Connect Instagram"},
         {"command": "revenue", "description": "Record revenue: /revenue 2026-11 12.50"},
         {"command": "help", "description": "How this works"},
     ])})

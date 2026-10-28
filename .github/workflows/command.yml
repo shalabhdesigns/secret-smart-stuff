@@ -30,6 +30,7 @@ jobs:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       GH_DISPATCH_TOKEN: ${{ secrets.GH_DISPATCH_TOKEN }}
+      IG_APP_SECRET: ${{ secrets.IG_APP_SECRET }}       # only the Worker deploy uses it
       GH_TOKEN: ${{ github.token }}
       REQUEST: ${{ github.event.inputs.request }}   # via env, never inlined into the shell
     steps:

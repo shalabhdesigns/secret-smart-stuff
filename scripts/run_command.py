@@ -632,8 +632,42 @@ def main(path: str) -> int:
         with p.state.tx() as db:
             db.execute("UPDATE uploads SET status='held', privacy='private' WHERE job_id=?", (up["job_id"],))
         p.state.add_feedback(up["job_id"], "stop", req.get("note", ""))
-        notify.send(p.state, f"⏸ Stopped. {up['url']} stays private (not scheduled). Reply to this message with "
-                             "what was wrong if you want; I'll learn from it.")
+        from shorts.publish import instagram as ig
+        igs = ig.hold(p.state, up["job_id"])
+        ig_note = {"held": " The Instagram post is cancelled too.",
+                   "posted": " ⚠️ It is already on Instagram: delete it in the Instagram app (the API can't hide it)."}
+        notify.send(p.state, f"⏸ Stopped. {up['url']} stays private (not scheduled).{ig_note.get(igs, '')} Reply to "
+                             "this message with what was wrong if you want; I'll learn from it.")
+        return 0
+    if action == "ig_whoami":
+        # which Instagram account the stored login posts to, its token expiry and posting quota (no secrets printed)
+        from shorts.publish import instagram as ig
+        try:
+            msg = "Instagram login OK.\n" + json.dumps(ig.whoami(), indent=1)
+        except Exception as e:  # noqa: BLE001
+            msg = f"Instagram login check: {e}"
+        gh("issue", "create", "--title", "Instagram login check", "--body", msg, check=False)
+        print(msg)
+        return 0
+    if action == "ig_post":
+        # post one already-published YouTube video to Instagram NOW (owner-approved test or catch-up)
+        from shorts.publish import instagram as ig
+        job = req.get("job", "")
+        up = p.state.db.execute("SELECT status FROM uploads WHERE job_id=?", (job,)).fetchone()
+        if not up or up["status"] == "held":
+            notify.send(p.state, f"I can't post {job} to Instagram: it is not a published YouTube video.")
+            return 1
+        ig._ensure(p.state)
+        with p.state.tx() as db:
+            db.execute("INSERT OR IGNORE INTO ig_posts(job_id, status, publish_at, at) VALUES (?,?,?,?)",
+                       (job, "pending", time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), time.time()))
+        try:
+            res = ig.post(p.state, job)
+        except Exception as e:  # noqa: BLE001
+            alert(p, "Instagram test post failed", f"{job}: {e}")
+            return 1
+        notify.send(p.state, f"📸 Posted to Instagram: {res.get('permalink')}")
+        gh("issue", "create", "--title", "Instagram post", "--body", json.dumps(res), check=False)
         return 0
     if action == "send_review":
         job = req.get("job", "")
