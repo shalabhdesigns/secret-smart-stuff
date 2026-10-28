@@ -5,6 +5,7 @@
 | Time (IST) | Workflow | What happens |
 |---|---|---|
 | 05:47 | `produce` | Makes one Short. If it passes the final review it is uploaded private + scheduled for its slot (auto mode until 25 Nov 2026) and you get it in Telegram with a ⏸ Stop it button. If it fails, it is fixed or dropped and you are told. |
+| 19:00 / 22:30 / 07:30 (the video's slot) | `instagram` | Posts the day's video as an Instagram Reel at the same time it goes public on YouTube. A Stop before then cancels it. |
 | when you tap | `command` | ⏸ Stop it → keeps that video private · (manual mode) ✅ Approve / ✏️ Fix / 🗑 Drop |
 | every 4 h + after each slot | `analytics` | YouTube Analytics for every video; confirms uploads went live; post-mortems at 48 h and 7 days (short Telegram note each) |
 | Monday and Thursday 09:03 | `summary` | Learnings update: rules for the writer, topic guidance, proposals for you; `data/LEARNINGS.md` |
@@ -27,6 +28,7 @@ start late.
 | /status | What is waiting, recent uploads, spend |
 | /produce | Make an extra video now |
 | /ytlogin | Connect or refresh the YouTube login (one tap) |
+| /iglogin | Connect or refresh the Instagram login (one tap; send it as a new message, not a reply) |
 | /dash | Dashboard link (login code sent to Telegram) |
 | /revenue 2026-11 12.50 | Record revenue for a month |
 
@@ -42,6 +44,8 @@ start late.
 | **Change the voice** | `config/channel.yaml` → `voice.voice_id`. |
 | **"YouTube login expired" / "login is for another channel"** | Send /ytlogin to the bot and pick Secret Smart Stuff (`docs/SETUP.md`). |
 | **An upload says "started but did not confirm"** | Check YouTube Studio. If the video IS there: `python -m shorts.cli upload-resolve JOB --video-id ID`. If not: `python -m shorts.cli upload-resolve JOB`, then approve again. This guard stops double uploads. |
+| **Instagram post failed / "send /iglogin"** | Send /iglogin. To post a published video now: `{"action":"ig_post","job":"<job>"}`. Check the login: `{"action":"ig_whoami"}`. |
+| **Stop a video already on Instagram** | The API can't hide it: delete it in the Instagram app. |
 | **Redeploy the studio Worker** | Push `{"action":"setup_studio"}`. |
 
 ## Troubleshooting

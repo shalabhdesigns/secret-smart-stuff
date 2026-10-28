@@ -11,6 +11,7 @@ This pipeline:
 - checks quality;
 - reviews each finished video against a calibrated quality bar (up to 3 fix rounds);
 - uploads passing videos to YouTube as private + scheduled (auto mode) and tells the owner on Telegram;
+- posts each video to Instagram as a Reel at the same time;
 - analyses every video at 48 h and 7 days and feeds the lessons into the next scripts and topics.
 
 It runs on GitHub Actions, so no computer needs to stay on.

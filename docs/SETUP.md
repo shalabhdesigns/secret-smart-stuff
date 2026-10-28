@@ -32,10 +32,23 @@ secretsmartstuff@gmail.com became an Owner of the Google Cloud project on 28 Oct
     - the OAuth Playground;
     - `http://127.0.0.1:8765`.
 
+## Instagram (added 28 Oct 2026)
+- Account **@secretsmartstuff** (Professional → Creator), signed up with secretsmartstuff@gmail.com.
+- Meta developer account: the Facebook account secretsmartstuff@gmail.com.
+- Meta app **"Secret Smart Stuff Publisher"** (app 1023913184068281), use case "Manage messaging & content on
+  Instagram", no business portfolio, Unpublished (development mode is enough to post to our own account).
+  - API setup with Instagram login: Instagram app ID `1643545574174386` (in `config/channel.yaml`); the
+    Instagram app secret is the GitHub secret `IG_APP_SECRET`.
+  - Permissions: instagram_business_basic, instagram_business_content_publish, instagram_business_manage_insights.
+  - Business login redirect URL: `https://secretsmartstuff-studio.secretsmartstuff.workers.dev/ig/callback`.
+  - App roles: @secretsmartstuff is an Instagram Tester (accepted).
+- Login: send **/iglogin** to the studio bot (as a new message). The token is stored encrypted in the Worker's
+  store, lasts 60 days and renews itself; check it with `{"action":"ig_whoami"}`.
+
 ## GitHub Actions secrets
 - `ANTHROPIC_API_KEY`, `ELEVENLABS_API_KEY`, `BFL_API_KEY`
 - `YT_CLIENT_ID`, `YT_CLIENT_SECRET`
-- `TELEGRAM_BOT_TOKEN`, `CLOUDFLARE_API_TOKEN`, `GH_DISPATCH_TOKEN`
+- `TELEGRAM_BOT_TOKEN`, `CLOUDFLARE_API_TOKEN`, `GH_DISPATCH_TOKEN`, `IG_APP_SECRET`
 - Variable `SHORTS_MODE=live`.
 - The YouTube login is not a GitHub secret: it is the encrypted one in the Worker (below). The old
   `YT_REFRESH_TOKEN` secret was deleted on 28 Oct.

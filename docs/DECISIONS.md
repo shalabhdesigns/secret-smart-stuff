@@ -132,3 +132,11 @@ Each entry: date, decision, who decided, why. Newest at the bottom.
 |---|---|---|
 | October cap | $56 (from $50), so daily videos run 29–31 Oct | Owner |
 | November cap | $60 (from $45), one auto-published video a day | Owner |
+
+## 28 Oct 2026 — Instagram
+
+| Item | Decision | By |
+|---|---|---|
+| Instagram | New @secretsmartstuff (Creator); every video also posted as a Reel at its YouTube time | Owner |
+| How | Official Instagram API (Instagram Login, no Facebook Page), own Meta app in development mode; $0 | Claude |
+| First post | Bus shelter video at 22:30 IST, 28 Oct (full automatic path) | Owner |

@@ -15,6 +15,7 @@ Legend: ✅ works and was tested on the real service · 🟡 built, not yet prov
 | Hold-for-check before sending (`hold` + `send_review`) | 🟡 | Added 28 Oct for test videos |
 | Auto-publish until 25 Nov (passes review → private + scheduled, Telegram note with ⏸ Stop it) | 🟡 | Tested with a fake upload (tests pass); first real one is the next daily video |
 | Per-video post-mortems (48 h, 7 d) + living `data/LEARNINGS.md` | 🟡 | Tested offline; first real one when the bus-shelter video is 48 h old (30–31 Oct) |
+| Instagram Reels at the YouTube slot (+ insights in the post-mortems) | 🟡 | Login connected and checked 28 Oct; first real post: bus shelter, 22:30 IST 28 Oct |
 | Old show data | ✅ | Exported to `archive/bhaukaali-toons`, removed from the live database (28 Oct) |
 | Daily schedule | ✅ on | 05:47 IST; skips while a video waits for review |
 | Real-motion AI clips | off | Tested 25 Oct (+$3.18 BFL on one video); experiment only |
