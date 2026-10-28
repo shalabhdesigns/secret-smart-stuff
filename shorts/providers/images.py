@@ -32,11 +32,20 @@ class BFLImages:
         if seed is not None:
             body["seed"] = seed
         h = {"x-key": self.key, "accept": "application/json", "content-type": "application/json"}
-        for attempt in range(4):
+        for attempt in range(6):
             r = requests.post(BASE + model, json=body, headers=h, timeout=60)
+            if r.status_code == 422 and "extra_forbidden" in r.text:
+                # newer models (e.g. flux-3-image) take fewer fields: drop the refused ones and retry
+                bad = [d.get("loc", [None, None])[-1] for d in (r.json().get("detail") or [])
+                       if d.get("type") == "extra_forbidden"]
+                if "width" in bad or "height" in bad:
+                    body["aspect_ratio"] = "9:16"
+                for k in bad:
+                    body.pop(k, None)
+                continue
             if r.status_code != 429:
                 break
-            time.sleep(5 * (2 ** attempt))       # too many active tasks: wait and retry
+            time.sleep(5 * (2 ** min(attempt, 3)))   # too many active tasks: wait and retry
         if r.status_code == 402:
             raise ImageError("BFL account has no credits left")
         if r.status_code != 200:
