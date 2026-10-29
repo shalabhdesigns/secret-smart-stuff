@@ -42,6 +42,8 @@
   - at most 3 rounds.
   - The code does this automatically (`Pipeline.critique`). When Claude is in the session, Claude also checks the
     frames. The owner is the final approver, not the person who catches basic mistakes.
+- **Every video builds on the previous ones** (owner, 29 Oct 2026): learn → apply → evaluate → improve, every upload
+  (`shorts/carry.py`, PLAYBOOK §14). Never let a new video ignore what earlier videos, the review and the owner taught.
 - **Flag cost and policy risks before spending.** Never claim something works until it has been tested.
 
 ## Before sending any video

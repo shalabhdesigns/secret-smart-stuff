@@ -30,6 +30,8 @@ Retention: fraction of viewers still watching at each point (1.0 = everyone; abo
 the beat that was on screen: {retention}
 Script beats (start second, words): {beats}
 Production features: {features}
+If the features list "learnings_applied" (lessons carried over from earlier videos), say in what_worked or
+what_didnt whether applying them seems to have helped, and turn a lesson that worked again into "pattern".
 If the video also has "instagram_reel" numbers, compare the two platforms briefly in the summary or lessons
 (same video, so a big gap points to the platform/audience, not the content).
 Return JSON: {{"verdict": "above"|"at"|"below" (vs the channel median),

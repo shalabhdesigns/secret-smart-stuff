@@ -74,6 +74,23 @@ def subdomain(acc: str) -> str:
     raise RuntimeError("could not register a workers.dev subdomain; open Workers & Pages once in the dashboard")
 
 
+def timer_plan(cfg) -> dict:
+    """Cron (UTC) -> runner request. The daily video at produce time; Instagram 12 minutes before each publish
+    slot (the run prepares the Reel and publishes at the exact minute). Cloudflare's free plan allows 5 timers."""
+    plan = {"17 0 * * *": {"action": "daily"}}
+    import yaml
+    exps = (yaml.safe_load((ROOT / "config" / "experiments.yaml").read_text()) or {}).get("experiments") or []
+    slots = set()
+    for e in exps:
+        if e.get("variable") == "publish_slot_utc" and e.get("status") == "active":
+            slots |= set((e.get("arms") or {}).values())
+    for s in sorted(slots)[:4]:
+        h, m = (int(x) for x in s.split(":"))
+        t = (h * 60 + m - 12) % 1440
+        plan[f"{t % 60} {t // 60} * * *"] = {"action": "ig_due"}
+    return plan
+
+
 def main() -> int:
     cfg = load()
     acc = (os.environ.get("CLOUDFLARE_ACCOUNT_ID") or str(cfg.pipeline.get("cloudflare_account_id", ""))).strip()
@@ -88,6 +105,7 @@ def main() -> int:
     sub = subdomain(acc)
     url = f"https://{NAME}.{sub}.workers.dev"
     tg_secret = secrets.token_urlsafe(32)
+    plan = timer_plan(cfg)
     ig = cfg.channel.get("instagram") or {}
     meta = {
         "main_module": "index.js",
@@ -107,6 +125,7 @@ def main() -> int:
             {"type": "plain_text", "name": "IG_APP_ID", "text": str(ig.get("app_id") or "")},
             {"type": "secret_text", "name": "IG_APP_SECRET", "text": os.environ.get("IG_APP_SECRET", "").strip()},
             {"type": "plain_text", "name": "EXPECT_IG", "text": str(ig.get("handle", "")).lstrip("@")},
+            {"type": "plain_text", "name": "SCHEDULE", "text": json.dumps(plan)},
         ],
     }
     code = (ROOT / "worker" / "index.js").read_bytes()
@@ -115,6 +134,10 @@ def main() -> int:
         "index.js": ("index.js", code, "application/javascript+module"),
     })
     cf("POST", f"/accounts/{acc}/workers/scripts/{NAME}/subdomain", json={"enabled": True})
+    try:      # timers: daily video + Instagram slots (GitHub's schedule runs late; this is the on-time trigger)
+        cf("PUT", f"/accounts/{acc}/workers/scripts/{NAME}/schedules", json=[{"cron": c} for c in plan])
+    except RuntimeError as e:
+        print(f"timers not set (GitHub's schedule still runs): {e}")
     # a brand-new workers.dev subdomain takes a few minutes to appear in DNS: wait for /health first
     import time
     for _ in range(40):

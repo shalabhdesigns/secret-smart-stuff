@@ -427,6 +427,22 @@ completed your self-review"):
 - **The living record:** `data/LEARNINGS.md` on the `state` branch, plus the dashboard. It holds every
   analysis and the current rules.
 
+**Every new video builds on the previous ones (owner's standing rule, 29 Oct 2026; `shorts/carry.py`):**
+1. **Learn:** before writing, the script prompt gets everything earlier videos taught:
+   - the weekly rules from our analytics;
+   - what worked on videos that beat the channel median;
+   - the newest post-mortem lessons (hypotheses until repeated);
+   - the problems our final review found on recent videos, blocking ones first (so pictures and lines are
+     planned to avoid them);
+   - the owner's change requests, Stop reasons and drop reasons.
+   Topic choice gets the topic guidance plus each video's "double down" / "drop" signal.
+2. **Apply:** the video follows this playbook first, then these lessons. Which lessons it applied is saved with
+   its features (`learnings_applied`).
+3. **Evaluate:** the 48 h and 7 day post-mortems judge whether the applied lessons helped; a lesson that works
+   again becomes a "pattern".
+4. **Improve:** Monday and Thursday the weekly report turns patterns into writer rules and topic guidance; a
+   change to this playbook goes to the owner as a proposal and, once approved, into the Change log.
+
 ## Change log
 
 - 2026-10-25: Playbook created from the approved onigiri v9. Arrows under 12% of the frame are now dropped.
@@ -443,3 +459,4 @@ completed your self-review"):
 - 2026-10-28: Auto-publishing for 28 days (owner); per-video post-mortems at 48 h / 7 d; learnings update twice a
   week and feed both the writer and topic choice; living learnings file.
 - 2026-10-29: New brand (owner): Pull Tab logo, ultramarine #1F3BFF + blush #FFD6E0 + white, Archivo type. Videos switched from orange/navy/cream + Inter (that palette reads as AI-made). Checked on a local re-render of the bus shelter video.
+- 2026-10-29: Learning loop closed (owner): every new video now gets the lessons of all earlier ones (analytics, post-mortems, our own review findings, owner feedback) and records which it applied, so the next post-mortems can judge them. Daily video and Instagram posts are started on time by the Worker's timers (GitHub's schedule ran hours late); the runner skips a second daily run the same day.

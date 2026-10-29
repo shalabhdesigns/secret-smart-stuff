@@ -195,4 +195,14 @@ assert.equal(r.status, 206); assert.equal(r.headers.get("content-range"), "bytes
 assert.deepEqual([...new Uint8Array(await r.arrayBuffer())], [2, 3]);
 assert.equal((await worker.fetch(new Request("https://x/m/" + "d".repeat(32) + ".mp4"), env)).status, 404);
 assert.equal((await worker.fetch(new Request("https://x/m/../ig_token.enc"), env)).status, 404);
+// timers: a cron that is in SCHEDULE dispatches its request; any other does nothing
+const waits = [];
+const sEnv = { ...env, SCHEDULE: JSON.stringify({ "17 0 * * *": { action: "daily" }, "48 16 * * *": { action: "ig_due" } }) };
+let ngh = gh().length;
+await worker.scheduled({ cron: "17 0 * * *" }, sEnv, { waitUntil: (p) => waits.push(p) });
+await Promise.all(waits);
+assert.equal(gh().length, ngh + 1); assert.equal(lastReq().action, "daily");
+await worker.scheduled({ cron: "1 1 * * *" }, sEnv, { waitUntil: (p) => waits.push(p) });
+await Promise.all(waits);
+assert.equal(gh().length, ngh + 1);
 console.log("worker tests passed");

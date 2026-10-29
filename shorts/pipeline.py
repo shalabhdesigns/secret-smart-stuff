@@ -126,9 +126,8 @@ class Pipeline:
             "SELECT note FROM feedback WHERE decision='drop' AND note != '' ORDER BY at DESC LIMIT 8")]
         extra = ("\n\nEarlier topics were dropped for these reasons (owner or final review) - avoid ideas with "
                  "the same problem:\n" + "\n".join(f"- {x[:200]}" for x in drops)) if drops else ""
-        guide = self.state.get_setting("topic_guidance")
-        if guide:
-            extra += "\n\nWhat this channel's own analytics say about topics (follow it, keep some variety):\n" + guide[:1200]
+        from . import carry
+        extra += carry.for_ideas(self.state)
         r = self._llm(P.IDEAS.format(n=n, quotas=quotas, avoid=avoid, covered=covered, signals=sig) + extra, None, "ideas",
                       system=P.SYSTEM_WRITER, model=self.cfg.pipeline["providers"]["llm"]["model_routine"])
         added = []
@@ -317,7 +316,12 @@ class Pipeline:
                                  angle=idea.get("angle", ""), pillar=topic.get("pillar"),
                                  seconds_lo=lo, seconds_hi=hi, words_lo=int(lo * wps), words_hi=int(hi * wps),
                                  min_sources=r_["min_sources_main_claim"])
-        prompt += self._owner_context()
+        from . import carry
+        ctx, applied = carry.for_script(self.state)     # build on every earlier video (owner's standing rule)
+        prompt += ctx
+        (d / "learnings.json").write_text(json.dumps({"applied": applied, "text": ctx}, ensure_ascii=False, indent=1))
+        if applied:
+            self.state.log(f"applying {len(applied)} learnings from earlier videos", job_id=job_id)
         r = self._llm(prompt, job_id, "script", est=0.25, system=P.SYSTEM_WRITER, web_search=True,
                       model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=12000)
         script = r.data or {}
@@ -1127,6 +1131,8 @@ class Pipeline:
         hist = json.loads((d / "critique.json").read_text()) if (d / "critique.json").exists() else []
         hist.append(c)
         (d / "critique.json").write_text(json.dumps(hist, indent=2, ensure_ascii=False))
+        from . import carry
+        carry.record_review(self.state, job_id, c)       # so the next videos avoid the same problems
         self._append_critique_md(d, hist)
         self.state.log(f"self-review round {round_}: {'PASS' if ok else 'needs work'} (mean {mean:.2f}) "
                        f"{c.get('summary', '')[:200]}", job_id=job_id)

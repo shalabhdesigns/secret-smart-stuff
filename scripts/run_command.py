@@ -25,6 +25,7 @@ import os
 import re
 import subprocess
 import sys
+import tempfile
 import time
 from pathlib import Path
 
@@ -100,6 +101,9 @@ def record_features(p: Pipeline, job: str) -> tuple[str, str]:
     crit = json.loads((d / "critique.json").read_text()) if (d / "critique.json").exists() else []
     if crit:
         feats["self_review"] = {"rounds": len(crit), "mean": crit[-1].get("mean"), "scores": crit[-1].get("scores")}
+    lj = d / "learnings.json"
+    if lj.exists():                                     # which earlier lessons this video applied (for evaluation)
+        feats["learnings_applied"] = json.loads(lj.read_text()).get("applied", [])
     p.state.set_features(job, {**feats, "publish_slot_utc": slot})
     return slot, when
 
@@ -232,6 +236,13 @@ def do_produce(p: Pipeline, req: dict) -> int:
             p.state.set_job_status(old, "rejected", "retired: superseded")
             p.state.set_topic_status(jj["topic_id"], "shortlisted")
             comment(old, "Retired: superseded by the current format.", close=True)
+    if req.get("action") == "daily":
+        # one video a day: two triggers (GitHub's schedule and the Worker's timer) may both fire
+        today = time.strftime("%Y-%m-%d", time.gmtime(time.time() + 5.5 * 3600))     # IST day
+        if p.state.get_setting("last_daily_ist") == today:
+            print(f"daily run already done for {today}; skipping")
+            return 0
+        p.state.set_setting("last_daily_ist", today)
     pending = p.state.jobs("review")
     if pending and not req.get("topic") and not req.get("allow_parallel"):
         # one video waits for review at a time: remind instead of making another
@@ -652,6 +663,35 @@ def main(path: str) -> int:
                 msg += f"\nStore keys: unavailable ({e2})"
         gh("issue", "create", "--title", "Instagram login check", "--body", msg, check=False)
         print(msg)
+        return 0
+    if action == "backfill_reviews":
+        # one-off: load the final-review findings of earlier videos into the learning loop (shorts/carry.py)
+        from shorts import carry
+        import tarfile
+        carry._ensure(p.state)
+        done = []
+        for jj in p.state.jobs()[-12:]:
+            if p.state.db.execute("SELECT 1 FROM review_notes WHERE job_id=?", (jj["id"],)).fetchone():
+                continue
+            with tempfile.TemporaryDirectory() as tmp:
+                hist = None
+                for tag in (f"rejected-{jj['id']}", f"review-{jj['id']}"):
+                    subprocess.run(["gh", "release", "download", tag, "-p", "critique.json", "-p", "media.tgz",
+                                    "-D", tmp, "--clobber"], capture_output=True)
+                    cj, tgz = Path(tmp) / "critique.json", Path(tmp) / "media.tgz"
+                    if cj.exists():
+                        hist = json.loads(cj.read_text())
+                    elif tgz.exists():
+                        with tarfile.open(tgz) as tf:
+                            m = next((x for x in tf.getmembers() if x.name.endswith("critique.json")), None)
+                            hist = json.loads(tf.extractfile(m).read()) if m else None
+                    if hist:
+                        break
+                for c in hist or []:
+                    carry.record_review(p.state, jj["id"], c)
+                if hist:
+                    done.append(jj["id"])
+        print(json.dumps({"backfilled": done}))
         return 0
     if action == "ig_due":
         # same as the instagram workflow: post what is due, preparing early and publishing at the exact minute

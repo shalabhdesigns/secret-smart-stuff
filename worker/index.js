@@ -11,6 +11,7 @@
 // 5. /ig/*    One-tap Instagram login (Business Login for Instagram). Long-lived token stored ENCRYPTED in KV
 //             (key from YT_CLIENT_SECRET, label "ig-token-v1:"); only the expected account (EXPECT_IG) is kept.
 // 6. /m/<key>.mp4  Serves a video the runner put in KV for a few hours, so Instagram can fetch it.
+// 7. scheduled()   Timers that start the daily video and the Instagram posts on time (SCHEDULE binding).
 //
 // Bindings (set by scripts/deploy_worker.py): KV (namespace), TG_TOKEN, TG_SECRET, OWNER_ID,
 // GH_TOKEN, GH_REPO, COOKIE_KEY, SELF_URL, YT_CLIENT_ID, YT_CLIENT_SECRET, EXPECT_CHANNEL,
@@ -39,6 +40,14 @@ export default {
     } catch (e) {
       return new Response("error", { status: 500 });
     }
+  },
+  // 7. Timers (Cloudflare Cron Triggers): start the daily video and the Instagram posts on time. GitHub's own
+  //    schedule can run hours late; it stays as a backup (the runner skips a second daily run the same day).
+  async scheduled(event, env, ctx) {
+    let plan = {};
+    try { plan = JSON.parse(env.SCHEDULE || "{}"); } catch { plan = {}; }
+    const request = plan[event.cron];
+    if (request) ctx.waitUntil(dispatch(env, { ...request }));
   },
 };
 
