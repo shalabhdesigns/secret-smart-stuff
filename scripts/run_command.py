@@ -208,12 +208,16 @@ def self_review(p: Pipeline, job: str, rounds: int = 3) -> dict:
         try:
             c = p.critique(job, r, prev)
         except BudgetExceeded as e:
-            return {**(prev or {}), "passed": False, "summary": f"stopped: budget limit reached before review round {r} ({e})"}
+            return {**(prev or {}), "passed": False, "budget_stop": True,
+                    "summary": f"stopped: budget limit reached before review round {r} ({e})"}
         if c.get("passed") or c.get("verdict") == "drop" or c.get("unshowable") or r == rounds:
             return c
         p.prepare_prior(job, c)
-        p.decide(job, "selffix", p.fix_note(c, job))
-        p.produce(topic)
+        try:
+            p.decide(job, "selffix", p.fix_note(c, job))
+            p.produce(topic)
+        except BudgetExceeded as e:   # a spending limit is not a quality verdict: pause, never drop or crash
+            return {**c, "passed": False, "budget_stop": True, "summary": f"fix paused: budget limit ({e})"}
         j = p.state.get_job(job)
         if j["status"] != "review" or j["error"]:
             c = {**c, "passed": False, "summary": f"fix round stopped: {j['status']} {j['error'] or ''}"}
@@ -293,6 +297,12 @@ def do_produce(p: Pipeline, req: dict) -> int:
         c = self_review(p, job)
         if c.get("passed"):
             break
+        if c.get("budget_stop"):
+            # not a failed video: keep it, tell the owner, finish it when money allows (never publish it unreviewed)
+            p.state.set_job_status(job, "paused", c["summary"][:300])
+            notify.send(p.state, f"⏸ {job} is paused: a spending limit stopped its fix ({notify.esc(c['summary'][:200])}). "
+                                 "Nothing was published. Raise the limit or tell me to drop it.")
+            return 0
         reason = f"self-review: {c.get('summary', '')}"[:400]
         keep_rejected(job)
         p.decide(job, "reject", reason)
@@ -617,6 +627,32 @@ def main(path: str) -> int:
                                                   "retention_risks")}, indent=1, ensure_ascii=False)
         gh("issue", "create", "--title", f"Calibration: final review of {job}", "--body", body[:60000], check=False)
         print(body)
+        return 0
+    if action == "finish":
+        # resume a video whose final review/fix was stopped (e.g. by a budget limit): review, fix, then the normal
+        # path - publish in auto mode if it passes, drop it if it fails, pause again if a limit stops it
+        job = req.get("job", "")
+        j = p.state.get_job(job) if JOB_RE.fullmatch(job) else None
+        if not j or j["status"] not in ("review", "paused"):
+            notify.send(p.state, f"I can't finish {job}: it is {j['status'] if j else 'unknown'}.")
+            return 1
+        if j["status"] == "paused":
+            p.state.set_job_status(job, "review", "")
+        c = self_review(p, job, int(req.get("rounds", 2)))
+        if c.get("passed"):
+            if auto_mode(p):
+                return auto_publish(p, job)
+            send_for_review(p, job)
+            return 0
+        if c.get("budget_stop"):
+            p.state.set_job_status(job, "paused", c["summary"][:300])
+            notify.send(p.state, f"⏸ {job} is still paused by a spending limit ({notify.esc(c['summary'][:200])}).")
+            return 0
+        reason = f"self-review: {c.get('summary', '')}"[:400]
+        keep_rejected(job)
+        p.decide(job, "reject", reason)
+        notify.send(p.state, f"🔍 {job} failed my final check after the fix, so it was dropped: "
+                             f"{notify.esc(c.get('summary', '')[:300])}")
         return 0
     if action == "self_review":
         job = req.get("job", "")

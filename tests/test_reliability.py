@@ -121,3 +121,13 @@ def test_publish_refuses_dry_run_and_unapproved(pipe):
     pipe.decide(job, "approve")
     with pytest.raises(RuntimeError, match="dry-run"):
         pipe.publish(job)
+
+
+def test_daily_budget_is_per_ist_day():
+    """30 Oct 2026: a rolling 24 h counted yesterday's late run against today's video and stopped its fix."""
+    from shorts.budget import _ist_day_start
+    import calendar
+    now = calendar.timegm((2026, 10, 30, 0, 45, 0))            # 06:15 IST on 30 Oct
+    assert _ist_day_start(now) == calendar.timegm((2026, 10, 29, 18, 30, 0))   # 00:00 IST on 30 Oct
+    late = calendar.timegm((2026, 10, 29, 20, 0, 0))           # 01:30 IST on 30 Oct
+    assert _ist_day_start(late) == _ist_day_start(now)

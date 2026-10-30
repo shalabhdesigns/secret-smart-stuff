@@ -24,13 +24,20 @@ def _month_start(now: float) -> float:
     return time.mktime((lt.tm_year, lt.tm_mon, 1, 0, 0, 0, 0, 0, -1))
 
 
+def _ist_day_start(now: float) -> float:
+    """Midnight IST today. The daily limit is per IST day: a rolling 24 h counted yesterday's late run against
+    today's video and stopped its fix (30 Oct 2026)."""
+    ist = 5.5 * 3600
+    return (now + ist) // 86400 * 86400 - ist
+
+
 class Budget:
     def __init__(self, state: State, limits: Limits):
         self.state, self.limits = state, limits
 
     def remaining(self, job_id: str | None = None) -> dict:
         now = time.time()
-        day = self.limits.daily_usd - self.state.spend_since(now - 86400)
+        day = self.limits.daily_usd - self.state.spend_since(_ist_day_start(now))
         month = self.limits.monthly_usd - self.state.spend_since(_month_start(now))
         video = self.limits.per_video_usd - (self.state.job_cost(job_id) if job_id else 0.0)
         return {"day": day, "month": month, "video": video}
