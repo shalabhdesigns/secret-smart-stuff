@@ -131,3 +131,11 @@ def test_daily_budget_is_per_ist_day():
     assert _ist_day_start(now) == calendar.timegm((2026, 10, 29, 18, 30, 0))   # 00:00 IST on 30 Oct
     late = calendar.timegm((2026, 10, 29, 20, 0, 0))           # 01:30 IST on 30 Oct
     assert _ist_day_start(late) == _ist_day_start(now)
+
+
+def test_per_video_override_only_for_that_video(tmp_path):
+    from shorts.budget import Budget, Limits
+    from shorts.state import State
+    st = State(tmp_path / "s.db")
+    b = Budget(st, Limits(6.0, 50.0, 2.0, {"knife-v1": 3.2}))
+    assert abs(b.remaining("knife-v1")["video"] - 3.2) < 1e-9 and abs(b.remaining("other-v1")["video"] - 2.0) < 1e-9

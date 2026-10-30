@@ -17,6 +17,7 @@ class Limits:
     daily_usd: float
     monthly_usd: float
     per_video_usd: float
+    per_video_override: dict | None = None     # {job_id: usd}: owner-approved exceptions for one video
 
 
 def _month_start(now: float) -> float:
@@ -39,7 +40,8 @@ class Budget:
         now = time.time()
         day = self.limits.daily_usd - self.state.spend_since(_ist_day_start(now))
         month = self.limits.monthly_usd - self.state.spend_since(_month_start(now))
-        video = self.limits.per_video_usd - (self.state.job_cost(job_id) if job_id else 0.0)
+        cap = float((self.limits.per_video_override or {}).get(job_id or "", self.limits.per_video_usd))
+        video = cap - (self.state.job_cost(job_id) if job_id else 0.0)
         return {"day": day, "month": month, "video": video}
 
     def authorize(self, est_usd: float, what: str, job_id: str | None = None) -> None:

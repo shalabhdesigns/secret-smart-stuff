@@ -308,6 +308,7 @@ def do_produce(p: Pipeline, req: dict) -> int:
             break
         if c.get("budget_stop"):
             # not a failed video: keep it, tell the owner, finish it when money allows (never publish it unreviewed)
+            preserve_media(p)                                   # keep the paid-for media for the next run
             p.state.set_job_status(job, "paused", c["summary"][:300])
             notify.send(p.state, f"⏸ {job} is paused: a spending limit stopped its fix ({notify.esc(c['summary'][:200])}). "
                                  "Nothing was published. Raise the limit or tell me to drop it.")
@@ -675,6 +676,7 @@ def main(path: str) -> int:
             send_for_review(p, job)
             return 0
         if c.get("budget_stop"):
+            preserve_media(p)                                   # keep the paid-for media for the next run
             p.state.set_job_status(job, "paused", c["summary"][:300])
             notify.send(p.state, f"⏸ {job} is still paused by a spending limit ({notify.esc(c['summary'][:200])}).")
             return 0
