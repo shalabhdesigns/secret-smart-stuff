@@ -82,6 +82,15 @@ def fetch_bundle(job: str, into: Path) -> bool:
     return r.returncode == 0
 
 
+def preserve_media(p: Pipeline) -> None:
+    """After a crash: save every finished-but-unpublished video's media to its review release, so the next run can
+    resume it instead of paying for new pictures and voice (30 Oct 2026: a crash lost the knife video's media)."""
+    for jj in p.state.jobs("review") + p.state.jobs("paused"):
+        d = ROOT / "build" / jj["id"]
+        if (d / "final.mp4").exists() and (d / "metadata.json").exists():
+            subprocess.run([str(ROOT / "scripts" / "open_review.sh"), jj["id"]], check=False)
+
+
 def record_features(p: Pipeline, job: str) -> tuple[str, str]:
     """What the video is made of (for the learning loop) + its publish slot. Returns (slot, publish time)."""
     j = p.state.get_job(job)
@@ -506,7 +515,11 @@ def main(path: str) -> int:
         p.state.log(f"owner allowed +${extra:.2f} on today's daily limit for this run")
     # ---- Secret Smart Stuff explainers (the live format) ----
     if action in ("produce", "daily"):
-        return do_produce(p, req)
+        try:
+            return do_produce(p, req)
+        except Exception:
+            preserve_media(p)       # a crash must not throw away paid-for pictures and voice
+            raise
     if action in ("approve", "reject", "fix"):
         return do_decision(p, req)
     if action == "rename_repo":
@@ -638,7 +651,23 @@ def main(path: str) -> int:
             return 1
         if j["status"] == "paused":
             p.state.set_job_status(job, "review", "")
-        c = self_review(p, job, int(req.get("rounds", 2)))
+        d = ROOT / "build" / job
+        if not fetch_bundle(job, d) or not (d / "final.mp4").exists():
+            # the media is gone (the run that made it crashed): rebuild from the saved, already-reviewed script
+            p.state.log("finish: media not saved; rebuilding pictures and voice from the saved script", "warn", job)
+            p.produce(j["topic_id"])
+            j = p.state.get_job(job)
+            if j["status"] != "review" or j["error"]:
+                if j["status"] == "paused":
+                    notify.send(p.state, f"⏸ {job} is paused by a spending limit while rebuilding.")
+                    return 0
+                report_failure(p, job)
+                return 1
+        try:
+            c = self_review(p, job, int(req.get("rounds", 2)))
+        except Exception:
+            preserve_media(p)
+            raise
         if c.get("passed"):
             if auto_mode(p):
                 return auto_publish(p, job)
