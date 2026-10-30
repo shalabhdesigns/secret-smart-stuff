@@ -44,6 +44,8 @@
     frames. The owner is the final approver, not the person who catches basic mistakes.
 - **Every video builds on the previous ones** (owner, 29 Oct 2026): learn → apply → evaluate → improve, every upload
   (`shorts/carry.py`, PLAYBOOK §14). Never let a new video ignore what earlier videos, the review and the owner taught.
+- **When something fails, fix it at once** (owner, 30 Oct 2026): find the cause, fix it, try again, then tell him the
+  result. If only he can fix it (a login, a Meta block), say exactly what to do and give him a way to finish by hand.
 - **Flag cost and policy risks before spending.** Never claim something works until it has been tested.
 
 ## Before sending any video

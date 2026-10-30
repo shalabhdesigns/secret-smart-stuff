@@ -55,6 +55,8 @@ class FakeIG:
             if "ig_reels_video_view_total_time" in kw["metric"]:
                 raise RuntimeError("Instagram insights: metric ig_reels_video_view_total_time is not supported")
             return {"data": [{"name": "views", "values": [{"value": 321}]}, {"name": "likes", "values": [{"value": 12}]}]}
+        if path == "me":
+            return {"user_id": "1789", "username": "secretsmartstuff"}
         if path.startswith("M"):
             return {"permalink": f"https://www.instagram.com/reel/{path}/", "timestamp": "2026-10-01T17:01:00+0000"}
         raise AssertionError((method, path))
@@ -165,3 +167,27 @@ def test_prepared_early_published_at_exact_time_and_stop_while_waiting(tmp_path,
     monkeypatch.setattr(ig, "_cf_kv", lambda k: "1" if k == "stop:t-v2" else None)
     assert ig.publish_due(st)["posted"] == [] and fake.published == 1
     assert st.db.execute("SELECT status FROM ig_posts WHERE job_id='t-v2'").fetchone()["status"] == "held"
+
+
+def test_blocked_access_warns_early_sends_reel_for_hand_posting_and_never_double_posts(tmp_path, monkeypatch):
+    """30 Oct 2026: Meta answered 'API access blocked' (code 200). Retrying can't fix that, so the owner must hear
+    at queue time, get the Reel + caption at the slot, and a hand-posted Reel must never be posted again."""
+    st, fake, _ = _setup(tmp_path, monkeypatch)
+    sent, videos = [], []
+    monkeypatch.setattr(ig.notify, "send", lambda state, text, *a, **k: sent.append(text))
+    monkeypatch.setattr(ig.notify, "send_video", lambda state, path, cap, buttons=None: videos.append((cap, buttons)))
+
+    def blocked(method, path, tok, **kw):
+        raise RuntimeError(f"Instagram {path.split('/')[-1]}: API access blocked. (code 200/None)")
+    monkeypatch.setattr(ig, "_api", blocked)
+    ig.queue(st, "t-v1", "2020-01-01T00:00:00Z")
+    assert any("can't post right now" in t and "/iglogin" in t for t in sent)          # warned at queue time
+    ig.publish_due(st)
+    ig.publish_due(st)
+    assert len(videos) == 1 and videos[0][1] == [[("✅ I posted it", "P:t-v1")]]          # Reel sent once
+    assert any(t.startswith("Caption (copy and paste)") and "#secretsmartstuff" in t for t in sent)
+    ig.manual(st, "t-v1")                                                                # owner tapped the button
+    monkeypatch.setattr(ig, "_api", fake)                                                # access restored
+    assert ig.publish_due(st)["posted"] == [] and fake.published == 0                    # never posted twice
+    assert ig.is_blocked("Instagram me: API access blocked. (code 200/None)")
+    assert not ig.is_blocked("Instagram is still processing the video after 10 minutes")

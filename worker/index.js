@@ -144,6 +144,15 @@ async function telegram(req, env) {
         reply_markup: { inline_keyboard: [[{ text: "⏳ Stopping…", callback_data: "noop:x" }]] } });
       return ack(env, cq, "Stopping. I'll confirm in a minute.");
     }
+    if (kind === "P") {
+      // the owner posted the Reel by hand (Instagram API down): never auto-post this video later
+      await env.KV.put(`stop:${job}`, "1", { expirationTtl: 30 * 86400 });
+      const err = await dispatch(env, { action: "ig_manual", job });
+      if (err) return ack(env, cq, "Could not save: " + err, true);
+      await tg(env, "editMessageReplyMarkup", { chat_id: chat, message_id: msg.message_id,
+        reply_markup: { inline_keyboard: [[{ text: "✅ Marked as posted by hand", callback_data: "noop:x" }]] } });
+      return ack(env, cq, "OK. It won't be posted again.");
+    }
     if (kind === "f") {
       await tg(env, "sendMessage", {
         chat_id: chat, parse_mode: "HTML",

@@ -698,6 +698,18 @@ def main(path: str) -> int:
         from shorts.publish import instagram as ig
         print(json.dumps(ig.publish_due(p.state), default=str))
         return 0
+    if action == "ig_manual":
+        # the owner posted this Reel by hand (Telegram "I posted it" button): never auto-post it later
+        from shorts.publish import instagram as ig
+        ig.manual(p.state, req.get("job", ""), req.get("permalink") or None)
+        notify.send(p.state, f"✅ Noted: {req.get('job')} was posted on Instagram by hand. It won't be posted again.",
+                    silent=True)
+        return 0
+    if action == "ig_hand":
+        # Instagram API is down: send the owner the Reel + caption to post by hand now
+        from shorts.publish import instagram as ig
+        ig.send_for_hand_posting(p.state, req.get("job", ""), req.get("why") or "Instagram API unavailable")
+        return 0
     if action == "ig_queue":
         # queue an already-uploaded YouTube video for Instagram at a given time (default: its YouTube publish time)
         from shorts.publish import instagram as ig

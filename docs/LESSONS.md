@@ -153,6 +153,12 @@ How each item is marked:
   **[owner]**
 - Flag cost and policy risks before spending. **[owner]**
 
+## 11. Failures (owner rule, 30 Oct 2026)
+- When something fails, find the cause at once, fix it, and try again. Don't wait to be asked.
+- Separate failures that retrying fixes (timeouts, processing) from ones it can't (blocked access, expired login). For the second kind, say exactly what the owner must do, and give him a way to finish the job by hand on time.
+- Check access when a job is queued, not only at the deadline. Hours of warning beat minutes.
+- 30 Oct: Meta returned "API access blocked" for the new Instagram app (even GET /me). The aglet Reel missed 07:30 IST. Since then: an access check at queue time, the Reel + caption sent for hand posting at the slot, and "I posted it" marks it so it's never posted twice.
+
 ## Where the old material lives
 
 | What | Where |

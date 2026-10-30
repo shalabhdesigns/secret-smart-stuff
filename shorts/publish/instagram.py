@@ -169,14 +169,71 @@ def _ensure(state) -> None:
                    "NOT NULL, data TEXT NOT NULL, at REAL NOT NULL)")
 
 
+# Errors that retrying cannot fix: Meta blocked or revoked the app's access, or the login is gone.
+_BLOCKED = ("access blocked", "(code 190/", "(code 10/", "(code 200/", "has not authorized", "session has been",
+            "not connected yet", "login expired", "the instagram login is for")
+
+
+def is_blocked(err: str) -> bool:
+    e = str(err).lower()
+    return any(b.lower() in e for b in _BLOCKED)
+
+
+def check() -> str | None:
+    """Can we post right now? -> None if yes, else the reason. Reads only the account (no posting)."""
+    try:
+        tok, _ = token()
+        _api("GET", "me", tok, fields="user_id,username")
+        return None
+    except Exception as e:  # noqa: BLE001
+        return str(e)
+
+
+BLOCKED_HELP = ("Meta has blocked our Instagram app's access, so automatic posting is stopped. Retrying won't fix it. "
+                "To fix it: log in to developers.facebook.com and instagram.com as secretsmartstuff, clear any "
+                "warning or check that Meta shows, then send /iglogin to the studio bot.")
+
+
 def queue(state, job_id: str, publish_at: str | None) -> None:
-    """Called after the YouTube upload. Posts later, at publish_at (UTC ISO), via publish_due."""
+    """Called after the YouTube upload. Posts later, at publish_at (UTC ISO), via publish_due.
+    Checks Instagram access at once, so a block is reported hours before the slot, not at it."""
     if not enabled():
         return
     _ensure(state)
     with state.tx() as db:
         db.execute("INSERT OR IGNORE INTO ig_posts(job_id, status, publish_at, at) VALUES (?,?,?,?)",
                    (job_id, "pending", publish_at or time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), time.time()))
+    err = check()
+    if err:
+        state.log(f"instagram check: {err}", "warn", job_id)
+        notify.send(state, f"⚠️ Instagram can't post right now: {notify.esc(err[:200])}\n\n"
+                           + (BLOCKED_HELP if is_blocked(err) else "I'll retry at the slot.")
+                           + f"\n\nThe Reel for {job_id} is queued for {publish_at} UTC.")
+
+
+def manual(state, job_id: str, permalink: str | None = None) -> None:
+    """The owner posted this Reel by hand: never post it automatically."""
+    _ensure(state)
+    with state.tx() as db:
+        db.execute("INSERT INTO ig_posts(job_id, status, permalink, at) VALUES (?,?,?,?) ON CONFLICT(job_id) DO UPDATE "
+                   "SET status='manual', permalink=COALESCE(excluded.permalink, permalink), error=NULL, at=excluded.at",
+                   (job_id, "manual", permalink, time.time()))
+
+
+def send_for_hand_posting(state, job_id: str, why: str) -> None:
+    """API down at the slot: send the owner the finished Reel and its caption so it can still go out on time."""
+    flag = f"ig_hand_sent:{job_id}"
+    if state.get_setting(flag):
+        return
+    try:
+        with tempfile.TemporaryDirectory() as tmp:
+            mp4, meta = _fetch(job_id, Path(tmp))
+            notify.send_video(state, mp4, f"📸 Post this by hand as a Reel now. Automatic posting failed: "
+                                          f"{notify.esc(why[:200])}", buttons=[[("✅ I posted it", f"P:{job_id}")]])
+            notify.send(state, "Caption (copy and paste):\n\n" + notify.esc(caption(meta)))
+        state.set_setting(flag, time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()))
+    except Exception as e:  # noqa: BLE001
+        state.log(f"instagram hand-post fallback failed: {e}", "warn", job_id)
 
 
 def hold(state, job_id: str) -> str:
@@ -348,7 +405,13 @@ def publish_due(state, early_min: int = 30) -> dict:
             tries = state.db.execute("SELECT COUNT(*) AS n FROM events WHERE job_id=? AND message LIKE 'instagram:%'",
                                      (r["job_id"],)).fetchone()["n"]
             state.log(f"instagram: {e}", "warn", r["job_id"])
-            if tries in (0, 3):     # tell the owner on the first failure and if it keeps failing
+            if is_blocked(str(e)):  # retrying can't fix this: say why and what to do, and send the Reel to post by hand
+                if tries == 0:
+                    notify.send(state, f"⚠️ Instagram post failed for {r['job_id']}: {notify.esc(str(e)[:200])}\n\n"
+                                       + BLOCKED_HELP)
+                if now >= due - 5 * 60:
+                    send_for_hand_posting(state, r["job_id"], str(e))
+            elif tries in (0, 3):     # tell the owner on the first failure and if it keeps failing
                 notify.send(state, f"⚠️ Instagram post failed for {r['job_id']}: {notify.esc(str(e)[:300])}. "
                                    "I'll retry on the next run.")
     return {"posted": done, "problems": problems}

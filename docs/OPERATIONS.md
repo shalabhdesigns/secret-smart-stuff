@@ -45,6 +45,7 @@ start late.
 | **"YouTube login expired" / "login is for another channel"** | Send /ytlogin to the bot and pick Secret Smart Stuff (`docs/SETUP.md`). |
 | **An upload says "started but did not confirm"** | Check YouTube Studio. If the video IS there: `python -m shorts.cli upload-resolve JOB --video-id ID`. If not: `python -m shorts.cli upload-resolve JOB`, then approve again. This guard stops double uploads. |
 | **Instagram post failed / "send /iglogin"** | Send /iglogin. To post a published video now: `{"action":"ig_post","job":"<job>"}`. Check the login: `{"action":"ig_whoami"}`. |
+| **"API access blocked" (code 200) / Meta blocked the app** | Retrying can't fix it. The system warns at queue time, and at the slot it sends the Reel + caption to Telegram to post by hand, with an "I posted it" button (`ig_manual`), so it is never posted twice. Fix: the owner logs in to facebook.com, developers.facebook.com and instagram.com, clears any Meta warning, then /iglogin. Resend the Reel: `{"action":"ig_hand","job":"<job>"}`. |
 | **Stop a video already on Instagram** | The API can't hide it: delete it in the Instagram app. |
 | **Redeploy the studio Worker** | Push `{"action":"setup_studio"}`. |
 
