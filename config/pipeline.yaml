@@ -4,9 +4,10 @@ mode: dry_run            # dry_run (fake providers, no spend) | live
 budget_usd:
   per_video: 2.00     # stills format (onigiri v9): ~$1.00 per video measured; leaves room for one owner fix
   daily: 6.00          # per IST calendar day (not a rolling 24 h); 1 video/day + fixes + retries; the monthly cap is the real limit
+  daily_override: {"2026-10-30": 8.00}   # IST date -> usd; owner, 30 Oct: make a new video the same day
   per_video_override: {"traditional-japanese-kitchen-knife-such-as-a-yan-v1": 3.20}   # owner, 30 Oct: finish today's video (its media was lost in a crash and rebuilt)
   monthly: 45.00         # ElevenLabs plan is paid separately and not counted here
-  monthly_override: {"2026-10": 59.00, "2026-11": 60.00}   # owner: Oct $56 (28 Oct), raised to $59 on 30 Oct to finish the knife video and keep 31 Oct funded; Nov $60 (one video a day in auto mode)
+  monthly_override: {"2026-10": 61.00, "2026-11": 60.00}   # owner: Oct $56 (28 Oct), raised to $59 on 30 Oct (knife video), then $61 (owner: a second video for 30 Oct after the knife video was dropped); Nov $60 (one video a day in auto mode)
 
 # Fixed monthly costs shown on the dashboard (not per-video). Edit to match your real bills.
 fixed_costs_usd_month:
