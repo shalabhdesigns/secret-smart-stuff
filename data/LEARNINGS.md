@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-10-30 15:19 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-10-30 18:56 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - (none yet)
@@ -9,6 +9,24 @@ Updated 2026-10-30 15:19 UTC. Built from every published video's 48 h and 7 day 
 - (none yet)
 
 ## Per-video analyses
+
+### bus-shelter-glass-with-a-pattern-of-small-printe-v1 (48h) — below median
+- 1 views · 13.919999999999998% viewed · 0 likes · 0 shares · 0 subs (median views 691, n=1)
+- On YouTube the Short got 1 view in 49.9h against a channel median of 691, so there is almost nothing to judge, while the same video got 1,496 views on Instagram, which points to a YouTube distribution problem rather than a content problem.
+  - ✅ Instagram delivered 1,496 views and 1,225 reach with 23 likes and 2 saves. The topic and edit held up with that audience, though we have no Instagram baseline to compare against.
+  - ✅ The script is a clean explainer chain: question, wrong guess, the reason (birds can't see clear glass), the proof (Stillwater 64% cut in estimated collisions), then a takeaway. The concrete number in b8 is a strong credibility beat.
+  - ✅ The topic fits the 'walk_past' pillar well (topic_score 74): it explains something people see at every bus stop.
+  - ❌ YouTube barely showed the video: 1 view and 1 engaged view against medians of 691 and 407. With a sample this small, the 13.9% average view percentage and 5s average view duration describe one viewer, not the content.
+  - ❌ The hook is a long literal question (hook_heuristic 38, 'The Question' formula), and the answer ('Birds can't tell clear glass from open air') only arrives at 6.2s. That is slow for a Short.
+  - ❌ At 37.6s and 85 words it is long for a Short. The ending 'So next time someone asks you...' (b11) starts a line that the video cuts off or loops back into. It adds length without adding payoff.
+  - ❌ No likes, comments, shares or subscribers on YouTube. This is expected with 1 view and says nothing about the content.
+  - 📉 b2 @ 5 s: No retention curve is available. The single YouTube viewer averaged 5s, which falls in the 'You might guess ads, or style.' beat (3.8–6.2s). That beat adds no new information before the reveal, but this is one data point only.
+  - 💡 [topic, hypothesis] Don't judge this topic on its YouTube result. The same video did well on Instagram, so check how YouTube distributed it (impressions, feed source) before dropping bus-shelter or 'walk_past' topics.
+  - 💡 [hook, hypothesis] Test a shorter hook that puts the surprising answer first, for example 'Those dots on bus shelter glass are there for birds', instead of the long question.
+  - 💡 [pacing, hypothesis] Cut the 'You might guess ads, or style' beat, or merge it into the hook, so the bird reveal lands before 4s.
+  - 💡 [length, hypothesis] Trim toward about 30s by dropping b9 (Polish researchers) or the trailing b11, and compare retention against this 37.6s version.
+  - 💡 [loop, hypothesis] Make the last line finish the thought and flow back into the first line. 'So next time someone asks you...' reads as unfinished.
+  - 💡 [title, hypothesis] Try a punchier title with the payoff built in, such as 'The real reason bus shelter glass has dots', to check whether YouTube suggestion or search placement improves.
 
 ### onigiri-rice-ball-wrapper-v9 (48h) — at median
 - 691 views · 54.28000000000001% viewed · 18 likes · 0 shares · 1 subs (median views -, n=0)
