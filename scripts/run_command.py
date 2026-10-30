@@ -655,6 +655,7 @@ def main(path: str) -> int:
         if not fetch_bundle(job, d) or not (d / "final.mp4").exists():
             # the media is gone (the run that made it crashed): rebuild from the saved, already-reviewed script
             p.state.log("finish: media not saved; rebuilding pictures and voice from the saved script", "warn", job)
+            p.state.set_job_status(job, "paused", "")     # produce() skips a job in 'review'; 'paused' resumes it
             p.produce(j["topic_id"])
             j = p.state.get_job(job)
             if j["status"] != "review" or j["error"]:
