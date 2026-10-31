@@ -84,3 +84,41 @@ class FakeTTS:
             f.setframerate(self.SR)
             f.writeframes((np.clip(a, -1, 1) * 32767).astype("<i2").tobytes())
         return Speech(out, words, words[-1].end, 0.0, len(text))
+
+
+# ---------------- credits (owner, 31 Oct 2026: the daily video stopped mid-way when credits ran out) ----------------
+
+WARN_CREDITS = 20000     # roughly a week of videos (voice + music + sound effects); tell the owner in time to top up
+MIN_CREDITS = 3000       # below this a video cannot finish: don't start one (nothing else gets paid for)
+
+
+def credits_left(api_key: str) -> dict | None:
+    """-> {"left", "limit", "resets"} or None if the key can't read the subscription (needs user_read)."""
+    try:
+        r = requests.get("https://api.elevenlabs.io/v1/user/subscription", headers={"xi-api-key": api_key}, timeout=30)
+        if r.status_code != 200:
+            return None
+        j = r.json()
+        limit, used = int(j.get("character_limit") or 0), int(j.get("character_count") or 0)
+        reset = j.get("next_character_count_reset_unix")
+        return {"left": limit - used, "limit": limit,
+                "resets": time.strftime("%d %b", time.gmtime(int(reset))) if reset else "?"}
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def credit_check(state, api_key: str) -> dict:
+    """Warn the owner (once a day) when ElevenLabs credits run low. -> {"ok": bool, ...}."""
+    from .. import notify
+    c = credits_left(api_key)
+    if c is None:
+        return {"ok": True, "unknown": True}
+    c["ok"] = c["left"] >= MIN_CREDITS
+    if c["left"] < WARN_CREDITS:
+        day = time.strftime("%Y-%m-%d", time.gmtime(time.time() + 5.5 * 3600))
+        if state.get_setting("el_credit_warned") != day:
+            state.set_setting("el_credit_warned", day)
+            notify.send(state, f"⚠️ ElevenLabs credits are low: {c['left']:,} of {c['limit']:,} left (resets {c['resets']}). "
+                               + ("That is not enough for a video: today's video is on hold until you top up."
+                                  if not c["ok"] else "That's about a week of videos or less. Please top up soon."))
+    return c

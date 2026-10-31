@@ -256,6 +256,12 @@ def do_produce(p: Pipeline, req: dict) -> int:
             print(f"daily run already done for {today}; skipping")
             return 0
         p.state.set_setting("last_daily_ist", today)
+    if p.cfg.live and os.environ.get("ELEVENLABS_API_KEY"):
+        # don't start a video that can't get its voice (31 Oct 2026: credits ran out mid-video)
+        from shorts.providers.tts import credit_check
+        if not credit_check(p.state, os.environ["ELEVENLABS_API_KEY"]).get("ok", True):
+            print("ElevenLabs credits too low; not starting a video")
+            return 0
     pending = p.state.jobs("review")
     if pending and not req.get("topic") and not req.get("allow_parallel"):
         # one video waits for review at a time: remind instead of making another

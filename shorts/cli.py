@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 
 from .config import load
@@ -71,7 +72,9 @@ def main(argv: list[str] | None = None) -> int:
         from .publish.verify import run as verify
         from . import dashboard
         from .publish import instagram as ig
+        from .providers.tts import credit_check
         steps = [("verify uploads", lambda: verify(p.state)),
+                 ("elevenlabs credits", lambda: credit_check(p.state, os.environ.get("ELEVENLABS_API_KEY", ""))),
                  ("instagram catch-up", lambda: ig.publish_due(p.state, early_min=0)),   # only overdue posts; never waits
                  ("instagram metrics", lambda: ig.snapshot(p.state)),
                  ("video metrics", lambda: an.snapshot(p.state)),
