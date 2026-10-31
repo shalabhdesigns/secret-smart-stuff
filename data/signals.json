@@ -1,9 +1,17 @@
 {
- "collected_at": "2026-10-30T05:58:31Z",
+ "collected_at": "2026-10-31T05:54:33Z",
  "errors": [
   "@simplethingshistories: ERROR: [youtube:tab] @simplethingshistories: This channel does not have a shorts tab"
  ],
  "all_titles": [
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Trains Can Use Sand to Stop Their Wheels Slipping?"
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know a Bridge Can Rest on Rubber Without Losing Its Strength?"
+  },
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Concrete and Cinder Blocks Differ?"
@@ -1197,14 +1205,6 @@
    "title": "Did You Know Rebar Has Teeth-Like Ribs? 🏗️😮"
   },
   {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Penicillin Was A Happy Accident? 🧫😮"
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Popcorn Is Thousands Of Years Old? 🍿⏳"
-  },
-  {
    "channel": "@nameexplain",
    "title": "Why Do Austria & Australia Have Such Similar Names?"
   },
@@ -1685,9 +1685,9 @@
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Concrete and Cinder Blocks Differ?",
-   "views": 19000,
+   "views": 22000,
    "url": "https://www.youtube.com/shorts/qWLqgquoGGE",
-   "multiple": 6.1
+   "multiple": 7.1
   },
   {
    "channel": "@historyofsimplethings",
