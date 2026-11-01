@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-10-31 23:43 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-01 06:49 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - (none yet)
@@ -9,6 +9,23 @@ Updated 2026-10-31 23:43 UTC. Built from every published video's 48 h and 7 day 
 - (none yet)
 
 ## Per-video analyses
+
+### plastic-aglet-on-the-end-of-a-shoelace-v1 (48h) — above median
+- 1177 views · 94.37% viewed · 16 likes · 0 shares · 3 subs (median views 346.0, n=2)
+- The shoelace-tip Short got 1,177 views in 52.8h, about 3.4x the channel median of 346, and viewers watched nearly all of it (94% average viewed), but nobody commented or shared, and the Instagram Reel was much weaker (152 views).
+  - ✅ Reach and retention were well above the median: 1,177 views vs 346, 672 engaged views vs 204, average view duration 29s vs 12.5s, and average percentage viewed 94.37% vs 34.1%.
+  - ✅ The 30.8s length and tight 11-beat script (about 3s per beat) kept people watching almost to the end. The average view lasted 29s of 30.8s.
+  - ✅ A plain 'Why does X...' question about an everyday object looks like a strong topic. It also brought in 3 subscribers (median 0.5) and 16 likes (median 9), with 0 lost.
+  - ✅ The closing line 'So next time someone asks you...' was written as a loop lead-in. The near-complete watch time is consistent with it working, but without a retention curve I can't confirm any rewatching.
+  - ❌ There were 0 comments and 0 shares, the same as the channel median, so the video drew views but no conversation or sharing. The self-review scored payoff, pacing and share at only 3 out of 5, which fits this.
+  - ❌ Engaged views were 57% of views (672 of 1,177), about the same as the median video's 59% (204 of 346), despite far higher watch percentage. I can't tell why from this data.
+  - ❌ The Instagram Reel did poorly: 152 views, 135 reach, 1 like, 0 saves and 0 shares. Average watch time was about 9.1s, against 29s on YouTube. The video is the same, so this points to the platform or audience rather than the content.
+  - ❌ The retention curve is empty, so I can't tell which beat held viewers best or lost them.
+  - 💡 [topic, hypothesis] Keep making 'why does this everyday object have this odd detail' Shorts. This one beat the median on every metric, but the channel has only 2 videos for comparison.
+  - 💡 [story, hypothesis] Add a payoff or a question that invites a reply or a share, for example a surprising fact or a 'which did you think?' prompt. Viewers watched to the end but did not comment or share.
+  - 💡 [length, hypothesis] Keep Shorts near 30s with about 3s beats. This pace produced 94% average viewed, but test it on more topics before treating it as a rule.
+  - 💡 [loop, hypothesis] Keep the lead-in ending that loops back to the opening question, and check the retention curve for values above 1.0 to see whether people actually rewatch.
+  - 💡 [topic, hypothesis] Don't expect YouTube results to carry over to Instagram. Check whether Reels need a different hook or format, since the average watch there was about 9s of 30s.
 
 ### bus-shelter-glass-with-a-pattern-of-small-printe-v1 (48h) — below median
 - 1 views · 13.919999999999998% viewed · 0 likes · 0 shares · 0 subs (median views 691, n=1)
