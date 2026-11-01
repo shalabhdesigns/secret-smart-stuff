@@ -1,5 +1,12 @@
 {
-  "videos_considered": 0,
+  "videos_considered": 1,
   "enough_data": false,
-  "pillars": {}
+  "pillars": {
+    "by_country": {
+      "n": 1,
+      "median_views_vs_channel": 1.0,
+      "avg_view_pct": 50.3,
+      "subs_per_1k_views": 0.8
+    }
+  }
 }

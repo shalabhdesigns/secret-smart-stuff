@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-01 09:25 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-01 15:28 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - (none yet)
@@ -9,6 +9,48 @@ Updated 2026-11-01 09:25 UTC. Built from every published video's 48 h and 7 day 
 - (none yet)
 
 ## Per-video analyses
+
+### indian-pressure-cooker-with-a-jiggle-weight-on-t-v1 (48h) — below median
+- 1 views · 30.709999999999997% viewed · 0 likes · 0 shares · 0 subs (median views 691, n=3)
+- The Short got 1 view on YouTube against a channel median of 691 at the same age, so it never got distribution and says almost nothing about the content, while the Instagram reel of the same video reached 106 people and got 119 views.
+  - ✅ The Instagram reel got 119 views and 106 reach in 50h, so the video can find an audience on another platform. Its average watch time was about 6.1s, but there is no channel baseline to compare that with.
+  - ✅ The script is tight and ordered as a cause-and-effect chain (vent, pressure, lift, steam release, plop, rattle). Self-review scored it 4 or higher on payoff, flow and accuracy and 5 on loop, though those are our own scores and not audience data.
+  - ✅ The single YouTube viewer watched an average of 9s (30.7%), but one viewer is not a usable signal.
+  - ✅ The carried-over learnings (onigiri postmortem lessons, knife and drain-grate review blocks, owner drops) show no visible benefit here. I can't credit them with anything, and since the result is one view, I can't blame them either. That means no 'pattern' can be confirmed from this video.
+  - ❌ YouTube delivered 1 view, 1 engaged view, and 0 likes, comments, shares and subscribers. The median is 691 views, 407 engaged views and 16 likes. This looks like a distribution failure and not a rejection by viewers.
+  - ❌ The hook is a generic question with a low heuristic score (38), and it was the weakest-scoring element in our own checks. The 'whistle' angle that ties it to Indian cooking only appears at 23.3s (b9), so the india_asia link is late.
+  - ❌ No retention curve was returned, so I can't say which beat lost viewers.
+  - ❌ The reel's engagement is also near zero (1 like, 0 shares, 0 saves), so the content did not clearly prompt sharing on either platform.
+  - 💡 [topic, hypothesis] Don't judge the pressure-cooker topic on this result. With 1 view on YouTube, check whether the Short was served at all (processing, visibility, thumbnail/title indexing) before drawing any topic conclusion.
+  - 💡 [hook, hypothesis] Move the culturally familiar element (the cooker's 'whistle' that Indian households count) into the first 3 seconds, so the hook is specific and recognisable instead of a generic 'Why does this have...' question.
+  - 💡 [title, hypothesis] Test a title built on the familiar 'whistle' wording (for example, why recipes say 'wait for 3 whistles') against this descriptive title, since the current title gave YouTube no apparent pull.
+  - 💡 [story, hypothesis] Keep the single-chain explanation, but put the payoff (the weight lifting and the rattle that recipes count as whistles) earlier, since it currently arrives at about 20-23s of a 30s video.
+  - 💡 [length, hypothesis] Try a shorter cut of around 20s for explainers like this, since the channel median average view duration is 20s and this cut runs 30.7s.
+
+### onigiri-rice-ball-wrapper-v9 (7d) — at median
+- 1243 views · 50.33% viewed · 34 likes · 0 shares · 1 subs (median views -, n=0)
+- No channel medians exist yet (n=0), so 'at' is only a neutral placeholder: the Short got 1,243 views and kept 50% of viewers on average (18s of 36s). It opened strongly (above 100% for the first ~4s), lost viewers steadily from beat b2 onward, and drew almost no interaction (34 likes, 0 comments, 0 shares, +1 subscriber).
+  - ✅ The hook held at the start: retention was 1.16 at 0.4s and still 1.08 at 4.0s. Some viewers rewatched or looped, so the opening question and the loop lead-in did their job.
+  - ✅ Engaged views were 764 of 1,243 (about 61%), and average view percentage was 50.33%, which is reasonable for a 36s Short.
+  - ✅ The how-to section (b6–b10, 14–26s) lost viewers slowly, from 0.50 to 0.33, so the tab-by-tab steps were a steady stretch.
+  - ✅ The topic is concrete and visual (a packaging trick), and its topic_score of 77 fits that.
+  - ❌ The sharpest early loss was from 5.8s to 7.6s (0.90 to 0.73), when b3 'Soggy seaweed makes for a sad lunch' came on. It repeats b2's point (seaweed turns soft) without adding anything new.
+  - ❌ The b5 history fact (Seven-Eleven Japan, 1978) interrupts the explanation just after 'a thin film keeps them apart' and just before the steps. Retention fell from 0.59 to 0.54 across it, and the sag continued into b6 and b7.
+  - ❌ The ending 'So next time someone asks you...' is an unfinished line with no payoff. Retention fell from 0.26 to 0.18 over b12, so the loop lead-in did not produce rewatches at the end.
+  - ❌ Interaction was near zero: 0 comments, 0 shares and 1 subscriber gained. Nothing in the script invites a reaction.
+  - ❌ The hook heuristic scored only 38, and retention had already dropped to 0.73 by 7.6s, so about a quarter of viewers were gone within the first 8 seconds.
+  - ❌ The video is long for its content at 36.2s and 12 beats, and only 6 images cover the whole run. That is a hypothesis about pacing and visuals, not something the data proves.
+  - 📉 b3 @ 7.6 s: b3 restates b2 ('soggy seaweed' after 'seaweed turns soft'). The problem was already explained and the answer (the film) did not arrive until b4.
+  - 📉 b5 @ 11.2 s: A 1978 company-history fact appears mid-explanation, before the steps. It breaks the 'problem → solution → how-to' flow, and retention kept falling from 0.59 to 0.50 through b5–b6.
+  - 📉 b7 @ 16.7 s: 'Tabs two and three are the corners' is a second, similar instruction. Without a clear visual change it feels repetitive, and retention fell from 0.45 to 0.41.
+  - 📉 b12 @ 32.9 s: The open-ended 'So next time someone asks you...' gives no payoff, so viewers left before the end and the loop did not trigger rewatches.
+  - 💡 [story, hypothesis] Merge the problem beats (b2 and b3) into one line and reveal the film as the answer right away. Do not state the same problem twice.
+  - 💡 [story, hypothesis] Move trivia such as the 1978 launch fact to after the how-to, or cut it. Keep the middle of the video on the 'what it does → how it works' line.
+  - 💡 [length, hypothesis] Try a 25–30s cut: one problem beat, one solution beat, the three tab steps in a single beat, and a payoff line.
+  - 💡 [loop, hypothesis] End on a complete line that connects back to the hook's question, so the loop reads as a deliberate replay rather than a cut-off sentence.
+  - 💡 [hook, hypothesis] Test a hook that shows the surprise (the film being pulled out) or states a stakes line instead of a generic 'Why does this...' question, since the heuristic scored only 38.
+  - 💡 [captions, hypothesis] Add a light call to action or a question near the end (for example, 'Did you know to pull tab 1 first?') to try to get comments, since there were none.
+  - 💡 [visuals, hypothesis] Change the visual on every instruction step (tab 1, then the corners), so the repeated steps in b6–b7 do not feel static.
 
 ### plastic-aglet-on-the-end-of-a-shoelace-v1 (48h) — above median
 - 1177 views · 94.37% viewed · 16 likes · 0 shares · 3 subs (median views 346.0, n=2)
