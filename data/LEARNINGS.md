@@ -1,12 +1,19 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-02 09:40 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-02 16:20 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
-- (none yet)
+- Keep the question hook, but make it specific and recognisable in the first 3 seconds (the "whistle", the film being pulled out) instead of a generic "Why does this…" (pattern, n=2)
+- Aim for about 20–30s on explainers. Put the payoff earlier and merge repeated problem beats. (pattern, n=2)
+- Move trivia and side-facts after the how-to, or cut them. Keep the middle on "what it does → how it works". (hypothesis)
+- End on one complete answer line that links back to the hook without repeating the question, so the loop reads as deliberate. (pattern, n=2: onigiri analysis and owner feedback)
+- Change the picture on every instruction step, and add a light question near the end to invite comments. (hypothesis)
 
 ## Topic guidance now
-- (none yet)
+- Everyday-object explainers by country (the one pillar): keep. n=1, 1,243 views, equal to the median. Not enough data yet.
+- Indian pressure cooker: don't drop it yet. n=1 at 48h, with 1 view on YouTube. Check whether it was served before judging.
+- Onigiri wrapper: keep as a baseline. n=1, 1,243 views, equal to the median.
+- News tie-ins: use only with strict picture and wording rules (see owner feedback). Not enough data yet on performance.
 
 ## Per-video analyses
 
