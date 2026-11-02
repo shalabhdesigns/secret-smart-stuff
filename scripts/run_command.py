@@ -91,13 +91,31 @@ def preserve_media(p: Pipeline) -> None:
             subprocess.run([str(ROOT / "scripts" / "open_review.sh"), jj["id"]], check=False)
 
 
+def news_publish_time(state, now: float | None = None, gap_min: int = 60, margin_min: int = 20) -> str:
+    """As soon as possible (margin for YouTube's scheduling) but at least `gap_min` after the last news video."""
+    import datetime as dt
+    now = now or time.time()
+    t = now + margin_min * 60
+    last = state.get_setting("news_last_publish")
+    if last:
+        t = max(t, dt.datetime.fromisoformat(last.replace("Z", "+00:00")).timestamp() + gap_min * 60)
+    iso = time.strftime("%Y-%m-%dT%H:%M:00Z", time.gmtime(t + 59))     # next whole minute
+    state.set_setting("news_last_publish", iso)
+    return iso
+
+
 def record_features(p: Pipeline, job: str) -> tuple[str, str]:
     """What the video is made of (for the learning loop) + its publish slot. Returns (slot, publish time)."""
     j = p.state.get_job(job)
     d = ROOT / "build" / job
     script = json.loads((d / "script.json").read_text())
-    slot = X.slot_for(p.state, job)
-    when = X.next_publish_time(p.state, slot, margin_minutes=30)
+    if p._news(job):
+        # news tie-in (owner, 2 Nov 2026): publish as soon as ready, at least an hour after the previous news video;
+        # not part of the publish-time experiment
+        slot, when = "news", news_publish_time(p.state)
+    else:
+        slot = X.slot_for(p.state, job)
+        when = X.next_publish_time(p.state, slot, margin_minutes=30)
     topic = p.state.get_topic(j["topic_id"])
     feats = X.features(script, json.loads((d / "visuals.json").read_text()) if (d / "visuals.json").exists() else {},
                        j["artifacts"].get("render"), topic, p.state.job_cost(job))
@@ -277,6 +295,12 @@ def do_produce(p: Pipeline, req: dict) -> int:
     if not tid:
         alert(p, "Pipeline problem: no topic", "Discovery returned no usable topics.")
         return 1
+    if req.get("topic_def"):
+        # a topic written by Claude/the owner (e.g. a news tie-in): create it, then make it like any other
+        td = req["topic_def"]
+        tid = td["id"]
+        p.state.upsert_topic(tid, td["title"], notes=json.dumps(td.get("notes") or {}, ensure_ascii=False),
+                             pillar=td.get("pillar", "news"), status="shortlisted")
     if req.get("angle") and p.state.get_topic(tid):
         t = p.state.get_topic(tid)
         notes = json.loads(t.get("notes") or "{}")

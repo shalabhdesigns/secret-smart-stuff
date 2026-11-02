@@ -318,6 +318,10 @@ class Pipeline:
                                  angle=idea.get("angle", ""), pillar=topic.get("pillar"),
                                  seconds_lo=lo, seconds_hi=hi, words_lo=int(lo * wps), words_hi=int(hi * wps),
                                  min_sources=r_["min_sources_main_claim"])
+        if idea.get("news"):
+            n = idea["news"]
+            prompt += P.NEWS.format(news_facts=n["facts"], news_name=n.get("name", "the news event"),
+                                    news_tags=" ".join(n.get("tags", [])))
         from . import carry
         ctx, applied = carry.for_script(self.state)     # build on every earlier video (owner's standing rule)
         prompt += ctx
@@ -1009,6 +1013,11 @@ class Pipeline:
             raise StageFailed("media QA failed: " + "; ".join(c.detail for c in rep.checks if not c.ok and c.hard))
         return {"file": str(d / "qa.json"), "passed": True, "image_flags": flags}
 
+    def _news(self, job_id: str) -> dict | None:
+        j = self.state.get_job(job_id)
+        t = self.state.get_topic(j["topic_id"]) if j else None
+        return (json.loads((t or {}).get("notes") or "{}") or {}).get("news")
+
     # ---- G: packaging
     def _stage_package(self, job_id: str, topic: dict, d: Path) -> dict:
         script = json.loads((d / "script.json").read_text())
@@ -1021,8 +1030,13 @@ class Pipeline:
                 if u not in seen:
                     seen.add(u)
                     srcs.append(u)
-        tags = list(dict.fromkeys((script.get("hashtags") or []) + ch["default_hashtags"]))[:4]
+        news = (json.loads(topic.get("notes") or "{}") or {}).get("news")
+        if news:   # news tie-in: the event's hashtags first, then the topic's; a neutral context line
+            tags = list(dict.fromkeys(news.get("tags", []) + (script.get("hashtags") or [])))[:4]
+        else:
+            tags = list(dict.fromkeys((script.get("hashtags") or []) + ch["default_hashtags"]))[:4]
         desc = (f"{script.get('description', '').strip()}\n\n"
+                + (news["context"] + "\n\n" if news and news.get("context") else "")
                 + ("Sources:\n" + "\n".join(f"- {u}" for u in srcs[:6]) + "\n\n" if srcs else "")
                 + "Visuals are AI-generated illustrations; narration is an AI voice. "
                   "Facts are checked against the sources above.\n\n" + " ".join(tags))
@@ -1120,7 +1134,8 @@ class Pipeline:
         r = self._llm(P.CRITIC.format(beats=lines, title=script.get("title", ""),
                                       facts=json.dumps(script.get("facts", []), ensure_ascii=False)[:3000],
                                       review=json.dumps(rv.get("problems", []), ensure_ascii=False)[:2000],
-                                      flags=json.dumps(flags, ensure_ascii=False)[:1500], qa=qa_s, previous=prev),
+                                      flags=json.dumps(flags, ensure_ascii=False)[:1500], qa=qa_s, previous=prev)
+                      + (P.NEWS_CRITIC if self._news(job_id) else ""),
                       job_id, f"critic{round_}", est=0.06, images=[sheet, pair],
                       model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=3000)
         c = r.data or {}

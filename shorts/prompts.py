@@ -296,3 +296,32 @@ Other rule: {length_rule}
 Script: {script}
 Return the full revised script JSON (same schema) with one extra field
 "change_summary": one short sentence saying what you changed."""
+
+
+# News tie-in videos (owner, 2 Nov 2026): explain the science behind something in the news, respectfully.
+NEWS = """
+
+NEWS TIE-IN (this video explains the general science behind something in today's news; follow all of this):
+Verified facts you may use (do not add others about the event; never guess the cause):
+{news_facts}
+- In the first 2 beats, one short spoken line links the topic to the news in plain words, naming {news_name}
+  (for example "On Sunday, the crew of a Learjet that crashed in Florida ..."). Use only the verified facts.
+- Somewhere in the script, one short line says investigators have not said what caused the crash.
+- The video explains the general science or design. Never suggest that this explains or caused the crash.
+- Respectful tone: no jokes or witty lines about the crash, the crew or the victims. No victim names, no death toll
+  in the title, no sensational words (shocking, horrifying, terrifying).
+- Pictures: NEVER show this crash, wreckage, fire, smoke, crash sites, emergency vehicles, victims, mourners or news
+  footage. A generic white twin-engine business jet with no markings, no logos and no registration is allowed, as are
+  generic cockpits, wings, clouds, instruments and diagrams. No airline or maker logos.
+- Title: <=60 chars, must contain "Learjet" naturally and name the science (e.g. "What 'Mayday' really means
+  after the Learjet crash"). Accurate, not clickbait.
+- Description: first sentence links to the Learjet crash in Florida in neutral words; second explains the science.
+- Hashtags: exactly {news_tags} plus at most 1 topic hashtag.
+"""
+
+NEWS_CRITIC = """
+
+This is a NEWS TIE-IN video about the Learjet crash in Florida. Also treat these as BLOCKING: any picture that shows
+a crash, wreckage, fire, smoke, crash site, emergency vehicles or victims; any line that suggests what caused this
+crash; a missing line saying the cause is not known; jokes about the crash; victim names; sensational wording.
+"""

@@ -139,3 +139,17 @@ def test_per_video_override_only_for_that_video(tmp_path):
     st = State(tmp_path / "s.db")
     b = Budget(st, Limits(6.0, 50.0, 2.0, {"knife-v1": 3.2}))
     assert abs(b.remaining("knife-v1")["video"] - 3.2) < 1e-9 and abs(b.remaining("other-v1")["video"] - 2.0) < 1e-9
+
+
+def test_news_videos_publish_asap_at_least_an_hour_apart(tmp_path):
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("rc", ROOT / "scripts" / "run_command.py")
+    rc = importlib.util.module_from_spec(spec); spec.loader.exec_module(rc)
+    from shorts.state import State
+    import calendar
+    st = State(tmp_path / "s.db")
+    t0 = calendar.timegm((2026, 11, 2, 16, 0, 0))
+    a = rc.news_publish_time(st, now=t0)                       # first: as soon as ready (+20 min margin)
+    b = rc.news_publish_time(st, now=t0 + 600)                 # ready 10 min later: waits for the 1-hour gap
+    c = rc.news_publish_time(st, now=t0 + 3 * 3600)            # ready much later: goes at once
+    assert a == "2026-11-02T16:20:00Z" and b == "2026-11-02T17:20:00Z" and c == "2026-11-02T19:20:00Z"
