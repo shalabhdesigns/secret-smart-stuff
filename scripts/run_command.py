@@ -705,6 +705,9 @@ def main(path: str) -> int:
         # path - publish in auto mode if it passes, drop it if it fails, pause again if a limit stops it
         job = req.get("job", "")
         j = p.state.get_job(job) if JOB_RE.fullmatch(job) else None
+        if j and j["status"] in ("published", "approved", "rejected"):
+            print(f"{job} is already {j['status']}; nothing to finish")      # a safety resume that wasn't needed
+            return 0
         if not j or j["status"] not in ("review", "paused"):
             notify.send(p.state, f"I can't finish {job}: it is {j['status'] if j else 'unknown'}.")
             return 1
