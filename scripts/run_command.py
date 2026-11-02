@@ -873,6 +873,13 @@ def main(path: str) -> int:
         print(json.dumps(ig.publish_due(p.state, early_min=int(req.get("early_min", 0)),
                                         late_min=req.get("late_min", 20)), default=str))
         return 0
+    if action == "ig_watch_test":
+        # live check of the Worker's 5-minute watcher: a dummy Reel "due" in 12 minutes. The watcher should start
+        # igpost.yml for it within 5 minutes; that run finds nothing to post and ends. The key expires in an hour.
+        from shorts.publish import instagram as ig
+        ig._kv_put("igdue:watcher-test", time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(time.time() + 720)), ttl=3600)
+        print("igdue:watcher-test written")
+        return 0
     if action == "ig_one":
         # the exact-minute post of one Reel (igpost.yml, started by the Worker ~10-15 min before it is due). This run
         # doesn't save the state database: the result is recorded in the Worker's store (igdone:<job>).
