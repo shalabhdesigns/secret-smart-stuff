@@ -77,6 +77,7 @@ def main(argv: list[str] | None = None) -> int:
                  ("elevenlabs credits", lambda: credit_check(p.state, os.environ.get("ELEVENLABS_API_KEY", ""))),
                  ("instagram catch-up", lambda: ig.publish_due(p.state, early_min=0, late_min=20)),   # missed posts only
                  ("instagram metrics", lambda: ig.snapshot(p.state)),
+                 ("youtube covers retry", lambda: __import__("shorts.publish.youtube", fromlist=["x"]).retry_thumbnails(p.state)),
                  ("video metrics", lambda: an.snapshot(p.state)),
                  ("channel daily", lambda: an.channel_daily(p.state)),
                  ("retention + traffic", lambda: an.video_details(p.state)),

@@ -280,3 +280,28 @@ def set_thumbnail(video_id: str, image: Path) -> dict:
     if r.status_code == 200:
         return {"ok": True}
     return {"ok": False, "error": f"{r.status_code}: {r.text[:300]}"}
+
+
+def retry_thumbnails(state) -> dict:
+    """YouTube refused some covers (e.g. 429 "too many thumbnails recently"): try them again (analytics run)."""
+    import subprocess
+    import tempfile
+    out = {}
+    rows = state.db.execute("SELECT key, value FROM settings WHERE key LIKE 'thumb:%' AND value LIKE 'retry%'").fetchall()
+    for r in rows[:10]:
+        job = r["key"].split(":", 1)[1]
+        up = state.db.execute("SELECT video_id FROM uploads WHERE job_id=? AND video_id IS NOT NULL", (job,)).fetchone()
+        if not up:
+            continue
+        with tempfile.TemporaryDirectory() as tmp:
+            subprocess.run(["gh", "release", "download", f"review-{job}", "-p", "cover.jpg", "-D", tmp, "--clobber"],
+                           capture_output=True, check=False)
+            cov = Path(tmp) / "cover.jpg"
+            if not cov.exists():
+                continue
+            t = set_thumbnail(up["video_id"], cov)
+        state.set_setting(f"thumb:{job}", "set" if t["ok"] else "retry " + t.get("error", "")[:200])
+        out[job] = t["ok"]
+        if not t["ok"] and "429" in t.get("error", ""):
+            break                                  # still rate-limited: try the rest next time
+    return out

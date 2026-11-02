@@ -1341,6 +1341,7 @@ class Pipeline:
         if cov.exists() and rec.get("video_id"):
             from .publish.youtube import set_thumbnail
             t = set_thumbnail(rec["video_id"], cov)
+            self.state.set_setting(f"thumb:{job_id}", "set" if t["ok"] else "retry " + t.get("error", "")[:200])
             self.state.log(f"youtube cover: {'set' if t['ok'] else 'refused: ' + t.get('error', '')}", "info"
                            if t["ok"] else "warn", job_id)
         try:                                  # Instagram posts it later, at the same time (see publish/instagram.py)

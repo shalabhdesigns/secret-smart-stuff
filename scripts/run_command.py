@@ -729,6 +729,7 @@ def main(path: str) -> int:
                     report.append(f"{job}: cover failed ({e})")
                     continue
                 t = set_thumbnail(r["video_id"], d / "cover.jpg")
+                p.state.set_setting(f"thumb:{job}", "set" if t["ok"] else "retry " + t.get("error", "")[:200])
                 gh("release", "upload", f"review-{job}", str(d / "cover.jpg"), "--clobber", check=False)
                 ig = p.state.db.execute("SELECT permalink FROM ig_posts WHERE job_id=? AND status IN ('posted','manual')",
                                         (job,)).fetchone()
