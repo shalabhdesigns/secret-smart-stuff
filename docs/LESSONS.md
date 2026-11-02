@@ -159,6 +159,24 @@ How each item is marked:
 - Check access when a job is queued, not only at the deadline. Hours of warning beat minutes.
 - 30 Oct: Meta returned "API access blocked" for the new Instagram app (even GET /me). The aglet Reel missed 07:30 IST. Since then: an access check at queue time, the Reel + caption sent for hand posting at the slot, and "I posted it" marks it so it's never posted twice.
 
+## 12. News tie-ins (Learjet series, 2-3 Nov 2026)
+- **What happened, ~2-4 hours after posting:** "coffin corner" got about 870 YouTube views an hour, against
+  ~190-290 for Mayday, supercooled water and black box. On Instagram it had 1,859 views against ~10-170, and its average
+  watch was 14.0 s against 7.5-11.4 s.
+- **It was not the thumbnail.** About 96% of Shorts views come from the swipe feed, which plays the video and never
+  shows the thumbnail. Its Instagram Reel also went out with no custom cover.
+- **What differed (hypothesis, one series; to be confirmed by the 48 h / 7 d post-mortems):**
+  - its first frame was the jet itself, the thing people were curious about, while the others opened on a microphone,
+    a grey sky and an orange box;
+  - a jet stayed on screen;
+  - the hook named a vivid real term ("coffin corner");
+  - it was the shortest (35 s).
+- **Applied to the 3 remakes** (wing ice, turbulence, de-icing).
+- Review findings from this series:
+  - the image model keeps adding crash scenes, smoke and storms to aviation prompts, so news rules must stay in both
+    the writer and the review;
+  - a self-fix can break a format rule, which is now repaired once, never a crash.
+
 ## Where the old material lives
 
 | What | Where |
