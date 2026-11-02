@@ -443,7 +443,28 @@ completed your self-review"):
 4. **Improve:** Monday and Thursday the weekly report turns patterns into writer rules and topic guidance; a
    change to this playbook goes to the owner as a proposal and, once approved, into the Change log.
 
+## 15. Covers / thumbnails (since 3 Nov 2026, owner)
+- Every video gets a designed cover (`shorts/render/cover.py`), made in the package stage from a picture it already has.
+  No picture is paid for twice.
+- **The writer model picks:**
+  - the single strongest, clearest picture of the object or the odd detail;
+  - 2-5 words in capitals that make people curious ("WHY THE CURL?", "IT'S NOT DECOR").
+- **The words must be true, and the video must deliver them.** YouTube removes "egregious clickbait": a title or
+  thumbnail that promises what the video doesn't. This was enforced first in India and is strictest on news. Never
+  write "SHOCKING", "YOU WON'T BELIEVE", fear or false claims. News covers never mention deaths or a cause.
+- **Style:**
+  - the picture fills the 9:16 frame;
+  - line 1 is white on ultramarine; line 2 is ultramarine on blush;
+  - Archivo Black, on rounded boxes with a soft shadow;
+  - the words go in the upper or lower zone, whichever hides less of the picture;
+  - they stay inside y 430-1500, which survives Instagram's 1:1 and 3:4 grid crops and the Shorts shelf.
+- **YouTube:** the cover is set with `thumbnails.set` after upload. The result is logged. YouTube refuses if the channel
+  isn't phone-verified (and, for Shorts in some places, if it isn't in the Partner Program).
+- **Instagram:** the cover goes with the Reel as `cover_url`. If Meta refuses it, the Reel still goes out with its
+  default cover. A Reel that is already up can't get a new cover through the API: the owner sets it in the app.
+
 ## Change log
+- 2026-11-03: §15 Covers / thumbnails (owner). Instagram posts at the exact minute for any publish time (Worker watcher + igpost.yml).
 
 - 2026-10-25: Playbook created from the approved onigiri v9. Arrows under 12% of the frame are now dropped.
 - 2026-10-28: Restored as the live playbook after the Bhaukaali Toons detour (26–28 Oct). Stills format confirmed
