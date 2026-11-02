@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-02 18:53 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-02 21:11 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Keep the question hook, but make it specific and recognisable in the first 3 seconds (the "whistle", the film being pulled out) instead of a generic "Why does this…" (pattern, n=2)
@@ -16,6 +16,32 @@ Updated 2026-11-02 18:53 UTC. Built from every published video's 48 h and 7 day 
 - News tie-ins: use only with strict picture and wording rules (see owner feedback). Not enough data yet on performance.
 
 ## Per-video analyses
+
+### indian-stainless-steel-tiffin-box-v1 (48h) — above median
+- 1272 views · 54.96% viewed · 16 likes · 0 shares · 2 subs (median views 346.0, n=4)
+- The tiffin-box Short got about 3.7x the channel median views (1,272 vs 346) and held viewers better (55% vs 42.5% average viewed), but it lost about half the audience between seconds 5 and 14 and drew no comments or shares. With only 4 comparison videos this is a promising signal, not a proven one.
+  - ✅ Reach and engagement beat the channel median on every main metric: views 1,272 vs 346, engaged views 607 vs 204, likes 16 vs 8, subscribers gained 2 vs 0.5.
+  - ✅ Retention was 1.18 at the start and still 1.01 at 4.8s, so the opening question and loop lead-in drew rewatches and almost nobody left in the first 5 seconds.
+  - ✅ Average view percentage was 54.96% against a 42.5% median, and average view duration was 16s against 14.5s, so the Short held attention better than usual.
+  - ✅ The India/Asia everyday-object topic (topic score 70) pulled well above the channel baseline.
+  - ✅ Retention flattened between 16.7s and 24.1s (0.407 to 0.313) during the clips, handle and 'tiny apartment block' beats, so the concrete mechanism and the joke kept the viewers who were left.
+  - ❌ Retention fell steeply from 1.01 at 4.8s to about 0.41 at 16.7s, so most of the loss happened in the first half of the explanation (b3-b6).
+  - ❌ Beat b2 ('It could have been one big pot.') mostly repeats the hook's 'not one pot?', and the curve starts falling right after it.
+  - ❌ Beats b4 and b5 ('Each tier holds one dish' and 'One for dal, one for sabzi') say nearly the same thing, and about 6 points of audience left at each step.
+  - ❌ There were 0 comments and 0 shares, no better than the median. The self-review also scored payoff, pacing, rewatch and share at only 3 out of 5.
+  - ❌ The ending did not hold viewers. Retention dropped from 0.287 to 0.236 at 27.1s and reached 0.216 at the end, so the closing 'Look at it once more and ask...' line gave a weak loop and payoff.
+  - ❌ Instagram was much weaker: 120 views, 105 reach and 1 like. Average watch time was about 6.7s against 16s on YouTube, which points to the platform and audience rather than the content.
+  - 📉 b3 @ 6.3 s: Retention fell from 1.013 to 0.842 and then 0.76 as 'Then dal and rice become roommates' came on, right after b2 restated the hook. Viewers who had already got the premise saw no new information, and the quip arrived before the actual answer.
+  - 📉 b4 @ 9.2 s: Retention fell from 0.685 to 0.619 while 'Each tier holds one dish, kept apart' was on screen. This is the first real answer, but it is a plain statement and the visuals probably did not add anything new.
+  - 📉 b5 @ 12.2 s: Retention fell from 0.553 to 0.489 during 'One for dal, one for sabzi', which repeats the point of b4 with examples. The point felt already made.
+  - 📉 b10 @ 27.1 s: Retention fell from 0.287 to 0.236 on 'Separate inside, single package outside.' This summary lands after the 'apartment block' joke, which already worked as the payoff, so viewers left before the closing prompt.
+  - 💡 [topic, hypothesis] Keep making everyday-object explainers from the India/Asia pillar, such as tiffin boxes. This one beat the channel median on every main metric, but 4 comparison videos is too few to call it a pattern.
+  - 💡 [story, hypothesis] Do not restate the hook question in beat 2. Give the first new fact or the answer straight after the hook so the b2-b3 drop is smaller.
+  - 💡 [pacing, hypothesis] Merge repeated explanation beats (b4 and b5 said the same thing) into one beat, or give each a different visual reveal, to slow the steady loss between 9s and 16s.
+  - 💡 [story, hypothesis] Put the strongest joke or reveal earlier. The 'tiny apartment block' line at 21.6s held viewers, so test a similar line around 10-12s where the curve slides.
+  - 💡 [loop, hypothesis] Make the final line a real payoff that connects back to the hook, not an open 'ask...' prompt, and cut the redundant summary beat so fewer viewers leave before the loop.
+  - 💡 [captions, hypothesis] Add a clear comment or share prompt to the ending, such as asking which dish goes in which tier. There were 0 comments and 0 shares, though the median is also 0.
+  - 💡 [topic, hypothesis] Do not judge cross-posts on Instagram by YouTube numbers. The same video got about 6.7s average watch there against 16s on YouTube, so treat Instagram as a separate audience to test.
 
 ### indian-pressure-cooker-with-a-jiggle-weight-on-t-v1 (48h) — below median
 - 1 views · 30.709999999999997% viewed · 0 likes · 0 shares · 0 subs (median views 691, n=3)
