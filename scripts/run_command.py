@@ -310,6 +310,19 @@ def do_produce(p: Pipeline, req: dict) -> int:
         if not credit_check(p.state, os.environ["ELEVENLABS_API_KEY"]).get("ok", True):
             print("ElevenLabs credits too low; not starting a video")
             return 0
+    if p.cfg.live and os.environ.get("BFL_API_KEY"):
+        # same for pictures (3 Nov 2026: the image credits reached 0 after the news series)
+        from shorts import usage
+        b = usage.bfl(os.environ["BFL_API_KEY"])
+        if b.get("source") == "measured" and b.get("usd_left", 1) < 0.60:
+            day = time.strftime("%Y-%m-%d", time.gmtime(time.time() + 5.5 * 3600))
+            if p.state.get_setting("bfl_empty_warned") != day:
+                p.state.set_setting("bfl_empty_warned", day)
+                notify.send(p.state, f"⚠️ Image credits (Black Forest Labs) are at ${b['usd_left']:.2f}, not enough for a "
+                                     "video (~$0.50). Today's video is on hold. Top up at https://dashboard.bfl.ai/ and "
+                                     "send /produce to the studio bot to make it.")
+            print("BFL credits too low; not starting a video")
+            return 0
     pending = p.state.jobs("review")
     if pending and not req.get("topic") and not req.get("allow_parallel"):
         # one video waits for review at a time: remind instead of making another
