@@ -82,7 +82,7 @@
   - The refresh token is stored encrypted in the Worker's KV store.
   - Uploads and analytics refuse any login that is not for the channel named in `config/channel.yaml`.
 - **Instagram (since 28 Oct 2026):** @secretsmartstuff. Each published video is posted as a Reel at the same
-  minute it goes public on YouTube. The Worker watches `igdue:<job>` every 5 minutes and starts `igpost.yml` about 15
+  minute it goes public on YouTube. The Worker watches `igdue:<job>` every 5 minutes and starts `igpost.yml` about 10
   minutes early. That run doesn't save state; it records `igdone:<job>` in KV. `instagram.yml` and the analytics run
   are backups that only post Reels more than 20 minutes overdue (`shorts/publish/instagram.py`). Login: `/iglogin` (Meta app "Secret Smart Stuff Publisher",
   dev mode; see `docs/SETUP.md`). Stop cancels a pending post; a posted Reel can only be deleted in the app.
