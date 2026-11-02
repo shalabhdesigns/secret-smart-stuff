@@ -153,3 +153,15 @@ def test_news_videos_publish_asap_at_least_an_hour_apart(tmp_path):
     b = rc.news_publish_time(st, now=t0 + 600)                 # ready 10 min later: waits for the 1-hour gap
     c = rc.news_publish_time(st, now=t0 + 3 * 3600)            # ready much later: goes at once
     assert a == "2026-11-02T16:20:00Z" and b == "2026-11-02T17:20:00Z" and c == "2026-11-02T19:20:00Z"
+
+
+def test_series_queues_the_next_video_with_the_rest(tmp_path, monkeypatch, capsys):
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("rc2", ROOT / "scripts" / "run_command.py")
+    rc = importlib.util.module_from_spec(spec); spec.loader.exec_module(rc)
+    monkeypatch.setenv("SHORTS_NO_GITHUB", "1")
+    rc.chain_next(None, {"action": "produce", "topic": "a", "then": [{"topic": "b"}, {"topic": "c"}]})
+    out = capsys.readouterr().out
+    assert '"topic": "b"' in out and '"then": [{"topic": "c"}]' in out
+    rc.chain_next(None, {"action": "produce", "topic": "c", "then": []})       # last one: nothing queued
+    assert capsys.readouterr().out == ""

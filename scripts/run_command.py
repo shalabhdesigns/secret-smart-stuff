@@ -91,6 +91,33 @@ def preserve_media(p: Pipeline) -> None:
             subprocess.run([str(ROOT / "scripts" / "open_review.sh"), jj["id"]], check=False)
 
 
+def chain_next(p: Pipeline, req: dict) -> None:
+    """A series of videos (e.g. the Learjet news set): this request carries the rest in "then". Dispatch the next one
+    now; GitHub queues it behind this run (same concurrency group), so the series runs on its own, one video at a
+    time, with no one in the loop - and a crash in this run doesn't stop it."""
+    rest = req.get("then") or []
+    if not rest:
+        return
+    nxt = {**rest[0], "then": rest[1:]}
+    if os.environ.get("SHORTS_NO_GITHUB") == "1":
+        print("next in series:", json.dumps(nxt)[:200])
+        return
+    import requests
+    tok = os.environ.get("GH_DISPATCH_TOKEN") or os.environ.get("GH_TOKEN", "")
+    repo = os.environ.get("GITHUB_REPOSITORY", "shalabhdesigns/secret-smart-stuff")
+    for attempt in range(3):
+        r = requests.post(f"https://api.github.com/repos/{repo}/actions/workflows/command.yml/dispatches",
+                          json={"ref": "main", "inputs": {"request": json.dumps(nxt, ensure_ascii=False)}},
+                          headers={"authorization": f"Bearer {tok}", "accept": "application/vnd.github+json"},
+                          timeout=30)
+        if r.status_code == 204:
+            p.state.log(f"series: queued next video ({nxt.get('topic')}), {len(rest) - 1} after it")
+            return
+        time.sleep(10 * (attempt + 1))
+    alert(p, "Series stopped", f"Could not queue the next video ({nxt.get('topic')}): GitHub said {r.status_code} "
+                               f"{r.text[:300]}. Claude can restart it.")
+
+
 def news_publish_time(state, now: float | None = None, gap_min: int = 60, margin_min: int = 20) -> str:
     """As soon as possible (margin for YouTube's scheduling) but at least `gap_min` after the last news video."""
     import datetime as dt
@@ -546,6 +573,7 @@ def main(path: str) -> int:
         p.state.log(f"owner allowed +${extra:.2f} on today's daily limit for this run")
     # ---- Secret Smart Stuff explainers (the live format) ----
     if action in ("produce", "daily"):
+        chain_next(p, req)          # queue the next video of a series first, so the chain survives a crash
         try:
             return do_produce(p, req)
         except Exception:
