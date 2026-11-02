@@ -261,3 +261,22 @@ def unschedule(video_id: str) -> dict:
     if r.status_code >= 400:
         raise UploadBlocked(f"could not stop {video_id}: {r.status_code} {r.text[:200]}")
     return r.json()
+
+
+THUMB_URL = "https://www.googleapis.com/upload/youtube/v3/thumbnails/set"
+
+
+def set_thumbnail(video_id: str, image: Path) -> dict:
+    """Custom thumbnail (cover) for a video or Short. YouTube needs a phone-verified channel (and, for Shorts in
+    the feed, the Partner Program); a refusal is returned, never raised, so publishing never depends on it."""
+    data = image.read_bytes()
+    if len(data) > 2 * 1024 * 1024:
+        return {"ok": False, "error": "cover larger than YouTube's 2 MB limit"}
+    try:
+        r = requests.post(THUMB_URL, params={"videoId": video_id}, data=data, timeout=120,
+                          headers={"Authorization": f"Bearer {access_token()}", "Content-Type": "image/jpeg"})
+    except Exception as e:  # noqa: BLE001
+        return {"ok": False, "error": str(e)[:300]}
+    if r.status_code == 200:
+        return {"ok": True}
+    return {"ok": False, "error": f"{r.status_code}: {r.text[:300]}"}

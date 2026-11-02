@@ -38,6 +38,7 @@ class FakeIG:
     def __call__(self, method, path, tok, **kw):
         if path.endswith("/media") and method == "POST":
             assert kw["media_type"] == "REELS" and kw["video_url"].startswith("https://w.example/m/")
+            self.last_cover = kw.get("cover_url")
             cid = f"C{len(self.containers) + 1}"
             self.containers[cid] = "IN_PROGRESS"
             return {"id": cid}
@@ -93,7 +94,9 @@ def test_queue_waits_for_slot_then_posts_once(tmp_path, monkeypatch):
         db.execute("UPDATE ig_posts SET publish_at='2020-01-01T00:00:00Z'")
     res = ig.publish_due(st)["posted"]
     assert res[0]["permalink"] == "https://www.instagram.com/reel/M1/"
-    assert puts and puts[0][0].startswith("media:") and puts[0][2] == 6 * 3600   # temporary, expires
+    media = [x for x in puts if x[0].startswith("media:")]
+    assert media and media[0][2] == 6 * 3600                                       # temporary, expires
+    assert any(k == "igdue:t-v1" for k, _, _ in puts) and any(k == "igdone:t-v1" for k, _, _ in puts)
     assert ig.publish_due(st)["posted"] == [] and fake.published == 1            # never twice
 
 
@@ -191,3 +194,37 @@ def test_blocked_access_warns_early_sends_reel_for_hand_posting_and_never_double
     assert ig.publish_due(st)["posted"] == [] and fake.published == 0                    # never posted twice
     assert ig.is_blocked("Instagram me: API access blocked. (code 200/None)")
     assert not ig.is_blocked("Instagram is still processing the video after 10 minutes")
+
+
+def test_cover_sent_with_reel_and_dropped_if_instagram_refuses_it(tmp_path, monkeypatch):
+    st, fake, puts = _setup(tmp_path, monkeypatch)
+    (tmp_path / "cover.jpg").write_bytes(b"\xff\xd8cover")
+    ig.queue(st, "t-v1", "2020-01-01T00:00:00Z")
+    ig.publish_due(st)
+    assert fake.last_cover and fake.last_cover.startswith("https://w.example/m/") and fake.last_cover.endswith(".jpg")
+    assert any(k.startswith("media:") and n == len(b"\xff\xd8cover") for k, n, _ in puts)
+    # Instagram refuses the cover parameter: the Reel still goes out with the default cover
+    calls = []
+
+    def picky(method, path, tok, **kw):
+        if path.endswith("/media") and method == "POST":
+            calls.append(kw.get("cover_url"))
+            if kw.get("cover_url"):
+                raise RuntimeError("Instagram media: Invalid parameter (code 100/None)")
+        return fake(method, path, tok, **kw)
+    monkeypatch.setattr(ig, "_api", picky)
+    ig.queue(st, "t-v2", "2020-01-01T00:00:00Z")
+    res = ig.publish_due(st)["posted"]
+    assert calls[0] and calls[-1] is None and res and res[0]["job"] == "t-v2"
+
+
+def test_reel_posted_by_another_runner_is_never_posted_again(tmp_path, monkeypatch):
+    """3 Nov 2026: Reels are posted by a separate run at the exact minute; that run doesn't save the state database,
+    so its record lives in the Worker's store and every other run reads it first."""
+    st, fake, _ = _setup(tmp_path, monkeypatch)
+    ig.queue(st, "t-v1", "2020-01-01T00:00:00Z")
+    store = {"igdone:t-v1": json.dumps({"media_id": "M9", "permalink": "https://www.instagram.com/reel/M9/"})}
+    monkeypatch.setattr(ig, "_cf_kv", lambda k: store.get(k))
+    assert ig.publish_due(st)["posted"] == [] and fake.published == 0
+    row = st.db.execute("SELECT status, permalink FROM ig_posts WHERE job_id='t-v1'").fetchone()
+    assert row["status"] == "posted" and row["permalink"].endswith("/M9/")

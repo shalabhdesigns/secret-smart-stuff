@@ -34,7 +34,7 @@ sys.path.insert(0, str(ROOT))
 
 from shorts import experiments as X, notify  # noqa: E402
 from shorts.config import load                # noqa: E402
-from shorts.pipeline import Pipeline          # noqa: E402
+from shorts.pipeline import StageFailed, Pipeline          # noqa: E402
 
 JOB_RE = re.compile(r"[a-z0-9-]{3,80}")
 
@@ -272,6 +272,9 @@ def self_review(p: Pipeline, job: str, rounds: int = 3) -> dict:
             p.produce(topic)
         except BudgetExceeded as e:   # a spending limit is not a quality verdict: pause, never drop or crash
             return {**c, "passed": False, "budget_stop": True, "summary": f"fix paused: budget limit ({e})"}
+        except StageFailed as e:      # the fix itself failed: the video can't be made good, so it isn't published
+            p.state.log(f"self-review fix failed: {e}", "warn", job)
+            return {**c, "passed": False, "summary": f"{c.get('summary', '')[:250]} (the fix failed: {e})"}
         j = p.state.get_job(job)
         if j["status"] != "review" or j["error"]:
             c = {**c, "passed": False, "summary": f"fix round stopped: {j['status']} {j['error'] or ''}"}
@@ -700,6 +703,47 @@ def main(path: str) -> int:
         gh("issue", "create", "--title", f"Calibration: final review of {job}", "--body", body[:60000], check=False)
         print(body)
         return 0
+    if action == "covers_backfill":
+        # owner, 3 Nov 2026: give every published video a designed cover. YouTube: set by API. Instagram: its API can't
+        # change the cover of a Reel that is already up, so the owner gets each cover in Telegram to set in the app.
+        from shorts.render import cover
+        from shorts.publish.youtube import set_thumbnail
+        only = req.get("jobs") or []
+        rows = p.state.db.execute("SELECT job_id, video_id FROM uploads WHERE video_id IS NOT NULL AND status != 'failed' "
+                                  "ORDER BY at").fetchall()
+        report = []
+        for r in rows:
+            job = r["job_id"]
+            if only and job not in only:
+                continue
+            with tempfile.TemporaryDirectory() as tmp:
+                d = Path(tmp)
+                if not fetch_bundle(job, d) or not (d / "script.json").exists():
+                    report.append(f"{job}: no saved pictures, skipped")
+                    continue
+                try:
+                    ask = lambda prompt: p._llm(prompt, None, "cover", est=0.03, max_tokens=600,  # noqa: E731
+                                                model=p.cfg.pipeline["providers"]["llm"]["model_script"]).data
+                    cp = cover.make(ask, d, news=bool(p._news(job)))
+                except Exception as e:  # noqa: BLE001
+                    report.append(f"{job}: cover failed ({e})")
+                    continue
+                t = set_thumbnail(r["video_id"], d / "cover.jpg")
+                gh("release", "upload", f"review-{job}", str(d / "cover.jpg"), "--clobber", check=False)
+                ig = p.state.db.execute("SELECT permalink FROM ig_posts WHERE job_id=? AND status IN ('posted','manual')",
+                                        (job,)).fetchone()
+                line = (f"{job}: YouTube {'✅ set' if t['ok'] else '❌ ' + t.get('error', '')[:120]}"
+                        + (f"; Instagram: set by hand ({ig['permalink']})" if ig else ""))
+                report.append(line)
+                notify.send_photo(p.state, d / "cover.jpg",
+                                  f"Cover for {notify.esc(job)}: {notify.esc(' / '.join(cp['lines']))}\n"
+                                  f"YouTube: {'set ✅' if t['ok'] else 'not set'}"
+                                  + (f"\nInstagram: open {ig['permalink']} → ⋯ → Edit → Edit cover → add this image"
+                                     if ig else ""))
+        msg = "Covers for published videos:\n" + "\n".join(f"- {x}" for x in report)
+        gh("issue", "create", "--title", "Covers backfill", "--body", msg, check=False)
+        print(msg)
+        return 0
     if action == "finish":
         # resume a video whose final review/fix was stopped (e.g. by a budget limit): review, fix, then the normal
         # path - publish in auto mode if it passes, drop it if it fails, pause again if a limit stops it
@@ -825,7 +869,17 @@ def main(path: str) -> int:
     if action == "ig_due":
         # same as the instagram workflow: post what is due, preparing early and publishing at the exact minute
         from shorts.publish import instagram as ig
-        print(json.dumps(ig.publish_due(p.state), default=str))
+        print(json.dumps(ig.publish_due(p.state, early_min=int(req.get("early_min", 0)),
+                                        late_min=req.get("late_min", 20)), default=str))
+        return 0
+    if action == "ig_one":
+        # the exact-minute post of one Reel (igpost.yml, started by the Worker ~10-15 min before it is due). This run
+        # doesn't save the state database: the result is recorded in the Worker's store (igdone:<job>).
+        from shorts.publish import instagram as ig
+        job = req.get("job", "")
+        if not JOB_RE.fullmatch(job):
+            return 1
+        print(json.dumps(ig.publish_due(p.state, early_min=60, only=job), default=str))
         return 0
     if action == "ig_manual":
         # the owner posted this Reel by hand (Telegram "I posted it" button): never auto-post it later

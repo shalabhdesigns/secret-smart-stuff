@@ -27,6 +27,8 @@ const KV = {
   get: async (k) => (store.has(k) ? store.get(k) : null),
   put: async (k, v) => store.set(k, v),
   delete: async (k) => store.delete(k),
+  list: async ({ prefix = "" } = {}) => ({ keys: [...store.keys()].filter((k) => k.startsWith(prefix)).map((name) => ({ name })),
+                                         list_complete: true }),
 };
 const env = { KV, TG_TOKEN: "t", TG_SECRET: "s3cret", OWNER_ID: "42", GH_TOKEN: "g", GH_REPO: "o/r",
   COOKIE_KEY: "k".repeat(32), SELF_URL: "https://studio.example.workers.dev",
@@ -195,6 +197,10 @@ assert.equal(r.status, 206); assert.equal(r.headers.get("content-range"), "bytes
 assert.deepEqual([...new Uint8Array(await r.arrayBuffer())], [2, 3]);
 assert.equal((await worker.fetch(new Request("https://x/m/" + "d".repeat(32) + ".mp4"), env)).status, 404);
 assert.equal((await worker.fetch(new Request("https://x/m/../ig_token.enc"), env)).status, 404);
+// covers (3 Nov 2026): same store, served as JPEG; other extensions are refused
+r = await worker.fetch(new Request("https://x/m/" + "c".repeat(32) + ".jpg"), env);
+assert.equal(r.status, 200); assert.equal(r.headers.get("content-type"), "image/jpeg");
+assert.equal((await worker.fetch(new Request("https://x/m/" + "c".repeat(32) + ".png"), env)).status, 404);
 // timers: a cron that is in SCHEDULE dispatches its request; any other does nothing
 const waits = [];
 const sEnv = { ...env, SCHEDULE: JSON.stringify({ "17 0 * * *": { action: "daily" }, "48 16 * * *": { action: "ig_due" } }) };
@@ -205,4 +211,20 @@ assert.equal(gh().length, ngh + 1); assert.equal(lastReq().action, "daily");
 await worker.scheduled({ cron: "1 1 * * *" }, sEnv, { waitUntil: (p) => waits.push(p) });
 await Promise.all(waits);
 assert.equal(gh().length, ngh + 1);
+// Instagram watcher (3 Nov 2026): starts igpost.yml once for a Reel due within ~15 min; never for later, stopped or
+// already-started ones
+const t0 = Date.parse("2026-11-03T19:50:00Z");
+store.set("igdue:job-soon", "2026-11-03T20:00:00Z");
+store.set("igdue:job-later", "2026-11-03T21:00:00Z");
+store.set("igdue:job-stopped", "2026-11-03T20:00:00Z"); store.set("stop:job-stopped", "1");
+ngh = gh().length;
+const { igWatch } = await import("./index.js");
+assert.deepEqual(await igWatch({ ...env }, t0), ["job-soon"]);
+const ig = calls[calls.length - 1];
+assert.ok(ig.url.endsWith("/actions/workflows/igpost.yml/dispatches")); assert.deepEqual(ig.body.inputs, { job: "job-soon" });
+assert.deepEqual(await igWatch({ ...env }, t0 + 60e3), []);                 // already started: not twice
+const wEnv = { ...env, SCHEDULE: JSON.stringify({ "*/5 * * * *": { action: "igwatch" } }) };
+store.delete("igdisp:job-soon");
+await worker.scheduled({ cron: "*/5 * * * *" }, wEnv, { waitUntil: (p) => waits.push(p) });
+await Promise.all(waits);
 console.log("worker tests passed");

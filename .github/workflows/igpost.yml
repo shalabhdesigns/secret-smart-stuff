@@ -1,0 +1,45 @@
+# Posts ONE queued Reel at the exact minute it goes public on YouTube (3 Nov 2026).
+# Started by the studio Worker's 5-minute watcher (KV igdue:<job>) about 10-15 minutes early; the run prepares the
+# Reel, waits, and publishes on the minute. It runs outside the shorts-state queue so a video being made never delays
+# it, and it never saves the state database: the result goes to the Worker's store (igdone:<job>), which every other
+# run reads first, so nothing is posted twice. One run per video at a time (concurrency group per job).
+name: igpost
+on:
+  workflow_dispatch:
+    inputs:
+      job:
+        description: "job id of the queued Reel"
+        required: true
+concurrency: { group: "ig-post-${{ github.event.inputs.job }}", cancel-in-progress: false }
+permissions: { contents: read, issues: write }
+jobs:
+  post:
+    if: vars.SHORTS_MODE == 'live'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      SHORTS_MODE: live
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}        # the pipeline object needs its providers to start
+      ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+      BFL_API_KEY: ${{ secrets.BFL_API_KEY }}
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}         # decrypts the stored Instagram login
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      GH_TOKEN: ${{ github.token }}                             # downloads the video + cover from its review release
+      JOB: ${{ github.event.inputs.job }}                       # via env, never inlined into the shell
+    steps:
+      - uses: actions/checkout@v5
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -q -r requirements.txt
+      - run: scripts/state_sync.sh pull
+      - name: Post the Reel at its minute
+        run: |
+          python -c 'import json,os,re,sys; j=os.environ["JOB"]; assert re.fullmatch(r"[a-z0-9-]{3,80}", j); json.dump({"action":"ig_one","job":j}, open(sys.argv[1],"w"))' "$RUNNER_TEMP/req.json"
+          set -o pipefail
+          python scripts/run_command.py "$RUNNER_TEMP/req.json" 2>&1 | tee "$RUNNER_TEMP/out.log"
+      - if: failure()
+        run: python scripts/post_failure_log.py "$RUNNER_TEMP/out.log" "Run ${{ github.run_id }} failed (igpost)"

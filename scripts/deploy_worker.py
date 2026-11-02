@@ -75,20 +75,10 @@ def subdomain(acc: str) -> str:
 
 
 def timer_plan(cfg) -> dict:
-    """Cron (UTC) -> runner request. The daily video at produce time; Instagram 12 minutes before each publish
-    slot (the run prepares the Reel and publishes at the exact minute). Cloudflare's free plan allows 5 timers."""
-    plan = {"17 0 * * *": {"action": "daily"}}
-    import yaml
-    exps = (yaml.safe_load((ROOT / "config" / "experiments.yaml").read_text()) or {}).get("experiments") or []
-    slots = set()
-    for e in exps:
-        if e.get("variable") == "publish_slot_utc" and e.get("status") == "active":
-            slots |= set((e.get("arms") or {}).values())
-    for s in sorted(slots)[:4]:
-        h, m = (int(x) for x in s.split(":"))
-        t = (h * 60 + m - 12) % 1440
-        plan[f"{t % 60} {t // 60} * * *"] = {"action": "ig_due"}
-    return plan
+    """Cron (UTC) -> runner request. The daily video at produce time; every 5 minutes the Worker starts the
+    exact-minute Instagram post for any Reel due soon (3 Nov 2026; it replaced the 3 fixed slot timers, so Reels
+    published at any minute - e.g. the news series - go out with YouTube). Cloudflare's free plan allows 5 timers."""
+    return {"17 0 * * *": {"action": "daily"}, "*/5 * * * *": {"action": "igwatch"}}
 
 
 def main() -> int:

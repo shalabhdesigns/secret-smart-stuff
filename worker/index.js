@@ -10,7 +10,7 @@
 // 4. / and /privacy  Public home page and privacy policy for the Google OAuth app.
 // 5. /ig/*    One-tap Instagram login (Business Login for Instagram). Long-lived token stored ENCRYPTED in KV
 //             (key from YT_CLIENT_SECRET, label "ig-token-v1:"); only the expected account (EXPECT_IG) is kept.
-// 6. /m/<key>.mp4  Serves a video the runner put in KV for a few hours, so Instagram can fetch it.
+// 6. /m/<key>.mp4|.jpg  Serves a video or cover the runner put in KV for a few hours, so Instagram can fetch it.
 // 7. scheduled()   Timers that start the daily video and the Instagram posts on time (SCHEDULE binding).
 //
 // Bindings (set by scripts/deploy_worker.py): KV (namespace), TG_TOKEN, TG_SECRET, OWNER_ID,
@@ -47,7 +47,8 @@ export default {
     let plan = {};
     try { plan = JSON.parse(env.SCHEDULE || "{}"); } catch { plan = {}; }
     const request = plan[event.cron];
-    if (request) ctx.waitUntil(dispatch(env, { ...request }));
+    if (request && request.action === "igwatch") ctx.waitUntil(igWatch(env));
+    else if (request) ctx.waitUntil(dispatch(env, { ...request }));
   },
 };
 
@@ -60,6 +61,46 @@ async function tg(env, method, body) {
     body: JSON.stringify(body),
   });
   return r.json();
+}
+
+// Every 5 minutes: start the exact-minute Instagram post (igpost.yml) for any Reel due within ~15 minutes.
+// The runner writes igdue:<job> = publish time (UTC ISO) when it queues a Reel and deletes it once posted or stopped.
+async function igWatch(env, now = Date.now()) {
+  const started = [];
+  let cursor;
+  do {
+    const page = await env.KV.list({ prefix: "igdue:", cursor });
+    for (const k of page.keys) {
+      const job = k.name.slice("igdue:".length);
+      if (!JOB.test(job)) continue;
+      const due = Date.parse((await env.KV.get(k.name)) || "");
+      if (!due) continue;
+      const left = due - now;
+      if (left > 16 * 60e3 || left < -3 * 3600e3) continue;      // not yet, or far too late (the backups handle it)
+      if (await env.KV.get(`igdisp:${job}`) || await env.KV.get(`stop:${job}`)) continue;
+      const err = await dispatchWorkflow(env, "igpost.yml", { job });
+      if (!err) {
+        await env.KV.put(`igdisp:${job}`, "1", { expirationTtl: 3 * 3600 });
+        started.push(job);
+      }
+    }
+    cursor = page.list_complete ? null : page.cursor;
+  } while (cursor);
+  return started;
+}
+
+async function dispatchWorkflow(env, workflow, inputs) {
+  const r = await fetch(`https://api.github.com/repos/${env.GH_REPO}/actions/workflows/${workflow}/dispatches`, {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${env.GH_TOKEN}`,
+      accept: "application/vnd.github+json",
+      "user-agent": "secretsmartstuff-worker",
+      "x-github-api-version": "2022-11-28",
+    },
+    body: JSON.stringify({ ref: "main", inputs }),
+  });
+  return r.status === 204 ? null : `GitHub said ${r.status}`;
 }
 
 async function dispatch(env, request) {
@@ -471,12 +512,13 @@ async function igCallback(env, url) {
 }
 
 async function media(req, env, url) {
-  const m = url.pathname.match(/^\/m\/([0-9a-f]{32})\.mp4$/);
+  const m = url.pathname.match(/^\/m\/([0-9a-f]{32})\.(mp4|jpg)$/);
   if (!m) return new Response("not found", { status: 404 });
   const buf = await env.KV.get(`media:${m[1]}`, { type: "arrayBuffer" });
   if (!buf) return new Response("not found", { status: 404 });
   const size = buf.byteLength;
-  const base = { "content-type": "video/mp4", "accept-ranges": "bytes", "cache-control": "no-store" };
+  const base = { "content-type": m[2] === "jpg" ? "image/jpeg" : "video/mp4", "accept-ranges": "bytes",
+                 "cache-control": "no-store" };
   const range = (req.headers.get("range") || "").match(/^bytes=(\d*)-(\d*)$/);
   if (range && (range[1] || range[2])) {
     let start = range[1] ? Number(range[1]) : size - Number(range[2]);
@@ -534,3 +576,5 @@ const PRIVACY = `<h1>Privacy Policy</h1>
 <h2>Data deletion</h2>
 <p>To delete everything the tool stores (sign-in tokens and statistics), email <a href="mailto:secretsmartstuff@gmail.com">secretsmartstuff@gmail.com</a>; it is deleted within 7 days.</p>
 <footer>Contact: <a href="mailto:secretsmartstuff@gmail.com">secretsmartstuff@gmail.com</a> · <a href="/">Home</a></footer>`;
+
+export { igWatch };

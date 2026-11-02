@@ -12,6 +12,7 @@ mv "$tmp/media.tgz" "$D/media.tgz"
 [ "${SHORTS_NO_GITHUB:-}" = "1" ] && { echo "SHORTS_NO_GITHUB=1: skipping release/issue for $JOB"; exit 0; }
 gh label create review --color 1D76DB 2>/dev/null || true
 files=("$D/final.mp4" "$D/metadata.json" "$D/script.json" "$D/review.md" "$D/media.tgz")
+[ -f "$D/cover.jpg" ] && files+=("$D/cover.jpg")
 if gh release view "$TAG" >/dev/null 2>&1; then
   gh release upload "$TAG" "${files[@]}" --clobber
 else

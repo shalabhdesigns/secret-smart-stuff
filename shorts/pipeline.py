@@ -1045,6 +1045,15 @@ class Pipeline:
                 "made_for_kids": ch["made_for_kids"], "contains_synthetic_media": True,
                 "title_lint": lint, "thumb_text": script.get("thumb_text"),
                 "affiliate_product": script.get("affiliate_product")}
+        try:      # the cover / thumbnail (owner, 3 Nov 2026): best existing picture + 2-5 honest curiosity words
+            from .render import cover
+            ask = lambda prompt: self._llm(prompt, job_id, "cover", est=0.03,  # noqa: E731
+                                           model=self.cfg.pipeline["providers"]["llm"]["model_script"],
+                                           max_tokens=600).data
+            cp = cover.make(ask, d, news=bool(news))
+            meta["cover"] = {"file": "cover.jpg", "lines": cp["lines"], "image": cp["image"]}
+        except Exception as e:  # noqa: BLE001 - a missing cover never blocks a video
+            self.state.log(f"cover not made: {e}", "warn", job_id)
         (d / "metadata.json").write_text(json.dumps(meta, indent=2, ensure_ascii=False))
         (d / "review.md").write_text(self._review_md(job_id, script, meta, d), encoding="utf-8")
         return {"file": str(d / "metadata.json"), "review_md": str(d / "review.md"),
@@ -1285,7 +1294,24 @@ class Pipeline:
                 raise StageFailed("the fix could not be applied (no script returned)")
             fx["_revised"] = True
             fx["hook_scores"] = [hook_score(h) for h in fx.get("hooks", [])]
-            self._validate_script(fx)
+            try:
+                self._validate_script(fx)
+            except StageFailed as e:
+                # the fixed script broke a format rule (2 Nov 2026: "more than one card beat" crashed two runs):
+                # one repair that keeps the fix, then give up cleanly
+                self.state.log(f"fixed script broke a rule ({e}); one repair", "warn", job_id)
+                rp = self._llm(P.FIX.format(problems=json.dumps([self._length_rule(), {
+                    "issue": str(e), "fix": "Keep every change already made; only correct this rule. At most one "
+                                            "beat may be a text card without a picture."}]),
+                    script=json.dumps(fx, ensure_ascii=False)),
+                    job_id, "self_fix_repair", est=0.15, system=P.SYSTEM_WRITER,
+                    model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=12000).data or {}
+                if not rp.get("scenes"):
+                    raise StageFailed(f"the fix broke a rule and could not be repaired ({e})") from e
+                rp["_revised"] = True
+                rp["hook_scores"] = [hook_score(h) for h in rp.get("hooks", [])]
+                self._validate_script(rp)
+                fx = rp
             (d / "script.json").write_text(json.dumps(fx, indent=2, ensure_ascii=False))
             arts = job["artifacts"]
             rv = dict(arts.get("review") or {})
@@ -1311,6 +1337,12 @@ class Pipeline:
         vm = VideoMeta(meta["title"], meta["description"], meta["tags"], meta["category_id"],
                        meta["language"], meta["made_for_kids"], meta["contains_synthetic_media"], publish_at)
         rec = upload(self.state, job_id, Path(job["artifacts"]["render"]["video"]), vm)
+        cov = Path(job["artifacts"]["package"]["file"]).parent / "cover.jpg"
+        if cov.exists() and rec.get("video_id"):
+            from .publish.youtube import set_thumbnail
+            t = set_thumbnail(rec["video_id"], cov)
+            self.state.log(f"youtube cover: {'set' if t['ok'] else 'refused: ' + t.get('error', '')}", "info"
+                           if t["ok"] else "warn", job_id)
         try:                                  # Instagram posts it later, at the same time (see publish/instagram.py)
             from .publish import instagram
             instagram.queue(self.state, job_id, publish_at)

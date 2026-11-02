@@ -77,6 +77,22 @@ def _kv_put(key: str, data: bytes | str, ttl: int | None = None) -> None:
         raise RuntimeError(f"KV write {key}: {r.status_code} {r.text[:200]}")
 
 
+def _kv_del(key: str) -> None:
+    t = _kv_target()
+    if t:
+        tok, acc, ns = t
+        requests.delete(f"https://api.cloudflare.com/client/v4/accounts/{acc}/storage/kv/namespaces/{ns}/values/{key}",
+                        headers={"Authorization": f"Bearer {tok}"}, timeout=30)
+
+
+def _kv_try(fn, *a, **k) -> None:
+    """Best effort: the Worker's store is a coordination aid, never a reason to fail a post."""
+    try:
+        fn(*a, **k)
+    except Exception:  # noqa: BLE001
+        pass
+
+
 def kv_keys() -> list[str]:
     """Names of the keys in the Worker's store (for diagnostics; values are never read here)."""
     t = _kv_target()
@@ -203,6 +219,10 @@ def queue(state, job_id: str, publish_at: str | None) -> None:
     with state.tx() as db:
         db.execute("INSERT OR IGNORE INTO ig_posts(job_id, status, publish_at, at) VALUES (?,?,?,?)",
                    (job_id, "pending", publish_at or time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), time.time()))
+    # the Worker watches igdue:* every 5 minutes and starts a posting run ~15 min before (3 Nov 2026: news videos
+    # go out at any minute, not only at the 3 daily slots)
+    _kv_try(_kv_put, f"igdue:{job_id}", publish_at or time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            ttl=7 * 86400)
     err = check()
     if err:
         state.log(f"instagram check: {err}", "warn", job_id)
@@ -246,6 +266,7 @@ def hold(state, job_id: str) -> str:
         return "posted"
     with state.tx() as db:
         db.execute("UPDATE ig_posts SET status='held' WHERE job_id=?", (job_id,))
+    _kv_try(_kv_del, f"igdue:{job_id}")
     return "held"
 
 
@@ -280,6 +301,8 @@ def _fetch(job_id: str, into: Path) -> tuple[Path, dict]:
         return local / "final.mp4", json.loads((local / "metadata.json").read_text())
     subprocess.run(["gh", "release", "download", f"review-{job_id}", "-p", "final.mp4", "-p", "metadata.json",
                     "-D", str(into), "--clobber"], check=True, capture_output=True)
+    subprocess.run(["gh", "release", "download", f"review-{job_id}", "-p", "cover.jpg", "-D", str(into), "--clobber"],
+                   check=False, capture_output=True)       # older videos have no cover
     return into / "final.mp4", json.loads((into / "metadata.json").read_text())
 
 
@@ -308,10 +331,11 @@ def post(state, job_id: str, at_ts: float | None = None) -> dict:
     _ensure(state)
     tok, acc = token()
     uid = acc["user_id"]
+    reconcile(state)          # another runner may have posted it already (the record lives in the Worker's store)
     row = state.db.execute("SELECT * FROM ig_posts WHERE job_id=?", (job_id,)).fetchone()
-    if row and row["status"] == "posted":
+    if row and row["status"] in ("posted", "manual"):
         return {"job": job_id, "permalink": row["permalink"], "already": True}
-    cont = row["container_id"] if row else None
+    cont = (row["container_id"] if row else None) or _cf_kv(f"igcont:{job_id}")
     if cont:      # a previous run got this far: finish it, never post twice
         st = _api("GET", cont, tok, fields="status_code,status")
         if st.get("status_code") == "PUBLISHED":
@@ -324,12 +348,26 @@ def post(state, job_id: str, at_ts: float | None = None) -> dict:
             key = secrets.token_hex(16)
             _kv_put(f"media:{key}", mp4.read_bytes(), ttl=6 * 3600)
             url = f"{_worker_url(state)}/m/{key}.mp4"
-            cont = _api("POST", f"{uid}/media", tok, media_type="REELS", video_url=url, caption=caption(meta),
-                        share_to_feed="true")["id"]
+            extra = {}
+            cov = mp4.parent / "cover.jpg"
+            if cov.exists():          # the designed cover (owner, 3 Nov 2026)
+                ckey = secrets.token_hex(16)
+                _kv_put(f"media:{ckey}", cov.read_bytes(), ttl=6 * 3600)
+                extra["cover_url"] = f"{_worker_url(state)}/m/{ckey}.jpg"
+            try:
+                cont = _api("POST", f"{uid}/media", tok, media_type="REELS", video_url=url, caption=caption(meta),
+                            share_to_feed="true", **extra)["id"]
+            except RuntimeError as e:
+                if not extra or is_blocked(str(e)):
+                    raise
+                state.log(f"instagram refused the cover ({e}); posting with the default cover", "warn", job_id)
+                cont = _api("POST", f"{uid}/media", tok, media_type="REELS", video_url=url, caption=caption(meta),
+                            share_to_feed="true")["id"]
         with state.tx() as db:
             db.execute("INSERT INTO ig_posts(job_id, status, container_id, at) VALUES (?,?,?,?) ON CONFLICT(job_id) "
                        "DO UPDATE SET status='publishing', container_id=excluded.container_id, error=NULL",
                        (job_id, "publishing", cont, time.time()))
+        _kv_try(_kv_put, f"igcont:{job_id}", cont, ttl=86400)    # crash-safe across runners too
     for _ in range(60):                   # Instagram processes the video: usually 30 s - 3 min
         st = _api("GET", cont, tok, fields="status_code,status")
         code = st.get("status_code")
@@ -365,15 +403,39 @@ def _record_published(state, job_id, tok, uid, media_id, cont) -> dict:
     with state.tx() as db:
         db.execute("UPDATE ig_posts SET status='posted', media_id=?, permalink=?, error=NULL, at=? WHERE job_id=?",
                    (media_id, info.get("permalink"), time.time(), job_id))
+    _kv_try(_kv_put, f"igdone:{job_id}", json.dumps({"media_id": media_id, "permalink": info.get("permalink")}),
+            ttl=60 * 86400)
+    _kv_try(_kv_del, f"igdue:{job_id}")
     return {"job": job_id, "media_id": media_id, "permalink": info.get("permalink")}
 
 
-def publish_due(state, early_min: int = 30) -> dict:
+def reconcile(state) -> int:
+    """Mark as posted every queued Reel that a separate posting run already published (its record is in the
+    Worker's store, because posting runs don't save the state database). -> how many were updated."""
+    _ensure(state)
+    n = 0
+    for r in state.db.execute("SELECT job_id FROM ig_posts WHERE status IN ('pending','publishing')").fetchall():
+        try:
+            done = _cf_kv(f"igdone:{r['job_id']}")
+        except Exception:  # noqa: BLE001
+            done = None
+        if done:
+            d = json.loads(done)
+            with state.tx() as db:
+                db.execute("UPDATE ig_posts SET status='posted', media_id=?, permalink=?, error=NULL WHERE job_id=?",
+                           (d.get("media_id"), d.get("permalink"), r["job_id"]))
+            n += 1
+    return n
+
+
+def publish_due(state, early_min: int = 30, only: str | None = None, late_min: int | None = None) -> dict:
     """Post every queued video whose time has come. A video due within `early_min` minutes is prepared now and
-    published at its exact time, so Instagram and YouTube go live together. Skips videos the owner stopped."""
+    published at its exact time, so Instagram and YouTube go live together. Skips videos the owner stopped.
+    `only`: just this job (the exact-minute run). `late_min`: backups only post what is that many minutes overdue."""
     if not enabled():
         return {"skipped": "instagram disabled"}
     _ensure(state)
+    reconcile(state)
     now = time.time()
     done, problems = [], []
     rows = state.db.execute("SELECT p.job_id, p.publish_at, p.status, u.status AS yt FROM ig_posts p "
@@ -384,9 +446,13 @@ def publish_due(state, early_min: int = 30) -> dict:
         if r["yt"] == "held":
             hold(state, r["job_id"])
             continue
+        if only and r["job_id"] != only:
+            continue
         due = dt.datetime.fromisoformat((r["publish_at"] or "1970-01-01T00:00:00Z").replace("Z", "+00:00")).timestamp()
         if r["status"] == "pending" and now < due - early_min * 60:
             continue
+        if late_min is not None and now < due + late_min * 60:
+            continue          # backups only catch posts the exact-minute run (igpost.yml) clearly missed
         try:
             res = post(state, r["job_id"], at_ts=due if due > time.time() else None)
             if res.get("held"):

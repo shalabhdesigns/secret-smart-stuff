@@ -75,7 +75,7 @@ def main(argv: list[str] | None = None) -> int:
         from .providers.tts import credit_check
         steps = [("verify uploads", lambda: verify(p.state)),
                  ("elevenlabs credits", lambda: credit_check(p.state, os.environ.get("ELEVENLABS_API_KEY", ""))),
-                 ("instagram catch-up", lambda: ig.publish_due(p.state, early_min=0)),   # only overdue posts; never waits
+                 ("instagram catch-up", lambda: ig.publish_due(p.state, early_min=0, late_min=20)),   # missed posts only
                  ("instagram metrics", lambda: ig.snapshot(p.state)),
                  ("video metrics", lambda: an.snapshot(p.state)),
                  ("channel daily", lambda: an.channel_daily(p.state)),
@@ -92,7 +92,7 @@ def main(argv: list[str] | None = None) -> int:
                 print(name, "FAILED", e)
     elif a.cmd == "instagram":
         from .publish import instagram as ig
-        print(json.dumps(ig.publish_due(p.state), default=str))
+        print(json.dumps(ig.publish_due(p.state, early_min=0, late_min=20), default=str))   # backup only
     elif a.cmd == "learn":
         from . import learn, dashboard
         print(json.dumps(learn.weekly(p), default=str))
