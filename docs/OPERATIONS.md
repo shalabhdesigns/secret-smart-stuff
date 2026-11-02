@@ -46,6 +46,8 @@ start late.
 | **An upload says "started but did not confirm"** | Check YouTube Studio. If the video IS there: `python -m shorts.cli upload-resolve JOB --video-id ID`. If not: `python -m shorts.cli upload-resolve JOB`, then approve again. This guard stops double uploads. |
 | **Instagram post failed / "send /iglogin"** | Send /iglogin. To post a published video now: `{"action":"ig_post","job":"<job>"}`. Check the login: `{"action":"ig_whoami"}`. |
 | **"API access blocked" (code 200) / Meta blocked the app** | Retrying can't fix it. The system warns at queue time, and at the slot it sends the Reel + caption to Telegram to post by hand, with an "I posted it" button (`ig_manual`), so it is never posted twice. Fix: the owner logs in to facebook.com, developers.facebook.com and instagram.com, clears any Meta warning, then /iglogin. Resend the Reel: `{"action":"ig_hand","job":"<job>"}`. |
+| **Dashboard numbers look wrong or old** | Press "Refresh now" on the dashboard (~3 min), or run the analytics workflow. Check "About the data" for what each number is based on. |
+| **Enter a subscription, balance or revenue** | Dashboard → Costs & revenue / Credits & limits forms (saved to KV `manual.json`). |
 | **Give published videos covers** | `{"action":"covers_backfill"}` (optional `"jobs":[...]`). YouTube is set by API. For Instagram, each cover comes to Telegram to set in the app (Reel → ⋯ → Edit → Edit cover). |
 | **Post one Reel now / at its minute** | Run the `igpost` workflow with `job=<job>`. It waits for the publish time, posts, and records it in KV. |
 | **A series of videos** | `{"action":"produce","topic":...,"topic_def":{...},"then":[next requests]}`. Each run queues the next. |

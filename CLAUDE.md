@@ -86,6 +86,12 @@
   minutes early. That run doesn't save state; it records `igdone:<job>` in KV. `instagram.yml` and the analytics run
   are backups that only post Reels more than 20 minutes overdue (`shorts/publish/instagram.py`). Login: `/iglogin` (Meta app "Secret Smart Stuff Publisher",
   dev mode; see `docs/SETUP.md`). Stop cancels a pending post; a posted Reel can only be deleted in the app.
+- **Dashboard** (rebuilt 3 Nov 2026): `/dash` on the Worker (Telegram login code). `shorts/dashboard.py` +
+  `dashboard_template.html`, data from `shorts/usage.py` (resources, balances, alerts). Every number is labelled
+  measured / calculated / allocated / estimated / manual / unavailable. Never show an assumed number as real.
+  Owner-entered values live in KV `manual.json`. It refreshes every 6 h or on "Refresh now".
+- **GitHub Actions minutes:** GitHub Free gives 2,000 a month for private repos. Watch the dashboard's
+  "Credits & limits". Avoid long waits inside runs.
 - **Secrets:** only in GitHub Actions secrets (and the encrypted login in KV). Never in files or chat.
   - The Google OAuth app is "Secret Smart Stuff uploader" in Google Cloud project `bhaukaali-toons` (Owners: secretsmartstuff@gmail.com since 28 Oct, and
     bhaukaalitoons@gmail.com), In production.
