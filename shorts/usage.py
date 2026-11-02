@@ -166,8 +166,9 @@ def github_minutes(state) -> dict:
             if len(runs) < 100:
                 break
     m = time.strftime("%Y-%m", time.gmtime())
-    rows = state.db.execute("SELECT workflow, SUM(billable_ms) b, SUM(duration_ms) d, COUNT(*) n FROM gh_runs "
-                            "WHERE created LIKE ? GROUP BY workflow", (m + "%",)).fetchall()
+    # GitHub's timing API now reports billable time as 0 for many runs; use the run's measured duration then
+    rows = state.db.execute("SELECT workflow, SUM(MAX(COALESCE(billable_ms,0), COALESCE(duration_ms,0))) b, "
+                            "COUNT(*) n FROM gh_runs WHERE created LIKE ? GROUP BY workflow", (m + "%",)).fetchall()
     if not rows:
         return {"source": "unavailable", "why": "no run timings yet"}
     used = sum((r["b"] or 0) for r in rows) / 60000
@@ -178,7 +179,8 @@ def github_minutes(state) -> dict:
             "left": round(limit - used), "resets": _next_month(),
             "by_workflow": {r["workflow"]: round((r["b"] or 0) / 60000) for r in rows},
             "limit_source": "manual" if lim else "GitHub Free plan default",
-            "note": "billable minutes (GitHub rounds each job up to a whole minute)"}
+            "note": "measured run time per workflow run (GitHub bills each job rounded up to a whole minute, so the "
+                    "bill can be a little higher)"}
 
 
 def _next_month() -> str:
@@ -330,7 +332,8 @@ def check(state, notify_fn=None) -> dict:
 
 
 def _gh_burn(state) -> float | None:
-    rows = state.db.execute("SELECT SUM(billable_ms) b FROM gh_runs WHERE created >= ?",
+    rows = state.db.execute("SELECT SUM(MAX(COALESCE(billable_ms,0), COALESCE(duration_ms,0))) b FROM gh_runs "
+                            "WHERE created >= ?",
                             (time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(time.time() - 7 * 86400)),)).fetchone()
     return (rows["b"] or 0) / 60000 / 7 if rows and rows["b"] else None
 

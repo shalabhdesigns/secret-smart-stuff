@@ -89,8 +89,8 @@ def collect(state, cfg) -> dict:
     try:
         for r in db.execute("SELECT run_id, job_id FROM run_jobs"):
             run_jobs.setdefault(r["run_id"], []).append(r["job_id"])
-        for r in db.execute("SELECT run_id, billable_ms FROM gh_runs"):
-            gh_min[r["run_id"]] = (r["billable_ms"] or 0) / 60000
+        for r in db.execute("SELECT run_id, billable_ms, duration_ms FROM gh_runs"):
+            gh_min[r["run_id"]] = max(r["billable_ms"] or 0, r["duration_ms"] or 0) / 60000
     except Exception:  # noqa: BLE001
         pass
     minutes_by_job: dict[str, float] = {}
