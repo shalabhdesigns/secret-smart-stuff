@@ -29,6 +29,7 @@ style:
   palette: {paper: "#FFFFFF", ink: "#1F3BFF", accent: "#1F3BFF", highlight: "#FFD6E0"}
   caption_font: Archivo
   caption_highlight: "#FFD6E0"      # the word being spoken
+  onscreen_handle: true       # owner, 3 Nov 2026: small translucent @handle, 3 s in to 2.5 s before the end
   caption_size: 72                  # lighter captions (text overlays cost retention on speech-led Shorts)
   image_style: >-
     clean editorial product photograph, soft natural light, shallow depth of field,

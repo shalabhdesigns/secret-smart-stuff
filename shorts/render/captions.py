@@ -55,7 +55,8 @@ def _esc(text: str) -> str:
 def write_ass(words: list[Word], out: Path, font: str = "Inter", font_size: int = 86,
               primary: str = "&H00FFFFFF", highlight: str = "&H0000E5FF",
               y_center: int = 1180, uppercase: bool = True,
-              overlays: list[tuple[float, float, str]] | None = None) -> Path:
+              overlays: list[tuple[float, float, str]] | None = None,
+              handle: tuple[float, float, str] | None = None) -> Path:
     """Write an .ass subtitle file.
 
     The word being spoken is highlighted (karaoke style) - a common retention
@@ -69,6 +70,12 @@ def write_ass(words: list[Word], out: Path, font: str = "Inter", font_size: int 
     style_top = (
         f"Style: Top,{font},{int(font_size * 0.8)},{primary},{primary},&H00000000,&HA0000000,"
         "-1,0,0,0,100,100,0,0,3,4,0,8,90,150,260,1"
+    )
+    # our handle (owner, 3 Nov 2026): small, translucent, top-centre below the apps' own top icons; it fades in after
+    # the hook and out before the end, so the first and last frames stay clean and the loop stays seamless
+    style_handle = (
+        f"Style: Handle,{font},38,&H40FFFFFF,&H40FFFFFF,&H80000000,&H00000000,"
+        "-1,0,0,0,100,100,1,0,1,2,0,8,60,60,272,1"
     )
     lines = [
         "[Script Info]",
@@ -84,6 +91,7 @@ def write_ass(words: list[Word], out: Path, font: str = "Inter", font_size: int 
         "Shadow, Alignment, MarginL, MarginR, MarginV, Encoding",
         style_main,
         style_top,
+        style_handle,
         "",
         "[Events]",
         "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text",
@@ -103,6 +111,8 @@ def write_ass(words: list[Word], out: Path, font: str = "Inter", font_size: int 
             )
     for (s, e, text) in overlays or []:
         lines.append(f"Dialogue: 1,{_ts(s)},{_ts(e)},Top,,0,0,0,,{_esc(text)}")
+    if handle and handle[1] > handle[0]:
+        lines.append(f"Dialogue: 2,{_ts(handle[0])},{_ts(handle[1])},Handle,,0,0,0,,{{\\fad(500,500)}}{_esc(handle[2])}")
     out.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return out
 

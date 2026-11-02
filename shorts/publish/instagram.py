@@ -274,7 +274,7 @@ def caption(meta: dict, extra_tag: str = "#secretsmartstuff") -> str:
     """Instagram caption from the YouTube metadata: title, the explanation, sources (domains), AI note,
     and at most 5 hashtags (Instagram's limit)."""
     desc = str(meta.get("description", ""))
-    paras = [p.strip() for p in desc.split("\n\n") if p.strip()]
+    paras = [p.strip() for p in desc.split("\n\n") if p.strip() and not p.strip().startswith("Also on Instagram")]
     body = paras[0] if paras else ""
     urls = [w.strip("-• ") for w in desc.split() if w.strip("-• ").startswith("http")]
     hosts: list[str] = []
@@ -289,7 +289,7 @@ def caption(meta: dict, extra_tag: str = "#secretsmartstuff") -> str:
     out = [str(meta.get("title", "")).strip(), body]
     if hosts:
         out.append("Sources: " + ", ".join(hosts[:6]))
-    out += [ai, " ".join(tags)]
+    out += [ai, f"Also on YouTube: {extra_tag.replace('#', '@')}", " ".join(tags)]   # same handle on both platforms
     return "\n\n".join(x for x in out if x)[:2200]
 
 

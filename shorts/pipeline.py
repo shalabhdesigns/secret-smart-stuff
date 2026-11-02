@@ -996,7 +996,9 @@ class Pipeline:
         ass = write_ass(words, d / "captions.ass", y_center=y_cap,
                         font=self.cfg.channel["style"]["caption_font"],
                         font_size=self.cfg.channel["style"]["caption_size"],
-                        highlight=ass_colour(self.cfg.channel["style"].get("caption_highlight", "#FFE500")))
+                        highlight=ass_colour(self.cfg.channel["style"].get("caption_highlight", "#FFE500")),
+                        handle=((3.0, end - 2.5, self.cfg.channel["channel"]["handle"])
+                                if self.cfg.channel["style"].get("onscreen_handle") and end > 9 else None))
         final = A.finalize(video, audio, ass, d / "final.mp4")
         return {"video": str(final), "duration": end, "beats": len(beats), "music": str(music) if music else None}
 
@@ -1039,7 +1041,9 @@ class Pipeline:
                 + (news["context"] + "\n\n" if news and news.get("context") else "")
                 + ("Sources:\n" + "\n".join(f"- {u}" for u in srcs[:6]) + "\n\n" if srcs else "")
                 + "Visuals are AI-generated illustrations; narration is an AI voice. "
-                  "Facts are checked against the sources above.\n\n" + " ".join(tags))
+                  "Facts are checked against the sources above.\n\n"
+                + (f"Also on Instagram: {ch['handle']}\n\n" if self.cfg.channel.get("instagram", {}).get("enabled") else "")
+                + " ".join(tags))
         meta = {"title": title, "description": desc[:4900], "tags": [t.lstrip("#") for t in tags],
                 "category_id": ch["youtube_category_id"], "language": ch["language"],
                 "made_for_kids": ch["made_for_kids"], "contains_synthetic_media": True,
