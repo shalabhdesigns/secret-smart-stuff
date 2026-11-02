@@ -213,7 +213,7 @@ await Promise.all(waits);
 assert.equal(gh().length, ngh + 1);
 // Instagram watcher (3 Nov 2026): starts igpost.yml once for a Reel due within ~15 min; never for later, stopped or
 // already-started ones
-const t0 = Date.parse("2026-11-03T19:50:00Z");
+const t0 = Date.parse("2026-11-03T19:52:00Z");
 store.set("igdue:job-soon", "2026-11-03T20:00:00Z");
 store.set("igdue:job-later", "2026-11-03T21:00:00Z");
 store.set("igdue:job-stopped", "2026-11-03T20:00:00Z"); store.set("stop:job-stopped", "1");
@@ -227,4 +227,25 @@ const wEnv = { ...env, SCHEDULE: JSON.stringify({ "*/5 * * * *": { action: "igwa
 store.delete("igdisp:job-soon");
 await worker.scheduled({ cron: "*/5 * * * *" }, wEnv, { waitUntil: (p) => waits.push(p) });
 await Promise.all(waits);
+// owner-entered values: login required; set / add revenue / delete; junk refused
+const post = (path, body, c) => worker.fetch(new Request("https://x" + path, { method: "POST", body: JSON.stringify(body),
+  headers: c ? { cookie: c } : {} }), env);
+assert.equal((await post("/dash/manual", { op: "set", section: "balances", name: "anthropic", value: { usd: 20 } })).status, 401);
+assert.equal((await worker.fetch(new Request("https://x/dash/manual.json"), env)).status, 401);
+r = await post("/dash/manual", { op: "set", section: "subscriptions", name: "claude",
+  value: { plan: "Max", usd_month: 100, renews: "2026-11-20", share_pct: 30, evil: { x: 1 } } }, cookie);
+assert.equal(r.status, 200);
+let man = JSON.parse(store.get("manual.json"));
+assert.equal(man.subscriptions.claude.usd_month, 100); assert.ok(man.subscriptions.claude.at); assert.equal(man.subscriptions.claude.evil, undefined);
+await post("/dash/manual", { op: "revenue_add", rows: [{ period: "2026-11", platform: "youtube", usd: 1.5 }] }, cookie);
+man = JSON.parse(store.get("manual.json")); assert.equal(man.revenue.length, 1); assert.equal(man.revenue[0].usd, 1.5);
+await post("/dash/manual", { op: "revenue_del", index: 0 }, cookie);
+assert.equal(JSON.parse(store.get("manual.json")).revenue.length, 0);
+assert.equal((await post("/dash/manual", { op: "set", section: "secrets", name: "x", value: {} }, cookie)).status, 400);
+r = await worker.fetch(new Request("https://x/dash/manual.json", { headers: { cookie } }), env);
+assert.equal(r.status, 200);
+// refresh button: starts analytics once per 15 minutes
+assert.equal((await worker.fetch(new Request("https://x/dash/refresh", { method: "POST", headers: { cookie } }), env)).status, 200);
+assert.ok(calls[calls.length - 1].url.endsWith("/actions/workflows/analytics.yml/dispatches"));
+assert.equal((await worker.fetch(new Request("https://x/dash/refresh", { method: "POST", headers: { cookie } }), env)).status, 429);
 console.log("worker tests passed");

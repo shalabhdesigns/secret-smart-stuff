@@ -28,6 +28,7 @@ class BFLImages:
     def generate(self, prompt: str, out: Path, seed: int | None = None, model: str | None = None,
                  timeout_s: int = 180) -> tuple[Path, float]:
         model = model or self.model
+        self.last_meta = {"source": "list_price", "model": model}
         body = {"prompt": prompt, "width": self.w, "height": self.h, "output_format": "png"}
         if seed is not None:
             body["seed"] = seed
@@ -50,7 +51,12 @@ class BFLImages:
             raise ImageError("BFL account has no credits left")
         if r.status_code != 200:
             raise ImageError(f"BFL submit {r.status_code}: {r.text[:300]}")
-        poll = r.json()["polling_url"]
+        sub = r.json()
+        poll = sub["polling_url"]
+        # BFL reports the credits a request costs in its submit response (1 credit = $0.01); keep it when present
+        cost = sub.get("cost")
+        self.last_meta = ({"credits": cost, "source": "api"} if isinstance(cost, (int, float))
+                          else {"source": "list_price", "model": model})
         t0 = time.time()
         while time.time() - t0 < timeout_s:
             time.sleep(1.0)
@@ -66,6 +72,8 @@ class BFLImages:
                 img = requests.get(s["result"]["sample"], timeout=120)
                 img.raise_for_status()
                 out.write_bytes(img.content)
+                if self.last_meta.get("source") == "api":
+                    return out, float(self.last_meta["credits"]) / 100.0
                 return out, float(self.prices.get(model, 0.03))
             if status in ("Error", "Failed", "Task not found", "No Card Generated",
                           "Request Moderated", "Content Moderated"):

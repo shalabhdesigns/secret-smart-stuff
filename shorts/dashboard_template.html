@@ -4,307 +4,497 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Studio Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-:root{color-scheme:light;--bg:#f6f4ef;--surface:#fcfcfb;--line:#e4e1d8;--text:#0b0b0b;--text2:#52514e;--muted:#8a877e;
---s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--good:#008300;--bad:#c53030;--accent:#F26B1D}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#121211;--surface:#1a1a19;--line:#2e2d2a;
---text:#f0efec;--text2:#c3c2b7;--muted:#8d8b83;--s1:#3987e5;--s2:#d95926;--s3:#199e70;--good:#3fae3f;--bad:#e66767}}
-:root[data-theme="dark"]{color-scheme:dark;--bg:#121211;--surface:#1a1a19;--line:#2e2d2a;--text:#f0efec;--text2:#c3c2b7;--muted:#8d8b83;
---s1:#3987e5;--s2:#d95926;--s3:#199e70;--good:#3fae3f;--bad:#e66767}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+:root{color-scheme:light;--bg:#ffffff;--surface:#f7f8ff;--line:#e3e6fb;--text:#0d1440;--text2:#4a5180;--muted:#8a8fb3;
+--brand:#1F3BFF;--blush:#FFD6E0;--yt:#1F3BFF;--ig:#d23f71;--good:#178a4a;--warn:#b86e00;--bad:#c62828;--grey:#8a8fb3}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0b0e24;--surface:#121638;--line:#252a57;
+--text:#eef0ff;--text2:#b9bde4;--muted:#7d82b0;--brand:#6c80ff;--blush:#ffd6e0;--yt:#6c80ff;--ig:#ff7aa6;--good:#4cc283;--warn:#f0a63a;--bad:#ff6b6b}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0b0e24;--surface:#121638;--line:#252a57;--text:#eef0ff;--text2:#b9bde4;--muted:#7d82b0;
+--brand:#6c80ff;--blush:#ffd6e0;--yt:#6c80ff;--ig:#ff7aa6;--good:#4cc283;--warn:#f0a63a;--bad:#ff6b6b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 Archivo,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
 header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 16px}
-h1{font-size:17px;margin:0}small,.muted{color:var(--muted)}
-nav{display:flex;gap:6px;overflow-x:auto;margin-top:8px;scrollbar-width:none}
-nav button,.seg button{border:1px solid var(--line);background:var(--surface);color:var(--text2);padding:6px 11px;border-radius:999px;font:inherit;font-size:13px;white-space:nowrap;cursor:pointer}
-nav button.on,.seg button.on{background:var(--text);color:var(--bg);border-color:var(--text)}
-main{max-width:1100px;margin:0 auto;padding:14px 16px 60px}
+.hrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;max-width:1180px;margin:0 auto}
+h1{font-size:17px;margin:0;font-weight:800;color:var(--brand)}
+small,.muted{color:var(--muted)}
+nav{display:flex;gap:6px;overflow-x:auto;max-width:1180px;margin:8px auto 0;scrollbar-width:none}
+.btn,nav button,.seg button{border:1px solid var(--line);background:var(--surface);color:var(--text2);padding:6px 11px;border-radius:999px;
+ font:inherit;font-size:13px;white-space:nowrap;cursor:pointer}
+nav button.on,.seg button.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+main{max-width:1180px;margin:0 auto;padding:14px 16px 70px}
 section{display:none}section.on{display:block}
-.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:10px 0 16px}
-.tile{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:11px 12px}
-.tile b{display:block;font-size:22px;font-variant-numeric:tabular-nums;margin-top:2px}
-.tile span{font-size:12px;color:var(--text2)}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;margin:0 0 14px}
-.card h2{font-size:15px;margin:0 0 4px}.card p.note{margin:2px 0 8px;font-size:12px;color:var(--muted)}
+.bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:4px 0 12px}
+.bar input,.bar select{font:inherit;font-size:13px;padding:6px 10px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--text)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(150px,45%),1fr));gap:10px;margin:6px 0 16px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.tile b{display:block;font-size:22px;font-weight:800;font-variant-numeric:tabular-nums;margin-top:2px}
+.tile span{font-size:12px;color:var(--text2)}.tile i{font-style:normal;font-size:11px;color:var(--muted);display:block}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;margin:0 0 14px;min-width:0}
+.card h2{font-size:15px;margin:0 0 4px;font-weight:800}.card h3{font-size:13px;margin:10px 0 4px}
+p.note{margin:2px 0 8px;font-size:12px;color:var(--muted)}
 .scroll{overflow-x:auto}
 table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
-th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap;vertical-align:top}
 th{color:var(--text2);font-weight:600;cursor:pointer;position:sticky;top:0;background:var(--surface)}
-td.n,th.n{text-align:right}
-tr.click{cursor:pointer}tr.click:hover{background:color-mix(in srgb,var(--s1) 8%,transparent)}
-.seg{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 2px}
-.pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12px;border:1px solid var(--line);color:var(--text2)}
-.ok{color:var(--good)}.bad{color:var(--bad)}
-svg text{fill:var(--text2);font-size:10px}
-.tip{position:fixed;pointer-events:none;background:var(--text);color:var(--bg);padding:6px 8px;border-radius:8px;font-size:12px;display:none;z-index:9}
-pre{white-space:pre-wrap;font:13px/1.5 system-ui,sans-serif;margin:0}
+td.n,th.n{text-align:right}td.wrap{white-space:normal;min-width:180px}
+tr.click{cursor:pointer}tr.click:hover{background:color-mix(in srgb,var(--brand) 7%,transparent)}
+.lbl{display:inline-block;padding:0 6px;border-radius:999px;font-size:10px;font-weight:600;letter-spacing:.02em;border:1px solid currentColor;margin-left:4px;vertical-align:1px;cursor:help}
+.l-measured{color:var(--good)}.l-calculated{color:var(--brand)}.l-allocated{color:#7a4cc9}.l-estimated{color:var(--warn)}
+.l-manual{color:var(--ig)}.l-unavailable{color:var(--grey)}
+.st{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:700;color:#fff}
+.st-Healthy{background:var(--good)}.st-Running.low,.st-Runninglow{background:var(--warn)}.st-Critical{background:var(--bad)}
+.st-Expired{background:#5b1111}.st-Unknown{background:var(--grey)}
+.meter{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin:6px 0}
+.meter>div{height:100%;background:var(--brand)}
+.res{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(270px,100%),1fr));gap:10px}
+.res .card{margin:0}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;font-size:13px}.kv dt{color:var(--text2)}.kv dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
 .empty{color:var(--muted);font-style:italic;padding:6px 0}
-dialog{border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--text);max-width:720px;width:calc(100% - 24px)}
-dialog::backdrop{background:#0006}
-a{color:var(--s1)}
+dialog{border:1px solid var(--line);border-radius:14px;background:var(--bg);color:var(--text);max-width:980px;width:calc(100% - 24px);padding:0}
+dialog .dh{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);padding:12px 14px;display:flex;gap:10px;align-items:center}
+dialog .db{padding:12px 14px}
+dialog::backdrop{background:#0008}
+a{color:var(--brand)}
+pre{white-space:pre-wrap;font:13px/1.55 Archivo,system-ui,sans-serif;margin:0}
+.svgc svg{width:100%;height:auto;display:block}
+svg text{fill:var(--text2);font-size:10px;font-family:inherit}
+.tip{position:fixed;pointer-events:none;background:var(--text);color:var(--bg);padding:6px 8px;border-radius:8px;font-size:12px;display:none;z-index:99;max-width:280px}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--text2)}.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px;background:var(--c)}
+.both{color:var(--text2)}.only{font-size:10px;color:var(--muted)}
+form.inline{display:flex;gap:6px;flex-wrap:wrap;align-items:end;margin:6px 0}
+form.inline label{display:flex;flex-direction:column;font-size:11px;color:var(--text2);gap:2px}
+form.inline input,form.inline select,textarea{max-width:100%;font:inherit;font-size:13px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--text);min-width:90px}
+.act li{margin:4px 0}
+@media (max-width:600px){.tile b{font-size:19px}th,td{padding:5px 6px}}
 </style>
 </head>
 <body>
 <header>
-  <h1>Secret Smart Stuff · Studio</h1>
-  <small id="fresh"></small>
+  <div class="hrow"><h1>Secret Smart Stuff · Studio</h1><small id="fresh"></small><span style="flex:1"></span>
+    <button class="btn" id="refresh" title="Pull fresh numbers now (takes ~3 minutes)">↻ Refresh now</button></div>
   <nav id="tabs"></nav>
 </header>
 <main>
-  <div class="seg" id="period"></div>
+  <div class="bar" id="filters">
+    <span class="muted">Period</span><span class="seg" id="period"></span>
+    <span class="muted">Type</span><select id="kind"><option value="all">All videos</option><option value="daily">Daily</option><option value="news">News tie-ins</option></select>
+    <input id="q" placeholder="Search title…" size="16">
+  </div>
   <section id="overview"></section>
   <section id="videos"></section>
-  <section id="production"></section>
   <section id="money"></section>
-  <section id="strategy"></section>
+  <section id="resources"></section>
   <section id="learning"></section>
+  <section id="data"></section>
 </main>
+<dialog id="dlg"><div class="dh"><b id="dlgt" style="flex:1"></b><button class="btn" onclick="dlg.close()">Close</button></div><div class="db" id="dlgb"></div></dialog>
 <div class="tip" id="tip"></div>
-<dialog id="dlg"><div id="dlgBody"></div><p><button onclick="dlg.close()">Close</button></p></dialog>
 <script>
 const D = /*__DATA__*/null;
-const $ = (s) => document.querySelector(s);
-const fmt = (n, d = 0) => n == null || isNaN(n) ? "–" : Number(n).toLocaleString("en-US", { maximumFractionDigits: d, minimumFractionDigits: d });
-const usd = (n) => n == null ? "–" : (n < 0 ? "−$" : "$") + fmt(Math.abs(n), 2);
-const pct = (n) => n == null ? "–" : fmt(n, 1) + "%";
+const $ = (s, r = document) => r.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
-const day = (iso) => iso ? iso.slice(0, 10) : "–";
-const PERIODS = [["7", "7 days"], ["30", "30 days"], ["90", "90 days"], ["365", "Year"], ["all", "All time"]];
-let period = "30";
-try { period = localStorage.getItem("period") || "30"; } catch (e) {}
-const TABS = [["overview", "Overview"], ["videos", "Videos"], ["production", "Production"], ["money", "Money"], ["strategy", "What works"], ["learning", "Experiments & learnings"]];
-let tab = "overview";
+const nf = (x, d = 0) => (x === null || x === undefined || Number.isNaN(x)) ? "—" : Number(x).toLocaleString("en-US", { maximumFractionDigits: d, minimumFractionDigits: d });
+const usd = (x, d = 2) => (x === null || x === undefined) ? "—" : (x < 0 ? "−$" : "$") + nf(Math.abs(x), d);
+const pct = (x, d = 0) => (x === null || x === undefined) ? "—" : nf(x, d) + "%";
+const day = (s) => s ? String(s).slice(0, 10) : "—";
+const LBL = {
+  measured: "Reported by the service's API, or counted by our own runs.",
+  calculated: "Measured usage × the provider's list price. Not an invoice.",
+  allocated: "A shared cost split by the rule shown (subscription, overhead or dropped attempts).",
+  estimated: "List price per item, because the provider reported no cost for it.",
+  manual: "Typed in by you on this dashboard (date shown).",
+  unavailable: "The platform has no API for this.",
+};
+const lbl = (l) => l ? `<span class="lbl l-${l}" data-tip="${esc(LBL[l] || l)}">${esc(l)}</span>` : "";
+const st = (s) => `<span class="st st-${String(s).replace(/\s/g, "")}">${esc(s)}</span>`;
 
-function since() { if (period === "all") return "0000"; const d = new Date(Date.now() - (+period) * 864e5); return d.toISOString().slice(0, 10); }
-function inPeriod(dayStr) { return dayStr && dayStr >= since(); }
-function sum(a, f) { return a.reduce((s, x) => s + (+f(x) || 0), 0); }
-function median(a) { a = a.filter((x) => x != null && !isNaN(x)).sort((x, y) => x - y); if (!a.length) return null; const m = a.length >> 1; return a.length % 2 ? a[m] : (a[m - 1] + a[m]) / 2; }
+// ---------- tooltips ----------
+const tip = $("#tip");
+document.addEventListener("mouseover", (e) => { const t = e.target.closest("[data-tip]"); if (!t) { tip.style.display = "none"; return; }
+  tip.innerHTML = t.dataset.tip; tip.style.display = "block"; });
+document.addEventListener("mousemove", (e) => { tip.style.left = Math.min(e.clientX + 12, innerWidth - 290) + "px"; tip.style.top = (e.clientY + 14) + "px"; });
 
-function lineChart(points, key, label, color) {
-  if (!points.length) return `<div class="empty">No data yet for this period.</div>`;
-  const W = 360, H = 170, P = 24, xs = points.map((_, i) => P + i * (W - 2 * P) / Math.max(1, points.length - 1));
-  const max = Math.max(1, ...points.map((p) => +p[key] || 0));
-  const ys = points.map((p) => H - 20 - (+p[key] || 0) / max * (H - 40));
-  const d = xs.map((x, i) => (i ? "L" : "M") + x.toFixed(1) + " " + ys[i].toFixed(1)).join(" ");
-  const id = "c" + Math.random().toString(36).slice(2);
-  setTimeout(() => {
-    const svg = document.getElementById(id); if (!svg) return;
-    const cross = svg.querySelector(".cross"), dot = svg.querySelector(".dot");
-    svg.onpointermove = (e) => {
-      const r = svg.getBoundingClientRect(), x = (e.clientX - r.left) / r.width * W;
-      let i = 0, best = 1e9; xs.forEach((v, k) => { if (Math.abs(v - x) < best) { best = Math.abs(v - x); i = k; } });
-      cross.setAttribute("x1", xs[i]); cross.setAttribute("x2", xs[i]); cross.style.display = "";
-      dot.setAttribute("cx", xs[i]); dot.setAttribute("cy", ys[i]); dot.style.display = "";
-      tip.style.display = "block"; tip.style.left = e.clientX + 12 + "px"; tip.style.top = e.clientY - 30 + "px";
-      tip.textContent = `${points[i].day}: ${fmt(points[i][key])} ${label}`;
-    };
-    svg.onpointerleave = () => { tip.style.display = "none"; cross.style.display = "none"; dot.style.display = "none"; };
+// ---------- filters ----------
+let PERIOD = "30", KIND = "all", Q = "", SORT = { k: "published", d: -1 };
+const periods = [["7", "7 days"], ["30", "30 days"], ["90", "90 days"], ["all", "All time"]];
+$("#period").innerHTML = periods.map(([v, t]) => `<button data-p="${v}" class="${v === PERIOD ? "on" : ""}">${t}</button>`).join("");
+$("#period").onclick = (e) => { const b = e.target.closest("button"); if (!b) return; PERIOD = b.dataset.p;
+  [...$("#period").children].forEach((x) => x.classList.toggle("on", x === b)); render(); };
+$("#kind").onchange = (e) => { KIND = e.target.value; render(); };
+$("#q").oninput = (e) => { Q = e.target.value.toLowerCase(); render(); };
+const since = () => PERIOD === "all" ? 0 : Date.now() - Number(PERIOD) * 86400e3;
+const vids = () => D.videos.filter((v) => (Date.parse(v.published) || 0) >= since()
+  && (KIND === "all" || (KIND === "news") === !!v.news) && (!Q || v.title.toLowerCase().includes(Q)));
+const ytViews = (v) => v.yt_live?.views ?? v.yt?.views ?? null;
+const igViews = (v) => v.ig?.views ?? null;
+const sum = (a) => a.reduce((s, x) => s + (Number(x) || 0), 0);
+const median = (a) => { a = a.filter((x) => x !== null && x !== undefined).sort((x, y) => x - y); if (!a.length) return null;
+  const m = Math.floor(a.length / 2); return a.length % 2 ? a[m] : (a[m - 1] + a[m]) / 2; };
+const engRate = (v) => { const vw = (ytViews(v) || 0) + (igViews(v) || 0); if (!vw) return null;
+  const e = (v.yt_live?.likes ?? v.yt?.likes ?? 0) + (v.yt_live?.comments ?? v.yt?.comments ?? 0) + (v.yt?.shares ?? 0)
+    + (v.ig?.likes ?? 0) + (v.ig?.comments ?? 0) + (v.ig?.shares ?? 0) + (v.ig?.saved ?? 0); return 100 * e / vw; };
+
+// ---------- tiny SVG charts ----------
+function lineChart(series, { h = 180, yfmt = (x) => nf(x), xs = null } = {}) {
+  const W = 640, H = h, L = 42, R = 10, T = 10, B = 24;
+  const pts = series.flatMap((s) => s.pts); if (!pts.length) return `<p class="empty">No data yet.</p>`;
+  const xMin = Math.min(...pts.map((p) => p.x)), xMax = Math.max(...pts.map((p) => p.x)) || 1;
+  const yMax = Math.max(1, ...pts.map((p) => p.y));
+  const X = (x) => L + (W - L - R) * (xMax === xMin ? 0.5 : (x - xMin) / (xMax - xMin)), Y = (y) => T + (H - T - B) * (1 - y / yMax);
+  let g = "";
+  for (let i = 0; i <= 4; i++) { const y = yMax * i / 4; g += `<line x1="${L}" x2="${W - R}" y1="${Y(y)}" y2="${Y(y)}" stroke="var(--line)"/><text x="${L - 6}" y="${Y(y) + 3}" text-anchor="end">${esc(yfmt(y))}</text>`; }
+  (xs || []).forEach(([x, t]) => { g += `<text x="${X(x)}" y="${H - 6}" text-anchor="middle">${esc(t)}</text>`; });
+  for (const s of series) {
+    if (!s.pts.length) continue;
+    g += `<polyline fill="none" stroke="${s.c}" stroke-width="2" points="${s.pts.map((p) => `${X(p.x)},${Y(p.y)}`).join(" ")}"/>`;
+    g += s.pts.map((p) => `<circle cx="${X(p.x)}" cy="${Y(p.y)}" r="3" fill="${s.c}" data-tip="${esc(s.name)}: ${esc(p.t || "")} ${esc(yfmt(p.y))}"/>`).join("");
+  }
+  return `<div class="svgc"><svg viewBox="0 0 ${W} ${H}">${g}</svg></div>`;
+}
+function barChart(rows, keys, { h = 200, fmt = (x) => nf(x) } = {}) {
+  // rows: [{label, values:{k:v}}], keys: [{k, name, c}] stacked
+  if (!rows.length) return `<p class="empty">No data yet.</p>`;
+  const W = 640, H = h, L = 46, B = 34, T = 8, bw = Math.max(6, Math.min(46, (W - L - 10) / rows.length - 6));
+  const tot = rows.map((r) => sum(keys.map((k) => r.values[k.k] || 0))); const yMax = Math.max(1e-9, ...tot);
+  const Y = (y) => T + (H - T - B) * (1 - y / yMax);
+  let g = "";
+  for (let i = 0; i <= 4; i++) { const y = yMax * i / 4; g += `<line x1="${L}" x2="${W - 6}" y1="${Y(y)}" y2="${Y(y)}" stroke="var(--line)"/><text x="${L - 6}" y="${Y(y) + 3}" text-anchor="end">${esc(fmt(y))}</text>`; }
+  rows.forEach((r, i) => {
+    const x = L + 6 + i * ((W - L - 10) / rows.length); let acc = 0;
+    for (const k of keys) { const v = r.values[k.k] || 0; if (!v) continue;
+      g += `<rect x="${x}" y="${Y(acc + v)}" width="${bw}" height="${Y(acc) - Y(acc + v)}" fill="${k.c}" rx="2" data-tip="${esc(r.label)} · ${esc(k.name)}: ${esc(fmt(v))}"/>`; acc += v; }
+    g += `<text x="${x + bw / 2}" y="${H - 18}" text-anchor="middle">${esc(r.short || r.label).slice(0, 10)}</text>`;
   });
-  return `<svg id="${id}" viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${label} per day">
-    <line x1="${P}" x2="${W - P}" y1="${H - 20}" y2="${H - 20}" stroke="var(--line)"/>
-    <text x="${P}" y="12">${fmt(max)}</text><text x="${P}" y="${H - 4}">${points[0].day}</text>
-    <text x="${W - P}" y="${H - 4}" text-anchor="end">${points[points.length - 1].day}</text>
-    <path d="${d}" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round"/>
-    <line class="cross" y1="10" y2="${H - 20}" stroke="var(--muted)" stroke-dasharray="3 3" style="display:none"/>
-    <circle class="dot" r="4" fill="${color}" stroke="var(--surface)" stroke-width="2" style="display:none"/></svg>`;
+  return `<div class="svgc"><svg viewBox="0 0 ${W} ${H}">${g}</svg></div><div class="legend">${keys.map((k) => `<span style="--c:${k.c}">${esc(k.name)}</span>`).join("")}</div>`;
 }
 
-function barChart(rows, key, labelKey, color, fmtFn) {
-  if (!rows.length) return `<div class="empty">No data yet.</div>`;
-  const max = Math.max(...rows.map((r) => r[key] || 0), 0.0001);
-  return rows.map((r) => `<div style="display:flex;align-items:center;gap:8px;margin:4px 0" title="${esc(r[labelKey])}: ${fmtFn(r[key])}">
-    <div style="width:38%;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(r[labelKey])}</div>
-    <div style="flex:1;background:var(--line);border-radius:4px;height:12px"><div style="width:${(r[key] || 0) / max * 100}%;background:${color};height:12px;border-radius:4px"></div></div>
-    <div style="width:70px;text-align:right;font-size:12px">${fmtFn(r[key])}</div></div>`).join("");
-}
+// ---------- sections ----------
+const TABS = [["overview", "Overview"], ["videos", "Videos"], ["money", "Costs & revenue"], ["resources", "Credits & limits"], ["learning", "Learnings"], ["data", "About the data"]];
+let TAB = "overview";
+$("#tabs").innerHTML = TABS.map(([k, t]) => `<button data-t="${k}">${t}</button>`).join("");
+$("#tabs").onclick = (e) => { const b = e.target.closest("button"); if (b) { TAB = b.dataset.t; render(); } };
 
-function table(cols, rows, onclick) {
-  if (!rows.length) return `<div class="empty">Nothing yet.</div>`;
-  const id = "t" + Math.random().toString(36).slice(2);
-  setTimeout(() => {
-    const t = document.getElementById(id); if (!t) return;
-    t.querySelectorAll("th").forEach((th, ci) => th.onclick = () => {
-      const dir = th.dataset.dir === "a" ? "d" : "a"; th.dataset.dir = dir;
-      const body = t.tBodies[0], trs = [...body.rows];
-      trs.sort((x, y) => { const a = x.cells[ci].dataset.v, b = y.cells[ci].dataset.v; const na = parseFloat(a), nb = parseFloat(b);
-        const c = !isNaN(na) && !isNaN(nb) ? na - nb : String(a).localeCompare(String(b)); return dir === "a" ? c : -c; });
-      trs.forEach((r) => body.appendChild(r));
-    });
-    if (onclick) t.querySelectorAll("tr.click").forEach((tr) => tr.onclick = () => onclick(tr.dataset.k));
-  });
-  return `<div class="scroll"><table id="${id}"><thead><tr>${cols.map((c) => `<th class="${c.n ? "n" : ""}">${c.h}</th>`).join("")}</tr></thead><tbody>${
-    rows.map((r) => `<tr class="${onclick ? "click" : ""}" data-k="${esc(r._k || "")}">${cols.map((c) => {
-      const v = c.v(r); return `<td class="${c.n ? "n" : ""}" data-v="${esc(c.sort ? c.sort(r) : v)}">${c.f ? c.f(r) : esc(v)}</td>`; }).join("")}</tr>`).join("")
-  }</tbody></table></div>`;
+function attention() {
+  const out = [];
+  for (const [k, v] of Object.entries(D.resources || {})) {
+    if (!["Critical", "Expired", "Running low"].includes(v.status)) continue;
+    const bits = [];
+    if (v.left !== undefined && v.limit) bits.push(`${nf(v.left)} of ${nf(v.limit)} ${v.unit || ""} left`);
+    if (v.videos_left !== undefined) bits.push(`≈${v.videos_left} videos`);
+    if (v.days_left !== null && v.days_left !== undefined) bits.push(`≈${v.days_left} days`);
+    if (v.renews) bits.push(`renews ${v.renews}`);
+    out.push({ s: v.status, html: `${st(v.status)} <b>${esc(k.replace("sub:", ""))}</b> — ${esc(bits.join(", "))} ${v.link ? `<a href="${esc(v.link)}" target="_blank" rel="noopener">open billing ↗</a>` : ""}` });
+  }
+  const order = { Expired: 0, Critical: 1, "Running low": 2 };
+  return out.sort((a, b) => order[a.s] - order[b.s]);
 }
-
-const V = D.videos || [];
-const m = (v, k) => (v.latest || {})[k];
 
 function overview() {
-  const daily = D.daily.filter((d) => inPeriod(d.day));
-  const costs = D.costs.filter((c) => inPeriod(c.day));
-  // revenue: YouTube's daily estimate when available, otherwise the owner's monthly entries
-  const apiDaily = daily.filter((d) => d.estimatedRevenue != null);
-  const rev = apiDaily.length ? apiDaily.map((d) => ({ usd: d.estimatedRevenue }))
-    : D.revenue.filter((r) => r.source === "owner" && (period === "all" || r.period >= since().slice(0, r.period.length)));
-  const pub = V.filter((v) => v.publish_at && inPeriod(day(v.publish_at)));
-  const views = sum(daily, (d) => d.views), cost = sum(costs, (c) => c.usd), revenue = sum(rev, (r) => r.usd);
-  const waiting = D.jobs.filter((j) => j.status === "review");
-  return `<div class="tiles">
-    <div class="tile"><span>Videos published</span><b>${fmt(pub.length)}</b></div>
-    <div class="tile"><span>Views (channel)</span><b>${daily.length ? fmt(views) : "–"}</b></div>
-    <div class="tile"><span>Engaged views</span><b>${daily.length ? fmt(sum(daily, (d) => d.engagedViews)) : "–"}</b></div>
-    <div class="tile"><span>Watch time (hours)</span><b>${daily.length ? fmt(sum(daily, (d) => d.estimatedMinutesWatched) / 60, 1) : "–"}</b></div>
-    <div class="tile"><span>Subscribers (net)</span><b>${daily.length ? fmt(sum(daily, (d) => (d.subscribersGained || 0) - (d.subscribersLost || 0))) : "–"}</b></div>
-    <div class="tile"><span>Production cost</span><b>${usd(cost)}</b></div>
-    <div class="tile"><span>Revenue${apiDaily.length ? " (YouTube estimate)" : " (your entries)"}</span><b>${rev.length ? usd(revenue) : "–"}</b></div>
-    <div class="tile"><span>Waiting for your review</span><b>${waiting.length}</b></div>
+  const V = vids();
+  const yt = sum(V.map(ytViews)), ig = sum(V.map(igViews));
+  const cost = sum(V.map((v) => v.cost.full)), rev = sum(V.map((v) => v.revenue || 0));
+  const hasRev = V.some((v) => v.revenue !== null);
+  const R = D.resources || {};
+  const subs = R.youtube?.subscribers, fol = R.instagram?.followers;
+  const att = attention();
+  const best = [...V].sort((a, b) => b.views_total - a.views_total);
+  const ytDaily = (D.daily || []).filter((d) => Date.parse(d.day) >= since());
+  const igDaily = (D.ig_daily || []).filter((d) => Date.parse(d.day) >= since() && d.views !== undefined);
+  return `
+  ${att.length ? `<div class="card" style="border-color:var(--warn)"><h2>Needs attention</h2><ul class="act">${att.map((a) => `<li>${a.html}</li>`).join("")}</ul></div>` : ""}
+  <div class="tiles">
+    <div class="tile"><span>Views · YouTube</span><b>${nf(yt)}</b><i>${V.length} videos ${lbl("measured")}</i></div>
+    <div class="tile"><span>Views · Instagram</span><b>${nf(ig)}</b><i>Reels ${lbl("measured")}</i></div>
+    <div class="tile"><span>Subscribers / followers</span><b>${nf(subs)} / ${nf(fol)}</b><i>now, all time ${lbl("measured")}</i></div>
+    <div class="tile"><span>Avg views per video</span><b>${nf(V.length ? (yt + ig) / V.length : null)}</b><i>both platforms</i></div>
+    <div class="tile"><span>Spend on these videos</span><b>${usd(cost)}</b><i>incl. shared costs ${lbl("allocated")}</i></div>
+    <div class="tile"><span>Cost per video</span><b>${usd(V.length ? cost / V.length : null)}</b><i>full cost, average</i></div>
+    <div class="tile"><span>Revenue</span><b>${hasRev ? usd(rev) : "—"}</b><i>${hasRev ? lbl("manual") : "not monetised yet"}</i></div>
+    <div class="tile"><span>Profit / loss</span><b class="${rev - cost >= 0 ? "" : "bad"}">${usd(rev - cost)}</b><i>revenue − full cost</i></div>
   </div>
-  <div class="card"><h2>Channel views per day</h2><p class="note">Source: YouTube Analytics (channel totals). Views and engaged views are different metrics; YouTube data usually lags 1–3 days.</p>
-  ${lineChart(daily, "views", "views", "var(--s1)")}</div>
-  <div class="card"><h2>Latest videos</h2>${videoTable(V.slice().sort((a, b) => (b.publish_at || "").localeCompare(a.publish_at || "")).slice(0, 5))}</div>
-  ${waiting.length ? `<div class="card"><h2>Waiting for review</h2>${waiting.map((j) => `<div>${esc(j.title || j.id)} <span class="pill">${esc(j.id)}</span></div>`).join("")}<p class="note">Review in Telegram.</p></div>` : ""}`;
+  <div class="grid2">
+    <div class="card"><h2>Views by video</h2><p class="note">YouTube (live count) and Instagram for each video in the period. Hover for numbers.</p>
+      ${barChart(V.map((v) => ({ label: v.title, short: day(v.published).slice(5), values: { yt: ytViews(v) || 0, ig: igViews(v) || 0 } })),
+        [{ k: "yt", name: "YouTube", c: "var(--yt)" }, { k: "ig", name: "Instagram", c: "var(--ig)" }])}</div>
+    <div class="card"><h2>Daily views (channel)</h2><p class="note">YouTube Analytics (lags 1–2 days) and Instagram account views per day.</p>
+      ${lineChart([{ name: "YouTube", c: "var(--yt)", pts: ytDaily.map((d) => ({ x: Date.parse(d.day), y: d.views || 0, t: d.day })) },
+                   { name: "Instagram", c: "var(--ig)", pts: igDaily.map((d) => ({ x: Date.parse(d.day), y: d.views || 0, t: d.day })) }],
+        { xs: ytDaily.filter((_, i, a) => i % Math.ceil(a.length / 6 || 1) === 0).map((d) => [Date.parse(d.day), d.day.slice(5)]) })}</div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h2>Best in period</h2>${table(best.slice(0, 5), true)}</div>
+    <div class="card"><h2>Weakest in period</h2>${table(best.slice(-5).reverse(), true)}</div>
+  </div>`;
 }
 
-function videoTable(rows) {
-  return table([
-    { h: "Video", v: (v) => v.title, f: (v) => `<a href="${esc(v.url)}" target="_blank" rel="noopener">${esc((v.title || "").slice(0, 48))}</a>` },
-    { h: "Published", v: (v) => day(v.publish_at) },
-    { h: "State", v: (v) => v.status },
-    { h: "Views", n: 1, v: (v) => m(v, "views") ?? "", f: (v) => fmt(m(v, "views")) },
-    { h: "Engaged", n: 1, v: (v) => m(v, "engagedViews") ?? "", f: (v) => fmt(m(v, "engagedViews")) },
-    { h: "Avg % viewed", n: 1, v: (v) => m(v, "averageViewPercentage") ?? "", f: (v) => pct(m(v, "averageViewPercentage")) },
-    { h: "Avg view (s)", n: 1, v: (v) => m(v, "averageViewDuration") ?? "", f: (v) => fmt(m(v, "averageViewDuration")) },
-    { h: "Likes", n: 1, v: (v) => m(v, "likes") ?? "", f: (v) => fmt(m(v, "likes")) },
-    { h: "Comments", n: 1, v: (v) => m(v, "comments") ?? "", f: (v) => fmt(m(v, "comments")) },
-    { h: "Shares", n: 1, v: (v) => m(v, "shares") ?? "", f: (v) => fmt(m(v, "shares")) },
-    { h: "Subs +", n: 1, v: (v) => m(v, "subscribersGained") ?? "", f: (v) => fmt(m(v, "subscribersGained")) },
-    { h: "Cost", n: 1, v: (v) => v.cost, f: (v) => usd(v.cost) },
-    { h: "Revenue", n: 1, v: (v) => v.revenue ?? "", f: (v) => usd(v.revenue) },
-  ], rows.map((v) => ({ ...v, _k: v.video_id })), openVideo);
+const COLS = [
+  ["title", "Video", (v) => `${esc(v.title)}${v.news ? ' <span class="lbl l-allocated" data-tip="News tie-in">news</span>' : ""}`, "wrap"],
+  ["published", "Published", (v) => day(v.published)],
+  ["yt", "YT views", (v) => nf(ytViews(v)), "n"],
+  ["ig", "IG views", (v) => nf(igViews(v)), "n"],
+  ["avp", "YT avg % viewed", (v) => pct(v.yt?.averageViewPercentage), "n"],
+  ["igw", "IG avg watch", (v) => v.ig?.ig_reels_avg_watch_time ? nf(v.ig.ig_reels_avg_watch_time / 1000, 1) + " s" : "—", "n"],
+  ["eng", "Engagement", (v) => pct(engRate(v), 1), "n"],
+  ["cost", "Full cost", (v) => usd(v.cost.full), "n"],
+  ["rev", "Revenue", (v) => v.revenue === null ? "—" : usd(v.revenue), "n"],
+];
+const SORTV = { title: (v) => v.title, published: (v) => v.published, yt: ytViews, ig: igViews, avp: (v) => v.yt?.averageViewPercentage,
+  igw: (v) => v.ig?.ig_reels_avg_watch_time, eng: engRate, cost: (v) => v.cost.full, rev: (v) => v.revenue };
+function table(V, compact = false) {
+  if (!V.length) return `<p class="empty">No videos in this period.</p>`;
+  const cols = compact ? COLS.filter((c) => ["title", "yt", "ig", "cost"].includes(c[0])) : COLS;
+  return `<div class="scroll"><table><thead><tr>${cols.map(([k, t, , c]) => `<th class="${c || ""}" data-s="${k}">${t}${SORT.k === k ? (SORT.d > 0 ? " ▲" : " ▼") : ""}</th>`).join("")}</tr></thead><tbody>
+  ${V.map((v) => `<tr class="click" data-j="${esc(v.job)}">${cols.map(([, , f, c]) => `<td class="${c || ""}">${f(v)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
 }
-
-function openVideo(id) {
-  const v = V.find((x) => x.video_id === id); if (!v) return;
-  const f = v.features || {};
-  const ret = v.retention && v.retention.length ? lineChart(v.retention.map((r) => ({ day: Math.round(r.elapsedVideoTimeRatio * 100) + "%", w: r.audienceWatchRatio * 100 })), "w", "% still watching", "var(--s1)") : `<div class="empty">Retention curve not available yet.</div>`;
-  const tr = v.traffic && v.traffic.length ? barChart(v.traffic.map((t) => ({ k: t.insightTrafficSourceType, n: t.views })), "n", "k", "var(--s1)", (x) => fmt(x)) : `<div class="empty">Traffic sources not available yet.</div>`;
-  const ages = ["d1", "d3", "d7", "d28"].map((k) => `<td class="n">${v[k] ? fmt(v[k].views) : "–"}</td>`).join("");
-  $("#dlgBody").innerHTML = `<h2 style="font-size:16px">${esc(v.title)}</h2><p><a href="${esc(v.url)}" target="_blank" rel="noopener">${esc(v.url)}</a> · ${esc(v.status)} · published ${day(v.publish_at)}</p>
-    <div class="scroll"><table><tr><th>Views at</th><th class="n">1 day</th><th class="n">3 days</th><th class="n">7 days</th><th class="n">28 days</th></tr><tr><td>views</td>${ages}</tr></table></div>
-    <h3 style="font-size:14px">Audience retention</h3>${ret}<h3 style="font-size:14px">Traffic sources</h3>${tr}
-    <h3 style="font-size:14px">What it was made of</h3><div class="scroll"><table>${Object.entries({ ...f, ...Object.fromEntries(Object.entries(v.arms || {}).map(([k, a]) => ["experiment " + k, a])) })
-      .map(([k, x]) => `<tr><td>${esc(k)}</td><td>${esc(typeof x === "object" ? JSON.stringify(x) : x)}</td></tr>`).join("")}</table></div>
-    <p class="note">Cost ${usd(v.cost)} · revenue ${usd(v.revenue)} · net ${v.revenue != null ? usd(v.revenue - v.cost) : "–"}</p>`;
-  dlg.showModal();
-}
-
-function videos() {
-  return `<div class="card"><h2>All published videos</h2><p class="note">Lifetime totals from the latest pull (${day(D.metrics_fetched_at)}). Tap a row for retention, traffic sources and what it was made of. Tap a header to sort.</p>${videoTable(V)}</div>`;
-}
-
-function production() {
-  const sc = D.status_counts || {};
-  const jobs = D.jobs.filter((j) => inPeriod(day(j.created)));
-  const done = jobs.filter((j) => j.reached_review).length;
-  const failed = jobs.filter((j) => !j.reached_review && !["running", "paused"].includes(j.status)).length;
-  const mm = D.make_minutes || [];
+function videosTab() {
+  const V = vids().sort((a, b) => { const x = SORTV[SORT.k](a), y = SORTV[SORT.k](b); return ((x ?? -1e18) > (y ?? -1e18) ? 1 : (x ?? -1e18) < (y ?? -1e18) ? -1 : 0) * SORT.d; });
+  const yt = V.filter((v) => ytViews(v) !== null), ig = V.filter((v) => igViews(v) !== null);
   return `<div class="tiles">
-    <div class="tile"><span>Versions started (period)</span><b>${jobs.length}</b></div>
-    <div class="tile"><span>Reached review</span><b>${done}</b></div>
-    <div class="tile"><span>Never finished</span><b class="${failed ? "bad" : ""}">${failed}</b></div>
-    <div class="tile"><span>Finish rate</span><b>${jobs.length ? pct(done / jobs.length * 100) : "–"}</b></div>
-    <div class="tile"><span>Median time to make</span><b>${mm.length ? fmt(median(mm)) + " min" : "–"}</b></div>
-    <div class="tile"><span>Topics in backlog</span><b>${D.topics_backlog}</b></div></div>
-  <div class="card"><h2>Pipeline status (all time)</h2>${Object.entries(sc).map(([k, n]) => `<span class="pill">${esc(k)}: ${n}</span>`).join(" ")}
-   <p class="note">"rejected" includes versions superseded by a newer version and topics you dropped.</p></div>
-  <div class="card"><h2>All versions</h2>${table([
-    { h: "Version", v: (j) => j.id }, { h: "Topic", v: (j) => (j.title || "").slice(0, 50) }, { h: "Status", v: (j) => j.status },
-    { h: "Stage", v: (j) => j.stage }, { h: "Started", v: (j) => day(j.created) }, { h: "Cost", n: 1, v: (j) => j.cost, f: (j) => usd(j.cost) },
-    { h: "Error", v: (j) => (j.error || "").slice(0, 80) }], jobs.slice().reverse())}</div>
-  <div class="card"><h2>Problems (latest)</h2>${table([{ h: "When", v: (e) => (e.at || "").replace("T", " ").slice(0, 16) }, { h: "Level", v: (e) => e.level },
-    { h: "Video", v: (e) => e.job_id || "" }, { h: "Message", v: (e) => e.message.slice(0, 140) }], D.events.slice(0, 20))}</div>
-  <div class="card"><h2>Your decisions</h2>${table([{ h: "When", v: (f) => (f.at || "").slice(0, 10) }, { h: "Decision", v: (f) => f.decision },
-    { h: "Video", v: (f) => f.job_id || "" }, { h: "Note", v: (f) => (f.note || "").slice(0, 120) }], D.feedback)}</div>`;
+    <div class="tile"><span>Videos</span><b>${V.length}</b></div>
+    <div class="tile"><span>Median YT views</span><b>${nf(median(yt.map(ytViews)))}</b></div>
+    <div class="tile"><span>Median IG views</span><b>${nf(median(ig.map(igViews)))}</b></div>
+    <div class="tile"><span>Median YT % viewed</span><b>${pct(median(V.map((v) => v.yt?.averageViewPercentage)))}</b><i>after ~2 days</i></div>
+    <div class="tile"><span>Median IG avg watch</span><b>${nf(median(V.map((v) => v.ig?.ig_reels_avg_watch_time && v.ig.ig_reels_avg_watch_time / 1000)), 1)} s</b></div>
+  </div>
+  <div class="card"><h2>All videos</h2><p class="note">Click a row for the full breakdown. Click a heading to sort. YT views = live count from the YouTube Data API; the rest of the YouTube numbers come from YouTube Analytics and appear 1–2 days after publishing.</p>${table(V)}</div>
+  <div class="card"><h2>Production attempts</h2><p class="note">Every video started since the format began, including ones our final review dropped. Dropped attempts' costs are shared across published videos ${lbl("allocated")}.</p>
+  <div class="scroll"><table><thead><tr><th>Started</th><th>Topic</th><th>Result</th><th class="n">Direct cost</th><th>Why</th></tr></thead><tbody>
+  ${D.attempts.filter((a) => (Date.parse(a.created) || 0) >= since()).sort((a, b) => (b.created || "").localeCompare(a.created || "")).map((a) => `<tr><td>${day(a.created)}</td><td class="wrap">${esc(a.title || a.job)}</td><td>${a.published ? "published" : esc(a.status)}</td><td class="n">${usd(a.cost)}</td><td class="wrap muted">${esc(a.published ? "" : a.error)}</td></tr>`).join("")}
+  </tbody></table></div></div>`;
 }
 
-function money() {
-  const costs = D.costs.filter((c) => inPeriod(c.day));
-  const byProv = {}; costs.forEach((c) => byProv[c.provider] = (byProv[c.provider] || 0) + c.usd);
-  const byJob = {}; costs.forEach((c) => { if (c.job) byJob[c.job] = (byJob[c.job] || 0) + c.usd; });
-  const fixedMonth = sum(Object.values(D.fixed_monthly || {}), (x) => x);
-  const apiRev = D.revenue.filter((r) => r.source === "youtube_api_estimate");
-  const allRev = apiRev.length ? sum(apiRev, (r) => r.usd) : sum(D.revenue.filter((r) => r.source === "owner"), (r) => r.usd);
-  const months = D.months_active;
-  const cash = D.api_cash + fixedMonth * months;
-  const roi = cash > 0 ? (allRev - cash) / cash * 100 : null;
-  const pubCosts = V.map((v) => v.cost).filter((x) => x > 0);
-  return `<div class="tiles">
-    <div class="tile"><span>Logged cost (period)</span><b>${usd(sum(costs, (c) => c.usd))}</b></div>
-    <div class="tile"><span>Median cost per published video</span><b>${usd(median(pubCosts))}</b></div>
-    <div class="tile"><span>Revenue to date</span><b>${D.revenue.length ? usd(allRev) : "–"}</b></div>
-    <div class="tile"><span>Cash spent to date</span><b>${usd(cash)}</b></div>
-    <div class="tile"><span>Net (revenue − cash)</span><b class="${allRev - cash >= 0 ? "ok" : "bad"}">${usd(allRev - cash)}</b></div>
-    <div class="tile"><span>ROI</span><b>${roi == null ? "–" : pct(roi)}</b></div></div>
-  <div class="card"><h2>How these are calculated</h2><p class="note">
-    <b>Logged cost</b> = every API call the pipeline made (Claude, images) plus an estimate of the voice's share of the ElevenLabs plan.
-    <b>Cash spent</b> = API spend excluding ElevenLabs (${usd(D.api_cash)}) + fixed monthly plans (${usd(fixedMonth)}/month × ${fmt(months, 1)} months) so the voice is not counted twice.
-    <b>ROI</b> = (revenue − cash spent) ÷ cash spent. <b>Break-even</b> when net ≥ 0.
-    Revenue comes only from what you record (Telegram: /revenue 2026-11 12.50) or from YouTube once the channel is monetised and revenue access is granted. Views are never treated as revenue.</p></div>
-  <div class="card"><h2>Cost by provider (period)</h2>${barChart(Object.entries(byProv).map(([k, n]) => ({ k, n })).sort((a, b) => b.n - a.n), "n", "k", "var(--s2)", usd)}</div>
-  <div class="card"><h2>Cost per version (period)</h2><p class="note">Includes test versions and re-makes.</p>${barChart(Object.entries(byJob).map(([k, n]) => ({ k, n })).sort((a, b) => b.n - a.n).slice(0, 15), "n", "k", "var(--s2)", usd)}</div>
-  <div class="card"><h2>Revenue entries</h2>${table([{ h: "Period", v: (r) => r.period }, { h: "Video", v: (r) => r.video_id || "whole channel" },
-    { h: "Source", v: (r) => r.source }, { h: "USD", n: 1, v: (r) => r.usd, f: (r) => usd(r.usd) }], D.revenue)}</div>`;
+function videoDetail(v) {
+  const cb = v.cost.by_provider || {};
+  const rows = Object.entries(cb).map(([p, e]) => `<tr><td>${esc(p)}</td><td class="n">${usd(e.usd, 3)}</td><td>${(e.labels || []).map(lbl).join("")}</td>
+    <td class="muted">${p === "anthropic" ? (e.tokens ? nf(e.tokens) + " tokens, " : "") + e.n + " calls" : p === "elevenlabs" ? nf(e.qty) + " characters" : p === "bfl" ? e.n + " images" : e.n + " items"}</td></tr>`).join("");
+  const ret = (v.retention || []).map((r) => ({ x: r.elapsedVideoTimeRatio * 100, y: r.audienceWatchRatio * 100, t: Math.round(r.elapsedVideoTimeRatio * 100) + "% of video" }));
+  const both = (name, a, b, fa = nf, fb = nf) => `<tr><td>${name}</td><td class="n">${a === undefined ? '<span class="only">n/a</span>' : fa(a)}</td><td class="n">${b === undefined ? '<span class="only">n/a</span>' : fb(b)}</td></tr>`;
+  const rv = Object.entries(v.reviews || {});
+  return `<p>${v.yt_url ? `<a href="${esc(v.yt_url)}" target="_blank" rel="noopener">Open on YouTube ↗</a>` : ""} &nbsp; ${v.ig_url ? `<a href="${esc(v.ig_url)}" target="_blank" rel="noopener">Open on Instagram ↗</a>` : `<span class="muted">Instagram: ${esc(v.ig_status || "not posted")}</span>`}
+   &nbsp;<span class="muted">Published ${esc(v.published)} · ${v.news ? "news tie-in" : esc(v.pillar || "daily")}</span></p>
+  <div class="grid2">
+   <div class="card"><h2>Performance</h2><p class="note">"n/a" = that platform doesn't offer the metric. YouTube Analytics as of ${esc(v.yt?.at || "—")}, Instagram as of ${esc(v.ig?.at || "—")}.</p>
+    <table><thead><tr><th>Metric</th><th class="n">YouTube</th><th class="n">Instagram</th></tr></thead><tbody>
+    ${both("Views", ytViews(v) ?? null, igViews(v) ?? null)}
+    ${both("Reach (accounts)", undefined, v.ig?.reach ?? null)}
+    ${both("Engaged views", v.yt?.engagedViews ?? null, undefined)}
+    ${both("Likes", v.yt_live?.likes ?? v.yt?.likes ?? null, v.ig?.likes ?? null)}
+    ${both("Comments", v.yt_live?.comments ?? v.yt?.comments ?? null, v.ig?.comments ?? null)}
+    ${both("Shares", v.yt?.shares ?? null, v.ig?.shares ?? null)}
+    ${both("Saves", undefined, v.ig?.saved ?? null)}
+    ${both("Watch time (min)", v.yt?.estimatedMinutesWatched ?? null, v.ig?.ig_reels_video_view_total_time != null ? v.ig.ig_reels_video_view_total_time / 60000 : null, nf, (x) => nf(x, 0))}
+    ${both("Avg view duration", v.yt?.averageViewDuration ?? null, v.ig?.ig_reels_avg_watch_time != null ? v.ig.ig_reels_avg_watch_time / 1000 : null, (x) => x == null ? "—" : nf(x) + " s", (x) => x == null ? "—" : nf(x, 1) + " s")}
+    ${both("Avg % viewed", v.yt?.averageViewPercentage ?? null, undefined, (x) => pct(x, 1))}
+    ${both("Skip rate", undefined, v.ig?.reels_skip_rate ?? null, nf, (x) => x == null ? "—" : pct(x, 1))}
+    ${both("Subscribers / follows gained", v.yt?.subscribersGained ?? null, undefined)}
+    ${both("Engagement rate (both)", engRate(v), undefined, (x) => pct(x, 1))}
+    </tbody></table>
+    <p class="note">Not offered by the APIs: YouTube impressions & click-through rate (Studio only); Instagram follows and profile visits per Reel (Meta returns them only for feed posts and stories).</p></div>
+   <div class="card"><h2>Audience retention (YouTube)</h2><p class="note">% of viewers still watching at each point; above 100% = rewatches. Appears 1–2 days after publishing.</p>
+    ${ret.length ? lineChart([{ name: "Watching", c: "var(--yt)", pts: ret }], { yfmt: (x) => nf(x) + "%", xs: [[0, "0%"], [50, "50%"], [100, "100%"]] }) : '<p class="empty">Not available yet.</p>'}
+    <h3>Where YouTube views came from</h3>${(v.traffic || []).length ? `<table>${v.traffic.map((t) => `<tr><td>${esc(t.insightTrafficSourceType)}</td><td class="n">${nf(t.views)}</td></tr>`).join("")}</table>` : '<p class="empty">Not available yet.</p>'}</div>
+  </div>
+  <div class="grid2">
+   <div class="card"><h2>Cost of this video</h2>
+    <table><thead><tr><th>Service</th><th class="n">USD</th><th>Basis</th><th>Usage</th></tr></thead><tbody>${rows || '<tr><td colspan="4" class="empty">No direct costs recorded.</td></tr>'}
+     <tr><td>Shared costs</td><td class="n">${usd(v.cost.overhead_share, 3)}</td><td>${lbl("allocated")}</td><td class="muted wrap">topic research, weekly reviews, dropped attempts and subscriptions this month ÷ videos published this month</td></tr>
+     <tr><td>GitHub, Meta, YouTube, Google, Cloudflare</td><td class="n">$0.00</td><td>${lbl("measured")}</td><td class="muted wrap">free plans; GitHub minutes used: ${nf(v.cost.gh_minutes, 1)}</td></tr>
+     <tr><td><b>Full cost</b></td><td class="n"><b>${usd(v.cost.full, 2)}</b></td><td></td><td></td></tr>
+     <tr><td>Revenue</td><td class="n">${v.revenue === null ? "—" : usd(v.revenue)}</td><td>${v.revenue === null ? "" : lbl("manual")}</td><td class="muted">${v.revenue === null ? "nothing recorded" : ""}</td></tr>
+     <tr><td>Profit · ROI</td><td class="n">${v.profit === null ? "—" : usd(v.profit)}</td><td></td><td>${v.roi_pct === null ? "" : pct(v.roi_pct, 0)}</td></tr></tbody></table></div>
+   <div class="card"><h2>What we learned</h2>
+    ${rv.length ? rv.map(([tag, r]) => `<h3>${esc(tag)} review · verdict: ${esc(r.verdict || "—")}</h3><p>${esc(r.summary || "")}</p>
+      ${(r.what_worked || []).length ? `<b>Worked</b><ul>${r.what_worked.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
+      ${(r.lessons || []).length ? `<b>Lessons</b><ul>${r.lessons.map((x) => `<li>${esc(x.lesson || x)} <span class="muted">(${esc(x.area || "")}, ${esc(x.confidence || "")})</span></li>`).join("")}</ul>` : ""}`).join("")
+      : '<p class="empty">The automatic review runs 48 hours and 7 days after publishing.</p>'}
+    <h3>How it was made</h3><table>${Object.entries(v.features || {}).filter(([, x]) => x !== null && x !== undefined).map(([k, x]) => `<tr><td>${esc(k)}</td><td class="wrap">${esc(typeof x === "object" ? JSON.stringify(x) : x)}</td></tr>`).join("")}
+     <tr><td>lessons applied</td><td>${v.learnings_applied}</td></tr></table></div>
+  </div>`;
 }
 
-function compare(label, keyFn) {
-  const groups = {};
-  V.forEach((v) => { if (!v.d7) return; const k = keyFn(v); if (k == null) return; (groups[k] = groups[k] || []).push(v); });
-  const rows = Object.entries(groups).map(([k, vs]) => ({ k, n: vs.length, views: median(vs.map((v) => v.d7.views)),
-    pctv: median(vs.map((v) => v.d7.averageViewPercentage)), subs: median(vs.map((v) => v.d7.subscribersGained)), cost: median(vs.map((v) => v.cost)) }));
-  return `<div class="card"><h2>By ${label}</h2>${rows.length ? table([{ h: label, v: (r) => r.k }, { h: "Videos", n: 1, v: (r) => r.n },
-    { h: "Median views @7d", n: 1, v: (r) => r.views ?? "", f: (r) => fmt(r.views) }, { h: "Median % viewed", n: 1, v: (r) => r.pctv ?? "", f: (r) => pct(r.pctv) },
-    { h: "Median subs @7d", n: 1, v: (r) => r.subs ?? "", f: (r) => fmt(r.subs) }, { h: "Median cost", n: 1, v: (r) => r.cost ?? "", f: (r) => usd(r.cost) },
-    { h: "Read it?", v: (r) => r.n >= 5 ? "enough data" : "too few", f: (r) => r.n >= 5 ? `<span class="ok">enough data</span>` : `<span class="muted">too few (n=${r.n})</span>` }], rows)
-    : `<div class="empty">Needs videos that are at least 7 days old.</div>`}</div>`;
+function moneyTab() {
+  const months = Object.entries(D.months).sort((a, b) => a[0].localeCompare(b[0]));
+  const er = D.elevenlabs_rate || {};
+  const M = D.manual || {};
+  const subs = Object.entries(M.subscriptions || {});
+  const revs = M.revenue || [], charges = M.charges || [];
+  const V = vids();
+  return `<div class="grid2">
+   <div class="card"><h2>Spend by month and service</h2><p class="note">Anthropic ${lbl("calculated")} · images ${lbl("estimated")}/${lbl("measured")} · ElevenLabs ${lbl(er.usd_per_char ? "allocated" : "estimated")}. Archived format (Oct, before this channel): ${usd(D.archived_usd)} — not counted.</p>
+    ${barChart(months.map(([m, v]) => ({ label: m, values: v.by_provider })), [{ k: "anthropic", name: "Anthropic API", c: "var(--brand)" }, { k: "bfl", name: "Images (BFL)", c: "#7a4cc9" }, { k: "elevenlabs", name: "ElevenLabs", c: "var(--ig)" }], { fmt: (x) => usd(x, 0) })}</div>
+   <div class="card"><h2>How the full cost per video is built</h2>
+    <table><thead><tr><th>Month</th><th class="n">Published</th><th class="n">Direct</th><th class="n">Shared</th><th class="n">Dropped</th><th class="n">Subs</th><th class="n">Shared / video</th></tr></thead><tbody>
+    ${months.map(([m, v]) => `<tr><td>${m}</td><td class="n">${v.published}</td><td class="n">${usd(v.direct)}</td><td class="n">${usd(v.overhead)}</td><td class="n">${usd(v.dropped)}</td><td class="n">${usd(sum((v.subscriptions || []).map((s) => s.usd)))}</td><td class="n">${usd(v.per_video_overhead)}</td></tr>`).join("")}
+    </tbody></table>
+    <p class="note"><b>Direct</b> = everything a published video used itself. <b>Shared</b> = topic research, weekly reviews and other work not tied to one video. <b>Dropped</b> = attempts our final review stopped. <b>Subs</b> = subscriptions you entered × your % for this channel. Shared + dropped + subs are split equally over the month's published videos ${lbl("allocated")}.
+    ElevenLabs: ${er.usd_per_char ? `plan ${usd(er.plan_usd)} (${esc(er.plan_source)}) ÷ ${nf(er.plan_chars)} credits = ${usd(er.usd_per_char * 1000, 3)} per 1,000 characters ${lbl("allocated")}` : `list rate per character ${lbl("estimated")} — enter your ElevenLabs plan price below to allocate it exactly`}.</p></div>
+  </div>
+  <div class="grid2">
+   <div class="card"><h2>Subscriptions</h2><p class="note">Plans with no API (e.g. Claude) — enter price, renewal date and what % of the plan this channel uses. Saved instantly; numbers update at the next refresh.</p>
+    <table><thead><tr><th>Name</th><th class="n">$/month</th><th class="n">% for channel</th><th>Renews</th><th>Updated</th><th></th></tr></thead><tbody>
+    ${subs.map(([k, s]) => `<tr><td>${esc(k)}</td><td class="n">${usd(s.usd_month)}</td><td class="n">${pct(s.share_pct ?? 100)}</td><td>${esc(s.renews || "—")}</td><td class="muted">${day(s.at)} ${lbl("manual")}</td><td><button class="btn" data-del-sub="${esc(k)}">Remove</button></td></tr>`).join("") || '<tr><td colspan="6" class="empty">None yet.</td></tr>'}
+    </tbody></table>
+    <form class="inline" id="fsub"><label>Name<select name="name"><option>claude</option><option>elevenlabs</option><option>other</option></select></label>
+     <label>Plan<input name="plan" placeholder="e.g. Max"></label><label>$/month<input name="usd_month" type="number" step="0.01" required></label>
+     <label>% for channel<input name="share_pct" type="number" min="0" max="100" value="100"></label><label>Renews<input name="renews" type="date"></label><button class="btn primary">Save</button></form></div>
+   <div class="card"><h2>Revenue</h2><p class="note">YouTube revenue comes through the API only after the channel joins the Partner Program; Instagram has no revenue API for this account. Enter payouts here (or send /revenue in Telegram). CSV columns: period,platform,job,usd,note</p>
+    <table><thead><tr><th>Period</th><th>Platform</th><th>Video</th><th class="n">USD</th><th>Note</th><th></th></tr></thead><tbody>
+    ${revs.map((r, i) => `<tr><td>${esc(r.period)}</td><td>${esc(r.platform)}</td><td>${esc(r.job || "channel")}</td><td class="n">${usd(r.usd)}</td><td class="muted">${esc(r.note || "")}</td><td><button class="btn" data-del-rev="${i}">Remove</button></td></tr>`).join("") || '<tr><td colspan="6" class="empty">No revenue recorded.</td></tr>'}
+    </tbody></table>
+    <form class="inline" id="frev"><label>Period<input name="period" placeholder="2026-11" required></label><label>Platform<select name="platform"><option>youtube</option><option>instagram</option><option>other</option></select></label>
+     <label>Video<select name="job"><option value="">whole channel</option>${D.videos.map((v) => `<option value="${esc(v.job)}">${esc(v.title.slice(0, 40))}</option>`).join("")}</select></label>
+     <label>USD<input name="usd" type="number" step="0.01" required></label><label>Note<input name="note"></label><button class="btn primary">Add</button></form>
+    <label class="muted" style="font-size:12px">Import CSV <input type="file" id="revcsv" accept=".csv,text/csv"></label></div>
+  </div>
+  <div class="card"><h2>Profit by video (${V.length} in period)</h2>
+   <div class="scroll"><table><thead><tr><th>Video</th><th class="n">Direct</th><th class="n">Shared</th><th class="n">Full cost</th><th class="n">Revenue</th><th class="n">Profit</th><th class="n">ROI</th></tr></thead><tbody>
+   ${V.map((v) => `<tr class="click" data-j="${esc(v.job)}"><td class="wrap">${esc(v.title)}</td><td class="n">${usd(v.cost.direct)}</td><td class="n">${usd(v.cost.overhead_share)}</td><td class="n">${usd(v.cost.full)}</td><td class="n">${v.revenue === null ? "—" : usd(v.revenue)}</td><td class="n">${v.profit === null ? "—" : usd(v.profit)}</td><td class="n">${v.roi_pct === null ? "—" : pct(v.roi_pct)}</td></tr>`).join("")}
+   <tr><td><b>Total</b></td><td class="n">${usd(sum(V.map((v) => v.cost.direct)))}</td><td class="n">${usd(sum(V.map((v) => v.cost.overhead_share)))}</td><td class="n"><b>${usd(sum(V.map((v) => v.cost.full)))}</b></td><td class="n">${usd(sum(V.map((v) => v.revenue || 0)))}</td><td class="n">${usd(sum(V.map((v) => v.revenue || 0)) - sum(V.map((v) => v.cost.full)))}</td><td></td></tr>
+   </tbody></table></div></div>
+  <div class="card"><h2>Other actual charges</h2><p class="note">Bills not tracked automatically (e.g. a top-up, a one-off tool). They count in the month you enter ${lbl("manual")}.</p>
+   <table><tbody>${charges.map((c, i) => `<tr><td>${esc(c.month)}</td><td>${esc(c.service)}</td><td class="n">${usd(c.usd)}</td><td class="muted">${esc(c.note || "")}</td><td><button class="btn" data-del-chg="${i}">Remove</button></td></tr>`).join("") || '<tr><td class="empty">None.</td></tr>'}</tbody></table>
+   <form class="inline" id="fchg"><label>Month<input name="month" placeholder="2026-11" required></label><label>Service<input name="service" required></label><label>USD<input name="usd" type="number" step="0.01" required></label><label>Note<input name="note"></label><button class="btn primary">Add</button></form></div>`;
 }
 
-function strategy() {
-  const lenB = (v) => { const s = (v.features || {}).seconds; return s ? (s < 30 ? "< 30 s" : s < 36 ? "30–36 s" : "36 s +") : null; };
-  return `<div class="card"><p class="note">All comparisons use each video's numbers at <b>7 days old</b>, so young videos are not judged early. Medians, not averages (one viral video won't skew them). Groups under 5 videos are marked "too few" — treat them as hints, not conclusions.</p></div>
-  ${compare("topic pillar", (v) => v.pillar)}
-  ${compare("publish slot (UTC)", (v) => (v.features || {}).publish_slot_utc)}
-  ${compare("hook formula", (v) => (v.features || {}).hook_formula)}
-  ${compare("length", lenB)}
-  ${compare("witty lines", (v) => (v.features || {}).wit_lines)}
-  ${compare("music bed", (v) => (v.features || {}).music)}
-  <div class="card"><h2>Watched vs. kept</h2><p class="note">Videos with many views but low % viewed attract clicks but lose viewers.</p>${table([
-    { h: "Video", v: (v) => (v.title || "").slice(0, 50) }, { h: "Views @7d", n: 1, v: (v) => v.d7 ? v.d7.views : "", f: (v) => v.d7 ? fmt(v.d7.views) : "–" },
-    { h: "% viewed @7d", n: 1, v: (v) => v.d7 ? v.d7.averageViewPercentage : "", f: (v) => v.d7 ? pct(v.d7.averageViewPercentage) : "–" },
-    { h: "Subs/1k views", n: 1, v: (v) => v.d7 && v.d7.views ? v.d7.subscribersGained / v.d7.views * 1000 : "", f: (v) => v.d7 && v.d7.views ? fmt(v.d7.subscribersGained / v.d7.views * 1000, 1) : "–" }],
-    V.filter((v) => v.d7))}</div>`;
+function resourcesTab() {
+  const R = D.resources || {};
+  const NAMES = { elevenlabs: "ElevenLabs (voice)", bfl: "Black Forest Labs (images)", anthropic: "Anthropic API (writing, review)", github: "GitHub Actions (automation)", instagram: "Instagram", youtube: "YouTube" };
+  const cards = Object.entries(R).map(([k, v]) => {
+    const pctLeft = (v.left !== undefined && v.limit) ? Math.max(0, Math.min(100, 100 * v.left / v.limit)) : null;
+    const kv = [];
+    const add = (a, b, l) => { if (b !== undefined && b !== null && b !== "") kv.push(`<dt>${a}</dt><dd>${b}${l ? lbl(l) : ""}</dd>`); };
+    if (k === "elevenlabs") { add("Credits left", `${nf(v.left)} / ${nf(v.limit)}`, "measured"); add("Plan", `${esc(v.tier)} · ${esc(v.plan_status)}`); add("Resets", v.resets); add("Next bill", v.next_invoice != null ? `${esc(v.currency)} ${nf(v.next_invoice, 2)} on ${esc(v.renews || "—")}` : null); add("Per video", v.per_video ? nf(v.per_video) + " credits" : null, "measured"); }
+    else if (k === "bfl") { add("Credits left", `${nf(v.left)} (${usd(v.usd_left)})`, "measured"); add("Per video", v.per_video_usd ? usd(v.per_video_usd) : null, "estimated"); }
+    else if (k === "anthropic") { add("Spent this month", usd(v.spent_month_calc), "calculated"); add("Billed this month", v.billed_month != null ? usd(v.billed_month) : null, "measured");
+      add("Balance left", v.left_usd != null ? usd(v.left_usd) : "unknown", v.left_usd != null ? "allocated" : "unavailable"); add("Per video", v.per_video_usd ? usd(v.per_video_usd) : null, "calculated"); }
+    else if (k === "github") { add("Minutes used", `${nf(v.used)} / ${nf(v.limit)}`, "measured"); add("Per day (7-day avg)", v.per_day ? nf(v.per_day) : null); add("Runs out", v.runs_out); add("Resets", v.resets); add("Allowance", v.limit_source); }
+    else if (k === "instagram") { add("Posts used (24 h)", `${nf(v.used)} / ${nf(v.limit)}`, "measured"); add("Login expires", v.login_expires); add("Followers", nf(v.followers)); }
+    else if (k === "youtube") { add("Login", v.login); add("Subscribers", nf(v.subscribers)); add("API quota", "not reported", "unavailable"); }
+    else if (k.startsWith("sub:")) { add("$/month", usd(v.usd_month), "manual"); add("Renews", v.renews); add("Days left", v.days_left); add("Updated", day(v.updated)); }
+    add("Videos left", v.videos_left !== undefined ? nf(v.videos_left) : null, "allocated"); add("≈ Days left", v.days_left !== undefined && !k.startsWith("sub:") ? v.days_left : null);
+    return `<div class="card"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h2>${esc(NAMES[k] || k.replace("sub:", "Subscription: "))}</h2>${st(v.status || "Unknown")}</div>
+      ${pctLeft !== null ? `<div class="meter"><div style="width:${pctLeft}%;background:${v.status === "Healthy" ? "var(--good)" : v.status === "Running low" ? "var(--warn)" : "var(--bad)"}"></div></div>` : ""}
+      ${v.source === "unavailable" ? `<p class="note">${esc(v.why || "")}</p>` : ""}
+      <dl class="kv">${kv.join("")}</dl>${v.note || v.left_note || v.quota_note ? `<p class="note">${esc(v.left_note || v.note || v.quota_note)}</p>` : ""}
+      ${v.link ? `<a href="${esc(v.link)}" target="_blank" rel="noopener">Billing / top-up ↗</a>` : ""}</div>`;
+  }).join("");
+  const att = attention();
+  const M = D.manual || {};
+  return `<p class="note">Checked ${esc(D.resources_at || "—")}. Status: <b>Healthy</b> · <b>Running low</b> (&lt;25% or &lt;7 days) · <b>Critical</b> (&lt;10% or &lt;3 days) · <b>Expired</b>. Problems are also sent to Telegram once a day.</p>
+  ${att.length ? `<div class="card" style="border-color:var(--warn)"><h2>Do this first</h2><ol class="act">${att.map((a) => `<li>${a.html}</li>`).join("")}</ol></div>` : `<div class="card"><h2>Nothing needs attention</h2></div>`}
+  <div class="res">${cards || '<p class="empty">No checks yet — the first runs at the next refresh.</p>'}</div>
+  <div class="card" style="margin-top:14px"><h2>Values only you can enter</h2><p class="note">Services with no balance API. The dashboard subtracts our measured use since the date you save ${lbl("allocated")}.</p>
+   <form class="inline" id="fbal"><label>Anthropic Console balance (USD)<input name="usd" type="number" step="0.01" required></label><button class="btn primary">Save</button>
+    <span class="muted">${M.balances?.anthropic ? `Last: ${usd(M.balances.anthropic.usd)} on ${day(M.balances.anthropic.at)}` : ""}</span></form>
+   <form class="inline" id="flim"><label>GitHub Actions minutes / month<input name="github_minutes" type="number" value="${esc(M.limits?.github?.github_minutes || "")}" placeholder="2000 (Free plan)"></label>
+    <label>Planned videos / day<input name="videos_per_day" type="number" step="0.5" value="${esc(M.plan?.production?.videos_per_day || "")}" placeholder="1"></label><button class="btn primary">Save</button></form></div>`;
 }
 
-function learning() {
-  return `<div class="card"><h2>Experiments</h2>${(D.experiments || []).map((e) => {
-      const n = {}; V.forEach((v) => { const a = (v.arms || {})[e.id]; if (a) n[a] = (n[a] || 0) + 1; });
-      return `<div style="margin:6px 0"><b>${esc(e.id)}</b> <span class="pill">${esc(e.status)}</span><br><small>${esc(e.hypothesis)}</small><br>${
-        Object.keys(e.arms || {}).map((a) => `<span class="pill">${esc(a)}: ${n[a] || 0}/${e.min_videos_per_arm} published</span>`).join(" ")}</div>`;
-    }).join("") || `<div class="empty">No experiments.</div>`}</div>
-  <div class="card"><h2>Learnings (weekly)</h2>${D.learnings ? `<pre>${esc(D.learnings)}</pre>` : `<div class="empty">The first weekly learning report appears once videos have 7 days of data.</div>`}</div>`;
+function mdToHtml(md) {
+  return esc(md).replace(/^### (.*)$/gm, "<h3>$1</h3>").replace(/^## (.*)$/gm, "<h3>$1</h3>").replace(/^# (.*)$/gm, "<h2>$1</h2>")
+    .replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/^- (.*)$/gm, "• $1");
+}
+function learningTab() {
+  const V = vids();
+  const withRev = V.filter((v) => Object.keys(v.reviews || {}).length);
+  const plat = V.filter((v) => ytViews(v) !== null && igViews(v) !== null);
+  const ytWins = plat.filter((v) => ytViews(v) > igViews(v)).length;
+  return `<div class="grid2">
+   <div class="card"><h2>Rules the writer follows now</h2><p class="note">From the twice-weekly learning review (Mon & Thu). Every new script gets these.</p><pre>${esc(D.writer_rules || "Not yet generated.")}</pre>
+    ${D.topic_guidance ? `<h3>Topic guidance</h3><pre>${esc(D.topic_guidance)}</pre>` : ""}</div>
+   <div class="card"><h2>Platform comparison</h2><p class="note">Same video on both platforms (${plat.length} videos).</p>
+    <p>YouTube got more views on <b>${ytWins}</b>, Instagram on <b>${plat.length - ytWins}</b>.</p>
+    ${barChart(plat.map((v) => ({ label: v.title, short: day(v.published).slice(5), values: { yt: ytViews(v) || 0, ig: igViews(v) || 0 } })), [{ k: "yt", name: "YouTube", c: "var(--yt)" }, { k: "ig", name: "Instagram", c: "var(--ig)" }])}</div>
+  </div>
+  <div class="card"><h2>Video reviews (48 hours and 7 days after publishing)</h2>${withRev.length ? `<div class="scroll"><table><thead><tr><th>Video</th><th>Review</th><th>Verdict</th><th>Summary</th></tr></thead><tbody>
+   ${withRev.flatMap((v) => Object.entries(v.reviews).map(([t, r]) => `<tr class="click" data-j="${esc(v.job)}"><td class="wrap">${esc(v.title)}</td><td>${esc(t)}</td><td>${esc(r.verdict || "")}</td><td class="wrap">${esc((r.summary || "").slice(0, 260))}</td></tr>`)).join("")}</tbody></table></div>` : '<p class="empty">No reviews in this period yet.</p>'}</div>
+  <div class="card"><h2>Weekly learning report</h2><pre>${mdToHtml(D.learnings_md || "Not yet generated.")}</pre></div>
+  <div class="card"><h2>Experiments</h2>${(D.experiments || []).map((e) => `<p><b>${esc(e.id)}</b> · ${esc(e.status)} — ${esc(e.hypothesis || "")}</p>`).join("") || '<p class="empty">None.</p>'}</div>`;
 }
 
-const RENDER = { overview, videos, production, money, strategy, learning };
+function dataTab() {
+  const U = [
+    ["YouTube views, likes, comments", "measured", "YouTube Data API, every refresh (minutes old)."],
+    ["YouTube watch time, retention, shares, subscribers, traffic sources", "measured", "YouTube Analytics API; appears 1–2 days after publishing."],
+    ["YouTube impressions & click-through rate", "unavailable", "Not offered by the YouTube APIs; see YouTube Studio → Analytics → Reach."],
+    ["YouTube revenue", "unavailable", "API access needs the YouTube Partner Program. Until then, enter payouts by hand."],
+    ["Instagram views, reach, likes, comments, shares, saves, watch time, skip rate", "measured", "Instagram API; can lag up to 48 hours."],
+    ["Instagram follows / profile visits per Reel", "unavailable", "Meta returns these only for feed posts and stories, not Reels."],
+    ["Instagram account reach, views, link taps per day", "measured", "Instagram API, once a day."],
+    ["Instagram revenue", "unavailable", "No API for this account type; enter by hand."],
+    ["Anthropic cost", "calculated", "Exact tokens reported by the API × list prices. Billed cost needs an Admin API key (organisations only)."],
+    ["Anthropic balance", "unavailable", "No balance API: enter your Console balance; we subtract measured use since."],
+    ["ElevenLabs characters & credits left, plan, next bill", "measured", "ElevenLabs subscription API; per-video cost = characters × (plan price ÷ plan credits)."],
+    ["Image cost (BFL)", "estimated", "List price per image unless BFL reports the cost; credits balance is measured."],
+    ["GitHub Actions minutes", "measured", "Per-run billable time from GitHub's API; Free plan allows 2,000 minutes/month for private repos."],
+    ["Claude subscription", "manual", "No API; enter price, renewal date and the share used for this channel."],
+    ["Meta, Google Cloud, YouTube API, Cloudflare, Telegram", "measured", "Free plans: $0. Usage limits shown where an API reports them."],
+  ];
+  return `<div class="card"><h2>Where every number comes from</h2><table><tbody>${U.map(([a, l, b]) => `<tr><td class="wrap">${esc(a)}</td><td>${lbl(l)}</td><td class="wrap muted">${esc(b)}</td></tr>`).join("")}</tbody></table></div>
+  <div class="card"><h2>Refresh</h2><p>Every ${D.refresh.every_hours} hours automatically, or press <b>Refresh now</b> (takes ~3 minutes, then reload). ${esc(D.refresh.note)}</p>
+   <p class="muted">Page built ${esc(D.generated_at)} · YouTube Analytics last pulled ${esc(D.metrics_at || "—")}.</p>
+   <p class="muted">Why not more often? GitHub's free plan has 2,000 automation minutes a month, and most platform numbers only update a few times a day.</p></div>
+  <div class="card"><h2>Label key</h2>${Object.keys(LBL).map((k) => `<p>${lbl(k)} ${esc(LBL[k])}</p>`).join("")}</div>
+  <div class="card"><h2>Recent warnings</h2><div class="scroll"><table><tbody>${(D.events || []).slice(0, 20).map((e) => `<tr><td>${day(e.at)}</td><td>${esc(e.level)}</td><td class="wrap">${esc(e.msg)}</td></tr>`).join("") || '<tr><td class="empty">None.</td></tr>'}</tbody></table></div></div>`;
+}
+
+// ---------- render + events ----------
 function render() {
-  $("#tabs").innerHTML = TABS.map(([k, l]) => `<button class="${k === tab ? "on" : ""}" data-k="${k}">${l}</button>`).join("");
-  $("#tabs").querySelectorAll("button").forEach((b) => b.onclick = () => { tab = b.dataset.k; render(); });
-  $("#period").innerHTML = PERIODS.map(([k, l]) => `<button class="${k === period ? "on" : ""}" data-k="${k}">${l}</button>`).join("");
-  $("#period").querySelectorAll("button").forEach((b) => b.onclick = () => { period = b.dataset.k; try { localStorage.setItem("period", period); } catch (e) {} render(); });
-  document.querySelectorAll("section").forEach((s) => s.classList.toggle("on", s.id === tab));
-  $("#" + tab).innerHTML = RENDER[tab]();
+  $("#fresh").textContent = `Updated ${new Date(D.generated_at).toLocaleString()}`;
+  [...$("#tabs").children].forEach((b) => b.classList.toggle("on", b.dataset.t === TAB));
+  document.querySelectorAll("main section").forEach((s) => s.classList.toggle("on", s.id === TAB));
+  const f = { overview, videos: videosTab, money: moneyTab, resources: resourcesTab, learning: learningTab, data: dataTab }[TAB];
+  $("#" + TAB).innerHTML = f();
+  $("#filters").style.display = ["resources", "data"].includes(TAB) ? "none" : "flex";
+  wrapTables($("#" + TAB));
 }
-$("#fresh").textContent = `Built ${(D.generated_at || "").replace("T", " ").slice(0, 16)} UTC · YouTube data pulled ${D.metrics_fetched_at ? D.metrics_fetched_at.replace("T", " ").slice(0, 16) + " UTC" : "not yet"}`;
-const tip = $("#tip"), dlg = $("#dlg");
+function wrapTables(root) {   // every table scrolls sideways on its own; the page never does
+  root.querySelectorAll("table").forEach((t) => { if (t.closest(".scroll")) return;
+    const w = document.createElement("div"); w.className = "scroll"; t.parentNode.insertBefore(w, t); w.appendChild(t); });
+}
+document.addEventListener("click", async (e) => {
+  const th = e.target.closest("th[data-s]");
+  if (th) { const k = th.dataset.s; SORT = { k, d: SORT.k === k ? -SORT.d : -1 }; render(); return; }
+  const tr = e.target.closest("tr[data-j]");
+  if (tr) { const v = D.videos.find((x) => x.job === tr.dataset.j); if (v) { $("#dlgt").textContent = v.title; $("#dlgb").innerHTML = videoDetail(v); wrapTables($("#dlgb")); $("#dlg").showModal(); } return; }
+  const ds = e.target.closest("[data-del-sub]"); if (ds) return save({ op: "set", section: "subscriptions", name: ds.dataset.delSub, value: null });
+  const dr = e.target.closest("[data-del-rev]"); if (dr) return save({ op: "revenue_del", index: Number(dr.dataset.delRev) });
+  const dc = e.target.closest("[data-del-chg]"); if (dc) return save({ op: "charge_del", index: Number(dc.dataset.delChg) });
+});
+async function save(body) {
+  try {
+    const r = await fetch("/dash/manual", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body), credentials: "same-origin" });
+    if (!r.ok) throw new Error(await r.text());
+    D.manual = await r.json(); render(); toast("Saved. Calculations update at the next refresh.");
+  } catch (err) { toast("Couldn't save: " + err.message); }
+}
+function toast(t) { tip.textContent = t; tip.style.display = "block"; tip.style.left = "16px"; tip.style.top = "70px"; setTimeout(() => tip.style.display = "none", 3500); }
+const num = (x) => x === "" || x === null || x === undefined ? undefined : Number(x);
+document.addEventListener("submit", (e) => {
+  const f = e.target; e.preventDefault(); const d = Object.fromEntries(new FormData(f));
+  if (f.id === "fsub") save({ op: "set", section: "subscriptions", name: d.name, value: { plan: d.plan, usd_month: num(d.usd_month), share_pct: num(d.share_pct), renews: d.renews } });
+  if (f.id === "frev") save({ op: "revenue_add", rows: [{ period: d.period, platform: d.platform, job: d.job, usd: num(d.usd), note: d.note }] });
+  if (f.id === "fchg") save({ op: "charge_add", rows: [{ month: d.month, service: d.service, usd: num(d.usd), note: d.note }] });
+  if (f.id === "fbal") save({ op: "set", section: "balances", name: "anthropic", value: { usd: num(d.usd) } });
+  if (f.id === "flim") { if (d.github_minutes) save({ op: "set", section: "limits", name: "github", value: { github_minutes: num(d.github_minutes) } });
+    if (d.videos_per_day) save({ op: "set", section: "plan", name: "production", value: { videos_per_day: num(d.videos_per_day) } }); }
+});
+document.addEventListener("change", async (e) => {
+  if (e.target.id !== "revcsv" || !e.target.files[0]) return;
+  const lines = (await e.target.files[0].text()).trim().split(/\r?\n/); const head = lines.shift().split(",").map((x) => x.trim().toLowerCase());
+  const rows = lines.map((l) => { const c = l.split(","); const o = {}; head.forEach((h, i) => o[h] = (c[i] || "").trim()); o.usd = num(o.usd); return o; }).filter((o) => o.period && Number.isFinite(o.usd));
+  if (rows.length) save({ op: "revenue_add", rows }); else toast("No valid rows (need period,platform,job,usd,note).");
+});
+$("#refresh").onclick = async () => {
+  try { const r = await fetch("/dash/refresh", { method: "POST", credentials: "same-origin" }); const j = await r.json();
+    toast(j.ok ? "Refreshing — reload in about 3 minutes." : (j.why || "Couldn't start a refresh.")); } catch { toast("Couldn't start a refresh."); }
+};
+// live manual values (entered since the last build)
+fetch("/dash/manual.json", { credentials: "same-origin" }).then((r) => r.ok ? r.json() : null).then((m) => { if (m) { D.manual = m; render(); } }).catch(() => {});
 render();
 </script>
 </body>

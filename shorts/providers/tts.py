@@ -57,7 +57,12 @@ class ElevenLabsTTS:
             words = words_from_char_alignment(al["characters"], al["character_start_times_seconds"],
                                               al["character_end_times_seconds"])
             dur = words[-1].end if words else 0.0
-            return Speech(out, words, dur, len(text) / 1000 * self.rate, len(text))
+            # ElevenLabs reports the characters it billed in a response header; fall back to the text length
+            billed = r.headers.get("character-cost") or r.headers.get("x-character-count")
+            self.last_meta = ({"chars_billed": int(billed), "source": "api"} if str(billed or "").isdigit()
+                              else {"chars_sent": len(text), "source": "text_length"})
+            chars = int(billed) if str(billed or "").isdigit() else len(text)
+            return Speech(out, words, dur, chars / 1000 * self.rate, chars)
         raise TTSError("ElevenLabs kept failing")
 
 

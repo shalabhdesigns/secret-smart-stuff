@@ -28,6 +28,9 @@ export default {
       if (url.pathname === "/dash/login" && req.method === "POST") return await login(req, env, url);
       if (url.pathname === "/dash/logout") return logout(url);
       if (url.pathname === "/dash") return await dash(req, env, url);
+      if (url.pathname === "/dash/manual.json") return await manualGet(req, env);
+      if (url.pathname === "/dash/manual" && req.method === "POST") return await manualPost(req, env);
+      if (url.pathname === "/dash/refresh" && req.method === "POST") return await refreshNow(req, env);
       if (url.pathname === "/oauth/start") return await oauthStart(env, url);
       if (url.pathname === "/oauth/callback") return await oauthCallback(env, url);
       if (url.pathname === "/ig/start") return await igStart(env, url);
@@ -76,7 +79,9 @@ async function igWatch(env, now = Date.now()) {
       const due = Date.parse((await env.KV.get(k.name)) || "");
       if (!due) continue;
       const left = due - now;
-      if (left > 16 * 60e3 || left < -3 * 3600e3) continue;      // not yet, or far too late (the backups handle it)
+      // 10 min ahead: the run needs ~2 min to start and ~1-3 for Instagram to process; less waiting = fewer
+      // billed Actions minutes (GitHub Free: 2,000 a month for private repos)
+      if (left > 10 * 60e3 || left < -3 * 3600e3) continue;      // not yet, or far too late (the backups handle it)
       if (await env.KV.get(`igdisp:${job}`) || await env.KV.get(`stop:${job}`)) continue;
       const err = await dispatchWorkflow(env, "igpost.yml", { job });
       if (!err) {
@@ -301,10 +306,10 @@ async function authed(req, env) {
 function page(body, status = 200, headers = {}) {
   return new Response(
     `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">` +
-    `<title>Studio login</title><style>body{font:16px system-ui,sans-serif;background:#F4EFE6;color:#14213D;display:grid;place-items:center;min-height:100vh;margin:0}` +
+    `<title>Studio login</title><style>body{font:16px system-ui,sans-serif;background:#FFD6E0;color:#1F3BFF;display:grid;place-items:center;min-height:100vh;margin:0}` +
     `main{background:#fff;padding:28px;border-radius:14px;max-width:340px;width:calc(100% - 32px);box-shadow:0 2px 12px #0001}` +
     `button,input{font:inherit;width:100%;padding:12px;border-radius:10px;border:1px solid #ccc;margin-top:10px;box-sizing:border-box}` +
-    `button{background:#F26B1D;color:#fff;border:0;font-weight:600}</style></head><body><main>${body}</main></body></html>`,
+    `button{background:#1F3BFF;color:#fff;border:0;font-weight:600}</style></head><body><main>${body}</main></body></html>`,
     { status, headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store", ...headers } },
   );
 }
@@ -325,6 +330,65 @@ async function dash(req, env, url) {
   return new Response(html || "<p>No dashboard data yet.</p>", {
     headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store" },
   });
+}
+
+// ---- owner-entered values (3 Nov 2026): subscriptions, balances, limits, revenue, actual charges ----
+// Stored as one JSON document in KV ("manual.json"); every entry carries the time it was typed ("at").
+const MANUAL_SECTIONS = ["subscriptions", "balances", "limits", "plan"];
+const NAME = /^[a-z0-9_.-]{1,40}$/;
+
+async function manualGet(req, env) {
+  if (!(await authed(req, env))) return new Response("login needed", { status: 401 });
+  return new Response((await env.KV.get("manual.json")) || "{}", {
+    headers: { "content-type": "application/json", "cache-control": "no-store" } });
+}
+
+function cleanValue(v) {
+  // only flat objects of short strings / finite numbers / booleans
+  const out = {};
+  for (const [k, x] of Object.entries(v || {}).slice(0, 20)) {
+    if (!NAME.test(k)) continue;
+    if (typeof x === "number" && Number.isFinite(x)) out[k] = x;
+    else if (typeof x === "boolean") out[k] = x;
+    else if (typeof x === "string") out[k] = x.slice(0, 200);
+  }
+  return out;
+}
+
+async function manualPost(req, env) {
+  if (!(await authed(req, env))) return new Response("login needed", { status: 401 });
+  let body;
+  try { body = await req.json(); } catch { return new Response("bad json", { status: 400 }); }
+  const m = JSON.parse((await env.KV.get("manual.json")) || "{}");
+  const at = new Date().toISOString().slice(0, 19) + "Z";
+  if (body.op === "set" && MANUAL_SECTIONS.includes(body.section) && NAME.test(body.name || "")) {
+    m[body.section] = m[body.section] || {};
+    if (body.value === null) delete m[body.section][body.name];
+    else m[body.section][body.name] = { ...cleanValue(body.value), at };
+  } else if ((body.op === "revenue_add" || body.op === "charge_add") && Array.isArray(body.rows)) {
+    const list = body.op === "revenue_add" ? "revenue" : "charges";
+    m[list] = m[list] || [];
+    for (const r of body.rows.slice(0, 500)) m[list].push({ ...cleanValue(r), at });
+    m[list] = m[list].slice(-2000);
+  } else if ((body.op === "revenue_del" || body.op === "charge_del") && Number.isInteger(body.index)) {
+    const list = body.op === "revenue_del" ? "revenue" : "charges";
+    (m[list] || []).splice(body.index, 1);
+  } else {
+    return new Response("unknown operation", { status: 400 });
+  }
+  const txt = JSON.stringify(m);
+  if (txt.length > 400000) return new Response("too much data", { status: 413 });
+  await env.KV.put("manual.json", txt);
+  return new Response(txt, { headers: { "content-type": "application/json", "cache-control": "no-store" } });
+}
+
+async function refreshNow(req, env) {
+  if (!(await authed(req, env))) return new Response("login needed", { status: 401 });
+  if (await env.KV.get("refresh_lock")) return new Response(JSON.stringify({ ok: false, why: "a refresh started less than 15 minutes ago" }),
+    { status: 429, headers: { "content-type": "application/json" } });
+  const err = await dispatchWorkflow(env, "analytics.yml", {});
+  if (!err) await env.KV.put("refresh_lock", "1", { expirationTtl: 900 });
+  return new Response(JSON.stringify({ ok: !err, why: err }), { headers: { "content-type": "application/json" } });
 }
 
 async function sendCode(env, url) {

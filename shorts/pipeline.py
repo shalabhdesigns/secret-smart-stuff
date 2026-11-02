@@ -9,6 +9,7 @@ from __future__ import annotations
 import hashlib
 import io
 import json
+import os
 import random
 import re
 import subprocess
@@ -100,12 +101,21 @@ class Pipeline:
             from .providers.video import FakeVideo
             self.video = FakeVideo()
 
+    def _bfl_cost(self, usd: float, job_id: str | None) -> None:
+        meta = dict(getattr(self.images, "last_meta", None) or {"source": "list_price"})
+        self.state.add_cost("bfl", "image", 1, usd, job_id, estimated=meta.get("source") != "api", meta=meta)
+
     def _llm(self, prompt: str, job_id: str | None, what: str, est: float = 0.05, **kw):
         if self.cfg.live:
             self.budget.authorize(est, what, job_id)
         r = self.llm.ask(prompt, **kw)
         if r.usd:
-            self.state.add_cost("anthropic", what, 1, r.usd, job_id, estimated=False)
+            u = getattr(r, "usage", None) or {}
+            toks = sum(int(u.get(k) or 0) for k in ("input_tokens", "output_tokens", "cache_creation_input_tokens",
+                                                     "cache_read_input_tokens"))
+            self.state.add_cost("anthropic", what, toks or 1, r.usd, job_id, estimated=False, meta=u or None)
+        if job_id and os.environ.get("GITHUB_RUN_ID"):
+            self.state.note_run_job(int(os.environ["GITHUB_RUN_ID"]), job_id)
         return r
 
     # ---------- Stage A+B: discovery and scoring ----------
@@ -298,7 +308,7 @@ class Pipeline:
                 self.budget.authorize(0.03, "probe", job_id)
             img, usd = self.images.generate(prompt, d / f"probe{attempt}.png", seed=random.randint(1, 10**6))
             if usd:
-                self.state.add_cost("bfl", "image", 1, usd, job_id)
+                self._bfl_cost(usd, job_id)
             real = self._realism(img, f"a typical, complete {obj}", topic["title"], job_id)
             if real.get("ok", True):
                 return
@@ -513,7 +523,8 @@ class Pipeline:
             self.budget.authorize(est, "tts", job_id)
         sp = self.tts.speak(text, d / "narration.mp3")
         if sp.usd:
-            self.state.add_cost("elevenlabs", "tts_chars", sp.chars, sp.usd, job_id)
+            self.state.add_cost("elevenlabs", "tts_chars", sp.chars, sp.usd, job_id,
+                                meta=dict(getattr(self.tts, "last_meta", None) or {}) or None)
         # Speech must start at second zero: trim leading silence and shift the word timings.
         # Keep 0.12 s before the aligned first word: alignment can mark a word's start after its first
         # consonant, and a tighter cut clipped first words (owner flagged it 3 times, Oct 2026).
@@ -613,7 +624,7 @@ class Pipeline:
                     self.state.log(f"image model failed ({e}); trying {fb}", "warn", job_id)
                     img, usd = self.images.generate(full, path, seed=rng.randint(1, 10**6), model=fb)
                 if usd:
-                    self.state.add_cost("bfl", "image", 1, usd, job_id)
+                    self._bfl_cost(usd, job_id)
                 chk = self._look(img, first_focus.get(key, cur), cur, job_id)
                 real = self._realism(img, cur, topic.get("title", ""), job_id)
                 good = not (chk.get("has_text_or_logo") or chk.get("artifacts")) and real.get("ok", True)
@@ -683,7 +694,7 @@ class Pipeline:
                                                         f"key subject large and centred.", path,
                                                         seed=rng.randint(1, 10**6))
                         if usd:
-                            self.state.add_cost("bfl", "image", 1, usd, job_id)
+                            self._bfl_cost(usd, job_id)
                         real = self._realism(img, new_prompt, topic.get("title", ""), job_id)
                         if real.get("ok", True):
                             break

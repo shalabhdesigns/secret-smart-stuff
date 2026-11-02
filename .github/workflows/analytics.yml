@@ -3,13 +3,12 @@
 name: analytics
 on:
   schedule:
-    - cron: "41 */4 * * *"
-    - cron: "57 13 * * *"       # 27 min after the 13:30 UTC slot
-    - cron: "27 17 * * *"       # after 17:00 UTC
-    - cron: "27 2 * * *"        # after 02:00 UTC
+    # every 6 h (3 Nov 2026: was 4 h + 3 extra runs; GitHub Free has 2,000 Actions minutes a month for private repos,
+    # and YouTube Analytics / Instagram insights lag 1-2 days anyway; live view counts come from the Data API)
+    - cron: "41 */6 * * *"
   workflow_dispatch:
 concurrency: { group: shorts-state, cancel-in-progress: false, queue: max }
-permissions: { contents: write, issues: write }
+permissions: { contents: write, issues: write, actions: read }   # actions: run timings (minutes used)
 jobs:
   analytics:
     if: vars.SHORTS_MODE == 'live'
@@ -26,6 +25,7 @@ jobs:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       GH_TOKEN: ${{ github.token }}          # Instagram catch-up posts download the video from its release
+      ANTHROPIC_ADMIN_KEY: ${{ secrets.ANTHROPIC_ADMIN_KEY }}   # optional: billed Anthropic cost (organisations only)
     steps:
       - uses: actions/checkout@v5
         with: { fetch-depth: 0 }

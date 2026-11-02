@@ -16,6 +16,36 @@ from contextlib import contextmanager
 from pathlib import Path
 from typing import Any, Iterator
 
+USAGE_SCHEMA = """
+-- service balances, limits and subscription status, one snapshot per check (3 Nov 2026)
+CREATE TABLE IF NOT EXISTS resources (
+    service       TEXT NOT NULL,
+    data          TEXT NOT NULL,             -- JSON as returned/derived; "source" says measured|manual|unavailable
+    at            REAL NOT NULL
+);
+-- GitHub Actions minutes per workflow run (from the repo's run timing API)
+CREATE TABLE IF NOT EXISTS gh_runs (
+    run_id        INTEGER PRIMARY KEY,
+    workflow      TEXT,
+    created       TEXT,
+    billable_ms   INTEGER,                   -- what GitHub bills (rounded per job); NULL until known
+    duration_ms   INTEGER,
+    at            REAL NOT NULL
+);
+-- which videos each run worked on (written by the run itself), to attribute minutes per video
+CREATE TABLE IF NOT EXISTS run_jobs (
+    run_id        INTEGER NOT NULL,
+    job_id        TEXT NOT NULL,
+    PRIMARY KEY (run_id, job_id)
+);
+-- Instagram account snapshot (followers, media count) for growth over time
+CREATE TABLE IF NOT EXISTS ig_account_daily (
+    day           TEXT PRIMARY KEY,
+    data          TEXT NOT NULL,
+    at            REAL NOT NULL
+);
+"""
+
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS topics (
     id            TEXT PRIMARY KEY,          -- stable slug/hash of the idea
@@ -151,6 +181,10 @@ class State:
         self.db = sqlite3.connect(self.path)
         self.db.row_factory = sqlite3.Row
         self.db.executescript(SCHEMA)
+        cols = {r[1] for r in self.db.execute("PRAGMA table_info(costs)")}
+        if "meta" not in cols:        # measured usage per call (tokens, characters, credits) - added 3 Nov 2026
+            self.db.execute("ALTER TABLE costs ADD COLUMN meta TEXT")
+        self.db.executescript(USAGE_SCHEMA)
         self.db.commit()
 
     @contextmanager
@@ -261,13 +295,19 @@ class State:
         return [self.get_job(r["id"]) for r in rows]  # type: ignore[misc]
 
     # ---------- costs ----------
+    def note_run_job(self, run_id: int, job_id: str) -> None:
+        self.db.execute("INSERT OR IGNORE INTO run_jobs(run_id, job_id) VALUES (?,?)", (run_id, job_id))
+        self.db.commit()
+
     def add_cost(self, provider: str, item: str, quantity: float, usd: float,
-                 job_id: str | None = None, estimated: bool = True) -> None:
+                 job_id: str | None = None, estimated: bool = True, meta: dict | None = None) -> None:
+        """estimated=False: the dollars come from measured usage (e.g. tokens the API reported) at list price."""
         with self.tx() as db:
             db.execute(
-                "INSERT INTO costs(job_id, provider, item, quantity, usd, estimated, at) "
-                "VALUES (?,?,?,?,?,?,?)",
-                (job_id, provider, item, quantity, usd, int(estimated), time.time()),
+                "INSERT INTO costs(job_id, provider, item, quantity, usd, estimated, at, meta) "
+                "VALUES (?,?,?,?,?,?,?,?)",
+                (job_id, provider, item, quantity, usd, int(estimated), time.time(),
+                 json.dumps(meta) if meta else None),
             )
 
     def spend_since(self, since_ts: float) -> float:

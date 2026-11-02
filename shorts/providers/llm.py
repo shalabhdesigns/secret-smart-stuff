@@ -20,6 +20,7 @@ class LLMResult:
     usd: float
     sources: list[dict] = field(default_factory=list)   # {url, title, cited_text}
     model: str = ""
+    usage: dict = field(default_factory=dict)            # measured tokens + web searches (from the API response)
 
 
 class LLMError(RuntimeError):
@@ -139,7 +140,8 @@ class AnthropicLLM:
                 blocks, continuations = [], 0
                 continue
             usd = self._price(model, usage_total, searches)
-            return LLMResult(text=text, data=data, usd=usd, sources=sources, model=model)
+            return LLMResult(text=text, data=data, usd=usd, sources=sources, model=model,
+                             usage={**usage_total, "web_searches": searches, "model": model})
         raise LLMError(f"Anthropic kept failing: {last}")
 
 
