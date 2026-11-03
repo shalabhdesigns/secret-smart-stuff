@@ -600,6 +600,23 @@ def main(path: str) -> int:
         p.budget.limits.daily_usd = max(p.budget.limits.daily_usd, spent_24h + extra)
         p.state.log(f"owner allowed +${extra:.2f} on today's daily limit for this run")
     # ---- Secret Smart Stuff explainers (the live format) ----
+    if action in ("produce", "daily") and req.get("topic_def") and p.cfg.pipeline.get("series_hold"):
+        # a series is on hold (e.g. a provider ran out of credits): keep this request and the rest, spend nothing
+        held = json.loads(p.state.get_setting("series_held") or "[]")
+        held.append(req)
+        p.state.set_setting("series_held", json.dumps(held))
+        notify.send(p.state, f"⏸ Series on hold: {req.get('topic')} and {len(req.get('then') or [])} after it are "
+                             "saved and will resume when the hold is lifted.", silent=True)
+        print("series on hold; request saved")
+        return 0
+    if action == "series_resume":
+        # lift a hold: start the saved requests again (the first carries the rest in "then")
+        held = json.loads(p.state.get_setting("series_held") or "[]")
+        p.state.set_setting("series_held", "[]")
+        for h in held:
+            chain_next(p, {"then": [{k: v for k, v in h.items() if k != "then"} | {"then": h.get("then") or []}]})
+        print(f"resumed {len(held)} held series")
+        return 0
     if action in ("produce", "daily"):
         chain_next(p, req)          # queue the next video of a series first, so the chain survives a crash
         try:
