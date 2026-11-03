@@ -1,9 +1,17 @@
 {
- "collected_at": "2026-11-02T06:21:28Z",
+ "collected_at": "2026-11-03T06:57:20Z",
  "errors": [
   "@simplethingshistories: ERROR: [youtube:tab] @simplethingshistories: This channel does not have a shorts tab"
  ],
  "all_titles": [
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Microwave Ovens Can Heat Food Unevenly?"
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Some Coins Have Ridged Edges Because of Theft?"
+  },
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Trains Can Use Sand to Stop Their Wheels Slipping?"
@@ -1197,14 +1205,6 @@
    "title": "Did You Know Brick Color Isn’t Paint? 🧱🎨"
   },
   {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Roads Can Be Recycled? 🛣️♻️"
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Rebar Has Teeth-Like Ribs? 🏗️😮"
-  },
-  {
    "channel": "@nameexplain",
    "title": "Why Do Austria & Australia Have Such Similar Names?"
   },
@@ -1746,13 +1746,6 @@
    "multiple": 4.1
   },
   {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Roads Can Be Recycled? 🛣️♻️",
-   "views": 12000,
-   "url": "https://www.youtube.com/shorts/TkMGzDism50",
-   "multiple": 3.9
-  },
-  {
    "channel": "@nameexplain",
    "title": "How Did Canada Get Its Name? #Shorts",
    "views": 32000,
@@ -1820,13 +1813,6 @@
    "title": "Did you know plugs have holes in the prongs for a reason?",
    "views": 9800,
    "url": "https://www.youtube.com/shorts/gdzta-jO0Bs",
-   "multiple": 3.2
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Rebar Has Teeth-Like Ribs? 🏗️😮",
-   "views": 10000,
-   "url": "https://www.youtube.com/shorts/Re6fJlheIyU",
    "multiple": 3.2
   },
   {
@@ -2072,6 +2058,20 @@
    "title": "Did You Know Castles Had Cliff Toilets? 🏰😳",
    "views": 6500,
    "url": "https://www.youtube.com/shorts/MHZ5SF-OyJA",
+   "multiple": 2.1
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Modern Cars Hide Antennas In Shark Fins?",
+   "views": 6500,
+   "url": "https://www.youtube.com/shorts/flpLoTpsF0g",
+   "multiple": 2.1
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Uranium Holds Massive Energy?",
+   "views": 6400,
+   "url": "https://www.youtube.com/shorts/2lZgu-XWi1c",
    "multiple": 2.1
   }
  ]
