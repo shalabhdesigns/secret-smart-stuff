@@ -1,7 +1,7 @@
 # Operations: budgets, schedule, providers. Secrets are NOT here - they come from environment variables.
 mode: dry_run            # dry_run (fake providers, no spend) | live
 
-series_hold: true                  # 4 Nov 2026: ElevenLabs credits ran out mid-series; lift after top-up (then run series_resume)
+series_hold: false                 # 4 Nov 2026: lifted after the ElevenLabs top-up
 daily_paused_until: "2026-11-07"   # owner, 4 Nov 2026: the Ramayana series (2 videos/day) replaces the daily video 4-7 Nov
 
 budget_usd:
