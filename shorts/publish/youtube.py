@@ -266,9 +266,15 @@ def unschedule(video_id: str) -> dict:
 THUMB_URL = "https://www.googleapis.com/upload/youtube/v3/thumbnails/set"
 
 
-def set_thumbnail(video_id: str, image: Path) -> dict:
+def set_thumbnail(video_id: str, image: Path, state=None) -> dict:
     """Custom thumbnail (cover) for a video or Short. YouTube needs a phone-verified channel (and, for Shorts in
-    the feed, the Partner Program); a refusal is returned, never raised, so publishing never depends on it."""
+    the feed, the Partner Program); a refusal is returned, never raised, so publishing never depends on it.
+    After a 429 ("too many thumbnails recently", 2-4 Nov 2026) no attempt is made for 12 h: each refused try seems
+    to keep the limit going."""
+    if state is not None:
+        last = float(state.get_setting("thumb_429_at") or 0)
+        if time.time() - last < 12 * 3600:
+            return {"ok": False, "error": "429 back-off: YouTube's thumbnail limit; retrying later"}
     data = image.read_bytes()
     if len(data) > 2 * 1024 * 1024:
         return {"ok": False, "error": "cover larger than YouTube's 2 MB limit"}
@@ -279,6 +285,8 @@ def set_thumbnail(video_id: str, image: Path) -> dict:
         return {"ok": False, "error": str(e)[:300]}
     if r.status_code == 200:
         return {"ok": True}
+    if r.status_code == 429 and state is not None:
+        state.set_setting("thumb_429_at", str(time.time()))
     return {"ok": False, "error": f"{r.status_code}: {r.text[:300]}"}
 
 
@@ -299,7 +307,7 @@ def retry_thumbnails(state) -> dict:
             cov = Path(tmp) / "cover.jpg"
             if not cov.exists():
                 continue
-            t = set_thumbnail(up["video_id"], cov)
+            t = set_thumbnail(up["video_id"], cov, state)
         state.set_setting(f"thumb:{job}", "set" if t["ok"] else "retry " + t.get("error", "")[:200])
         out[job] = t["ok"]
         if not t["ok"] and "429" in t.get("error", ""):

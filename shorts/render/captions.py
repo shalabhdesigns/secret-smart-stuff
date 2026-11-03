@@ -56,7 +56,8 @@ def write_ass(words: list[Word], out: Path, font: str = "Inter", font_size: int 
               primary: str = "&H00FFFFFF", highlight: str = "&H0000E5FF",
               y_center: int = 1180, uppercase: bool = True,
               overlays: list[tuple[float, float, str]] | None = None,
-              handle: tuple[float, float, str] | None = None) -> Path:
+              handle: tuple[float, float, str] | None = None,
+              hook: tuple[list[str], float] | None = None) -> Path:
     """Write an .ass subtitle file.
 
     The word being spoken is highlighted (karaoke style) - a common retention
@@ -77,6 +78,12 @@ def write_ass(words: list[Word], out: Path, font: str = "Inter", font_size: int 
         f"Style: Handle,{font},38,&H40FFFFFF,&H40FFFFFF,&H80000000,&H00000000,"
         "-1,0,0,0,100,100,1,0,1,2,0,8,60,60,272,1"
     )
+    # opening hook (owner, 4 Nov 2026: the first frame is what the feed shows): the cover's 1-2 lines in the brand's
+    # boxes, on screen from frame 0 to ~1.8 s and again in the last 0.7 s, so the loop's first and last frames match
+    style_hooks = [
+        f"Style: HookA,{font},84,&H00FFFFFF,&H00FFFFFF,&H00FF3B1F,&H00FF3B1F,-1,0,0,0,100,100,0,0,3,22,0,5,40,40,0,1",
+        f"Style: HookB,{font},84,&H00FF3B1F,&H00FF3B1F,&H00E0D6FF,&H00E0D6FF,-1,0,0,0,100,100,0,0,3,22,0,5,40,40,0,1",
+    ]
     lines = [
         "[Script Info]",
         "ScriptType: v4.00+",
@@ -92,6 +99,7 @@ def write_ass(words: list[Word], out: Path, font: str = "Inter", font_size: int 
         style_main,
         style_top,
         style_handle,
+        *style_hooks,
         "",
         "[Events]",
         "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text",
@@ -111,6 +119,15 @@ def write_ass(words: list[Word], out: Path, font: str = "Inter", font_size: int 
             )
     for (s, e, text) in overlays or []:
         lines.append(f"Dialogue: 1,{_ts(s)},{_ts(e)},Top,,0,0,0,,{_esc(text)}")
+    if hook and hook[0] and hook[1] > 3:
+        end = hook[1]
+        for i, text in enumerate([t for t in hook[0] if t][:2]):
+            size = max(48, min(84, int(1480 / max(1, len(text)))))
+            y = 560 + i * 128
+            tag = f"{{\\an5\\pos(540,{y})\\fs{size}}}"
+            st = "HookA" if i == 0 else "HookB"
+            lines.append(f"Dialogue: 3,{_ts(0)},{_ts(1.8)},{st},,0,0,0,,{{\\fad(0,250)}}{tag}{_esc(text)}")
+            lines.append(f"Dialogue: 3,{_ts(max(0, end - 0.7))},{_ts(end)},{st},,0,0,0,,{{\\fad(250,0)}}{tag}{_esc(text)}")
     if handle and handle[1] > handle[0]:
         lines.append(f"Dialogue: 2,{_ts(handle[0])},{_ts(handle[1])},Handle,,0,0,0,,{{\\fad(500,500)}}{_esc(handle[2])}")
     out.write_text("\n".join(lines) + "\n", encoding="utf-8")

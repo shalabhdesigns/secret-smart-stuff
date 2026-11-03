@@ -1,0 +1,17 @@
+# Changes to queued series videos without re-queuing them (read when each video starts). Keys = topic ids.
+# Values are merged into the topic's notes; "angle_add" is appended to the angle. (4 Nov 2026)
+ramayana-zimmer-rahman:
+  angle_add: >-
+    STRICT FACTS (the first attempt was dropped for unsupported claims): use only that this is Hans Zimmer's first
+    Indian film and Zimmer and A.R. Rahman's first collaboration (official). Do not mention Fateh, slides, quotes or
+    how they met. The payoff: why pairing a Hollywood orchestral sound with Indian melody and rhythm fits a story
+    that is both ancient and global - explained with simple, sourced music facts (e.g. ragas vs Western scales).
+ramayana-ai-lipsync:
+  object: a golden ornate royal crown floating in darkness with a glowing blue digital wireframe mesh over half of it
+  angle_add: >-
+    OPENING PICTURE (beat 1 and the final beat) replaces the earlier one: an ornate golden royal crown floating in
+    darkness, its left half overlaid with a glowing blue digital wireframe mesh - epic and digital in one image.
+ramayana-imax:
+  angle_add: >-
+    OPENING PICTURE (beat 1 and the final beat) replaces the earlier one: a giant, very tall curved cinema screen in
+    a dark theatre showing a vast golden island city at night, tiny audience silhouettes in front, no logos.

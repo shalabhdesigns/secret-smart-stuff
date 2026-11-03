@@ -354,6 +354,17 @@ def do_produce(p: Pipeline, req: dict) -> int:
         # a topic written by Claude/the owner (e.g. a news tie-in): create it, then make it like any other
         td = req["topic_def"]
         tid = td["id"]
+        ov_path = ROOT / "config" / "series_overrides.yaml"
+        if ov_path.exists():          # owner/Claude changes to a queued series video, applied at its start
+            import yaml as _yaml
+            ov = ((_yaml.safe_load(ov_path.read_text()) or {}).get(tid)) or {}
+            if ov:
+                notes = dict(td.get("notes") or {})
+                add = ov.pop("angle_add", None)
+                notes.update(ov)
+                if add:
+                    notes["angle"] = (notes.get("angle", "") + " " + add).strip()
+                td = {**td, "notes": notes}
         p.state.upsert_topic(tid, td["title"], notes=json.dumps(td.get("notes") or {}, ensure_ascii=False),
                              pillar=td.get("pillar", "news"), status="shortlisted")
     if req.get("angle") and p.state.get_topic(tid):
@@ -770,7 +781,7 @@ def main(path: str) -> int:
                 except Exception as e:  # noqa: BLE001
                     report.append(f"{job}: cover failed ({e})")
                     continue
-                t = set_thumbnail(r["video_id"], d / "cover.jpg")
+                t = set_thumbnail(r["video_id"], d / "cover.jpg", p.state)
                 p.state.set_setting(f"thumb:{job}", "set" if t["ok"] else "retry " + t.get("error", "")[:200])
                 gh("release", "upload", f"review-{job}", str(d / "cover.jpg"), "--clobber", check=False)
                 ig = p.state.db.execute("SELECT permalink FROM ig_posts WHERE job_id=? AND status IN ('posted','manual')",

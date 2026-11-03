@@ -130,7 +130,8 @@ def render(picture: Path, lines: list[str], out: Path, zone: str | None = None) 
 def make(llm_ask, d: Path, news: bool = False, news_rule: str | None = None) -> dict:
     """Plan + render d/cover.jpg from the job's folder (script.json + its pictures). -> the plan, with "file"."""
     script = json.loads((d / "script.json").read_text())
-    p = plan(llm_ask, script, news, news_rule)
+    early = d / "cover_plan.json"            # made at render time for videos that open with the hook (same words)
+    p = json.loads(early.read_text()) if early.exists() else plan(llm_ask, script, news, news_rule)
     pic = d / f"{p['image']}.png"
     if not pic.exists():
         cands = sorted(d.glob("img*.png"))

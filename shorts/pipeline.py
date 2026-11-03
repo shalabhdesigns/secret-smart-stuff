@@ -1007,7 +1007,22 @@ class Pipeline:
         music = pick_music(job_id, prefer=(json.loads(topic.get("notes") or "{}") or {}).get("music"))
         audio = A.mix_audio(A.AudioPlan(Path(voice["audio"]), music, music_gain_db=-17.0, sfx=sfx,
                                         loop=True), end, d / "mix.wav")
-        ass = write_ass(words, d / "captions.ass", y_center=y_cap,
+        hook = None
+        tie = (json.loads(topic.get("notes") or "{}") or {}).get("news")
+        if tie:      # tie-ins open with the cover's words on screen (owner, 4 Nov 2026)
+            try:
+                from .render import cover as _cover
+                cp = d / "cover_plan.json"
+                if not cp.exists() or json.loads(cp.read_text()).get("script_mtime") != (d / "script.json").stat().st_mtime:
+                    ask = lambda prompt: self._llm(prompt, job_id, "cover", est=0.03, max_tokens=600,  # noqa: E731
+                                                   model=self.cfg.pipeline["providers"]["llm"]["model_script"]).data
+                    plan_ = _cover.plan(ask, json.loads((d / "script.json").read_text()), True, tie.get("cover_rule"))
+                    plan_["script_mtime"] = (d / "script.json").stat().st_mtime
+                    cp.write_text(json.dumps(plan_, ensure_ascii=False))
+                hook = (json.loads(cp.read_text())["lines"], end)
+            except Exception as e:  # noqa: BLE001
+                self.state.log(f"opening hook not made: {e}", "warn", job_id)
+        ass = write_ass(words, d / "captions.ass", y_center=y_cap, hook=hook,
                         font=self.cfg.channel["style"]["caption_font"],
                         font_size=self.cfg.channel["style"]["caption_size"],
                         highlight=ass_colour(self.cfg.channel["style"].get("caption_highlight", "#FFE500")),
@@ -1358,7 +1373,7 @@ class Pipeline:
         cov = Path(job["artifacts"]["package"]["file"]).parent / "cover.jpg"
         if cov.exists() and rec.get("video_id"):
             from .publish.youtube import set_thumbnail
-            t = set_thumbnail(rec["video_id"], cov)
+            t = set_thumbnail(rec["video_id"], cov, self.state)
             self.state.set_setting(f"thumb:{job_id}", "set" if t["ok"] else "retry " + t.get("error", "")[:200])
             self.state.log(f"youtube cover: {'set' if t['ok'] else 'refused: ' + t.get('error', '')}", "info"
                            if t["ok"] else "warn", job_id)
