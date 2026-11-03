@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-02 23:08 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-03 07:13 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Keep the question hook, but make it specific and recognisable in the first 3 seconds (the "whistle", the film being pulled out) instead of a generic "Why does this…" (pattern, n=2)
@@ -16,6 +16,28 @@ Updated 2026-11-02 23:08 UTC. Built from every published video's 48 h and 7 day 
 - News tie-ins: use only with strict picture and wording rules (see owner feedback). Not enough data yet on performance.
 
 ## Per-video analyses
+
+### bread-knife-v1 (48h) — below median
+- 411 views · 43.22% viewed · 7 likes · 0 shares · 0 subs (median views 691, n=5)
+- The bread-knife Short got 411 views, about 59% of the channel median of 691, with weaker retention (43% vs 54%) and half the likes; the Instagram Reel was smaller still (116 views), so the gap looks like a weak-ish topic and hook rather than a platform problem.
+  - ✅ Viewers who stayed watched a fair share: average view duration was 14s against a median of 16s, on a ~32.5s video. That is a modest gap, not a collapse.
+  - ✅ The script is clear and tightly built, with one idea per beat (saw, points, crust, smooth blade skates, gaps in the crumb). Self-review gave accuracy and hook curiosity 4/5, and the loop lead-in gave a loop score of 4/5.
+  - ✅ Comments and shares are 0, the same as the channel median, so engagement did not fall below the usual baseline on those two metrics.
+  - ✅ Instagram gave 1 share and 2 likes from 116 views. The sample is tiny, but the Reel earned a share where YouTube earned none.
+  - ❌ Reach and the engaged-view rate were both below the median. Views were 411 vs 691, and engaged views were 209 vs 407 (about 51% of views vs about 59% at the median). Many viewers left or swiped early.
+  - ❌ Average percentage viewed was 43.22% vs a median of 54.28%, so the video lost more viewers than usual along the way.
+  - ❌ Likes were 7 vs 16 and subscribers gained were 0 vs 1. The video did not convert viewers into fans.
+  - ❌ The hook is a plain question, scored only 38 by the hook heuristic, and takes about 4s to say. It repeats the title and gives no visual or surprising claim, so the swipe decision comes before any payoff.
+  - ❌ The self-review mean was only 3.33. Visual credibility, image-word match, payoff, pacing, rewatch and share were all 3/5, and one image had to be replaced. The 'teeth have a job' beat (b9) is a restatement rather than a new fact, so the middle is a bit repetitive.
+  - ❌ The many carried-over learnings (bus-shelter glass, onigiri wrapper, and review blockers and owner drops from the Japanese knife, drain grate and others) did not produce an above-median result. The list is truncated and there is no retention curve, so I cannot say which lessons helped or hurt. There is no evidence they helped, and none that would justify calling one a 'pattern'.
+  - ❌ Instagram was weaker: 116 views and 102 reach, about 28% of the YouTube views, with an average watch time of about 8s (assuming the value is in milliseconds). That is roughly 25% of the video length vs 43% on YouTube. The Reel audience looks smaller and less patient, which points to the platform rather than the content.
+  - 💡 [hook, hypothesis] Test an opening that states a surprising claim or shows a striking visual in the first 2s (for example, a knife failing to cut a crust) instead of a question that repeats the title.
+  - 💡 [pacing, hypothesis] Shorten the first beat to about 2-3s, and replace the restating beat (b9) with a new fact or a visual proof to keep the middle moving.
+  - 💡 [visuals, hypothesis] Use a close-up showing a smooth blade skating across a crust next to a serrated blade biting in. Image-word match and visual credibility were only 3/5, and this contrast is the core of the explanation.
+  - 💡 [topic, hypothesis] Treat a familiar kitchen-tool 'why' question as a medium-reach topic until more videos are in. A topic score of 77 did not give an above-median result, so do not over-trust the score.
+  - 💡 [story, hypothesis] Make the payoff a concrete, countable detail (for example, a visible 'each tooth takes a small share' demonstration) rather than a general moral, to lift share and rewatch scores that sat at 3/5.
+  - 💡 [length, hypothesis] Stay near 30s but check whether cutting to about 25s raises the viewed percentage. Average viewed percentage was 43% vs a median of 54%.
+  - 💡 [captions, hypothesis] Make sure retention data is captured at 48h. Without the per-beat curve, drop points cannot be tied to specific beats.
 
 ### indian-stainless-steel-tiffin-box-v1 (48h) — above median
 - 1272 views · 54.96% viewed · 16 likes · 0 shares · 2 subs (median views 346.0, n=4)
