@@ -45,7 +45,7 @@ NEWS_RULE = ("This video is a news tie-in about the Learjet crash in Florida: th
              "show or describe a crash, or suggest what caused it. The science is the hook, e.g. 'MAYDAY = ?'.\n")
 
 
-def plan(llm_ask, script: dict, news: bool = False) -> dict:
+def plan(llm_ask, script: dict, news: bool = False, news_rule: str | None = None) -> dict:
     """llm_ask(prompt) -> dict. Falls back to the hook picture and the script's thumb_text."""
     scenes = script.get("scenes") or []
     imgs = sorted({s.get("image") for s in scenes if s.get("image")})
@@ -55,7 +55,7 @@ def plan(llm_ask, script: dict, news: bool = False) -> dict:
                 "lines": [str(script.get("thumb_text") or script.get("hook_card") or "").upper()][:1], "why": "fallback"}
     try:
         out = llm_ask(PLAN.format(title=script.get("title", ""), beats=beats, images=", ".join(imgs),
-                                  news=NEWS_RULE if news else "")) or {}
+                                  news=((news_rule or NEWS_RULE) + "\n") if news else "")) or {}
         lines = [str(x).strip().upper() for x in (out.get("lines") or []) if str(x).strip()][:2]
         if out.get("image") in imgs and lines and sum(len(x.split()) for x in lines) <= 6:
             return {"image": out["image"], "lines": lines, "why": out.get("why", "")}
@@ -127,10 +127,10 @@ def render(picture: Path, lines: list[str], out: Path, zone: str | None = None) 
     return out
 
 
-def make(llm_ask, d: Path, news: bool = False) -> dict:
+def make(llm_ask, d: Path, news: bool = False, news_rule: str | None = None) -> dict:
     """Plan + render d/cover.jpg from the job's folder (script.json + its pictures). -> the plan, with "file"."""
     script = json.loads((d / "script.json").read_text())
-    p = plan(llm_ask, script, news)
+    p = plan(llm_ask, script, news, news_rule)
     pic = d / f"{p['image']}.png"
     if not pic.exists():
         cands = sorted(d.glob("img*.png"))

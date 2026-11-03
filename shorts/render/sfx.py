@@ -83,9 +83,12 @@ def build_library(folder: Path | None = None) -> dict[str, Path]:
     return {f.stem: f for f in sorted(lib_dir.glob("*.mp3"))} if lib_dir.exists() else {}
 
 
-def pick_music(job_id: str) -> Path | None:
+def pick_music(job_id: str, prefer: str | None = None) -> Path | None:
     folder = ASSETS / "music"
+    if prefer and (folder / f"{prefer}.mp3").exists():
+        return folder / f"{prefer}.mp3"
     tracks = sorted(folder.glob("*.mp3")) + sorted(folder.glob("*.wav")) if folder.exists() else []
+    tracks = [t for t in tracks if not t.stem.startswith("series_")]     # series beds only when asked for
     if not tracks:
         return None
     i = int(hashlib.md5(job_id.encode()).hexdigest(), 16) % len(tracks)

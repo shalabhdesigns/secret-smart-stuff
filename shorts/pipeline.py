@@ -330,8 +330,11 @@ class Pipeline:
                                  min_sources=r_["min_sources_main_claim"])
         if idea.get("news"):
             n = idea["news"]
-            prompt += P.NEWS.format(news_facts=n["facts"], news_name=n.get("name", "the news event"),
-                                    news_tags=" ".join(n.get("tags", [])))
+            if n.get("rules"):          # a tie-in with its own rules (e.g. a film release, 4 Nov 2026)
+                prompt += "\n\n" + n["rules"].replace("{facts}", n["facts"]).replace("{tags}", " ".join(n.get("tags", [])))
+            else:
+                prompt += P.NEWS.format(news_facts=n["facts"], news_name=n.get("name", "the news event"),
+                                        news_tags=" ".join(n.get("tags", [])))
         from . import carry
         ctx, applied = carry.for_script(self.state)     # build on every earlier video (owner's standing rule)
         prompt += ctx
@@ -1001,7 +1004,7 @@ class Pipeline:
         video = render_beats(beats, end, d / "video.mp4", self.pal, caption_y=y_cap)
         lib = build_library()
         sfx = [(lib[name], max(0.0, t), gain) for name, t, gain in sfx_events if name in lib]
-        music = pick_music(job_id)
+        music = pick_music(job_id, prefer=(json.loads(topic.get("notes") or "{}") or {}).get("music"))
         audio = A.mix_audio(A.AudioPlan(Path(voice["audio"]), music, music_gain_db=-17.0, sfx=sfx,
                                         loop=True), end, d / "mix.wav")
         ass = write_ass(words, d / "captions.ass", y_center=y_cap,
@@ -1065,7 +1068,7 @@ class Pipeline:
             ask = lambda prompt: self._llm(prompt, job_id, "cover", est=0.03,  # noqa: E731
                                            model=self.cfg.pipeline["providers"]["llm"]["model_script"],
                                            max_tokens=600).data
-            cp = cover.make(ask, d, news=bool(news))
+            cp = cover.make(ask, d, news=bool(news), news_rule=(news or {}).get("cover_rule"))
             meta["cover"] = {"file": "cover.jpg", "lines": cp["lines"], "image": cp["image"]}
         except Exception as e:  # noqa: BLE001 - a missing cover never blocks a video
             self.state.log(f"cover not made: {e}", "warn", job_id)
@@ -1159,7 +1162,7 @@ class Pipeline:
                                       facts=json.dumps(script.get("facts", []), ensure_ascii=False)[:3000],
                                       review=json.dumps(rv.get("problems", []), ensure_ascii=False)[:2000],
                                       flags=json.dumps(flags, ensure_ascii=False)[:1500], qa=qa_s, previous=prev)
-                      + (P.NEWS_CRITIC if self._news(job_id) else ""),
+                      + (((self._news(job_id) or {}).get("critic_rules") or P.NEWS_CRITIC) if self._news(job_id) else ""),
                       job_id, f"critic{round_}", est=0.06, images=[sheet, pair],
                       model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=3000)
         c = r.data or {}

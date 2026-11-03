@@ -138,8 +138,16 @@ def record_features(p: Pipeline, job: str) -> tuple[str, str]:
     script = json.loads((d / "script.json").read_text())
     if p._news(job):
         # news tie-in (owner, 2 Nov 2026): publish as soon as ready, at least an hour after the previous news video;
-        # not part of the publish-time experiment
-        slot, when = "news", news_publish_time(p.state)
+        # not part of the publish-time experiment. A series can fix each video's time ("publish_at", 4 Nov 2026):
+        # used if it is still at least 20 minutes away, otherwise as soon as possible.
+        slot = "news"
+        want = (p._news(job) or {}).get("publish_at")
+        import datetime as _dt
+        if want and _dt.datetime.fromisoformat(want.replace("Z", "+00:00")).timestamp() > time.time() + 20 * 60:
+            when = want
+            p.state.set_setting("news_last_publish", want)
+        else:
+            when = news_publish_time(p.state)
     else:
         slot = X.slot_for(p.state, job)
         when = X.next_publish_time(p.state, slot, margin_minutes=30)
@@ -300,6 +308,10 @@ def do_produce(p: Pipeline, req: dict) -> int:
     if req.get("action") == "daily":
         # one video a day: two triggers (GitHub's schedule and the Worker's timer) may both fire
         today = time.strftime("%Y-%m-%d", time.gmtime(time.time() + 5.5 * 3600))     # IST day
+        pause = str(p.cfg.pipeline.get("daily_paused_until") or "")
+        if pause and today <= pause:
+            print(f"daily video paused until {pause} (owner: a special series runs instead)")
+            return 0
         if p.state.get_setting("last_daily_ist") == today:
             print(f"daily run already done for {today}; skipping")
             return 0
@@ -737,7 +749,7 @@ def main(path: str) -> int:
                 try:
                     ask = lambda prompt: p._llm(prompt, None, "cover", est=0.03, max_tokens=600,  # noqa: E731
                                                 model=p.cfg.pipeline["providers"]["llm"]["model_script"]).data
-                    cp = cover.make(ask, d, news=bool(p._news(job)))
+                    cp = cover.make(ask, d, news=bool(p._news(job)), news_rule=(p._news(job) or {}).get("cover_rule"))
                 except Exception as e:  # noqa: BLE001
                     report.append(f"{job}: cover failed ({e})")
                     continue

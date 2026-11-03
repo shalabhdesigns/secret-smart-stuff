@@ -27,6 +27,13 @@ BEDS = {
                   "steady loopable groove, no vocals",
     "quirky_funk": "Quirky light funk instrumental, muted guitar, bouncy bass, finger snaps, 104 BPM, fun, "
                    "steady loopable groove, no vocals",
+    # series beds (4 Nov 2026, Ramayana film series): used only when a topic asks for them (notes["music"])
+    "series_epic_indian": "Original cinematic Indian epic instrumental: low strings, bansuri flute motif, tabla and "
+                          "dhol pulse, soft choir pad, 92 BPM, majestic but restrained so a voice sits on top, "
+                          "steady loopable groove, no big climax, no vocals",
+    "series_epic_tech": "Original cinematic instrumental for a behind-the-scenes film-technology story: pulsing synth "
+                        "arpeggio with tabla and low strings, light bansuri accents, 100 BPM, modern and wondrous, "
+                        "steady loopable groove, no big climax, no vocals",
 }
 
 
