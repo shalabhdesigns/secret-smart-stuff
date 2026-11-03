@@ -190,6 +190,15 @@ async function telegram(req, env) {
         reply_markup: { inline_keyboard: [[{ text: "⏳ Stopping…", callback_data: "noop:x" }]] } });
       return ack(env, cq, "Stopping. I'll confirm in a minute.");
     }
+    if (kind === "L1" || kind === "L2") {
+      // owner raises the spending limit that paused this video, and it finishes (4 Nov 2026)
+      const usd = kind === "L1" ? 1 : 2;
+      const err = await dispatch(env, { action: "raise_limit", job, usd });
+      if (err) return ack(env, cq, "Could not start: " + err, true);
+      await tg(env, "editMessageReplyMarkup", { chat_id: chat, message_id: msg.message_id,
+        reply_markup: { inline_keyboard: [[{ text: `⏳ +$${usd}, finishing…`, callback_data: "noop:x" }]] } });
+      return ack(env, cq, `Limit raised by $${usd}. Finishing the video.`);
+    }
     if (kind === "P") {
       // the owner posted the Reel by hand (Instagram API down): never auto-post this video later
       await env.KV.put(`stop:${job}`, "1", { expirationTtl: 30 * 86400 });

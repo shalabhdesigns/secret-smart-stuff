@@ -38,9 +38,13 @@ class Budget:
 
     def remaining(self, job_id: str | None = None) -> dict:
         now = time.time()
-        day = self.limits.daily_usd - self.state.spend_since(_ist_day_start(now))
-        month = self.limits.monthly_usd - self.state.spend_since(_month_start(now))
+        ist_day = time.strftime("%Y-%m-%d", time.gmtime(now + 5.5 * 3600))
+        month_key = time.strftime("%Y-%m", time.gmtime(now))
+        extra = lambda k: float(self.state.get_setting(k) or 0)   # noqa: E731 - owner raised it in Telegram
+        day = self.limits.daily_usd + extra(f"day_extra:{ist_day}") - self.state.spend_since(_ist_day_start(now))
+        month = self.limits.monthly_usd + extra(f"month_extra:{month_key}") - self.state.spend_since(_month_start(now))
         cap = float((self.limits.per_video_override or {}).get(job_id or "", self.limits.per_video_usd))
+        cap += extra(f"video_extra:{job_id}") if job_id else 0.0
         video = cap - (self.state.job_cost(job_id) if job_id else 0.0)
         return {"day": day, "month": month, "video": video}
 

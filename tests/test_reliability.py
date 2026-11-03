@@ -176,3 +176,17 @@ def test_series_resume_keeps_the_rest_of_the_chain(tmp_path, monkeypatch, capsys
     rc.chain_next(None, {"then": [{k: v for k, v in h.items() if k != "then"}] + list(h.get("then") or [])})
     out = capsys.readouterr().out
     assert '"topic": "v5"' in out and '"then": [{"topic": "v6"}, {"topic": "v7"}]' in out
+
+
+def test_owner_raised_limits_from_telegram(tmp_path):
+    from shorts.budget import Budget, Limits
+    from shorts.state import State
+    import time as _t
+    st = State(tmp_path / "s.db")
+    b = Budget(st, Limits(6.0, 50.0, 2.0, {}))
+    st.set_setting("video_extra:v1", "2.0")
+    st.set_setting("day_extra:" + _t.strftime("%Y-%m-%d", _t.gmtime(_t.time() + 5.5 * 3600)), "1.5")
+    st.set_setting("month_extra:" + _t.strftime("%Y-%m", _t.gmtime()), "3")
+    r = b.remaining("v1")
+    assert abs(r["video"] - 4.0) < 1e-9 and abs(r["day"] - 7.5) < 1e-9 and abs(r["month"] - 53.0) < 1e-9
+    assert abs(b.remaining("v2")["video"] - 2.0) < 1e-9                      # only that video

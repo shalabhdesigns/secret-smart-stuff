@@ -91,6 +91,17 @@ def preserve_media(p: Pipeline) -> None:
             subprocess.run([str(ROOT / "scripts" / "open_review.sh"), jj["id"]], check=False)
 
 
+def limit_buttons(job: str) -> list:
+    """Owner (4 Nov 2026): raise the limit that stopped a video, and finish it, from Telegram."""
+    return [[("➕ $1 and finish", f"L1:{job}"), ("➕ $2 and finish", f"L2:{job}")], [("🗑 Drop", f"d:{job}")]]
+
+
+def paused_note(p: Pipeline, job: str, why: str) -> None:
+    notify.send(p.state, f"⏸ {notify.esc(job)} is paused by a spending limit: {notify.esc(why[:220])}\n\n"
+                         "Nothing was published. Tap to raise that limit and finish it now, or drop it.",
+                buttons=limit_buttons(job))
+
+
 def chain_next(p: Pipeline, req: dict) -> None:
     """A series of videos (e.g. the Learjet news set): this request carries the rest in "then". Dispatch the next one
     now; GitHub queues it behind this run (same concurrency group), so the series runs on its own, one video at a
@@ -406,8 +417,7 @@ def do_produce(p: Pipeline, req: dict) -> int:
             # not a failed video: keep it, tell the owner, finish it when money allows (never publish it unreviewed)
             preserve_media(p)                                   # keep the paid-for media for the next run
             p.state.set_job_status(job, "paused", c["summary"][:300])
-            notify.send(p.state, f"⏸ {job} is paused: a spending limit stopped its fix ({notify.esc(c['summary'][:200])}). "
-                                 "Nothing was published. Raise the limit or tell me to drop it.")
+            paused_note(p, job, c["summary"])
             return 0
         reason = f"self-review: {c.get('summary', '')}"[:400]
         keep_rejected(job)
@@ -432,7 +442,7 @@ def do_produce(p: Pipeline, req: dict) -> int:
         send_for_review(p, job)
         return 0
     if j["status"] == "paused":
-        notify.send(p.state, f"⏸ {job} paused: a budget limit was reached. It finishes automatically on the next run.")
+        paused_note(p, job, j.get("error") or "budget limit")
         return 0
     report_failure(p, job)
     return 1
@@ -798,6 +808,25 @@ def main(path: str) -> int:
         gh("issue", "create", "--title", "Covers backfill", "--body", msg, check=False)
         print(msg)
         return 0
+    if action == "raise_limit":
+        # owner tapped "➕ $N and finish" in Telegram: raise whichever limit stopped this video, then finish it
+        job, add = req.get("job", ""), min(5.0, max(0.0, float(req.get("usd", 1))))
+        j = p.state.get_job(job) if JOB_RE.fullmatch(job) else None
+        if not j:
+            return 1
+        ev = p.state.db.execute("SELECT message FROM events WHERE job_id=? AND message LIKE 'budget stop:%' "
+                                "ORDER BY rowid DESC LIMIT 1", (job,)).fetchone()
+        scope = next((sc for sc in ("video", "day", "month") if ev and f"{sc} left" in ev["message"]), "video")
+        key = {"video": f"video_extra:{job}",
+               "day": "day_extra:" + time.strftime("%Y-%m-%d", time.gmtime(time.time() + 5.5 * 3600)),
+               "month": "month_extra:" + time.strftime("%Y-%m", time.gmtime())}[scope]
+        p.state.set_setting(key, str(float(p.state.get_setting(key) or 0) + add))
+        p.state.add_feedback(job, "limit", f"owner raised the {scope} limit by ${add:.2f}")
+        notify.send(p.state, f"✅ {scope.capitalize()} limit raised by ${add:.2f}. Finishing {notify.esc(job)} now.",
+                    silent=True)
+        f = Path(tempfile.mkstemp(suffix=".json")[1])
+        f.write_text(json.dumps({"action": "finish", "job": job, "rounds": 2}))
+        return main(str(f))
     if action == "finish":
         # resume a video whose final review/fix was stopped (e.g. by a budget limit): review, fix, then the normal
         # path - publish in auto mode if it passes, drop it if it fails, pause again if a limit stops it
@@ -820,7 +849,7 @@ def main(path: str) -> int:
             j = p.state.get_job(job)
             if j["status"] != "review" or j["error"]:
                 if j["status"] == "paused":
-                    notify.send(p.state, f"⏸ {job} is paused by a spending limit while rebuilding.")
+                    paused_note(p, job, j.get("error") or "while rebuilding")
                     return 0
                 report_failure(p, job)
                 return 1
@@ -837,7 +866,7 @@ def main(path: str) -> int:
         if c.get("budget_stop"):
             preserve_media(p)                                   # keep the paid-for media for the next run
             p.state.set_job_status(job, "paused", c["summary"][:300])
-            notify.send(p.state, f"⏸ {job} is still paused by a spending limit ({notify.esc(c['summary'][:200])}).")
+            paused_note(p, job, c["summary"])
             return 0
         reason = f"self-review: {c.get('summary', '')}"[:400]
         keep_rejected(job)

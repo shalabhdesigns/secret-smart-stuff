@@ -1,0 +1,33 @@
+# Redeploys the studio Worker (Telegram buttons, dashboard, timers) without waiting behind videos being made
+# (command.yml shares one queue with production). Reads the state database, never saves it. (4 Nov 2026)
+name: deploy-worker
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["worker/index.js", "scripts/deploy_worker.py"]
+concurrency: { group: deploy-worker, cancel-in-progress: false }
+permissions: { contents: read }
+jobs:
+  deploy:
+    if: vars.SHORTS_MODE == 'live'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      SHORTS_MODE: live
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      GH_DISPATCH_TOKEN: ${{ secrets.GH_DISPATCH_TOKEN }}
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      IG_APP_SECRET: ${{ secrets.IG_APP_SECRET }}
+    steps:
+      - uses: actions/checkout@v5
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -q -r requirements.txt
+      - run: scripts/state_sync.sh pull
+      - run: node worker/test.mjs
+      - run: python scripts/deploy_worker.py

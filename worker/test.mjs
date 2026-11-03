@@ -248,4 +248,12 @@ assert.equal(r.status, 200);
 assert.equal((await worker.fetch(new Request("https://x/dash/refresh", { method: "POST", headers: { cookie } }), env)).status, 200);
 assert.ok(calls[calls.length - 1].url.endsWith("/actions/workflows/analytics.yml/dispatches"));
 assert.equal((await worker.fetch(new Request("https://x/dash/refresh", { method: "POST", headers: { cookie } }), env)).status, 429);
+// spending-limit buttons: one tap raises the limit and finishes the video
+{
+  const before = gh().length;
+  await worker.fetch(new Request("https://x/tg", { method: "POST", headers: { "x-telegram-bot-api-secret-token": env.TG_SECRET },
+    body: JSON.stringify({ callback_query: { id: "c9", from: { id: Number(env.OWNER_ID) }, data: "L2:ramayana-imax-v1", message: { message_id: 7 } } }) }), env);
+  assert.equal(gh().length, before + 1);
+  assert.deepEqual({ a: lastReq().action, j: lastReq().job, u: lastReq().usd }, { a: "raise_limit", j: "ramayana-imax-v1", u: 2 });
+}
 console.log("worker tests passed");
