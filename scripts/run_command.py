@@ -614,7 +614,7 @@ def main(path: str) -> int:
         held = json.loads(p.state.get_setting("series_held") or "[]")
         p.state.set_setting("series_held", "[]")
         for h in held:
-            chain_next(p, {"then": [{k: v for k, v in h.items() if k != "then"} | {"then": h.get("then") or []}]})
+            chain_next(p, {"then": [{k: v for k, v in h.items() if k != "then"}] + list(h.get("then") or [])})
         print(f"resumed {len(held)} held series")
         return 0
     if action in ("produce", "daily"):

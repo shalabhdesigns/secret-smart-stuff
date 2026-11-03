@@ -165,3 +165,14 @@ def test_series_queues_the_next_video_with_the_rest(tmp_path, monkeypatch, capsy
     assert '"topic": "b"' in out and '"then": [{"topic": "c"}]' in out
     rc.chain_next(None, {"action": "produce", "topic": "c", "then": []})       # last one: nothing queued
     assert capsys.readouterr().out == ""
+
+
+def test_series_resume_keeps_the_rest_of_the_chain(tmp_path, monkeypatch, capsys):
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("rc3", ROOT / "scripts" / "run_command.py")
+    rc = importlib.util.module_from_spec(spec); spec.loader.exec_module(rc)
+    monkeypatch.setenv("SHORTS_NO_GITHUB", "1")
+    h = {"action": "produce", "topic": "v5", "then": [{"topic": "v6"}, {"topic": "v7"}]}
+    rc.chain_next(None, {"then": [{k: v for k, v in h.items() if k != "then"}] + list(h.get("then") or [])})
+    out = capsys.readouterr().out
+    assert '"topic": "v5"' in out and '"then": [{"topic": "v6"}, {"topic": "v7"}]' in out
