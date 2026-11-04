@@ -217,3 +217,14 @@ def test_picture_failing_text_check_twice_is_retired(pipe, tmp_path):
     (d / "critique.json").write_text(json.dumps(hist))
     note = pipe.fix_note({"blocking": [], "hard_flags": ["BLOCKING img2: logo"]}, "x-v1")
     assert "img2 failed the automatic text/logo check twice" in note
+
+
+def test_malformed_arrow_and_markers_are_tidied():
+    from shorts.pipeline import Pipeline
+    s = {"scenes": [{"id": "b1", "arrow": "WHY SO MANY ROWS?", "markers": ["the gate", {"label": "2", "target": "lamps"}]},
+                    {"id": "b2", "arrow": {"from": "a", "to": "b"}, "markers": "x", "callout": {"t": 1}}]}
+    Pipeline._tidy_scenes(s)
+    assert s["scenes"][0]["arrow"] is None
+    assert s["scenes"][0]["markers"] == [{"label": "1", "target": "the gate"}, {"label": "2", "target": "lamps"}]
+    assert s["scenes"][1]["arrow"] == {"from": "a", "to": "b"} and s["scenes"][1]["markers"][0]["target"] == "x"
+    assert s["scenes"][1]["callout"] is None

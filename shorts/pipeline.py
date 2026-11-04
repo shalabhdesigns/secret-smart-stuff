@@ -238,7 +238,10 @@ class Pipeline:
                 n = self.state.bump_attempt(job_id)
                 status = "failed" if n < self.cfg.pipeline["retries"]["max_attempts"] else "review"
                 self.state.set_job_status(job_id, status, f"{stage}: {e}")
-                self.state.log(f"stage {stage} failed (attempt {n}): {e}", "error", job_id)
+                import traceback
+                where = " <- ".join(f"{Path(f.filename).name}:{f.lineno} {f.name}"
+                                    for f in reversed(traceback.extract_tb(e.__traceback__)[-4:]))
+                self.state.log(f"stage {stage} failed (attempt {n}): {e} [{where}]", "error", job_id)
                 return job_id
         self.state.set_job_status(job_id, "review")
         return job_id
@@ -576,8 +579,38 @@ class Pipeline:
                 "duration": words[-1]["end"] if words else 0, "reused": True}
 
     # ---- E (part 1): images + vision check + focus boxes
+    @staticmethod
+    def _tidy_scenes(script: dict) -> dict:
+        """A fix sometimes writes an arrow or markers in the wrong shape (4 Nov 2026, Diwali: a pointer written as a
+        plain string crashed the visuals stage with "'str' object has no attribute 'get'" and the video was dropped).
+        Wrong shapes are repaired or removed; the words and pictures are untouched."""
+        for sc in script.get("scenes") or []:
+            if not isinstance(sc, dict):
+                continue
+            a = sc.get("arrow")
+            if a is not None and not (isinstance(a, dict) and a.get("from") and a.get("to")):
+                sc["arrow"] = None
+            m = sc.get("markers")
+            if m is not None:
+                if not isinstance(m, list):
+                    m = [m]
+                fixed = []
+                for i, x in enumerate(m):
+                    if isinstance(x, dict) and x.get("target"):
+                        fixed.append(x)
+                    elif isinstance(x, str) and x.strip():
+                        fixed.append({"label": str(i + 1), "target": x.strip()})
+                sc["markers"] = fixed or None
+            for k in ("callout", "pop", "focus"):
+                if sc.get(k) is not None and not isinstance(sc[k], str):
+                    sc[k] = None
+        return script
+
     def _stage_visuals(self, job_id: str, topic: dict, d: Path) -> dict:
         script = json.loads((d / "script.json").read_text())
+        before = json.dumps(script, sort_keys=True)
+        if json.dumps(self._tidy_scenes(script), sort_keys=True) != before:
+            (d / "script.json").write_text(json.dumps(script, indent=2, ensure_ascii=False))
         style = self.cfg.channel["style"]["image_style"]
         rng = random.Random(job_id)
         out: dict = {"images": {}, "beats": {}, "flags": []}
@@ -1365,6 +1398,7 @@ class Pipeline:
                 raise StageFailed("the fix could not be applied (no script returned)")
             fx["_revised"] = True
             fx["hook_scores"] = [hook_score(h) for h in fx.get("hooks", [])]
+            self._tidy_scenes(fx)
             try:
                 self._validate_script(fx)
             except StageFailed as e:
@@ -1381,6 +1415,7 @@ class Pipeline:
                     raise StageFailed(f"the fix broke a rule and could not be repaired ({e})") from e
                 rp["_revised"] = True
                 rp["hook_scores"] = [hook_score(h) for h in rp.get("hooks", [])]
+                self._tidy_scenes(rp)
                 self._validate_script(rp)
                 fx = rp
             (d / "script.json").write_text(json.dumps(fx, indent=2, ensure_ascii=False))
