@@ -207,3 +207,13 @@ def test_day_limit_pause_resumes_next_day_only(tmp_path, monkeypatch):
     st.db.execute("UPDATE jobs SET updated_at=?", (_t.time() - 2 * 86400,)); st.db.commit()
     assert dispatch.resume_paused(st) == ["a-v1"] and sent[0]["action"] == "finish"   # day limit only
     assert dispatch.resume_paused(st) == []                                   # once per day
+
+
+def test_picture_failing_text_check_twice_is_retired(pipe, tmp_path):
+    import json
+    d = pipe.build / "x-v1"
+    d.mkdir(parents=True, exist_ok=True)
+    hist = [{"hard_flags": ["BLOCKING img2: garbled text"]}, {"hard_flags": ["BLOCKING img2: logo"]}]
+    (d / "critique.json").write_text(json.dumps(hist))
+    note = pipe.fix_note({"blocking": [], "hard_flags": ["BLOCKING img2: logo"]}, "x-v1")
+    assert "img2 failed the automatic text/logo check twice" in note

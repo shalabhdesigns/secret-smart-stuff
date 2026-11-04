@@ -1224,6 +1224,20 @@ class Pipeline:
                 for b in h.get("blocking") or []:
                     beats[b.get("beat")] = beats.get(b.get("beat"), 0) + 1
             again = sorted(k for k, n in beats.items() if n >= 2 and k)
+            flagged = {}
+            for h in hist:                      # the automatic text/logo check, per picture
+                for f in h.get("hard_flags") or []:
+                    parts = f.split()
+                    if len(parts) > 1:
+                        flagged[parts[1].rstrip(":")] = flagged.get(parts[1].rstrip(":"), 0) + 1
+            stuck = sorted(k for k, n in flagged.items() if n >= 2)
+            if stuck:
+                # 4 Nov 2026: the camera/monitor pictures of the mocap video kept fake text after two re-draws, and the
+                # video was dropped in its last round. A picture that fails the automatic check twice is retired.
+                items.append(f"RULE: picture(s) {', '.join(stuck)} failed the automatic text/logo check twice; the "
+                             "image model keeps adding fake text there. Do NOT redraw them. Point every beat that used "
+                             "them at another existing picture that passed (a different focus/crop is fine) and reword "
+                             "the line if needed, or cut the beat")
             if again:
                 items.append(f"RULE: the pictures for {', '.join(again)} failed twice; the image model cannot draw them. "
                              "Do NOT ask for a new picture there. Point those beats at an existing picture that "

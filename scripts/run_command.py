@@ -467,6 +467,10 @@ def do_produce(p: Pipeline, req: dict) -> int:
         return 0
     if j["status"] == "rejected" and req.get("topic"):
         use_backup(p, job)                 # dropped at the review gate: the backup takes the slot
+        if p._news(job):
+            # a series video that failed a check is a handled drop, not a crashed run (no failure issue/e-mail)
+            report_failure(p, job)
+            return 0
     report_failure(p, job)
     return 1
 
