@@ -91,6 +91,26 @@ def preserve_media(p: Pipeline) -> None:
             subprocess.run([str(ROOT / "scripts" / "open_review.sh"), jj["id"]], check=False)
 
 
+def use_backup(p: Pipeline, job: str) -> None:
+    """A series video was dropped (owner, 4 Nov 2026: "move on to the next idea"): the next backup idea takes its
+    publish slot at once. Backups live in the state setting "series_backups" (a list of produce requests)."""
+    pool = json.loads(p.state.get_setting("series_backups") or "[]")
+    tie = p._news(job) if p.state.get_job(job) else None
+    if not tie or not pool:
+        if tie:
+            notify.send(p.state, f"🔍 {notify.esc(job)} was dropped and no backup idea is left for its slot.")
+        return
+    nxt = pool.pop(0)
+    p.state.set_setting("series_backups", json.dumps(pool))
+    notes = nxt.setdefault("topic_def", {}).setdefault("notes", {})
+    news = dict(notes.get("news") or tie)
+    news["publish_at"] = tie.get("publish_at")            # the dropped video's slot
+    notes["news"] = news
+    chain_next(p, {"then": [nxt]})
+    notify.send(p.state, f"🔁 {notify.esc(job)} was dropped; backup idea \"{notify.esc(nxt['topic_def'].get('title', ''))}\" "
+                         f"is being made for its slot.", silent=True)
+
+
 def limit_buttons(job: str) -> list:
     """Owner (4 Nov 2026): raise the limit that stopped a video, and finish it, from Telegram."""
     return [[("➕ $1 and finish", f"L1:{job}"), ("➕ $2 and finish", f"L2:{job}")], [("🗑 Drop", f"d:{job}")]]
@@ -155,8 +175,7 @@ def record_features(p: Pipeline, job: str) -> tuple[str, str]:
         want = (p._news(job) or {}).get("publish_at")
         import datetime as _dt
         if want and _dt.datetime.fromisoformat(want.replace("Z", "+00:00")).timestamp() > time.time() + 20 * 60:
-            when = want
-            p.state.set_setting("news_last_publish", want)
+            when = want              # a fixed slot doesn't push "as soon as ready" videos behind it
         else:
             when = news_publish_time(p.state)
     else:
@@ -423,6 +442,8 @@ def do_produce(p: Pipeline, req: dict) -> int:
         keep_rejected(job)
         p.decide(job, "reject", reason)
         p.state.log(f"{job} dropped by self-review: {reason}", "warn", job)
+        if req.get("topic"):
+            use_backup(p, job)
         topics_left -= 1
         t = p.next_topic() if topics_left > 0 and not req.get("topic") else None
         if not t:
@@ -444,6 +465,8 @@ def do_produce(p: Pipeline, req: dict) -> int:
     if j["status"] == "paused":
         paused_note(p, job, j.get("error") or "budget limit")
         return 0
+    if j["status"] == "rejected" and req.get("topic"):
+        use_backup(p, job)                 # dropped at the review gate: the backup takes the slot
     report_failure(p, job)
     return 1
 
@@ -621,6 +644,8 @@ def main(path: str) -> int:
         p.budget.limits.daily_usd = max(p.budget.limits.daily_usd, spent_24h + extra)
         p.state.log(f"owner allowed +${extra:.2f} on today's daily limit for this run")
     # ---- Secret Smart Stuff explainers (the live format) ----
+    if req.get("backup_pool") is not None:             # backup ideas for a series (see use_backup)
+        p.state.set_setting("series_backups", json.dumps(req["backup_pool"]))
     if action in ("produce", "daily") and req.get("topic_def") and p.cfg.pipeline.get("series_hold"):
         # a series is on hold (e.g. a provider ran out of credits): keep this request and the rest, spend nothing
         held = json.loads(p.state.get_setting("series_held") or "[]")
@@ -830,7 +855,15 @@ def main(path: str) -> int:
     if action == "finish":
         # resume a video whose final review/fix was stopped (e.g. by a budget limit): review, fix, then the normal
         # path - publish in auto mode if it passes, drop it if it fails, pause again if a limit stops it
+        chain_next(p, req)                  # finish requests can be a series too
         job = req.get("job", "")
+        if "publish_at" in req and JOB_RE.fullmatch(job) and p.state.get_job(job):
+            # a new slot for a series video (null = as soon as it is ready)
+            t = p.state.get_topic(p.state.get_job(job)["topic_id"])
+            notes = json.loads(t.get("notes") or "{}")
+            if notes.get("news") is not None:
+                notes["news"]["publish_at"] = req["publish_at"]
+                p.state.upsert_topic(t["id"], "", notes=json.dumps(notes, ensure_ascii=False))
         j = p.state.get_job(job) if JOB_RE.fullmatch(job) else None
         if j and j["status"] in ("published", "approved", "rejected"):
             print(f"{job} is already {j['status']}; nothing to finish")      # a safety resume that wasn't needed
@@ -873,6 +906,7 @@ def main(path: str) -> int:
         p.decide(job, "reject", reason)
         notify.send(p.state, f"🔍 {job} failed my final check after the fix, so it was dropped: "
                              f"{notify.esc(c.get('summary', '')[:300])}")
+        use_backup(p, job)
         return 0
     if action == "self_review":
         job = req.get("job", "")
