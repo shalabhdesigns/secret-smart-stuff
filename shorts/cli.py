@@ -79,6 +79,7 @@ def main(argv: list[str] | None = None) -> int:
                  ("instagram metrics", lambda: ig.snapshot(p.state)),
                  ("resources + alerts", lambda: __import__("shorts.usage", fromlist=["x"]).check(
                      p.state, notify_fn=lambda t: __import__("shorts.notify", fromlist=["x"]).send(p.state, t))),
+                 ("resume videos paused by yesterday's limit", lambda: __import__("shorts.dispatch", fromlist=["x"]).resume_paused(p.state)),
                  ("youtube live counts", lambda: __import__("shorts.usage", fromlist=["x"]).youtube_live(p.state)),
                  ("instagram account", lambda: __import__("shorts.usage", fromlist=["x"]).instagram_account_day(p.state)),
                  ("youtube covers retry", lambda: __import__("shorts.publish.youtube", fromlist=["x"]).retry_thumbnails(p.state)),

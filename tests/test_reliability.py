@@ -190,3 +190,20 @@ def test_owner_raised_limits_from_telegram(tmp_path):
     r = b.remaining("v1")
     assert abs(r["video"] - 4.0) < 1e-9 and abs(r["day"] - 7.5) < 1e-9 and abs(r["month"] - 53.0) < 1e-9
     assert abs(b.remaining("v2")["video"] - 2.0) < 1e-9                      # only that video
+
+
+def test_day_limit_pause_resumes_next_day_only(tmp_path, monkeypatch):
+    from shorts import dispatch
+    from shorts.state import State
+    import time as _t
+    st = State(tmp_path / "s.db")
+    st.upsert_topic("t", "T")
+    for jid, err in (("a-v1", "script: $0.250 exceeds day remaining $0.05"), ("b-v1", "script: exceeds video remaining")):
+        st.start_job(jid, "t")
+        st.set_job_status(jid, "paused", err)
+    sent = []
+    monkeypatch.setattr(dispatch, "dispatch", lambda r: sent.append(r) or True)
+    assert dispatch.resume_paused(st) == []                                   # paused today: not yet
+    st.db.execute("UPDATE jobs SET updated_at=?", (_t.time() - 2 * 86400,)); st.db.commit()
+    assert dispatch.resume_paused(st) == ["a-v1"] and sent[0]["action"] == "finish"   # day limit only
+    assert dispatch.resume_paused(st) == []                                   # once per day

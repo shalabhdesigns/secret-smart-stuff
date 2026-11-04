@@ -8,7 +8,7 @@ on:
     - cron: "41 */6 * * *"
   workflow_dispatch:
 concurrency: { group: shorts-state, cancel-in-progress: false, queue: max }
-permissions: { contents: write, issues: write, actions: read }   # actions: run timings (minutes used)
+permissions: { contents: write, issues: write, actions: write }   # actions: run timings (minutes used)
 jobs:
   analytics:
     if: vars.SHORTS_MODE == 'live'
@@ -25,6 +25,7 @@ jobs:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       GH_TOKEN: ${{ github.token }}          # Instagram catch-up posts download the video from its release
+      GH_DISPATCH_TOKEN: ${{ secrets.GH_DISPATCH_TOKEN }}   # restarts videos paused by a day's limit
       ANTHROPIC_ADMIN_KEY: ${{ secrets.ANTHROPIC_ADMIN_KEY }}   # optional: billed Anthropic cost (organisations only)
     steps:
       - uses: actions/checkout@v5
