@@ -884,6 +884,13 @@ def main(path: str) -> int:
                 if j["status"] == "paused":
                     paused_note(p, job, j.get("error") or "while rebuilding")
                     return 0
+                if j["status"] == "rejected":
+                    # the rebuilt script failed the fact gate (4 Nov 2026, Jatayu): a drop, not a crash; the backup
+                    # idea takes its slot
+                    notify.send(p.state, f"🔍 {notify.esc(job)} failed the fact check when rebuilt, so it was dropped: "
+                                         f"{notify.esc((j.get('error') or '')[:300])}")
+                    use_backup(p, job)
+                    return 0
                 report_failure(p, job)
                 return 1
         try:
@@ -907,6 +914,12 @@ def main(path: str) -> int:
         notify.send(p.state, f"🔍 {job} failed my final check after the fix, so it was dropped: "
                              f"{notify.esc(c.get('summary', '')[:300])}")
         use_backup(p, job)
+        return 0
+    if action == "use_backup":
+        # a series video was dropped before the automatic hand-over existed: give its slot to the next backup idea
+        job = req.get("job", "")
+        if JOB_RE.fullmatch(job) and p.state.get_job(job):
+            use_backup(p, job)
         return 0
     if action == "self_review":
         job = req.get("job", "")
