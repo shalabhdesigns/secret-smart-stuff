@@ -37,6 +37,8 @@ Choose:
   an open loop ("IT'S NOT DECOR", "TOO FAST + TOO SLOW", "WHY THE CURL?"). Plain words a 12-year-old gets.
   It MUST be true and paid off by the video. No lies, no promise the video doesn't keep, no fear-mongering, no
   "SHOCKING"/"YOU WON'T BELIEVE". Different words from the title.
+  The words appear ON SCREEN in the first 2 seconds, so they are a claim: they must restate something the narration
+  says outright (no new fact, no stronger version of it). A question is safest when unsure.
 - "why": one sentence.
 Return JSON only: {{"image": "img1", "lines": ["LINE ONE", "LINE TWO"], "why": "..."}}
 """
@@ -45,7 +47,7 @@ NEWS_RULE = ("This video is a news tie-in about the Learjet crash in Florida: th
              "show or describe a crash, or suggest what caused it. The science is the hook, e.g. 'MAYDAY = ?'.\n")
 
 
-def plan(llm_ask, script: dict, news: bool = False, news_rule: str | None = None) -> dict:
+def plan(llm_ask, script: dict, news: bool = False, news_rule: str | None = None, feedback: dict | None = None) -> dict:
     """llm_ask(prompt) -> dict. Falls back to the hook picture and the script's thumb_text."""
     scenes = script.get("scenes") or []
     imgs = sorted({s.get("image") for s in scenes if s.get("image")})
@@ -55,8 +57,12 @@ def plan(llm_ask, script: dict, news: bool = False, news_rule: str | None = None
                 "lines": [str(script.get("thumb_text") or script.get("hook_card") or "").upper()][:1], "why": "fallback"}
     try:
         out = llm_ask(PLAN.format(title=script.get("title", ""), beats=beats, images=", ".join(imgs),
-                                  news=((news_rule or NEWS_RULE) + "\n") if news else "")) or {}
+                                  news=((news_rule or NEWS_RULE) + "\n") if news else "")
+                     + (f"\nThe review REJECTED the words {feedback.get('rejected')}: {feedback.get('why')}\n"
+                        "Choose different words that fix this." if feedback else "")) or {}
         lines = [str(x).strip().upper() for x in (out.get("lines") or []) if str(x).strip()][:2]
+        if feedback and [x.upper() for x in feedback.get("rejected") or []] == lines:
+            lines = []                                             # the same rejected words again: use the fallback
         if out.get("image") in imgs and lines and sum(len(x.split()) for x in lines) <= 6:
             return {"image": out["image"], "lines": lines, "why": out.get("why", "")}
     except Exception:  # noqa: BLE001

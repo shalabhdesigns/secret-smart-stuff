@@ -1016,7 +1016,9 @@ class Pipeline:
                 if not cp.exists() or json.loads(cp.read_text()).get("script_mtime") != (d / "script.json").stat().st_mtime:
                     ask = lambda prompt: self._llm(prompt, job_id, "cover", est=0.03, max_tokens=600,  # noqa: E731
                                                    model=self.cfg.pipeline["providers"]["llm"]["model_script"]).data
-                    plan_ = _cover.plan(ask, json.loads((d / "script.json").read_text()), True, tie.get("cover_rule"))
+                    fb = json.loads((d / "cover_feedback.json").read_text()) if (d / "cover_feedback.json").exists() else None
+                    plan_ = _cover.plan(ask, json.loads((d / "script.json").read_text()), True, tie.get("cover_rule"),
+                                        feedback=fb)
                     plan_["script_mtime"] = (d / "script.json").stat().st_mtime
                     cp.write_text(json.dumps(plan_, ensure_ascii=False))
                 hook = (json.loads(cp.read_text())["lines"], end)
@@ -1232,6 +1234,27 @@ class Pipeline:
                   for f in c.get("hard_flags") or []]
         return " | ".join(items)[:3000]
 
+    @staticmethod
+    def _reset_hook_if_flagged(d: Path, c: dict) -> bool:
+        """The opening words on screen (cover_plan.json) are re-written when the review flags them. Before 5 Nov 2026
+        they were kept unless the script changed, so a flagged 'NEVER BUILT' survived every fix round (Lanka)."""
+        cp = d / "cover_plan.json"
+        if not cp.exists():
+            return False
+        lines = [x.lower() for x in (json.loads(cp.read_text()).get("lines") or [])]
+        texts = [" ".join(str(b.get(k, "")) for k in ("problem", "fix")) for b in (c.get("blocking") or [])]
+        texts.append(str(c.get("summary") or ""))
+        keys = ("overlay", "opening text", "hook text", "on-screen text", "on-screen words", "burned-in", "burnt-in",
+                "title card", "cover words")
+        hits = [t for t in texts if any(k in t.lower() for k in keys) or any(ln and ln in t.lower() for ln in lines)]
+        if not hits:
+            return False
+        old = json.loads(cp.read_text())
+        (d / "cover_feedback.json").write_text(json.dumps({"rejected": old.get("lines"), "why": " | ".join(hits)[:800]},
+                                                          ensure_ascii=False))
+        cp.unlink()
+        return True
+
     def prepare_prior(self, job_id: str, c: dict) -> None:
         """Keep this version's media as `prior` (reused where unchanged); pictures the review called
         out are removed from it so they are generated again even if the prompt stays the same."""
@@ -1244,6 +1267,7 @@ class Pipeline:
         for f in d.iterdir():
             if f.is_file():
                 shutil.copy(f, pr / f.name)
+        self._reset_hook_if_flagged(d, c)
         beats = {b["id"]: b for b in self._beat_frames(d)[0]}
         bad = {beats[b["beat"]]["image"] for b in (c.get("blocking") or []) if b.get("beat") in beats and beats[b["beat"]]["image"]}
         bad |= {f.split()[1].rstrip(":") for f in c.get("hard_flags") or [] if len(f.split()) > 1}

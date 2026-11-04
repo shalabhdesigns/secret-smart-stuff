@@ -57,3 +57,22 @@ def test_news_cover_rules_reach_the_planner(tmp_path):
     d, seen = _job(tmp_path), {}
     cover.make(lambda prompt: seen.setdefault("p", prompt) and None, d, news=True)
     assert "must not mention deaths" in seen["p"]
+
+
+def test_flagged_opening_words_are_replanned(tmp_path):
+    import json
+    from shorts.pipeline import Pipeline
+    from shorts.render import cover
+    (tmp_path / "cover_plan.json").write_text(json.dumps({"image": "img1", "lines": ["NEVER BUILT"]}))
+    c = {"blocking": [{"beat": "b1", "problem": "the burned-in 'NEVER BUILT' overlay is unsupported", "fix": "change it"}]}
+    assert Pipeline._reset_hook_if_flagged(tmp_path, c)
+    assert not (tmp_path / "cover_plan.json").exists()
+    fb = json.loads((tmp_path / "cover_feedback.json").read_text())
+    seen = {}
+    def ask(prompt):
+        seen["p"] = prompt
+        return {"image": "img1", "lines": ["NEVER BUILT"]}        # the model repeats the rejected words
+    script = {"title": "t", "thumb_text": "a city of light", "scenes": [{"id": "b1", "image": "img1", "narration": "x"}]}
+    out = cover.plan(ask, script, True, "rule", feedback=fb)
+    assert "REJECTED" in seen["p"] and out["lines"] != ["NEVER BUILT"]
+    assert not Pipeline._reset_hook_if_flagged(tmp_path, {"blocking": [{"problem": "b3 picture is blurry"}]})

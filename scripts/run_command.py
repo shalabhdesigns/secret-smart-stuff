@@ -850,7 +850,7 @@ def main(path: str) -> int:
         notify.send(p.state, f"✅ {scope.capitalize()} limit raised by ${add:.2f}. Finishing {notify.esc(job)} now.",
                     silent=True)
         f = Path(tempfile.mkstemp(suffix=".json")[1])
-        f.write_text(json.dumps({"action": "finish", "job": job, "rounds": 2}))
+        f.write_text(json.dumps({"action": "finish", "job": job, "rounds": 3}))
         return main(str(f))
     if action == "finish":
         # resume a video whose final review/fix was stopped (e.g. by a budget limit): review, fix, then the normal
@@ -894,7 +894,7 @@ def main(path: str) -> int:
                 report_failure(p, job)
                 return 1
         try:
-            c = self_review(p, job, int(req.get("rounds", 2)))
+            c = self_review(p, job, int(req.get("rounds", 3)))
         except Exception:
             preserve_media(p)
             raise

@@ -35,7 +35,7 @@ def resume_paused(state) -> list[str]:
         key = f"auto_resumed:{j['id']}:{today}"
         if paused_day == today or state.get_setting(key):
             continue
-        if dispatch({"action": "finish", "job": j["id"], "rounds": 2, "nonce": f"auto-{j['id'][:20]}-{today}"}):
+        if dispatch({"action": "finish", "job": j["id"], "rounds": 3, "nonce": f"auto-{j['id'][:20]}-{today}"}):
             state.set_setting(key, "1")
             started.append(j["id"])
     return started
