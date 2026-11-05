@@ -338,6 +338,11 @@ class Pipeline:
             else:
                 prompt += P.NEWS.format(news_facts=n["facts"], news_name=n.get("name", "the news event"),
                                         news_tags=" ".join(n.get("tags", [])))
+        if idea.get("format_rules"):
+            # 5 Nov 2026 (virality batch): each video gets its own structure so the channel doesn't read as one
+            # template (YouTube's "inauthentic content" policy names templated storylines); these win where they differ
+            prompt += ("\n\nFORMAT OVERRIDES FOR THIS VIDEO (they take priority over the format rules above where "
+                       "they differ):\n" + idea["format_rules"])
         from . import carry
         ctx, applied = carry.for_script(self.state)     # build on every earlier video (owner's standing rule)
         prompt += ctx
@@ -476,7 +481,11 @@ class Pipeline:
             lean = {"title": sc.get("title"),
                     "opening_line": (sc.get("scenes") or [{}])[0].get("narration", ""),
                     "scenes": sc.get("scenes"), "facts": sc.get("facts")}
-            return self._llm(P.REVIEW.format(script=json.dumps(lean, ensure_ascii=False)), job_id, tag,
+            return self._llm(P.REVIEW.format(script=json.dumps(lean, ensure_ascii=False))
+                             + (("\nThis video has its own approved format (judge it against this, not the default "
+                                 "question-hook template):\n" + json.loads(topic.get("notes") or "{}")["format_rules"])
+                                if (json.loads(topic.get("notes") or "{}") or {}).get("format_rules") else ""),
+                             job_id, tag,
                              est=0.08, web_search=True, model=rv_model, max_tokens=8000).data or {}
 
         rv = review(script, "review")
@@ -1081,6 +1090,12 @@ class Pipeline:
             raise StageFailed("media QA failed: " + "; ".join(c.detail for c in rep.checks if not c.ok and c.hard))
         return {"file": str(d / "qa.json"), "passed": True, "image_flags": flags}
 
+    def _topic_note(self, job_id: str, key: str) -> str:
+        j = self.state.get_job(job_id)
+        t = self.state.get_topic(j["topic_id"]) if j else None
+        v = (json.loads((t or {}).get("notes") or "{}") or {}).get(key)
+        return ("\n" + v) if isinstance(v, str) and v.strip() else ""
+
     def _news(self, job_id: str) -> dict | None:
         j = self.state.get_job(job_id)
         t = self.state.get_topic(j["topic_id"]) if j else None
@@ -1214,7 +1229,8 @@ class Pipeline:
                                       facts=json.dumps(script.get("facts", []), ensure_ascii=False)[:3000],
                                       review=json.dumps(rv.get("problems", []), ensure_ascii=False)[:2000],
                                       flags=json.dumps(flags, ensure_ascii=False)[:1500], qa=qa_s, previous=prev)
-                      + (((self._news(job_id) or {}).get("critic_rules") or P.NEWS_CRITIC) if self._news(job_id) else ""),
+                      + (((self._news(job_id) or {}).get("critic_rules") or P.NEWS_CRITIC) if self._news(job_id) else "")
+                      + self._topic_note(job_id, "critic_rules"),
                       job_id, f"critic{round_}", est=0.06, images=[sheet, pair],
                       model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=3000)
         c = r.data or {}
