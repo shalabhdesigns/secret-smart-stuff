@@ -1041,8 +1041,9 @@ class Pipeline:
         audio = A.mix_audio(A.AudioPlan(Path(voice["audio"]), music, music_gain_db=-17.0, sfx=sfx,
                                         loop=True), end, d / "mix.wav")
         hook = None
-        tie = (json.loads(topic.get("notes") or "{}") or {}).get("news")
-        if tie:      # tie-ins open with the cover's words on screen (owner, 4 Nov 2026)
+        tnotes = json.loads(topic.get("notes") or "{}") or {}
+        tie = tnotes.get("news") or ({"cover_rule": None} if tnotes.get("open_hook") else None)
+        if tie:      # tie-ins (and any topic with notes.open_hook) open with the cover's words on screen (4-5 Nov 2026)
             try:
                 from .render import cover as _cover
                 cp = d / "cover_plan.json"
@@ -1050,7 +1051,8 @@ class Pipeline:
                     ask = lambda prompt: self._llm(prompt, job_id, "cover", est=0.03, max_tokens=600,  # noqa: E731
                                                    model=self.cfg.pipeline["providers"]["llm"]["model_script"]).data
                     fb = json.loads((d / "cover_feedback.json").read_text()) if (d / "cover_feedback.json").exists() else None
-                    plan_ = _cover.plan(ask, json.loads((d / "script.json").read_text()), True, tie.get("cover_rule"),
+                    plan_ = _cover.plan(ask, json.loads((d / "script.json").read_text()), bool(tnotes.get("news")),
+                                        tie.get("cover_rule"),
                                         feedback=fb)
                     plan_["script_mtime"] = (d / "script.json").stat().st_mtime
                     cp.write_text(json.dumps(plan_, ensure_ascii=False))

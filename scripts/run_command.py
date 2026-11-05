@@ -181,6 +181,13 @@ def record_features(p: Pipeline, job: str) -> tuple[str, str]:
     else:
         slot = X.slot_for(p.state, job)
         when = X.next_publish_time(p.state, slot, margin_minutes=30)
+        fixed = (json.loads((p.state.get_topic(j["topic_id"]) or {}).get("notes") or "{}") or {}).get("publish_at")
+        import datetime as _dt
+        if fixed and _dt.datetime.fromisoformat(fixed.replace("Z", "+00:00")).timestamp() > time.time() + 20 * 60:
+            # a planned batch (5 Nov 2026, the virality batch) fixes each video's day; the slot (time of day) still
+            # comes from the publish-time experiment's arm when the fixed time is on that arm's hour
+            when = fixed
+            slot = fixed[11:16]
     topic = p.state.get_topic(j["topic_id"])
     feats = X.features(script, json.loads((d / "visuals.json").read_text()) if (d / "visuals.json").exists() else {},
                        j["artifacts"].get("render"), topic, p.state.job_cost(job))
