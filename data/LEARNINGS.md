@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-04 20:07 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-05 07:22 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Keep the question hook, but make it specific and recognisable in the first 3 seconds (the "whistle", the film being pulled out) instead of a generic "Why does this…" (pattern, n=2)
@@ -16,6 +16,30 @@ Updated 2026-11-04 20:07 UTC. Built from every published video's 48 h and 7 day 
 - News tie-ins: use only with strict picture and wording rules (see owner feedback). Not enough data yet on performance.
 
 ## Per-video analyses
+
+### learjet-wing-ice-v2 (48h) — at median
+- 1032 views · 126.86999999999999% viewed · 7 likes · 0 shares · 1 subs (median views 1177, n=11)
+- Views at 48h were slightly below the channel median (1,032 vs 1,177), but viewers stayed far longer (average 126.9% viewed vs 55.0%, 49s average view vs 20s), so the loop and pacing worked while reach and likes (7 vs 14) stayed ordinary.
+  - ✅ Retention is far above the channel norm: averageViewPercentage is 126.87 vs a 54.96 median, and averageViewDuration is 49s on a 38.4s video. Many viewers watched it more than once, so the loop lead-in, the short length and the final 'So if someone asks you...' line seem to have worked. This is one video, so treat it as a hypothesis.
+  - ✅ Engaged views were 537 vs a median of 481, even though total views were lower. A higher share of viewers who started actually watched.
+  - ✅ The story held viewers after the first third. Retention fell about 0.50 between 4s and 12s, but only about 0.33 between 12s and 37s, and it ended at 1.006. The explainer beats b4–b10 (curved edge, ice roughens it, lift falls, stall sooner, up to 30% lift loss, FAA) kept people watching.
+  - ✅ The only subscriber gain (1) beat the median of 0, and comments and shares matched the median of 0.
+  - ✅ The earlier lessons (the 'pm:' and 'win:' entries) were applied, and retention is strongly above median. Reach was only at median and likes were below it, so I can't say which lessons caused the retention. Self-review scored the video 3.67 on average, with payoff and flow_pacing at 3.
+  - ✅ Instagram: the Reel got 1,532 views (reach 1,177), more than YouTube's 1,032. It averaged about 18.2s of watch time (roughly 47% of 38.4s). Likes were the same at 7, with 1 save. The content seems to travel acceptably on both platforms, and Instagram's reach was no worse. YouTube counts rewatches in its average view duration, so don't compare the two watch-time figures directly.
+  - ❌ Likes were 7 vs a median of 14, and there were no comments or shares. The video held attention but gave people no reason to react or pass it on (self-review share score was 3).
+  - ❌ Views were about 12% below the median. The hook, a question about ice 'rough as sandpaper', did not lift reach (hook_heuristic 38).
+  - ❌ The steepest loss came right after the hook. Retention went from 1.88 at 2.3s to 1.51 at 8.1s, during the Florida Learjet news recap in b2 and the 'investigators have not said' line in b3. The explainer itself only starts at b4 (11.9s).
+  - ❌ The learnings list includes 'owner:drop:learjet-wing-ice-v1' and several 'review:...:blocking' items from other Learjet videos. This video is about Learjet-style wing ice, so the topic may have been dropped before. Check that the owner's drop instruction was meant to be overridden.
+  - ❌ Payoff and flow scored only 3 in self-review. The ending is a lead-in to the loop and not a clear takeaway, which may explain the lack of likes and shares.
+  - 📉 b2 @ 6.1 s: Retention fell from 1.83 to 1.61 (the largest single step) while the narration moved from the hook question to the news recap of the Florida Learjet reporting 'manageable' ice. The viewer who came for the physics gets crash-report context first.
+  - 📉 b3 @ 11.9 s: Retention slid from 1.44 to 1.33 over the line 'Investigators have not said what caused the crash.' It is a non-answer that adds no new information, and the actual explanation hadn't started yet.
+  - 📉 b1 @ 2.3 s: Retention started at 2.0 (heavy looping) and dropped to 1.88 within 2s. Some viewers who arrived via the loop seam left once the question started again.
+  - 💡 [story, hypothesis] On news-pillar explainers, give the mechanism (the curved edge, ice changing it) by about 6s and cut the news recap down to one short line. The recap beats b2–b3 were where most of the drop happened.
+  - 💡 [loop, hypothesis] Keep the loop lead-in and the open-ended last line. Retention of 127% and a 49s average view on a 38s video show the loop is holding attention. Compare it with future videos before treating it as a rule.
+  - 💡 [hook, hypothesis] The sandpaper-ice question held viewers but did not lift reach. Test a hook that leads with the consequence or the surprising number (up to 30% lift lost) against this question format.
+  - 💡 [story, hypothesis] Add a clear payoff or a prompt to react (a surprising fact, a question to viewers) to the final beat so retention can turn into likes and shares. Likes were half the median and shares were zero.
+  - 💡 [length, hypothesis] Keep news explainers near 38s with about 11 beats and about 85 words. It produced high completion and rewatch, though one video can't prove the length is the cause.
+  - 💡 [topic, hypothesis] Reach was at the median on both YouTube (1,032) and Instagram (1,532), so the topic was neither a win nor a miss. Before reusing Learjet or wing-ice angles, check the owner's drop note against this result.
 
 ### learjet-black-box-v1 (48h) — below median
 - 566 views · 57.74% viewed · 10 likes · 5 shares · 0 subs (median views 1224.5, n=10)
