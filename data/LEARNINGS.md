@@ -1,19 +1,19 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-05 07:22 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-05 11:24 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
-- Keep the question hook, but make it specific and recognisable in the first 3 seconds (the "whistle", the film being pulled out) instead of a generic "Why does this…" (pattern, n=2)
-- Aim for about 20–30s on explainers. Put the payoff earlier and merge repeated problem beats. (pattern, n=2)
-- Move trivia and side-facts after the how-to, or cut them. Keep the middle on "what it does → how it works". (hypothesis)
-- End on one complete answer line that links back to the hook without repeating the question, so the loop reads as deliberate. (pattern, n=2: onigiri analysis and owner feedback)
-- Change the picture on every instruction step, and add a light question near the end to invite comments. (hypothesis)
+- Give the answer or mechanism by about 6s, and keep the news peg to one short line. Don't put it between the hook and its answer. (pattern, n=2)
+- Keep the loop lead-in and the open-ended last line. (pattern, n=2)
+- Cut closing or recap beats that repeat the hook or answer. (pattern, n=2)
+- Try a question hook that leads with the consequence or the surprising number (up to 30% lift lost). (hypothesis)
+- Hedge facts that come from retellings and keep pictures simple. If a picture fails twice, reuse a good one. (hypothesis)
 
 ## Topic guidance now
-- Everyday-object explainers by country (the one pillar): keep. n=1, 1,243 views, equal to the median. Not enough data yet.
-- Indian pressure cooker: don't drop it yet. n=1 at 48h, with 1 view on YouTube. Check whether it was served before judging.
-- Onigiri wrapper: keep as a baseline. n=1, 1,243 views, equal to the median.
-- News tie-ins: use only with strict picture and wording rules (see owner feedback). Not enough data yet on performance.
+- Keep, but unproven: news-pillar explainers on Learjet topics. Wing-ice was at the median (n=1) and black-box was below (n=1). The overall median is 1,277 views.
+- Test: the black-box "hidden design" fact without a tragedy peg (n=1, 566 YouTube views, below the median).
+- Pillars (by_country, walk_past): n=1 each, so not enough data yet to double down or drop either.
+- Drop nothing yet.
 
 ## Per-video analyses
 
