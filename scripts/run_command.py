@@ -359,7 +359,9 @@ def do_produce(p: Pipeline, req: dict) -> int:
             # owner (5 Nov 2026): a planned batch is made one video per day, in order, before normal daily topics
             done = json.loads(p.state.get_setting("daily_queue_done") or "[]")
             for item in json.loads(qf.read_text()).get("queue") or []:
-                if item.get("nonce") not in done:
+                made = any(jj["topic_id"] == item.get("topic") and jj["status"] in
+                           ("published", "approved", "review", "running", "paused") for jj in p.state.jobs())
+                if item.get("nonce") not in done and not made:      # skip a video already made another way
                     nxt = item
                     break
         if nxt:
