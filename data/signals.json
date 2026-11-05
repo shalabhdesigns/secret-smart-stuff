@@ -1,9 +1,13 @@
 {
- "collected_at": "2026-11-04T06:39:12Z",
+ "collected_at": "2026-11-05T06:58:32Z",
  "errors": [
   "@simplethingshistories: ERROR: [youtube:tab] @simplethingshistories: This channel does not have a shorts tab"
  ],
  "all_titles": [
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Touchscreens Detect Your Finger Electrically?"
+  },
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Microwave Ovens Can Heat Food Unevenly?"
@@ -1201,10 +1205,6 @@
    "title": "Did You Know Batteries Existed 2,000 Years Ago? ⚡🏺"
   },
   {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Brick Color Isn’t Paint? 🧱🎨"
-  },
-  {
    "channel": "@nameexplain",
    "title": "Why Was The Queen's Husband Prince Philip Not Called The King?"
   },
@@ -1729,17 +1729,17 @@
    "multiple": 4.8
   },
   {
-   "channel": "@nameexplain",
-   "title": "How Did East Timor Get Its Name? #shorts",
-   "views": 35000,
-   "url": "https://www.youtube.com/shorts/b4zrXLrj4Ow",
-   "multiple": 4.2
-  },
-  {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Copper Can Make You Serious Cash?💰",
    "views": 13000,
    "url": "https://www.youtube.com/shorts/hLRu5f6OFQw",
+   "multiple": 4.2
+  },
+  {
+   "channel": "@nameexplain",
+   "title": "How Did East Timor Get Its Name? #shorts",
+   "views": 35000,
+   "url": "https://www.youtube.com/shorts/b4zrXLrj4Ow",
    "multiple": 4.2
   },
   {
@@ -1764,13 +1764,6 @@
    "multiple": 3.7
   },
   {
-   "channel": "@nameexplain",
-   "title": "How Did France Get Its Name?",
-   "views": 29000,
-   "url": "https://www.youtube.com/shorts/Egrv1P5FVeo",
-   "multiple": 3.5
-  },
-  {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Speed Bumps Make Noise on Purpose?",
    "views": 11000,
@@ -1789,6 +1782,13 @@
    "title": "Did You Know Builders Used Eggs In Walls? 🥚🏗️",
    "views": 11000,
    "url": "https://www.youtube.com/shorts/5Hm1hbL6XMk",
+   "multiple": 3.5
+  },
+  {
+   "channel": "@nameexplain",
+   "title": "How Did France Get Its Name?",
+   "views": 29000,
+   "url": "https://www.youtube.com/shorts/Egrv1P5FVeo",
    "multiple": 3.5
   },
   {
@@ -1827,6 +1827,13 @@
    "multiple": 3.2
   },
   {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Aluminum Doesn’t Rust Like Iron? ✨",
+   "views": 9600,
+   "url": "https://www.youtube.com/shorts/58rlT470JyU",
+   "multiple": 3.1
+  },
+  {
    "channel": "@nameexplain",
    "title": "Why Does Sino Mean China?",
    "views": 26000,
@@ -1842,10 +1849,10 @@
   },
   {
    "channel": "@historyofsimplethings",
-   "title": "Did You Know Aluminum Doesn’t Rust Like Iron? ✨",
-   "views": 9600,
-   "url": "https://www.youtube.com/shorts/58rlT470JyU",
-   "multiple": 3.1
+   "title": "Did You Know Honey Never Spoils? 🍯⏳",
+   "views": 9300,
+   "url": "https://www.youtube.com/shorts/TDtLqm-6AUo",
+   "multiple": 3.0
   },
   {
    "channel": "@nameexplain",
@@ -1863,10 +1870,10 @@
   },
   {
    "channel": "@historyofsimplethings",
-   "title": "Did You Know Honey Never Spoils? 🍯⏳",
-   "views": 9300,
-   "url": "https://www.youtube.com/shorts/TDtLqm-6AUo",
-   "multiple": 3.0
+   "title": "Did You Know Basketball Began as a Winter Game?",
+   "views": 8900,
+   "url": "https://www.youtube.com/shorts/GaED350XHFU",
+   "multiple": 2.9
   },
   {
    "channel": "@nameexplain",
@@ -1884,24 +1891,10 @@
   },
   {
    "channel": "@historyofsimplethings",
-   "title": "Did You Know Basketball Began as a Winter Game?",
-   "views": 8900,
-   "url": "https://www.youtube.com/shorts/GaED350XHFU",
-   "multiple": 2.9
-  },
-  {
-   "channel": "@historyofsimplethings",
    "title": "Did You Know Some Dams Can Slow Earth’s Rotation?",
    "views": 8600,
    "url": "https://www.youtube.com/shorts/c2gY3ivfEGA",
    "multiple": 2.8
-  },
-  {
-   "channel": "@nameexplain",
-   "title": "How  Did Czechia Get Its Name? #Shorts",
-   "views": 22000,
-   "url": "https://www.youtube.com/shorts/kii5SIsYPH0",
-   "multiple": 2.7
   },
   {
    "channel": "@historyofsimplethings",
@@ -1922,6 +1915,13 @@
    "title": "Did You Know Oil Comes From Ancient Life? 🛢️😮",
    "views": 8300,
    "url": "https://www.youtube.com/shorts/bXD-q4_E0gs",
+   "multiple": 2.7
+  },
+  {
+   "channel": "@nameexplain",
+   "title": "How  Did Czechia Get Its Name? #Shorts",
+   "views": 22000,
+   "url": "https://www.youtube.com/shorts/kii5SIsYPH0",
    "multiple": 2.7
   },
   {
@@ -1953,6 +1953,41 @@
    "multiple": 2.5
   },
   {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Oil Refineries Are Giant Boiling Towers? 🛢️🔥",
+   "views": 7400,
+   "url": "https://www.youtube.com/shorts/F4uJ3BpwL-k",
+   "multiple": 2.4
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Skyscrapers Are Built to Sway?",
+   "views": 7400,
+   "url": "https://www.youtube.com/shorts/MSI5uRtelVg",
+   "multiple": 2.4
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Phillips Was A Real Person? 🔩😮",
+   "views": 7400,
+   "url": "https://www.youtube.com/shorts/Bxa1bCf0hbA",
+   "multiple": 2.4
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Cigars Aren’t Meant to Be Inhaled?",
+   "views": 7500,
+   "url": "https://www.youtube.com/shorts/fR0dq4m2g1I",
+   "multiple": 2.4
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know The Printing Press Changed The World? 🖨️📚",
+   "views": 7500,
+   "url": "https://www.youtube.com/shorts/Fm3cpQV5aCQ",
+   "multiple": 2.4
+  },
+  {
    "channel": "@nameexplain",
    "title": "How Did Brunei Get Its Name? #Shorts",
    "views": 20000,
@@ -1971,41 +2006,6 @@
    "title": "How Did Australia Get Its Name? #Shorts",
    "views": 20000,
    "url": "https://www.youtube.com/shorts/6nxScDW-4eQ",
-   "multiple": 2.4
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Oil Refineries Are Giant Boiling Towers? 🛢️🔥",
-   "views": 7300,
-   "url": "https://www.youtube.com/shorts/F4uJ3BpwL-k",
-   "multiple": 2.4
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Skyscrapers Are Built to Sway?",
-   "views": 7400,
-   "url": "https://www.youtube.com/shorts/MSI5uRtelVg",
-   "multiple": 2.4
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Phillips Was A Real Person? 🔩😮",
-   "views": 7300,
-   "url": "https://www.youtube.com/shorts/Bxa1bCf0hbA",
-   "multiple": 2.4
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Cigars Aren’t Meant to Be Inhaled?",
-   "views": 7400,
-   "url": "https://www.youtube.com/shorts/fR0dq4m2g1I",
-   "multiple": 2.4
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know The Printing Press Changed The World? 🖨️📚",
-   "views": 7500,
-   "url": "https://www.youtube.com/shorts/Fm3cpQV5aCQ",
    "multiple": 2.4
   },
   {
@@ -2045,13 +2045,6 @@
   },
   {
    "channel": "@historyofsimplethings",
-   "title": "Did You Know Brick Color Isn’t Paint? 🧱🎨",
-   "views": 6800,
-   "url": "https://www.youtube.com/shorts/mRVWUf1wpo0",
-   "multiple": 2.2
-  },
-  {
-   "channel": "@historyofsimplethings",
    "title": "Did You Know Tape Measures Have Hidden Diamonds?",
    "views": 6500,
    "url": "https://www.youtube.com/shorts/GCzPgEkHjFQ",
@@ -2076,6 +2069,13 @@
    "title": "Did You Know Uranium Holds Massive Energy?",
    "views": 6400,
    "url": "https://www.youtube.com/shorts/2lZgu-XWi1c",
+   "multiple": 2.1
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know the Hole in Soda Can Tabs Isn’t Just for Opening?",
+   "views": 6400,
+   "url": "https://www.youtube.com/shorts/KFdrdW_OgY8",
    "multiple": 2.1
   }
  ]
