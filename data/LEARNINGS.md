@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-05 11:24 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-05 20:17 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Give the answer or mechanism by about 6s, and keep the news peg to one short line. Don't put it between the hook and its answer. (pattern, n=2)
@@ -16,6 +16,31 @@ Updated 2026-11-05 11:24 UTC. Built from every published video's 48 h and 7 day 
 - Drop nothing yet.
 
 ## Per-video analyses
+
+### moka-pot-v1 (48h) — below median
+- 157 views · 52.54% viewed · 0 likes · 0 shares · 1 subs (median views 1104.5, n=12)
+- At 51 hours the Short had 157 views against a channel median of 1,104.5, and 0 likes against a median of 13; retention was close to normal (52.5% average viewed vs 56.3%), so the weakness is reach rather than how the video played. The Reel got about twice the views (311) with similarly negligible engagement.
+  - ✅ Once viewers got past the first 14 seconds, retention held: it was about 0.46 at 14s and still 0.33 at 30s. The middle (steam pressure, pushing water up, worn ring, no ring) kept the people who stayed.
+  - ✅ Average view percentage (52.54) and average view duration (18s) were only slightly below the channel medians (56.25 and 20.5s). Engaged views were 69 of 157 (about 44%), close to the median's share of about 46% (509 of 1,104.5). Quality of viewing was near normal, so the gap is mostly in how many people were shown it.
+  - ✅ Retention was above 1.0 until about 3.8s (1.17 at 0.3s), which suggests some rewatching or looping at the start. The loop lead-in did something, and the self-review gave the loop a 5.
+  - ✅ It gained 1 subscriber and lost none, against a median of 0.5, so the few viewers it reached were not put off.
+  - ✅ Carried-over lessons (tiffin box, aglet, pressure cooker postmortems, review blockers): the late-middle retention is stable and watch-through is near the median, so they did no visible harm. The views gap can't be pinned on them or credited to them. This was a single video, so there is nothing to confirm a lesson worked again, and I'm not promoting any to a pattern.
+  - ❌ Reach was the main problem: 157 views vs a median of 1,104.5 (about 14%), with 0 likes, comments and shares. Topic and title/hook interest in a moka-pot gasket looks narrow, and the hook heuristic score was only 38.
+  - ❌ The opening gave away the answer. b1 asks the question and b2 (3.4s) says 'It's a gasket, sealing where the halves meet', so curiosity was resolved early. Retention fell from 1.07 at 3.8s to 0.72 at 7.3s.
+  - ❌ b3 ('Small ring, quietly running the whole show') adds no information and is the wittiest-sounding but emptiest line. Retention kept sliding through it, from 0.72 to 0.64 and then to 0.55 by 10.8s.
+  - ❌ The ending lost viewers: retention went from 0.33 at 30s to 0.25 at 31.8s and 0.17 at 33.5s. The final line 'So when someone asks you...' is a loop lead-in with no payoff before the cut. Whether those viewers left or just reached the end is unclear.
+  - ❌ Self-review gave visual credibility, rewatch and share only 3 each, and the share score matched the result of 0 shares. The video had 3 replacement images out of 8, which may point to weak visuals.
+  - ❌ Instagram showed the same pattern: 311 views, 267 reach, 1 like, 1 save, 0 shares, a skip rate of 46.1% and an average watch of about 10.7s (about 31% of the 34.9s runtime). Both platforms are weak on engagement, which fits a topic or packaging problem rather than a platform quirk. The Reel's reach was about twice YouTube's, so the audience or distribution differs somewhat.
+  - 📉 b2 @ 5.6 s: The hook question was answered right away ('It's a gasket'), so there was no open loop left to keep viewers; retention fell from 1.07 to 0.88.
+  - 📉 b3 @ 7.3 s: 'Small ring, quietly running the whole show' is filler with no new fact. Retention dropped to 0.72 and then 0.64.
+  - 📉 b4 @ 10.8 s: 'Heat turns the water below into steam pressure' is an abstract physics explanation. Retention fell to 0.55 and then 0.51 before levelling off.
+  - 📉 b10 @ 31.8 s: The explanation was done and the video moved to the loop lead-in ('The ring locks pressure in...' then 'So when someone asks you...'). Retention dropped from 0.33 to 0.25 and then 0.17, as viewers left without a payoff.
+  - 💡 [hook, hypothesis] Do not answer the title question in the second beat. Hold the answer until about 10s, and use the first beats for a surprising consequence or stake (for example, what happens to the coffee if the ring fails).
+  - 💡 [pacing, hypothesis] Cut or replace filler wit lines such as 'quietly running the whole show' with a concrete fact. The steepest retention loss came in beats 2-4, where the content was thin.
+  - 💡 [topic, hypothesis] Test a broader, more familiar everyday object, or make the hook relatable (for example, why your moka pot leaks or gurgles). Views were about 14% of the median even though retention was near normal, so topic or packaging limited reach. Don't drop or double down on the topic from one video.
+  - 💡 [loop, hypothesis] Make the closing beat deliver a payoff line that connects to the opening, rather than an unfinished 'So when someone asks you...'. The last 4 seconds lost about 16 points of retention (0.33 to 0.17).
+  - 💡 [visuals, hypothesis] Improve visual credibility, since the self-review gave it only 3 and 3 of 8 images were replacements. Use a clear cutaway of the gasket and the pressure path in the first 7 seconds.
+  - 💡 [title, hypothesis] Compare this plain question hook with a more specific or tension-based title framing. Cross-platform results here (YouTube 157 views, Instagram 311, both with near-zero engagement) suggest the packaging, not the platform, is the main variable.
 
 ### learjet-wing-ice-v2 (48h) — at median
 - 1032 views · 126.86999999999999% viewed · 7 likes · 0 shares · 1 subs (median views 1177, n=11)
