@@ -1,0 +1,125 @@
+{
+ "_note": "Owner, 5 Nov 2026: the virality batch is made ONE A DAY. Each daily run (00:17 UTC) makes the first item whose nonce is not yet in the state setting daily_queue_done; its publish_at is fixed in notes. When the list is used up, the normal daily video resumes after daily_paused_until.",
+ "queue": [
+  {
+   "action": "produce",
+   "topic": "placebo-buttons",
+   "nonce": "dq1-placebo-buttons",
+   "topic_def": {
+    "id": "placebo-buttons",
+    "title": "Do lift 'door close' buttons actually do anything?",
+    "pillar": "virality",
+    "notes": {
+     "object": "a brushed-steel lift button panel with one round 'door close' button lit",
+     "question": "Do lift 'door close' buttons actually do anything?",
+     "angle": "THE REVEAL: many of the buttons people press every day are 'placebo buttons'. Main example: in many lifts (well documented in the US since the 1990 Americans with Disabilities Act, which requires doors to stay open long enough) the 'door close' button is disabled in normal service and only works in special modes such as firefighter service. Second reveal: crosswalk 'push to walk' buttons - The New York Times reported in 2004 that most of New York City's walk buttons no longer did anything, because signals run on timers. Third, short: some office thermostats are dummies. The smart reason they are kept: pressing something gives people a feeling of control, which makes waiting feel more bearable (state carefully, as researchers' explanation). Never claim ALL lifts or ALL crosswalks; say where and when. Say NOTHING about lifts outside the US (sources don't cover it). The payoff must answer why lift door-close buttons are kept even when disabled: they still work in special modes (e.g. firefighter service) and, per researchers of 'perceived control', pressing something makes waiting feel shorter. Wit: a person jabbing the button five times. Share trigger near the end, natural not begging: who do you know who always presses it? OPENING PICTURE (beat 1 and the final beat): a macro photo of a brushed-steel lift button panel, one round button glowing white, shallow depth of field, no visible text or symbols, no hands.",
+     "format_rules": "STRUCTURE = REVEAL. Beat 1 is a flat, confident statement that sounds wrong, 6-10 words, e.g. 'The door close button in lifts often does nothing.' (not a question). Beat 2 proves it (law/date). Beats 3-6 widen it (crosswalks, thermostats) - each a new surprise, so the middle never sags. Then WHY they exist (feeling of control). LOOP: the last beat is still an unfinished lead-in that flows into beat 1, but do NOT use the words 'So next time someone asks you'. Write a fresh lead-in that fits this story. ",
+     "critic_rules": "\nThis video belongs to the 5 Nov 2026 batch and has an APPROVED FORMAT (see the topic's format rules): a statement hook is allowed when the format says so; judge the hook on whether a scroller would stop in the first second. Still BLOCKING: any claim not supported by the sources, a stated certainty the sources hedge, faces of real people, garbled text inside pictures, logos.",
+     "open_hook": true,
+     "publish_at": "2026-11-08T13:30:00Z",
+     "batch": "virality-1"
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "taipei-101-ball",
+   "nonce": "dq1-taipei-101-ball",
+   "topic_def": {
+    "id": "taipei-101-ball",
+    "title": "Why does Taipei 101 hang a giant golden ball inside?",
+    "pillar": "virality",
+    "notes": {
+     "object": "a huge golden steel sphere hanging on thick cables inside a tall skyscraper",
+     "question": "Why does Taipei 101 hang a giant golden ball inside?",
+     "angle": "Taipei 101 has a giant steel ball (a tuned mass damper) hanging near the top of the tower, gold-coloured and open to visitors. Give its sourced weight (about 660 tonnes) and size, where it hangs (between the 87th and 92nd floors per sources). Explain simply: when wind or an earthquake pushes the tower one way, the ball swings the other way and soaks up the motion, so the people inside feel far less sway. Sourced number: how much it reduces sway, and the typhoon when it swung the most (2015 Typhoon Soudelor, about 1 metre - only if sources confirm). Twist for the end: it is so popular it has its own cartoon mascots (the 'Damper Babies') - describe, never draw them. OPENING PICTURE (beat 1 and the final beat): a gigantic polished gold steel sphere suspended by thick steel cables inside a tall dim atrium, a tiny railing and walkway below for scale, no people, no text.",
+     "format_rules": "STRUCTURE = IMPOSSIBLE IMAGE FIRST. Beat 1 is a short question about the picture, 7-10 words ('Why is there a giant golden ball inside this skyscraper?'). Beat 2 gives its weight - a number that shocks. Show the physics with a simple side-view diagram picture (tower leaning one way, ball swinging the other) - draw arrows with our 'arrow' field, never text in images. LOOP: the last beat is still an unfinished lead-in that flows into beat 1, but do NOT use the words 'So next time someone asks you'. Write a fresh lead-in that fits this story. ",
+     "critic_rules": "\nThis video belongs to the 5 Nov 2026 batch and has an APPROVED FORMAT (see the topic's format rules): a statement hook is allowed when the format says so; judge the hook on whether a scroller would stop in the first second. Still BLOCKING: any claim not supported by the sources, a stated certainty the sources hedge, faces of real people, garbled text inside pictures, logos.",
+     "open_hook": true,
+     "publish_at": "2026-11-10T02:00:00Z",
+     "batch": "virality-1"
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "agloe",
+   "nonce": "dq1-agloe",
+   "topic_def": {
+    "id": "agloe",
+    "title": "The fake town that became real",
+    "pillar": "virality",
+    "notes": {
+     "object": "an old folded paper road map on a wooden table",
+     "question": "The fake town that became real",
+     "angle": "TRUE STORY: in the 1930s mapmakers at the General Drafting Company (who made maps for Esso) put a fictional hamlet, 'Agloe', on a dirt-road crossing in New York State as a 'copyright trap' - an anagram of the founders' initials - so they could catch copiers. Years later Agloe appeared on a rival's map (Rand McNally). Twist: someone had built a real general store at that crossing and named it after the map - the 'Agloe General Store' - so the rival argued Agloe was real. Use only facts your sources confirm and hedge what they hedge (e.g. 'the story goes'). End beat before the loop: these traps still exist (fake streets, a fake dictionary word 'mountweazel'). OPENING PICTURE (beat 1 and the final beat): an old folded paper road map on a worn wooden table, warm lamp light, a single empty road crossing circled in red pencil, the map has NO readable words or numbers.",
+     "format_rules": "STRUCTURE = TWIST STORY. Beat 1 is a statement that sounds impossible, 6-9 words, e.g. 'This town was invented. Then it became real.' The trap's purpose (catching copiers) lands by beat 4; the twist (the real store) lands around 70%. Maps in pictures must have NO text; labels only via 'callout'. LOOP: the last beat is still an unfinished lead-in that flows into beat 1, but do NOT use the words 'So next time someone asks you'. Write a fresh lead-in that fits this story. ",
+     "critic_rules": "\nThis video belongs to the 5 Nov 2026 batch and has an APPROVED FORMAT (see the topic's format rules): a statement hook is allowed when the format says so; judge the hook on whether a scroller would stop in the first second. Still BLOCKING: any claim not supported by the sources, a stated certainty the sources hedge, faces of real people, garbled text inside pictures, logos.",
+     "open_hook": true,
+     "publish_at": "2026-11-11T13:30:00Z",
+     "batch": "virality-1"
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "runway-numbers",
+   "nonce": "dq1-runway-numbers",
+   "topic_def": {
+    "id": "runway-numbers",
+    "title": "What do the giant numbers on runways mean?",
+    "pillar": "virality",
+    "notes": {
+     "object": "an airport runway end seen from directly above, white stripes on dark asphalt",
+     "question": "What do the giant numbers on runways mean?",
+     "angle": "Runway numbers are compass directions: the runway's magnetic heading rounded to the nearest 10 degrees, with the last zero dropped - runway 27 points about 270 degrees (west); the same strip is runway 09 from the other end (they always differ by 18). Parallel runways add L, C, R. Twist: Earth's magnetic north drifts, so airports sometimes have to repaint and rename their runways - give one sourced real example with its year. Payoff: you can now tell which way your plane is pointing from the runway number. Numbers are added by our code (callouts/markers), never inside the pictures. OPENING PICTURE (beat 1 and the final beat): a top-down aerial photo of the end of a wide runway: white 'piano key' stripes on dark asphalt, green grass edges, sunrise shadows, NO painted numbers or letters.",
+     "format_rules": "STRUCTURE = DECODE. Beat 1 asks about the number, 7-10 words ('What does the 27 on this runway actually mean?'). Use 'callout' to put '27' and '09' on screen at the right moments. One witty line (e.g. about pilots not needing a map app). LOOP: the last beat is still an unfinished lead-in that flows into beat 1, but do NOT use the words 'So next time someone asks you'. Write a fresh lead-in that fits this story. ",
+     "critic_rules": "\nThis video belongs to the 5 Nov 2026 batch and has an APPROVED FORMAT (see the topic's format rules): a statement hook is allowed when the format says so; judge the hook on whether a scroller would stop in the first second. Still BLOCKING: any claim not supported by the sources, a stated certainty the sources hedge, faces of real people, garbled text inside pictures, logos.",
+     "open_hook": true,
+     "publish_at": "2026-11-12T17:00:00Z",
+     "batch": "virality-1"
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "pilot-meals",
+   "nonce": "dq1-pilot-meals",
+   "topic_def": {
+    "id": "pilot-meals",
+    "title": "Why pilots and co-pilots eat different meals",
+    "pillar": "virality",
+    "notes": {
+     "object": "two different airline meal trays side by side in a cockpit",
+     "question": "Why pilots and co-pilots eat different meals",
+     "angle": "Many airlines have the captain and first officer eat different meals (often also at different times), so that if one meal causes food poisoning, both pilots are not affected at once. It is common airline practice and policy, not a single worldwide law - say so. Add one sourced extra layer (e.g. crews often avoid seafood, or pilots' meals come from separate preparation) only if sources confirm. Share trigger (natural): the dinner-table fact you'll want to tell someone. OPENING PICTURE (beat 1 and the final beat): two different airline meal trays (one pasta, one chicken with rice) side by side on a cockpit centre console, glowing instrument displays blurred behind, no people, no text, no airline logos.",
+     "format_rules": "STRUCTURE = RULE -> REASON -> 'WHAT IF'. Beat 1 states the odd rule as a question, 8-11 words. The middle plays the 'what if they ate the same meal' scenario in 2-3 beats (tension), then the fix. LOOP: the last beat is still an unfinished lead-in that flows into beat 1, but do NOT use the words 'So next time someone asks you'. Write a fresh lead-in that fits this story. ",
+     "critic_rules": "\nThis video belongs to the 5 Nov 2026 batch and has an APPROVED FORMAT (see the topic's format rules): a statement hook is allowed when the format says so; judge the hook on whether a scroller would stop in the first second. Still BLOCKING: any claim not supported by the sources, a stated certainty the sources hedge, faces of real people, garbled text inside pictures, logos.",
+     "open_hook": true,
+     "publish_at": "2026-11-13T02:00:00Z",
+     "batch": "virality-1"
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "wobbly-bridge",
+   "nonce": "dq1-wobbly-bridge",
+   "topic_def": {
+    "id": "wobbly-bridge",
+    "title": "Why London's Millennium Bridge closed after two days",
+    "pillar": "virality",
+    "notes": {
+     "object": "a sleek modern steel footbridge over a wide river",
+     "question": "Why London's Millennium Bridge closed after two days",
+     "angle": "TRUE STORY: London's Millennium Bridge, a new steel footbridge over the Thames, opened on 10 June 2000 and was closed two days later because it swayed sideways under crowds - nicknamed the 'Wobbly Bridge'. The cause was the people, not the wind: a small sway made walkers adjust their steps to keep balance, falling into step with the sway and pushing it further ('synchronous lateral excitation'). Fix: dampers were added (sourced number and cost) and it reopened in 2002 - use sourced dates and figures only. Wit: thousands of strangers accidentally marching in time. OPENING PICTURE (beat 1 and the final beat): a sleek modern steel suspension footbridge spanning a wide river in a city at blue hour, crowds as tiny distant silhouettes, no faces, no text.",
+     "format_rules": "STRUCTURE = MYSTERY. Beat 1 is the mystery as a statement, 8-11 words ('London opened a new bridge, then shut it two days later.'). Rule out the obvious suspects (wind, weak steel) in 1-2 beats, then reveal the culprit: the walkers. LOOP: the last beat is still an unfinished lead-in that flows into beat 1, but do NOT use the words 'So next time someone asks you'. Write a fresh lead-in that fits this story. ",
+     "critic_rules": "\nThis video belongs to the 5 Nov 2026 batch and has an APPROVED FORMAT (see the topic's format rules): a statement hook is allowed when the format says so; judge the hook on whether a scroller would stop in the first second. Still BLOCKING: any claim not supported by the sources, a stated certainty the sources hedge, faces of real people, garbled text inside pictures, logos.",
+     "open_hook": true,
+     "publish_at": "2026-11-14T13:30:00Z",
+     "batch": "virality-1"
+    }
+   }
+  }
+ ]
+}

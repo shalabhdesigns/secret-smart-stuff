@@ -228,3 +228,36 @@ def test_malformed_arrow_and_markers_are_tidied():
     assert s["scenes"][0]["markers"] == [{"label": "1", "target": "the gate"}, {"label": "2", "target": "lamps"}]
     assert s["scenes"][1]["arrow"] == {"from": "a", "to": "b"} and s["scenes"][1]["markers"][0]["target"] == "x"
     assert s["scenes"][1]["callout"] is None
+
+
+def test_daily_takes_the_next_planned_video(tmp_path, monkeypatch):
+    import json, sys
+    sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[1] / "scripts"))
+    import run_command as rc
+    from shorts.state import State
+    st = State(tmp_path / "s.db")
+    q = tmp_path / "config"; q.mkdir()
+    (q / "daily_queue.json").write_text(json.dumps({"queue": [{"action": "produce", "topic": "a", "nonce": "n1"},
+                                                              {"action": "produce", "topic": "b", "nonce": "n2"}]}))
+    monkeypatch.setattr(rc, "ROOT", tmp_path)
+    seen = []
+
+    class P:
+        state = st
+        class cfg:
+            live = False
+            pipeline = {"daily_paused_until": "2099-01-01"}
+    monkeypatch.setattr(rc, "_after_daily_gate", lambda p, req: seen.append(dict(req)) or 0, raising=False)
+    req = {"action": "daily"}
+    try:
+        rc.do_produce(P, req)
+    except Exception:
+        pass
+    assert req.get("topic") == "a" and json.loads(st.get_setting("daily_queue_done")) == ["n1"]
+    st.set_setting("last_daily_ist", "x")         # next day
+    req = {"action": "daily"}
+    try:
+        rc.do_produce(P, req)
+    except Exception:
+        pass
+    assert req.get("topic") == "b"

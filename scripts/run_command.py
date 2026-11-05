@@ -353,14 +353,31 @@ def do_produce(p: Pipeline, req: dict) -> int:
     if req.get("action") == "daily":
         # one video a day: two triggers (GitHub's schedule and the Worker's timer) may both fire
         today = time.strftime("%Y-%m-%d", time.gmtime(time.time() + 5.5 * 3600))     # IST day
-        pause = str(p.cfg.pipeline.get("daily_paused_until") or "")
+        qf = ROOT / "config" / "daily_queue.json"
+        nxt = None
+        if qf.exists() and p.state.get_setting("last_daily_ist") != today:
+            # owner (5 Nov 2026): a planned batch is made one video per day, in order, before normal daily topics
+            done = json.loads(p.state.get_setting("daily_queue_done") or "[]")
+            for item in json.loads(qf.read_text()).get("queue") or []:
+                if item.get("nonce") not in done:
+                    nxt = item
+                    break
+        if nxt:
+            p.state.set_setting("last_daily_ist", today)
+            done.append(nxt.get("nonce"))
+            p.state.set_setting("daily_queue_done", json.dumps(done))
+            req.clear()
+            req.update(nxt)
+            print(f"daily: making today's planned video {nxt.get('topic')}")
+        pause = str(p.cfg.pipeline.get("daily_paused_until") or "") if not nxt else ""
         if pause and today <= pause:
             print(f"daily video paused until {pause} (owner: a special series runs instead)")
             return 0
-        if p.state.get_setting("last_daily_ist") == today:
-            print(f"daily run already done for {today}; skipping")
-            return 0
-        p.state.set_setting("last_daily_ist", today)
+        if not nxt:
+            if p.state.get_setting("last_daily_ist") == today:
+                print(f"daily run already done for {today}; skipping")
+                return 0
+            p.state.set_setting("last_daily_ist", today)
     if p.cfg.live and os.environ.get("ELEVENLABS_API_KEY"):
         # don't start a video that can't get its voice (31 Oct 2026: credits ran out mid-video)
         from shorts.providers.tts import credit_check
