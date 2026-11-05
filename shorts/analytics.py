@@ -157,6 +157,27 @@ def channel_daily(state: State, days: int = 400) -> dict:
     return {"days": len(rows)}
 
 
+def audience(state: State, days: int = 28) -> dict:
+    """Where viewers are (country) and how they watch (subscribed or not), last `days` days, channel-wide.
+    Publish times are planned from this (owner, 5 Nov 2026: "timing ... well researched")."""
+    import datetime as dt
+    end = time.strftime("%Y-%m-%d", time.gmtime())
+    start = (dt.date.today() - dt.timedelta(days=days)).isoformat()
+    token = access_token()
+    out = {"start": start, "end": end}
+    for name, params in {
+        "country": {"metrics": "views,estimatedMinutesWatched,subscribersGained", "dimensions": "country",
+                    "sort": "-views", "maxResults": 25},
+        "country_shorts": {"metrics": "views", "dimensions": "country", "filters": "creatorContentType==SHORTS",
+                           "sort": "-views", "maxResults": 25},
+        "weekday": {"metrics": "views", "dimensions": "day", "sort": "day"},
+    }.items():
+        code, body = _get(token, {"startDate": start, "endDate": end, **params})
+        out[name] = _rows(body) if code == 200 else {"error": code, "body": str(body)[:200]}
+    state.set_setting("audience_json", json.dumps(out))
+    return {k: (len(v) if isinstance(v, list) else v) for k, v in out.items()}
+
+
 def video_details(state: State) -> dict:
     """Retention curve and traffic sources per public video (one call each, small channel)."""
     token = access_token()

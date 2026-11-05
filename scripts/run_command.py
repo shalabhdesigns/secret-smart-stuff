@@ -951,6 +951,20 @@ def main(path: str) -> int:
                              f"{notify.esc(c.get('summary', '')[:300])}")
         use_backup(p, job)
         return 0
+    if action == "audience":
+        from shorts import analytics as an
+        print(json.dumps(an.audience(p.state)))
+        print(p.state.get_setting("audience_json")[:3000])
+        return 0
+    if action == "clear_planned":
+        # owner (5 Nov 2026): drop everything planned except the virality batch (held series requests, backups)
+        p.state.set_setting("series_held", "[]")
+        p.state.set_setting("series_backups", "[]")
+        for jid in req.get("retire_jobs") or []:
+            jj = p.state.get_job(jid)
+            if jj and jj["status"] in ("failed", "paused", "running", "created", "review"):
+                p.state.set_job_status(jid, "rejected", "dropped: owner focused on the 7-video batch (5 Nov)")
+        return 0
     if action == "use_backup":
         # a series video was dropped before the automatic hand-over existed: give its slot to the next backup idea
         job = req.get("job", "")
