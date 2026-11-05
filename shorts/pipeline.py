@@ -446,8 +446,14 @@ class Pipeline:
             scenes[-1]["card_text"] = None
         # loop lead-in: never a question or a closed sentence, so the voice carries into beat 1
         last = scenes[-1].get("narration", "").strip()
-        if last.endswith("?") or len(last.split()) > 8:
-            last = "So next time someone asks you"          # safe lead-in for a question opening
+        if last.endswith("?") or len(last.split()) > 8 or last.lower().startswith("so next time someone asks"):
+            # 5 Nov 2026: the same lead-in on every video reads as a template (YouTube's "inauthentic content" rule
+            # names templated storylines), so the safe lead-in varies, picked by the title so a fix keeps it stable
+            first_q = scenes[0].get("narration", "").strip().endswith("?")
+            opts = (["Now you know the answer to", "That's the real answer to", "And that's what's behind",
+                     "Which finally answers"] if first_q else
+                    ["And it all started because", "Which is how it began:", "Remember how it started:"])
+            last = opts[sum(map(ord, str(s.get("title", "")))) % len(opts)]
         scenes[-1]["narration"] = re.sub(r"[.!,;:…\s]+$", "", last) + "..."
         for sc in (scenes[0], scenes[-1]):
             sc["callout"] = None

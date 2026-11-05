@@ -65,7 +65,8 @@ Format rules (these come from retention research, follow them exactly):
 - SECOND-TO-LAST beat: the answer in one plain line (the payoff).
 - LAST beat (the loop): the video replays straight into beat 1 with no pause, so the last beat is an
   UNFINISHED lead-in, 3-7 words, that beat 1's question grammatically completes. Read them together:
-  "So next time someone asks you..." + "Why does this onigiri hide its seaweed behind plastic?"
+  "Now you know the answer to..." + "Why does this onigiri hide its seaweed behind plastic?" Write a NEW lead-in
+  that fits this story; never reuse "So next time someone asks you", which every earlier video used.
   It must NOT be a question or a full sentence, must end with "...", and it reuses image img1.
 - 6-7 images total, in "images": each a realistic photo prompt, NO text, NO logos, NO people's faces,
   the key detail clearly visible. Beats reuse images with a different "focus" (a different visible
@@ -123,7 +124,7 @@ WRITTEN: "opening_line" is what the viewer hears first. Score 0-2 each, using th
   1 = clear but generic; 0 = vague or misleading.
 - payoff: 2 = the question is clearly answered by the end; 1 = answered but weakly; 0 = not answered.
   The LAST beat is by design an unfinished lead-in that flows into beat 1 when the Short loops
-  (e.g. "So next time someone asks you..."); judge the payoff on the beat before it, and do not
+  (e.g. "Now you know the answer to..."); judge the payoff on the beat before it, and do not
   ask for the last beat to restate the answer.
 - visual_match: 2 = every image prompt fits its narration and is factually right; 1 = minor
   mismatch; 0 = a visual that would mislead.
@@ -245,7 +246,7 @@ What a strong Short on this channel does (evidence: docs/04_FORMAT_V2, research/
 2. The first "aha" (the core reason, stated plainly) lands by ~10 s; then one deeper layer (a date, number,
    comparison or how-it-works detail); the second-to-last beat answers the opening question in one line.
 3. Every beat adds new information or a light, kind laugh; nothing is said twice; no filler.
-4. The last line is an unfinished lead-in ("So next time someone asks you...") that the opening question
+4. The last line is an unfinished lead-in (e.g. "Now you know the answer to...") that the opening question
    completes, and the last frame equals the first frame, so the replay feels continuous.
 5. Every picture is a credible real-world photo of exactly what the words say. One malformed or obviously
    AI-generated object destroys trust in the whole channel: that is ALWAYS blocking.
