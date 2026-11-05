@@ -179,15 +179,23 @@ def record_features(p: Pipeline, job: str) -> tuple[str, str]:
         else:
             when = news_publish_time(p.state)
     else:
-        slot = X.slot_for(p.state, job)
-        when = X.next_publish_time(p.state, slot, margin_minutes=30)
         fixed = (json.loads((p.state.get_topic(j["topic_id"]) or {}).get("notes") or "{}") or {}).get("publish_at")
         import datetime as _dt
         if fixed and _dt.datetime.fromisoformat(fixed.replace("Z", "+00:00")).timestamp() > time.time() + 20 * 60:
-            # a planned batch (5 Nov 2026, the virality batch) fixes each video's day; the slot (time of day) still
-            # comes from the publish-time experiment's arm when the fixed time is on that arm's hour
-            when = fixed
-            slot = fixed[11:16]
+            # a planned batch (5 Nov 2026, the virality batch) fixes each video's time. It joins the publish-time
+            # experiment only when that time is one of the arms (recorded as that arm, not a rotated one).
+            when, slot = fixed, fixed[11:16]
+            for e in X.load_experiments():
+                if e.get("variable") == "publish_slot_utc" and e.get("status") == "active":
+                    arm = next((a for a, v in e["arms"].items() if v == slot), None)
+                    if arm and not p.state.db.execute("SELECT 1 FROM assignments WHERE experiment_id=? AND job_id=?",
+                                                      (e["id"], job)).fetchone():
+                        with p.state.tx() as db:
+                            db.execute("INSERT INTO assignments(experiment_id, job_id, arm, at) VALUES (?,?,?,?)",
+                                       (e["id"], job, arm, time.time()))
+        else:
+            slot = X.slot_for(p.state, job)
+            when = X.next_publish_time(p.state, slot, margin_minutes=30)
     topic = p.state.get_topic(j["topic_id"])
     feats = X.features(script, json.loads((d / "visuals.json").read_text()) if (d / "visuals.json").exists() else {},
                        j["artifacts"].get("render"), topic, p.state.job_cost(job))

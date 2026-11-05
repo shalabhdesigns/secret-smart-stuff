@@ -34,16 +34,29 @@ def _at_age(state) -> dict[str, dict]:
 def stats(state) -> dict:
     snaps = _at_age(state)
     rows = []
-    for r in state.db.execute("SELECT u.job_id, u.video_id, t.pillar, t.title FROM uploads u JOIN jobs j ON j.id=u.job_id "
-                              "JOIN topics t ON t.id=j.topic_id WHERE u.video_id IS NOT NULL"):
+    ig7: dict[str, dict] = {}
+    try:          # Instagram snapshot closest to 7 days, per job
+        for r in state.db.execute("SELECT job_id, age_hours, data FROM ig_metrics WHERE age_hours >= ?", (AGE_H,)):
+            d = abs(r["age_hours"] - AGE_H)
+            if r["job_id"] not in ig7 or d < ig7[r["job_id"]][0]:
+                ig7[r["job_id"]] = (d, json.loads(r["data"]))
+    except Exception:  # noqa: BLE001
+        pass
+    for r in state.db.execute("SELECT u.job_id, u.video_id, t.pillar, t.title, t.notes FROM uploads u JOIN jobs j "
+                              "ON j.id=u.job_id JOIN topics t ON t.id=j.topic_id WHERE u.video_id IS NOT NULL"):
         if r["video_id"] not in snaps:
             continue
+        try:
+            batch = (json.loads(r["notes"] or "{}") or {}).get("batch")
+        except Exception:  # noqa: BLE001
+            batch = None
         f = state.db.execute("SELECT data FROM features WHERE job_id=?", (r["job_id"],)).fetchone()
         feats = json.loads(f["data"]) if f else {}
         arms = {a["experiment_id"]: a["arm"] for a in state.db.execute(
             "SELECT experiment_id, arm FROM assignments WHERE job_id=?", (r["job_id"],))}
         rows.append({"video": r["video_id"], "title": r["title"], "pillar": r["pillar"], **feats,
-                     "arms": arms, "m": snaps[r["video_id"]]})
+                     "batch": batch or "before-5-nov", "arms": arms, "m": snaps[r["video_id"]],
+                     "ig": (ig7.get(r["job_id"]) or (0, {}))[1]})
     out: dict = {"videos_at_7d": len(rows), "groups": {}, "lessons": [], "experiments": []}
     if not rows:
         return out
@@ -63,7 +76,18 @@ def stats(state) -> dict:
                       "median_views": statistics.median(x["m"].get("views", 0) for x in xs),
                       "median_pct_viewed": statistics.median(x["m"].get("averageViewPercentage", 0) or 0 for x in xs),
                       "subs_per_1k": round(1000 * sum(x["m"].get("subscribersGained", 0) for x in xs)
-                                           / max(1, sum(x["m"].get("views", 0) for x in xs)), 2)}
+                                           / max(1, sum(x["m"].get("views", 0) for x in xs)), 2),
+                      # engaged views / views: the API's closest stand-in for Studio's "viewed vs swiped away"
+                      "median_kept_pct": statistics.median(round(100 * (x["m"].get("engagedViews") or 0)
+                                                                 / max(1, x["m"].get("views") or 0), 1) for x in xs),
+                      "shares_per_1k": round(1000 * sum(x["m"].get("shares", 0) or 0 for x in xs)
+                                             / max(1, sum(x["m"].get("views", 0) for x in xs)), 2),
+                      "ig_median_views": statistics.median((x["ig"].get("views") or 0) for x in xs),
+                      "ig_sends_per_1k_reach": round(1000 * sum(x["ig"].get("shares", 0) or 0 for x in xs)
+                                                     / max(1, sum(x["ig"].get("reach", 0) or 0 for x in xs)), 2),
+                      "ig_median_skip_rate": (statistics.median([x["ig"]["reels_skip_rate"] for x in xs
+                                                                 if x["ig"].get("reels_skip_rate") is not None])
+                                              if any(x["ig"].get("reels_skip_rate") is not None for x in xs) else None)}
         out["groups"][name] = res
         ok = {k: v for k, v in res.items() if v["n"] >= MIN_N}
         if len(ok) >= 2:
@@ -74,6 +98,7 @@ def stats(state) -> dict:
                                        "ratio": round(ok[hi]["median_views"] / ok[lo]["median_views"], 2),
                                        "n": [ok[hi]["n"], ok[lo]["n"]]})
 
+    group("batch", lambda x: x.get("batch"))          # e.g. the 5 Nov virality batch vs everything before it
     group("pillar", lambda x: x.get("pillar"))
     group("publish_slot_utc", lambda x: x.get("publish_slot_utc"))
     group("hook_formula", lambda x: x.get("hook_formula"))
@@ -96,6 +121,9 @@ You are the analyst for a YouTube Shorts channel. Write the weekly learning repo
 English with short bullet points. Use ONLY the numbers in the JSON below; never invent numbers or
 causes. Always state n. Say "not enough data yet" whenever a group has n < {min_n}. Remember Shorts
 results are noisy and topic-driven: correlation, not proof.
+Track growth, not only reach: for each group report subs_per_1k (YouTube), median_kept_pct (engaged views / views,
+the swipe-away stand-in), shares_per_1k, and on Instagram ig_sends_per_1k_reach and ig_median_skip_rate when present.
+A group with many views but ~0 subs_per_1k is NOT a winner. Compare the "batch" groups first.
 Sections (markdown, ## headings): What worked · What didn't · Hooks and openings · Visuals, length,
 music, wit · Costs · Experiments (progress per arm; if ready_to_conclude, say which arm leads and by how
 much) · Owner feedback themes · Next: repeat / change / stop / test.

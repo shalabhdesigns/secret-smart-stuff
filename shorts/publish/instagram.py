@@ -514,6 +514,12 @@ def snapshot(state) -> dict:
                     data["error"] = str(e)[:300]
                     break
                 metrics.remove(bad)
+        try:      # first-3-seconds skip rate (Meta, Dec 2025, "in development"): asked alone so it can't break the rest
+            body = _api("GET", f"{r['media_id']}/insights", tok, metric="reels_skip_rate")
+            for m in body.get("data") or []:
+                data[m["name"]] = (m.get("values") or [{}])[0].get("value", m.get("total_value", {}).get("value"))
+        except Exception:  # noqa: BLE001
+            pass
         with state.tx() as db:
             db.execute("INSERT INTO ig_metrics(media_id, job_id, age_hours, data, at) VALUES (?,?,?,?,?)",
                        (r["media_id"], r["job_id"], (time.time() - posted) / 3600, json.dumps(data), time.time()))
