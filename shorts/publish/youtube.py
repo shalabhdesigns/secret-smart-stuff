@@ -263,6 +263,19 @@ def unschedule(video_id: str) -> dict:
     return r.json()
 
 
+def reschedule(video_id: str, publish_at: str) -> dict:
+    """Move a scheduled (private) video's publish time (5 Nov 2026: publish times planned from audience data)."""
+    token = access_token()
+    body = {"id": video_id, "status": {"privacyStatus": "private", "publishAt": publish_at,
+                                       "selfDeclaredMadeForKids": False, "embeddable": True,
+                                       "containsSyntheticMedia": True}}
+    r = requests.put(VIDEOS_URL, params={"part": "status"}, json=body,
+                     headers={"Authorization": f"Bearer {token}"}, timeout=30)
+    if r.status_code >= 400:
+        raise UploadBlocked(f"could not reschedule {video_id}: {r.status_code} {r.text[:200]}")
+    return r.json()
+
+
 THUMB_URL = "https://www.googleapis.com/upload/youtube/v3/thumbnails/set"
 
 

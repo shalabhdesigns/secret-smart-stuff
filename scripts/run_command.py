@@ -951,6 +951,37 @@ def main(path: str) -> int:
                              f"{notify.esc(c.get('summary', '')[:300])}")
         use_backup(p, job)
         return 0
+    if action == "reschedule":
+        # move publish times of videos not yet public (YouTube + the Instagram queue + our records), and the planned
+        # time of queued batch videos (topic notes). {"moves": {"job-or-topic": "2026-11-08T14:00:00Z", ...}}
+        import datetime as _dt
+        from shorts.publish.youtube import reschedule
+        from shorts.publish import instagram as IG
+        done = {}
+        for key, when in (req.get("moves") or {}).items():
+            if _dt.datetime.fromisoformat(when.replace("Z", "+00:00")).timestamp() < time.time() + 30 * 60:
+                done[key] = "skipped: too soon"
+                continue
+            up = p.state.db.execute("SELECT * FROM uploads WHERE job_id=? AND video_id IS NOT NULL", (key,)).fetchone()
+            if up:
+                if up["status"] not in ("uploaded", "scheduled"):
+                    done[key] = f"skipped: {up['status']}"
+                    continue
+                reschedule(up["video_id"], when)
+                with p.state.tx() as db:
+                    db.execute("UPDATE uploads SET publish_at=? WHERE job_id=?", (when, key))
+                    db.execute("UPDATE ig_posts SET publish_at=? WHERE job_id=? AND status='pending'", (when, key))
+                IG._kv_try(IG._kv_put, f"igdue:{key}", when, ttl=7 * 86400)
+                done[key] = f"moved to {when}"
+            t = p.state.get_topic(key)
+            if t:                       # a planned video's topic: its notes carry the fixed time
+                notes = json.loads(t.get("notes") or "{}")
+                notes["publish_at"] = when
+                p.state.upsert_topic(key, "", notes=json.dumps(notes, ensure_ascii=False))
+                done.setdefault(key, f"planned for {when}")
+        print(json.dumps(done))
+        notify.send(p.state, "🕒 Publish times updated:\n" + "\n".join(f"{k}: {v}" for k, v in done.items()), silent=True)
+        return 0
     if action == "audience":
         from shorts import analytics as an
         print(json.dumps(an.audience(p.state)))
