@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-05 20:17 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-06 07:22 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Give the answer or mechanism by about 6s, and keep the news peg to one short line. Don't put it between the hook and its answer. (pattern, n=2)
@@ -16,6 +16,50 @@ Updated 2026-11-05 20:17 UTC. Built from every published video's 48 h and 7 day 
 - Drop nothing yet.
 
 ## Per-video analyses
+
+### ramayana-budget-v1 (48h) — below median
+- 25 views · 23.56% viewed · 0 likes · 0 shares · 0 subs (median views 1032, n=13)
+- On YouTube the Short got 25 views against a channel median of 1,032, and viewers watched only 9s (23.6% vs a 55% median); the Instagram Reel got 142 views with a similar ~8.7s watch time, so the script held attention poorly on both platforms and YouTube distribution was especially weak.
+  - ✅ Instagram reached 142 views (120 reach) against 25 on YouTube, so the topic or packaging could draw some audience. There are no Instagram medians to compare against.
+  - ✅ The loop lead-in and the loop self-review score (5/5) were designed in, but the data gives no evidence either way on whether the loop worked.
+  - ✅ The claims were hedged ('producer says', 'reportedly', 'no itemised split'). This is an accuracy strength (self-review 4), though it may have cost payoff.
+  - ❌ YouTube was far below the channel median on every metric: views 25 vs 1,032, engaged views 14 vs 481, average view duration 9s vs 20s, average percentage viewed 23.56% vs 54.96%, likes 0 vs 12, subscribers gained 0 vs 1.
+  - ❌ The viewing stopped early on both platforms: YouTube average view duration was 9s and Instagram's average watch time was about 8.7s, with a 48% Instagram skip rate. The ~9s point falls just as beat b3 starts (8.8s), though an average is not a precise drop point.
+  - ❌ The payoff is weak. The hook asks 'where does it go?', but the answer is 'no itemised split', and the ending cuts off at 'So next time someone asks you...'. Self-review gave payoff only 3 and flow_pacing only 3.
+  - ❌ The hook scored only 43 on the heuristic. The YouTube title 'in a film' hides the Ramayana name used in the on-screen hook, which weakens the specific curiosity hook.
+  - ❌ The script is a list of figures (4,000 crore, 8x RRR's budget, 10,000 crew) over 6 images, one of them a replacement, and visual_credibility was scored 3. Abstract money claims give little to see.
+  - ❌ The many carried-over learnings (weekly lessons, wins, postmortems, review blockers) did not translate into a good result here. Applying them does not seem to have helped, and no lesson shows as repeating a win.
+  - ❌ No retention curve was provided, so the exact drop points cannot be located.
+  - 💡 [story, hypothesis] If the honest answer to a 'where does the money go' hook is 'nobody knows', make the reveal itself the payoff, with a concrete surprising item early, rather than ending on 'no itemised split'.
+  - 💡 [title, hypothesis] Name the specific subject (Ramayana) in the YouTube title so it matches the on-screen hook instead of the generic 'in a film'.
+  - 💡 [hook, hypothesis] Give the first 3 seconds a concrete, visual claim instead of a plain question; a heuristic of 43 and 9s average watch suggest the question formula alone did not hold viewers.
+  - 💡 [visuals, hypothesis] For number-heavy topics, show the money as comparisons or visible breakdowns (e.g. the 8x RRR budget as a bar) rather than generic images, so each beat has something to see.
+  - 💡 [pacing, hypothesis] Put the most surprising fact before ~8s, because average viewers were gone by about 9s on both YouTube and Instagram.
+  - 💡 [topic, hypothesis] Treat the 25-view YouTube result as a possible distribution problem rather than a topic verdict: the same video got 142 views on Instagram, so re-test film-budget topics with a stronger hook before dropping the pillar.
+
+### plastic-aglet-on-the-end-of-a-shoelace-v1 (7d) — at median
+- 1302 views · 90.29% viewed · 16 likes · 0 shares · 3 subs (median views 1277.0, n=2)
+- The Short landed on the channel median for views (1,302 vs 1,277), with above-median watch time (AVD 27s vs 23s) and more subscribers (3 vs 1), but only 16 likes (median 29.5) and no comments or shares. The sample is n=2, so this is a weak read.
+  - ✅ Hook and first beats held viewers: the curve stays above 1.0 until about 4.9s (1.154 at 0.3s, 1.026 at 4.9s), so the opening question and the 'looks like decoration' line did not lose people. The values above 1.0 suggest rewatching or looping at the start.
+  - ✅ Reported averageViewPercentage was 90.29% vs a 62.1% median, and averageViewDuration was 27s vs 23s. That is a clear above-median result for a 30.8s Short, though it conflicts with the retention curve (see what_didnt).
+  - ✅ 3 subscribers gained vs a median of 1, and engagedViews of 748 vs 693. The topic seems to have attracted viewers who wanted more.
+  - ✅ The loop lead-in and the 'So next time someone asks you...' closer were rated 5/5 for loop in the self-review, and the early rewatch signal fits that. This is not proven, because the curve ends at 0.141.
+  - ❌ Engagement was thin: 16 likes vs a 29.5 median, 0 comments, 0 shares (median 0.5). The Short was watched but didn't prompt action. The self-review also scored payoff, rewatch and share at only 3.
+  - ❌ The retention curve and the summary metrics disagree. The curve falls to about 0.14 by the end and averages roughly 0.5, yet averageViewPercentage is reported as 90%. Treat the 90% figure cautiously and rely on the curve for locating drops.
+  - ❌ The curve falls steadily from about 6.5s to the end, with no recovery. After 'frays' and 'holds the fibers together' (b4-b5), the question is basically answered and the rest repeats it: the 'tiny mop' line, eyelet guiding, then the name origin. The self-review gave flow_pacing a 3.
+  - ❌ The 'needle' etymology (b9) is a tangent after the answer was already given, and the curve keeps dropping through it (0.346 to 0.244). b10 then repeats the summary.
+  - ❌ Instagram was weak: 153 views, 135 reach, 1 like, 0 saves or shares, a 38% skip rate and about 9s average watch time (assuming the value is in ms) on a 30.8s video. That is about 12% of the YouTube views, so the audience is far smaller and the platform gap is more likely audience/platform than content.
+  - 📉 b3 @ 6.5 s: 'A lace is made of fibers' is abstract background after the hook, and the curve falls from 1.026 to 0.897 here. Viewers wanted the answer and got a setup line.
+  - 📉 b4 @ 9.5 s: The biggest single drop (0.859 to 0.679): 'Leave the end bare, and it frays' gives away the core answer, so some viewers feel they have it and swipe.
+  - 📉 b6 @ 14.2 s: The curve falls from 0.615 to 0.50 on 'the end becomes a tiny mop', which restates the fraying point just made in b4-b5.
+  - 📉 b9 @ 23.4 s: The needle etymology is a tangent from the practical explanation, and the curve drops from 0.346 to 0.282 and then 0.244 as the Short reaches its recap.
+  - 💡 [story, hypothesis] Hold back part of the answer. Here 'it frays' came at 8.7s and the curve fell sharply afterwards, so try withholding the payoff or adding a surprise twist before the main reason.
+  - 💡 [pacing, hypothesis] Cut the repeated beats (the 'tiny mop' line and the b10 recap) and aim for about 20-24s with a new fact in every beat.
+  - 💡 [story, hypothesis] Place a surprising detail (such as the needle-name origin) before the answer lands, or tie it directly to the main explanation, rather than adding it as a late aside.
+  - 💡 [hook, hypothesis] The plain question hook kept viewers (the curve stays above 1.0 early on). Keep it, but replace the b2 'looks like decoration' line with a sharper tension or a visual that previews the problem.
+  - 💡 [loop, hypothesis] Keep the loop lead-in ending, since the early curve is above 1.0, and check retention against averageViewPercentage on the next videos to see whether the metrics reconcile.
+  - 💡 [captions, hypothesis] Add an explicit engagement prompt, such as a question viewers can answer in the comments or a 'send to someone who...' line. Likes, comments and shares were all low despite good watch time.
+  - 💡 [topic, hypothesis] Everyday-object 'why detail' topics can reach median views and bring in subscribers (3 vs 1), but one video is not enough to say more. Test another in this pillar before drawing conclusions.
 
 ### moka-pot-v1 (48h) — below median
 - 157 views · 52.54% viewed · 0 likes · 0 shares · 1 subs (median views 1104.5, n=12)
