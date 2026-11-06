@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-06 07:22 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-06 19:41 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Give the answer or mechanism by about 6s, and keep the news peg to one short line. Don't put it between the hook and its answer. (pattern, n=2)
@@ -16,6 +16,29 @@ Updated 2026-11-06 07:22 UTC. Built from every published video's 48 h and 7 day 
 - Drop nothing yet.
 
 ## Per-video analyses
+
+### indian-pressure-cooker-with-a-jiggle-weight-on-t-v1 (7d) — below median
+- 112 views · 45.41% viewed · 2 likes · 0 shares · 1 subs (median views 1302, n=3)
+- Well below the channel medians at 7 days (112 views vs 1,302, average viewed 45.41% vs 73.88%), with the biggest viewer loss at the second beat, where the script answered a different question than the hook asked; Instagram was just as small (120 views).
+  - ✅ The opening held: everyone was still watching at 3.4 s and 94.1% at 4.9 s, so the question hook didn't lose people at the start.
+  - ✅ Retention flattened at 29.4% from 17.2 s to 21.8 s (beats b6-b8, the lift, steam release and 'plops back down, unbothered'). The people who stayed liked the payoff mechanics and the one wit line.
+  - ✅ The script is tight at 30.7 s and 81 words, and the self-review scored loop 5 and an overall mean of 3.89.
+  - ❌ Reach and engagement are tiny: 112 views, 34 engaged views, 2 likes, 0 comments, 0 shares, +1 subscriber. Median is 1,302 views, 748 engaged views and 25 likes.
+  - ❌ Average view duration was 14 s against a 27 s median, and average percentage viewed was 45.41% against 73.88%.
+  - ❌ Viewers fell from 94.1% to 67.7% between 4.9 s and 6.4 s. Beat b2 ('Not a lock. Lugs and a gasket seal the lid.') starts with a negation and a side detail about the lid instead of the weight the hook promised.
+  - ❌ Steady erosion continued through b3-b5, from 58.8% at 8.0 s to 38.2% at 12.6 s, while the script explained the vent and pressure in words. Nothing new or surprising arrived to re-hook people.
+  - ❌ The ending didn't loop or get rewatched: retention was 14.7% at 29.5 s and never rose above 1.0 after the first second. The loop scored 5 in self-review but showed no sign of working with viewers. Rewatch and share were self-scored only 3.
+  - ❌ The carried-over learnings came from other topics (onigiri, Japanese knife, drain grate) and the owner drops. There is no sign they helped, since the result is far below median. With n=3 it is also impossible to tell whether they hurt.
+  - ❌ Instagram was equally weak: 120 views, 106 reach, 1 interaction, 49.1% skip rate and about 6 s average watch time (assuming the figure is in milliseconds). YouTube and Instagram views are nearly the same, so the weakness is probably the topic, packaging or distribution rather than one platform's audience.
+  - 📉 b2 @ 6.4 s: Retention fell from 0.941 to 0.677. The beat said 'Not a lock. Lugs and a gasket seal the lid.', a lid detail rather than the weight from the hook, so the answer felt delayed.
+  - 📉 b3 @ 9.5 s: Retention slid from 0.588 to 0.5 during 'The weight sits over a steam vent.' This is a static, descriptive fact with no new reveal.
+  - 📉 b5 @ 12.6 s: Retention fell from 0.471 to 0.382 on 'At a set pressure, the weight lifts.' The mechanism was being explained verbally, and viewers who had not yet seen the payoff left.
+  - 📉 b9 @ 23.3 s: Retention dropped from 0.294 to 0.235 and kept falling to 0.176 at 26.4 s. 'Recipes often count each lift as a whistle' is a trivia aside after the mechanism was already explained, so people left before the wrap-up.
+  - 💡 [story, hypothesis] Make the second beat answer or deepen the hook's own question (the weight) instead of opening with a negation or side detail like the lid seal.
+  - 💡 [hook, hypothesis] Test a hook that shows or promises something surprising (for example, the weight lifting on screen) rather than a plain 'Why does X have Y?' question, which scored only 38 on the hook heuristic.
+  - 💡 [pacing, hypothesis] Put the key visual (steam escaping, weight lifting) before 10 s and avoid several consecutive static explanatory beats (b3-b5), where retention bled about 20 points.
+  - 💡 [loop, hypothesis] Do not trust the self-review loop score. The ending beats lost viewers and there was no rewatch, so make the last line connect to the first frame with a visible payoff rather than a trailing 'So if you wonder...'.
+  - 💡 [topic, hypothesis] Both platforms produced about 110-120 views, so judge this topic and packaging as weak rather than blaming one platform. Try another india_asia object with a stronger visual curiosity gap before drawing conclusions about the pillar.
 
 ### ramayana-budget-v1 (48h) — below median
 - 25 views · 23.56% viewed · 0 likes · 0 shares · 0 subs (median views 1032, n=13)
