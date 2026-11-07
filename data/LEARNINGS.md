@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-07 06:33 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-07 13:31 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Give the answer or mechanism by about 6s, and keep the news peg to one short line. Don't put it between the hook and its answer. (pattern, n=2)
@@ -16,6 +16,24 @@ Updated 2026-11-07 06:33 UTC. Built from every published video's 48 h and 7 day 
 - Drop nothing yet.
 
 ## Per-video analyses
+
+### ramayana-imax-v1 (48h) — below median
+- 17 views · 57.76% viewed · 0 likes · 0 shares · 0 subs (median views 861.5, n=14)
+- The Short got only 17 views against a channel median of 861.5 at the same age, so it was barely distributed; the few who watched stayed about as long as usual (57.76% vs 54.62% median), and the Instagram reel got about 10x the views (162).
+  - ✅ Among the few viewers, retention was normal to slightly good: average view percentage was 57.76% vs the 54.62% median, and average view duration was 21s vs 19s. The content held people once they started.
+  - ✅ The Instagram reel reached 142 accounts with 162 views, 2 likes and 1 save. This is small, but it shows the topic can find some audience on another platform.
+  - ✅ The script is tight and the facts are clear: IMAX certifies cameras rather than building them, then covers the taller frame, the sound mix and the 3D/4DX release. The self-review gave accuracy 4 and visual credibility 4.
+  - ❌ Reach failed. 17 views is about 2% of the median of 861.5, and the problem is distribution rather than retention. With 0 likes, 0 comments, 0 shares and 0 subscribers gained, nothing signalled interest.
+  - ❌ Only 3 of 17 views counted as engaged (about 18%), against a median ratio of roughly 52% (444 of 861.5). The opening may have failed to hold the first seconds for the viewers it did reach.
+  - ❌ The hook ('Who builds the cameras behind Ramayana's "Filmed for IMAX"?') is a niche question. Its answer ('IMAX doesn't build these cameras') only arrives at about 7.8s, and the hook heuristic scored just 37.
+  - ❌ The Short's own title ('What does Filmed for IMAX actually mean?') asks a different question from the hook, which may blur the promise.
+  - ❌ The self-review scored payoff, flow/pacing, rewatch and share at only 3 each. The ending ('So if you ever wonder...') leads into the loop, but the payoff is a fairly dry list of facts.
+  - ❌ No retention curve was supplied, so I cannot say where viewers dropped off.
+  - 💡 [hook, hypothesis] Open with the surprising answer or a tension line (e.g. 'IMAX doesn't build its cameras') instead of a 'who builds...' question that needs a name-drop to land.
+  - 💡 [title, hypothesis] Make the title and the spoken hook ask the same question, so the viewer's promise is consistent from the feed to the first second.
+  - 💡 [topic, hypothesis] Treat film-industry certification and branding topics tied to one upcoming movie as a risky niche for Shorts; test a broader, more everyday film topic next before judging the pillar.
+  - 💡 [story, hypothesis] Add one concrete, visual 'wow' payoff (e.g. the taller frame vs a normal frame side by side) rather than ending on a list of features, to lift payoff, share and rewatch scores.
+  - 💡 [topic, hypothesis] Compare platforms on the same video: Instagram's 162 views vs YouTube's 17 points to YouTube's distribution rather than the content. Check whether other videos show the same gap before changing the content.
 
 ### indian-pressure-cooker-with-a-jiggle-weight-on-t-v1 (7d) — below median
 - 112 views · 45.41% viewed · 2 likes · 0 shares · 1 subs (median views 1302, n=3)
