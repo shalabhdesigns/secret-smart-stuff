@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-07 13:31 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-07 22:18 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Give the answer or mechanism by about 6s, and keep the news peg to one short line. Don't put it between the hook and its answer. (pattern, n=2)
@@ -16,6 +16,51 @@ Updated 2026-11-07 13:31 UTC. Built from every published video's 48 h and 7 day 
 - Drop nothing yet.
 
 ## Per-video analyses
+
+### ramayana-ram-setu-v2 (48h) — below median
+- 103 views · 59.12% viewed · 2 likes · 0 shares · 0 subs (median views 691, n=15)
+- Only 103 views against a channel median of 691 (and 32 engaged views vs 407), but the people who watched stayed about as long as usual (59% average viewed vs 55%), so the weakness was reach and the early film-promo pivot, not the body of the script.
+  - ✅ Retention among those who watched was slightly above the channel median: 59.12% average viewed vs 54.96%, and 21s average duration vs 20s.
+  - ✅ The question hook held the start well: the curve is above 1.0 (rewatching or looping) until about 5.7s, peaking at 1.375 at 0.4s.
+  - ✅ After the early drop the curve is very flat, from 0.5 at 12.9s to 0.438 at the end. Beats b5 to b11 (depth, 48 km length, ships, formation debate, satellite explanation) lost almost no one.
+  - ✅ The loop lead-in and closing line ('So next time someone asks you...') fit the above-1.0 start, and the self-review gave loop a 5. With 103 views this is only a weak signal.
+  - ✅ Learnings applied: there is no sign they helped. The tiffin-box and aglet wins and the bread-knife postmortem lessons came from object explainers, and this video's reach was far below the median. The 'owner:drop' and blocking-review entries for the Ramayana topics suggest this topic was already flagged as shaky. I can't tie any one learning to the result.
+  - ❌ Reach was very low: 103 views vs a median of 691, 2 likes vs 10, and 0 subscribers gained (the median is also 0). Engaged views were about 31% of views (32/103) vs about 59% at the median (407/691).
+  - ❌ The biggest retention loss came at b2 to b3 (5.7s to 7.5s), where the curve fell from 1.031 to 0.656. The hook promised a space-view answer, then b2 switched to a film release plug ('The new Ramayana film opens 5 November') and b3 to mythology ('The epic tells of a causeway to Lanka') before any answer arrived.
+  - ❌ A smaller loss followed at b4 (11.1s to 12.9s), from 0.562 to 0.5, as the answer ('shallow sea') started but the visuals may not have shown it clearly. The self-review rated image_word_match only 3 and flow_pacing 3.
+  - ❌ Instagram was similarly small (119 views, reach 103, 1 like, 0 saves, 0 shares), and the 56.4% skip rate with about 6s average watch time looks weak next to YouTube's 21s. The two platforms measure watching differently, so treat the gap as a platform/audience difference, not a content problem.
+  - ❌ The reach shortfall on both platforms points to topic or distribution (a film tie-in published in the 'news' slot) rather than the script, but one video can't separate these.
+  - 📉 b3 @ 7.5 s: Viewers who came for the space-view answer got a film release plug in b2 and then the epic's causeway-to-Lanka story in b3, so the question went unanswered and about 37% of the audience left in under 2 seconds.
+  - 📉 b4 @ 12.9 s: The real answer ('pale line is very shallow sea') arrived only at about 10s, after the earlier drop. A smaller loss followed while the visuals were still catching up with the words.
+  - 💡 [story, hypothesis] Answer the hook's question in the first 2 beats (by about 7s) and move any film or promo line to the end or drop it. Here the plug and myth framing came before the 'shallow sea' answer and cost the biggest chunk of viewers.
+  - 💡 [hook, hypothesis] Keep 'Why can you still see X from space?' style question hooks. The curve stayed above 1.0 for the first ~6s, so the hook itself worked once people were in the video.
+  - 💡 [visuals, hypothesis] Show the satellite or pale-water image the moment 'pale line' is said and keep it on screen. Cut mythology-flavoured imagery that doesn't support the hook's question.
+  - 💡 [topic, hypothesis] Don't judge the Ramayana/film pillar from this one video. Reach was a fraction of the median even though retention was fine, so test one more film-adjacent topic outside a release-date news slot before deciding.
+  - 💡 [pacing, hypothesis] The second half of the script held viewers almost perfectly (a flat curve from about 13s). Keep that density of concrete facts (depth, distance, ships) and move the strongest one earlier.
+
+### indian-stainless-steel-tiffin-box-v1 (7d) — at median
+- 1474 views · 55.21% viewed · 18 likes · 0 shares · 2 subs (median views 1272.5, n=4)
+- Tiffin tiers got 1,474 views (median 1,272), and the viewers who saw it were engaged and subscribed at above-median rates, but retention was below the channel median (55% vs 62% average viewed) because the video lost a lot of people between seconds 5 and 14.
+  - ✅ The opening hook held: retention stayed at or above 1.0 until about 4.8s (peak 1.184 at 0.3s), so the 'Why stack lunch in steel tins, not one pot?' question didn't cause an early swipe-away. The >1 values suggest some replays or loops.
+  - ✅ Reach and conversion were slightly above the median: views 1,474 vs 1,272.5, engaged views 712 vs 685, and 2 subscribers gained vs a median of 1.
+  - ✅ The back half of the video held steadier: from b7 (0.399 at 18.2s) to b9 (0.313 at 24.1s) the curve falls only about 0.09, so the 'clips and handle' and 'apartment block' beats kept the remaining viewers.
+  - ✅ The self-review's weak spots (flow_pacing 3, payoff 3) match the retention curve, so those scores are a useful early warning.
+  - ❌ Average view duration was 16s vs a median of 22.5s, and average viewed was 55.21% vs 62.1%. The video was weaker at keeping people than the channel norm.
+  - ❌ The steepest single drop came right after the hook: 1.007 at 4.8s to 0.836 at 6.3s (b2 to b3). b2 'It could have been one big pot.' restates the hook's 'not one pot', so it adds no new information.
+  - ❌ Retention fell by about 0.065 at every sample from 6.3s to 13.7s (0.836 to 0.496). The explanation (each tier holds one dish, dal vs sabzi) may feel obvious and slow, with no new reveal.
+  - ❌ The engaged-view share was 48% (712/1474) vs about 54% at the median (685/1272.5).
+  - ❌ There was almost no active response: 0 comments and 0 shares (same as the median) and 18 likes vs 20.5.
+  - ❌ The closing 'Look at it once more and ask...' beat lost viewers at the end (0.289 to 0.239 to 0.216 across b10 to b11). The loop-in design did not show up as retention at the end.
+  - ❌ Instagram was much weaker per view: 122 views, 105 reach, a 57.9% skip rate, an average watch of about 6.6s (assuming the figure is in ms) vs 16s on YouTube, and 1 interaction with 0 saves or shares. Because it is the same video, this points to the platform or audience rather than the content, though the weak hook-to-explanation transition probably hurts on both.
+  - 📉 b3 @ 6.3 s: Steepest drop (1.007 to 0.836). b2 repeated the hook's 'one big pot' idea, then 'dal and rice become roommates' arrived without a clear new visual or payoff, so viewers who had already got the question left.
+  - 📉 b5 @ 13.7 s: Steady decline through b4 and b5 (0.69 to 0.496). 'Each tier holds one dish' and 'one for dal, one for sabzi' say the same thing twice, and at about 14s half the audience is gone.
+  - 📉 b10 @ 27.1 s: Retention fell from 0.289 to 0.239 as the video turned to the wrap-up. The 'Separate inside, single package outside' line and the trailing 'ask...' prompt signal the ending, so viewers swipe before the loop.
+  - 💡 [story, hypothesis] Drop 'restate the hook' beats like b2: go straight from the question to the surprising answer (the roommates image) by about 4s.
+  - 💡 [pacing, hypothesis] Merge the repetitive middle beats (b4 'each tier holds one dish' and b5 'dal, sabzi') into one and add a new fact or visual change every beat, since retention fell steadily across 6–14s.
+  - 💡 [length, hypothesis] Try a tighter cut of about 22–25s: viewers averaged 16s, so content past about 18s reaches only about 40% of the audience.
+  - 💡 [loop, hypothesis] Make the closing line flow into the hook's question so it reads as a real loop instead of a trailing 'ask...', and check whether end retention improves.
+  - 💡 [topic, hypothesis] India/Asia everyday-object topics are working on reach (above the median on 4-video data). Repeat the pillar with a stronger payoff before drawing conclusions.
+  - 💡 [hook, hypothesis] Keep the question-style hook, which held retention above 1.0 for about 5s, but follow it with a faster payoff. On Instagram, test a more visual opening, since 58% skipped.
 
 ### ramayana-imax-v1 (48h) — below median
 - 17 views · 57.76% viewed · 0 likes · 0 shares · 0 subs (median views 861.5, n=14)

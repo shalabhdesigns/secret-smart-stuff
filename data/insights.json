@@ -1,5 +1,5 @@
 {
-  "videos_considered": 3,
+  "videos_considered": 4,
   "enough_data": false,
   "pillars": {
     "by_country": {
@@ -10,7 +10,7 @@
     },
     "walk_past": {
       "n": 1,
-      "median_views_vs_channel": 1.01,
+      "median_views_vs_channel": 1.0,
       "avg_view_pct": 73.9,
       "subs_per_1k_views": 0.76
     },
@@ -19,6 +19,12 @@
       "median_views_vs_channel": 1.0,
       "avg_view_pct": 90.3,
       "subs_per_1k_views": 2.3
+    },
+    "india_asia": {
+      "n": 1,
+      "median_views_vs_channel": 1.13,
+      "avg_view_pct": 55.2,
+      "subs_per_1k_views": 1.36
     }
   }
 }
