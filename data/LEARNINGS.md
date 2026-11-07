@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-06 19:41 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-07 06:33 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Give the answer or mechanism by about 6s, and keep the news peg to one short line. Don't put it between the hook and its answer. (pattern, n=2)
