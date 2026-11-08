@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-07 22:18 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-08 06:40 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Give the answer or mechanism by about 6s, and keep the news peg to one short line. Don't put it between the hook and its answer. (pattern, n=2)
@@ -16,6 +16,33 @@ Updated 2026-11-07 22:18 UTC. Built from every published video's 48 h and 7 day 
 - Drop nothing yet.
 
 ## Per-video analyses
+
+### bread-knife-v1 (7d) — at median
+- 1259 views · 45.92% viewed · 24 likes · 0 shares · 0 subs (median views 1302, n=5)
+- Views landed at the channel median (1,259 vs 1,302), but viewers left faster (45.9% average viewed vs 55.2%), and the video gained no subscribers, comments or shares; the biggest loss was in the first 10 seconds, right after the hook.
+  - ✅ Reach matched the channel norm: 1,259 views vs a median of 1,302 at the same age.
+  - ✅ The opening held people. Retention was above 1.0 (1.14 to 1.07) through about 3.6s, so the hook and loop lead-in kept viewers or got them to replay at the start.
+  - ✅ Likes were above the median (24 vs 18), so the people who stayed liked it.
+  - ✅ After the early drop, retention flattened at about 0.43 to 0.36 between 13s and 20s (beats b5 to b7). That group stayed through the 'smooth blade skates / soft inside squashes' explanation.
+  - ✅ The 'learnings_applied' list is mostly lessons from other videos (bus-shelter glass, onigiri wrapper, knife and pressure-cooker reviews), and the list is cut off. Nothing here shows they helped: results are at the median, retention is below it, and the self-review mean is only 3.33. I can't call any of them a pattern.
+  - ❌ Retention fell from 0.94 to 0.49 between 5.2s and 10.1s (b2 to b4), well before the payoff.
+  - ❌ Average viewed was 45.92% vs a 55.21% median, and average view duration was 15s vs 18s. Engaged views were also lower (643 vs 712).
+  - ❌ No subscribers gained (the median is 1) and no comments or shares, so the video didn't prompt any action beyond likes.
+  - ❌ The hook is a long 10-word question (heuristic score 38) that is answered at once with generic lines ('works like a small saw', 'each tooth ends in a small point'). That leaves little tension after the first few seconds.
+  - ❌ The second half bleeds viewers steadily, from 0.36 at 19.8s to 0.157 at 31.2s. 'Not decoration. Those teeth have a job.' restates the point rather than adding a new reveal.
+  - ❌ The ending 'Slicing a loaf, you might ask...' is a loop lead-in, but only about 16% of viewers were still watching, so few see the loop.
+  - ❌ The self-review scored image_word_match, visual_credibility, payoff and pacing at only 3 each, which fits the weak mid-video retention.
+  - 📉 b3 @ 6.8 s: Retention fell from 0.94 to 0.74 and then 0.61 as 'Each tooth ends in a small point' came on screen. After the hook, the abstract saw/point explanation gave no new curiosity or visible demonstration, so casual viewers swiped.
+  - 📉 b4 @ 10.1 s: Retention reached 0.49, half of what it was at 5s. 'Points catch the crust and bite in' repeats the same mechanism, and the real contrast (smooth blade skates) only arrives at b5, so the wait cost viewers.
+  - 📉 b8 @ 23.1 s: Retention fell from 0.34 to 0.30 and kept declining through b10. 'Scooped gaps' and 'Not decoration' restate earlier points, with no new payoff, so viewers left before the end.
+  - 💡 [hook, hypothesis] Shorten the opening question to about 6 words and add a surprising claim or a visual contrast (smooth blade slipping off a crust) in the first 3s, so the b2 to b3 drop is smaller.
+  - 💡 [story, hypothesis] Move the most concrete demonstration (smooth edge skating across the crust) up to beat 2 or 3, instead of explaining the mechanism in the abstract first.
+  - 💡 [pacing, hypothesis] Cut or merge repeated 'saw / point / bite' beats so each beat adds one new fact. The first 10s lost about half the audience on near-identical lines.
+  - 💡 [length, hypothesis] Try a tighter cut of about 20 to 24s for simple 'why' topics. Retention was flat at 0.4 around 13 to 20s and then declined steadily, so the last third added little.
+  - 💡 [visuals, hypothesis] Match each image to the exact words on screen, especially at b3 and b4 where the biggest drop happens. Image-to-word match was self-scored only 3.
+  - 💡 [loop, hypothesis] The loop lead-in worked at the start (retention above 1.0) but few people reach the end (0.157). Test a payoff earlier, plus an ending that makes sense on replay.
+  - 💡 [captions, hypothesis] End with a concrete question or call to comment (for example, asking viewers what else in the kitchen has a hidden design) to try to get the first comments and shares, as both are at 0 here.
+  - 💡 [topic, hypothesis] Platform comparison: Instagram got only 117 views vs 1,259 on YouTube, with a 52.4% skip rate and 7.8s average watch (about a quarter of the video), similar to the early YouTube drop. The reach gap points to the platform and audience size, while the early loss of viewers looks like a content problem on both platforms.
 
 ### ramayana-ram-setu-v2 (48h) — below median
 - 103 views · 59.12% viewed · 2 likes · 0 shares · 0 subs (median views 691, n=15)
