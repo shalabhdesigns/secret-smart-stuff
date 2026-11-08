@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-08 13:52 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-08 22:27 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Give the answer or mechanism by about 6s, and keep the news peg to one short line. Don't put it between the hook and its answer. (pattern, n=2)
@@ -16,6 +16,31 @@ Updated 2026-11-08 13:52 UTC. Built from every published video's 48 h and 7 day 
 - Drop nothing yet.
 
 ## Per-video analyses
+
+### ramayana-4dx-v1 (48h) — below median
+- 147 views · 61.9% viewed · 0 likes · 0 shares · 0 subs (median views 566, n=17)
+- The Short got 147 views against a channel median of 566 (about 26%), with 52 engaged views against 244 and no likes, comments or subscribers, even though viewers who watched stayed slightly longer than usual (61.9% vs 55.0% average viewed).
+  - ✅ Retention was healthy once people were in: average view percentage was 61.9% against a 54.96% median, and average view duration was 21s against 20s. The 34.9s runtime is long, so the percentage mainly reflects that viewers stayed for most of it.
+  - ✅ The curve starts above 1.0 (1.269 at 0.3s, still 1.038 at 3.8s), so the loop lead-in or early rewatching gave the opening a boost.
+  - ✅ There is a long plateau from b6 to b9 (0.538 at 17.8s, 0.442 at 26.5s). Viewers who got past the feature list stayed through 'water sprays', 'a little splash is part of the plan' and 'programmed effects track'.
+  - ✅ The 'splash' payoff in b6-b7 held attention better than the generic effects list before it.
+  - ❌ Reach and engagement were far below the channel norm: views are about 26% of the median, engaged views about 21%, and likes are 0 against a median of 7. The problem is getting people to start and react, not keeping them once they watch.
+  - ❌ The hook is a long question that needs the viewer to know a specific film ('Ramayana: Rise of a Legend'). It scored 4/5 on self-review for curiosity, but it did not pull in viewers or spark any reaction.
+  - ❌ Viewers leave steadily through b2-b5, falling from 0.94 at 5.6s to 0.54 at 16.1s. 'This film also releases in 4DX' and the list 'tilt, shake, vibrate / wind, fog, scents' are generic statements that add no new surprise.
+  - ❌ Visuals were a weak spot: self-review gave visual credibility and image-word match 3/5, and the video used 7 images (2 of them replacements) across about 35s.
+  - ❌ The many carried-over learnings gave no visible benefit. Most come from the Learjet videos, a different topic. The Ramayana entries are review blocks and owner drops, which suggests the owner has been dropping Ramayana-tied topics, yet this video still leaned on a Ramayana hook. Retention was a little better than median, but reach and engagement were far worse, so the lessons did not clearly help.
+  - ❌ The ending bleeds viewers: 0.404 at 30.0s, 0.346 at 31.8s and 0.308 at 33.5s. The b10 recap repeats b4-b7, and the b11 'So next time someone asks you...' lead-in adds nothing a viewer needs.
+  - 📉 b2 @ 5.6 s: After the Ramayana-specific question, 'This film also releases in 4DX' is a flat, generic statement. Retention falls from 1.135 at 2.1s to 0.865 at 7.3s as viewers decide the hook is not for them.
+  - 📉 b4 @ 12.6 s: 'They tilt, shake and vibrate along' is an abstract list. Retention slides from 0.75 at 10.8s to 0.673 at 12.6s and 0.596 at 14.3s, with no concrete scene to watch.
+  - 📉 b5 @ 16.1 s: 'Wind, fog and scents' is another list of effects that cannot be shown in still images, and retention hits 0.538, about half the audience. It levels off once the splash payoff arrives in b6.
+  - 📉 b10 @ 31.8 s: The recap 'a 4DX seat moves, shakes, and may splash you' repeats what viewers already heard, and retention drops from 0.404 to 0.346, then to 0.308 in b11 as the loop lead-in starts.
+  - 💡 [hook, hypothesis] Open with the surprising 4DX fact ('your cinema seat can spray water at you') rather than a hook that depends on a specific film title. Then test whether a film-agnostic hook lifts starts.
+  - 💡 [topic, hypothesis] Do not rely on a Ramayana tie-in to carry a general explainer. Reach was about a quarter of the median on both platforms, so test the same subject without the tie-in before judging the 4DX topic itself.
+  - 💡 [pacing, hypothesis] Cut the effect lists in b3-b5 into one concrete, visual beat, and move the splash payoff earlier. Retention stabilised once the splash beats arrived.
+  - 💡 [length, hypothesis] Trim the Short from about 35s to about 25-28s by dropping the b10 recap and the b11 lead-in, which lose viewers (0.404 to 0.308) without adding information.
+  - 💡 [visuals, hypothesis] Use images that show the effect (a splash, a moving seat) rather than generic ones. Image-word match and credibility were both 3/5, and the 4DX effects are visual by nature.
+  - 💡 [loop, hypothesis] Keep the loop lead-in, since early retention started above 1.0, but make the final line complete a thought rather than trail off with 'So next time someone asks you...'.
+  - 💡 [topic, hypothesis] Instagram showed the same weak result as YouTube: 189 views and 158 reach against 147 YouTube views, with a 76.2% skip rate, an average watch time of about 4.9s and 1 interaction in total. Because the gap between platforms is small, the weakness probably lies in the topic and hook, not the platform. YouTube viewers who stayed averaged 21s, so the opening is the first thing to fix.
 
 ### ramayana-3d-glasses-v1 (48h) — below median
 - 58 views · 28.02% viewed · 0 likes · 0 shares · 0 subs (median views 628.5, n=16)
