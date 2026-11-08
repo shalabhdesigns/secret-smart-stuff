@@ -1,9 +1,13 @@
 {
- "collected_at": "2026-11-07T06:09:55Z",
+ "collected_at": "2026-11-08T06:15:19Z",
  "errors": [
   "@simplethingshistories: ERROR: [youtube:tab] @simplethingshistories: This channel does not have a shorts tab"
  ],
  "all_titles": [
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Drainage Pipes Have Ridges for a Reason?"
+  },
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Airplanes Use Thousands of Tiny Rivets?"
@@ -1201,10 +1205,6 @@
    "title": "Did You Know Submarines Existed In The 1600s? 🚢😮"
   },
   {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Tomatoes Were Once Feared? 🍅😱"
-  },
-  {
    "channel": "@nameexplain",
    "title": "Why Was The Queen's Husband Prince Philip Not Called The King?"
   },
@@ -1806,6 +1806,13 @@
    "multiple": 3.4
   },
   {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Marble Used to Be Living Animals?",
+   "views": 10000,
+   "url": "https://www.youtube.com/shorts/jSVuPFRWvvk",
+   "multiple": 3.3
+  },
+  {
    "channel": "@nameexplain",
    "title": "Grapes & Grapefruit!?",
    "views": 27000,
@@ -1814,17 +1821,17 @@
   },
   {
    "channel": "@historyofsimplethings",
-   "title": "Did You Know Marble Used to Be Living Animals?",
-   "views": 10000,
-   "url": "https://www.youtube.com/shorts/jSVuPFRWvvk",
-   "multiple": 3.3
+   "title": "Did you know plugs have holes in the prongs for a reason?",
+   "views": 9900,
+   "url": "https://www.youtube.com/shorts/gdzta-jO0Bs",
+   "multiple": 3.2
   },
   {
    "channel": "@historyofsimplethings",
-   "title": "Did you know plugs have holes in the prongs for a reason?",
-   "views": 9800,
-   "url": "https://www.youtube.com/shorts/gdzta-jO0Bs",
-   "multiple": 3.2
+   "title": "Did You Know Aluminum Doesn’t Rust Like Iron? ✨",
+   "views": 9600,
+   "url": "https://www.youtube.com/shorts/58rlT470JyU",
+   "multiple": 3.1
   },
   {
    "channel": "@nameexplain",
@@ -1842,10 +1849,10 @@
   },
   {
    "channel": "@historyofsimplethings",
-   "title": "Did You Know Aluminum Doesn’t Rust Like Iron? ✨",
-   "views": 9600,
-   "url": "https://www.youtube.com/shorts/58rlT470JyU",
-   "multiple": 3.1
+   "title": "Did You Know Honey Never Spoils? 🍯⏳",
+   "views": 9300,
+   "url": "https://www.youtube.com/shorts/TDtLqm-6AUo",
+   "multiple": 3.0
   },
   {
    "channel": "@nameexplain",
@@ -1863,10 +1870,10 @@
   },
   {
    "channel": "@historyofsimplethings",
-   "title": "Did You Know Honey Never Spoils? 🍯⏳",
-   "views": 9300,
-   "url": "https://www.youtube.com/shorts/TDtLqm-6AUo",
-   "multiple": 3.0
+   "title": "Did You Know Basketball Began as a Winter Game?",
+   "views": 8900,
+   "url": "https://www.youtube.com/shorts/GaED350XHFU",
+   "multiple": 2.9
   },
   {
    "channel": "@nameexplain",
@@ -1880,13 +1887,6 @@
    "title": "How Did Algeria Get Its Name? #Shorts",
    "views": 24000,
    "url": "https://www.youtube.com/shorts/jFdXZeDpX9k",
-   "multiple": 2.9
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Basketball Began as a Winter Game?",
-   "views": 8900,
-   "url": "https://www.youtube.com/shorts/GaED350XHFU",
    "multiple": 2.9
   },
   {
@@ -1911,13 +1911,6 @@
    "multiple": 2.8
   },
   {
-   "channel": "@nameexplain",
-   "title": "How  Did Czechia Get Its Name? #Shorts",
-   "views": 22000,
-   "url": "https://www.youtube.com/shorts/kii5SIsYPH0",
-   "multiple": 2.7
-  },
-  {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Copper Turns Green to Protect Itself?",
    "views": 8200,
@@ -1939,10 +1932,10 @@
    "multiple": 2.7
   },
   {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Tomatoes Were Once Feared? 🍅😱",
-   "views": 8200,
-   "url": "https://www.youtube.com/shorts/Z5kxelTKZOE",
+   "channel": "@nameexplain",
+   "title": "How  Did Czechia Get Its Name? #Shorts",
+   "views": 22000,
+   "url": "https://www.youtube.com/shorts/kii5SIsYPH0",
    "multiple": 2.7
   },
   {
@@ -1974,6 +1967,20 @@
    "multiple": 2.5
   },
   {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Oil Refineries Are Giant Boiling Towers? 🛢️🔥",
+   "views": 7400,
+   "url": "https://www.youtube.com/shorts/F4uJ3BpwL-k",
+   "multiple": 2.4
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Phillips Was A Real Person? 🔩😮",
+   "views": 7400,
+   "url": "https://www.youtube.com/shorts/Bxa1bCf0hbA",
+   "multiple": 2.4
+  },
+  {
    "channel": "@nameexplain",
    "title": "How Did Brunei Get Its Name? #Shorts",
    "views": 20000,
@@ -1992,20 +1999,6 @@
    "title": "How Did Australia Get Its Name? #Shorts",
    "views": 20000,
    "url": "https://www.youtube.com/shorts/6nxScDW-4eQ",
-   "multiple": 2.4
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Oil Refineries Are Giant Boiling Towers? 🛢️🔥",
-   "views": 7400,
-   "url": "https://www.youtube.com/shorts/F4uJ3BpwL-k",
-   "multiple": 2.4
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Phillips Was A Real Person? 🔩😮",
-   "views": 7400,
-   "url": "https://www.youtube.com/shorts/Bxa1bCf0hbA",
    "multiple": 2.4
   },
   {
@@ -2076,6 +2069,13 @@
    "title": "Did You Know Uranium Holds Massive Energy?",
    "views": 6400,
    "url": "https://www.youtube.com/shorts/2lZgu-XWi1c",
+   "multiple": 2.1
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Beer Was Safer to Drink Than Water?",
+   "views": 6300,
+   "url": "https://www.youtube.com/shorts/IYloQP55TLY",
    "multiple": 2.1
   }
  ]
