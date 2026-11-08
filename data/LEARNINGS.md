@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-08 06:40 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-08 13:52 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Give the answer or mechanism by about 6s, and keep the news peg to one short line. Don't put it between the hook and its answer. (pattern, n=2)
@@ -16,6 +16,28 @@ Updated 2026-11-08 06:40 UTC. Built from every published video's 48 h and 7 day 
 - Drop nothing yet.
 
 ## Per-video analyses
+
+### ramayana-3d-glasses-v1 (48h) — below median
+- 58 views · 28.02% viewed · 0 likes · 0 shares · 0 subs (median views 628.5, n=16)
+- At 54.9h this Short is far below the channel median on every metric (58 views vs 628.5, 28% average viewed vs 56%, 0 likes vs 8.5), and the Instagram Reel shows the same weak ~10s watch time, so the cause is probably the content or packaging rather than the platform.
+  - ✅ Nothing clearly beat the channel median. The only mildly positive signal is that 25 of 58 views (about 43%) were engaged views, but the channel median is about 52% (325.5 of 628.5), so even that is not a win.
+  - ✅ The explanation itself is clear and ordered (two pictures, one per eye, polarised lenses, brain merges them, flat screen). The self-review scored payoff, accuracy and flow at 4, but the audience data did not confirm this.
+  - ✅ On Instagram the Reel reached 105 accounts with 131 views, more than the 58 on YouTube. Its skip rate was 43.6%, so roughly half of viewers stayed past the opening there.
+  - ❌ Average view duration was 10s vs the channel median of 20.5s, and average percentage viewed was 28.02% vs 56.25%. Viewers left around the first third of a 36.1s video.
+  - ❌ Beat b2 (4.24s), 'Ramayana: Rise of a Legend lands in 3D.', comes right after the hook question and before any answer. The news tie-in delays the payoff the hook promised. This is a likely cause, but there is no retention curve to confirm it.
+  - ❌ There was zero response: 0 likes, comments, shares and subscribers gained. Median likes are 8.5, so the video did not prompt any action.
+  - ❌ Distribution was very weak: 58 views is about 9% of the median 628.5. The hook scored only 38 on the heuristic, and the question format 'Why do 3D glasses make flat screens look deep?' is generic.
+  - ❌ The applied learnings did not visibly help. They include Learjet wins and postmortems, plus several 'owner:drop' and review entries for earlier Ramayana videos. Despite those drop entries, this script still carries a Ramayana tie-in line, which suggests the carried-over guidance was not followed or did not transfer to a film/3D topic.
+  - ❌ The self-review (mean 3.67) rated visual_credibility, rewatch and share at only 3, and the results match those weak spots. Two review rounds did not fix them.
+  - ❌ Instagram engagement was also minimal (1 like, 0 shares, 0 saves). Watch time there was 10.6s on average, about the same as YouTube's 10s.
+  - 📉 b3/b4 (after the b2 news line) @ 10 s: No retention curve was supplied, so this is inferred from the 10s average view duration, which falls between b3 (8.4s) and b4 (11.68s). The likely cause is that the hook question was followed by a Ramayana movie promo and only then the explanation, so viewers left before the mechanism ('two slightly different pictures') landed.
+  - 💡 [hook, hypothesis] Answer or tease the hook's question in the very next beat. Do not put a news or promo line (like the Ramayana 3D tie-in) between the question and the explanation.
+  - 💡 [story, hypothesis] If a news tie-in is wanted, place it at the end or fold it into the hook, so the first 8 seconds are only about the hidden design.
+  - 💡 [hook, hypothesis] Replace the generic 'Why do X...' question with something specific and surprising, for example one concrete fact about what each eye sees. The current hook scored 38 on the heuristic.
+  - 💡 [length, hypothesis] Viewers averaged 10s of a 36.1s video, so test a tighter cut of about 20-25s where the key insight lands before second 10.
+  - 💡 [visuals, hypothesis] Show the two-images-per-eye idea visually early, for example with a split-screen or red/blue offset image. Visual credibility was self-scored only 3, and this is the beat that most needs a picture.
+  - 💡 [topic, hypothesis] Do not reuse a carried-over 'drop' topic or tie-in (Ramayana) in new scripts. Check the learnings list against the script before publishing.
+  - 💡 [topic, hypothesis] The same ~10s average watch on YouTube and Instagram suggests the issue is in the video itself, not the platform. Compare against other film-pillar videos before judging the topic.
 
 ### bread-knife-v1 (7d) — at median
 - 1259 views · 45.92% viewed · 24 likes · 0 shares · 0 subs (median views 1302, n=5)
