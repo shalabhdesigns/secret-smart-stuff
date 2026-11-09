@@ -1,19 +1,19 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-09 07:09 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-09 11:59 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
-- Give the answer or mechanism by about 6s, and keep the news peg to one short line. Don't put it between the hook and its answer. (pattern, n=2)
-- Keep the loop lead-in and the open-ended last line. (pattern, n=2)
-- Cut closing or recap beats that repeat the hook or answer. (pattern, n=2)
-- Try a question hook that leads with the consequence or the surprising number (up to 30% lift lost). (hypothesis)
-- Hedge facts that come from retellings and keep pictures simple. If a picture fails twice, reuse a good one. (hypothesis)
+- Keep the question hook, but make it short and concrete, naming the surprising fact or visual in the first 2s. (pattern, n=2)
+- Aim for about 25-30s and cut recaps and lead-ins that add no information. (pattern, n=2)
+- End on a payoff that completes the thought and ties to the topic, not a trailing "So next time..." line. (pattern, n=2)
+- Use images that show the effect itself, like a splash or a moving seat. (hypothesis)
+- Write titles that name a concrete image or surprising fact instead of an abstract paradox. (hypothesis)
 
 ## Topic guidance now
-- Keep, but unproven: news-pillar explainers on Learjet topics. Wing-ice was at the median (n=1) and black-box was below (n=1). The overall median is 1,277 views.
-- Test: the black-box "hidden design" fact without a tragedy peg (n=1, 566 YouTube views, below the median).
-- Pillars (by_country, walk_past): n=1 each, so not enough data yet to double down or drop either.
-- Drop nothing yet.
+- Ramayana tie-ins: keep testing, don't drop or double down yet. 2 videos at 48h were below median, with a mixed Instagram result (n=2).
+- 4DX/cinema tech: test the subject without the Ramayana tie-in. The one video had 147 YouTube views against a batch median of 1280.5 (n=1).
+- Pillars (by_country, walk_past, why_detail, india_asia): not enough data yet, with n of 1-2 each.
+- Pillars: judge only on subs_per_1k and kept, not views alone.
 
 ## Per-video analyses
 
