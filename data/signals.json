@@ -1,9 +1,13 @@
 {
- "collected_at": "2026-11-08T06:15:19Z",
+ "collected_at": "2026-11-09T06:49:06Z",
  "errors": [
   "@simplethingshistories: ERROR: [youtube:tab] @simplethingshistories: This channel does not have a shorts tab"
  ],
  "all_titles": [
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Hydraulic Presses Multiply Force Using Liquid?"
+  },
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Drainage Pipes Have Ridges for a Reason?"
@@ -1201,10 +1205,6 @@
    "title": "Did You Know The Eiffel Tower Was Almost Torn Down? 🗼😮"
   },
   {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Submarines Existed In The 1600s? 🚢😮"
-  },
-  {
    "channel": "@nameexplain",
    "title": "Why Was The Queen's Husband Prince Philip Not Called The King?"
   },
@@ -1691,14 +1691,21 @@
    "title": "Did You Know Concrete and Cinder Blocks Differ?",
    "views": 21000,
    "url": "https://www.youtube.com/shorts/qWLqgquoGGE",
-   "multiple": 6.9
+   "multiple": 7.0
   },
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Carrots Used To Be Purple? 🥕💜",
    "views": 19000,
    "url": "https://www.youtube.com/shorts/tDJ4EZgdJUQ",
-   "multiple": 6.2
+   "multiple": 6.3
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know The Eiffel Tower Was Almost Torn Down? 🗼😮",
+   "views": 18000,
+   "url": "https://www.youtube.com/shorts/jRLjpYMiCzA",
+   "multiple": 6.0
   },
   {
    "channel": "@nameexplain",
@@ -1706,13 +1713,6 @@
    "views": 50000,
    "url": "https://www.youtube.com/shorts/yt3KGZOu0aM",
    "multiple": 6.0
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know The Eiffel Tower Was Almost Torn Down? 🗼😮",
-   "views": 18000,
-   "url": "https://www.youtube.com/shorts/jRLjpYMiCzA",
-   "multiple": 5.9
   },
   {
    "channel": "@nameexplain",
@@ -1726,7 +1726,7 @@
    "title": "Did You Know Early Cars Didn’t Have Seat Belts?",
    "views": 15000,
    "url": "https://www.youtube.com/shorts/9MplJWQxBas",
-   "multiple": 4.9
+   "multiple": 5.0
   },
   {
    "channel": "@historyofsimplethings",
@@ -1757,32 +1757,32 @@
    "multiple": 3.9
   },
   {
-   "channel": "@nameexplain",
-   "title": "How Did Cape Verde Get Its Name? #Shorts",
-   "views": 31000,
-   "url": "https://www.youtube.com/shorts/Eqx4CR_S8SQ",
-   "multiple": 3.7
-  },
-  {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Speed Bumps Make Noise on Purpose?",
    "views": 11000,
    "url": "https://www.youtube.com/shorts/zAee9ZpFByE",
-   "multiple": 3.6
+   "multiple": 3.7
   },
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Sliced Bread Was Once Banned?",
    "views": 11000,
    "url": "https://www.youtube.com/shorts/0GipLRJRt5M",
-   "multiple": 3.6
+   "multiple": 3.7
   },
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Builders Used Eggs In Walls? 🥚🏗️",
    "views": 11000,
    "url": "https://www.youtube.com/shorts/5Hm1hbL6XMk",
-   "multiple": 3.6
+   "multiple": 3.7
+  },
+  {
+   "channel": "@nameexplain",
+   "title": "How Did Cape Verde Get Its Name? #Shorts",
+   "views": 31000,
+   "url": "https://www.youtube.com/shorts/Eqx4CR_S8SQ",
+   "multiple": 3.7
   },
   {
    "channel": "@nameexplain",
@@ -1813,6 +1813,13 @@
    "multiple": 3.3
   },
   {
+   "channel": "@historyofsimplethings",
+   "title": "Did you know plugs have holes in the prongs for a reason?",
+   "views": 9900,
+   "url": "https://www.youtube.com/shorts/gdzta-jO0Bs",
+   "multiple": 3.3
+  },
+  {
    "channel": "@nameexplain",
    "title": "Grapes & Grapefruit!?",
    "views": 27000,
@@ -1821,16 +1828,16 @@
   },
   {
    "channel": "@historyofsimplethings",
-   "title": "Did you know plugs have holes in the prongs for a reason?",
-   "views": 9900,
-   "url": "https://www.youtube.com/shorts/gdzta-jO0Bs",
+   "title": "Did You Know Aluminum Doesn’t Rust Like Iron? ✨",
+   "views": 9600,
+   "url": "https://www.youtube.com/shorts/58rlT470JyU",
    "multiple": 3.2
   },
   {
    "channel": "@historyofsimplethings",
-   "title": "Did You Know Aluminum Doesn’t Rust Like Iron? ✨",
-   "views": 9600,
-   "url": "https://www.youtube.com/shorts/58rlT470JyU",
+   "title": "Did You Know Honey Never Spoils? 🍯⏳",
+   "views": 9300,
+   "url": "https://www.youtube.com/shorts/TDtLqm-6AUo",
    "multiple": 3.1
   },
   {
@@ -1849,9 +1856,9 @@
   },
   {
    "channel": "@historyofsimplethings",
-   "title": "Did You Know Honey Never Spoils? 🍯⏳",
-   "views": 9300,
-   "url": "https://www.youtube.com/shorts/TDtLqm-6AUo",
+   "title": "Did You Know Basketball Began as a Winter Game?",
+   "views": 8900,
+   "url": "https://www.youtube.com/shorts/GaED350XHFU",
    "multiple": 3.0
   },
   {
@@ -1870,9 +1877,16 @@
   },
   {
    "channel": "@historyofsimplethings",
-   "title": "Did You Know Basketball Began as a Winter Game?",
-   "views": 8900,
-   "url": "https://www.youtube.com/shorts/GaED350XHFU",
+   "title": "Did You Know Some Dams Can Slow Earth’s Rotation?",
+   "views": 8600,
+   "url": "https://www.youtube.com/shorts/c2gY3ivfEGA",
+   "multiple": 2.9
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Glass Is Made From Melted Sand?",
+   "views": 8600,
+   "url": "https://www.youtube.com/shorts/UY0magmo8dQ",
    "multiple": 2.9
   },
   {
@@ -1891,23 +1905,16 @@
   },
   {
    "channel": "@historyofsimplethings",
-   "title": "Did You Know Some Dams Can Slow Earth’s Rotation?",
-   "views": 8600,
-   "url": "https://www.youtube.com/shorts/c2gY3ivfEGA",
-   "multiple": 2.8
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Glass Is Made From Melted Sand?",
-   "views": 8500,
-   "url": "https://www.youtube.com/shorts/UY0magmo8dQ",
-   "multiple": 2.8
-  },
-  {
-   "channel": "@historyofsimplethings",
    "title": "Did You Know the Side of the Road You Drive on Was Because of Battles?",
    "views": 8400,
    "url": "https://www.youtube.com/shorts/LIDbRE6CXpk",
+   "multiple": 2.8
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Oil Comes From Ancient Life? 🛢️😮",
+   "views": 8300,
+   "url": "https://www.youtube.com/shorts/bXD-q4_E0gs",
    "multiple": 2.8
   },
   {
@@ -1922,13 +1929,6 @@
    "title": "Did You Know Cheese Came From Animal Stomachs?",
    "views": 8100,
    "url": "https://www.youtube.com/shorts/eE3K1cOYKDI",
-   "multiple": 2.7
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Oil Comes From Ancient Life? 🛢️😮",
-   "views": 8300,
-   "url": "https://www.youtube.com/shorts/bXD-q4_E0gs",
    "multiple": 2.7
   },
   {
@@ -1947,9 +1947,23 @@
   },
   {
    "channel": "@historyofsimplethings",
+   "title": "Did You Know Oil Refineries Are Giant Boiling Towers? 🛢️🔥",
+   "views": 7400,
+   "url": "https://www.youtube.com/shorts/F4uJ3BpwL-k",
+   "multiple": 2.5
+  },
+  {
+   "channel": "@historyofsimplethings",
    "title": "Did You Know Skyscrapers Are Built to Sway?",
    "views": 7500,
    "url": "https://www.youtube.com/shorts/MSI5uRtelVg",
+   "multiple": 2.5
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Phillips Was A Real Person? 🔩😮",
+   "views": 7400,
+   "url": "https://www.youtube.com/shorts/Bxa1bCf0hbA",
    "multiple": 2.5
   },
   {
@@ -1965,20 +1979,6 @@
    "views": 7500,
    "url": "https://www.youtube.com/shorts/Fm3cpQV5aCQ",
    "multiple": 2.5
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Oil Refineries Are Giant Boiling Towers? 🛢️🔥",
-   "views": 7400,
-   "url": "https://www.youtube.com/shorts/F4uJ3BpwL-k",
-   "multiple": 2.4
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Phillips Was A Real Person? 🔩😮",
-   "views": 7400,
-   "url": "https://www.youtube.com/shorts/Bxa1bCf0hbA",
-   "multiple": 2.4
   },
   {
    "channel": "@nameexplain",
@@ -2010,6 +2010,41 @@
   },
   {
    "channel": "@historyofsimplethings",
+   "title": "Did You Know Clapping Was Not for Applause?",
+   "views": 6800,
+   "url": "https://www.youtube.com/shorts/Sjba_xq18G4",
+   "multiple": 2.3
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Your Car’s License Plate Exists Because of Bicycles?",
+   "views": 6800,
+   "url": "https://www.youtube.com/shorts/f5YrzXU530w",
+   "multiple": 2.3
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Tape Measures Have Hidden Diamonds?",
+   "views": 6500,
+   "url": "https://www.youtube.com/shorts/GCzPgEkHjFQ",
+   "multiple": 2.2
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Castles Had Cliff Toilets? 🏰😳",
+   "views": 6500,
+   "url": "https://www.youtube.com/shorts/MHZ5SF-OyJA",
+   "multiple": 2.2
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Modern Cars Hide Antennas In Shark Fins?",
+   "views": 6500,
+   "url": "https://www.youtube.com/shorts/flpLoTpsF0g",
+   "multiple": 2.2
+  },
+  {
+   "channel": "@historyofsimplethings",
    "title": "Did You Know Potato Chips Came From an Angry Chef?",
    "views": 6700,
    "url": "https://www.youtube.com/shorts/qeqXO3CHebI",
@@ -2024,45 +2059,10 @@
   },
   {
    "channel": "@historyofsimplethings",
-   "title": "Did You Know Clapping Was Not for Applause?",
-   "views": 6800,
-   "url": "https://www.youtube.com/shorts/Sjba_xq18G4",
-   "multiple": 2.2
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Your Car’s License Plate Exists Because of Bicycles?",
-   "views": 6800,
-   "url": "https://www.youtube.com/shorts/f5YrzXU530w",
-   "multiple": 2.2
-  },
-  {
-   "channel": "@historyofsimplethings",
    "title": "Did You Know The First Cars Were Electric? ⚡🚗",
    "views": 6600,
    "url": "https://www.youtube.com/shorts/lfTh-JA39qM",
    "multiple": 2.2
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Tape Measures Have Hidden Diamonds?",
-   "views": 6500,
-   "url": "https://www.youtube.com/shorts/GCzPgEkHjFQ",
-   "multiple": 2.1
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Castles Had Cliff Toilets? 🏰😳",
-   "views": 6500,
-   "url": "https://www.youtube.com/shorts/MHZ5SF-OyJA",
-   "multiple": 2.1
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Modern Cars Hide Antennas In Shark Fins?",
-   "views": 6500,
-   "url": "https://www.youtube.com/shorts/flpLoTpsF0g",
-   "multiple": 2.1
   },
   {
    "channel": "@historyofsimplethings",
