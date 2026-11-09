@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-09 11:59 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-09 22:46 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Keep the question hook, but make it short and concrete, naming the surprising fact or visual in the first 2s. (pattern, n=2)
@@ -16,6 +16,180 @@ Updated 2026-11-09 11:59 UTC. Built from every published video's 48 h and 7 day 
 - Pillars: judge only on subs_per_1k and kept, not views alone.
 
 ## Per-video analyses
+
+### ramayana-diwali-v4 (48h) — below median
+- 84 views · 64.07% viewed · 1 likes · 0 shares · 0 subs (median views 411, n=19)
+- At 84 views against a channel median of 411 (and 21 engaged views against 209), the Short got about a fifth of normal reach. Those who stayed watched well (64.07% average viewed vs 54.96%), but about half left between seconds 4 and 13 when the script moved from the doorstep-lamp hook to Ramayana film and story background.
+  - ✅ Viewers who got past the intro stayed: retention was flat at 0.476 from 13.3s to the end, and average view percentage (64.07%) and duration (24s vs 20s) beat the channel medians.
+  - ✅ The opening question held viewers. Retention was 1.476 to 1.429 (above 1, so rewatching) through the first 4.1s of b1, which suggests the loop lead-in and hook wording worked at the very start.
+  - ✅ The ending beats (b7, b10, b11) lost nobody. Retention ticked up slightly to 0.524 at b7 ('One small flame, one big welcome'), so the closing lines were not the problem.
+  - ✅ The self-review rated the loop 5/5 and the hook 4/5, and the first seconds are consistent with that.
+  - ❌ Reach and engagement were far below median: views 84 vs 411, engaged views 21 vs 209, likes 1 vs 7, with 0 comments, 0 shares and 0 subscribers gained. Only the subscribers figure matches the channel median (0).
+  - ❌ Retention fell from 1.429 at 4.1s to 0.476 at 13.3s, a loss of roughly two thirds of the starting audience in nine seconds. It happened across b2, b3 and b4.
+  - ❌ The hook asks about doorstep lamps on moonless nights, but b2 jumps to 'A new Ramayana film arrives around Diwali'. That is a news tie-in and does not answer the question. b3 and b4 then retell a well-known Rama story, which is background rather than a hidden-design reveal.
+  - ❌ The hedged wording ('In the retelling', 'As commonly told') and the slow-building story in b3 to b6 gave no new reason to keep watching.
+  - ❌ The carried-over learnings do not appear to have helped. The 'win' and 'pm' items come from Learjet and handrail videos on different topics, and the Ramayana items are review blockers and owner drops. Views were far below median, and the self-review scored flow_pacing, rewatch and share at only 3.
+  - ❌ Instagram was tiny and weak: 9 views, 7 reach, an 87.5% skip rate, and an average watch time of about 6.3s (6308, which I take to be milliseconds). It is too small a sample to compare reliably with YouTube's 84 views, though both platforms are low.
+  - 📉 b2 @ 5.9 s: Retention fell from 1.429 to 1.048 as the hook gave way to 'A new Ramayana film arrives around Diwali'. This is a news line that does not answer the doorstep-lamp question just asked.
+  - 📉 b3 @ 7.8 s: Retention fell from 1.048 to 0.714 as 'Rama returns after fourteen years away' started a familiar retelling with no new or surprising detail.
+  - 📉 b4 @ 13.3 s: Retention reached 0.476 during 'Ayodhya lit lamps to welcome him', another known story beat. After this point the audience stayed flat to the end.
+  - 💡 [story, hypothesis] Answer the hook's question straight away. If the hook is about doorstep lamps, the next beat should reveal something about them, not pivot to a film tie-in or a known myth.
+  - 💡 [hook, hypothesis] Keep the first 4 seconds as they are (the question held 1.43 to 1.48 retention), but make the second beat deliver a concrete new fact so the 4 to 13s slump does not recur.
+  - 💡 [pacing, hypothesis] Cut or merge the story-recap beats (b3 to b6) into one or two tight lines. About half the audience left during them, and those who stayed past 13s watched to the end.
+  - 💡 [topic, hypothesis] Festival or film-news tie-ins in the 'film' pillar may fit the 'hidden design of everyday things' promise poorly. Test a Diwali topic framed around a concrete design object (the diya itself, its shape or wick) against this one.
+  - 💡 [captions, hypothesis] Drop hedging phrases like 'As commonly told' and 'In the retelling'. They add words without adding curiosity during the section where viewers were leaving.
+  - 💡 [loop, hypothesis] The loop lead-in may be inflating early retention above 1 without producing a clear end-of-video rewatch (the end sits at 0.476). Check the loop against more videos before relying on it.
+
+### learjet-wing-ice-v2 (7d) — above median
+- 2234 views · 95.1% viewed · 13 likes · 0 shares · 2 subs (median views 1311, n=11)
+- The Learjet wing-ice Short beat the channel median on views (2,234 vs 1,311), engaged views (1,214 vs 712) and average view percentage (95.1% vs 60.27%), but likes (13 vs 18) were lower and it got no comments or shares. The Instagram Reel had fewer views (1,532) and viewers watched far less of it.
+  - ✅ Reach and watch time were clearly above the channel's usual: 2,234 views against a median of 1,311, an average view duration of 37s against 22s, and 2 subscribers gained against a median of 1.
+  - ✅ The question hook, 'Why can ice rough as sandpaper stall a jet wing?', held viewers. Retention starts at 1.655 and stays above 1.0 until about 12s, which means many viewers replayed the opening.
+  - ✅ The 'So if someone asks you...' lead-in at the end seems to feed the loop. The last measured point is still 0.67 and the average view percentage is 95.1%. Part of that figure is likely replays, so it overstates how many people watched to the end.
+  - ✅ After about 14s the explanation beats (b4–b10) lose viewers slowly, from 0.98 to 0.70, with no sharp cliff. The curved edge, the ice roughening it, then lift falling and drag rising seems an easy sequence to follow.
+  - ✅ The video applied many carried-over lessons, including two 48h wins and several post-mortems, and it came out above the median. That is consistent with the lessons helping, but one video cannot show which lesson mattered, and the self-review scored it only 3.67 on average.
+  - ✅ A current news hook (the Florida Learjet crash) combined with a timeless physics explanation probably gave it more pull than a purely evergreen topic, though this is not proven.
+  - ❌ Engagement did not keep pace with reach. Likes were 13 against a median of 18, and comments and shares were 0. The engaged-view share (about 54%) matches the channel median (about 54%), so the retention advantage is mostly replays rather than deeper engagement.
+  - ❌ The biggest loss comes in b2–b3. Retention falls from 1.48 at 4.2s to 1.02 at 11.9s, while the news context (the Learjet reported 'manageable' ice, investigators have not said what caused the crash) is on screen and before the physics starts. Some of that drop is just replays tapering off.
+  - ❌ The self-review itself rated payoff and pacing lowest, both 3 out of 5, and share and rewatch also 3. No beat has a standout moment that would make someone share it. There are no wit lines, markers or cards.
+  - ❌ The learnings list includes 'owner:drop:learjet-wing-ice-v1' and several 'review:...:blocking' items. This video still beat the median, so those signals did not predict a weak result here.
+  - ❌ Instagram performed much worse per viewer. The Reel had 1,532 views, 1,177 reach, a 38.4% skip rate and an average watch of about 18.2s of 38.4s. YouTube's average view duration was 37s. Because it is the same video, this points to platform and audience behaviour, such as Shorts looping and Reels swiping, rather than the content. There is no Instagram median to compare against.
+  - 📉 b2 @ 6.1 s: Retention falls from 1.48 at 4.2s to 1.28 at 6.1s and 1.18 at 8.1s. The hook's promise of why ice stalls a wing gives way to news context about the Learjet's 'light ice it called manageable', with no physics yet. Some of the fall is also replay viewers leaving.
+  - 📉 b3 @ 11.9 s: Retention drops from 1.116 at 10.0s to 1.019 at 11.9s while 'Investigators have not said what caused the crash' is on screen. It is a disclaimer, not new information, and the explanation hasn't started. Viewers who stay past it keep watching, with only slow losses afterwards.
+  - 📉 b11 @ 36.9 s: Retention slips to 0.67 on the unfinished line 'So if someone asks you...'. This is the lead-in that loops back to the start, so it probably means some viewers swiped away rather than looping.
+  - 💡 [story, hypothesis] On news-pillar videos, keep the news context to one short beat and start the mechanism by about 6–8s. In this video the b2–b3 context beats had the biggest early loss.
+  - 💡 [hook, hypothesis] Put a vivid concrete comparison in the hook question, like 'rough as sandpaper'. Retention opened at 1.655, which suggests a replayed opening, but only 11 comparison videos exist.
+  - 💡 [loop, hypothesis] Keep the unfinished closing line that loops back to the hook. This video held an average view percentage of 95.1% against a 60.27% median. Check whether the final-second dip means some viewers swipe at the cut-off.
+  - 💡 [story, hypothesis] Add one shareable or surprising beat (a specific number or a 'what pilots do about it' line) and an end prompt that invites a comment. Reach was above median, but comments and shares stayed at 0 and likes were below median.
+  - 💡 [topic, hypothesis] Treat current-event aviation topics that explain a hidden physics mechanism as a promising pairing, but test a second one before committing. Views were 1.7x the median on a single video.
+  - 💡 [length, hypothesis] Do not shorten this format yet. A 38.4s runtime held 37s average view duration. Compare it with a shorter video on the same pillar before changing anything.
+
+### learjet-black-box-v1 (7d) — below median
+- 1200 views · 60.27% viewed · 16 likes · 5 shares · 1 subs (median views 1474, n=11)
+- The orange black box Short did slightly worse than the channel median at 7 days (1,200 views vs 1,474; engaged views 475 vs 748), though retention was close to normal (60% vs 63%) and shares were a bright spot (5 vs a median of 0). The main leak was the Florida Learjet news detour right after the hook question.
+  - ✅ Average viewed was 60.27% (22s of 36.8s), within about 2 points of the channel median (62.75%, 23s), so the middle and end held up OK once the answer began.
+  - ✅ Early viewing was strong: the curve starts at 1.29 and is still 1.08 at 4s. Many viewers watched or looped the question hook, so the curiosity hook and loop lead-in seem to work (hypothesis).
+  - ✅ Shares were 5 against a channel median of 0. The 'name says black, paint disagrees' fact seems to be passed on, even though views were lower.
+  - ✅ Retention flattened to about 0.5 from 15s to 22s (beats b5-b7), so the orange/reflective-tape/two-recorders facts kept the remaining audience.
+  - ✅ Likes (16 vs 18) and subscribers gained (1 vs 1) were roughly in line with the median.
+  - ✅ Learnings carried over (weekly lessons, a win, post-mortems, reviews): there is no clear sign they helped. Retention and views were near or slightly below the median, not above it. Nothing here shows a lesson working again, so I am not promoting any to a pattern.
+  - ❌ Views were about 19% below the median and engaged views about 36% below. Only 475 of 1,200 viewers counted as engaged, so the opening lost many people quickly.
+  - ❌ The hook asks why the box is orange, but b2-b3 (4.4s-10.6s) switch to a Florida Learjet crash and 'investigators haven't said what caused it'. Retention fell from 1.08 at 4s to 0.73 at 9.6s, before the answer arrives at b4.
+  - ❌ Retention kept sliding through b4 (0.65 to 0.59, 11-13s). The first real answer, 'bright orange helps searchers', only starts at 10.6s.
+  - ❌ Late beats (b7-b11) lost viewers steadily, ending at 0.36. The 'two recorders / memory case / battery beacon' list is less visual and less surprising than the paint fact, and the closing 'So next time you wonder...' trails off.
+  - ❌ Zero comments. Nothing in the video invites a reply or a debate.
+  - ❌ The self-review gave flow_pacing 3 and visual_credibility 3, the weak spots, and the retention curve agrees on pacing. The self-review did not flag the news detour as a problem.
+  - ❌ Instagram: 645 views, 508 reach, 60.4% skip rate, and an average watch of about 14s (roughly 38% of the 36.8s runtime) with 6 likes and no shares or saves. YouTube kept viewers better (22s, 60%) and got more shares (5 vs 0). The gap looks like platform and audience, not content, with Reels viewers skipping the news opener faster.
+  - 📉 b2 @ 5.9 s: The video pivots from the orange-box question to 'A Learjet crashed in Florida on Sunday'. This is a different topic from the one promised, and retention fell from 1.08 (4s) to 0.90 (5.9s) and 0.80 (7.7s).
+  - 📉 b3 @ 9.6 s: 'Investigators haven't said what caused it' is more news filler with no new fact about the box. Retention was 0.73, still falling, and the answer had not arrived yet.
+  - 📉 b4 @ 13.2 s: The first answer ('bright orange helps searchers spot it') comes after about 10 seconds of delay. Retention fell to 0.65 at 11.4s and 0.59 at 13.2s as impatient viewers left, before it flattened.
+  - 📉 b7 @ 24.3 s: 'Usually two recorders: voice and data' is a drier list than the paint reveal, and retention slipped from 0.50 to 0.46. Drift continued through b8-b11 to 0.36 at the end.
+  - 💡 [story, hypothesis] Answer the hook question in the first beat after it. Put the news tie-in (the crash) after the payoff, or as a one-line aside, instead of in seconds 4-10.
+  - 💡 [hook, hypothesis] Keep the plain 'Why is X actually Y?' question, since early retention was above 1.0. The following lines must not pull the viewer to a different subject.
+  - 💡 [topic, hypothesis] For news-pillar topics, test whether a topical hook (the crash) adds anything over an evergreen explainer. Here the news framing cost viewers and views stayed below the median.
+  - 💡 [pacing, hypothesis] Cut or merge b2-b3 (the crash and investigators lines) to bring the first real fact in by about 4-5s, and keep one surprising line per beat in the second half so the end does not drift to 0.36.
+  - 💡 [loop, hypothesis] End on a line that echoes the opening question instead of the trailing 'So next time you wonder...'. The loop lead-in seems to help the start, but the ending gave nothing to continue from.
+  - 💡 [visuals, hypothesis] Show the orange paint and the white reflective tape on screen. Visual credibility was self-scored 3, and the list beats (recorders, case, beacon) need strong images to hold viewers.
+  - 💡 [captions, hypothesis] Add a closing question or a tiny controversy to prompt comments; this video got none. Shares were fine, so the content is shareable.
+  - 💡 [length, hypothesis] Consider trimming to about 30s by removing the news beats. At 36.8s the video held 60% average viewed, and the cut beats are the ones with the biggest drop.
+
+### learjet-coffin-corner-v1 (7d) — above median
+- 40369 views · 76.16% viewed · 259 likes · 27 shares · 23 subs (median views 1311, n=11)
+- The coffin-corner explainer got 40,369 views in 7 days against a channel median of 1,311, with higher average view percentage (76.16% vs 60.27%) and 23 new subscribers (median 1), though one video can't separate topic from execution.
+  - ✅ Reach and engagement were far above the channel medians: 259 likes (median 16), 27 shares (median 0) and 23 subscribers gained (median 1), with none lost.
+  - ✅ Retention was strong for a 34.6s Short. Average view duration was 26s (median 22), and the curve starts at 1.442 and is still at 1.002 at 7.3s, which suggests replays. The loop lead-in (loop_leadin true, self-review loop score 5) may have helped, but this is a hypothesis.
+  - ✅ The opening question names an intriguing term ('coffin corner'), and the next beat ties it to a current event (the Learjet crash in Florida). The news hook plus the curiosity gap seems to have pulled viewers in even though the heuristic hook score was only 38.
+  - ✅ The middle beats kept viewers well. Retention falls slowly from 0.692 at 17.6s (b6) to 0.538 at 28.0s (b9) while the stall-versus-buffet explanation plays, so the core explanation held attention.
+  - ✅ The carried-over learnings (weekly lessons, an earlier win, pm lessons from the pressure cooker and onigiri videos, and the Learjet review blockers) coincide with an above-median result. With n=11 and so many lessons applied at once, I can't say which one helped, so none can be called a pattern yet.
+  - ❌ The steepest early drop is over b2 and b3, from 1.226 at 3.8s to 0.934 at 9.0s. The crash line and the disclaimer ('Cause unknown; no link to this idea is claimed') are necessary for accuracy, but they delay the explanation.
+  - ❌ Engaged views were only about 44% of views (17,897 of 40,369) against about 54% for the channel median (712 of 1,311), so a larger share of the extra reach was not fully engaged. This is probably a feature of wider distribution, but it is worth watching.
+  - ❌ The ending is soft. Retention bleeds down to 0.478 at 33.2s, and the last beat starts 'So if you've ever wondered...', which doesn't deliver a new payoff after the definition at b10. Self-review scored rewatch and share at only 3.
+  - ❌ Comments were low (8) for the reach, so the video didn't prompt discussion.
+  - ❌ Instagram was weak by comparison: 2,115 views, 9 total interactions (6 likes, 0 comments, 1 share, 2 saves) and a 39.1% skip rate. Likes per view were about 0.28% against about 0.64% on YouTube. Since it is the same video, this points to the platform or audience rather than the content.
+  - 📉 b2 @ 5.5 s: Retention falls from 1.226 to 1.108 during the 'Learjet crashed in Florida on Sunday' line. The news framing may not be what the 'coffin corner' question promised, so some replay or curiosity viewers leave.
+  - 📉 b3 @ 9.0 s: The 'Cause unknown; no link to this idea is claimed' disclaimer is a non-explanatory line. Retention goes from 1.002 to 0.934 and keeps sliding into the abstract b4 ('slowest safe speed') before any visual payoff.
+  - 📉 b5 @ 15.9 s: 'The Mach limit doesn't rise with height' is jargon-heavy. Retention is 0.722 here and continues down to 0.692 at b6, so some viewers leave before the 'gap closes' idea becomes clear.
+  - 📉 b11 @ 33.2 s: After the definition lands at b10, the 'So if you've ever wondered...' tail adds nothing new, and retention ends at 0.478. This is the lead-in to the loop, so leaving here may not be a real loss if it loops.
+  - 💡 [story, hypothesis] When a news event is the hook, state it in one short line and fold any 'no link claimed' caveat into that line or the on-screen text, so the explanation starts by about 6s instead of after a separate disclaimer beat.
+  - 💡 [hook, hypothesis] Keep the curiosity-gap question built on a named, slightly ominous term ('coffin corner'). It got strong early retention even with a low hook heuristic score (38), so don't rely on the heuristic alone to judge hooks.
+  - 💡 [topic, hypothesis] Pair a current news event with an evergreen 'hidden design' explainer. Reach was about 30x the channel median, but with n=11 and one video, test a few more news-tied explainers before treating it as a rule.
+  - 💡 [pacing, hypothesis] Put a simple visual or analogy on the 'Mach limit vs stall speed' beats (b4-b5) to slow the 0.865 to 0.722 slide between 10.7s and 15.9s.
+  - 💡 [loop, hypothesis] Keep the loop lead-in, which may explain the 1.442 start, but end on a sharper last line than 'So if you've ever wondered...' so the ending adds a payoff or a share/comment prompt (rewatch and share self-scores were 3).
+  - 💡 [captions, hypothesis] For Instagram, test a more native cut or caption for the same video, since 2,115 views with a 39.1% skip rate and 9 interactions is a large gap from YouTube.
+
+### learjet-supercooled-water-v1 (7d) — above median
+- 2045 views · 62.74999999999999% viewed · 12 likes · 3 shares · 3 subs (median views 1311, n=11)
+- Views were about 56% above the channel median (2,045 vs 1,311), and retention was slightly better (62.7% vs 60.3% average viewed). Likes were lower (12 vs 18). The Learjet news hook probably pulled in the extra viewers, but a filler line in beat 3 cost about 0.14 of the audience.
+  - ✅ Reach: 2,045 views against a median of 1,311, on a news-pillar topic tied to a Learjet crash.
+  - ✅ The loop lead-in appears to have worked. Retention starts at 1.364 at 0.4 s and is still above 1.14 at 4.1 s, which means a lot of rewatching or looping early on. The self-review gave the loop 5/5.
+  - ✅ Retention is slightly better than usual: 62.75% average viewed vs 60.27%, and 23 s average view duration vs 22 s. Engaged views were 801 vs 712.
+  - ✅ The middle science beats held viewers well. From b5 (0.543 at 17.2 s) through b6 (0.486 at 22.9 s) and b8 (0.451 at 28.5 s), the loss is only a few points per beat. The 'minus 38 to 40' fact and the wing-as-surface payoff kept people watching.
+  - ✅ Shares and subscribers beat the median: 3 shares vs 0 and 3 subscribers gained vs 1, with 0 lost.
+  - ✅ The carried-over learnings (weekly lessons, win/pm/review items) coincide with an above-median result. The list is only IDs, so I can't tell which lesson helped, and one video can't prove any of them. I'm not promoting any lesson to a 'pattern' on this evidence.
+  - ❌ Likes were 12 vs a median of 18, and there were 0 comments. The video drew views but little reaction.
+  - ❌ Viewers left early. Retention fell from 1.141 at 4.1 s to 0.938 at 6.0 s and 0.76 at 9.8 s. About a quarter of the starting audience was gone before the science began.
+  - ❌ Beat 3 ('The cause isn't known yet. Here's the ice science.') is a preamble. Retention slid from 0.76 to 0.622 across it (9.8 s to 13.5 s) while no new information was given.
+  - ❌ The hook is jargon-heavy: 'liquid cloud droplets below zero' is abstract. The news hook (the crash) only comes in beat 2, after the question.
+  - ❌ Retention keeps drifting down in the second half, from 0.58 at 15.4 s to 0.40 at 36 s, with no re-hook after the middle. The last beat, 'So when someone asks you...', ends on a loop line rather than a payoff.
+  - ❌ Instagram was much weaker than YouTube: 631 views, 60.9% skip rate, and only 3 interactions (no shares or saves). Average watch time was 10,571, which is about 10.6 s if that is in milliseconds, against 23 s on YouTube. Same video, so this points to the platform or audience rather than the content.
+  - 📉 b2 @ 6.0 s: The question hook ends and the Learjet crash sentence begins. Retention goes from 1.141 to 0.938 and then 0.81 at 7.9 s. The abstract 'liquid droplets below zero' question did not carry viewers into the news angle, and the loop rewatchers leave here.
+  - 📉 b3 @ 11.6 s: 'The cause isn't known yet. Here's the ice science.' is a disclaimer and a signpost with no new fact. Retention falls from 0.76 to 0.697 and then 0.622 at 13.5 s, the steepest slide after the opening.
+  - 📉 b4 @ 15.4 s: The first science beat ('Droplets can stay liquid below zero') only restates the hook. Retention falls to 0.581, the last big drop before the curve flattens.
+  - 💡 [hook, hypothesis] Open with the concrete news fact (the Learjet that reported light, clear ice) and then ask the question, so the ~5 s hook has a story rather than abstract jargon.
+  - 💡 [story, hypothesis] Cut signpost and disclaimer lines such as 'The cause isn't known yet. Here's the ice science.' Put the caveat in a caption or merge it into the first science fact so every second adds information.
+  - 💡 [pacing, hypothesis] The 6-14 s stretch lost the most viewers. Bring the first surprising fact (droplets stay liquid until they have something to freeze onto, or the -38 °C figure) forward into that window.
+  - 💡 [loop, hypothesis] Keep the loop lead-in. Retention above 1.0 for the first ~4 s suggests rewatching. Check whether the ending line 'So when someone asks you...' really flows back into the opening question.
+  - 💡 [topic, hypothesis] Timely news-pillar explainers tied to a current event can beat the median on views. Try another one, and keep it to a single clear science takeaway.
+  - 💡 [captions, hypothesis] Instagram viewers skipped 60.9% of the time and gave almost no interactions. Test a plainer, more concrete first caption and an on-screen hook for IG instead of assuming YouTube behaviour carries over.
+
+### learjet-mayday-v1 (7d) — at median
+- 1635 views · 80.22% viewed · 16 likes · 0 shares · 1 subs (median views 1311, n=11)
+- Mixed result: views (1,635 vs 1,311) and retention (80% vs 60% average viewed) beat the channel median, but engaged views (547 vs 748), likes (16 vs 18) and shares/comments (0) did not, so overall it's about typical; the audience watched but did not react.
+  - ✅ Retention is the standout: average view duration was 31s vs a 22s median, and average percentage viewed was 80.22% vs 60.27%. The video is 38.8s long, so people stayed far longer than usual.
+  - ✅ The opening was strong. The curve starts at 1.46 and is still 1.25 at 4.3s, which suggests rewatching or looping. The 'loop_leadin' feature and the self-review loop score of 5 look consistent with this.
+  - ✅ The middle held up well. From b8 to b10 (25.6s to 35.3s) retention stayed between 0.64 and 0.58, a very flat stretch, so the 'three times / static' payoff kept people watching.
+  - ✅ A timely news hook (the Florida Learjet and a 'Mayday' call) paired with a question title got views slightly above the median (1,635 vs 1,311).
+  - ✅ Many earlier lessons were applied (aglet win, pressure-cooker and onigiri postmortems, review blockers). Retention beat the median, which fits with them helping, but most came from other topics and n=11, so this is only a hypothesis, not a confirmed effect.
+  - ❌ Engagement was weak despite strong watching: 0 comments, 0 shares, 16 likes (median 18), 1 subscriber gained (same as median). Engaged views were about 27% below median. The self-review had already scored rewatch and share at only 3/5.
+  - ❌ The curve falls steadily from 1.46 to 0.557, with no recovery. The ending ('So next time someone asks you...') has no payoff or call to action, and viewers drifted off through b10 and b11.
+  - ❌ Beat b3, 'The cause isn't known yet', is a disclaimer, not new information, and retention dropped below 1.0 there (0.987 at 8.1s).
+  - ❌ The news framing ('Sunday's Florida Learjet') dates the video and gives no reason to share it later.
+  - ❌ Instagram was much weaker: 172 views, 127 reach, 3 likes, 0 shares or saves, and a 53.6% skip rate. Average watch was about 18s (about 47% of the video, if the figure is in milliseconds) vs 31s on YouTube. This points to the platform or audience, not the content, since it is the same video.
+  - 📉 b2 @ 6.2 s: Retention fell from 1.25 to 1.10 and then to 0.987 by b3. After the Learjet context the question in the hook still isn't answered, and 'The cause isn't known yet' adds nothing new.
+  - 📉 b3 @ 8.1 s: The disclaimer beat is a dead spot. Retention crossed below 1.0 here, so the viewers who were rewatching or looping have gone.
+  - 📉 b5 @ 17.8 s: The curve slid from 0.87 to 0.775 across the long 'Croydon radio officer in 1923' beat. A name and a date make a dry history fact with no visual or tension.
+  - 📉 b7 @ 23.7 s: Retention dropped from 0.736 to 0.657 over the Paris flights and 1927 convention beats. Two dates in a row read as a history list before the 'three times' payoff in b8.
+  - 💡 [hook, hypothesis] Keep the two-part question hook ('What does X mean, and why three times?'). It gave 1.46 opening retention and 80% average viewed, but test whether a hook that promises a surprising answer also raises shares and comments.
+  - 💡 [story, hypothesis] Do not spend the beat right after the hook on a news disclaimer ('cause isn't known yet'). Go straight to the first fact of the explainer, or fold the caveat into the opening line.
+  - 💡 [pacing, hypothesis] Break up consecutive date and name beats (1923 Croydon, then 1927 convention) with a visual change or a one-line surprise, so retention doesn't slide through the history section.
+  - 💡 [story, hypothesis] End on a payoff or a share prompt (for example a 'tell someone who flies' line) instead of the trailing 'So next time someone asks you...'. Engagement was the weak spot (0 comments, 0 shares).
+  - 💡 [topic, hypothesis] Timely news-pillar explainers can reach slightly above-median views, but keep them evergreen (avoid 'Sunday's...' framing) so they stay shareable. Compare against other news-pillar videos before drawing a conclusion.
+  - 💡 [loop, hypothesis] The loop lead-in coincides with early rewatching (retention above 1.0 until about 6s). Keep using it, and check whether it keeps raising average percentage viewed on other videos.
+  - 💡 [length, hypothesis] At 38.8s the video still held 56% at the end. Don't cut for length; cut the weaker beats (b3, b5) and see whether engaged views improve.
+
+### handrail-end-on-a-ramp-or-stairs-v1 (7d) — above median
+- 3523 views · 53.010000000000005% viewed · 22 likes · 0 shares · 0 subs (median views 1311, n=11)
+- The handrail Short got about 2.7x the channel's median views (3,523 vs 1,311) and more engaged views, but viewers left earlier than usual (53% average viewed vs a 62.75% median), and it earned 0 comments, shares and subscribers.
+  - ✅ Reach and the opening: 3,523 views and 2,191 engaged views against medians of 1,311 and 712. Retention stayed above 1.0 until about 5 s (1.165 at 0.3 s), so the question hook 'Why does this handrail curl back into the wall?' held people and probably drew some replays.
+  - ✅ The back half held steadily. From b7 to b10 retention slid only from 0.374 to 0.267. The new facts there (the name 'return', the US rules, rails that bend down instead) kept the people who stayed.
+  - ✅ The topic fits the 'walk_past' pillar: a familiar object people have seen but never questioned. It was strong enough to beat the median by a wide margin, though one video is noisy.
+  - ✅ Instagram skip rate was 27.4%, so roughly 7 in 10 viewers got past the opening there too (hypothesis: the hook travels across platforms).
+  - ✅ Carried-over learnings (an earlier 'win' on the aglet, 'pm' lessons from the pressure cooker and onigiri videos) cannot be credited or blamed. Reach was strong, but retention and engagement were below median, and there is no clean comparison to isolate their effect.
+  - ❌ Retention fell fast right after the answer. Viewers went from 1.014 at 5.1 s to 0.564 at 11.4 s, so about 45% of the audience left in 6 seconds. b2, b3, b4 and b5 all say the same thing (clothing or a strap catches on an open end), so the curiosity was resolved by 5 s and the repeats added nothing.
+  - ❌ Average view duration was 16 s vs a 23 s median, and average percentage viewed was 53% vs 62.75%. The video pulled in more viewers than usual, but they watched less of it.
+  - ❌ There was almost no response. 0 comments, 0 shares and 0 subscribers gained (median: 1 subscriber). Likes were 22 vs a median of 16, but on 2.7x the views that is a weaker like rate. The self-review had already flagged this: share 2, payoff 3, flow_pacing 3, image_word_match 3.
+  - ❌ The ending 'Which makes you wonder...' is a loop lead-in (loop scored 5 in self-review), but only 0.187 of viewers were still watching at 30.5 s. The data does not show it driving replays.
+  - ❌ Instagram was very small: 134 views, 111 reach, 1 like and 0 saves or shares. Average watch time was about 10.9 s (assuming the value is in milliseconds). The size of the gap points to the platform and audience, not the content.
+  - 📉 b3 @ 6.7 s: Right after b2 gave the answer ('so clothing can't catch the end'), b3 restated it as 'A flat, open end can hook a sleeve.' Retention dropped from 1.014 to 0.754 by 8.3 s because viewers who wanted the answer already had it.
+  - 📉 b4 @ 11.4 s: 'Or a bag strap swinging past' only adds another example of the same hazard. Retention went 0.677 to 0.564 with no new information.
+  - 📉 b5 @ 14.6 s: 'Left open, it would happily borrow your sleeve' is a third repeat of the sleeve point, and it delays the new fact (the term 'return') that arrives at b6. Retention kept sliding, 0.513 to 0.467, and was down to 0.43 by 16.2 s.
+  - 💡 [story, hypothesis] State the answer once. Use the seconds between about 5 and 15 for new facts (the name, the rule, the variant) instead of restating the hazard with another example.
+  - 💡 [pacing, hypothesis] Move the 'return' name and the US-rules beat up to around b3 or b4, since the later new-fact beats lost viewers far more slowly than the repeated beats did.
+  - 💡 [hook, hypothesis] Keep the plain 'Why does this X do Y?' question on a visible everyday object. Retention stayed above 1.0 for the first 5 s, and hook_heuristic was only 38, so the heuristic may undervalue this style.
+  - 💡 [story, hypothesis] Add a concrete reason to comment or share, such as a surprising number, a 'which kind have you seen?' question or a counterintuitive detail. Zero comments, shares and subscribers despite 2.7x the usual views suggests the payoff was too mild (self-review share = 2).
+  - 💡 [loop, hypothesis] Do not count on 'Which makes you wonder...' to create replays. Test an ending that visibly connects back to the opening line and compare end-of-video retention.
+  - 💡 [topic, hypothesis] 'Hidden purpose of a tiny detail on something you walk past' drew reach well above the median. Try another one or two in this style before treating it as a pattern.
+  - 💡 [length, hypothesis] At 31.8 s with 81 words, the middle was padded by repeated beats. Cutting b4 and b5 would give a roughly 26 s video with the same information and probably higher average percentage viewed.
 
 ### ramayana-previs-mocap-v4 (48h) — below median
 - 160 views · 45.51% viewed · 0 likes · 0 shares · 1 subs (median views 488.5, n=18)
