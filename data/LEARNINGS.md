@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-08 22:27 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-09 07:09 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Give the answer or mechanism by about 6s, and keep the news peg to one short line. Don't put it between the hook and its answer. (pattern, n=2)
@@ -16,6 +16,25 @@ Updated 2026-11-08 22:27 UTC. Built from every published video's 48 h and 7 day 
 - Drop nothing yet.
 
 ## Per-video analyses
+
+### ramayana-previs-mocap-v4 (48h) — below median
+- 160 views · 45.51% viewed · 0 likes · 0 shares · 1 subs (median views 488.5, n=18)
+- The Ramayana previs Short got 160 views at 48h against a channel median of 488.5, with weaker retention (45.5% vs 56.25%) and no likes or comments, while the Instagram reel reached 1,145 views from the same video.
+  - ✅ Viewers who stayed watched about as long as usual: average view duration was 18s against a 20.5s median, though the 39s runtime meant that was only 45.5% of the video.
+  - ✅ The Instagram reel reached 1,145 views and 992 accounts, with 11 likes and 1 save. That is about 7x the YouTube views, so the topic and visuals can hold attention on a different platform.
+  - ✅ The loop lead-in and the self-review loop score of 5 are on record, but there is no retention curve to show whether the loop made anyone rewatch, so I can't credit it with anything.
+  - ✅ Engaged views were 71 of 160 (about 44%), versus 226.5 of 488.5 (about 46%) for the median video. The viewers YouTube did show it to were roughly as engaged as usual; the problem was reach, not engagement.
+  - ❌ Views were about a third of the channel median (160 vs 488.5), so the Short was barely distributed in its first 48h. The title/hook and topic are the likeliest causes, but the data can't separate them.
+  - ❌ Zero likes, comments and shares against a median of 7 likes. Net subscribers were zero (1 gained, 1 lost), so the video did not convert viewers into followers.
+  - ❌ Average view percentage was 45.51% against a 56.25% median. At 39s the video is fairly long for a Short, and the middle section (the mocap explanation) may have lost people, but without a retention curve this is a guess.
+  - ❌ The learnings_applied list is long and mostly consists of Ramayana review/drop items and Learjet lessons. Applying them did not lift results: the video came in below the median, so these carried-over lessons don't appear to have helped here. The repeated 'ramayana-previs-mocap-v3:blocking' and 'owner:drop' entries suggest this topic has been problematic before.
+  - ❌ The hook is a long 'Why was the new Ramayana rehearsed on a computer…' question. It is jargon-adjacent (previs, mocap) and the ~4.5s opening is slow. The self-review also scored flow_pacing, rewatch and share at only 3.
+  - ❌ The script ends on 'So next time you wonder...' and a Terry Notary name-drop (Avatar, Planet of the Apes) that is only loosely tied to the Ramayana, which may have diluted the payoff.
+  - 💡 [hook, hypothesis] Test a shorter, more concrete opening than a long 'Why was X rehearsed on a computer' question, for example leading with the surprising visual (suits with dots) in the first 2s.
+  - 💡 [length, hypothesis] Try a 25-30s cut of this kind of explainer; the 39s runtime with a name-drop section near the end may cost retention.
+  - 💡 [topic, hypothesis] Ramayana/previs content underperformed on YouTube but did fine on Instagram. Before dropping or doubling down, compare it with other Ramayana videos and consider it a platform-fit question.
+  - 💡 [story, hypothesis] End on a payoff tied to the film itself rather than an unrelated credit (Avatar/Apes) followed by 'So next time you wonder...'.
+  - 💡 [title, hypothesis] The title says 'filmed before filming', which is a clever paradox but abstract. Try one that names a concrete image or a surprising fact so viewers know what they will see.
 
 ### ramayana-4dx-v1 (48h) — below median
 - 147 views · 61.9% viewed · 0 likes · 0 shares · 0 subs (median views 566, n=17)
