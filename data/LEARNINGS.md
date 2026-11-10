@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-10 07:43 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-10 20:00 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Keep the question hook, but make it short and concrete, naming the surprising fact or visual in the first 2s. (pattern, n=2)
@@ -16,6 +16,33 @@ Updated 2026-11-10 07:43 UTC. Built from every published video's 48 h and 7 day 
 - Pillars: judge only on subs_per_1k and kept, not views alone.
 
 ## Per-video analyses
+
+### moka-pot-v1 (7d) — below median
+- 196 views · 51.06% viewed · 0 likes · 0 shares · 1 subs (median views 1392.5, n=12)
+- The moka pot Short got 196 views against a channel median of 1,392 and held 51% average viewed against 61.5%. Retention was fine through the hook but fell steeply in beats b2–b4, where the answer was given away and the next lines added little.
+  - ✅ The hook held viewers. Retention was 1.167 at 0.3s and 1.107 at 2.1s, which is above 1.0 and suggests some replays or looping at the start.
+  - ✅ Retention flattened between 14.3s and 16.1s at 0.452 and then declined slowly, from 0.429 to 0.309 between 17.8s and 30s. The middle explanation (pressure pushes water up through the coffee) kept the roughly 45% who reached it.
+  - ✅ Subscribers gained (1) matched the channel median (1), even with far fewer views.
+  - ✅ Instagram showed 314 views against 196 on YouTube. That is a small gap, but the same video did not do worse there.
+  - ❌ Reach was the main problem. Views were about 14% of the channel median (196 vs 1,392.5) and engaged views about 12% (84 vs 730). Likes were 0 against a median of 17. Since this is the same video on both platforms, packaging and distribution are suspects as much as the content.
+  - ❌ Beat b2 answered the question straight away ("It's a gasket, sealing where the halves meet"). Retention fell from 1.048 to 0.881 during it and kept falling.
+  - ❌ Beat b3 ("Small ring, quietly running the whole show") added no new information, and retention dropped from 0.738 to 0.631 across it. Between 3.8s and 10.8s about half of the audience left (1.048 to 0.536).
+  - ❌ Average view percentage (51.06) and average view duration (17s) were both below the channel medians (61.51 and 22.5s).
+  - ❌ The loop lead-in at the end did not show up as a strong loop. Retention at the close was 0.226 at 31.8s and 0.167 at 33.5s, and the final line ("So when someone asks you...") trailed off.
+  - ❌ The self-review flagged visual_credibility, rewatch and share at 3 each (mean 3.78). The result of 0 shares and 0 likes fits that, and 3 of 8 images were replacements.
+  - ❌ The many carried-over learnings (tiffin box and aglet wins, post-mortems, review and owner-drop items) did not produce an above-median result. The hook held, but nothing here shows these lessons helped, and the low reach points elsewhere.
+  - ❌ Instagram's skip rate was 46.7%. Its average watch time of 10,598 is probably milliseconds, about 10.6s, against 17s on YouTube. The platforms measure differently, so treat this only as a rough sign that nearly half of Instagram viewers left early.
+  - 📉 b2 @ 5.6 s: The gasket answer arrived at about 3.4s, so the hook's curiosity was resolved almost immediately and retention began to slide (1.048 to 0.881).
+  - 📉 b3 @ 9.1 s: "Small ring, quietly running the whole show" is a filler line with no new fact. Retention fell from 0.738 to 0.631 while it was on screen.
+  - 📉 b4 @ 12.6 s: The shift to the steam-pressure explanation ("Heat turns the water below into steam pressure") came without a new hook or visual payoff. Retention fell to 0.488 before settling near 0.45.
+  - 📉 b10 @ 31.8 s: The last fact ("The ring locks pressure in, so water rises") repeats b5. Viewers left as the video wrapped up, and retention fell from 0.309 to 0.226 and then 0.167 at the "So when someone asks you..." line.
+  - 💡 [story, hypothesis] Don't give the answer in the second beat. Keep a hook-reveal or open question alive until about 8–10s, for example by holding back the "gasket" answer or leading with a surprising consequence such as "no ring, empty cup".
+  - 💡 [pacing, hypothesis] Cut filler lines such as "Small ring, quietly running the whole show". Each beat in the first 10s should add a new fact or image, because this video lost about half its audience between 3.8s and 10.8s.
+  - 💡 [length, hypothesis] Trim the repeated pressure explanation (b5 and b10 say nearly the same thing). A tighter 25–28s cut might hold the 45% who reached the middle better than 34.9s.
+  - 💡 [loop, hypothesis] Write an ending line that actually returns to the opening question. "So when someone asks you..." trailed off and retention fell to 0.167 at the end.
+  - 💡 [hook, hypothesis] The question hook kept viewers for the first 2s, so keep that opening, but pair it with a stronger visual or a more distinctive title and thumbnail frame to improve reach. Views, not retention, were the biggest gap.
+  - 💡 [visuals, hypothesis] Reduce replacement images and raise visual_credibility above 3 before publishing, since credibility, rewatch and share were the lowest self-review scores and the video earned no likes or shares.
+  - 💡 [topic, hypothesis] Do not judge the moka pot or by_country pillar on one video. Retest a similar everyday-object topic with a tighter script before deciding. The weak views may come from packaging as much as topic.
 
 ### ramayana-diwali-v4 (48h) — below median
 - 84 views · 64.07% viewed · 1 likes · 0 shares · 0 subs (median views 411, n=19)
