@@ -1,9 +1,17 @@
 {
- "collected_at": "2026-11-10T07:31:33Z",
+ "collected_at": "2026-11-11T06:40:16Z",
  "errors": [
   "@simplethingshistories: ERROR: [youtube:tab] @simplethingshistories: This channel does not have a shorts tab"
  ],
  "all_titles": [
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Fuses Are Designed to Burn Out?"
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Concrete Can Be Pumped up Skyscrapers?"
+  },
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Hydraulic Presses Multiply Force Using Liquid?"
@@ -1197,12 +1205,8 @@
    "title": "Did You Know The Printing Press Changed The World? 🖨️📚"
   },
   {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know The First Cars Were Electric? ⚡🚗"
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know The Eiffel Tower Was Almost Torn Down? 🗼😮"
+   "channel": "@nameexplain",
+   "title": "Why Are People From The Netherlands Called Dutch?"
   },
   {
    "channel": "@nameexplain",
@@ -1663,28 +1667,28 @@
    "title": "How Did Austria Get Its Name? #Shorts",
    "views": 290000,
    "url": "https://www.youtube.com/shorts/FL3QhU8Qnk0",
-   "multiple": 34.9
+   "multiple": 35.4
   },
   {
    "channel": "@nameexplain",
    "title": "How Did Albania Get Its Name? #Short",
    "views": 148000,
    "url": "https://www.youtube.com/shorts/ZBhLog20r7A",
-   "multiple": 17.8
+   "multiple": 18.0
   },
   {
    "channel": "@nameexplain",
    "title": "How Did Finland Get Its Name?",
    "views": 139000,
    "url": "https://www.youtube.com/shorts/9TfBENxGKM0",
-   "multiple": 16.7
+   "multiple": 17.0
   },
   {
    "channel": "@nameexplain",
    "title": "Why Slovakia & Slovenia Have Similar Names",
    "views": 117000,
    "url": "https://www.youtube.com/shorts/HVPXShUrUIc",
-   "multiple": 14.1
+   "multiple": 14.3
   },
   {
    "channel": "@historyofsimplethings",
@@ -1701,25 +1705,18 @@
    "multiple": 6.3
   },
   {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know The Eiffel Tower Was Almost Torn Down? 🗼😮",
-   "views": 18000,
-   "url": "https://www.youtube.com/shorts/jRLjpYMiCzA",
-   "multiple": 6.0
-  },
-  {
    "channel": "@nameexplain",
    "title": "How Did Afghanistan Get Its Name? #Short",
    "views": 50000,
    "url": "https://www.youtube.com/shorts/yt3KGZOu0aM",
-   "multiple": 6.0
+   "multiple": 6.1
   },
   {
    "channel": "@nameexplain",
    "title": "How Did El Salvador Get Its Name? #shorts",
    "views": 45000,
    "url": "https://www.youtube.com/shorts/MSekKfY92kw",
-   "multiple": 5.4
+   "multiple": 5.5
   },
   {
    "channel": "@historyofsimplethings",
@@ -1729,18 +1726,18 @@
    "multiple": 5.0
   },
   {
+   "channel": "@nameexplain",
+   "title": "How Did East Timor Get Its Name? #shorts",
+   "views": 35000,
+   "url": "https://www.youtube.com/shorts/b4zrXLrj4Ow",
+   "multiple": 4.3
+  },
+  {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Copper Can Make You Serious Cash?💰",
    "views": 13000,
    "url": "https://www.youtube.com/shorts/hLRu5f6OFQw",
    "multiple": 4.3
-  },
-  {
-   "channel": "@nameexplain",
-   "title": "How Did East Timor Get Its Name? #shorts",
-   "views": 35000,
-   "url": "https://www.youtube.com/shorts/b4zrXLrj4Ow",
-   "multiple": 4.2
   },
   {
    "channel": "@nameexplain",
@@ -1755,6 +1752,13 @@
    "views": 32000,
    "url": "https://www.youtube.com/shorts/pvt4HXh-drg",
    "multiple": 3.9
+  },
+  {
+   "channel": "@nameexplain",
+   "title": "How Did Cape Verde Get Its Name? #Shorts",
+   "views": 31000,
+   "url": "https://www.youtube.com/shorts/Eqx4CR_S8SQ",
+   "multiple": 3.8
   },
   {
    "channel": "@historyofsimplethings",
@@ -1779,13 +1783,6 @@
   },
   {
    "channel": "@nameexplain",
-   "title": "How Did Cape Verde Get Its Name? #Shorts",
-   "views": 31000,
-   "url": "https://www.youtube.com/shorts/Eqx4CR_S8SQ",
-   "multiple": 3.7
-  },
-  {
-   "channel": "@nameexplain",
    "title": "How Did France Get Its Name?",
    "views": 29000,
    "url": "https://www.youtube.com/shorts/Egrv1P5FVeo",
@@ -1806,6 +1803,13 @@
    "multiple": 3.4
   },
   {
+   "channel": "@nameexplain",
+   "title": "Grapes & Grapefruit!?",
+   "views": 27000,
+   "url": "https://www.youtube.com/shorts/2zV94ObpQgc",
+   "multiple": 3.3
+  },
+  {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Marble Used to Be Living Animals?",
    "views": 10000,
@@ -1821,10 +1825,17 @@
   },
   {
    "channel": "@nameexplain",
-   "title": "Grapes & Grapefruit!?",
-   "views": 27000,
-   "url": "https://www.youtube.com/shorts/2zV94ObpQgc",
-   "multiple": 3.3
+   "title": "Why Does Sino Mean China?",
+   "views": 26000,
+   "url": "https://www.youtube.com/shorts/Vq1YHAVViDg",
+   "multiple": 3.2
+  },
+  {
+   "channel": "@nameexplain",
+   "title": "The Many Names Of Germany",
+   "views": 26000,
+   "url": "https://www.youtube.com/shorts/8X9rVA--EG4",
+   "multiple": 3.2
   },
   {
    "channel": "@historyofsimplethings",
@@ -1842,27 +1853,6 @@
   },
   {
    "channel": "@nameexplain",
-   "title": "Why Does Sino Mean China?",
-   "views": 26000,
-   "url": "https://www.youtube.com/shorts/Vq1YHAVViDg",
-   "multiple": 3.1
-  },
-  {
-   "channel": "@nameexplain",
-   "title": "The Many Names Of Germany",
-   "views": 26000,
-   "url": "https://www.youtube.com/shorts/8X9rVA--EG4",
-   "multiple": 3.1
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Basketball Began as a Winter Game?",
-   "views": 8900,
-   "url": "https://www.youtube.com/shorts/GaED350XHFU",
-   "multiple": 3.0
-  },
-  {
-   "channel": "@nameexplain",
    "title": "How Did Fiji Get Its Name?",
    "views": 25000,
    "url": "https://www.youtube.com/shorts/HEledlIMqa0",
@@ -1877,17 +1867,10 @@
   },
   {
    "channel": "@historyofsimplethings",
-   "title": "Did You Know Some Dams Can Slow Earth’s Rotation?",
-   "views": 8600,
-   "url": "https://www.youtube.com/shorts/c2gY3ivfEGA",
-   "multiple": 2.9
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Glass Is Made From Melted Sand?",
-   "views": 8600,
-   "url": "https://www.youtube.com/shorts/UY0magmo8dQ",
-   "multiple": 2.9
+   "title": "Did You Know Basketball Began as a Winter Game?",
+   "views": 8900,
+   "url": "https://www.youtube.com/shorts/GaED350XHFU",
+   "multiple": 3.0
   },
   {
    "channel": "@nameexplain",
@@ -1905,6 +1888,20 @@
   },
   {
    "channel": "@historyofsimplethings",
+   "title": "Did You Know Some Dams Can Slow Earth’s Rotation?",
+   "views": 8600,
+   "url": "https://www.youtube.com/shorts/c2gY3ivfEGA",
+   "multiple": 2.9
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Glass Is Made From Melted Sand?",
+   "views": 8600,
+   "url": "https://www.youtube.com/shorts/UY0magmo8dQ",
+   "multiple": 2.9
+  },
+  {
+   "channel": "@historyofsimplethings",
    "title": "Did You Know the Side of the Road You Drive on Was Because of Battles?",
    "views": 8400,
    "url": "https://www.youtube.com/shorts/LIDbRE6CXpk",
@@ -1918,6 +1915,13 @@
    "multiple": 2.8
   },
   {
+   "channel": "@nameexplain",
+   "title": "How  Did Czechia Get Its Name? #Shorts",
+   "views": 22000,
+   "url": "https://www.youtube.com/shorts/kii5SIsYPH0",
+   "multiple": 2.7
+  },
+  {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Copper Turns Green to Protect Itself?",
    "views": 8200,
@@ -1929,13 +1933,6 @@
    "title": "Did You Know Cheese Came From Animal Stomachs?",
    "views": 8100,
    "url": "https://www.youtube.com/shorts/eE3K1cOYKDI",
-   "multiple": 2.7
-  },
-  {
-   "channel": "@nameexplain",
-   "title": "How  Did Czechia Get Its Name? #Shorts",
-   "views": 22000,
-   "url": "https://www.youtube.com/shorts/kii5SIsYPH0",
    "multiple": 2.7
   },
   {
@@ -2058,11 +2055,18 @@
    "multiple": 2.2
   },
   {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know The First Cars Were Electric? ⚡🚗",
-   "views": 6600,
-   "url": "https://www.youtube.com/shorts/lfTh-JA39qM",
-   "multiple": 2.2
+   "channel": "@nameexplain",
+   "title": "Is PS Short For Something?",
+   "views": 17000,
+   "url": "https://www.youtube.com/shorts/3B1J4kBTQBE",
+   "multiple": 2.1
+  },
+  {
+   "channel": "@nameexplain",
+   "title": "How Did Burkina Faso Get Its Name? #Shorts",
+   "views": 17000,
+   "url": "https://www.youtube.com/shorts/3uqhcdtcaWs",
+   "multiple": 2.1
   },
   {
    "channel": "@historyofsimplethings",
