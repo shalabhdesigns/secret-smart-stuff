@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-10 20:00 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-11 07:04 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Keep the question hook, but make it short and concrete, naming the surprising fact or visual in the first 2s. (pattern, n=2)
@@ -16,6 +16,56 @@ Updated 2026-11-10 20:00 UTC. Built from every published video's 48 h and 7 day 
 - Pillars: judge only on subs_per_1k and kept, not views alone.
 
 ## Per-video analyses
+
+### placebo-buttons-v2 (48h) — above median
+- 354 views · 66.46% viewed · 10 likes · 0 shares · 0 subs (median views 285.5, n=20)
+- Modestly above the channel median on YouTube (354 views vs 285.5, average view duration 25s vs 20.5s, 66.5% viewed vs 56.3%), but there were no shares, comments or subscribers, and Instagram was weaker (141 views, 1 like).
+  - ✅ Viewers who stayed watched a large share of the video: average viewed 66.46% vs the 56.25% median, and average view duration 25s vs 20.5s. Pacing and length fit the audience.
+  - ✅ The opening held people. Retention was 1.328 at 0.4s and still 1.164 at 4.3s, so there was rewatching or looping early. The loop lead-in (self-review loop score 5) may have contributed.
+  - ✅ The title question and the hook line gave a clear, relatable claim about something everyone has pressed. Likes were 10 vs a median of 4.5.
+  - ✅ The video stayed above 0.5 retention until about 27.5s (0.525) and still had 0.385 of viewers at 37.2s, so the middle held up decently.
+  - ✅ The carried-over learnings (mostly from Learjet and other unrelated videos) coincide with above-median watch time. With one video and different topics, I can't say they caused it.
+  - ❌ Engaged views were 122 vs a 140 median, even though total views were higher. A larger share of viewers swiped quickly.
+  - ❌ No shares, comments or subscribers gained. The closing line 'Tell your button-jabbing friend that...' is cut off for the loop and gives no concrete reason to share. The self-review gave 'share' a 4, which the result didn't support.
+  - ❌ The biggest retention loss comes right after the hook: 1.164 at 4.3s to 0.779 at 10.1s. The '1990 law' beat (b2) and the 'Five jabs' beat (b3) lose people.
+  - ❌ Beats b4–b7 (NYT crosswalks, walk buttons, computer-run signals, office thermostats) move away from lifts. Retention keeps sliding to 0.607 by 21.7s and 0.566 by 23.6s, and the lift payoff only returns at b8.
+  - ❌ The Instagram Reel did much weaker on engagement: 141 views, 118 reach, 1 like, 0 shares, 0 saves, and a 39% skip rate. The same video did better on YouTube, so the gap points to the platform or audience rather than the content.
+  - ❌ The earlier learnings do not show a clear benefit on engagement. The share and comment metrics are flat, and the lessons came from different topics.
+  - 📉 b2 @ 6.2 s: Retention fell from 1.164 (4.3s) to 0.943 as the hook gave way to an abstract '1990 law' claim. The explanation is dry and has no visual or surprise.
+  - 📉 b3 @ 8.1 s: It fell further to 0.836 and then 0.779 at 10.1s during 'Five jabs. The doors stay unbothered.' The proof arrives after the hook has already made its point, so there is little new to wait for.
+  - 📉 b4 @ 13.9 s: Retention went from 0.738 to 0.68 when the story jumped to 'In 2004, the New York Times examined crosswalks'. The topic switch away from lifts makes some viewers leave.
+  - 📉 b9 @ 31.3 s: It dipped from 0.492 to 0.451 during the Ellen Langer 'sense of control' beat. A name-and-credential explanation is a slower, talkier payoff than the demonstration earlier.
+  - 💡 [story, hypothesis] Keep the tangent beats (crosswalks, thermostats) short, or tie each one back to the lift in the same line, so viewers don't feel the topic has changed.
+  - 💡 [hook, hypothesis] Follow the hook straight away with a visual or a surprising proof instead of an abstract legal fact. The '1990 law' beat at 4.5s lost the most viewers.
+  - 💡 [loop, hypothesis] Keep the rewatch-friendly lead-in, since early retention was above 1.0 and the average viewed was 66%. Pair it with a closing line that gives a concrete reason to share.
+  - 💡 [captions, hypothesis] Make the final line a complete, specific share prompt (for example, the one fact the friend will be surprised by) rather than a cut-off sentence.
+  - 💡 [pacing, hypothesis] Move the Langer 'sense of control' payoff earlier, or open with the firefighter-key fact, so the strongest explanation comes before retention falls below 0.5 at about 29s.
+  - 💡 [topic, hypothesis] Familiar-button myth-busting is a decent fit: views and watch time were slightly above median. Try another one before concluding anything, as one video is not enough.
+
+### ramayana-budget-v1 (7d) — below median
+- 453 views · 33.14% viewed · 13 likes · 0 shares · 2 subs (median views 1311, n=13)
+- A weak Short: 453 views against a channel median of 1,311, and viewers kept only 33% of the video against the usual 60%. Most of the audience left in the 3 seconds after the hook, because beat 2 repeated the number without answering the question. The people who stayed liked it and subscribed at a decent rate, and Instagram was equally weak.
+  - ✅ The hook held through about 4.4s, with retention at 1.03 to 1.07, which means some viewers were rewatching or looping in. The question with a big Ramayana number got people to start.
+  - ✅ The viewers who stayed engaged well: 13 likes (median 16) and 2 subscribers gained (median 1) on about a third of the usual views. That is a higher like and subscribe rate than usual, so the topic appeals to a niche that cares.
+  - ✅ Retention flattened at 0.164 from 24s to 28s (beats b6 to b7), so a small committed group watched through the motion-capture and 'Pixels are not free' stretch.
+  - ✅ The lessons carried over from earlier videos (learnings_applied) did not visibly help: views, engaged views and retention were all below median. This video gives no evidence that any of them worked, so none is promoted to a pattern.
+  - ❌ Beat 2 ('Over Rs 4,000 crore, both parts together, producer says') mostly repeated the number already in the hook and added no new information. Retention fell from 1.025 at 4.4s to 0.508 at 8.4s.
+  - ❌ The title promises 'where does the money go', but the script's honest answer is 'no itemised split'. The payoff scored only 3 in self-review, and the 'where does it go' curiosity was never satisfied.
+  - ❌ The middle beats (budget compared to RRR, artists' pay, 10,000 crew) are a list of reported claims with no clear reveal. Retention kept sliding from 0.42 to 0.16 across b3 to b6.
+  - ❌ The closing loop ('So next time someone asks you...') reached only about 7% of the audience at 38s, so the loop barely helped. Self-review also gave visual credibility, flow and payoff only 3 each, and the Short ran 39.8s with 78 words, long for a thin payoff.
+  - ❌ The title says 'a film' while the hook names Ramayana, which is a small mismatch between title and opening.
+  - ❌ Comments and shares were 0, the same as the median, so nothing prompted sharing.
+  - ❌ Instagram told the same story. The Reel had 142 views, 120 reach, a 48% skip rate and 2 likes. Average watch time of 8,688 is about 8.7s if it is in milliseconds, against 13s on YouTube. Both platforms were weak, so the content is the likelier cause rather than the platform.
+  - 📉 b2 @ 6.4 s: Retention fell from 1.025 to 0.672 about 2.5s into b2. The line restated the hook's Rs 4,000 crore figure and added 'producer says', so there was no new fact or visual to hold viewers.
+  - 📉 b3 @ 10.3 s: Retention fell to 0.418 after the 'eight times RRR's budget' line. It is a comparison rather than an answer to where the money goes, so viewers who wanted a breakdown left.
+  - 📉 b6 @ 22.3 s: Retention fell to 0.189 during the motion-capture and virtual-sets line. It is a jargon-heavy claim that does not link back to money, so another group of viewers left before the flat stretch at 0.164.
+  - 💡 [story, hypothesis] Make the first beat after the hook add a new, concrete fact or reveal. Never restate the number from the hook, because this video lost about 35% of viewers between 4.4s and 8.4s.
+  - 💡 [title, hypothesis] Only promise a breakdown ('where does the money go') if the script actually delivers one. When no split exists, frame the title around the surprise instead, such as 'Nobody can say where Ramayana's Rs 4,000 crore went'.
+  - 💡 [topic, hypothesis] Be cautious with topics that rest on reported or unverifiable figures. This one ended with 'no itemised split', which gives no satisfying payoff, so prefer film topics with a concrete, visible mechanism.
+  - 💡 [length, hypothesis] Trim to roughly 25 to 30s, since fewer than 20% of viewers were left by 22s and the later beats (b7 to b10) reached very few people. Cut or merge list-style beats.
+  - 💡 [pacing, hypothesis] Put the strongest reveal before roughly 10s, where about 60% of viewers have already gone. The 'pixels are not free' wit line and the marketing caveat came too late to matter.
+  - 💡 [loop, hypothesis] A loop-style closing line only helps if enough viewers reach it. Fix the early retention first before investing in the ending.
+  - 💡 [visuals, hypothesis] Show something visible for each money claim (for example a crew count or a cost-per-department graphic) instead of generic images. Self-review rated visual credibility only 3.
 
 ### moka-pot-v1 (7d) — below median
 - 196 views · 51.06% viewed · 0 likes · 0 shares · 1 subs (median views 1392.5, n=12)
