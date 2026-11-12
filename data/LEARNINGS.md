@@ -1,19 +1,19 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-12 07:43 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-12 11:41 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
-- Keep the question hook, but make it short and concrete, naming the surprising fact or visual in the first 2s. (pattern, n=2)
-- Aim for about 25-30s and cut recaps and lead-ins that add no information. (pattern, n=2)
-- End on a payoff that completes the thought and ties to the topic, not a trailing "So next time..." line. (pattern, n=2)
-- Use images that show the effect itself, like a splash or a moving seat. (hypothesis)
-- Write titles that name a concrete image or surprising fact instead of an abstract paradox. (hypothesis)
+- Give every beat one new fact and keep only one or two stats in the middle; tighten early setup beats. (pattern, n=2)
+- Show the real object or a concrete visual for the key beat early, instead of generic stock-style images. (pattern, n=2)
+- Name the specific object in the first line and keep the opening beat to about 3–4s. (hypothesis)
+- Keep the unfinished-sentence ending that loops into the question hook. (hypothesis)
+- Hedge claims where sources hedge, and keep faces and special characters off the picture and text cards. (hypothesis)
 
 ## Topic guidance now
-- Ramayana tie-ins: keep testing, don't drop or double down yet. 2 videos at 48h were below median, with a mixed Instagram result (n=2).
-- 4DX/cinema tech: test the subject without the Ramayana tie-in. The one video had 147 YouTube views against a batch median of 1280.5 (n=1).
-- Pillars (by_country, walk_past, why_detail, india_asia): not enough data yet, with n of 1-2 each.
-- Pillars: judge only on subs_per_1k and kept, not views alone.
+- Keep news: n=5, median views 2045 vs batch median 1302, but subs_per_1k 0.63 vs 0.7, so watch growth.
+- Keep testing aviation-incident stories with a surprising everyday cause: gimli-glider-v1 (n=1) beat the median, about 3x per the analysis (hypothesis).
+- Retest engineering-marvel topics with a stronger hook: taipei-101-ball-v1 (n=1) was below the median, so not enough data yet to drop.
+- by_country, walk_past, why_detail, india_asia and film each have n=2: not enough data yet.
 
 ## Per-video analyses
 
