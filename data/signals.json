@@ -1,5 +1,5 @@
 {
- "collected_at": "2026-11-11T06:40:16Z",
+ "collected_at": "2026-11-12T07:23:16Z",
  "errors": [
   "@simplethingshistories: ERROR: [youtube:tab] @simplethingshistories: This channel does not have a shorts tab"
  ],
@@ -1726,17 +1726,17 @@
    "multiple": 5.0
   },
   {
-   "channel": "@nameexplain",
-   "title": "How Did East Timor Get Its Name? #shorts",
-   "views": 35000,
-   "url": "https://www.youtube.com/shorts/b4zrXLrj4Ow",
-   "multiple": 4.3
-  },
-  {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Copper Can Make You Serious Cash?💰",
    "views": 13000,
    "url": "https://www.youtube.com/shorts/hLRu5f6OFQw",
+   "multiple": 4.3
+  },
+  {
+   "channel": "@nameexplain",
+   "title": "How Did East Timor Get Its Name? #shorts",
+   "views": 35000,
+   "url": "https://www.youtube.com/shorts/b4zrXLrj4Ow",
    "multiple": 4.3
   },
   {
@@ -1803,13 +1803,6 @@
    "multiple": 3.4
   },
   {
-   "channel": "@nameexplain",
-   "title": "Grapes & Grapefruit!?",
-   "views": 27000,
-   "url": "https://www.youtube.com/shorts/2zV94ObpQgc",
-   "multiple": 3.3
-  },
-  {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Marble Used to Be Living Animals?",
    "views": 10000,
@@ -1822,6 +1815,20 @@
    "views": 9900,
    "url": "https://www.youtube.com/shorts/gdzta-jO0Bs",
    "multiple": 3.3
+  },
+  {
+   "channel": "@nameexplain",
+   "title": "Grapes & Grapefruit!?",
+   "views": 27000,
+   "url": "https://www.youtube.com/shorts/2zV94ObpQgc",
+   "multiple": 3.3
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Aluminum Doesn’t Rust Like Iron? ✨",
+   "views": 9600,
+   "url": "https://www.youtube.com/shorts/58rlT470JyU",
+   "multiple": 3.2
   },
   {
    "channel": "@nameexplain",
@@ -1839,17 +1846,17 @@
   },
   {
    "channel": "@historyofsimplethings",
-   "title": "Did You Know Aluminum Doesn’t Rust Like Iron? ✨",
-   "views": 9600,
-   "url": "https://www.youtube.com/shorts/58rlT470JyU",
-   "multiple": 3.2
-  },
-  {
-   "channel": "@historyofsimplethings",
    "title": "Did You Know Honey Never Spoils? 🍯⏳",
    "views": 9300,
    "url": "https://www.youtube.com/shorts/TDtLqm-6AUo",
    "multiple": 3.1
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Basketball Began as a Winter Game?",
+   "views": 8900,
+   "url": "https://www.youtube.com/shorts/GaED350XHFU",
+   "multiple": 3.0
   },
   {
    "channel": "@nameexplain",
@@ -1867,10 +1874,17 @@
   },
   {
    "channel": "@historyofsimplethings",
-   "title": "Did You Know Basketball Began as a Winter Game?",
-   "views": 8900,
-   "url": "https://www.youtube.com/shorts/GaED350XHFU",
-   "multiple": 3.0
+   "title": "Did You Know Some Dams Can Slow Earth’s Rotation?",
+   "views": 8600,
+   "url": "https://www.youtube.com/shorts/c2gY3ivfEGA",
+   "multiple": 2.9
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Glass Is Made From Melted Sand?",
+   "views": 8600,
+   "url": "https://www.youtube.com/shorts/UY0magmo8dQ",
+   "multiple": 2.9
   },
   {
    "channel": "@nameexplain",
@@ -1888,20 +1902,6 @@
   },
   {
    "channel": "@historyofsimplethings",
-   "title": "Did You Know Some Dams Can Slow Earth’s Rotation?",
-   "views": 8600,
-   "url": "https://www.youtube.com/shorts/c2gY3ivfEGA",
-   "multiple": 2.9
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Glass Is Made From Melted Sand?",
-   "views": 8600,
-   "url": "https://www.youtube.com/shorts/UY0magmo8dQ",
-   "multiple": 2.9
-  },
-  {
-   "channel": "@historyofsimplethings",
    "title": "Did You Know the Side of the Road You Drive on Was Because of Battles?",
    "views": 8400,
    "url": "https://www.youtube.com/shorts/LIDbRE6CXpk",
@@ -1910,16 +1910,9 @@
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Oil Comes From Ancient Life? 🛢️😮",
-   "views": 8300,
+   "views": 8400,
    "url": "https://www.youtube.com/shorts/bXD-q4_E0gs",
    "multiple": 2.8
-  },
-  {
-   "channel": "@nameexplain",
-   "title": "How  Did Czechia Get Its Name? #Shorts",
-   "views": 22000,
-   "url": "https://www.youtube.com/shorts/kii5SIsYPH0",
-   "multiple": 2.7
   },
   {
    "channel": "@historyofsimplethings",
@@ -1933,6 +1926,13 @@
    "title": "Did You Know Cheese Came From Animal Stomachs?",
    "views": 8100,
    "url": "https://www.youtube.com/shorts/eE3K1cOYKDI",
+   "multiple": 2.7
+  },
+  {
+   "channel": "@nameexplain",
+   "title": "How  Did Czechia Get Its Name? #Shorts",
+   "views": 22000,
+   "url": "https://www.youtube.com/shorts/kii5SIsYPH0",
    "multiple": 2.7
   },
   {
@@ -2055,17 +2055,10 @@
    "multiple": 2.2
   },
   {
-   "channel": "@nameexplain",
-   "title": "Is PS Short For Something?",
-   "views": 17000,
-   "url": "https://www.youtube.com/shorts/3B1J4kBTQBE",
-   "multiple": 2.1
-  },
-  {
-   "channel": "@nameexplain",
-   "title": "How Did Burkina Faso Get Its Name? #Shorts",
-   "views": 17000,
-   "url": "https://www.youtube.com/shorts/3uqhcdtcaWs",
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Drainage Pipes Have Ridges for a Reason?",
+   "views": 6200,
+   "url": "https://www.youtube.com/shorts/8yHiwcyXb2s",
    "multiple": 2.1
   },
   {
@@ -2080,6 +2073,13 @@
    "title": "Did You Know Beer Was Safer to Drink Than Water?",
    "views": 6300,
    "url": "https://www.youtube.com/shorts/IYloQP55TLY",
+   "multiple": 2.1
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know the Hole in Soda Can Tabs Isn’t Just for Opening?",
+   "views": 6400,
+   "url": "https://www.youtube.com/shorts/KFdrdW_OgY8",
    "multiple": 2.1
   }
  ]
