@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-11 19:51 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-12 07:43 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Keep the question hook, but make it short and concrete, naming the surprising fact or visual in the first 2s. (pattern, n=2)
@@ -16,6 +16,71 @@ Updated 2026-11-11 19:51 UTC. Built from every published video's 48 h and 7 day 
 - Pillars: judge only on subs_per_1k and kept, not views alone.
 
 ## Per-video analyses
+
+### taipei-101-ball-v1 (48h) — below median
+- 21 views · 47.86% viewed · 1 likes · 0 shares · 0 subs (median views 382.5, n=22)
+- After 48h the Short has 21 views against a channel median of 382.5, with 7 engaged views against 165.5 and 1 like against 7. The same video got 173 views on Instagram, so the weak YouTube result looks mostly like distribution rather than the content itself.
+  - ✅ Retention among the few viewers was close to normal: average view duration was 18s against a median of 21s, and average percentage viewed was 47.86% against 57.64%. The content held people reasonably well even though it was not shown to many.
+  - ✅ Instagram reached 143 people and got 173 views, about 8x the YouTube views. That gap suggests the topic and visuals can work on a different platform or audience.
+  - ✅ Nothing was lost on the subscriber side (0 gained, 0 lost), and comments and shares sit at the channel median of 0.
+  - ❌ YouTube reach was very low: 21 views is far below the median. The data gives no sign of why, so the cause is unclear. The 02:00 UTC publish slot and a weak early swipe-away signal are possible factors, but neither can be confirmed.
+  - ❌ Viewers stayed for about 48% of the video, below the channel median of 57.64%. On a 38.4s Short with 84 words, 12 beats and 7 images, the facts come in fast.
+  - ❌ The hook says 'this skyscraper' and never names Taipei 101. The hook heuristic scored only 38, and self-review rated visual credibility and image-word match at 3 out of 5. An unnamed building makes the opening less concrete.
+  - ❌ On Instagram the skip rate was 47.2%, so about half of viewers left almost immediately. The average watch time was reported as 9668, probably milliseconds, so roughly 9.7s of a 38.4s video.
+  - ❌ The 30 carried-over learnings mostly came from Learjet and Ramayana videos, which are different topics. This video came in well below the channel median, so there is no evidence they helped, and none can be called a pattern.
+  - 💡 [hook, hypothesis] Name the specific object in the first line, for example 'Why does Taipei 101 hang a giant golden ball inside?', or put 'Taipei 101' on screen in the first seconds, so the question is concrete.
+  - 💡 [pacing, hypothesis] Cut the middle stats (floors 87-92, 660 tonnes, forty percent, the 2015 typhoon, the 2024 quake) down to one or two and give each a clear visual, so the 38s runtime holds more of the audience.
+  - 💡 [visuals, hypothesis] Raise image-word match and visual credibility, which self-review scored 3 each, by showing the actual damper ball swinging in the first beats instead of generic skyscraper images.
+  - 💡 [topic, hypothesis] Treat this one result as weak evidence against the topic. The 8x gap between Instagram and YouTube points to platform reach, so retest a similar engineering-marvel topic with a stronger hook before judging it.
+  - 💡 [length, hypothesis] Try a tighter cut of around 25-30s. Average view duration was 18s, so most viewers never reached the last third (b8 to b12), including the loop line.
+
+### gimli-glider-v1 (48h) — above median
+- 807 views · 67.89% viewed · 16 likes · 0 shares · 0 subs (median views 257.0, n=22)
+- The Boeing 767 fuel story got 807 views, about 3x the channel median of 257, and held viewers better (67.9% average viewed vs 56.3%), but it produced no comments, shares or subscribers, and the Instagram Reel barely moved (50 views, 64.1% skip rate).
+  - ✅ Reach and engagement were well above the channel medians: 807 views vs 257, 369 engaged views vs 96.5, and 16 likes vs 4.5.
+  - ✅ Retention was better than usual: average view duration was 25s vs a 20.5s median, and average viewed was 67.89% vs 56.25%.
+  - ✅ The loop appears to have worked. Retention starts at 1.409 and stays above 1.0 until about 6s, which suggests many viewers replayed from the end ('And it all began when...') back to the hook. The loop self-review score was 5.
+  - ✅ The statistic hook ('In 1983, a 767 ran out of fuel at 41,000 feet') put the stakes up front. The title question, 'How did a Boeing 767 run out of fuel mid-flight?', gave viewers a reason to stay for the answer.
+  - ✅ Retention flattened in the second half, going from 0.496 at 24.8s to 0.431 at 36.1s. The glide-to-Gimli finale (Quintal's idea, the racetrack, families nearby) held the people who were still watching.
+  - ✅ Applying earlier lessons seems to have helped, though the video can't prove it. The video carried several aviation 'win:' lessons (learjet coffin corner, supercooled water, mayday) and beat the median by about 3x. The ramayana review/drop lessons are from an unrelated topic, so their effect here is unknowable.
+  - ❌ There were zero comments, zero shares and zero subscribers gained. The pillar is 'virality', but shares matched the channel median of 0. Likes were the only extra engagement.
+  - ❌ Viewers dropped steadily from 1.0 at 6s to 0.64 at 17.3s. The hook beat b1 runs 6.24s for one sentence, and the next beats (an alarm over Ontario, engines quitting) lose about 0.1 per step.
+  - ❌ Retention fell again at the kilograms/pounds beat (0.64 at 17.3s to 0.569 at 19.2s). This is the answer to the title's question, delivered as abstract unit math with nothing concrete on screen.
+  - ❌ Instagram was weak: 50 views, 39 reach, a 64.1% skip rate, and an average watch time of about 7.8s on a 37.6s video. With the same video, the gap points to platform and audience rather than the content.
+  - ❌ The self-review scored visual_credibility 3 and rewatch 3, the lowest of its nine scores. It had 8 images with 1 replacement.
+  - 📉 b3 @ 7.9 s: The hook sentence ended and the story moved to a place-name detail ('A fuel-pressure alarm sounded over Ontario'). Retention fell from 1.008 to 0.908 as casual viewers and replayers left, because the alarm added no new stakes.
+  - 📉 b4 @ 9.8 s: 'Then the engines quit, one by one' is a dramatic line, but retention still fell from 0.908 to 0.753 by 11.7s. The beat may have been a recap of what the hook already implied (running out of fuel) rather than new information.
+  - 📉 b7 @ 19.2 s: 'Fuel was tracked in kilograms. The math used pounds.' is the cause of the incident and the answer to the title, but it is abstract. Retention fell from 0.64 to 0.569 as it landed, and some viewers who got their answer left.
+  - 💡 [topic, pattern] Keep making real aviation-incident stories with a surprising everyday cause. This is the second kind of aviation video, after the learjet wins, to beat the channel median (about 3x on views).
+  - 💡 [hook, hypothesis] Keep the stakes-first statistic hook, but cut the opening beat to about 3–4s and bring in the next piece of information sooner. Here the first beat ran 6.24s and retention dropped right after it.
+  - 💡 [story, hypothesis] Make the 'twist' beat concrete. Show the kg and lb numbers on screen, or a visual of the plane with half the fuel needed, instead of stating the unit mix-up in a single line.
+  - 💡 [pacing, hypothesis] Merge or tighten the early setup beats (b3–b4) so each adds a new fact. The steepest losses were in the first 12 seconds after the hook.
+  - 💡 [loop, hypothesis] Keep the unfinished-sentence ending ('And it all began when...') that loops into the hook. Retention above 1.0 at the start suggests replays.
+  - 💡 [captions, hypothesis] Add a clear reason to comment or share, for example a question about which everyday unit mix-up viewers have made. Likes were strong but comments and shares were 0.
+  - 💡 [visuals, hypothesis] Invest in stronger visuals for the incident, as visual_credibility scored only 3. Test whether the Instagram cut needs a faster first 2 seconds, since 64.1% skipped there.
+
+### ramayana-imax-v1 (7d) — below median
+- 93 views · 57.72999999999999% viewed · 1 likes · 0 shares · 0 subs (median views 1306.5, n=14)
+- Only 93 views against a channel median of about 1,307, though viewers who did watch stayed as long as usual (57.7% average viewed vs 57.74% median), so the problem looks like reach rather than the script itself.
+  - ✅ Retention matched the channel norm: 57.73% average viewed vs a 57.74% median, and 21s average view duration vs 20s. Once viewers started, the video held them as well as a typical Short.
+  - ✅ Plateau at 0.429 from about 20.8s to 26.4s (beats b7 to b9). The 'more picture', 'own IMAX mix' and 'plan for taller frame on set' beats lost nobody for about 6 seconds.
+  - ✅ The start was healthy: watching was above 1.0 at 0.4s and 2.2s and exactly 1.0 at 4.1s, so there was some replay and no early bail-out in beat b1.
+  - ✅ The same video got 163 Instagram views and 142 reach, more than YouTube's 93 views. That points to the platform and audience, not the content, as the main factor.
+  - ❌ Reach was far below the channel median on every count: views 93 vs 1306.5, engaged views 31 vs 677.5, likes 1 vs 16, subscribers gained 0 vs 1. The data doesn't show why it wasn't shown to more people.
+  - ❌ Steady decline from beat b2 to b6: watching fell from 0.964 at 6.0s to 0.536 at 17.1s. There's no mid-video re-hook, and the facts come as a flat list of statements.
+  - ❌ The hook asks 'Who builds the cameras?' and b3 answers 'IMAX doesn't build these cameras' only about 8 seconds in. This also differs from the title's question, 'What does Filmed for IMAX actually mean?'. The hook is a Question formula with a heuristic score of 37.
+  - ❌ The ending is weak. Watching reached 0.286 by b12, and the final 'So if you ever wonder...' line doesn't close the loop or give a share reason. The self-review also scored payoff, flow/pacing, rewatch and share at only 3.
+  - ❌ On Instagram the skip rate was 51.8% and average watch time about 10.4s of a 37.2s video. Both platforms lost a large share of viewers early, and engagement was minimal there too (1 like, 1 save, 0 shares).
+  - 📉 b2 @ 7.8 s: Watching dropped from 0.964 at 6.0s to 0.857 at 7.8s. 'First Indian Filmed For IMAX production' is a fact about the film, not an answer to the hook's 'who builds the cameras?', so the promise stalled.
+  - 📉 b4 @ 11.5 s: Watching fell from 0.786 at 9.7s to 0.714 at 11.5s, then 0.679 at 13.4s. The 'ARRI, Sony and others' brand-name list is the real answer to the hook, but it arrives late and is not very visual.
+  - 📉 b5 @ 15.3 s: Watching fell to 0.607 at 15.3s and 0.536 at 17.1s. 'Certified for high-quality image capture' is abstract and repeats the previous beat, and the viewer has no new reason to stay.
+  - 📉 b7 @ 20.8 s: Watching dropped from 0.5 at 19.0s to 0.429 at 20.8s when 'IMAX screens can then show more picture' began. This was the last sizeable drop before the plateau.
+  - 💡 [hook, hypothesis] Make the hook question match the answer the video gives (here 'IMAX doesn't build cameras, it certifies them'), and put the surprising answer within the first 4-5 seconds instead of at about 8s.
+  - 💡 [title, hypothesis] Align the on-screen hook and the title around one question. This video's title asked what 'Filmed for IMAX' means, while the hook asked who builds the cameras.
+  - 💡 [topic, hypothesis] Treat this topic as an unclear signal. Reach was about 7% of the median while retention was normal, so test another film/tech-branding topic before judging the pillar.
+  - 💡 [pacing, hypothesis] Add a re-hook or a visual change around 10-17s, where watching fell from 0.786 to 0.536. Merge or cut near-duplicate beats such as b4 and b5.
+  - 💡 [story, hypothesis] Open with one concrete, surprising comparison instead of listing certification features, and end on a single takeaway line that gives people a reason to share or replay.
+  - 💡 [loop, hypothesis] Rewrite the closing line ('So if you ever wonder...') so it flows back into the hook question. The loop lead-in was on, but there's no evidence in the end-of-video retention (0.286) that it caused replays.
 
 ### placebo-buttons-v2 (48h) — above median
 - 354 views · 66.46% viewed · 10 likes · 0 shares · 0 subs (median views 285.5, n=20)
