@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-12 11:41 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-12 20:25 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Give every beat one new fact and keep only one or two stats in the middle; tighten early setup beats. (pattern, n=2)
@@ -16,6 +16,29 @@ Updated 2026-11-12 11:41 UTC. Built from every published video's 48 h and 7 day 
 - by_country, walk_past, why_detail, india_asia and film each have n=2: not enough data yet.
 
 ## Per-video analyses
+
+### ramayana-ram-setu-v2 (7d) — below median
+- 203 views · 57.46% viewed · 3 likes · 0 shares · 0 subs (median views 1302, n=15)
+- Reach was the problem: 203 views and 67 engaged views against channel medians of 1,302 and 643, while retention (57.5% average viewed vs 57.7% median) was normal, so viewers who arrived watched about as well as usual but few arrived.
+  - ✅ Retention per viewer matched the channel median (averageViewPercentage 57.46 vs 57.73, averageViewDuration 20s vs 21s), so the script was not weaker than usual once people were watching.
+  - ✅ The opening was sticky: watching was above 1.0 (1.343 at 0.4s, 1.134 at 3.9s), which suggests rewatching or looping. The loop lead-in (self-review loop score 5) looks like it did its job.
+  - ✅ Retention was almost flat at 0.448 from 16.5s to 27.3s (b6 to b9). The numbers, the distance and the 'ships decline' line kept the remaining viewers, and nobody left during the middle explanation.
+  - ✅ The many carried-over learnings (weekly lessons, wins, bread-knife and tiffin-box postmortems) did not hurt retention, which sat at the median. Nothing here shows they lifted performance either, so no lesson can be confirmed as a pattern.
+  - ❌ Views were about 16% of the channel median (203 vs 1,302) and engagement was minimal: 3 likes against a median of 16, and no comments, shares or subscribers gained. This points to weak distribution or topic pull rather than weak viewing.
+  - ❌ About 30% of the audience left between 5.7s and 7.5s (0.97 to 0.702), right where the video moved from the film-release line (b2) to the 'epic tells of a causeway' line (b3). The hook promised a space-imagery answer, but the first beats gave a film promo and then mythology.
+  - ❌ A second slide ran from 7.5s to 12.9s (0.702 to 0.478) through b3 and b4. The 'pale line' reveal in b4 came about 10s in, after the hook's promise had already cooled.
+  - ❌ Several carried-over items ('review:ramayana-*:blocking', 'owner:drop:ramayana-ram-setu-v1') indicate the Ramayana film angle had known problems. This video still opened its narrative with the film release, which may have cost viewers and reach.
+  - ❌ The end faded (0.448 to 0.373 from 29s on). The closing 'So next time someone asks you...' does not land a payoff, and self-review rated share and rewatch only 3.
+  - 📉 b3 @ 7.5 s: Right after the film-release line (b2), the script switches to 'the epic tells of a causeway to Lanka'. This is backstory instead of the promised satellite view, and watching fell from 0.97 to 0.702.
+  - 📉 b4 @ 12.9 s: The 'pale line is very shallow sea' reveal arrived about 10s in, and viewers kept leaving through it (0.552 to 0.478). The answer to the title question came too late and visuals may not have matched the words (image_word_match scored 3).
+  - 📉 b10 @ 32.7 s: A gradual decline (0.403 to 0.373) over the last beats as the video wrapped up, with a trailing 'next time someone asks you...' line instead of a punchy ending.
+  - 💡 [hook, hypothesis] Answer the title question visually and verbally within the first 5s (satellite view plus 'it's shallow sea'). Don't spend beats 2-3 on the film release and mythology before the payoff.
+  - 💡 [story, hypothesis] Put the strongest, most concrete fact right after the hook and hold the background (epic, film date) for later or cut it. The biggest losses came at the b2-b3 shift to backstory.
+  - 💡 [topic, hypothesis] Retention was normal but reach was about 6x below median. Test whether tying a space-imagery explainer to a film release helps or hurts, for example by running a version without the film tie-in. Several Ramayana drafts were also blocked or dropped in review, so this cluster may be saturated or sensitive.
+  - 💡 [loop, hypothesis] The loop lead-in appears to work (watching above 1.0 at the start). Keep it, but make the ending a real payoff line that connects back to the opening question.
+  - 💡 [length, hypothesis] Retention was flat from 16.5s to 27.3s, so the middle can be tightened. Try a shorter cut of about 25-28s that keeps the numbers beats and drops the debated-origin hedging.
+  - 💡 [visuals, hypothesis] Image-to-word match was the weakest self-review score (3). Show the satellite pale line exactly when the words say 'pale line', and mark the 48 km span on screen.
+  - 💡 [topic, hypothesis] Platform comparison: Instagram got 120 views, 103 reach and 0 interactions. The skip rate was 56.9%, and average watch time was 5850 (probably ms, about 5.9s of a 35.9s video). That is weaker than YouTube's 20s average view, and both platforms were low-volume. Because the video is the same, the shared low reach suggests topic or audience interest rather than execution, and the early drop-off suggests the opening is not gripping on Instagram.
 
 ### taipei-101-ball-v1 (48h) — below median
 - 21 views · 47.86% viewed · 1 likes · 0 shares · 0 subs (median views 382.5, n=22)
