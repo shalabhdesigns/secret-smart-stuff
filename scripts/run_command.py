@@ -378,7 +378,7 @@ def do_produce(p: Pipeline, req: dict) -> int:
                 if item.get("nonce") not in done and not made and not item.get("day"):   # dated items wait for their day
                     nxt = item
                     break
-        if nxt:
+        if nxt and "then" not in nxt:          # a single planned video (a dated chain was booked above)
             p.state.set_setting("last_daily_ist", today)
             done.append(nxt.get("nonce"))
             p.state.set_setting("daily_queue_done", json.dumps(done))
