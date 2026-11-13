@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-13 07:15 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-13 20:01 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Give every beat one new fact and keep only one or two stats in the middle; tighten early setup beats. (pattern, n=2)
@@ -16,6 +16,30 @@ Updated 2026-11-13 07:15 UTC. Built from every published video's 48 h and 7 day 
 - by_country, walk_past, why_detail, india_asia and film each have n=2: not enough data yet.
 
 ## Per-video analyses
+
+### ramayana-4dx-v1 (7d) — below median
+- 311 views · 67.81% viewed · 1 likes · 0 shares · 1 subs (median views 1259, n=17)
+- Reach was weak at 311 views against a channel median of 1,259, with 1 like and 1 subscriber gained, but viewers who did watch stayed longer than usual (67.8% average viewed vs 57.5% median), so the problem looks like getting clicks and swipes rather than holding attention.
+  - ✅ Retention beat the channel median: average view percentage was 67.81 vs 57.46, and average view duration was 23s vs 20s.
+  - ✅ The opening held well. Retention was above 1.0 until about 3.8s (1.32 at 0.3s), which suggests rewatching or looping, so the loop lead-in seems to work.
+  - ✅ The middle beats b6 to b9 (about 17.8s to 26.5s) were flat, with retention staying between 0.60 and 0.52. The 'splash is part of the plan' and 'programmed effects track' lines held the audience.
+  - ✅ The self-review scored loop highest (5), and the retention curve is consistent with that.
+  - ✅ Learnings applied: the carried-over learnings (Learjet wins, Ramayana review blocks, owner drops) did not visibly help views, which were well below median. Retention was above median, but with one video and a different topic I can't attribute that to the lessons.
+  - ❌ Views were about a quarter of the median (311 vs 1,259) and engaged views were 118 vs 622. Likes were 1 vs 16, with no comments or shares. Not enough people started the video, and those who did rarely reacted.
+  - ❌ The hook is a Ramayana-specific question ('Why might your seat splash you at Ramayana: Rise of a Legend?'). The heuristic score was only 48. The film name may narrow the audience, and the 4DX payoff is generic.
+  - ❌ Retention fell from 1.07 at 3.8s to 0.91 at 7.3s. Beat b2 ('This film also releases in 4DX') is a flat bridge after the hook.
+  - ❌ The list of effects in b4 and b5 (tilt, shake, wind, fog, scents) lost about 0.13 of the audience between 12.6s and 16.1s. It reads as a list with no new payoff.
+  - ❌ The ending bled steadily: 0.517 at 26.5s to 0.373 at 33.5s. The b10 recap repeats what the viewer already knows, and b11 is only a loop lead-in.
+  - ❌ Instagram was weaker still. It got 194 views and 160 reach, with a 76% skip rate, about 5s average watch time against a 34.9s video, and zero interactions. The same video held YouTube viewers for 23s on average, so the gap points to the platform and audience rather than the content. YouTube viewers who got past the start stayed, while Instagram viewers mostly swiped away.
+  - 📉 b2 @ 5.6 s: The hook question gives way to the flat statement 'This film also releases in 4DX'. It answers nothing yet, so early viewers start leaving (1.07 to 0.91 by 7.3s).
+  - 📉 b5 @ 14.3 s: After 'They tilt, shake and vibrate', the 'Wind, fog and scents' line continues a list of effects. This was the steepest stretch of the video, falling from 0.75 at 12.6s to 0.62 at 16.1s.
+  - 📉 b10 @ 30.0 s: 'So a 4DX seat moves, shakes, and may splash you' recaps what was already said. Retention fell from 0.52 to 0.37 through the end, and the b11 loop line did not recover viewers.
+  - 💡 [hook, hypothesis] Test a hook that leads with the surprising thing (a cinema seat that sprays you with water) rather than a specific film title, so the audience isn't limited to that film's fans.
+  - 💡 [story, hypothesis] Replace the bridge beat after the hook (b2) with the first real reveal, so the answer starts before 5s and the early drop is smaller.
+  - 💡 [pacing, hypothesis] Don't stack effect lists. Give each effect a distinct visual or a small twist, or cut the list to the one or two most surprising items.
+  - 💡 [length, hypothesis] Trim the recap beat (b10) and shorten the video toward about 30s, since the last 8s lost about 0.14 of the audience for no new information.
+  - 💡 [topic, hypothesis] Film or cinema-tech topics tied to a current release got low reach here despite good retention. Try another film-pillar video with an evergreen angle before judging the pillar.
+  - 💡 [loop, hypothesis] Keep the loop lead-in, since the opening retention above 1.0 suggests it works, but make the final line pay off the question instead of repeating the recap.
 
 ### ramayana-3d-glasses-v1 (7d) — below median
 - 403 views · 51.77% viewed · 3 likes · 0 shares · 1 subs (median views 1280.5, n=16)
