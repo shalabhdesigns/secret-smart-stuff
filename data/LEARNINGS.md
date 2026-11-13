@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-12 20:25 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-13 07:15 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Give every beat one new fact and keep only one or two stats in the middle; tighten early setup beats. (pattern, n=2)
@@ -16,6 +16,30 @@ Updated 2026-11-12 20:25 UTC. Built from every published video's 48 h and 7 day 
 - by_country, walk_past, why_detail, india_asia and film each have n=2: not enough data yet.
 
 ## Per-video analyses
+
+### ramayana-3d-glasses-v1 (7d) — below median
+- 403 views · 51.77% viewed · 3 likes · 0 shares · 1 subs (median views 1280.5, n=16)
+- The video got 403 views against a channel median of 1,280.5, and 170 engaged views against 632.5. Retention was only slightly under the median (51.8% against 57.6%), so the weaker part was reach, and the story lost viewers right after the hook, when the Ramayana news line replaced the explainer.
+  - ✅ Once viewers got past the first 13 seconds, retention held up. It went from 0.563 at 13.0s to 0.514 at 18.4s across the 'one picture per eye' and polarised-lens beats (b4-b5).
+  - ✅ Average view duration was 19s against a 20.5s median, and average view percentage was 51.77% against 57.6%. Viewers who stayed watched about as long as usual.
+  - ✅ Retention was above 1.0 at the very start (1.268 at 0.4s, 1.085 at 2.2s), which fits the loop lead-in. The question hook did not lose anyone before 4s.
+  - ✅ Subscribers gained (1), comments (0) and shares (0) matched the channel medians. Nothing was worse than normal on those.
+  - ❌ Views (403) and engaged views (170) were about a third of the median or lower, and likes were 3 against 16. This video reached fewer people and got less response than usual.
+  - ❌ Beat b2, 'Ramayana: Rise of a Legend lands in 3D', is where the first big drop happened. Retention fell from 1.0 at 4.0s to 0.838 at 5.8s and 0.718 at 7.6s. The news tie-in answered nothing from the hook question and probably read as an ad or an off-topic aside.
+  - ❌ Retention kept falling through b3 to 0.592 at 11.2s. The 'two slightly different pictures' explanation came late, after the detour.
+  - ❌ Viewers also left late. Retention fell from 0.437 at 25.6s to 0.338 at 31.0s over the 'brain does the maths' and 'eyes already do this' beats (b8-b10). These were abstract lines with little new information.
+  - ❌ The many carried-over lessons (learjet wins and postmortems, Ramayana reviews) do not seem to have helped. Views were well below median, and the Ramayana review and drop notes did not stop a Ramayana tie-in from landing in b2. This is one video, so it is not proof either way.
+  - ❌ The self-review scored visual credibility, rewatch and share at only 3 of 5. The weak share and like numbers match those low scores.
+  - 📉 b2 @ 5.8 s: The question hook was followed by a news line about the Ramayana film instead of the answer. It felt like a topic switch, and retention fell from 1.0 to 0.718 within about 4 seconds.
+  - 📉 b3 @ 11.2 s: The real explanation (two pictures from the projector) started only at about 8.4s, after the detour. Viewers who had lost interest kept leaving, down to 0.592.
+  - 📉 b8 @ 27.4 s: 'Your brain does the maths, quietly' is a vague line with no new fact or visual. Retention fell from 0.437 to 0.394 here, and to 0.338 by b10.
+  - 💡 [story, hypothesis] After a question hook, answer it in the next beat. Put news or promo tie-ins after the explanation, or use them as the hook itself, rather than between the question and the answer.
+  - 💡 [hook, hypothesis] The question hook held viewers for 4 seconds. Test an alternative where the Ramayana 3D tie-in is the opening hook and leads straight into 'how', instead of sitting as a second beat.
+  - 💡 [pacing, hypothesis] Give the closing beats (b8-b10) a concrete fact or a visual change, such as an on-screen eye or depth demo, in place of repeated 'your brain does it' lines. Retention fell steadily across them.
+  - 💡 [topic, hypothesis] Do not make tie-ins to specific film releases the main reason for a video. Judge them on their own results before reusing them, because this one reached about a third of the median views.
+  - 💡 [visuals, hypothesis] Visual credibility scored only 3 of 5. For optical explainers, use a clear side-by-side or overlay of the two images so the 'two pictures' idea is visible, not only spoken.
+  - 💡 [loop, hypothesis] Keep the loop lead-in. Retention was above 1.0 at the start, which suggests rewatch or loop-back viewing. Check whether the ending 'So next time you ask...' reads as a clean loop to the hook.
+  - 💡 [topic, hypothesis] The Instagram Reel did even less (132 views, reach 105, 1 like, 0 saves, skip rate 44.1%, average watch 10.5s). Both platforms were weak on the same video, so the problem looks like this video's topic and early structure, not one platform's audience.
 
 ### ramayana-ram-setu-v2 (7d) — below median
 - 203 views · 57.46% viewed · 3 likes · 0 shares · 0 subs (median views 1302, n=15)
