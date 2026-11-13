@@ -261,3 +261,31 @@ def test_daily_takes_the_next_planned_video(tmp_path, monkeypatch):
     except Exception:
         pass
     assert req.get("topic") == "b"
+
+
+def test_daily_chains_todays_dated_videos(tmp_path, monkeypatch):
+    import json, sys, time as _t
+    sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[1] / "scripts"))
+    import run_command as rc
+    from shorts.state import State
+    st = State(tmp_path / "s.db")
+    today = _t.strftime("%Y-%m-%d", _t.gmtime(_t.time() + 5.5 * 3600))
+    q = tmp_path / "config"; q.mkdir()
+    (q / "daily_queue.json").write_text(json.dumps({"queue": [
+        {"action": "produce", "topic": "a", "nonce": "n1", "day": today},
+        {"action": "produce", "topic": "b", "nonce": "n2", "day": today},
+        {"action": "produce", "topic": "c", "nonce": "n3", "day": "2099-01-01"}]}))
+    monkeypatch.setattr(rc, "ROOT", tmp_path)
+
+    class P:
+        state = st
+        class cfg:
+            live = False
+            pipeline = {"daily_paused_until": "2099-01-01"}
+    req = {"action": "daily"}
+    try:
+        rc.do_produce(P, req)
+    except Exception:
+        pass
+    assert req.get("topic") == "a" and [t["topic"] for t in req["then"]] == ["b"]
+    assert json.loads(st.get_setting("daily_queue_done")) == ["n1", "n2"]

@@ -1,126 +1,383 @@
 {
- "_note": "Owner, 5 Nov 2026: the virality batch is made ONE A DAY. Each daily run (00:17 UTC) makes the first item whose nonce is not yet in the state setting daily_queue_done; its publish_at is fixed in notes. When the list is used up, the normal daily video resumes after daily_paused_until.",
+ "_note": "GTA 6 launch series (owner, 14 Nov 2026): 3 videos a day. The daily run (00:17 UTC) makes every item whose 'day' is today's IST date, as one chain; publish times are fixed in notes (17:00 / 20:30 / 23:30 UTC = 12 pm / 3:30 pm / 6:30 pm US Eastern).",
  "queue": [
   {
    "action": "produce",
-   "topic": "placebo-buttons",
-   "nonce": "dq1-placebo-buttons",
+   "topic": "gta6-cheaper-than-gta5",
+   "nonce": "gta-gta6-cheaper-than-gta5",
+   "day": "2026-11-14",
    "topic_def": {
-    "id": "placebo-buttons",
-    "title": "Do lift 'door close' buttons actually do anything?",
-    "pillar": "virality",
+    "id": "gta6-cheaper-than-gta5",
+    "title": "GTA 6 at $80 is cheaper than GTA 5 was",
+    "pillar": "gta6",
     "notes": {
-     "object": "a brushed-steel lift button panel with one round 'door close' button lit",
-     "question": "Do lift 'door close' buttons actually do anything?",
-     "angle": "THE REVEAL: many of the buttons people press every day are 'placebo buttons'. Main example: in many lifts (well documented in the US since the 1990 Americans with Disabilities Act, which requires doors to stay open long enough) the 'door close' button is disabled in normal service and only works in special modes such as firefighter service. Second reveal: crosswalk 'push to walk' buttons - The New York Times reported in 2004 that most of New York City's walk buttons no longer did anything, because signals run on timers. Third, short: some office thermostats are dummies. The smart reason they are kept: pressing something gives people a feeling of control, which makes waiting feel more bearable (state carefully, as researchers' explanation). Never claim ALL lifts or ALL crosswalks; say where and when. Say NOTHING about lifts outside the US (sources don't cover it). The payoff must answer why lift door-close buttons are kept even when disabled: they still work in special modes (e.g. firefighter service) and, per researchers of 'perceived control', pressing something makes waiting feel shorter. Wit: a person jabbing the button five times. Share trigger near the end, natural not begging: who do you know who always presses it? OPENING PICTURE (beat 1 and the final beat): a macro photo of a brushed-steel lift button panel, one round button glowing white, shallow depth of field, no visible text or symbols, no hands.",
-     "format_rules": "STRUCTURE = REVEAL. Beat 1 is a flat, confident statement that sounds wrong, 6-10 words, e.g. 'The door close button in lifts often does nothing.' (not a question). Beat 2 proves it (law/date). Beats 3-6 widen it (crosswalks, thermostats) - each a new surprise, so the middle never sags. Then WHY they exist (feeling of control). LOOP: the last beat is still an unfinished lead-in that flows into beat 1, but do NOT use the words 'So next time someone asks you'. Write a fresh lead-in that fits this story. ",
-     "critic_rules": "\nThis video belongs to the 5 Nov 2026 batch and has an APPROVED FORMAT (see the topic's format rules): a statement hook is allowed when the format says so; judge the hook on whether a scroller would stop in the first second. Still BLOCKING: any claim not supported by the sources, a stated certainty the sources hedge, faces of real people, garbled text inside pictures, logos.",
+     "object": "a 2013 price tag beside a 2026 price tag on a shop shelf",
+     "question": "GTA 6 at $80 is cheaper than GTA 5 was",
+     "angle": "GTA 6 standard costs $79.99 (Rockstar, Jun 2026). GTA V launched at $59.99 in Sept 2013. Adjusted for US inflation (BLS CPI calculator) $59.99 in 2013 is about $82-85 today, so GTA 6 costs less in real money; outlets ran the same maths and found it the cheapest mainline GTA at launch. Twist: compare more GTAs in today's money if sources give their launch prices. OPENING PICTURE: two paper price tags on a shop shelf, '$59.99' (old, faded) and '$79.99' (new), warm store light, no logos.",
+     "format_rules": "GTA 6 SERIES RULES (legal + brand, these win over everything else):\n- Pictures show the REAL world only: money, calendars, clocks, shop shelves, a generic games console and controller (no brand logos), storage drives, Florida/Miami places, maps we draw, charts. NEVER a GTA character (Jason, Lucia or anyone), never the GTA or Rockstar logo, never anything styled to look like the game, its key art or its box art, never screenshots.\n- Say 'GTA 6' in beat 1 or 2 and in the title (people search it). Never claim a leak, never present rumours or speculation as fact: say 'reportedly' or 'Rockstar hasn't said' where the sources hedge.\n- One natural call to action in the beat before the last: a short question viewers will want to answer in the comments (e.g. 'Would you pay $100? Say it in the comments.'). No begging for likes.\n- Pacing: a new picture every 2 seconds or less; zoom and point at the thing being discussed.\n- LOOP: the last beat is a lead-in that flows back into beat 1; never 'So next time someone asks you'.\n",
+     "critic_rules": "\nGTA 6 series: BLOCKING if any picture shows a GTA character, a GTA/Rockstar logo, game-like art or box art; if a rumour or leak is stated as fact; if a price, date or size is not in the sources. A statement hook is allowed.",
      "open_hook": true,
-     "publish_at": "2026-11-08T18:00:00Z",
-     "batch": "virality-1"
+     "publish_at": "2026-11-14T17:00:00Z",
+     "batch": "gta6-launch"
     }
    }
   },
   {
    "action": "produce",
-   "topic": "taipei-101-ball",
-   "nonce": "dq1-taipei-101-ball",
+   "topic": "gta6-no-disc",
+   "nonce": "gta-gta6-no-disc",
+   "day": "2026-11-14",
    "topic_def": {
-    "id": "taipei-101-ball",
-    "title": "Why does Taipei 101 hang a giant golden ball inside?",
-    "pillar": "virality",
+    "id": "gta6-no-disc",
+    "title": "Why the GTA 6 box has no disc inside",
+    "pillar": "gta6",
     "notes": {
-     "object": "a huge golden steel sphere hanging on thick cables inside a tall skyscraper",
-     "question": "Why does Taipei 101 hang a giant golden ball inside?",
-     "angle": "Taipei 101 has a giant steel ball (a tuned mass damper) hanging near the top of the tower, gold-coloured and open to visitors. Give its sourced weight (about 660 tonnes) and size, where it hangs (between the 87th and 92nd floors per sources). Explain simply: when wind or an earthquake pushes the tower one way, the ball swings the other way and soaks up the motion, so the people inside feel far less sway. Sourced number: how much it reduces sway, and the typhoon when it swung the most (2015 Typhoon Soudelor, about 1 metre - only if sources confirm). Twist for the end: it is so popular it has its own cartoon mascots (the 'Damper Babies') - describe, never draw them. OPENING PICTURE (beat 1 and the final beat): a gigantic polished gold steel sphere suspended by thick steel cables inside a tall dim atrium, a tiny railing and walkway below for scale, no people, no text.",
-     "format_rules": "STRUCTURE = IMPOSSIBLE IMAGE FIRST. Beat 1 is a short question about the picture, 7-10 words ('Why is there a giant golden ball inside this skyscraper?'). Beat 2 gives its weight - a number that shocks. Show the physics with a simple side-view diagram picture (tower leaning one way, ball swinging the other) - draw arrows with our 'arrow' field, never text in images. LOOP: the last beat is still an unfinished lead-in that flows into beat 1, but do NOT use the words 'So next time someone asks you'. Write a fresh lead-in that fits this story. ",
-     "critic_rules": "\nThis video belongs to the 5 Nov 2026 batch and has an APPROVED FORMAT (see the topic's format rules): a statement hook is allowed when the format says so; judge the hook on whether a scroller would stop in the first second. Still BLOCKING: any claim not supported by the sources, a stated certainty the sources hedge, faces of real people, garbled text inside pictures, logos.",
+     "object": "an open game case with a small paper code card where a disc should be",
+     "question": "Why the GTA 6 box has no disc inside",
+     "angle": "The physical GTA 6 box contains a download code, not a disc; Rockstar said discs come months later (Fortune, 25 Jun 2026). The download is about 212 GB (pre-load opened 10 Nov). Explain the likely reasons ONLY as reported/likely (size beyond one disc, last-minute patches, leak control) and say Rockstar hasn't fully explained if sources don't quote them. OPENING PICTURE: an open plastic game case on a table, empty disc hub, a small paper code card inside, no logos or box art.",
+     "format_rules": "GTA 6 SERIES RULES (legal + brand, these win over everything else):\n- Pictures show the REAL world only: money, calendars, clocks, shop shelves, a generic games console and controller (no brand logos), storage drives, Florida/Miami places, maps we draw, charts. NEVER a GTA character (Jason, Lucia or anyone), never the GTA or Rockstar logo, never anything styled to look like the game, its key art or its box art, never screenshots.\n- Say 'GTA 6' in beat 1 or 2 and in the title (people search it). Never claim a leak, never present rumours or speculation as fact: say 'reportedly' or 'Rockstar hasn't said' where the sources hedge.\n- One natural call to action in the beat before the last: a short question viewers will want to answer in the comments (e.g. 'Would you pay $100? Say it in the comments.'). No begging for likes.\n- Pacing: a new picture every 2 seconds or less; zoom and point at the thing being discussed.\n- LOOP: the last beat is a lead-in that flows back into beat 1; never 'So next time someone asks you'.\n",
+     "critic_rules": "\nGTA 6 series: BLOCKING if any picture shows a GTA character, a GTA/Rockstar logo, game-like art or box art; if a rumour or leak is stated as fact; if a price, date or size is not in the sources. A statement hook is allowed.",
      "open_hook": true,
-     "publish_at": "2026-11-10T18:00:00Z",
-     "batch": "virality-1"
+     "publish_at": "2026-11-14T20:30:00Z",
+     "batch": "gta6-launch"
     }
    }
   },
   {
    "action": "produce",
-   "topic": "agloe",
-   "nonce": "dq1-agloe",
+   "topic": "gta6-island-maps",
+   "nonce": "gta-gta6-island-maps",
+   "day": "2026-11-14",
    "topic_def": {
-    "id": "agloe",
-    "title": "The fake town that became real",
-    "pillar": "virality",
+    "id": "gta6-island-maps",
+    "title": "Why every GTA map is an island",
+    "pillar": "gta6",
     "notes": {
-     "object": "an old folded paper road map on a wooden table",
-     "question": "The fake town that became real",
-     "angle": "TRUE STORY: in the 1930s mapmakers at the General Drafting Company (who made maps for Esso) put a fictional hamlet, 'Agloe', on a dirt-road crossing in New York State as a 'copyright trap' - an anagram of the founders' initials - so they could catch copiers. Years later Agloe appeared on a rival's map (Rand McNally). Twist: someone had built a real general store at that crossing and named it after the map - the 'Agloe General Store' - so the rival argued Agloe was real. Use only facts your sources confirm and hedge what they hedge (e.g. 'the story goes'). End beat before the loop: these traps still exist (fake streets, a fake dictionary word 'mountweazel'). OPENING PICTURE (beat 1 and the final beat): an old folded paper road map on a worn wooden table, warm lamp light, a single empty road crossing circled in red pencil, the map has NO readable words or numbers.",
-     "format_rules": "STRUCTURE = TWIST STORY. Beat 1 is a statement that sounds impossible, 6-9 words, e.g. 'This town was invented. Then it became real.' The trap's purpose (catching copiers) lands by beat 4; the twist (the real store) lands around 70%. Maps in pictures must have NO text; labels only via 'callout'. LOOP: the last beat is still an unfinished lead-in that flows into beat 1, but do NOT use the words 'So next time someone asks you'. Write a fresh lead-in that fits this story. ",
-     "critic_rules": "\nThis video belongs to the 5 Nov 2026 batch and has an APPROVED FORMAT (see the topic's format rules): a statement hook is allowed when the format says so; judge the hook on whether a scroller would stop in the first second. Still BLOCKING: any claim not supported by the sources, a stated certainty the sources hedge, faces of real people, garbled text inside pictures, logos.",
+     "object": "a small fictional island city map drawn on paper, surrounded by blue sea",
+     "question": "Why every GTA map is an island",
+     "angle": "Design reason: an island gives a natural border so the world ends without invisible walls, keeps traffic and streaming manageable, and adds coastlines for boats and planes. Use only reasons game designers or reputable outlets have stated; label opinion. GTA 6's state is called Leonida, based on Florida (Rockstar). OPENING PICTURE: a hand-drawn paper map of an unnamed island city surrounded by sea, roads and a beach, NO text or labels, NOT the game's map.",
+     "format_rules": "GTA 6 SERIES RULES (legal + brand, these win over everything else):\n- Pictures show the REAL world only: money, calendars, clocks, shop shelves, a generic games console and controller (no brand logos), storage drives, Florida/Miami places, maps we draw, charts. NEVER a GTA character (Jason, Lucia or anyone), never the GTA or Rockstar logo, never anything styled to look like the game, its key art or its box art, never screenshots.\n- Say 'GTA 6' in beat 1 or 2 and in the title (people search it). Never claim a leak, never present rumours or speculation as fact: say 'reportedly' or 'Rockstar hasn't said' where the sources hedge.\n- One natural call to action in the beat before the last: a short question viewers will want to answer in the comments (e.g. 'Would you pay $100? Say it in the comments.'). No begging for likes.\n- Pacing: a new picture every 2 seconds or less; zoom and point at the thing being discussed.\n- LOOP: the last beat is a lead-in that flows back into beat 1; never 'So next time someone asks you'.\n",
+     "critic_rules": "\nGTA 6 series: BLOCKING if any picture shows a GTA character, a GTA/Rockstar logo, game-like art or box art; if a rumour or leak is stated as fact; if a price, date or size is not in the sources. A statement hook is allowed.",
      "open_hook": true,
-     "publish_at": "2026-11-11T18:00:00Z",
-     "batch": "virality-1"
+     "publish_at": "2026-11-14T23:30:00Z",
+     "batch": "gta6-launch"
     }
    }
   },
   {
    "action": "produce",
-   "topic": "runway-numbers",
-   "nonce": "dq1-runway-numbers",
+   "topic": "gta6-not-on-pc",
+   "nonce": "gta-gta6-not-on-pc",
+   "day": "2026-11-15",
    "topic_def": {
-    "id": "runway-numbers",
-    "title": "What do the giant numbers on runways mean?",
-    "pillar": "virality",
+    "id": "gta6-not-on-pc",
+    "title": "Why GTA 6 isn't on PC yet",
+    "pillar": "gta6",
     "notes": {
-     "object": "an airport runway end seen from directly above, white stripes on dark asphalt",
-     "question": "What do the giant numbers on runways mean?",
-     "angle": "Runway numbers are compass directions: the runway's magnetic heading rounded to the nearest 10 degrees, with the last zero dropped - runway 27 points about 270 degrees (west); the same strip is runway 09 from the other end (they always differ by 18). Parallel runways add L, C, R. Twist: Earth's magnetic north drifts, so airports sometimes have to repaint and rename their runways - give one sourced real example with its year. Payoff: you can now tell which way your plane is pointing from the runway number. Numbers are added by our code (callouts/markers), never inside the pictures. OPENING PICTURE (beat 1 and the final beat): a top-down aerial photo of the end of a wide runway: white 'piano key' stripes on dark asphalt, green grass edges, sunrise shadows, NO painted numbers or letters.",
-     "format_rules": "STRUCTURE = DECODE. Beat 1 asks about the number, 7-10 words ('What does the 27 on this runway actually mean?'). Use 'callout' to put '27' and '09' on screen at the right moments. One witty line (e.g. about pilots not needing a map app). LOOP: the last beat is still an unfinished lead-in that flows into beat 1, but do NOT use the words 'So next time someone asks you'. Write a fresh lead-in that fits this story. ",
-     "critic_rules": "\nThis video belongs to the 5 Nov 2026 batch and has an APPROVED FORMAT (see the topic's format rules): a statement hook is allowed when the format says so; judge the hook on whether a scroller would stop in the first second. Still BLOCKING: any claim not supported by the sources, a stated certainty the sources hedge, faces of real people, garbled text inside pictures, logos.",
+     "object": "a dark gaming PC tower beside a glowing games console",
+     "question": "Why GTA 6 isn't on PC yet",
+     "angle": "GTA 6 launches 19 Nov 2026 on PS5 and Xbox Series X|S only; no PC date (Rockstar). Precedent: GTA V reached PC in Apr 2015, about 19 months after its Sept 2013 console launch; Red Dead Redemption 2 reached PC in Nov 2019, a year after Oct 2018. Explain the reasons as reported (console-first focus, optimisation, piracy, selling twice) and say Take-Two hasn't announced a PC date. OPENING PICTURE: a dark PC tower with an empty, unlit screen beside a glowing generic white games console, no brand logos.",
+     "format_rules": "GTA 6 SERIES RULES (legal + brand, these win over everything else):\n- Pictures show the REAL world only: money, calendars, clocks, shop shelves, a generic games console and controller (no brand logos), storage drives, Florida/Miami places, maps we draw, charts. NEVER a GTA character (Jason, Lucia or anyone), never the GTA or Rockstar logo, never anything styled to look like the game, its key art or its box art, never screenshots.\n- Say 'GTA 6' in beat 1 or 2 and in the title (people search it). Never claim a leak, never present rumours or speculation as fact: say 'reportedly' or 'Rockstar hasn't said' where the sources hedge.\n- One natural call to action in the beat before the last: a short question viewers will want to answer in the comments (e.g. 'Would you pay $100? Say it in the comments.'). No begging for likes.\n- Pacing: a new picture every 2 seconds or less; zoom and point at the thing being discussed.\n- LOOP: the last beat is a lead-in that flows back into beat 1; never 'So next time someone asks you'.\n",
+     "critic_rules": "\nGTA 6 series: BLOCKING if any picture shows a GTA character, a GTA/Rockstar logo, game-like art or box art; if a rumour or leak is stated as fact; if a price, date or size is not in the sources. A statement hook is allowed.",
      "open_hook": true,
-     "publish_at": "2026-11-12T18:00:00Z",
-     "batch": "virality-1"
+     "publish_at": "2026-11-15T17:00:00Z",
+     "batch": "gta6-launch"
     }
    }
   },
   {
    "action": "produce",
-   "topic": "pilot-meals",
-   "nonce": "dq1-pilot-meals",
+   "topic": "gta6-leak-war",
+   "nonce": "gta-gta6-leak-war",
+   "day": "2026-11-15",
    "topic_def": {
-    "id": "pilot-meals",
-    "title": "Why pilots and co-pilots eat different meals",
-    "pillar": "virality",
+    "id": "gta6-leak-war",
+    "title": "How Rockstar fights GTA 6 leaks",
+    "pillar": "gta6",
     "notes": {
-     "object": "two different airline meal trays side by side in a cockpit",
-     "question": "Why pilots and co-pilots eat different meals",
-     "angle": "Many airlines have the captain and first officer eat different meals (often also at different times), so that if one meal causes food poisoning, both pilots are not affected at once. It is common airline practice and policy, not a single worldwide law - say so. Add one sourced extra layer (e.g. crews often avoid seafood, or pilots' meals come from separate preparation) only if sources confirm. Share trigger (natural): the dinner-table fact you'll want to tell someone. OPENING PICTURE (beat 1 and the final beat): two different airline meal trays (one pasta, one chicken with rice) side by side on a cockpit centre console, glowing instrument displays blurred behind, no people, no text, no airline logos.",
-     "format_rules": "STRUCTURE = RULE -> REASON -> 'WHAT IF'. Beat 1 states the odd rule as a question, 8-11 words. The middle plays the 'what if they ate the same meal' scenario in 2-3 beats (tension), then the fix. LOOP: the last beat is still an unfinished lead-in that flows into beat 1, but do NOT use the words 'So next time someone asks you'. Write a fresh lead-in that fits this story. ",
-     "critic_rules": "\nThis video belongs to the 5 Nov 2026 batch and has an APPROVED FORMAT (see the topic's format rules): a statement hook is allowed when the format says so; judge the hook on whether a scroller would stop in the first second. Still BLOCKING: any claim not supported by the sources, a stated certainty the sources hedge, faces of real people, garbled text inside pictures, logos.",
+     "object": "a padlocked server room door with a red light",
+     "question": "How Rockstar fights GTA 6 leaks",
+     "angle": "Facts only from sources: the 2022 hack and leak of early GTA 6 development footage; Take-Two copyright takedowns; Aug 2026 US court subpoenas to identify leakers (AFP); the box ships with a download code. Never show or describe leaked footage content. Don't name private individuals. OPENING PICTURE: a server room door with a heavy padlock and a red status light, no logos.",
+     "format_rules": "GTA 6 SERIES RULES (legal + brand, these win over everything else):\n- Pictures show the REAL world only: money, calendars, clocks, shop shelves, a generic games console and controller (no brand logos), storage drives, Florida/Miami places, maps we draw, charts. NEVER a GTA character (Jason, Lucia or anyone), never the GTA or Rockstar logo, never anything styled to look like the game, its key art or its box art, never screenshots.\n- Say 'GTA 6' in beat 1 or 2 and in the title (people search it). Never claim a leak, never present rumours or speculation as fact: say 'reportedly' or 'Rockstar hasn't said' where the sources hedge.\n- One natural call to action in the beat before the last: a short question viewers will want to answer in the comments (e.g. 'Would you pay $100? Say it in the comments.'). No begging for likes.\n- Pacing: a new picture every 2 seconds or less; zoom and point at the thing being discussed.\n- LOOP: the last beat is a lead-in that flows back into beat 1; never 'So next time someone asks you'.\n",
+     "critic_rules": "\nGTA 6 series: BLOCKING if any picture shows a GTA character, a GTA/Rockstar logo, game-like art or box art; if a rumour or leak is stated as fact; if a price, date or size is not in the sources. A statement hook is allowed.",
      "open_hook": true,
-     "publish_at": "2026-11-13T18:00:00Z",
-     "batch": "virality-1"
+     "publish_at": "2026-11-15T20:30:00Z",
+     "batch": "gta6-launch"
     }
    }
   },
   {
    "action": "produce",
-   "topic": "wobbly-bridge",
-   "nonce": "dq1-wobbly-bridge",
+   "topic": "gta6-13-years",
+   "nonce": "gta-gta6-13-years",
+   "day": "2026-11-15",
    "topic_def": {
-    "id": "wobbly-bridge",
-    "title": "Why London's Millennium Bridge closed after two days",
-    "pillar": "virality",
+    "id": "gta6-13-years",
+    "title": "Why GTA 6 took 13 years after GTA 5",
+    "pillar": "gta6",
     "notes": {
-     "object": "a sleek modern steel footbridge over a wide river",
-     "question": "Why London's Millennium Bridge closed after two days",
-     "angle": "TRUE STORY: London's Millennium Bridge, a new steel footbridge over the Thames, opened on 10 June 2000 and was closed two days later because it swayed sideways under crowds - nicknamed the 'Wobbly Bridge'. The cause was the people, not the wind: a small sway made walkers adjust their steps to keep balance, falling into step with the sway and pushing it further ('synchronous lateral excitation'). Fix: dampers were added (sourced number and cost) and it reopened in 2002 - use sourced dates and figures only. Wit: thousands of strangers accidentally marching in time. OPENING PICTURE (beat 1 and the final beat): a sleek modern steel suspension footbridge spanning a wide river in a city at blue hour, crowds as tiny distant silhouettes, no faces, no text.",
-     "format_rules": "STRUCTURE = MYSTERY. Beat 1 is the mystery as a statement, 8-11 words ('London opened a new bridge, then shut it two days later.'). Rule out the obvious suspects (wind, weak steel) in 1-2 beats, then reveal the culprit: the walkers. LOOP: the last beat is still an unfinished lead-in that flows into beat 1, but do NOT use the words 'So next time someone asks you'. Write a fresh lead-in that fits this story. ",
-     "critic_rules": "\nThis video belongs to the 5 Nov 2026 batch and has an APPROVED FORMAT (see the topic's format rules): a statement hook is allowed when the format says so; judge the hook on whether a scroller would stop in the first second. Still BLOCKING: any claim not supported by the sources, a stated certainty the sources hedge, faces of real people, garbled text inside pictures, logos.",
+     "object": "a wall calendar with many years crossed out",
+     "question": "Why GTA 6 took 13 years after GTA 5",
+     "angle": "GTA V: Sept 2013. GTA 6: 19 Nov 2026, after delays from 2025 and 26 May 2026 (Rockstar). Explain what filled the gap only from sources (GTA Online's success, Red Dead Redemption 2 in 2018, the new engine/world scale). Never use the disputed budget figure as fact. OPENING PICTURE: a paper wall calendar with years 2013 to 2026 crossed out in red marker, no logos.",
+     "format_rules": "GTA 6 SERIES RULES (legal + brand, these win over everything else):\n- Pictures show the REAL world only: money, calendars, clocks, shop shelves, a generic games console and controller (no brand logos), storage drives, Florida/Miami places, maps we draw, charts. NEVER a GTA character (Jason, Lucia or anyone), never the GTA or Rockstar logo, never anything styled to look like the game, its key art or its box art, never screenshots.\n- Say 'GTA 6' in beat 1 or 2 and in the title (people search it). Never claim a leak, never present rumours or speculation as fact: say 'reportedly' or 'Rockstar hasn't said' where the sources hedge.\n- One natural call to action in the beat before the last: a short question viewers will want to answer in the comments (e.g. 'Would you pay $100? Say it in the comments.'). No begging for likes.\n- Pacing: a new picture every 2 seconds or less; zoom and point at the thing being discussed.\n- LOOP: the last beat is a lead-in that flows back into beat 1; never 'So next time someone asks you'.\n",
+     "critic_rules": "\nGTA 6 series: BLOCKING if any picture shows a GTA character, a GTA/Rockstar logo, game-like art or box art; if a rumour or leak is stated as fact; if a price, date or size is not in the sources. A statement hook is allowed.",
      "open_hook": true,
-     "publish_at": "2026-11-14T18:00:00Z",
-     "batch": "virality-1"
+     "publish_at": "2026-11-15T23:30:00Z",
+     "batch": "gta6-launch"
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-212gb",
+   "nonce": "gta-gta6-212gb",
+   "day": "2026-11-16",
+   "topic_def": {
+    "id": "gta6-212gb",
+    "title": "What GTA 6's 212 GB download is actually made of",
+    "pillar": "gta6",
+    "notes": {
+     "object": "a stack of external hard drives glowing on a desk",
+     "question": "What GTA 6's 212 GB download is actually made of",
+     "angle": "Pre-load opened 10 Nov 2026; download about 212 GB (Forbes/DLCompare). Explain what usually takes the space in big open-world games (high-resolution textures, audio in many languages, the world data), only as general knowledge with a source, and say Rockstar hasn't published a breakdown. Compare 212 GB to something relatable (sourced: e.g. hours of HD video). OPENING PICTURE: a stack of external drives on a desk, status lights glowing, no logos.",
+     "format_rules": "GTA 6 SERIES RULES (legal + brand, these win over everything else):\n- Pictures show the REAL world only: money, calendars, clocks, shop shelves, a generic games console and controller (no brand logos), storage drives, Florida/Miami places, maps we draw, charts. NEVER a GTA character (Jason, Lucia or anyone), never the GTA or Rockstar logo, never anything styled to look like the game, its key art or its box art, never screenshots.\n- Say 'GTA 6' in beat 1 or 2 and in the title (people search it). Never claim a leak, never present rumours or speculation as fact: say 'reportedly' or 'Rockstar hasn't said' where the sources hedge.\n- One natural call to action in the beat before the last: a short question viewers will want to answer in the comments (e.g. 'Would you pay $100? Say it in the comments.'). No begging for likes.\n- Pacing: a new picture every 2 seconds or less; zoom and point at the thing being discussed.\n- LOOP: the last beat is a lead-in that flows back into beat 1; never 'So next time someone asks you'.\n",
+     "critic_rules": "\nGTA 6 series: BLOCKING if any picture shows a GTA character, a GTA/Rockstar logo, game-like art or box art; if a rumour or leak is stated as fact; if a price, date or size is not in the sources. A statement hook is allowed.",
+     "open_hook": true,
+     "publish_at": "2026-11-16T17:00:00Z",
+     "batch": "gta6-launch"
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-map-vs-florida",
+   "nonce": "gta-gta6-map-vs-florida",
+   "day": "2026-11-16",
+   "topic_def": {
+    "id": "gta6-map-vs-florida",
+    "title": "Is GTA 6's map as big as real Florida?",
+    "pillar": "gta6",
+    "notes": {
+     "object": "a satellite-style view of the Florida peninsula at night",
+     "question": "Is GTA 6's map as big as real Florida?",
+     "angle": "GTA 6 is set in Leonida, Rockstar's version of Florida, with Vice City (Miami) (Rockstar). Real Florida is about 170,000 km2. Game maps are tiny by comparison; only use map-size figures that sources report and mark fan estimates as estimates. Point: games shrink the real place to its most recognisable parts. OPENING PICTURE: a satellite-style night view of the Florida peninsula with city lights, no text.",
+     "format_rules": "GTA 6 SERIES RULES (legal + brand, these win over everything else):\n- Pictures show the REAL world only: money, calendars, clocks, shop shelves, a generic games console and controller (no brand logos), storage drives, Florida/Miami places, maps we draw, charts. NEVER a GTA character (Jason, Lucia or anyone), never the GTA or Rockstar logo, never anything styled to look like the game, its key art or its box art, never screenshots.\n- Say 'GTA 6' in beat 1 or 2 and in the title (people search it). Never claim a leak, never present rumours or speculation as fact: say 'reportedly' or 'Rockstar hasn't said' where the sources hedge.\n- One natural call to action in the beat before the last: a short question viewers will want to answer in the comments (e.g. 'Would you pay $100? Say it in the comments.'). No begging for likes.\n- Pacing: a new picture every 2 seconds or less; zoom and point at the thing being discussed.\n- LOOP: the last beat is a lead-in that flows back into beat 1; never 'So next time someone asks you'.\n",
+     "critic_rules": "\nGTA 6 series: BLOCKING if any picture shows a GTA character, a GTA/Rockstar logo, game-like art or box art; if a rumour or leak is stated as fact; if a price, date or size is not in the sources. A statement hook is allowed.",
+     "open_hook": true,
+     "publish_at": "2026-11-16T20:30:00Z",
+     "batch": "gta6-launch"
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-india-price",
+   "nonce": "gta-gta6-india-price",
+   "day": "2026-11-16",
+   "topic_def": {
+    "id": "gta6-india-price",
+    "title": "GTA 6 costs almost the same in India as in the US",
+    "pillar": "gta6",
+    "notes": {
+     "object": "Indian rupee and US dollar notes side by side",
+     "question": "GTA 6 costs almost the same in India as in the US",
+     "angle": "India: Rs 5,999 standard / Rs 7,499 Ultimate (MySmartPrice). US: $79.99 / $99.99 (Fortune). Compare against typical incomes or prices only with sourced figures; explain why games are priced close to dollar parity (publisher pricing) only as reported. CTA question for comments: 'What does it cost where you live?'. OPENING PICTURE: Indian rupee notes and US dollar notes side by side on a wooden table.",
+     "format_rules": "GTA 6 SERIES RULES (legal + brand, these win over everything else):\n- Pictures show the REAL world only: money, calendars, clocks, shop shelves, a generic games console and controller (no brand logos), storage drives, Florida/Miami places, maps we draw, charts. NEVER a GTA character (Jason, Lucia or anyone), never the GTA or Rockstar logo, never anything styled to look like the game, its key art or its box art, never screenshots.\n- Say 'GTA 6' in beat 1 or 2 and in the title (people search it). Never claim a leak, never present rumours or speculation as fact: say 'reportedly' or 'Rockstar hasn't said' where the sources hedge.\n- One natural call to action in the beat before the last: a short question viewers will want to answer in the comments (e.g. 'Would you pay $100? Say it in the comments.'). No begging for likes.\n- Pacing: a new picture every 2 seconds or less; zoom and point at the thing being discussed.\n- LOOP: the last beat is a lead-in that flows back into beat 1; never 'So next time someone asks you'.\n",
+     "critic_rules": "\nGTA 6 series: BLOCKING if any picture shows a GTA character, a GTA/Rockstar logo, game-like art or box art; if a rumour or leak is stated as fact; if a price, date or size is not in the sources. A statement hook is allowed.",
+     "open_hook": true,
+     "publish_at": "2026-11-16T23:30:00Z",
+     "batch": "gta6-launch"
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-ps5-space",
+   "nonce": "gta-gta6-ps5-space",
+   "day": "2026-11-17",
+   "topic_def": {
+    "id": "gta6-ps5-space",
+    "title": "Will GTA 6 fit on your PS5?",
+    "pillar": "gta6",
+    "notes": {
+     "object": "a games console with a full storage bar on a TV screen",
+     "question": "Will GTA 6 fit on your PS5?",
+     "angle": "Download about 212 GB (Forbes). Usable space on PS5 models from sources (e.g. the 825 GB launch PS5 has about 667 GB usable; 1 TB PS5 Slim about 848 GB usable). Practical answer + how to make room (delete, extended storage) only as general advice. OPENING PICTURE: a TV screen showing a nearly full storage bar beside a generic games console, no logos or interface text.",
+     "format_rules": "GTA 6 SERIES RULES (legal + brand, these win over everything else):\n- Pictures show the REAL world only: money, calendars, clocks, shop shelves, a generic games console and controller (no brand logos), storage drives, Florida/Miami places, maps we draw, charts. NEVER a GTA character (Jason, Lucia or anyone), never the GTA or Rockstar logo, never anything styled to look like the game, its key art or its box art, never screenshots.\n- Say 'GTA 6' in beat 1 or 2 and in the title (people search it). Never claim a leak, never present rumours or speculation as fact: say 'reportedly' or 'Rockstar hasn't said' where the sources hedge.\n- One natural call to action in the beat before the last: a short question viewers will want to answer in the comments (e.g. 'Would you pay $100? Say it in the comments.'). No begging for likes.\n- Pacing: a new picture every 2 seconds or less; zoom and point at the thing being discussed.\n- LOOP: the last beat is a lead-in that flows back into beat 1; never 'So next time someone asks you'.\n",
+     "critic_rules": "\nGTA 6 series: BLOCKING if any picture shows a GTA character, a GTA/Rockstar logo, game-like art or box art; if a rumour or leak is stated as fact; if a price, date or size is not in the sources. A statement hook is allowed.",
+     "open_hook": true,
+     "publish_at": "2026-11-17T17:00:00Z",
+     "batch": "gta6-launch"
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-ultimate-worth",
+   "nonce": "gta-gta6-ultimate-worth",
+   "day": "2026-11-17",
+   "topic_def": {
+    "id": "gta6-ultimate-worth",
+    "title": "Is the $100 GTA 6 Ultimate Edition worth it?",
+    "pillar": "gta6",
+    "notes": {
+     "object": "two closed gift boxes, one small and one large with a gold ribbon",
+     "question": "Is the $100 GTA 6 Ultimate Edition worth it?",
+     "angle": "Standard $79.99, Ultimate $99.99 (Fortune); only list Ultimate contents that sources confirm; buying before 20 Nov gets the Vintage Vice City Pack (DLCompare) if sources confirm. Neutral, no advice to buy; CTA question: 'Standard or Ultimate? Tell me why.' OPENING PICTURE: a small plain gift box and a larger box with a gold ribbon side by side, no logos.",
+     "format_rules": "GTA 6 SERIES RULES (legal + brand, these win over everything else):\n- Pictures show the REAL world only: money, calendars, clocks, shop shelves, a generic games console and controller (no brand logos), storage drives, Florida/Miami places, maps we draw, charts. NEVER a GTA character (Jason, Lucia or anyone), never the GTA or Rockstar logo, never anything styled to look like the game, its key art or its box art, never screenshots.\n- Say 'GTA 6' in beat 1 or 2 and in the title (people search it). Never claim a leak, never present rumours or speculation as fact: say 'reportedly' or 'Rockstar hasn't said' where the sources hedge.\n- One natural call to action in the beat before the last: a short question viewers will want to answer in the comments (e.g. 'Would you pay $100? Say it in the comments.'). No begging for likes.\n- Pacing: a new picture every 2 seconds or less; zoom and point at the thing being discussed.\n- LOOP: the last beat is a lead-in that flows back into beat 1; never 'So next time someone asks you'.\n",
+     "critic_rules": "\nGTA 6 series: BLOCKING if any picture shows a GTA character, a GTA/Rockstar logo, game-like art or box art; if a rumour or leak is stated as fact; if a price, date or size is not in the sources. A statement hook is allowed.",
+     "open_hook": true,
+     "publish_at": "2026-11-17T20:30:00Z",
+     "batch": "gta6-launch"
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-midnight",
+   "nonce": "gta-gta6-midnight",
+   "day": "2026-11-17",
+   "topic_def": {
+    "id": "gta6-midnight",
+    "title": "Why GTA 6 unlocks at midnight Eastern",
+    "pillar": "gta6",
+    "notes": {
+     "object": "a world clock wall showing different times",
+     "question": "Why GTA 6 unlocks at midnight Eastern",
+     "angle": "GTA 6 unlocks at midnight local time; in the US stores follow Eastern time, so 9pm Pacific / 12am Eastern on 18-19 Nov; New Zealand plays first (Forbes, 12 Nov 2026). Explain only sourced reasons. OPENING PICTURE: a wall of clocks showing different city times, no city names.",
+     "format_rules": "GTA 6 SERIES RULES (legal + brand, these win over everything else):\n- Pictures show the REAL world only: money, calendars, clocks, shop shelves, a generic games console and controller (no brand logos), storage drives, Florida/Miami places, maps we draw, charts. NEVER a GTA character (Jason, Lucia or anyone), never the GTA or Rockstar logo, never anything styled to look like the game, its key art or its box art, never screenshots.\n- Say 'GTA 6' in beat 1 or 2 and in the title (people search it). Never claim a leak, never present rumours or speculation as fact: say 'reportedly' or 'Rockstar hasn't said' where the sources hedge.\n- One natural call to action in the beat before the last: a short question viewers will want to answer in the comments (e.g. 'Would you pay $100? Say it in the comments.'). No begging for likes.\n- Pacing: a new picture every 2 seconds or less; zoom and point at the thing being discussed.\n- LOOP: the last beat is a lead-in that flows back into beat 1; never 'So next time someone asks you'.\n",
+     "critic_rules": "\nGTA 6 series: BLOCKING if any picture shows a GTA character, a GTA/Rockstar logo, game-like art or box art; if a rumour or leak is stated as fact; if a price, date or size is not in the sources. A statement hook is allowed.",
+     "open_hook": true,
+     "publish_at": "2026-11-17T23:30:00Z",
+     "batch": "gta6-launch"
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-unlock-time",
+   "nonce": "gta-gta6-unlock-time",
+   "day": "2026-11-18",
+   "topic_def": {
+    "id": "gta6-unlock-time",
+    "title": "When GTA 6 unlocks where you live",
+    "pillar": "gta6",
+    "notes": {
+     "object": "a phone countdown timer on a coffee table at night",
+     "question": "When GTA 6 unlocks where you live",
+     "angle": "Unlock times from Forbes (12 Nov 2026) and DLCompare: midnight local; US 9pm PT / 12am ET on 18-19 Nov; New Zealand first; include India (10:30 am IST on 19 Nov) and the UK only if the sources confirm the rule applies. CTA: 'Comment your time zone.' OPENING PICTURE: a phone with a countdown timer on a coffee table at night, no logos.",
+     "format_rules": "GTA 6 SERIES RULES (legal + brand, these win over everything else):\n- Pictures show the REAL world only: money, calendars, clocks, shop shelves, a generic games console and controller (no brand logos), storage drives, Florida/Miami places, maps we draw, charts. NEVER a GTA character (Jason, Lucia or anyone), never the GTA or Rockstar logo, never anything styled to look like the game, its key art or its box art, never screenshots.\n- Say 'GTA 6' in beat 1 or 2 and in the title (people search it). Never claim a leak, never present rumours or speculation as fact: say 'reportedly' or 'Rockstar hasn't said' where the sources hedge.\n- One natural call to action in the beat before the last: a short question viewers will want to answer in the comments (e.g. 'Would you pay $100? Say it in the comments.'). No begging for likes.\n- Pacing: a new picture every 2 seconds or less; zoom and point at the thing being discussed.\n- LOOP: the last beat is a lead-in that flows back into beat 1; never 'So next time someone asks you'.\n",
+     "critic_rules": "\nGTA 6 series: BLOCKING if any picture shows a GTA character, a GTA/Rockstar logo, game-like art or box art; if a rumour or leak is stated as fact; if a price, date or size is not in the sources. A statement hook is allowed.",
+     "open_hook": true,
+     "publish_at": "2026-11-18T17:00:00Z",
+     "batch": "gta6-launch"
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-heat-vice-city",
+   "nonce": "gta-gta6-heat-vice-city",
+   "day": "2026-11-18",
+   "topic_def": {
+    "id": "gta6-heat-vice-city",
+    "title": "Why the Miami Heat play as 'Vice City' tonight",
+    "pillar": "gta6",
+    "notes": {
+     "object": "an empty basketball arena lit in pink and blue neon",
+     "question": "Why the Miami Heat play as 'Vice City' tonight",
+     "angle": "On 18 Nov 2026 the Miami Heat play the Bucks in special 'Vice City' uniforms on a special court at Kaseya Center (Gematsu, 2 Oct 2026; Heat/NBA). Explain the marketing tie-in only from sources; real Miami <-> Vice City. No player faces, no team logos. OPENING PICTURE: an empty basketball arena lit in pink and teal neon, no logos or text.",
+     "format_rules": "GTA 6 SERIES RULES (legal + brand, these win over everything else):\n- Pictures show the REAL world only: money, calendars, clocks, shop shelves, a generic games console and controller (no brand logos), storage drives, Florida/Miami places, maps we draw, charts. NEVER a GTA character (Jason, Lucia or anyone), never the GTA or Rockstar logo, never anything styled to look like the game, its key art or its box art, never screenshots.\n- Say 'GTA 6' in beat 1 or 2 and in the title (people search it). Never claim a leak, never present rumours or speculation as fact: say 'reportedly' or 'Rockstar hasn't said' where the sources hedge.\n- One natural call to action in the beat before the last: a short question viewers will want to answer in the comments (e.g. 'Would you pay $100? Say it in the comments.'). No begging for likes.\n- Pacing: a new picture every 2 seconds or less; zoom and point at the thing being discussed.\n- LOOP: the last beat is a lead-in that flows back into beat 1; never 'So next time someone asks you'.\n",
+     "critic_rules": "\nGTA 6 series: BLOCKING if any picture shows a GTA character, a GTA/Rockstar logo, game-like art or box art; if a rumour or leak is stated as fact; if a price, date or size is not in the sources. A statement hook is allowed.",
+     "open_hook": true,
+     "publish_at": "2026-11-18T20:30:00Z",
+     "batch": "gta6-launch"
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-storage-meme",
+   "nonce": "gta-gta6-storage-meme",
+   "day": "2026-11-18",
+   "topic_def": {
+    "id": "gta6-storage-meme",
+    "title": "Your console's storage the night before GTA 6",
+    "pillar": "gta6",
+    "notes": {
+     "object": "a games console bursting with paper files and boxes",
+     "question": "Your console's storage the night before GTA 6",
+     "angle": "Light, witty, original meme: everyone deleting games to fit a 212 GB download (Forbes). Real facts only (212 GB, pre-load since 10 Nov). Make it relatable and funny; CTA: 'What did you delete?'. OPENING PICTURE: a generic games console with paper folders and boxes bursting out of it, comic but photographic, no logos.",
+     "format_rules": "GTA 6 SERIES RULES (legal + brand, these win over everything else):\n- Pictures show the REAL world only: money, calendars, clocks, shop shelves, a generic games console and controller (no brand logos), storage drives, Florida/Miami places, maps we draw, charts. NEVER a GTA character (Jason, Lucia or anyone), never the GTA or Rockstar logo, never anything styled to look like the game, its key art or its box art, never screenshots.\n- Say 'GTA 6' in beat 1 or 2 and in the title (people search it). Never claim a leak, never present rumours or speculation as fact: say 'reportedly' or 'Rockstar hasn't said' where the sources hedge.\n- One natural call to action in the beat before the last: a short question viewers will want to answer in the comments (e.g. 'Would you pay $100? Say it in the comments.'). No begging for likes.\n- Pacing: a new picture every 2 seconds or less; zoom and point at the thing being discussed.\n- LOOP: the last beat is a lead-in that flows back into beat 1; never 'So next time someone asks you'.\n",
+     "critic_rules": "\nGTA 6 series: BLOCKING if any picture shows a GTA character, a GTA/Rockstar logo, game-like art or box art; if a rumour or leak is stated as fact; if a price, date or size is not in the sources. A statement hook is allowed.",
+     "open_hook": true,
+     "publish_at": "2026-11-18T23:30:00Z",
+     "batch": "gta6-launch"
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-biggest-launches",
+   "nonce": "gta-gta6-biggest-launches",
+   "day": "2026-11-19",
+   "topic_def": {
+    "id": "gta6-biggest-launches",
+    "title": "Can GTA 6 beat the biggest launch ever?",
+    "pillar": "gta6",
+    "notes": {
+     "object": "a stack of gold coins rising into the sky",
+     "question": "Can GTA 6 beat the biggest launch ever?",
+     "angle": "Sourced records: GTA V made $800M on day one and $1B in 3 days (Guinness/Take-Two 2013); Take-Two said GTA 6 pre-orders are 'far in excess of our initial expectations' (9 Nov 2026). No predictions stated as fact; ask the audience. OPENING PICTURE: a tall stack of gold coins rising into a bright sky.",
+     "format_rules": "GTA 6 SERIES RULES (legal + brand, these win over everything else):\n- Pictures show the REAL world only: money, calendars, clocks, shop shelves, a generic games console and controller (no brand logos), storage drives, Florida/Miami places, maps we draw, charts. NEVER a GTA character (Jason, Lucia or anyone), never the GTA or Rockstar logo, never anything styled to look like the game, its key art or its box art, never screenshots.\n- Say 'GTA 6' in beat 1 or 2 and in the title (people search it). Never claim a leak, never present rumours or speculation as fact: say 'reportedly' or 'Rockstar hasn't said' where the sources hedge.\n- One natural call to action in the beat before the last: a short question viewers will want to answer in the comments (e.g. 'Would you pay $100? Say it in the comments.'). No begging for likes.\n- Pacing: a new picture every 2 seconds or less; zoom and point at the thing being discussed.\n- LOOP: the last beat is a lead-in that flows back into beat 1; never 'So next time someone asks you'.\n",
+     "critic_rules": "\nGTA 6 series: BLOCKING if any picture shows a GTA character, a GTA/Rockstar logo, game-like art or box art; if a rumour or leak is stated as fact; if a price, date or size is not in the sources. A statement hook is allowed.",
+     "open_hook": true,
+     "publish_at": "2026-11-19T17:00:00Z",
+     "batch": "gta6-launch"
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-fake-cities",
+   "nonce": "gta-gta6-fake-cities",
+   "day": "2026-11-19",
+   "topic_def": {
+    "id": "gta6-fake-cities",
+    "title": "Why GTA never uses real city names",
+    "pillar": "gta6",
+    "notes": {
+     "object": "a city skyline with its name sign blank",
+     "question": "Why GTA never uses real city names",
+     "angle": "Vice City is Rockstar's version of Miami, Los Santos of Los Angeles, Liberty City of New York. Explain sourced reasons (creative freedom, legal/trademark caution, satire); label opinion. OPENING PICTURE: a sunny coastal city skyline with a blank white welcome sign in front, no text.",
+     "format_rules": "GTA 6 SERIES RULES (legal + brand, these win over everything else):\n- Pictures show the REAL world only: money, calendars, clocks, shop shelves, a generic games console and controller (no brand logos), storage drives, Florida/Miami places, maps we draw, charts. NEVER a GTA character (Jason, Lucia or anyone), never the GTA or Rockstar logo, never anything styled to look like the game, its key art or its box art, never screenshots.\n- Say 'GTA 6' in beat 1 or 2 and in the title (people search it). Never claim a leak, never present rumours or speculation as fact: say 'reportedly' or 'Rockstar hasn't said' where the sources hedge.\n- One natural call to action in the beat before the last: a short question viewers will want to answer in the comments (e.g. 'Would you pay $100? Say it in the comments.'). No begging for likes.\n- Pacing: a new picture every 2 seconds or less; zoom and point at the thing being discussed.\n- LOOP: the last beat is a lead-in that flows back into beat 1; never 'So next time someone asks you'.\n",
+     "critic_rules": "\nGTA 6 series: BLOCKING if any picture shows a GTA character, a GTA/Rockstar logo, game-like art or box art; if a rumour or leak is stated as fact; if a price, date or size is not in the sources. A statement hook is allowed.",
+     "open_hook": true,
+     "publish_at": "2026-11-19T20:30:00Z",
+     "batch": "gta6-launch"
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-real-florida",
+   "nonce": "gta-gta6-real-florida",
+   "day": "2026-11-19",
+   "topic_def": {
+    "id": "gta6-real-florida",
+    "title": "The real Florida behind GTA 6",
+    "pillar": "gta6",
+    "notes": {
+     "object": "Miami's Art Deco hotels at sunset",
+     "question": "The real Florida behind GTA 6",
+     "angle": "Leonida is based on Florida; Vice City on Miami (Rockstar). Real places that inspired the setting: only those reputable sources or Rockstar's own descriptions name (e.g. Miami Beach Art Deco, the Everglades, the Keys). Show the REAL places. OPENING PICTURE: real Miami Beach Art Deco hotel fronts at sunset with palm trees, no signs or logos.",
+     "format_rules": "GTA 6 SERIES RULES (legal + brand, these win over everything else):\n- Pictures show the REAL world only: money, calendars, clocks, shop shelves, a generic games console and controller (no brand logos), storage drives, Florida/Miami places, maps we draw, charts. NEVER a GTA character (Jason, Lucia or anyone), never the GTA or Rockstar logo, never anything styled to look like the game, its key art or its box art, never screenshots.\n- Say 'GTA 6' in beat 1 or 2 and in the title (people search it). Never claim a leak, never present rumours or speculation as fact: say 'reportedly' or 'Rockstar hasn't said' where the sources hedge.\n- One natural call to action in the beat before the last: a short question viewers will want to answer in the comments (e.g. 'Would you pay $100? Say it in the comments.'). No begging for likes.\n- Pacing: a new picture every 2 seconds or less; zoom and point at the thing being discussed.\n- LOOP: the last beat is a lead-in that flows back into beat 1; never 'So next time someone asks you'.\n",
+     "critic_rules": "\nGTA 6 series: BLOCKING if any picture shows a GTA character, a GTA/Rockstar logo, game-like art or box art; if a rumour or leak is stated as fact; if a price, date or size is not in the sources. A statement hook is allowed.",
+     "open_hook": true,
+     "publish_at": "2026-11-19T23:30:00Z",
+     "batch": "gta6-launch"
     }
    }
   }
- ],
- "_timing": "Publish 18:00 UTC (1 pm ET / 12 pm CT / 10 am PT / 11:30 pm IST). 5 Nov 2026 audience report: 69% of views and all recent subscribers are from the US, 75% North America. PostFast 2026 (5,928 Shorts): 1 pm audience-local time peaks; Sprout Social 2026: 12-4 pm local strongest, 3-7 am dead. Our only breakout (coffin corner) went out 19:00 UTC on a Monday."
+ ]
 }

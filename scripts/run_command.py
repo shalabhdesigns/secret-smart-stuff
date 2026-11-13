@@ -358,10 +358,24 @@ def do_produce(p: Pipeline, req: dict) -> int:
         if qf.exists() and p.state.get_setting("last_daily_ist") != today:
             # owner (5 Nov 2026): a planned batch is made one video per day, in order, before normal daily topics
             done = json.loads(p.state.get_setting("daily_queue_done") or "[]")
-            for item in json.loads(qf.read_text()).get("queue") or []:
+            todays = [it for it in json.loads(qf.read_text()).get("queue") or []
+                      if it.get("day") == today and it.get("nonce") not in done]
+            if todays:
+                # owner (14 Nov 2026): several planned videos a day -> one chain; each keeps its fixed publish time
+                for it in todays:
+                    done.append(it.get("nonce"))
+                p.state.set_setting("daily_queue_done", json.dumps(done))
+                p.state.set_setting("last_daily_ist", today)
+                head = dict(todays[0])
+                head["then"] = todays[1:]
+                req.clear()
+                req.update(head)
+                print(f"daily: making today's {len(todays)} planned videos: {[t.get('topic') for t in todays]}")
+                nxt = head
+            for item in ([] if todays else json.loads(qf.read_text()).get("queue") or []):
                 made = any(jj["topic_id"] == item.get("topic") and jj["status"] in
                            ("published", "approved", "review", "running", "paused") for jj in p.state.jobs())
-                if item.get("nonce") not in done and not made:      # skip a video already made another way
+                if item.get("nonce") not in done and not made and not item.get("day"):   # dated items wait for their day
                     nxt = item
                     break
         if nxt:
