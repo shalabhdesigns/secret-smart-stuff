@@ -984,6 +984,49 @@ def main(path: str) -> int:
         print(json.dumps(done))
         notify.send(p.state, "🕒 Publish times updated:\n" + "\n".join(f"{k}: {v}" for k, v in done.items()), silent=True)
         return 0
+    if action == "cc_clips":
+        # owner (14 Nov 2026): find GTA 6 videos we may legally reuse. YouTube's own Creative Commons filter
+        # (videoLicense=creativeCommon) + the licence field on each video. A CC BY label only clears the
+        # UPLOADER's rights: re-uploads of Rockstar material are flagged, never "safe".
+        import requests as _rq
+        from shorts.publish.youtube import access_token
+        tok = access_token()
+        H = {"Authorization": f"Bearer {tok}"}
+        qs = req.get("queries") or ["GTA 6", "GTA VI", "Grand Theft Auto VI", "GTA 6 gameplay", "GTA 6 trailer breakdown",
+                                    "GTA 6 Vice City", "GTA 6 map"]
+        ids = {}
+        for q in qs:
+            r = _rq.get("https://www.googleapis.com/youtube/v3/search", headers=H, timeout=30, params={
+                "part": "snippet", "q": q, "type": "video", "videoLicense": "creativeCommon", "maxResults": 50,
+                "order": req.get("order", "viewCount"), "publishedAfter": req.get("after", "2023-12-01T00:00:00Z")})
+            if r.status_code != 200:
+                print("search error", q, r.status_code, r.text[:200]); continue
+            for it in r.json().get("items", []):
+                ids[it["id"]["videoId"]] = q
+        rows = []
+        idl = list(ids)
+        for i in range(0, len(idl), 50):
+            r = _rq.get("https://www.googleapis.com/youtube/v3/videos", headers=H, timeout=30, params={
+                "part": "snippet,status,contentDetails,statistics", "id": ",".join(idl[i:i + 50])})
+            for v in r.json().get("items", []):
+                sn, st = v["snippet"], v["status"]
+                t = sn["title"]
+                low = (t + " " + sn.get("channelTitle", "")).lower()
+                official = sn.get("channelTitle", "").lower().startswith("rockstar games")
+                reupload = (not official) and any(k in low for k in ("official trailer", "trailer 1", "trailer 2",
+                                                                        "launch trailer", "extended look", "leak"))
+                rows.append({"id": v["id"], "title": t, "channel": sn.get("channelTitle"), "channel_id": sn.get("channelId"),
+                             "published": sn.get("publishedAt", "")[:10], "license": st.get("license"),
+                             "duration": v["contentDetails"].get("duration"),
+                             "views": int(v.get("statistics", {}).get("viewCount", 0) or 0),
+                             "flag": "official" if official else ("likely re-upload of Rockstar/leak: do not use" if reupload else "check")})
+        rows = [r for r in rows if r["license"] == "creativeCommon"]
+        rows.sort(key=lambda r: -r["views"])
+        p.state.set_setting("cc_clips_json", json.dumps({"at": time.time(), "rows": rows}))
+        print(f"CC videos found: {len(rows)}")
+        for r in rows[:80]:
+            print(json.dumps(r, ensure_ascii=False))
+        return 0
     if action == "audience":
         from shorts import analytics as an
         print(json.dumps(an.audience(p.state)))
