@@ -1,5 +1,5 @@
 {
- "collected_at": "2026-11-12T07:23:16Z",
+ "collected_at": "2026-11-13T06:55:15Z",
  "errors": [
   "@simplethingshistories: ERROR: [youtube:tab] @simplethingshistories: This channel does not have a shorts tab"
  ],
@@ -2056,6 +2056,13 @@
   },
   {
    "channel": "@historyofsimplethings",
+   "title": "Did You Know the 5-second Rule Isn't Real?",
+   "views": 6500,
+   "url": "https://www.youtube.com/shorts/ZMfVhhauP2I",
+   "multiple": 2.2
+  },
+  {
+   "channel": "@historyofsimplethings",
    "title": "Did You Know Drainage Pipes Have Ridges for a Reason?",
    "views": 6200,
    "url": "https://www.youtube.com/shorts/8yHiwcyXb2s",
@@ -2073,13 +2080,6 @@
    "title": "Did You Know Beer Was Safer to Drink Than Water?",
    "views": 6300,
    "url": "https://www.youtube.com/shorts/IYloQP55TLY",
-   "multiple": 2.1
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know the Hole in Soda Can Tabs Isn’t Just for Opening?",
-   "views": 6400,
-   "url": "https://www.youtube.com/shorts/KFdrdW_OgY8",
    "multiple": 2.1
   }
  ]
