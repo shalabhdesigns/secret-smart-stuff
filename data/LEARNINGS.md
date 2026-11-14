@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-14 06:59 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-14 18:29 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Give every beat one new fact and keep only one or two stats in the middle; tighten early setup beats. (pattern, n=2)
@@ -16,6 +16,50 @@ Updated 2026-11-14 06:59 UTC. Built from every published video's 48 h and 7 day 
 - by_country, walk_past, why_detail, india_asia and film each have n=2: not enough data yet.
 
 ## Per-video analyses
+
+### ramayana-diwali-v4 (7d) — below median
+- 145 views · 56.35% viewed · 1 likes · 0 shares · 0 subs (median views 1259, n=19)
+- Reach was very low (145 views vs a channel median of 1,259, and 25 engaged views vs 622), but viewers who stayed watched as long as usual (56% average viewed vs 57% median), so the problem looks like getting shown and clicked, not the body of the video.
+  - ✅ Retention per viewer was on par with the channel: average view duration 21s vs 20s median, and average viewed 56.35% vs 57.46%.
+  - ✅ After the early drop, the audience held flat at about 40% from 13s to the end (b4 to b11), with a small uptick to 0.44 at b7 ('One small flame, one big welcome'). The remaining viewers found the middle and payoff worth staying for.
+  - ✅ The first ~4s held above 1.0 (1.4, then 1.32 at 4.1s). That suggests replays or looping at the start, so the question hook and loop lead-in did stop people at first.
+  - ✅ Learnings applied: nothing here shows they helped. The learjet wins and post-mortems come from a different topic, and retention landed at the median rather than above it. The 'review:ramayana…:blocking' items may have kept the script clean (self-review accuracy 4), but that is unprovable. Several 'owner:drop:ramayana-*' entries, including two Diwali versions, are in the list. The owner has repeatedly rejected this topic family, and this video's weak reach does not argue for reviving it.
+  - ❌ Views were about 11% of the channel median and likes were 1 vs 14, with no comments, shares or subscribers. The video was barely distributed.
+  - ❌ The title ('Why do Indians light lamps on Diwali?') is generic, and the spoken hook never says 'Diwali'. The hook and title promise slightly different things, and the hook's own heuristic score was low (38).
+  - ❌ Audience fell from 1.32 to 0.40 between 4s and 13s, losing about 70% of the early audience in under 10 seconds. After that the loss stopped.
+  - ❌ The film pillar is used only as a throwaway line at b2 ('A new Ramayana film arrives around Diwali'). The film is never mentioned again, so the video reads as a generic Diwali myth explainer. Self-review also scored flow_pacing at 3, the lowest on the sheet.
+  - ❌ Instagram was much weaker: 10 views, 7 reach, 0 interactions, 88.9% skip rate and about 5.3s average watch on a 37s video (roughly 14%). YouTube viewers averaged 21s. The sample is tiny, but both platforms gave this video almost no reach.
+  - 📉 b2 @ 5.9 s: The video leaves the hook's question about doorstep lamps and shifts to 'A new Ramayana film arrives around Diwali'. That is a news or promo line, not an answer, and the audience dropped from 1.32 to 0.96.
+  - 📉 b3 @ 7.8 s: 'Rama returns after fourteen years away' is the story most viewers already know, with no new fact or twist. Retention fell from 0.96 to 0.64 and kept sliding to 0.48 by 11.5s.
+  - 📉 b4 @ 13.3 s: 'Ayodhya lit lamps to welcome him' is the same familiar answer, and the last of the casual viewers left (0.40). After this point the audience was stable.
+  - 💡 [hook, hypothesis] Put the payoff-bearing keyword (here 'Diwali') in the first spoken line and make the title and hook promise the same thing. Right now they diverge.
+  - 💡 [story, hypothesis] Do not follow the hook with the most familiar version of the answer. Open b2 and b3 with a surprising or specific hidden-design fact, and keep the well-known myth for later.
+  - 💡 [pacing, hypothesis] Make the second beat continue the hook's question instead of switching to a news line. Most of the audience loss happened between 4s and 13s, and retention was flat after that.
+  - 💡 [topic, hypothesis] Do not treat the film-tie-in pillar as a reach driver on its own. The film angle was one line, and the owner has dropped many Ramayana variants before. Either build the video around the film or drop the tie-in.
+  - 💡 [title, hypothesis] When reach is far below the median while retention is normal, test a more specific or curiosity-driven title and thumbnail frame before judging the content.
+
+### ramayana-previs-mocap-v4 (7d) — at median
+- 1440 views · 42.12% viewed · 14 likes · 1 shares · 1 subs (median views 1243, n=19)
+- Reach was slightly above the channel median (1,440 views vs 1,243), but viewers left early (42% average viewed vs 57% median), with a steep drop right after the hook, so this is an average result and not a win. The Instagram reel did about the same (1,146 views).
+  - ✅ The hook got people in: retention stayed at or above 1.0 until about 4.3s (1.17 at 0.4s), so the opening question and the loop lead-in kept viewers or got rewatches.
+  - ✅ Views (1,440 vs 1,243) and engaged views (702 vs 547, about 49% of views vs about 44% at the median) are above the channel median.
+  - ✅ Likes (14 vs 13) and shares (1 vs 0) are slightly above median. Nothing is weak on the engagement side.
+  - ✅ Viewers who got past about 20s mostly stayed: retention eased only from 0.285 to 0.193 over the last 17 seconds, so the polka-dot mocap explanation holds those who reach it.
+  - ✅ The Instagram reel performed about the same as YouTube (1,146 views, 992 reach, 11 likes, 1 save). Skip rate was 36.1%, so about 64% did not skip. The audience and platform do not look like the problem.
+  - ❌ Average view duration was 16s vs 21s at the median, and average percentage viewed was 42.12% vs 57.46%. This is the clear weakness.
+  - ❌ Retention fell from 1.051 at 4.3s to 0.732 at 6.2s and 0.525 at 10.1s, when the script moved from the hook to the Variety India attribution. Almost half of viewers were gone before the 'previs' explanation arrived at 10.24s.
+  - ❌ The comment count is 0 and net subscribers are 0 (1 gained, 1 lost). The video produced no real follow-through.
+  - ❌ The carried-over learnings (learjet wins and postmortems, Ramayana review blockers, owner drops of earlier Ramayana videos) show no clear benefit. Views are only mildly above median and retention is clearly below. The self-review gave flow_pacing the lowest score (3), and the retention curve confirms pacing is the weak spot. I would not turn any of these into a 'pattern' on this evidence.
+  - ❌ On Instagram, average watch time was about 10.1s (assuming milliseconds), less than the 16s on YouTube. That fits viewers leaving early on both platforms.
+  - 📉 b2 @ 6.2 s: The hook asked a question, and the next line was a source credit ('its cinematographer told Variety India: every shot, pre-visualised') with the jargon word 'pre-visualised' and no answer. Retention fell from 1.05 to 0.73 within about 2 seconds.
+  - 📉 b2 @ 10.1 s: Retention kept falling to 0.525 while the credit line played out, and the plain-language answer ('Previs is a digital rehearsal') did not arrive until 10.24s. That is too late for a Short.
+  - 📉 b3 @ 12.1 s: The definition and the 'virtual set' line (b4) were abstract, with no clear visual of the computer rehearsal. Retention kept sliding from 0.439 to 0.338 by 16s before the polka-dot suits gave the story a concrete image.
+  - 💡 [hook, hypothesis] Give the answer in the first 4-5 seconds ('They filmed it on a computer first, with actors in polka-dot suits') and move the name-drop or source credit later.
+  - 💡 [story, hypothesis] Put the most concrete, visual beat (suits with reflective dots, cameras tracking them) first, then explain the term 'previs'. Open with the picture, not the credential.
+  - 💡 [pacing, hypothesis] Keep the second beat from being an attribution. After a question hook, the next line must deliver the first piece of payoff, because most of the loss here happened between 4.5s and 10s.
+  - 💡 [length, hypothesis] Length does not look like the main issue: retention was nearly flat after about 20s. Fix the first 12 seconds before cutting the 39s runtime.
+  - 💡 [loop, hypothesis] Keep the loop lead-in. Retention above 1.0 for the first ~4s suggests rewatches or a replay effect, but check it on more videos before trusting it.
+  - 💡 [topic, hypothesis] Treat Ramayana-related film topics cautiously. Reach is fine, but with 0 comments and 0 net subscribers there is no sign of audience pull, and earlier Ramayana videos were dropped by the owner.
 
 ### ramayana-4dx-v1 (7d) — below median
 - 311 views · 67.81% viewed · 1 likes · 0 shares · 1 subs (median views 1259, n=17)
