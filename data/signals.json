@@ -1,9 +1,17 @@
 {
- "collected_at": "2026-11-13T06:55:15Z",
+ "collected_at": "2026-11-14T06:39:43Z",
  "errors": [
   "@simplethingshistories: ERROR: [youtube:tab] @simplethingshistories: This channel does not have a shorts tab"
  ],
  "all_titles": [
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Ball Bearings Reduce Friction With Rolling?"
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know a Car’s Wheels Spin at Different Speeds?"
+  },
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Fuses Are Designed to Burn Out?"
@@ -1197,14 +1205,6 @@
    "title": "Did You Know Builders Used Eggs In Walls? 🥚🏗️"
   },
   {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Spartans Bathed In Wine? 🍷😮"
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know The Printing Press Changed The World? 🖨️📚"
-  },
-  {
    "channel": "@nameexplain",
    "title": "Why Are People From The Netherlands Called Dutch?"
   },
@@ -1902,6 +1902,13 @@
   },
   {
    "channel": "@historyofsimplethings",
+   "title": "Did You Know Copper Turns Green to Protect Itself?",
+   "views": 8300,
+   "url": "https://www.youtube.com/shorts/82xqySd3ZmM",
+   "multiple": 2.8
+  },
+  {
+   "channel": "@historyofsimplethings",
    "title": "Did You Know the Side of the Road You Drive on Was Because of Battles?",
    "views": 8400,
    "url": "https://www.youtube.com/shorts/LIDbRE6CXpk",
@@ -1913,13 +1920,6 @@
    "views": 8400,
    "url": "https://www.youtube.com/shorts/bXD-q4_E0gs",
    "multiple": 2.8
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Copper Turns Green to Protect Itself?",
-   "views": 8200,
-   "url": "https://www.youtube.com/shorts/82xqySd3ZmM",
-   "multiple": 2.7
   },
   {
    "channel": "@historyofsimplethings",
@@ -1968,13 +1968,6 @@
    "title": "Did You Know Cigars Aren’t Meant to Be Inhaled?",
    "views": 7500,
    "url": "https://www.youtube.com/shorts/fR0dq4m2g1I",
-   "multiple": 2.5
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know The Printing Press Changed The World? 🖨️📚",
-   "views": 7500,
-   "url": "https://www.youtube.com/shorts/Fm3cpQV5aCQ",
    "multiple": 2.5
   },
   {
@@ -2064,7 +2057,7 @@
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Drainage Pipes Have Ridges for a Reason?",
-   "views": 6200,
+   "views": 6300,
    "url": "https://www.youtube.com/shorts/8yHiwcyXb2s",
    "multiple": 2.1
   },
@@ -2080,6 +2073,13 @@
    "title": "Did You Know Beer Was Safer to Drink Than Water?",
    "views": 6300,
    "url": "https://www.youtube.com/shorts/IYloQP55TLY",
+   "multiple": 2.1
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know the Hole in Soda Can Tabs Isn’t Just for Opening?",
+   "views": 6400,
+   "url": "https://www.youtube.com/shorts/KFdrdW_OgY8",
    "multiple": 2.1
   }
  ]
