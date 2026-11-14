@@ -371,6 +371,7 @@ def do_produce(p: Pipeline, req: dict) -> int:
                 req.clear()
                 req.update(head)
                 print(f"daily: making today's {len(todays)} planned videos: {[t.get('topic') for t in todays]}")
+                chain_next(p, req)        # 14 Nov 2026: main() chained the plain daily request, so queue the rest here
                 nxt = head
             for item in ([] if todays else json.loads(qf.read_text()).get("queue") or []):
                 made = any(jj["topic_id"] == item.get("topic") and jj["status"] in
