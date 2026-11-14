@@ -87,6 +87,7 @@ def main(argv: list[str] | None = None) -> int:
                  ("channel daily", lambda: an.channel_daily(p.state)),
                  ("retention + traffic", lambda: an.video_details(p.state)),
                  ("audience (country)", lambda: an.audience(p.state)),
+                 ("restart videos held for credits", lambda: __import__("shorts.dispatch", fromlist=["x"]).resume_credit_held(p.state)),
                  ("creative commons clip scan", lambda: __import__("shorts.cc_clips", fromlist=["x"]).daily(p.state)),
                  ("revenue (API)", lambda: an.revenue_from_api(p.state)),
                  ("insights", lambda: an.insights(p.state, p.cfg.root / "data" / "insights.json")),

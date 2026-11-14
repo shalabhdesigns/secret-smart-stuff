@@ -39,3 +39,23 @@ def resume_paused(state) -> list[str]:
             state.set_setting(key, "1")
             started.append(j["id"])
     return started
+
+
+def resume_credit_held(state) -> dict:
+    """Restart videos held for low credits once the picture and voice credits can pay for them (~$0.80 of pictures
+    each). Runs with every analytics pass, so a top-up restarts them within 6 hours."""
+    held = json.loads(state.get_setting("credit_held") or "[]")
+    if not held:
+        return {"held": 0}
+    import os
+    from . import usage
+    b = usage.bfl(os.environ.get("BFL_API_KEY", "")) if os.environ.get("BFL_API_KEY") else {}
+    if b.get("source") == "measured" and b.get("usd_left", 0) < 0.8 * len(held):
+        return {"held": len(held), "waiting": f"BFL ${b.get('usd_left')}"}
+    # skip ones whose publish time has passed (they'd go out at the next free slot instead)
+    head = dict(held[0])
+    head["then"] = held[1:]
+    if dispatch(head):
+        state.set_setting("credit_held", "[]")
+        return {"restarted": len(held)}
+    return {"held": len(held), "dispatch": "failed"}

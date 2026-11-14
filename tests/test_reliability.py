@@ -276,6 +276,7 @@ def test_daily_chains_todays_dated_videos(tmp_path, monkeypatch):
         {"action": "produce", "topic": "b", "nonce": "n2", "day": today},
         {"action": "produce", "topic": "c", "nonce": "n3", "day": "2099-01-01"}]}))
     monkeypatch.setattr(rc, "ROOT", tmp_path)
+    monkeypatch.setattr(rc, "chain_next", lambda p, r: None)     # never dispatch real GitHub runs from a test
 
     class P:
         state = st
@@ -289,3 +290,20 @@ def test_daily_chains_todays_dated_videos(tmp_path, monkeypatch):
         pass
     assert req.get("topic") == "a" and [t["topic"] for t in req["then"]] == ["b"]
     assert json.loads(st.get_setting("daily_queue_done")) == ["n1", "n2"]
+
+
+
+def test_credit_hold_keeps_planned_video_once(tmp_path):
+    import json, sys
+    sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[1] / "scripts"))
+    import run_command as rc
+    from shorts.state import State
+    st = State(tmp_path / "s.db")
+
+    class P:
+        state = st
+    rc.hold_for_credits(P, {"action": "produce", "topic": "t1", "nonce": "x", "then": [{"topic": "t2"}]})
+    rc.hold_for_credits(P, {"action": "produce", "topic": "t1", "nonce": "x"})
+    rc.hold_for_credits(P, {"action": "daily"})
+    held = json.loads(st.get_setting("credit_held"))
+    assert [h["topic"] for h in held] == ["t1"] and "then" not in held[0]

@@ -122,6 +122,18 @@ def paused_note(p: Pipeline, job: str, why: str) -> None:
                 buttons=limit_buttons(job))
 
 
+def hold_for_credits(p: Pipeline, req: dict) -> None:
+    """A planned video stopped by low credits is kept and restarted automatically once credits are back
+    (14 Nov 2026: the GTA 6 series stopped on BFL credits and its requests were lost)."""
+    if not req.get("topic"):
+        return
+    held = json.loads(p.state.get_setting("credit_held") or "[]")
+    if req.get("nonce") and any(h.get("nonce") == req.get("nonce") for h in held):
+        return
+    held.append({k: v for k, v in req.items() if k != "then"})
+    p.state.set_setting("credit_held", json.dumps(held, ensure_ascii=False))
+
+
 def chain_next(p: Pipeline, req: dict) -> None:
     """A series of videos (e.g. the Learjet news set): this request carries the rest in "then". Dispatch the next one
     now; GitHub queues it behind this run (same concurrency group), so the series runs on its own, one video at a
@@ -400,6 +412,7 @@ def do_produce(p: Pipeline, req: dict) -> int:
         from shorts.providers.tts import credit_check
         if not credit_check(p.state, os.environ["ELEVENLABS_API_KEY"]).get("ok", True):
             print("ElevenLabs credits too low; not starting a video")
+            hold_for_credits(p, req)
             return 0
     if p.cfg.live and os.environ.get("BFL_API_KEY"):
         # same for pictures (3 Nov 2026: the image credits reached 0 after the news series)
@@ -413,6 +426,7 @@ def do_produce(p: Pipeline, req: dict) -> int:
                                      "video (~$0.50). Today's video is on hold. Top up at https://dashboard.bfl.ai/ and "
                                      "send /produce to the studio bot to make it.")
             print("BFL credits too low; not starting a video")
+            hold_for_credits(p, req)
             return 0
     pending = p.state.jobs("review")
     if pending and not req.get("topic") and not req.get("allow_parallel"):
@@ -998,6 +1012,12 @@ def main(path: str) -> int:
                 done.setdefault(key, f"planned for {when}")
         print(json.dumps(done))
         notify.send(p.state, "🕒 Publish times updated:\n" + "\n".join(f"{k}: {v}" for k, v in done.items()), silent=True)
+        return 0
+    if action == "credit_hold":
+        # park planned videos until credits are back (they restart from the analytics run)
+        for it in req.get("items") or []:
+            hold_for_credits(p, it)
+        print(p.state.get_setting("credit_held")[:500])
         return 0
     if action == "cc_clips":
         # owner (14 Nov 2026): find GTA 6 videos we may legally reuse. YouTube's own Creative Commons filter
