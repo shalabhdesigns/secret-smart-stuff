@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-14 18:29 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-14 22:44 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Give every beat one new fact and keep only one or two stats in the middle; tighten early setup beats. (pattern, n=2)
@@ -16,6 +16,34 @@ Updated 2026-11-14 18:29 UTC. Built from every published video's 48 h and 7 day 
 - by_country, walk_past, why_detail, india_asia and film each have n=2: not enough data yet.
 
 ## Per-video analyses
+
+### runway-numbers-v1 (48h) — above median
+- 905 views · 47.29% viewed · 11 likes · 0 shares · 0 subs (median views 354, n=23)
+- The runway-numbers Short got about 2.6x the channel's median views (905 vs 354) and about 4x the engaged views (488 vs 122), but it kept fewer viewers than usual (47.3% vs 57.5% average viewed) because half the audience left during the 'round the heading, drop the zero' rule, and it gained no subscribers or shares. The Instagram Reel was far smaller (128 views).
+  - ✅ Reach was well above the channel median: 905 views vs 354 and 488 engaged views vs 122. Likes were 11 vs a median of 7, and there was 1 comment vs a median of 0.
+  - ✅ The question hook ('What does the 27 on this runway actually mean?') held viewers. Retention was above 1.0 until about 4.7s (1.199 at 0.4s, 1.057 at 4.7s), which suggests rewatching or looping. The loop lead-in probably helped, though this is one video.
+  - ✅ The 'secretly a compass direction' reveal at b2 kept everyone through to about 4.7s, so the curiosity gap worked.
+  - ✅ Average view duration was 20s vs a median of 21s, so viewers who stayed watched about as long as usual even though the video ran 43.1s.
+  - ✅ The self-review flagged flow_pacing at 3 (its lowest score), and that is where the real drop happened (b3). The review's pacing score looks like a usable warning signal.
+  - ✅ The carried-over learnings (the learjet and handrail wins, plus the postmortems and reviews) coincide with above-median reach. With n=23 and only one video, this can't be credited to them. It is also unclear which lessons mattered, so treat it as a hypothesis, not a confirmed pattern.
+  - ❌ Average percentage viewed was 47.29% vs a median of 57.54%, so retention was below the channel norm.
+  - ❌ The sharpest loss came at b3: 1.057 at 4.7s, 0.74 at 6.9s, 0.596 at 9.1s. The abstract rule ('round the magnetic heading to ten, drop the zero') arrived right after the hook and cost about half the audience in about 6 seconds.
+  - ❌ The video was long for a Short at 43.1s and 85 words. Retention slid steadily from b4 to the end (0.539 at 11.2s, 0.389 at 22s, 0.209 at 41.4s), with no beat that re-hooked viewers.
+  - ❌ The b10 Fairbanks anecdote ran about 8s (30.3–38.2s) and retention fell during it (0.324 to 0.24). It was a date-and-name detail with no new payoff.
+  - ❌ There was no conversion: 0 shares, 0 subscribers gained and 0 lost. The rewatch (3) and share (4) self-review scores predicted weak sharing.
+  - ❌ Instagram was much weaker: 128 views, reach 112, 4 likes, and no comments, shares or saves. The skip rate was 42%, and average watch time was about 10s if the value is in milliseconds. Same content, so this points to a smaller audience or weaker distribution on the platform, not a content failure.
+  - 📉 b3 @ 6.9 s: The curiosity hook was followed by an abstract procedure ('Round the magnetic heading to ten, drop the zero') with no concrete example on screen. Viewers who wanted the answer got homework, and retention fell from 1.057 to 0.74 and then 0.596.
+  - 📉 b4 @ 11.2 s: The payoff ('270 degrees: west') arrived only after the rule, at 0.539, so many viewers had already left. After this the video became a list of side facts.
+  - 📉 b6 @ 17.7 s: The opposite-end rule ('From the other end, it's 09', then 'differ by 18') added arithmetic after the core question was answered, and retention slipped to 0.418.
+  - 📉 b10 @ 34.9 s: The long Fairbanks 1L-19R to 2L-20R anecdote was dense with names and dates, and retention fell from 0.301 to 0.256 across the beat. It was a long stretch with little new.
+  - 💡 [story, hypothesis] After a question hook, show the concrete answer first (27 on the runway, then 270°, then west) and give the rule afterwards. Don't put a procedure straight after the hook.
+  - 💡 [pacing, hypothesis] Treat the first beat after the reveal as the danger zone. Keep it visual and short, and avoid instructions made of numbers, because retention fell from about 1.06 to 0.6 in 4–5 seconds there.
+  - 💡 [length, hypothesis] Aim for about 30s or about 60 words for this kind of explainer. Cut the 'opposite ends differ by 18' and parallel-runway beats, or keep only one extra fact, since retention only declined after the payoff.
+  - 💡 [story, hypothesis] Shorten the closing anecdote to a single punchy line (for example 'Fairbanks repainted its runways in 2009') and put it right before the callback line, so the ending feels like a payoff and not a list.
+  - 💡 [visuals, hypothesis] Show the rule on screen as a visual (a runway marking with an arrow or a compass overlay turning 27 into 270°) so b3 becomes something to see and not something to calculate.
+  - 💡 [hook, hypothesis] Keep the 'What does the X actually mean?' question hook with a visible object in the first frame, and keep the loop lead-in. Retention stayed above 1.0 through 4.7s.
+  - 💡 [loop, hypothesis] Make the ending more shareable and rewatchable (for example, end on a challenge like 'Which way does your runway point?'). Self-review rewatch scored 3, and there were 0 shares and 0 subscribers.
+  - 💡 [topic, hypothesis] Everyday-sign aviation topics can pull above-median reach (2.6x views), so try another sign or marking topic with the pacing fix. Don't treat Instagram as a verdict on the topic, because 128 views mostly reflects audience size.
 
 ### ramayana-diwali-v4 (7d) — below median
 - 145 views · 56.35% viewed · 1 likes · 0 shares · 0 subs (median views 1259, n=19)
