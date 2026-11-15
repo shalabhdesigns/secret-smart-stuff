@@ -687,8 +687,18 @@ class Pipeline:
                     official_keys.add(key)
                 continue
             if need_official:
-                out["flags"].append(f"BLOCKING {key}: this topic must use official game images only, "
-                                    f"not a generated picture ('{prompt_text[:80]}')")
+                # owner (16 Nov 2026): never a generated picture in a game video; use the closest official image
+                from shorts import official
+                used = {i.get("official") for i in out["images"].values()}
+                img_id = official.best_match(f"{prompt_text} {first_focus.get(key, '')}", exclude=used)
+                official.vertical(img_id, path)
+                out["images"][key] = {"path": str(path), "official": img_id, "check": {}, "realism": {"ok": True},
+                                      "prompt_used": f"OFFICIAL:{img_id}", "focus_cache": {},
+                                      "substituted_for": prompt_text[:200]}
+                official_keys.add(key)
+                images[key] = f"OFFICIAL:{img_id}"
+                self.state.log(f"{key}: a generated picture was asked for; used official {img_id} instead", "warn", job_id)
+                continue
             if pr and old_images.get(key) == prompt_text and (pr / f"{key}.png").exists() \
                     and key in (old_vis.get("images") or {}):
                 import shutil
@@ -1463,8 +1473,11 @@ class Pipeline:
             script = json.loads((d / "script.json").read_text())
             script.pop("_revised", None)
             tpl = P.OWNER_FIX if decision == "fix" else P.SELF_FIX
+            t_rules = (json.loads((self.state.get_topic(job["topic_id"]) or {}).get("notes") or "{}") or {}).get("format_rules")
             fx = self._llm(tpl.format(note=note, length_rule=json.dumps(self._length_rule()),
-                                      script=json.dumps(script, ensure_ascii=False)),
+                                      script=json.dumps(script, ensure_ascii=False))
+                           + ("\n\nTHIS VIDEO'S OWN FORMAT RULES (they win over the generic picture rules above):\n"
+                              + t_rules if t_rules else ""),
                            job_id, "owner_fix" if decision == "fix" else "self_fix", est=0.2, system=P.SYSTEM_WRITER,
                            model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=12000).data or {}
             if not fx.get("scenes"):

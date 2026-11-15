@@ -132,6 +132,25 @@ SOLO = ("vi_Jason_Duval_", "vi_Lucia_Caminos_", "vi_Boobie_Ike_", "vi_Brian_Hede
         "vi_DreQuan_Priest_", "vi_Raul_Bautista_", "vi_Real_Dimez_")
 
 
+def best_match(text: str, exclude: set | None = None, games: tuple[str, ...] = ("GTA VI", "GTA V")) -> str:
+    """The usable catalogue image whose description shares the most words with `text` (GTA VI preferred on ties,
+    GTA V when the text mentions GTA 5 / Los Santos)."""
+    import re as _re
+    words = {w for w in _re.findall(r"[a-z0-9]+", text.lower()) if len(w) > 2}
+    want_v = bool(_re.search(r"gta ?(5|v)\b|los santos|2013", text.lower()))
+    best, best_s = None, -1.0
+    for img_id, it in catalogue().items():
+        if it.get("avoid") or it.get("game") not in games or (exclude and img_id in exclude):
+            continue
+        if "Ultimate Edition" in it["shows"] and "ultimate" not in words:
+            continue
+        sc = len(words & set(_re.findall(r"[a-z0-9]+", it["shows"].lower())))
+        sc += 2 if (it["game"] == "GTA V") == want_v else 0
+        if sc > best_s:
+            best, best_s = img_id, sc
+    return best or "vi_Vice_City_03"
+
+
 def frame_mode(img_id: str) -> str:
     """crop = full-height 9:16 cut (one person); wide = most of the picture over a blurred fill (two people, places);
     fit = the whole picture over a blurred fill (signs, maps, aerials)."""
