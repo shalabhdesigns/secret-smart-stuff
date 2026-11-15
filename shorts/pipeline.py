@@ -319,7 +319,8 @@ class Pipeline:
         raise QualityRejected(f"visual probe: the image model can't draw '{obj}' credibly ({' | '.join(fails)})")
 
     def _stage_script(self, job_id: str, topic: dict, d: Path) -> dict:
-        if self.cfg.pipeline["providers"]["images"].get("probe_topics", True):
+        if self.cfg.pipeline["providers"]["images"].get("probe_topics", True) \
+                and not (json.loads(topic.get("notes") or "{}") or {}).get("official_images"):
             self._probe_visual(job_id, topic, d)
         idea = json.loads(topic.get("notes") or "{}")
         r_ = self.cfg.channel["rules"]
@@ -621,6 +622,22 @@ class Pipeline:
                     sc[k] = None
         return script
 
+    @staticmethod
+    def _official_ref(prompt_text: str) -> tuple[str, float | None] | None:
+        """'OFFICIAL:vi_Vice_City_13' or 'OFFICIAL:vi_Vice_City_13@0.3' (0-1 = where to centre the 9:16 crop)."""
+        t = str(prompt_text or "").strip()
+        if not t.upper().startswith("OFFICIAL:"):
+            return None
+        ref = t.split(":", 1)[1].strip().split()[0] if t.split(":", 1)[1].strip() else ""
+        fx = None
+        if "@" in ref:
+            ref, x = ref.split("@", 1)
+            try:
+                fx = min(max(float(x), 0.0), 1.0)
+            except ValueError:
+                fx = None
+        return (ref, fx) if ref else None
+
     def _stage_visuals(self, job_id: str, topic: dict, d: Path) -> dict:
         script = json.loads((d / "script.json").read_text())
         before = json.dumps(script, sort_keys=True)
@@ -646,9 +663,30 @@ class Pipeline:
         old_images = old_script.get("images") or {}
         old_scenes = {sc["id"]: sc for sc in old_script.get("scenes") or []}
         reused_keys: set[str] = set()
+        official_keys: set[str] = set()
+        need_official = (json.loads(topic.get("notes") or "{}") or {}).get("official_images")
         for key, prompt_text in images.items():
             prompt = f"{prompt_text}. {style}. Vertical 9:16 composition, key subject large and centred."
             path = d / f"{key}.png"
+            ref = self._official_ref(prompt_text)
+            if ref:
+                # owner (16 Nov 2026): game topics show the game's own official images, unchanged (crop only)
+                from shorts import official
+                img_id, fx = ref
+                try:
+                    official.vertical(img_id, path, fx)
+                    out["images"][key] = {"path": str(path), "official": img_id, "check": {}, "realism": {"ok": True},
+                                          "prompt_used": prompt_text, "focus_cache": {}}
+                    official_keys.add(key)
+                except Exception as e:  # noqa: BLE001
+                    out["flags"].append(f"BLOCKING {key}: official image '{img_id}' not available ({e})")
+                    Image.new("RGB", (1080, 1920), (20, 20, 20)).save(path)
+                    out["images"][key] = {"path": str(path), "official": img_id, "check": {}, "focus_cache": {}}
+                    official_keys.add(key)
+                continue
+            if need_official:
+                out["flags"].append(f"BLOCKING {key}: this topic must use official game images only, "
+                                    f"not a generated picture ('{prompt_text[:80]}')")
             if pr and old_images.get(key) == prompt_text and (pr / f"{key}.png").exists() \
                     and key in (old_vis.get("images") or {}):
                 import shutil
@@ -729,7 +767,7 @@ class Pipeline:
             # Does this picture show what this beat SAYS? If not, give the beat its own image.
             # The first and last beats share one picture (that is the loop), so neither is swapped.
             loop_end = sc is script["scenes"][-1] or sc is script["scenes"][0]
-            if sc.get("image") and self._match_budget > 0 and not loop_end:
+            if sc.get("image") and self._match_budget > 0 and not loop_end and sc["image"] not in official_keys:
                 key = sc["image"]
                 info = out["images"][key]
                 m = self._match(Path(info["path"]), sc, images.get(key, ""), job_id)
@@ -1107,6 +1145,16 @@ class Pipeline:
         t = self.state.get_topic(j["topic_id"]) if j else None
         return (json.loads((t or {}).get("notes") or "{}") or {}).get("news")
 
+    @staticmethod
+    def _visuals_line(d: Path) -> str:
+        vis = json.loads((d / "visuals.json").read_text()) if (d / "visuals.json").exists() else {}
+        if any(i.get("official") for i in (vis.get("images") or {}).values()):
+            from shorts.official import CREDIT
+            return (f"{CREDIT} Narration is an AI voice; this is fan commentary, not affiliated with Rockstar Games. "
+                    "Facts are checked against the sources above.\n\n")
+        return ("Visuals are AI-generated illustrations; narration is an AI voice. "
+                "Facts are checked against the sources above.\n\n")
+
     # ---- G: packaging
     def _stage_package(self, job_id: str, topic: dict, d: Path) -> dict:
         script = json.loads((d / "script.json").read_text())
@@ -1127,8 +1175,7 @@ class Pipeline:
         desc = (f"{script.get('description', '').strip()}\n\n"
                 + (news["context"] + "\n\n" if news and news.get("context") else "")
                 + ("Sources:\n" + "\n".join(f"- {u}" for u in srcs[:6]) + "\n\n" if srcs else "")
-                + "Visuals are AI-generated illustrations; narration is an AI voice. "
-                  "Facts are checked against the sources above.\n\n"
+                + (self._visuals_line(d))
                 + (f"Also on Instagram: {ch['handle']}\n\n" if self.cfg.channel.get("instagram", {}).get("enabled") else "")
                 + " ".join(tags))
         meta = {"title": title, "description": desc[:4900], "tags": [t.lstrip("#") for t in tags],

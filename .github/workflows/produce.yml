@@ -30,6 +30,12 @@ jobs:
         timeout-minutes: 15
       - run: pip install -q -r requirements.txt
       - run: scripts/state_sync.sh pull
+      - name: Official game images (Actions cache; see official.yml)
+        uses: actions/cache/restore@v4
+        with:
+          path: assets/official/img
+          key: official-v1-none
+          restore-keys: official-v1-
       - name: Refresh competitor signals (best effort)
         run: python scripts/collect_signals.py || echo "signals skipped"
       - name: Produce one Short

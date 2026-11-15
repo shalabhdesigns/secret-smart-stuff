@@ -42,6 +42,12 @@ jobs:
         timeout-minutes: 15
       - run: pip install -q -r requirements.txt
       - run: scripts/state_sync.sh pull
+      - name: Official game images (Actions cache; see official.yml)
+        uses: actions/cache/restore@v4
+        with:
+          path: assets/official/img
+          key: official-v1-none
+          restore-keys: official-v1-
       - name: Run the requested command
         run: |
           if [ -n "$REQUEST" ]; then printf '%s' "$REQUEST" > "$RUNNER_TEMP/request.json"; f="$RUNNER_TEMP/request.json"

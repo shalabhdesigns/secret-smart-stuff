@@ -1,0 +1,131 @@
+{
+ "note": "GTA V images from Rockstar's own pages (16 Nov 2026). GTA VI images are read from https://www.rockstargames.com/VI/media/screenshots at sync time.",
+ "images": [
+  {
+   "id": "v_07edb091bb",
+   "game": "GTA V",
+   "page": "https://www.rockstargames.com/gta-v",
+   "url": "https://media-rockstargames-com.akamaized.net/tina-uploads/tina-modules/3871/07edb091bb329145ee3f3f01476adb40acc6457b.jpg"
+  },
+  {
+   "id": "v_5fff855787",
+   "game": "GTA V",
+   "page": "https://www.rockstargames.com/gta-v",
+   "url": "https://media-rockstargames-com.akamaized.net/tina-uploads/tina-modules/3871/5fff8557876cb83c7dd12a9c438bd41d0f4d0705.png"
+  },
+  {
+   "id": "v_911bff9fca",
+   "game": "GTA V",
+   "page": "https://www.rockstargames.com/gta-v",
+   "url": "https://media-rockstargames-com.akamaized.net/tina-uploads/tina-modules/gta-v/911bff9fca5209b94dd22bcba795eefdd4b71993.jpg"
+  },
+  {
+   "id": "v_9ca23774eb",
+   "game": "GTA V",
+   "page": "https://www.rockstargames.com/gta-v",
+   "url": "https://media-rockstargames-com.akamaized.net/tina-uploads/tina-modules/gta-v/9ca23774eb886a9dce533874723e35ce7a825f5d.png"
+  },
+  {
+   "id": "v_047b024f60",
+   "game": "GTA V",
+   "page": "https://www.rockstargames.com/gta-v",
+   "url": "https://media-rockstargames-com.akamaized.net/tina-uploads/tina-modules/gta-v/047b024f60c6b19ed5a5b785e6e9416c97a99614.jpg"
+  },
+  {
+   "id": "v_224f9a314a",
+   "game": "GTA V",
+   "page": "https://www.rockstargames.com/gta-v",
+   "url": "https://media-rockstargames-com.akamaized.net/tina-uploads/tina-modules/gta-v/224f9a314a45e5828e9af56153f8871c06290689.png"
+  },
+  {
+   "id": "v_7f4ce4e75d",
+   "game": "GTA V",
+   "page": "https://www.rockstargames.com/gta-v",
+   "url": "https://media-rockstargames-com.akamaized.net/tina-uploads/tina-modules/gta-v/7f4ce4e75d7fdf8242be91007816104772c99935.jpg"
+  },
+  {
+   "id": "v_1e85d43728",
+   "game": "GTA V",
+   "page": "https://www.rockstargames.com/gta-v",
+   "url": "https://media-rockstargames-com.akamaized.net/tina-uploads/tina-modules/gta-v/1e85d43728a064d7cddcdffdc45a6181c4bcb218.jpg"
+  },
+  {
+   "id": "v_9b9931818d",
+   "game": "GTA V",
+   "page": "https://www.rockstargames.com/gta-v",
+   "url": "https://media-rockstargames-com.akamaized.net/tina-uploads/tina-modules/gta-v/9b9931818dfa5217424ef574f3aa9c43f06a5d9c.jpg"
+  },
+  {
+   "id": "v_24ba6644de",
+   "game": "GTA V",
+   "page": "https://www.rockstargames.com/gta-v",
+   "url": "https://media-rockstargames-com.akamaized.net/tina-uploads/tina-modules/gta-v/24ba6644deb404944cdbe64705285bbad80154a4.jpg"
+  },
+  {
+   "id": "v_a9877dd12c",
+   "game": "GTA V",
+   "page": "https://www.rockstargames.com/gta-v",
+   "url": "https://media-rockstargames-com.akamaized.net/tina-uploads/tina-modules/gta-v/a9877dd12c6baf42e1def32e0218c540cc95a13d.jpg"
+  },
+  {
+   "id": "v_6f3821f838",
+   "game": "GTA V",
+   "page": "https://www.rockstargames.com/gta-v",
+   "url": "https://media-rockstargames-com.akamaized.net/tina-uploads/tina-modules/gta-v/6f3821f838206d283eb6d4daba97d40eee78aa51.jpg"
+  },
+  {
+   "id": "v_a457313ec2",
+   "game": "GTA V",
+   "page": "https://www.rockstargames.com/gta-v",
+   "url": "https://media-rockstargames-com.akamaized.net/tina-uploads/tina-modules/gta-v/a457313ec277b6e74bd25238768cbcecda739549.jpg"
+  },
+  {
+   "id": "v_fdac18d437",
+   "game": "GTA V",
+   "page": "https://www.rockstargames.com/gta-v",
+   "url": "https://media-rockstargames-com.akamaized.net/tina-uploads/tina-modules/6a84/fdac18d4377f55a8b9aed1dcb882c4ffa0c60959.jpg"
+  },
+  {
+   "id": "v_f26b5466d9",
+   "game": "GTA V",
+   "page": "https://www.rockstargames.com/gta-v",
+   "url": "https://media-rockstargames-com.akamaized.net/tina-uploads/tina-modules/6a84/f26b5466d906ff2d7bda05b8f1a019ef0858da30.jpg"
+  },
+  {
+   "id": "v_3360902d78",
+   "game": "GTA V",
+   "page": "https://www.rockstargames.com/gta-v",
+   "url": "https://media-rockstargames-com.akamaized.net/tina-uploads/tina-modules/6a84/3360902d782314fee48567a8a70bb9996e569698.jpg"
+  },
+  {
+   "id": "v_c670974867",
+   "game": "GTA V",
+   "page": "https://www.rockstargames.com/gta-v",
+   "url": "https://media-rockstargames-com.akamaized.net/tina-uploads/tina-modules/6a84/c670974867f83cb814c6b46b6fbc6c3d9caa23bf.jpg"
+  },
+  {
+   "id": "v_60801d3fc7",
+   "game": "GTA V",
+   "page": "https://www.rockstargames.com/newswire",
+   "url": "https://media-rockstargames-com.akamaized.net/tina-uploads/posts/2525o93834o413/60801d3fc7ed87ffe1d32447e42f38a837ccdb9f.jpg"
+  },
+  {
+   "id": "v_bd8dd92adc",
+   "game": "GTA V",
+   "page": "https://www.rockstargames.com/newswire",
+   "url": "https://media-rockstargames-com.akamaized.net/tina-uploads/posts/517k8ak75ao327/bd8dd92adc077fa7ee13dcddc2d6a93cfb684599.jpg"
+  },
+  {
+   "id": "v_46944605c1",
+   "game": "GTA V",
+   "page": "https://www.rockstargames.com/newswire",
+   "url": "https://media-rockstargames-com.akamaized.net/tina-uploads/posts/9k2kok31k3a8k9/46944605c1257bcb4dca1dbc4ffe515cd55cddda.jpg"
+  },
+  {
+   "id": "v_d8b0a8161d",
+   "game": "GTA V",
+   "page": "https://www.rockstargames.com/newswire",
+   "url": "https://media-rockstargames-com.akamaized.net/tina-uploads/posts/4k1k9k1581aa43/d8b0a8161d8763f00a0318ed9a0ad716d6ec8c36.jpg"
+  }
+ ]
+}

@@ -367,6 +367,10 @@ def do_produce(p: Pipeline, req: dict) -> int:
         today = time.strftime("%Y-%m-%d", time.gmtime(time.time() + 5.5 * 3600))     # IST day
         qf = ROOT / "config" / "daily_queue.json"
         nxt = None
+        if p.cfg.pipeline.get("series_hold"):
+            # 16 Nov 2026: a held series must not start from the dated queue either
+            print("series_hold is on: the dated queue is skipped today")
+            qf = ROOT / "config" / "__none__"
         if qf.exists() and p.state.get_setting("last_daily_ist") != today:
             # owner (5 Nov 2026): a planned batch is made one video per day, in order, before normal daily topics
             done = json.loads(p.state.get_setting("daily_queue_done") or "[]")
