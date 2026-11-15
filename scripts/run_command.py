@@ -582,6 +582,10 @@ def do_decision(p: Pipeline, req: dict) -> int:
         j2 = p.state.get_job(job)
         if j2["status"] == "review" and not j2["error"]:
             self_review(p, job, rounds=2)
+            if req.get("hold"):           # Claude's fix: re-check the frames before the owner sees it
+                subprocess.run([str(ROOT / "scripts" / "open_review.sh"), job], check=True)
+                print(f"held for checking: {job}")
+                return 0
             send_for_review(p, job)
             extra = p.state.job_cost(job) - cost_before
             notify.send(p.state, f"✏️ Fixed version above (fix cost ${extra:.2f}).", silent=True)
@@ -971,6 +975,10 @@ def main(path: str) -> int:
             preserve_media(p)
             raise
         if c.get("passed"):
+            if req.get("hold"):           # 16 Nov 2026: Claude's own fix on a held video stays held for checking
+                subprocess.run([str(ROOT / "scripts" / "open_review.sh"), job], check=True)
+                print(f"held for checking: {job}")
+                return 0
             if auto_mode(p):
                 return auto_publish(p, job)
             send_for_review(p, job)
