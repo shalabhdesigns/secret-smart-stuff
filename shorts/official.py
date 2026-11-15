@@ -128,17 +128,48 @@ def catalogue_text(games: tuple[str, ...] = ("GTA VI", "GTA V")) -> str:
     return "\n".join(lines)
 
 
+SOLO = ("vi_Jason_Duval_", "vi_Lucia_Caminos_", "vi_Boobie_Ike_", "vi_Brian_Heder_", "vi_Cal_Hampton_",
+        "vi_DreQuan_Priest_", "vi_Raul_Bautista_", "vi_Real_Dimez_")
+
+
+def frame_mode(img_id: str) -> str:
+    """crop = full-height 9:16 cut (one person); wide = most of the picture over a blurred fill (two people, places);
+    fit = the whole picture over a blurred fill (signs, maps, aerials)."""
+    it = catalogue().get(img_id) or {}
+    if it.get("frame"):
+        return it["frame"]
+    return "crop" if img_id.startswith(SOLO) else "wide"
+
+
 def vertical(img_id: str, out: Path, focus_x: float | None = None) -> Path:
-    """Full-height 9:16 crop around the subject (no AI changes), saved at 1080x1920."""
+    """A 1080x1920 frame from an official image, unchanged apart from crop/scale (never AI-edited)."""
+    from PIL import ImageEnhance, ImageFilter
     p = path_for(img_id)
     if not p.exists():
         raise FileNotFoundError(f"official image {img_id} is not on this runner (run the official sync)")
     im = Image.open(p).convert("RGB")
     w, h = im.size
-    fx = focus_x if focus_x is not None else float((catalogue().get(img_id) or {}).get("focus_x", 0.5))
-    cw = min(w, round(h * 9 / 16))
-    left = int(min(max(fx * w - cw / 2, 0), w - cw))
-    im.crop((left, 0, left + cw, h)).resize((1080, 1920), Image.LANCZOS).save(out, "PNG")
+    fx = float((catalogue().get(img_id) or {}).get("focus_x", 0.5)) if focus_x is None else focus_x
+    mode = frame_mode(img_id)
+    if mode == "crop":
+        cw = min(w, round(h * 9 / 16))
+        left = int(min(max(fx * w - cw / 2, 0), w - cw))
+        im.crop((left, 0, left + cw, h)).resize((1080, 1920), Image.LANCZOS).save(out, "PNG")
+        return out
+    # blurred, darkened fill from the same picture, then the picture itself in the middle
+    sc = max(1080 / w, 1920 / h)
+    bg = im.resize((round(w * sc), round(h * sc)), Image.LANCZOS)
+    bl, bt = (bg.width - 1080) // 2, (bg.height - 1920) // 2
+    bg = bg.crop((bl, bt, bl + 1080, bt + 1920)).filter(ImageFilter.GaussianBlur(40))
+    bg = ImageEnhance.Brightness(bg).enhance(0.55)
+    fh = 1150 if mode == "wide" else round(1080 * h / w)
+    fw = round(w * fh / h)
+    fg = im.resize((fw, fh), Image.LANCZOS)
+    if fw > 1080:
+        left = int(min(max(fx * fw - 540, 0), fw - 1080))
+        fg = fg.crop((left, 0, left + 1080, fh))
+    bg.paste(fg, ((1080 - fg.width) // 2, (1920 - fg.height) // 2))
+    bg.save(out, "PNG")
     return out
 
 

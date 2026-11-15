@@ -674,9 +674,9 @@ class Pipeline:
             if ref:
                 # owner (16 Nov 2026): game topics show the game's own official images, unchanged (crop only)
                 from shorts import official
-                img_id, fx = ref
+                img_id, _fx = ref
                 try:
-                    official.vertical(img_id, path, fx)
+                    official.vertical(img_id, path)      # framing from the catalogue (subject position, crop/wide/fit)
                     out["images"][key] = {"path": str(path), "official": img_id, "check": {}, "realism": {"ok": True},
                                           "prompt_used": prompt_text, "focus_cache": {}}
                     official_keys.add(key)

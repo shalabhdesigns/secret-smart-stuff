@@ -1,5 +1,5 @@
 {
- "note": "What each official Rockstar image shows (described by Claude from the images, 16 Nov 2026). 'avoid' = never use (weapons, adult, logos/words, too dark). focus_x = where the main subject sits (0 left - 1 right).",
+ "note": "What each official Rockstar image shows (described by Claude from the images, 16 Nov 2026). 'avoid' = never use (weapons, adult, logos/words, too dark). focus_x = where the main subject sits (0 left - 1 right). frame: crop (one person, full-height cut) / wide (most of the picture over a blurred fill, default) / fit (whole picture).",
  "images": {
   "vi_Ambrosia_01": {
    "game": "GTA VI",
@@ -136,7 +136,8 @@
   "vi_Grassrivers_05": {
    "game": "GTA VI",
    "shows": "wetlands and mangroves with a city skyline far behind",
-   "focus_x": 0.5
+   "focus_x": 0.5,
+   "frame": "fit"
   },
   "vi_Grassrivers_06": {
    "game": "GTA VI",
@@ -155,8 +156,8 @@
   },
   "vi_Jason_and_Lucia_01": {
    "game": "GTA VI",
-   "shows": "Jason and Lucia, the two leads, posing together by the water with a skyline behind (key image)",
-   "focus_x": 0.5
+   "shows": "Jason and Lucia, the two leads, side by side by the water with a skyline behind (the main key image; Jason holds a pistol low)",
+   "focus_x": 0.45
   },
   "vi_Jason_and_Lucia_02": {
    "game": "GTA VI",
@@ -208,8 +209,9 @@
   },
   "vi_Jason_and_Lucia_11": {
    "game": "GTA VI",
-   "shows": "Jason and Lucia in a red convertible, sunny day",
-   "focus_x": 0.6
+   "shows": "Lucia aiming a pistol from a red convertible, Jason driving",
+   "focus_x": 0.6,
+   "avoid": "Lucia aims a pistol"
   },
   "vi_Jason_and_Lucia_12": {
    "game": "GTA VI",
@@ -363,7 +365,8 @@
   "vi_Leonida_Keys_01": {
    "game": "GTA VI",
    "shows": "aerial view of tropical islands, turquoise sea and a seaplane (the Keys)",
-   "focus_x": 0.5
+   "focus_x": 0.5,
+   "frame": "fit"
   },
   "vi_Leonida_Keys_02": {
    "game": "GTA VI",
@@ -837,7 +840,8 @@
   "vi_Vice_City_01": {
    "game": "GTA VI",
    "shows": "giant 'VICE CITY' letters sign on a hill with a plane overhead (iconic, the game's city name)",
-   "focus_x": 0.4
+   "focus_x": 0.4,
+   "frame": "fit"
   },
   "vi_Vice_City_02": {
    "game": "GTA VI",
@@ -924,7 +928,8 @@
   "vi_Vice_City_18": {
    "game": "GTA VI",
    "shows": "woman lying in a pile of cash, pink light (money)",
-   "focus_x": 0.5
+   "focus_x": 0.5,
+   "avoid": "suggestive"
   },
   "vi_Vice_City_19": {
    "game": "GTA VI",
@@ -1057,12 +1062,14 @@
   "v_3360902d78": {
    "game": "GTA V",
    "shows": "GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)",
-   "focus_x": 0.5
+   "focus_x": 0.5,
+   "frame": "fit"
   },
   "v_c670974867": {
    "game": "GTA V",
    "shows": "GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)",
-   "focus_x": 0.5
+   "focus_x": 0.5,
+   "frame": "fit"
   },
   "v_60801d3fc7": {
    "game": "GTA V",
