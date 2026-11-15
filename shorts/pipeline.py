@@ -488,6 +488,8 @@ class Pipeline:
             lean = {"title": sc.get("title"),
                     "opening_line": (sc.get("scenes") or [{}])[0].get("narration", ""),
                     "scenes": sc.get("scenes"), "facts": sc.get("facts")}
+            if any(self._official_ref(v) for v in (sc.get("images") or {}).values()):
+                lean["images"] = sc.get("images")      # official-image videos: the reviewer checks the image ids
             return self._llm(P.REVIEW.format(script=json.dumps(lean, ensure_ascii=False))
                              + (("\nThis video has its own approved format (judge it against this, not the default "
                                  "question-hook template):\n" + json.loads(topic.get("notes") or "{}")["format_rules"])
