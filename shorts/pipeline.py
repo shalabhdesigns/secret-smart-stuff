@@ -1133,7 +1133,15 @@ class Pipeline:
                 hook = (json.loads(cp.read_text())["lines"], end)
             except Exception as e:  # noqa: BLE001
                 self.state.log(f"opening hook not made: {e}", "warn", job_id)
-        ass = write_ass(words, d / "captions.ass", y_center=y_cap, hook=hook,
+        hook_y = 560
+        try:   # official wide/fit pictures leave a blurred band at the top: put the opening card there, off faces
+            from . import official as _off
+            _first = (json.loads((d / "visuals.json").read_text()).get("images") or {}).get(script["scenes"][0].get("image"), {})
+            if _first.get("official") and _off.frame_mode(_first["official"]) != "crop":
+                hook_y = 190
+        except Exception:  # noqa: BLE001
+            pass
+        ass = write_ass(words, d / "captions.ass", y_center=y_cap, hook=hook, hook_y=hook_y,
                         font=self.cfg.channel["style"]["caption_font"],
                         font_size=self.cfg.channel["style"]["caption_size"],
                         highlight=ass_colour(self.cfg.channel["style"].get("caption_highlight", "#FFE500")),

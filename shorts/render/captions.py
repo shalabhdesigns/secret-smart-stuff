@@ -57,7 +57,7 @@ def write_ass(words: list[Word], out: Path, font: str = "Inter", font_size: int 
               y_center: int = 1180, uppercase: bool = True,
               overlays: list[tuple[float, float, str]] | None = None,
               handle: tuple[float, float, str] | None = None,
-              hook: tuple[list[str], float] | None = None) -> Path:
+              hook: tuple[list[str], float] | None = None, hook_y: int = 560) -> Path:
     """Write an .ass subtitle file.
 
     The word being spoken is highlighted (karaoke style) - a common retention
@@ -123,7 +123,7 @@ def write_ass(words: list[Word], out: Path, font: str = "Inter", font_size: int 
         end = hook[1]
         for i, text in enumerate([t for t in hook[0] if t][:2]):
             size = max(48, min(84, int(1480 / max(1, len(text)))))
-            y = 560 + i * 128
+            y = hook_y + i * 128
             tag = f"{{\\an5\\pos(540,{y})\\fs{size}}}"
             st = "HookA" if i == 0 else "HookB"
             lines.append(f"Dialogue: 3,{_ts(0)},{_ts(1.8)},{st},,0,0,0,,{{\\fad(0,250)}}{tag}{_esc(text)}")
