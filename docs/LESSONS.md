@@ -177,6 +177,16 @@ How each item is marked:
     the writer and the review;
   - a self-fix can break a format rule, which is now repaired once, never a crash.
 
+## 13. A video about a game must show the game (GTA 6 series, 16 Nov 2026)
+- What happened: "GTA 6 at $80 is cheaper than GTA 5 was" was made with price tags, banknotes and a calculator only.
+  No GTA 6 or GTA 5 anywhere. It passed the automatic review (mean 3.78) because the series rules banned game images.
+- Why: I wrote the rules to avoid copyright risk and over-corrected. The viewer came for GTA; the video showed none.
+- Owner: "Do not do this ever again."
+- Fix: official Rockstar images (222, described in `assets/official/catalogue.json`), used unchanged and credited.
+  The pipeline blocks any generated picture on a topic marked `official_images: required`.
+- Rule: the subject of the video must be visible from the first frame. A safety rule that removes the subject is wrong;
+  find a legal way to show it (official media, licensed footage) instead.
+
 ## Where the old material lives
 
 | What | Where |

@@ -50,6 +50,7 @@
   Never misleading: YouTube removes clickbait, and is strictest on news.
 - **News tie-ins** (owner, 2 Nov 2026): a series can be queued with `"then"` (each run queues the next). Rules: no
   pictures of the event or its victims, never suggest a cause, and say the cause is unknown (`P.NEWS`).
+- **Videos about a game show the game** (owner, 16 Nov 2026: "Do not do this ever again"): every GTA video uses official Rockstar images (`shorts/official.py`, `assets/official/catalogue.json`, scenes `OFFICIAL:<id>`), GTA 6 from the first frame and GTA 5 whenever it is compared. Never a video about a game with only stock or AI pictures. Images are used unchanged (crop + camera move), credited to Rockstar in the description.
 - **Flag cost and policy risks before spending.** Never claim something works until it has been tested.
 
 ## Before sending any video
