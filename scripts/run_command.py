@@ -1120,11 +1120,15 @@ def main(path: str) -> int:
         if not up or not up["video_id"]:
             notify.send(p.state, "I can't find that upload.")
             return 1
+        yt_note = ""
         try:
             unschedule(up["video_id"])
         except Exception as e:  # noqa: BLE001
-            alert(p, "Could not stop the video", f"{up['url']}: {e}")
-            return 1
+            # 16 Nov 2026: the stored login only has the upload scope, so YouTube refuses status changes. Still stop
+            # Instagram and our records, and tell the owner exactly what to do in Studio.
+            yt_note = (f" ⚠️ YouTube refused to unschedule it (the login can only upload). Open "
+                       f"https://studio.youtube.com/video/{up['video_id']}/edit → Visibility → Private → Save.")
+            print(f"youtube unschedule failed: {e}")
         with p.state.tx() as db:
             db.execute("UPDATE uploads SET status='held', privacy='private' WHERE job_id=?", (up["job_id"],))
         p.state.add_feedback(up["job_id"], "stop", req.get("note", ""))
@@ -1132,7 +1136,8 @@ def main(path: str) -> int:
         igs = ig.hold(p.state, up["job_id"])
         ig_note = {"held": " The Instagram post is cancelled too.",
                    "posted": " ⚠️ It is already on Instagram: delete it in the Instagram app (the API can't hide it)."}
-        notify.send(p.state, f"⏸ Stopped. {up['url']} stays private (not scheduled).{ig_note.get(igs, '')} Reply to "
+        notify.send(p.state, (f"⏸ Stopped. {up['url']} stays private (not scheduled)." if not yt_note else
+                              f"⏸ Stopped here.{yt_note}") + f"{ig_note.get(igs, '')} Reply to "
                              "this message with what was wrong if you want; I'll learn from it.")
         return 0
     if action == "ig_whoami":
