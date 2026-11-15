@@ -4,6 +4,7 @@
   {
    "action": "produce",
    "topic": "gta6-cheaper-than-gta5",
+   "fresh": true,
    "nonce": "gta-official-gta6-cheaper-than-gta5",
    "day": "2026-11-16",
    "topic_def": {
@@ -26,6 +27,7 @@
   {
    "action": "produce",
    "topic": "gta6-not-on-pc",
+   "fresh": true,
    "nonce": "gta-official-gta6-not-on-pc",
    "day": "2026-11-16",
    "topic_def": {
@@ -48,6 +50,7 @@
   {
    "action": "produce",
    "topic": "gta6-no-disc",
+   "fresh": true,
    "nonce": "gta-official-gta6-no-disc",
    "day": "2026-11-16",
    "topic_def": {
@@ -70,6 +73,7 @@
   {
    "action": "produce",
    "topic": "gta6-ps5-space",
+   "fresh": true,
    "nonce": "gta-official-gta6-ps5-space",
    "day": "2026-11-17",
    "topic_def": {
@@ -92,6 +96,7 @@
   {
    "action": "produce",
    "topic": "gta6-ultimate-worth",
+   "fresh": true,
    "nonce": "gta-official-gta6-ultimate-worth",
    "day": "2026-11-17",
    "topic_def": {
@@ -114,6 +119,7 @@
   {
    "action": "produce",
    "topic": "gta6-unlock-time",
+   "fresh": true,
    "nonce": "gta-official-gta6-unlock-time",
    "day": "2026-11-17",
    "topic_def": {
@@ -136,6 +142,7 @@
   {
    "action": "produce",
    "topic": "gta6-heat-vice-city",
+   "fresh": true,
    "nonce": "gta-official-gta6-heat-vice-city",
    "day": "2026-11-18",
    "topic_def": {
@@ -158,6 +165,7 @@
   {
    "action": "produce",
    "topic": "gta6-storage-meme",
+   "fresh": true,
    "nonce": "gta-official-gta6-storage-meme",
    "day": "2026-11-18",
    "topic_def": {
@@ -180,6 +188,7 @@
   {
    "action": "produce",
    "topic": "gta6-biggest-launches",
+   "fresh": true,
    "nonce": "gta-official-gta6-biggest-launches",
    "day": "2026-11-18",
    "topic_def": {
@@ -202,6 +211,7 @@
   {
    "action": "produce",
    "topic": "gta6-real-florida",
+   "fresh": true,
    "nonce": "gta-official-gta6-real-florida",
    "day": "2026-11-19",
    "topic_def": {
@@ -224,6 +234,7 @@
   {
    "action": "produce",
    "topic": "gta6-13-years",
+   "fresh": true,
    "nonce": "gta-official-gta6-13-years",
    "day": "2026-11-19",
    "topic_def": {
@@ -246,6 +257,7 @@
   {
    "action": "produce",
    "topic": "gta6-map-vs-florida",
+   "fresh": true,
    "nonce": "gta-official-gta6-map-vs-florida",
    "day": "2026-11-19",
    "topic_def": {
