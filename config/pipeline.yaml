@@ -1,7 +1,7 @@
 # Operations: budgets, schedule, providers. Secrets are NOT here - they come from environment variables.
 mode: dry_run            # dry_run (fake providers, no spend) | live
 
-series_hold: false                 # 14 Nov 2026: GTA 6 series runs as daily chains from config/daily_queue.json
+series_hold: true                  # 16 Nov 2026: owner - GTA videos must show GTA (official Rockstar images); held until that is built
 daily_paused_until: "2026-11-30"   # owner, 14 Nov 2026: the GTA 6 series (3 a day, config/daily_queue.json) replaces the normal daily video for the rest of November
 
 budget_usd:
