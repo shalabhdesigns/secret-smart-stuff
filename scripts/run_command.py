@@ -1013,6 +1013,27 @@ def main(path: str) -> int:
         print(json.dumps(done))
         notify.send(p.state, "🕒 Publish times updated:\n" + "\n".join(f"{k}: {v}" for k, v in done.items()), silent=True)
         return 0
+    if action == "credit_release":
+        # restart videos held for credits, in a chosen order, with new publish times; clears the hold so the
+        # automatic restart can't make them twice. {"order": [topic, ...], "moves": {topic: iso_time}}
+        held = {h.get("topic"): h for h in json.loads(p.state.get_setting("credit_held") or "[]")}
+        chain = []
+        for t in req.get("order") or list(held):
+            h = held.pop(t, None)
+            if not h:
+                continue
+            when = (req.get("moves") or {}).get(t)
+            if when and h.get("topic_def"):
+                h["topic_def"].setdefault("notes", {})["publish_at"] = when
+            h["nonce"] = f"rel-{t}"
+            chain.append(h)
+        p.state.set_setting("credit_held", json.dumps(list(held.values()), ensure_ascii=False))
+        if chain:
+            head = dict(chain[0])
+            head["then"] = chain[1:]
+            chain_next(p, {"then": [head]})
+        print("released", [c["topic"] for c in chain], "still held", list(held))
+        return 0
     if action == "credit_hold":
         # park planned videos until credits are back (they restart from the analytics run)
         for it in req.get("items") or []:
