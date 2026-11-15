@@ -199,6 +199,7 @@ class Pipeline:
         topic = self.state.get_topic(topic_id)
         if not topic:
             raise KeyError(topic_id)
+        self._topic_notes = json.loads(topic.get("notes") or "{}") or {}
         existing = [j for j in self.state.jobs() if j["topic_id"] == topic_id]
         job_id = f"{topic_id}-v1"
         if existing:
@@ -330,7 +331,7 @@ class Pipeline:
                                  motions_field=P.MOTIONS_FIELD if self.clips_on else "",
                                  object=idea.get("object", topic["title"]), question=topic["title"],
                                  angle=idea.get("angle", ""), pillar=topic.get("pillar"),
-                                 seconds_lo=lo, seconds_hi=hi, words_lo=int(lo * wps), words_hi=int(hi * wps),
+                                 seconds_lo=lo, seconds_hi=hi, words_lo=self._word_range()[0], words_hi=self._word_range()[1],
                                  min_sources=r_["min_sources_main_claim"])
         if idea.get("news"):
             n = idea["news"]
@@ -383,12 +384,21 @@ class Pipeline:
         (d / "script.json").write_text(json.dumps(script, indent=2, ensure_ascii=False))
         return {"file": str(d / "script.json"), "content": script}
 
-    def _length_rule(self) -> dict:
+    def _word_range(self) -> tuple[int, int]:
+        """Total narration words. A topic can set its own range (16 Nov 2026: number-heavy GTA scripts ran 40-46 s
+        at the default 67-85 words, because prices and years take long to say)."""
+        w = (getattr(self, "_topic_notes", None) or {}).get("words")
+        if w and len(w) == 2:
+            return int(w[0]), int(w[1])
         lo, hi = self.cfg.channel["rules"]["target_seconds"]
         wps = self.cfg.channel["rules"]["words_per_second"]
+        return int(lo * wps), int(hi * wps)
+
+    def _length_rule(self) -> dict:
+        lo, hi = self._word_range()
         return {"issue": "length", "severity": "blocker",
-                "fix": f"Keep the TOTAL narration between {int(lo * wps)} and {int(hi * wps)} words across "
-                       f"11-13 beats (5-9 words each). If you add words anywhere, cut the same number elsewhere."}
+                "fix": f"Keep the TOTAL narration between {lo} and {hi} words across "
+                       f"10-13 beats (4-9 words each). If you add words anywhere, cut the same number elsewhere."}
 
     @staticmethod
     def _sync_hook(s: dict) -> None:
@@ -424,10 +434,9 @@ class Pipeline:
         if not 9 <= len(scenes) <= 14:
             raise StageFailed(f"script has {len(scenes)} beats (want 11-13)")
         words = sum(len(sc.get("narration", "").split()) for sc in scenes)
-        lo, hi = self.cfg.channel["rules"]["target_seconds"]
-        wps = self.cfg.channel["rules"]["words_per_second"]
-        if words > hi * wps * 1.08 or words < lo * wps * 0.75:
-            raise StageFailed(f"script is {words} words; target {int(lo*wps)}-{int(hi*wps)}")
+        lo, hi = self._word_range()
+        if words > hi * 1.08 or words < lo * 0.75:
+            raise StageFailed(f"script is {words} words; target {lo}-{hi}")
         images = s.get("images") or {}
         if not 4 <= len(images) <= 9:
             raise StageFailed(f"script has {len(images)} images (want 6-7)")
@@ -1107,7 +1116,7 @@ class Pipeline:
                                         loop=True), end, d / "mix.wav")
         hook = None
         tnotes = json.loads(topic.get("notes") or "{}") or {}
-        tie = tnotes.get("news") or ({"cover_rule": None} if tnotes.get("open_hook") else None)
+        tie = tnotes.get("news") or ({"cover_rule": tnotes.get("cover_rule")} if tnotes.get("open_hook") else None)
         if tie:      # tie-ins (and any topic with notes.open_hook) open with the cover's words on screen (4-5 Nov 2026)
             try:
                 from .render import cover as _cover
@@ -1473,7 +1482,8 @@ class Pipeline:
             script = json.loads((d / "script.json").read_text())
             script.pop("_revised", None)
             tpl = P.OWNER_FIX if decision == "fix" else P.SELF_FIX
-            t_rules = (json.loads((self.state.get_topic(job["topic_id"]) or {}).get("notes") or "{}") or {}).get("format_rules")
+            self._topic_notes = json.loads((self.state.get_topic(job["topic_id"]) or {}).get("notes") or "{}") or {}
+            t_rules = self._topic_notes.get("format_rules")
             fx = self._llm(tpl.format(note=note, length_rule=json.dumps(self._length_rule()),
                                       script=json.dumps(script, ensure_ascii=False))
                            + ("\n\nTHIS VIDEO'S OWN FORMAT RULES (they win over the generic picture rules above):\n"

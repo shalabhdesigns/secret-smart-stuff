@@ -57,7 +57,7 @@ def plan(llm_ask, script: dict, news: bool = False, news_rule: str | None = None
                 "lines": [str(script.get("thumb_text") or script.get("hook_card") or "").upper()][:1], "why": "fallback"}
     try:
         out = llm_ask(PLAN.format(title=script.get("title", ""), beats=beats, images=", ".join(imgs),
-                                  news=((news_rule or NEWS_RULE) + "\n") if news else "")
+                                  news=((news_rule or NEWS_RULE) + "\n") if news else ((news_rule + "\n") if news_rule else ""))
                      + (f"\nThe review REJECTED the words {feedback.get('rejected')}: {feedback.get('why')}\n"
                         "Choose different words that fix this." if feedback else "")) or {}
         lines = [str(x).strip().upper() for x in (out.get("lines") or []) if str(x).strip()][:2]
