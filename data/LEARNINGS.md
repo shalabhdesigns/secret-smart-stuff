@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-15 07:08 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-15 19:07 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Give every beat one new fact and keep only one or two stats in the middle; tighten early setup beats. (pattern, n=2)
@@ -16,6 +16,32 @@ Updated 2026-11-15 07:08 UTC. Built from every published video's 48 h and 7 day 
 - by_country, walk_past, why_detail, india_asia and film each have n=2: not enough data yet.
 
 ## Per-video analyses
+
+### placebo-buttons-v2 (7d) — below median
+- 458 views · 61.17% viewed · 12 likes · 0 shares · 0 subs (median views 1251.0, n=20)
+- Reach was weak (458 views and 166 engaged views, about 37% and 28% of the channel medians of 1,251 and 584.5), but the people who watched stayed longer than usual (61.2% average viewed vs 56.9%), so the packaging got too few clicks while the content held viewers fine.
+  - ✅ Retention per viewer beat the channel median: average view duration 23s vs 20.5s, and average percentage viewed 61.17% vs 56.9%.
+  - ✅ The first ~4s held above 1.0 (1.271 → 1.133). Some viewers rewatched or looped, so the opening claim ('the door close button often does nothing') grabs people.
+  - ✅ From b5 to b6 (15.9–19.7s) retention was nearly flat (0.59 → 0.572). The fast-fact stretch held the audience once they had settled.
+  - ✅ Likes were 12 vs a median of 13.5, so people who stayed liked it about as often as usual.
+  - ✅ The self-review loop score was 5, and the final beat ends on an unfinished line, 'Tell your button-jabbing friend that...'. Whether the loop actually triggered rewatches is unclear, because retention at the end was 0.325.
+  - ❌ Reach was the main problem: views were about a third of the median, and engaged views were low too. With a normal hook-to-view ratio, this points to little distribution or weak click/swipe-in appeal, not weak content.
+  - ❌ There was no conversion beyond likes: 0 comments, 0 shares and 0 subscribers gained (the median is 1 subscriber). The share score of 4 in self-review did not show up in real shares.
+  - ❌ Retention fell hardest in the first third: from 1.133 at 4.3s to 0.729 at 10.1s, a loss of about 40 points across b2 and b3. The viewers who swiped away did so before the payoff.
+  - ❌ A second slide came at the pivot to the New York Times crosswalk story (b4, 12–14s: 0.687 → 0.62). The video moves away from lifts into other 'fake buttons', which can feel like a tangent.
+  - ❌ The 'learnings_applied' list is dominated by Learjet, Taipei 101, Gimli Glider and Ramayana lessons, which are mostly unrelated to a lift-button explainer. Nothing here shows they helped, and reach was below median, so no lesson is confirmed as a pattern.
+  - ❌ Instagram was also small: 144 views, 120 reach, 0 likes, comments, shares or saves, and a 39.7% skip rate. The average watch time of 10822 is probably milliseconds (about 10.8s), versus 23s on YouTube. Both platforms are low-reach and low-interaction, so the weakness looks topic- or packaging-wide, not specific to one platform.
+  - 📉 b2 @ 6.2 s: Right after the hook, the video moves to 'A 1990 law keeps doors open long enough', which is an abstract legal fact. The hook promise lands, but the explanation is not visual or surprising, and retention falls from 1.133 to 0.916.
+  - 📉 b3 @ 10.1 s: 'Five jabs. The doors stay unbothered.' should be the demo moment, but retention keeps falling (0.795 → 0.729). It is probably too short or too late to hold people who already got the answer from the hook.
+  - 📉 b4 @ 13.9 s: The topic switches from lifts to 2004 New York Times crosswalk reporting. It reads as a tangent at the point where the lift answer has been given, and retention falls from 0.687 to 0.62.
+  - 📉 b7 @ 23.6 s: 'Some office thermostats aren't wired' is another example in a list. By then retention is slowly eroding (0.548 → 0.512), likely because the list feels repetitive before the Langer payoff.
+  - 💡 [story, hypothesis] Keep the lift as the single story and use the crosswalk and thermostat examples as a short one-line 'same trick elsewhere' beat, or cut one of them. The pivot at 12s coincided with a continued slide.
+  - 💡 [pacing, hypothesis] Show the payoff (the 'five jabs, nothing happens' demo) within the first ~6s and put the legal explanation after it. About 40 points of retention were lost between 4s and 10s.
+  - 💡 [title, hypothesis] Test a sharper, more surprising title that states the claim (for example, that the button is a placebo) instead of a plain yes/no question. Reach was about 37% of median while retention was above median, so the problem sits before the view.
+  - 💡 [hook, hypothesis] The first 4s held above 1.0, so keep the blunt 'does nothing' claim style. Pair it with a visual that makes a viewer want to find out who is right, to raise engaged views.
+  - 💡 [length, hypothesis] At 38.7s the video kept 61% on average. Try about 30s by cutting the middle examples (b5–b7), since retention declined steadily after b6.
+  - 💡 [captions, hypothesis] Add a direct comment or share prompt (for example, ask which button people jab) in the last beat. There were 0 comments and 0 shares, and the final line 'Tell your button-jabbing friend that...' is unfinished.
+  - 💡 [topic, hypothesis] Instagram showed the same low reach and zero interactions, so judge this topic family by repeating it with a new angle before dropping it. The audience did not reject it (retention was above median).
 
 ### runway-numbers-v1 (48h) — above median
 - 905 views · 47.29% viewed · 11 likes · 0 shares · 0 subs (median views 354, n=23)
