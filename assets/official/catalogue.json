@@ -1,0 +1,1152 @@
+{
+ "note": "What each official Rockstar image shows (described by Claude from the images, 16 Nov 2026). 'avoid' = never use (weapons, adult, logos/words, too dark). focus_x = where the main subject sits (0 left - 1 right).",
+ "images": {
+  "vi_Ambrosia_01": {
+   "game": "GTA VI",
+   "shows": "biker gang riding motorcycles down a sunny small-town road, desert, signs",
+   "focus_x": 0.55
+  },
+  "vi_Ambrosia_02": {
+   "game": "GTA VI",
+   "shows": "wide night view over a small industrial town with lights, dark clouds",
+   "focus_x": 0.5
+  },
+  "vi_Ambrosia_03": {
+   "game": "GTA VI",
+   "shows": "biker couple posing close: bearded man in cap, woman in sunglasses and bandana",
+   "focus_x": 0.5
+  },
+  "vi_Ambrosia_04": {
+   "game": "GTA VI",
+   "shows": "sunset over dry fields and a power line, golden haze, countryside",
+   "focus_x": 0.5
+  },
+  "vi_Ambrosia_05": {
+   "game": "GTA VI",
+   "shows": "woman in a car interior with a vintage dashboard, driving",
+   "focus_x": 0.55
+  },
+  "vi_Ambrosia_06": {
+   "game": "GTA VI",
+   "shows": "rowdy party crowd cheering, man in cowboy hat holding a beer can",
+   "focus_x": 0.45
+  },
+  "vi_Boobie_Ike_01": {
+   "game": "GTA VI",
+   "shows": "man in a patterned shirt sitting in a leather chair in an office (Boobie Ike)",
+   "focus_x": 0.5
+  },
+  "vi_Boobie_Ike_02": {
+   "game": "GTA VI",
+   "shows": "two men outside a neon-lit club 'Jack of Hearts' at night",
+   "focus_x": 0.5
+  },
+  "vi_Boobie_Ike_03": {
+   "game": "GTA VI",
+   "shows": "close-up of a man with gold chain in purple club light holding a phone",
+   "focus_x": 0.5
+  },
+  "vi_Boobie_Ike_04": {
+   "game": "GTA VI",
+   "shows": "strip-club stage with neon pink lights and dancers",
+   "focus_x": 0.5,
+   "avoid": "adult"
+  },
+  "vi_Brian_Heder_01": {
+   "game": "GTA VI",
+   "shows": "older man in sunglasses driving a pickup with the window down",
+   "focus_x": 0.4
+  },
+  "vi_Brian_Heder_02": {
+   "game": "GTA VI",
+   "shows": "old man at a beach bar under palm roofs at night",
+   "focus_x": 0.5
+  },
+  "vi_Brian_Heder_03": {
+   "game": "GTA VI",
+   "shows": "grey-haired man reading a document beside a pickup truck",
+   "focus_x": 0.6
+  },
+  "vi_Brian_Heder_04": {
+   "game": "GTA VI",
+   "shows": "three people arguing by a truck: woman, older man in floral shirt, younger man in vest",
+   "focus_x": 0.5
+  },
+  "vi_Cal_Hampton_01": {
+   "game": "GTA VI",
+   "shows": "man in hat and Hawaiian shirt standing in a mini-golf park with a fake dinosaur",
+   "focus_x": 0.75
+  },
+  "vi_Cal_Hampton_02": {
+   "game": "GTA VI",
+   "shows": "men playing pool in a dim bar, man in floral shirt watching",
+   "focus_x": 0.5
+  },
+  "vi_Cal_Hampton_03": {
+   "game": "GTA VI",
+   "shows": "man in sunglasses floating in a pool on an inflatable flamingo, drinks around",
+   "focus_x": 0.35
+  },
+  "vi_Cal_Hampton_04": {
+   "game": "GTA VI",
+   "shows": "two men at night outside a shop with a lit sign",
+   "focus_x": 0.5
+  },
+  "vi_DreQuan_Priest_01": {
+   "game": "GTA VI",
+   "shows": "three women dancing on a nightclub stage in pink light",
+   "focus_x": 0.5,
+   "avoid": "adult"
+  },
+  "vi_DreQuan_Priest_02": {
+   "game": "GTA VI",
+   "shows": "man in a nightclub with a neon sign 'Dreams' behind him",
+   "focus_x": 0.5
+  },
+  "vi_DreQuan_Priest_03": {
+   "game": "GTA VI",
+   "shows": "rapper in a sleeveless jacket in a purple-lit club",
+   "focus_x": 0.45
+  },
+  "vi_DreQuan_Priest_04": {
+   "game": "GTA VI",
+   "shows": "two men at a music studio mixing desk",
+   "focus_x": 0.5
+  },
+  "vi_Grassrivers_01": {
+   "game": "GTA VI",
+   "shows": "men on a run-down porch in swamp country holding a shotgun",
+   "focus_x": 0.5
+  },
+  "vi_Grassrivers_02": {
+   "game": "GTA VI",
+   "shows": "stilt houses over swamp water, overcast sky (Everglades-like)",
+   "focus_x": 0.5
+  },
+  "vi_Grassrivers_03": {
+   "game": "GTA VI",
+   "shows": "top-down view of an airboat on a dark swamp",
+   "focus_x": 0.5
+  },
+  "vi_Grassrivers_04": {
+   "game": "GTA VI",
+   "shows": "airboats racing across wetlands with a helicopter overhead",
+   "focus_x": 0.5
+  },
+  "vi_Grassrivers_05": {
+   "game": "GTA VI",
+   "shows": "wetlands and mangroves with a city skyline far behind",
+   "focus_x": 0.5
+  },
+  "vi_Grassrivers_06": {
+   "game": "GTA VI",
+   "shows": "bearded man in a cap holding a large knife in a dark shack",
+   "focus_x": 0.5
+  },
+  "vi_Grassrivers_07": {
+   "game": "GTA VI",
+   "shows": "shirtless man with weapon in a lamp-lit shack",
+   "focus_x": 0.5
+  },
+  "vi_Grassrivers_08": {
+   "game": "GTA VI",
+   "shows": "foggy swamp at night, a boat light in the mist",
+   "focus_x": 0.5
+  },
+  "vi_Jason_and_Lucia_01": {
+   "game": "GTA VI",
+   "shows": "Jason and Lucia, the two leads, posing together by the water with a skyline behind (key image)",
+   "focus_x": 0.5
+  },
+  "vi_Jason_and_Lucia_02": {
+   "game": "GTA VI",
+   "shows": "Jason and Lucia in a heist corridor, masks and guns",
+   "focus_x": 0.45,
+   "avoid": "weapons close-up"
+  },
+  "vi_Jason_and_Lucia_03": {
+   "game": "GTA VI",
+   "shows": "Lucia leaning on a car window, Jason in the driver's seat, city behind",
+   "focus_x": 0.5
+  },
+  "vi_Jason_and_Lucia_04": {
+   "game": "GTA VI",
+   "shows": "Jason firing a pistol in a store robbery",
+   "focus_x": 0.4,
+   "avoid": "violence"
+  },
+  "vi_Jason_and_Lucia_05": {
+   "game": "GTA VI",
+   "shows": "Jason, Lucia and others in a lit doorway, silhouettes",
+   "focus_x": 0.5
+  },
+  "vi_Jason_and_Lucia_06": {
+   "game": "GTA VI",
+   "shows": "Jason driving a car at night, Lucia beside him",
+   "focus_x": 0.45
+  },
+  "vi_Jason_and_Lucia_07": {
+   "game": "GTA VI",
+   "shows": "Jason and Lucia low-angle in a neon-lit parking garage",
+   "focus_x": 0.5
+  },
+  "vi_Jason_and_Lucia_08": {
+   "game": "GTA VI",
+   "shows": "Jason and Lucia walking away from a burning scene with bags",
+   "focus_x": 0.5,
+   "avoid": "crime aftermath"
+  },
+  "vi_Jason_and_Lucia_09": {
+   "game": "GTA VI",
+   "shows": "Jason and Lucia on a motorbike in the city, police car and ferris wheel behind",
+   "focus_x": 0.6
+  },
+  "vi_Jason_and_Lucia_10": {
+   "game": "GTA VI",
+   "shows": "Lucia in a bikini on a balcony at night above the neon city",
+   "focus_x": 0.5
+  },
+  "vi_Jason_and_Lucia_11": {
+   "game": "GTA VI",
+   "shows": "Jason and Lucia in a red convertible, sunny day",
+   "focus_x": 0.6
+  },
+  "vi_Jason_and_Lucia_12": {
+   "game": "GTA VI",
+   "shows": "Jason and Lucia holding guns in a dark room",
+   "focus_x": 0.5,
+   "avoid": "weapons"
+  },
+  "vi_Jason_and_Lucia_13": {
+   "game": "GTA VI",
+   "shows": "Jason and Lucia kissing at sunset, helicopter in the sky",
+   "focus_x": 0.5
+  },
+  "vi_Jason_and_Lucia_14": {
+   "game": "GTA VI",
+   "shows": "Jason and Lucia embracing in a neon-lit club, purple and pink",
+   "focus_x": 0.5
+  },
+  "vi_Jason_and_Lucia_15": {
+   "game": "GTA VI",
+   "shows": "masked robbers with guns in a store",
+   "focus_x": 0.4,
+   "avoid": "violence"
+  },
+  "vi_Jason_and_Lucia_16": {
+   "game": "GTA VI",
+   "shows": "lone tree at golden sunset on a hill, quiet landscape",
+   "focus_x": 0.5
+  },
+  "vi_Jason_and_Lucia_17": {
+   "game": "GTA VI",
+   "shows": "Jason with a pistol and Lucia in a sunny car interior",
+   "focus_x": 0.6,
+   "avoid": "weapons"
+  },
+  "vi_Jason_and_Lucia_18": {
+   "game": "GTA VI",
+   "shows": "busy outdoor bar party crowd at night, string lights",
+   "focus_x": 0.5
+  },
+  "vi_Jason_and_Lucia_19": {
+   "game": "GTA VI",
+   "shows": "Jason driving a convertible shooting backwards",
+   "focus_x": 0.5,
+   "avoid": "violence"
+  },
+  "vi_Jason_and_Lucia_20": {
+   "game": "GTA VI",
+   "shows": "Lucia in a car at night under purple light",
+   "focus_x": 0.5
+  },
+  "vi_Jason_Duval_01": {
+   "game": "GTA VI",
+   "shows": "Jason standing beside a sport motorbike under palm trees",
+   "focus_x": 0.75
+  },
+  "vi_Jason_Duval_02": {
+   "game": "GTA VI",
+   "shows": "Jason in a tank top leaning out of a car window, sunny",
+   "focus_x": 0.4
+  },
+  "vi_Jason_Duval_03": {
+   "game": "GTA VI",
+   "shows": "Jason on a boat deck with a fishing rod, another man nearby",
+   "focus_x": 0.4
+  },
+  "vi_Jason_Duval_04": {
+   "game": "GTA VI",
+   "shows": "Jason standing on a neon-lit street at night, palm tree",
+   "focus_x": 0.5
+  },
+  "vi_Jason_Duval_05": {
+   "game": "GTA VI",
+   "shows": "Jason aiming a rifle at night",
+   "focus_x": 0.4,
+   "avoid": "weapons"
+  },
+  "vi_Jason_Duval_06": {
+   "game": "GTA VI",
+   "shows": "men drinking at a bar counter in a dim pub",
+   "focus_x": 0.5
+  },
+  "vi_Jason_Duval_07": {
+   "game": "GTA VI",
+   "shows": "Jason behind a chain-link fence lit by police lights",
+   "focus_x": 0.5,
+   "avoid": "violence"
+  },
+  "vi_Jason_Duval_08": {
+   "game": "GTA VI",
+   "shows": "Jason walking past a parked plane / hangar at dusk",
+   "focus_x": 0.5
+  },
+  "vi_Jason_Duval_09": {
+   "game": "GTA VI",
+   "shows": "Jason in a dusty garage, sunlight through the roof",
+   "focus_x": 0.6
+  },
+  "vi_Jason_Duval_10": {
+   "game": "GTA VI",
+   "shows": "hooded Jason in a dark alley with green light",
+   "focus_x": 0.5
+  },
+  "vi_Jason_Duval_11": {
+   "game": "GTA VI",
+   "shows": "Jason on a motorbike being chased by police at night",
+   "focus_x": 0.5
+  },
+  "vi_Jason_Duval_12": {
+   "game": "GTA VI",
+   "shows": "Jason pointing a pistol at an old man",
+   "focus_x": 0.4,
+   "avoid": "violence"
+  },
+  "vi_Jason_Duval_13": {
+   "game": "GTA VI",
+   "shows": "bikers riding through a neon-lit tunnel at night",
+   "focus_x": 0.5
+  },
+  "vi_Jason_Duval_14": {
+   "game": "GTA VI",
+   "shows": "Jason with three men by a truck in a sunny yard",
+   "focus_x": 0.5
+  },
+  "vi_Jason_Duval_15": {
+   "game": "GTA VI",
+   "shows": "shirtless Jason lifting a barbell, workout",
+   "focus_x": 0.5
+  },
+  "vi_Jason_Duval_16": {
+   "game": "GTA VI",
+   "shows": "Jason firing in a shootout with sparks",
+   "focus_x": 0.5,
+   "avoid": "violence"
+  },
+  "vi_Jason_Duval_17": {
+   "game": "GTA VI",
+   "shows": "Jason holding a rifle by a car under palm trees",
+   "focus_x": 0.4,
+   "avoid": "weapons"
+  },
+  "vi_Jason_Duval_18": {
+   "game": "GTA VI",
+   "shows": "Jason in a garage beside a sports car",
+   "focus_x": 0.6
+  },
+  "vi_Jason_Duval_19": {
+   "game": "GTA VI",
+   "shows": "Jason driving at night, friends in the back seat",
+   "focus_x": 0.5
+  },
+  "vi_Leonida_Keys_01": {
+   "game": "GTA VI",
+   "shows": "aerial view of tropical islands, turquoise sea and a seaplane (the Keys)",
+   "focus_x": 0.5
+  },
+  "vi_Leonida_Keys_02": {
+   "game": "GTA VI",
+   "shows": "sunny island street, man on a scooter with an iguana in the road",
+   "focus_x": 0.5
+  },
+  "vi_Leonida_Keys_03": {
+   "game": "GTA VI",
+   "shows": "palm-shaded wooden beach shack, man sunbathing",
+   "focus_x": 0.5
+  },
+  "vi_Leonida_Keys_04": {
+   "game": "GTA VI",
+   "shows": "underwater reef with divers and sunlight",
+   "focus_x": 0.5
+  },
+  "vi_Leonida_Keys_05": {
+   "game": "GTA VI",
+   "shows": "crowded party boats on bright blue water, boat deck",
+   "focus_x": 0.5
+  },
+  "vi_Leonida_Keys_06": {
+   "game": "GTA VI",
+   "shows": "close-up of a green iguana on a rock by the sea",
+   "focus_x": 0.55
+  },
+  "vi_Leonida_Keys_07": {
+   "game": "GTA VI",
+   "shows": "underwater cave with a swimmer and lionfish",
+   "focus_x": 0.5
+  },
+  "vi_Lucia_Caminos_01": {
+   "game": "GTA VI",
+   "shows": "Lucia shouting in a fight, gritty",
+   "focus_x": 0.45,
+   "avoid": "violence"
+  },
+  "vi_Lucia_Caminos_02": {
+   "game": "GTA VI",
+   "shows": "Lucia resting on the edge of a rooftop pool with a red cocktail, city behind",
+   "focus_x": 0.5
+  },
+  "vi_Lucia_Caminos_03": {
+   "game": "GTA VI",
+   "shows": "Lucia on a scooter outside a neon 'Liquor Bar' at night",
+   "focus_x": 0.45
+  },
+  "vi_Lucia_Caminos_04": {
+   "game": "GTA VI",
+   "shows": "Lucia in a dark room with a man in shadow",
+   "focus_x": 0.5
+  },
+  "vi_Lucia_Caminos_05": {
+   "game": "GTA VI",
+   "shows": "Lucia in an orange prison jumpsuit with other inmates",
+   "focus_x": 0.5
+  },
+  "vi_Lucia_Caminos_06": {
+   "game": "GTA VI",
+   "shows": "Lucia dancing at a party in pink light",
+   "focus_x": 0.45
+  },
+  "vi_Lucia_Caminos_07": {
+   "game": "GTA VI",
+   "shows": "Lucia driving a car hard at night, police behind",
+   "focus_x": 0.5
+  },
+  "vi_Lucia_Caminos_08": {
+   "game": "GTA VI",
+   "shows": "Lucia with a backpack climbing stairs of a motel",
+   "focus_x": 0.5
+  },
+  "vi_Lucia_Caminos_09": {
+   "game": "GTA VI",
+   "shows": "Lucia sitting on a staircase, sunlight behind",
+   "focus_x": 0.5
+  },
+  "vi_Lucia_Caminos_10": {
+   "game": "GTA VI",
+   "shows": "Lucia in a car under purple and pink neon light (close-up)",
+   "focus_x": 0.6
+  },
+  "vi_Lucia_Caminos_11": {
+   "game": "GTA VI",
+   "shows": "Lucia holding a pistol in purple light",
+   "focus_x": 0.5,
+   "avoid": "weapons"
+  },
+  "vi_Lucia_Caminos_12": {
+   "game": "GTA VI",
+   "shows": "Lucia aiming a pistol from a car",
+   "focus_x": 0.5,
+   "avoid": "weapons"
+  },
+  "vi_Lucia_Caminos_13": {
+   "game": "GTA VI",
+   "shows": "Lucia aiming a pistol close-up",
+   "focus_x": 0.5,
+   "avoid": "weapons"
+  },
+  "vi_Lucia_Caminos_14": {
+   "game": "GTA VI",
+   "shows": "Lucia close-up at night with police lights behind her",
+   "focus_x": 0.5
+  },
+  "vi_Mount_Kalaga_National_Park_01": {
+   "game": "GTA VI",
+   "shows": "dirt bikers riding through dry hills near an old structure",
+   "focus_x": 0.5
+  },
+  "vi_Mount_Kalaga_National_Park_02": {
+   "game": "GTA VI",
+   "shows": "red helicopter flying over wild hills at sunset",
+   "focus_x": 0.5
+  },
+  "vi_Mount_Kalaga_National_Park_03": {
+   "game": "GTA VI",
+   "shows": "hikers walking through a tall pine forest",
+   "focus_x": 0.5
+  },
+  "vi_Mount_Kalaga_National_Park_04": {
+   "game": "GTA VI",
+   "shows": "winding canyon road through green hills, aerial",
+   "focus_x": 0.5
+  },
+  "vi_Mount_Kalaga_National_Park_05": {
+   "game": "GTA VI",
+   "shows": "deer drinking at a forest stream",
+   "focus_x": 0.5
+  },
+  "vi_Mount_Kalaga_National_Park_06": {
+   "game": "GTA VI",
+   "shows": "kayaker on a calm river under a bridge",
+   "focus_x": 0.5
+  },
+  "vi_Port_Gellhorn_01": {
+   "game": "GTA VI",
+   "shows": "old roadside motel with a lit sign and palm trees at dusk",
+   "focus_x": 0.3
+  },
+  "vi_Port_Gellhorn_02": {
+   "game": "GTA VI",
+   "shows": "tough man in a tank top on a porch at night, tattooed friend behind",
+   "focus_x": 0.35
+  },
+  "vi_Port_Gellhorn_03": {
+   "game": "GTA VI",
+   "shows": "woman passing a bag through a car window to a bearded man",
+   "focus_x": 0.5
+  },
+  "vi_Port_Gellhorn_04": {
+   "game": "GTA VI",
+   "shows": "neon roadside signs at night on a rainy street",
+   "focus_x": 0.5
+  },
+  "vi_Port_Gellhorn_05": {
+   "game": "GTA VI",
+   "shows": "people partying around a campfire at night by trucks",
+   "focus_x": 0.5
+  },
+  "vi_Port_Gellhorn_06": {
+   "game": "GTA VI",
+   "shows": "sunset over a sprawling small town, power lines, hazy",
+   "focus_x": 0.5
+  },
+  "vi_Port_Gellhorn_07": {
+   "game": "GTA VI",
+   "shows": "strip-club pole dancer under a neon sign",
+   "focus_x": 0.5,
+   "avoid": "adult"
+  },
+  "vi_Raul_Bautista_01": {
+   "game": "GTA VI",
+   "shows": "man with glasses on the phone in a dark office with screens",
+   "focus_x": 0.55
+  },
+  "vi_Raul_Bautista_02": {
+   "game": "GTA VI",
+   "shows": "man driving a luxury car with a red leather interior",
+   "focus_x": 0.6
+  },
+  "vi_Raul_Bautista_03": {
+   "game": "GTA VI",
+   "shows": "man in a white shirt on a yacht with the city skyline behind",
+   "focus_x": 0.8
+  },
+  "vi_Raul_Bautista_04": {
+   "game": "GTA VI",
+   "shows": "man in a white suit at a night party with neon lights",
+   "focus_x": 0.45
+  },
+  "vi_Real_Dimez_01": {
+   "game": "GTA VI",
+   "shows": "woman in a jacket at a music studio mixing desk, cash on desk",
+   "focus_x": 0.5
+  },
+  "vi_Real_Dimez_02": {
+   "game": "GTA VI",
+   "shows": "crowd partying on a car at a street party at night",
+   "focus_x": 0.5
+  },
+  "vi_Real_Dimez_03": {
+   "game": "GTA VI",
+   "shows": "woman with braids in a car looking at the camera",
+   "focus_x": 0.5
+  },
+  "vi_Real_Dimez_04": {
+   "game": "GTA VI",
+   "shows": "two women recording music in a studio with mic, pink light",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_01": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition: Jason and Lucia in stylish outfits at a sunset beach with palms",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_02": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition: Jason and Lucia by a classic green car with palm trees and towers",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_ELECTRIC_FANG_01": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: Electric Fang tattoo parlour with neon tiger sign",
+   "focus_x": 0.4
+  },
+  "vi_ULTIMATE_EDITION_ELECTRIC_FANG_02": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: masked character in a tattoo chair",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_ELECTRIC_FANG_03": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: tattoo parlour interior with neon sign",
+   "focus_x": 0.6
+  },
+  "vi_ULTIMATE_EDITION_ELECTRIC_FANG_04": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: man showing a back tattoo in a parlour",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_GOODTIME_GEAR_01": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: Jason and Lucia in shop t-shirts by a 'Vice City' mural",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_GROTTI_CHEETAH_01": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus car: white Grotti Cheetah supercar by a round parking tower",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_GROTTI_CHEETAH_02": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus car: white Grotti Cheetah with pop-up headlights",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_GROTTI_CHEETAH_03": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus car: white Cheetah with red stripes, close-up",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_GROTTI_CHEETAH_04": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus car: Cheetah interior, red seats",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_HAWK_AND_LITTLE_MORGAN_REVOLVERS_01": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: revolver with a scope",
+   "focus_x": 0.5,
+   "avoid": "weapons"
+  },
+  "vi_ULTIMATE_EDITION_HAWK_AND_LITTLE_MORGAN_REVOLVERS_02": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: pair of revolvers on a table",
+   "focus_x": 0.5,
+   "avoid": "weapons"
+  },
+  "vi_ULTIMATE_EDITION_ONE_EYED_WILLIE_01": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: green off-road truck with a skull design",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_ONE_EYED_WILLIE_02": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: green off-road truck, front grille close-up",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_ONE_EYED_WILLIE_03": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: green truck being modded in a garage",
+   "focus_x": 0.35
+  },
+  "vi_ULTIMATE_EDITION_PTT_STORE_01": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: people in a neon clothing store",
+   "focus_x": 0.4
+  },
+  "vi_ULTIMATE_EDITION_RIDEOUT_CUSTOMS_01": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: gold lowrider car with custom wheels",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_RIDEOUT_CUSTOMS_02": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: lowrider interior close-up",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_RIDEOUT_CUSTOMS_03": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: lowrider car",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_SAFEHOUSE_VEHICLES_01": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: wooden stilt safehouse with an orange muscle car",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_SAFEHOUSE_VEHICLES_02": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: safehouse and vehicles",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_SAFEHOUSE_VEHICLES_03": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: safehouse and vehicles",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_SARAS_SALON_01": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: Sara's Salon hair salon",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_SARAS_SALON_02": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: Sara's Salon hair salon",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_SARAS_SALON_03": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: Sara's Salon hair salon",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_SQUALO_01": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus boat: Squalo speedboat",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_SQUALO_02": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus boat: white Squalo speedboat on blue water",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_SQUALO_03": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus boat: Squalo speedboat, Jason and Lucia on deck",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_SQUALO_04": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus boat: Squalo speedboat",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_STOCK_305_01": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: graffiti van, Stock 305 street-wear",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_STOCK_305_02": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: man in a jacket by a wall of speakers",
+   "focus_x": 0.6
+  },
+  "vi_ULTIMATE_EDITION_STOCK_305_03": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: 'Stock 305' store sign with graffiti",
+   "focus_x": 0.5,
+   "avoid": "words in image"
+  },
+  "vi_ULTIMATE_EDITION_STOCK_305_04": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: woman at a colourful shop counter",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_VAPID_BUGGY_01": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: Vapid beach buggy",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_VAPID_BUGGY_02": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: Vapid beach buggy",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_VAPID_BUGGY_03": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: Vapid beach buggy",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_VAPID_BUGGY_04": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: Vapid beach buggy",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_VAPID_GANADO_RETRO_BUILD_01": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: retro Vapid Ganado car",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_VICE_CITY_STYLE_01": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: Vice City style outfits",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_VICE_CITY_STYLE_02": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: Vice City style outfits",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_VICE_CITY_STYLE_03": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: Vice City style outfits",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_VICE_CITY_STYLE_04": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: Vice City style outfits",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_VICE_CITY_STYLE_05": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: Vice City style outfits",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_WEAPON_VARIANTS_01": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: weapon variants",
+   "focus_x": 0.5,
+   "avoid": "weapons"
+  },
+  "vi_ULTIMATE_EDITION_WYMAN_CAR_COLLECTION_01": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: Wyman car collection",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_WYMAN_CAR_COLLECTION_02": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: Wyman car collection",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_WYMAN_CAR_COLLECTION_03": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: Wyman car collection",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_WYMAN_CAR_COLLECTION_04": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: Wyman car collection",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_WYMAN_CAR_COLLECTION_05": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: Wyman car collection",
+   "focus_x": 0.5
+  },
+  "vi_ULTIMATE_EDITION_WYMAN_CAR_COLLECTION_06": {
+   "game": "GTA VI",
+   "shows": "Ultimate Edition bonus: Wyman car collection",
+   "focus_x": 0.5
+  },
+  "vi_Vice_City_01": {
+   "game": "GTA VI",
+   "shows": "giant 'VICE CITY' letters sign on a hill with a plane overhead (iconic, the game's city name)",
+   "focus_x": 0.4
+  },
+  "vi_Vice_City_02": {
+   "game": "GTA VI",
+   "shows": "couple on a hotel rooftop overlooking palm trees and the sea at sunset",
+   "focus_x": 0.5
+  },
+  "vi_Vice_City_03": {
+   "game": "GTA VI",
+   "shows": "sunny aerial view of Vice City towers and streets",
+   "focus_x": 0.5
+  },
+  "vi_Vice_City_04": {
+   "game": "GTA VI",
+   "shows": "two men with dreadlocks and grillz posing close-up",
+   "focus_x": 0.5
+  },
+  "vi_Vice_City_05": {
+   "game": "GTA VI",
+   "shows": "busy sunny beach with a lifeguard tower and sunbathers",
+   "focus_x": 0.5
+  },
+  "vi_Vice_City_06": {
+   "game": "GTA VI",
+   "shows": "police and people outside a neon nightclub at night",
+   "focus_x": 0.4
+  },
+  "vi_Vice_City_07": {
+   "game": "GTA VI",
+   "shows": "dancer in a pink-lit club",
+   "focus_x": 0.5,
+   "avoid": "adult"
+  },
+  "vi_Vice_City_08": {
+   "game": "GTA VI",
+   "shows": "Vice City skyline at night with a lit ferris wheel",
+   "focus_x": 0.5
+  },
+  "vi_Vice_City_09": {
+   "game": "GTA VI",
+   "shows": "street with a blue lowrider car under a highway, murals",
+   "focus_x": 0.4
+  },
+  "vi_Vice_City_10": {
+   "game": "GTA VI",
+   "shows": "twin curved luxury towers over a bay with boats, sunny",
+   "focus_x": 0.5
+  },
+  "vi_Vice_City_11": {
+   "game": "GTA VI",
+   "shows": "downtown towers at sunset beside the bay, helicopter",
+   "focus_x": 0.5
+  },
+  "vi_Vice_City_12": {
+   "game": "GTA VI",
+   "shows": "man with a gold gun in a dim room",
+   "focus_x": 0.5,
+   "avoid": "weapons"
+  },
+  "vi_Vice_City_13": {
+   "game": "GTA VI",
+   "shows": "packed nightclub with green lasers and a DJ",
+   "focus_x": 0.5
+  },
+  "vi_Vice_City_14": {
+   "game": "GTA VI",
+   "shows": "two men in a car, one in a light suit, the other younger",
+   "focus_x": 0.4
+  },
+  "vi_Vice_City_15": {
+   "game": "GTA VI",
+   "shows": "marina full of boats with the city skyline behind, blue sky",
+   "focus_x": 0.5
+  },
+  "vi_Vice_City_16": {
+   "game": "GTA VI",
+   "shows": "man covering his face with a jewelled hand, sunset light",
+   "focus_x": 0.4
+  },
+  "vi_Vice_City_17": {
+   "game": "GTA VI",
+   "shows": "night street with neon-lit buildings and palm trees",
+   "focus_x": 0.5
+  },
+  "vi_Vice_City_18": {
+   "game": "GTA VI",
+   "shows": "woman lying in a pile of cash, pink light (money)",
+   "focus_x": 0.5
+  },
+  "vi_Vice_City_19": {
+   "game": "GTA VI",
+   "shows": "pitbull dog with a gold chain next to a man in gold chains",
+   "focus_x": 0.4
+  },
+  "vi_Vice_City_20": {
+   "game": "GTA VI",
+   "shows": "people in a neon-lit party bus",
+   "focus_x": 0.6
+  },
+  "vi_Vice_City_21": {
+   "game": "GTA VI",
+   "shows": "three tough men posing, one shirtless with chains",
+   "focus_x": 0.5
+  },
+  "vi_Vice_City_22": {
+   "game": "GTA VI",
+   "shows": "retro neon gas station at night with a big donut sign",
+   "focus_x": 0.5
+  },
+  "vi_Vice_City_23": {
+   "game": "GTA VI",
+   "shows": "women at a bar night out, red-haired woman in front",
+   "focus_x": 0.6
+  },
+  "vi_Vice_City_24": {
+   "game": "GTA VI",
+   "shows": "man posing on a pink sports car in a parking lot with palms",
+   "focus_x": 0.4
+  },
+  "vi_Vice_City_25": {
+   "game": "GTA VI",
+   "shows": "man in a club with women and pink neon",
+   "focus_x": 0.5
+  },
+  "vi_Vice_City_26": {
+   "game": "GTA VI",
+   "shows": "aerial view of a resort with a pool shaped like a fish, palms",
+   "focus_x": 0.5
+  },
+  "vi_Vice_City_27": {
+   "game": "GTA VI",
+   "shows": "Vice City skyline at dusk, city lights and towers",
+   "focus_x": 0.5
+  },
+  "v_07edb091bb": {
+   "game": "GTA V",
+   "shows": "GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)",
+   "focus_x": 0.3
+  },
+  "v_5fff855787": {
+   "game": "GTA V",
+   "shows": "GTA V: logo graphic",
+   "focus_x": 0.5,
+   "avoid": "logo"
+  },
+  "v_911bff9fca": {
+   "game": "GTA V",
+   "shows": "GTA V: very dark city silhouette",
+   "focus_x": 0.5,
+   "avoid": "too dark"
+  },
+  "v_9ca23774eb": {
+   "game": "GTA V",
+   "shows": "GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)",
+   "focus_x": 0.5
+  },
+  "v_047b024f60": {
+   "game": "GTA V",
+   "shows": "GTA V: very dark skyline silhouette",
+   "focus_x": 0.5,
+   "avoid": "too dark"
+  },
+  "v_224f9a314a": {
+   "game": "GTA V",
+   "shows": "GTA Online: masked heist crew with guns",
+   "focus_x": 0.5,
+   "avoid": "weapons"
+  },
+  "v_7f4ce4e75d": {
+   "game": "GTA V",
+   "shows": "GTA Online (GTA 5's world): man beside a custom sports car in a neon garage",
+   "focus_x": 0.4
+  },
+  "v_1e85d43728": {
+   "game": "GTA V",
+   "shows": "GTA Online: four-panel character art",
+   "focus_x": 0.5,
+   "avoid": "collage"
+  },
+  "v_9b9931818d": {
+   "game": "GTA V",
+   "shows": "GTA Online: menu screen",
+   "focus_x": 0.5,
+   "avoid": "interface text"
+  },
+  "v_24ba6644de": {
+   "game": "GTA V",
+   "shows": "GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)",
+   "focus_x": 0.5
+  },
+  "v_a9877dd12c": {
+   "game": "GTA V",
+   "shows": "GTA V: blue striped sports cars racing on a road at sunset",
+   "focus_x": 0.5
+  },
+  "v_6f3821f838": {
+   "game": "GTA V",
+   "shows": "GTA V: man firing a rifle",
+   "focus_x": 0.5,
+   "avoid": "weapons"
+  },
+  "v_a457313ec2": {
+   "game": "GTA V",
+   "shows": "GTA V: helicopter flying over Los Santos on a sunny day",
+   "focus_x": 0.45
+  },
+  "v_fdac18d437": {
+   "game": "GTA V",
+   "shows": "GTA V: Los Santos skyline at dusk over a lake and hills",
+   "focus_x": 0.5
+  },
+  "v_f26b5466d9": {
+   "game": "GTA V",
+   "shows": "GTA Online logo art",
+   "focus_x": 0.5,
+   "avoid": "logo"
+  },
+  "v_3360902d78": {
+   "game": "GTA V",
+   "shows": "GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)",
+   "focus_x": 0.5
+  },
+  "v_c670974867": {
+   "game": "GTA V",
+   "shows": "GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)",
+   "focus_x": 0.5
+  },
+  "v_60801d3fc7": {
+   "game": "GTA V",
+   "shows": "GTA Online event art",
+   "focus_x": 0.5,
+   "avoid": "unchecked"
+  },
+  "v_bd8dd92adc": {
+   "game": "GTA V",
+   "shows": "GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+   "focus_x": 0.5
+  },
+  "v_46944605c1": {
+   "game": "GTA V",
+   "shows": "GTA Online event art with words",
+   "focus_x": 0.5,
+   "avoid": "words"
+  },
+  "v_d8b0a8161d": {
+   "game": "GTA V",
+   "shows": "GTA Online event art with words",
+   "focus_x": 0.5,
+   "avoid": "words"
+  },
+  "vi_VINTAGE_VICE_CITY_PACK_01": {
+   "game": "GTA VI",
+   "shows": "Vintage Vice City Pack (pre-order bonus) promo image",
+   "focus_x": 0.5
+  },
+  "vi_VINTAGE_VICE_CITY_PACK_02": {
+   "game": "GTA VI",
+   "shows": "Vintage Vice City Pack (pre-order bonus) promo image",
+   "focus_x": 0.5
+  },
+  "vi_VINTAGE_VICE_CITY_PACK_EXCLUSIVE_LOOKS_01": {
+   "game": "GTA VI",
+   "shows": "Vintage Vice City Pack (pre-order bonus): retro outfits",
+   "focus_x": 0.5
+  },
+  "vi_VINTAGE_VICE_CITY_PACK_EXCLUSIVE_LOOKS_02": {
+   "game": "GTA VI",
+   "shows": "Vintage Vice City Pack (pre-order bonus): retro outfits",
+   "focus_x": 0.5
+  },
+  "vi_VINTAGE_VICE_CITY_PACK_EXCLUSIVE_LOOKS_03": {
+   "game": "GTA VI",
+   "shows": "Vintage Vice City Pack (pre-order bonus): retro outfits",
+   "focus_x": 0.5
+  },
+  "vi_VINTAGE_VICE_CITY_PACK_EXCLUSIVE_LOOKS_04": {
+   "game": "GTA VI",
+   "shows": "Vintage Vice City Pack (pre-order bonus): retro outfits",
+   "focus_x": 0.5
+  },
+  "vi_VINTAGE_VICE_CITY_PACK_EXCLUSIVE_LOOKS_05": {
+   "game": "GTA VI",
+   "shows": "Vintage Vice City Pack (pre-order bonus): retro outfits",
+   "focus_x": 0.5
+  },
+  "vi_VINTAGE_VICE_CITY_PACK_VAPID_STANIER_01": {
+   "game": "GTA VI",
+   "shows": "Vintage Vice City Pack (pre-order bonus): retro Vapid Stanier car",
+   "focus_x": 0.5
+  },
+  "vi_VINTAGE_VICE_CITY_PACK_VAPID_STANIER_02": {
+   "game": "GTA VI",
+   "shows": "Vintage Vice City Pack (pre-order bonus): retro Vapid Stanier car",
+   "focus_x": 0.5
+  },
+  "vi_VINTAGE_VICE_CITY_PACK_VAPID_STANIER_03": {
+   "game": "GTA VI",
+   "shows": "Vintage Vice City Pack (pre-order bonus): retro Vapid Stanier car",
+   "focus_x": 0.5
+  },
+  "vi_VINTAGE_VICE_CITY_PACK_VAPID_STANIER_04": {
+   "game": "GTA VI",
+   "shows": "Vintage Vice City Pack (pre-order bonus): retro Vapid Stanier car",
+   "focus_x": 0.5
+  },
+  "vi_VINTAGE_VICE_CITY_WEAPON_PATTERN_01": {
+   "game": "GTA VI",
+   "shows": "weapon pattern",
+   "focus_x": 0.5,
+   "avoid": "weapons"
+  }
+ }
+}

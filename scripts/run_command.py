@@ -717,7 +717,8 @@ def main(path: str) -> int:
     # ---- Secret Smart Stuff explainers (the live format) ----
     if req.get("backup_pool") is not None:             # backup ideas for a series (see use_backup)
         p.state.set_setting("series_backups", json.dumps(req["backup_pool"]))
-    if action in ("produce", "daily") and req.get("topic_def") and p.cfg.pipeline.get("series_hold"):
+    if action in ("produce", "daily") and req.get("topic_def") and p.cfg.pipeline.get("series_hold") \
+            and not req.get("test_while_held"):   # 16 Nov 2026: one held test video for the owner to see first
         # a series is on hold (e.g. a provider ran out of credits): keep this request and the rest, spend nothing
         held = json.loads(p.state.get_setting("series_held") or "[]")
         held.append(req)
