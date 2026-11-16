@@ -36,6 +36,12 @@ jobs:
           path: assets/official/img
           key: official-v1-none
           restore-keys: official-v1-
+      - name: Official game clips (Actions cache; see official.yml)
+        uses: actions/cache/restore@v4
+        with:
+          path: assets/official/clips
+          key: official-clips-v1-none
+          restore-keys: official-clips-v1-
       - name: Refresh competitor signals (best effort)
         run: python scripts/collect_signals.py || echo "signals skipped"
       - name: Produce one Short

@@ -675,10 +675,28 @@ class Pipeline:
         old_scenes = {sc["id"]: sc for sc in old_script.get("scenes") or []}
         reused_keys: set[str] = set()
         official_keys: set[str] = set()
-        need_official = (json.loads(topic.get("notes") or "{}") or {}).get("official_images")
+        clip_keys: dict[str, str] = {}
+        need_official =(json.loads(topic.get("notes") or "{}") or {}).get("official_images")
         for key, prompt_text in images.items():
             prompt = f"{prompt_text}. {style}. Vertical 9:16 composition, key subject large and centred."
             path = d / f"{key}.png"
+            if str(prompt_text).strip().upper().startswith("CLIP:"):
+                # owner (16 Nov 2026): GTA videos use Rockstar's own trailer footage, like the reference Shorts
+                from shorts import official_clips
+                shot_id = str(prompt_text).split(":", 1)[1].strip().split()[0]
+                try:
+                    official_clips.still(shot_id, path)
+                    out["images"][key] = {"path": str(path), "official": shot_id, "official_clip": shot_id,
+                                          "check": {}, "realism": {"ok": True}, "prompt_used": prompt_text,
+                                          "focus_cache": {}}
+                    official_keys.add(key)
+                    clip_keys[key] = shot_id
+                except Exception as e:  # noqa: BLE001
+                    out["flags"].append(f"BLOCKING {key}: official clip shot '{shot_id}' not available ({e})")
+                    Image.new("RGB", (1080, 1920), (20, 20, 20)).save(path)
+                    out["images"][key] = {"path": str(path), "official": shot_id, "check": {}, "focus_cache": {}}
+                    official_keys.add(key)
+                continue
             ref = self._official_ref(prompt_text)
             if ref:
                 # owner (16 Nov 2026): game topics show the game's own official images, unchanged (crop only)
@@ -856,8 +874,31 @@ class Pipeline:
             info.pop("focus_cache", None)
         if self.clips_on:
             self._make_clips(job_id, script, out, d, old_vis if pr else {}, old_script if pr else {}, pr)
+        if clip_keys:
+            self._official_segments(job_id, script, out, d, clip_keys)
         (d / "visuals.json").write_text(json.dumps(out, indent=2))
         return {"file": str(d / "visuals.json"), "flags": out["flags"]}
+
+    def _official_segments(self, job_id: str, script: dict, out: dict, d: Path, clip_keys: dict[str, str]) -> None:
+        """Cut each chosen trailer shot to the time its beats need (muted; Rockstar footage, unchanged)."""
+        from shorts import official_clips
+        self._current_job = job_id
+        durs = self._beat_durations(script)
+        need: dict[str, float] = {}
+        for k, sc in enumerate(script["scenes"]):
+            key = (out["beats"].get(sc["id"]) or {}).get("image") or sc.get("image")
+            if key in clip_keys:
+                need[key] = need.get(key, 0.0) + durs[k]
+        out.setdefault("clips", {})
+        for key, shot_id in clip_keys.items():
+            secs = max(need.get(key, 2.0), 1.5) + 0.5
+            path = d / f"{key}_clip.mp4"
+            try:
+                official_clips.segment(shot_id, path, secs)
+                out["clips"][key] = {"path": str(path), "seconds": round(secs, 2), "official_clip": shot_id,
+                                     "check": {"ok": True}}
+            except Exception as e:  # noqa: BLE001
+                out["flags"].append(f"{key}: official clip '{shot_id}' not cut ({e}); shown as a still")
 
     # ---- E (part 2): real-motion clips (image-to-video) from the checked stills
     def _beat_durations(self, script: dict) -> list[float]:
@@ -1179,6 +1220,8 @@ class Pipeline:
         vis = json.loads((d / "visuals.json").read_text()) if (d / "visuals.json").exists() else {}
         if any(i.get("official") for i in (vis.get("images") or {}).values()):
             from shorts.official import CREDIT
+            if any(i.get("official_clip") for i in (vis.get("images") or {}).values()):
+                from shorts.official_clips import CREDIT
             return (f"{CREDIT} Narration is an AI voice; this is fan commentary, not affiliated with Rockstar Games. "
                     "Facts are checked against the sources above.\n\n")
         return ("Visuals are AI-generated illustrations; narration is an AI voice. "

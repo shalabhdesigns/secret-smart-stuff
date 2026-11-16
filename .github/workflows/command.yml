@@ -48,6 +48,12 @@ jobs:
           path: assets/official/img
           key: official-v1-none
           restore-keys: official-v1-
+      - name: Official game clips (Actions cache; see official.yml)
+        uses: actions/cache/restore@v4
+        with:
+          path: assets/official/clips
+          key: official-clips-v1-none
+          restore-keys: official-clips-v1-
       - name: Run the requested command
         run: |
           if [ -n "$REQUEST" ]; then printf '%s' "$REQUEST" > "$RUNNER_TEMP/request.json"; f="$RUNNER_TEMP/request.json"
