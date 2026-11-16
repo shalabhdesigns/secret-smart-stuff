@@ -634,6 +634,10 @@ def do_rerender(p: Pipeline, req: dict) -> int:
     p.produce(j["topic_id"])
     j = p.state.get_job(job)
     if j["status"] == "review" and not j["error"]:
+        if req.get("hold"):           # Claude re-checks the frames first (16 Nov 2026)
+            subprocess.run([str(ROOT / "scripts" / "open_review.sh"), job], check=True)
+            print(f"held for checking: {job}")
+            return 0
         send_for_review(p, job)
         return 0
     report_failure(p, job)

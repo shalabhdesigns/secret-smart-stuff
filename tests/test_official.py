@@ -37,8 +37,10 @@ def test_clip_segment_and_still(tmp_path, monkeypatch):
     (tmp_path / "shots.json").write_text(json.dumps({"shots": {
         "trailer_x_00010": {"clip": "trailer_x", "start": 1.0, "end": 3.0, "shows": "a car on a beach road"},
         "trailer_x_00030": {"clip": "trailer_x", "start": 3.0, "end": 6.0, "shows": "a gun fight", "avoid": "violence"}}}))
-    seg = oc.segment("trailer_x_00010", tmp_path / "s.mp4", 2.5)
-    assert 2.5 <= oc._dur(seg) <= 3.2
+    seg = oc.segment("trailer_x_00010", tmp_path / "s.mp4", 1.5)
+    assert 1.7 <= oc._dur(seg) <= 2.1
+    seg = oc.segment("trailer_x_00010", tmp_path / "s2.mp4", 4.0)   # never runs on into the banned shot
+    assert 4.1 <= oc._dur(seg) <= 4.6
     from PIL import Image
     assert Image.open(oc.still("trailer_x_00010", tmp_path / "f.png")).size == (1080, 1920)
     assert oc.best_match("car driving by the beach") == "trailer_x_00010"

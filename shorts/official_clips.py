@@ -243,9 +243,30 @@ def segment(shot_id: str, out: Path, seconds: float) -> Path:
         raise FileNotFoundError(f"official clip {sh['clip']} is not on this runner (run the official sync)")
     length = max(seconds + 0.3, 1.0)
     start = sh["start"] + 0.05
-    crop = _letterbox(src, start)
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{start:.2f}", "-i", str(src), "-t", f"{length:.2f}",
-                    "-an", "-vf", f"{crop}scale=-2:1080", "-c:v", "libx264", "-preset", "veryfast", "-crf", "18",
+    # 16 Nov 2026: a beat longer than its shot ran on into the next shots, once into a banned one. Now it may only
+    # run on into the following shots that are described and allowed; then it slows down (max 1.6x); then holds.
+    cat = shots_catalogue()
+    same = sorted((v for v in cat.values() if v["clip"] == sh["clip"]), key=lambda v: v["start"])
+    end = sh["end"]
+    for v in same:
+        if end - start >= length:
+            break
+        if v["start"] < end - 0.05:
+            continue
+        if abs(v["start"] - end) > 0.2 or v.get("avoid"):
+            break
+        end = v["end"]
+    avail = max(0.5, end - start - 0.05)
+    vf = f"{_letterbox(src, start)}scale=-2:1080"
+    take = min(avail, length)
+    if avail < length:
+        slow = min(length / avail, 1.6)
+        vf += f",setpts={slow:.3f}*PTS"
+        rest = length - avail * slow
+        if rest > 0.05:
+            vf += f",tpad=stop_mode=clone:stop_duration={rest:.2f}"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{start:.2f}", "-t", f"{take:.2f}", "-i", str(src),
+                    "-an", "-vf", vf, "-r", "30", "-c:v", "libx264", "-preset", "veryfast", "-crf", "18",
                     "-pix_fmt", "yuv420p", str(out)], check=True)
     return out
 
