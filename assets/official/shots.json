@@ -1,5 +1,5 @@
 {
- "note": "Shots of Rockstar's official GTA VI videos (rockstargames.com/VI/media/videos), described by Claude from one frame each. 'avoid' = never use. Trailer 1, Trailer 2 and Pre-Load shots described by Claude from contact sheets (16 Nov 2026).",
+ "note": "Shots of Rockstar's official GTA VI videos (rockstargames.com/VI/media/videos), described by Claude from one frame each. 'avoid' = never use.",
  "shots": {
   "cover_art_00000": {
    "clip": "cover_art",
@@ -1372,6 +1372,258 @@
    "end": 29.13,
    "shows": "logo and release date end card",
    "avoid": "logo and release date end card"
+  },
+  "extended_look_05648": {
+   "clip": "extended_look",
+   "start": 564.8,
+   "end": 568.83,
+   "shows": "Wrestler mid-flip in a backyard ring, spectators watching, sunny residential neighborhood, daytime"
+  },
+  "extended_look_05688": {
+   "clip": "extended_look",
+   "start": 568.83,
+   "end": 570.83,
+   "shows": "Armored Gruppe6 truck on a city street, armed men and people on the ground, daytime",
+   "avoid": "gun pointed at people during a robbery"
+  },
+  "extended_look_05708": {
+   "clip": "extended_look",
+   "start": 570.83,
+   "end": 572.83,
+   "shows": "Aerial view of a rooftop bar with crowd, palm trees, mural, ocean beyond, sunny day"
+  },
+  "extended_look_05728": {
+   "clip": "extended_look",
+   "start": 572.83,
+   "end": 574.83,
+   "shows": "Stylish friends drinking and chatting at a rooftop lounge overlooking the city, golden-hour light"
+  },
+  "extended_look_05748": {
+   "clip": "extended_look",
+   "start": 574.83,
+   "end": 619.73,
+   "shows": "Couple holding hands walking through a sunny rooftop bar, other patrons relaxing, skyline behind, daytime"
+  },
+  "extended_look_06197": {
+   "clip": "extended_look",
+   "start": 619.73,
+   "end": 622.13,
+   "shows": "Man in yellow floral shirt and cap leads a man in blue shirt by the arm past a pink building, daytime"
+  },
+  "extended_look_06221": {
+   "clip": "extended_look",
+   "start": 622.13,
+   "end": 624.63,
+   "shows": "Dim interview room with several people seated at a table, a man standing, silver-haired woman",
+   "avoid": "dark, murky frame"
+  },
+  "extended_look_06246": {
+   "clip": "extended_look",
+   "start": 624.63,
+   "end": 634.23,
+   "shows": "Dark interrogation room, blonde woman and man in yellow floral shirt at a table with papers",
+   "avoid": "very dark and low visibility"
+  },
+  "extended_look_09005": {
+   "clip": "extended_look",
+   "start": 900.53,
+   "end": 902.6,
+   "shows": "Man with sunglasses and mustache talking inside a car, parking garage exit behind"
+  },
+  "extended_look_09026": {
+   "clip": "extended_look",
+   "start": 902.6,
+   "end": 905.33,
+   "shows": "Woman with curly dark hair driving, looking back over her shoulder, inside a car"
+  },
+  "extended_look_09053": {
+   "clip": "extended_look",
+   "start": 905.33,
+   "end": 908.47,
+   "shows": "Bearded man with glasses and scarf talking in a car, daytime garage exit"
+  },
+  "extended_look_09084": {
+   "clip": "extended_look",
+   "start": 908.47,
+   "end": 916.67,
+   "shows": "Dark car interior, driver's hand on wheel, bright garage exit ahead",
+   "avoid": "very dark, mostly black frame"
+  },
+  "extended_look_09166": {
+   "clip": "extended_look",
+   "start": 916.67,
+   "end": 943.27,
+   "shows": "Gameplay: gray sedan driving down a sunny Vice City street with palm trees, wanted stars"
+  },
+  "extended_look_09432": {
+   "clip": "extended_look",
+   "start": 943.27,
+   "end": 949.9,
+   "shows": "Gameplay: police car and helicopter chasing on a sunny city street, palm trees"
+  },
+  "extended_look_09499": {
+   "clip": "extended_look",
+   "start": 949.9,
+   "end": 976.6,
+   "shows": "Woman in bandana raising a pistol near a dark sedan under an overpass",
+   "avoid": "gun held up in a threatening way"
+  },
+  "extended_look_09766": {
+   "clip": "extended_look",
+   "start": 976.6,
+   "end": 999.4,
+   "shows": "Gameplay: dark van driving down a sunny boulevard toward an arched gate, skyscrapers behind"
+  },
+  "extended_look_10618": {
+   "clip": "extended_look",
+   "start": 1061.8,
+   "end": 1067.47,
+   "shows": "Racing game scene: race cars on a palm-lined track, daytime, lap counter visible"
+  },
+  "extended_look_10674": {
+   "clip": "extended_look",
+   "start": 1067.47,
+   "end": 1069.97,
+   "shows": "Overhead view of a silver car on a cracked road, daytime, with debris and a tire"
+  },
+  "extended_look_10699": {
+   "clip": "extended_look",
+   "start": 1069.97,
+   "end": 1080.0,
+   "shows": "Woman in a yellow floral shirt on a street facing shops, with a repair sign and pawn shop, daytime"
+  },
+  "extended_look_10800": {
+   "clip": "extended_look",
+   "start": 1080.0,
+   "end": 1083.33,
+   "shows": "Two people scuffling inside a jewelry store with glass display cases, daytime",
+   "avoid": "physical fight, possible violence"
+  },
+  "extended_look_10833": {
+   "clip": "extended_look",
+   "start": 1083.33,
+   "end": 1091.93,
+   "shows": "Two people riding a motorcycle through a Vice City intersection, palm trees, bright daytime"
+  },
+  "extended_look_10919": {
+   "clip": "extended_look",
+   "start": 1091.93,
+   "end": 1104.0,
+   "shows": "Woman with long dark hair talking with a man in sunglasses and a gray hoodie on a street, daytime"
+  },
+  "extended_look_11040": {
+   "clip": "extended_look",
+   "start": 1104.0,
+   "end": 1108.47,
+   "shows": "Street with palm trees and cars, a person in an open car trunk, livestream chat overlay, daytime",
+   "avoid": "mostly on-screen chat text overlay, person in trunk"
+  },
+  "extended_look_11084": {
+   "clip": "extended_look",
+   "start": 1108.47,
+   "end": 1111.3,
+   "shows": "Crowded Vice City beach with yellow umbrellas and sunbathers on striped loungers, sunny day",
+   "avoid": "revealing swimwear, sunbathers nearly nude"
+  },
+  "extended_look_11113": {
+   "clip": "extended_look",
+   "start": 1111.3,
+   "end": 1114.8,
+   "shows": "Woman aims rifle at shooting-range targets in a daytime courtyard; targets remaining HUD",
+   "avoid": "gun aimed, shooting at targets with on-screen HUD text"
+  },
+  "extended_look_11148": {
+   "clip": "extended_look",
+   "start": 1114.8,
+   "end": 1119.2,
+   "shows": "Dirt bike race on a hillside trail, riders from behind, daytime, lap counter"
+  },
+  "extended_look_11192": {
+   "clip": "extended_look",
+   "start": 1119.2,
+   "end": 1122.4,
+   "shows": "White convertible driving a city highway at night toward green-lit signs, minimap showing"
+  },
+  "extended_look_11224": {
+   "clip": "extended_look",
+   "start": 1122.4,
+   "end": 1127.53,
+   "shows": "Dark night street scene with a teal SUV passing, convertible in foreground, wanted stars HUD",
+   "avoid": "very dark and murky frame"
+  },
+  "extended_look_11275": {
+   "clip": "extended_look",
+   "start": 1127.53,
+   "end": 1138.8,
+   "shows": "Woman with backpack parachuting over a sunny city skyline, rivers and islands below"
+  },
+  "extended_look_11388": {
+   "clip": "extended_look",
+   "start": 1138.8,
+   "end": 1143.7,
+   "shows": "Abstract colorful streaky light blur, pastel pink and teal transition",
+   "avoid": "very blurry frame with no clear subject"
+  },
+  "extended_look_11437": {
+   "clip": "extended_look",
+   "start": 1143.7,
+   "end": 1147.33,
+   "shows": "Two men in a Manatees jersey and white tee relax on a green couch drinking beers, indoors"
+  },
+  "extended_look_11473": {
+   "clip": "extended_look",
+   "start": 1147.33,
+   "end": 1151.17,
+   "shows": "Woman in black seen from behind walks through bright airport terminal toward blonde woman in pink dress, daytime"
+  },
+  "extended_look_11511": {
+   "clip": "extended_look",
+   "start": 1151.17,
+   "end": 1156.03,
+   "shows": "Wide view of a sunlit airport lounge with plants, people walking, jets visible outside, daytime"
+  },
+  "extended_look_11560": {
+   "clip": "extended_look",
+   "start": 1156.03,
+   "end": 1160.93,
+   "shows": "Smiling blonde woman in pink strapless dress holds phone in airport lounge, daytime"
+  },
+  "extended_look_11609": {
+   "clip": "extended_look",
+   "start": 1160.93,
+   "end": 1164.27,
+   "shows": "Blonde woman, dark-haired woman and bearded man in green jacket talk in airport lounge, daytime"
+  },
+  "extended_look_11642": {
+   "clip": "extended_look",
+   "start": 1164.27,
+   "end": 1170.23,
+   "shows": "Blonde woman with phone chats with two companions by airport windows, jet outside, daytime"
+  },
+  "extended_look_11702": {
+   "clip": "extended_look",
+   "start": 1170.23,
+   "end": 1173.83,
+   "shows": "Close-up of blonde woman with pearl necklace speaking, airport windows and planes behind her, daytime"
+  },
+  "extended_look_11738": {
+   "clip": "extended_look",
+   "start": 1173.83,
+   "end": 1175.73,
+   "shows": "Server with champagne tray approaches three people standing in a private airport lounge, daytime"
+  },
+  "extended_look_11757": {
+   "clip": "extended_look",
+   "start": 1175.73,
+   "end": 1232.77,
+   "shows": "Dark interior of an SUV with passengers inside at night",
+   "avoid": "very dark, hard to see"
+  },
+  "extended_look_12327": {
+   "clip": "extended_look",
+   "start": 1232.77,
+   "end": 1260.6,
+   "shows": "Man in green jacket walks along neon-lit Vice City street at night, parked SUV nearby"
   }
  }
 }
