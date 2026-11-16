@@ -321,6 +321,11 @@ def self_review(p: Pipeline, job: str, rounds: int = 3) -> dict:
     if not (d / "final.mp4").exists():
         fetch_bundle(job, d)
     topic = p.state.get_job(job)["topic_id"]
+    try:   # 16 Nov 2026: footage videos cost almost nothing to fix (no image generation): give them 5 rounds
+        if (json.loads((p.state.get_topic(topic) or {}).get("notes") or "{}") or {}).get("official_images"):
+            rounds = max(rounds, 5)
+    except Exception:  # noqa: BLE001
+        pass
     c, prev = {}, None
     from shorts.budget import BudgetExceeded
     for r in range(1, rounds + 1):
