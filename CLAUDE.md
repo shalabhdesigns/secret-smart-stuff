@@ -51,6 +51,13 @@
 - **News tie-ins** (owner, 2 Nov 2026): a series can be queued with `"then"` (each run queues the next). Rules: no
   pictures of the event or its victims, never suggest a cause, and say the cause is unknown (`P.NEWS`).
 - **Videos about a game show the game** (owner, 16 Nov 2026: "Do not do this ever again"): every GTA video uses official Rockstar images (`shorts/official.py`, `assets/official/catalogue.json`, scenes `OFFICIAL:<id>`), GTA 6 from the first frame and GTA 5 whenever it is compared. Never a video about a game with only stock or AI pictures. Images are used unchanged (crop + camera move), credited to Rockstar in the description.
+- **Footage first, images last** (owner, 16 Nov 2026): growth over ad money. Every video prefers real video
+  footage that tells the story: official/free-to-use footage (Rockstar's own trailer downloads via
+  `shorts/official_clips.py`, scenes `CLIP:<shot>`; creators' own CC-licensed footage only with permission). Official
+  or free stills only when no footage fits; Black Forest Labs images only as a last resort when genuinely needed.
+  Story first: hook in the first second, escalating reveals, a "wow" payoff, a comment question, a seamless loop.
+- **GTA 6 launch week: 5 videos a day** (owner, 16 Nov 2026), every 3 h over the US day (14:00, 17:00, 20:00,
+  23:00, 02:00 UTC). Review the numbers after 7 days: 8 a day if views per video hold, back to 3 if they fall.
 - **Flag cost and policy risks before spending.** Never claim something works until it has been tested.
 
 ## Before sending any video
