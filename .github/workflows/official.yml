@@ -4,6 +4,8 @@
 name: official-images
 on:
   workflow_dispatch: {}
+  schedule:
+    - cron: "23 3 * * *"     # daily (08:53 IST): pick up new official Rockstar videos and describe their shots
 permissions: { contents: write }
 jobs:
   sync:
@@ -38,6 +40,15 @@ jobs:
         with:
           path: assets/official/clips
           key: official-clips-v1-${{ github.run_id }}
+      - name: Save the updated shot list to the repo (descriptions only; no footage is committed)
+        run: |
+          git config user.name "secret-smart-stuff bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add assets/official/shots.json assets/official/shots_raw.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Shot list: new official footage described (daily sync)"
+            for i in 1 2 3; do git pull --rebase -q origin main && git push -q origin HEAD:main && break; sleep 5; done
+          fi
       - name: Shot sheets to a private draft release
         run: |
           cp assets/official/shots_raw.json assets/official/shots.json "$RUNNER_TEMP/shots/"

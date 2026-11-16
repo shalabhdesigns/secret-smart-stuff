@@ -46,9 +46,28 @@ VIDEOS = {   # Rockstar's own direct downloads (rockstargames.com/VI/media/video
 }
 
 
+def discover() -> dict:
+    """New official videos on Rockstar's GTA VI media page (checked daily; Rockstar adds launch and post-launch
+    videos there). Returns {slug: file name} including the known ones."""
+    import urllib.request
+    found = dict(VIDEOS)
+    try:
+        req = urllib.request.Request("https://www.rockstargames.com/VI/media/videos",
+                                     headers={"User-Agent": "Mozilla/5.0", "Referer": "https://www.rockstargames.com/"})
+        html = urllib.request.urlopen(req, timeout=60).read().decode("utf-8", "replace")
+        for name in dict.fromkeys(re.findall(r"/VI/downloads/videos/([A-Za-z0-9_.-]+)/\1\.mp4", html)):
+            if name not in found.values():
+                found[_slug(name.replace("GTAVI_", ""))] = name
+                print(f"  new official video: {name}")
+    except Exception as e:  # noqa: BLE001
+        print(f"  media page not read: {e}")
+    return found
+
+
 def sync() -> dict:
     """Stream each official video straight into a 1080p H.264 copy (no audio) in assets/official/clips/."""
     CLIPS.mkdir(parents=True, exist_ok=True)
+    VIDEOS.update(discover())
     for slug, name in VIDEOS.items():
         dst = CLIPS / f"{slug}.mp4"
         if dst.exists() and _dur(dst) > 5:

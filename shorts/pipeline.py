@@ -343,8 +343,12 @@ class Pipeline:
         if idea.get("format_rules"):
             # 5 Nov 2026 (virality batch): each video gets its own structure so the channel doesn't read as one
             # template (YouTube's "inauthentic content" policy names templated storylines); these win where they differ
+            fr = idea["format_rules"]
+            if "@@SHOT_LIST@@" in fr:          # the live shot list (grows as new official footage is added)
+                from shorts import official_clips
+                fr = fr.replace("@@SHOT_LIST@@", official_clips.shots_text())
             prompt += ("\n\nFORMAT OVERRIDES FOR THIS VIDEO (they take priority over the format rules above where "
-                       "they differ):\n" + idea["format_rules"])
+                       "they differ):\n" + fr)
             if idea.get("official_images"):
                 used = self._shots_used_before(topic["id"])
                 if used:
@@ -508,7 +512,8 @@ class Pipeline:
                 lean["images"] = sc.get("images")      # official-image videos: the reviewer checks the image ids
             return self._llm(P.REVIEW.format(script=json.dumps(lean, ensure_ascii=False))
                              + (("\nThis video has its own approved format (judge it against this, not the default "
-                                 "question-hook template):\n" + json.loads(topic.get("notes") or "{}")["format_rules"])
+                                 "question-hook template):\n" + json.loads(topic.get("notes") or "{}")["format_rules"]
+                                 .replace("@@SHOT_LIST@@", "(the shot list is not needed for this review)"))
                                 if (json.loads(topic.get("notes") or "{}") or {}).get("format_rules") else ""),
                              job_id, tag,
                              est=0.08, web_search=True, model=rv_model, max_tokens=8000).data or {}
@@ -545,8 +550,97 @@ class Pipeline:
         if rv.get("verdict") == "reject" or float(rv.get("total", 0)) < bar:
             raise QualityRejected(f"review score {rv.get('total')} / verdict {rv.get('verdict')}: "
                                   f"{[p.get('issue') for p in rv.get('problems', [])][:4]}")
+        if (json.loads(topic.get("notes") or "{}") or {}).get("official_images"):
+            self._storyboard_check(job_id, topic, d)      # owner, 16 Nov 2026: check the shots BEFORE voice/render
         return {"file": str(d / "review.json"), "score": rv.get("total"), "content": rv,
                 "script": json.loads(path.read_text())}
+
+    STORYBOARD = """You are the picture editor of a GTA 6 YouTube Short. Before any money is spent on voice and render,
+check the STORYBOARD: one frame of the chosen footage per beat, labelled with the beat id and its words.
+Title: {title}
+
+BEATS (id | words | shot):
+{beats}
+
+For each beat decide: does the shot SHOW what the words say (a named person, place, object or action on screen) or at
+least clearly SUPPORT the story at that moment (on-mood footage under a price/size/date callout is fine)? Also check:
+beat 1 is a striking, high-quality shot that fits the hook; no shot is black, blurry, a title card, a logo or text;
+no weapon pointed at someone, no sexual content; no shot repeats in two beats in a row; the video doesn't feel like
+earlier videos (shots used before: {used}).
+Where a beat fails, choose a better shot from the SHOT LIST below (exact id; prefer ones not used before).
+SHOT LIST (id | length | what it shows):
+{shots}
+
+Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot id>", "why": "..."}}], "notes": "..."}}"""
+
+    def _storyboard_check(self, job_id: str, topic: dict, d: Path) -> None:
+        """Pre-render picture check (16 Nov 2026): most rejected GTA videos failed on a shot that didn't match its
+        line, found only after voice + render + review (~$0.60 per round). One look at a storyboard of the chosen
+        shots (~$0.05) catches that before anything is made."""
+        import io
+        from PIL import ImageDraw
+        from shorts import official, official_clips
+        path = d / "script.json"
+        script = json.loads(path.read_text())
+        images, scenes = script.get("images") or {}, script.get("scenes") or []
+        tw, th = 216, 384
+        cols = min(6, max(1, len(scenes)))
+        sheet = Image.new("RGB", (tw * cols, (th + 40) * ((len(scenes) + cols - 1) // cols)), "white")
+        dr = ImageDraw.Draw(sheet)
+        tmp = d / "_sb.png"
+        lines = []
+        for i, sc in enumerate(scenes):
+            v = str(images.get(sc.get("image"), ""))
+            try:
+                if v.upper().startswith("CLIP:"):
+                    official_clips.still(v.split(":", 1)[1].strip(), tmp)
+                elif self._official_ref(v):
+                    official.vertical(self._official_ref(v)[0], tmp)
+                else:
+                    Image.new("RGB", (1080, 1920), (40, 40, 40)).save(tmp)
+                im = Image.open(tmp).convert("RGB").resize((tw, th))
+            except Exception:  # noqa: BLE001
+                im = Image.new("RGB", (tw, th), (0, 0, 0))
+            x, y = (i % cols) * tw, (i // cols) * (th + 40)
+            sheet.paste(im, (x, y + 40))
+            dr.text((x + 4, y + 4), f"{sc['id']}: {sc.get('narration', '')[:34]}", fill="black")
+            dr.text((x + 4, y + 20), sc.get("narration", "")[34:68], fill="black")
+            lines.append(f"{sc['id']} | {sc.get('narration', '')} | {v}")
+        tmp.unlink(missing_ok=True)
+        buf = io.BytesIO()
+        sheet.save(buf, "JPEG", quality=80)
+        sheet.save(d / "storyboard.jpg", quality=80)
+        try:
+            r = self._llm(self.STORYBOARD.format(title=script.get("title", ""), beats="\n".join(lines),
+                                                 used=", ".join(self._shots_used_before(topic["id"])[:60]) or "none",
+                                                 shots=official_clips.shots_text()),
+                          job_id, "storyboard", est=0.06, images=[buf.getvalue()],
+                          model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=1500)
+        except Exception as e:  # noqa: BLE001
+            self.state.log(f"storyboard check skipped: {e}", "warn", job_id)
+            return
+        res = r.data or {}
+        cat = official_clips.shots_catalogue()
+        n = 0
+        for sw in res.get("swaps") or []:
+            sc = next((x for x in scenes if x.get("id") == sw.get("beat")), None)
+            shot = str(sw.get("shot", "")).replace("CLIP:", "").strip()
+            if not sc or shot not in cat or cat[shot].get("avoid"):
+                continue
+            key = f"sb_{sc['id']}"
+            images[key] = f"CLIP:{shot}"
+            if sc is scenes[-1] and scenes[0].get("image"):
+                continue                           # the last beat must keep the opening shot (loop)
+            sc["image"] = key
+            if sc is scenes[0] and scenes[-1].get("image"):
+                scenes[-1]["image"] = key          # keep the loop: the last beat uses the opening shot
+            n += 1
+        used = {sc.get("image") for sc in scenes}
+        script["images"] = {k: v for k, v in images.items() if k in used}
+        path.write_text(json.dumps(script, indent=2, ensure_ascii=False))
+        (d / "storyboard.json").write_text(json.dumps(res, indent=1, ensure_ascii=False))
+        self.state.log(f"storyboard check: {'ok' if res.get('ok') else 'fixed'} - {n} shot(s) swapped. "
+                       f"{str(res.get('notes', ''))[:200]}", "info", job_id)
 
     # ---- D: voice
     def _stage_voice(self, job_id: str, topic: dict, d: Path) -> dict:
@@ -1578,6 +1672,9 @@ class Pipeline:
             tpl = P.OWNER_FIX if decision == "fix" else P.SELF_FIX
             self._topic_notes = json.loads((self.state.get_topic(job["topic_id"]) or {}).get("notes") or "{}") or {}
             t_rules = self._topic_notes.get("format_rules")
+            if t_rules and "@@SHOT_LIST@@" in t_rules:
+                from shorts import official_clips
+                t_rules = t_rules.replace("@@SHOT_LIST@@", official_clips.shots_text())
             fx = self._llm(tpl.format(note=note, length_rule=json.dumps(self._length_rule()),
                                       script=json.dumps(script, ensure_ascii=False))
                            + ("\n\nTHIS VIDEO'S OWN FORMAT RULES (they win over the generic picture rules above):\n"
