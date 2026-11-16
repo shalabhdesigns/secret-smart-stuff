@@ -449,8 +449,10 @@ class Pipeline:
         if words > hi * 1.08 or words < lo * 0.75:
             raise StageFailed(f"script is {words} words; target {lo}-{hi}")
         images = s.get("images") or {}
-        if not 4 <= len(images) <= 9:
-            raise StageFailed(f"script has {len(images)} images (want 6-7)")
+        footage = bool((getattr(self, "_topic_notes", None) or {}).get("official_images"))
+        # 16 Nov 2026: footage videos cut to a new shot every beat (8-12); the 6-7 limit forced a paid repair each time
+        if not 4 <= len(images) <= (12 if footage else 9):
+            raise StageFailed(f"script has {len(images)} images (want {'8-11' if footage else '6-7'})")
         for sc in scenes:
             if sc.get("image") and sc["image"] not in images:
                 raise StageFailed(f"beat {sc.get('id')} uses unknown image {sc['image']}")
