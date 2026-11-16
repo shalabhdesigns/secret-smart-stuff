@@ -1373,9 +1373,13 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
                 if u not in seen:
                     seen.add(u)
                     srcs.append(u)
-        news = (json.loads(topic.get("notes") or "{}") or {}).get("news")
+        tnotes = json.loads(topic.get("notes") or "{}") or {}
+        news = tnotes.get("news")
+        seo = tnotes.get("seo") or {}
         if news:   # news tie-in: the event's hashtags first, then the topic's; a neutral context line
             tags = list(dict.fromkeys(news.get("tags", []) + (script.get("hashtags") or [])))[:4]
+        elif seo:  # 17 Nov 2026: a series (GTA 6) leads with its own search hashtags, not the channel's defaults
+            tags = list(dict.fromkeys(seo.get("hashtags", []) + (script.get("hashtags") or [])))[:5]
         else:
             tags = list(dict.fromkeys((script.get("hashtags") or []) + ch["default_hashtags"]))[:4]
         desc = (f"{script.get('description', '').strip()}\n\n"
@@ -1384,8 +1388,9 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
                 + (self._visuals_line(d))
                 + (f"Also on Instagram: {ch['handle']}\n\n" if self.cfg.channel.get("instagram", {}).get("enabled") else "")
                 + " ".join(tags))
-        meta = {"title": title, "description": desc[:4900], "tags": [t.lstrip("#") for t in tags],
-                "category_id": ch["youtube_category_id"], "language": ch["language"],
+        kw = list(dict.fromkeys([t.lstrip("#") for t in tags] + list(seo.get("tags", []))))
+        meta = {"title": title, "description": desc[:4900], "tags": kw[:15],
+                "category_id": str(seo.get("category_id") or ch["youtube_category_id"]), "language": ch["language"],
                 "made_for_kids": ch["made_for_kids"], "contains_synthetic_media": True,
                 "title_lint": lint, "thumb_text": script.get("thumb_text"),
                 "affiliate_product": script.get("affiliate_product")}
