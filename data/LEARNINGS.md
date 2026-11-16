@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-15 19:07 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-16 07:14 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Give every beat one new fact and keep only one or two stats in the middle; tighten early setup beats. (pattern, n=2)
@@ -16,6 +16,29 @@ Updated 2026-11-15 19:07 UTC. Built from every published video's 48 h and 7 day 
 - by_country, walk_past, why_detail, india_asia and film each have n=2: not enough data yet.
 
 ## Per-video analyses
+
+### pilot-meals-v1 (48h) — below median
+- 150 views · 51.36999999999999% viewed · 3 likes · 0 shares · 0 subs (median views 382.5, n=24)
+- The Short got 150 views against a channel median of 382.5 at the same age, with engaged views at 54 vs 165.5 and 3 likes vs 7. Retention held up close to normal (average view 20s vs 20.5s median), so the gap is mostly reach, and the same video drew 1,589 views on Instagram.
+  - ✅ The hook held. Retention was above 1.0 until about 4.3s (1.093) and still 0.944 at 6.3s, so the opening question and loop lead-in did not lose people early.
+  - ✅ Watch time per viewer was near the channel norm: average view duration 20s vs 20.5s median, and average view percentage 51.4% vs 56.25%. Viewers who stayed found it acceptable.
+  - ✅ The self-review scored 'loop' 5, and the video starts with a rewatch bump (1.241 at 0.4s). This is consistent with the loop lead-in working, but one video can't confirm it.
+  - ✅ The late-video retention curve is flat in places (0.407 from 20s to 24s, 0.296 from 33.7s to 35.7s), so the middle and end did not collapse.
+  - ❌ Reach and engagement were well under the channel's typical level: 150 views vs 382.5, 54 engaged views vs 165.5, 3 likes vs 7, and 0 comments, shares and subscribers (the channel medians for those are also 0).
+  - ❌ There was a steep drop from 0.852 (8.2s) to 0.593 (10.2s), about 26 points of viewers, right where b3's caveat gives way to the 1975 omelet story in b4.
+  - ❌ The answer arrived within about 7 seconds (b2: one bad meal is unlikely to reach both), and b3 then hedged it with 'airline policy, not a worldwide law'. This probably released the curiosity before the story began.
+  - ❌ Retention eroded steadily after b4, ending at 0.259 by 37.6s, so there was no strong reason to stay for the closing beats.
+  - ❌ The many carried-over learnings (win:*, pm:*, review:*, owner:drop:*) did not produce an above-median result. This video can't show whether they helped or hurt, and it gives no evidence that any of them worked again, so I'm not promoting any to a pattern.
+  - ❌ The self-review scored rewatch and share at only 3, and the video drew 0 shares on YouTube, which fits that weakness.
+  - 📉 b3 @ 8.2 s: 'It's airline policy, not a worldwide law' is a disclaimer, not new information. The core answer had already been given in b2, so interest dipped (0.944 at 6.3s to 0.852 at 8.2s).
+  - 📉 b4 @ 10.2 s: The biggest drop (0.852 to 0.593) comes as the video moves into the '1975, pilots skipped bad omelets' history. Having heard the answer, viewers who wanted only the 'why' left.
+  - 📉 b8 @ 25.9 s: A smaller drop (0.407 to 0.352) falls after the lasagna joke, on the repeated 'what if they share a dish' idea. The point was already made in b7, so this beat adds little.
+  - 💡 [story, hypothesis] Don't give the full answer in beat 2. Hold the key reveal until after the story beat so the curiosity from the hook lasts past the 8-10s mark.
+  - 💡 [pacing, hypothesis] Cut or move hedging lines like 'not a worldwide law' to the end, and put a concrete, surprising beat (such as the 1975 incident) right after the hook to avoid the steep drop at 8-10s.
+  - 💡 [story, hypothesis] Avoid restating the same risk (one spoiled meal sidelining both pilots) in b2, b6, b7 and b8. Each beat should add a new fact so the back half doesn't just bleed viewers.
+  - 💡 [hook, hypothesis] The question hook plus loop lead-in kept viewers through about 6s, so keep that opening structure and fix what follows it.
+  - 💡 [topic, hypothesis] Reach was low on YouTube but much higher on Instagram (1,589 views, 29.5% skip rate, about 44% average watch of the 39.2s runtime). The topic may suit Instagram's audience better than YouTube Shorts' feed, so compare platform splits on the next few videos before judging the topic.
+  - 💡 [length, hypothesis] At 39.2s and 86 words the video was long for the retention it earned (0.259 at the end). Test a tighter cut of about 25-30s by dropping the repeated risk beats.
 
 ### placebo-buttons-v2 (7d) — below median
 - 458 views · 61.17% viewed · 12 likes · 0 shares · 0 subs (median views 1251.0, n=20)
