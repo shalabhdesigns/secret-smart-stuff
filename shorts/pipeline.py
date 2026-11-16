@@ -345,6 +345,13 @@ class Pipeline:
             # template (YouTube's "inauthentic content" policy names templated storylines); these win where they differ
             prompt += ("\n\nFORMAT OVERRIDES FOR THIS VIDEO (they take priority over the format rules above where "
                        "they differ):\n" + idea["format_rules"])
+            if idea.get("official_images"):
+                used = self._shots_used_before(topic["id"])
+                if used:
+                    # owner (16 Nov 2026): every video must look different; reuse a shot only when the story needs it
+                    prompt += ("\n\nSHOTS ALREADY USED IN EARLIER VIDEOS (do NOT use these unless this story genuinely "
+                               "needs that exact moment - e.g. the alligator store shot for a Florida Man story; at "
+                               "most 2 of them, never in beat 1): " + ", ".join(used))
         from . import carry
         ctx, applied = carry.for_script(self.state)     # build on every earlier video (owner's standing rule)
         prompt += ctx
@@ -635,6 +642,19 @@ class Pipeline:
                 if sc.get(k) is not None and not isinstance(sc[k], str):
                     sc[k] = None
         return script
+
+    def _shots_used_before(self, topic_id: str) -> list[str]:
+        """Trailer shots already used in published or scheduled videos (other topics), most used first."""
+        from collections import Counter
+        cnt: Counter = Counter()
+        for j in self.state.jobs():
+            if j["topic_id"] == topic_id or j["status"] not in ("published", "approved"):
+                continue
+            imgs = (((j.get("artifacts") or {}).get("script") or {}).get("content") or {}).get("images") or {}
+            for v in imgs.values():
+                if str(v).upper().startswith("CLIP:"):
+                    cnt[str(v).split(":", 1)[1].strip()] += 1
+        return [k for k, _ in cnt.most_common()]
 
     @staticmethod
     def _official_ref(prompt_text: str) -> tuple[str, float | None] | None:

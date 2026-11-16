@@ -148,11 +148,13 @@ editor can pick it to match a line like "the box has no disc" or "Vice City at n
 clearly them (Jason: man with short dark hair and beard; Lucia: woman with long dark hair).
 Mark "avoid" with a short reason when the shot is: a title card, logo, credits or mostly on-screen text; gun pointed
 at a person, shooting, blood or killing; nudity or sexual dancing; a black/blank or very blurry frame.
-Return JSON only: {{"shots": [{{"n": 1, "shows": "...", "avoid": ""}}, ...]}}"""
+Return JSON only: {{"shots": [{{"n": 1, "shows": "...", "avoid": ""}}, ...]}}. Never use double quotes inside the
+text values (write 'like this' instead)."""
 
 
-def describe(shots: dict, per: int = 16) -> dict:
-    """Describe every shot with Claude (vision) so the writer can choose footage by meaning."""
+def describe(shots: dict, per: int = 8, have: dict | None = None) -> dict:
+    """Describe every shot with Claude (vision) so the writer can choose footage by meaning. Shots already in
+    `have` are skipped (16 Nov 2026: 8 of 18 batches of 16 came back as broken JSON; batches are now 8)."""
     import io
     import os
     from PIL import Image, ImageDraw
@@ -160,8 +162,10 @@ def describe(shots: dict, per: int = 16) -> dict:
     from shorts.providers.llm import AnthropicLLM
     cfg = load()
     llm = AnthropicLLM(os.environ["ANTHROPIC_API_KEY"], cfg.pipeline["providers"]["llm"])
-    items = [(c, s, e) for c, lst in shots.items() for s, e in lst]
-    out: dict[str, dict] = {}
+    have = have or {}
+    items = [(c, s, e) for c, lst in shots.items() for s, e in lst
+             if f"{c}_{int(s * 10):05d}" not in have and c in VIDEOS]
+    out: dict[str, dict] = dict(have)
     tmp = CLIPS / "_f.jpg"
     usd = 0.0
     for n in range(0, len(items), per):
@@ -289,7 +293,11 @@ if __name__ == "__main__":
         sh = detect_shots()
         (BASE / "shots_raw.json").write_text(json.dumps(sh, indent=1))
         print("shots:", {k: len(v) for k, v in sh.items()})
-        desc = describe(sh)
+        have = shots_catalogue()
+        desc = describe(sh, have=have)
+        for sid, v in desc.items():      # keep the drug rule (16 Nov 2026)
+            if not v.get("avoid") and any(w in v["shows"].lower() for w in ("drug", "meth", "cocaine", " lab")):
+                v["avoid"] = "drugs"
         (BASE / "shots.json").write_text(json.dumps(
             {"note": "Shots of Rockstar's official GTA VI videos (rockstargames.com/VI/media/videos), described by "
                      "Claude from one frame each. 'avoid' = never use.", "shots": desc}, indent=1, ensure_ascii=False))
