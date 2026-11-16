@@ -141,7 +141,7 @@ def chain_next(p: Pipeline, req: dict) -> None:
     rest = req.get("then") or []
     if not rest:
         return
-    nxt = {**rest[0], "then": rest[1:]}
+    nxt = _compact({**rest[0], "then": rest[1:]})
     if os.environ.get("SHORTS_NO_GITHUB") == "1":
         print("next in series:", json.dumps(nxt)[:200])
         return
@@ -720,8 +720,30 @@ def _login_link(p: Pipeline) -> str:
     return f"{url}/oauth/start?n={n}"
 
 
+def _queue_item(nonce: str) -> dict | None:
+    qf = ROOT / "config" / "daily_queue.json"
+    if not qf.exists():
+        return None
+    return next((dict(it) for it in json.loads(qf.read_text()).get("queue") or [] if it.get("nonce") == nonce), None)
+
+
+def _compact(item: dict) -> dict:
+    """16 Nov 2026: a queued GTA item is ~27 KB, and GitHub caps a dispatch at 65 KB, so a chain of 5 can't travel
+    whole. Items that live in config/daily_queue.json travel as their nonce and are looked up again on arrival."""
+    if item.get("nonce") and item.get("topic_def") and _queue_item(item["nonce"]):
+        return {"queue_nonce": item["nonce"], "then": [_compact(t) for t in item.get("then") or []]}
+    return {**item, "then": [_compact(t) for t in item.get("then") or []]} if item.get("then") else item
+
+
 def main(path: str) -> int:
     req = json.loads(Path(path).read_text())
+    if req.get("queue_nonce"):
+        full = _queue_item(req["queue_nonce"])
+        if not full:
+            raise SystemExit(f"queued item {req['queue_nonce']} not found in config/daily_queue.json")
+        full.pop("day", None)
+        full["then"] = req.get("then") or []
+        req = full
     action = req.get("action")
     p = Pipeline(load())
     if req.get("owner_ok_extra_daily_usd"):
