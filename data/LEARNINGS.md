@@ -1,19 +1,19 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-16 07:14 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-16 12:03 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
-- Give every beat one new fact and keep only one or two stats in the middle; tighten early setup beats. (pattern, n=2)
-- Show the real object or a concrete visual for the key beat early, instead of generic stock-style images. (pattern, n=2)
-- Name the specific object in the first line and keep the opening beat to about 3–4s. (hypothesis)
-- Keep the unfinished-sentence ending that loops into the question hook. (hypothesis)
-- Hedge claims where sources hedge, and keep faces and special characters off the picture and text cards. (hypothesis)
+- News topics got 6.58x the median views of film topics (pattern, n=5 vs 7). Film got more subs_per_1k (1.64 vs 0.63), so pair film with a stronger hook and payoff.
+- 36s+ videos got more views than 30-36s (pattern, n=12 vs 8). Cut repeated beats, not content, to tighten.
+- Each beat must add a new fact. Don't restate the same risk or example (pattern, n=2 videos).
+- Show the concrete payoff within about 6s of the question hook, and put hedges and legal context later (pattern, n=2 videos).
+- Keep any hedge from earlier beats in the closing line, and don't let overlays give away the hook's answer (hypothesis).
 
 ## Topic guidance now
-- Keep news: n=5, median views 2045 vs batch median 1302, but subs_per_1k 0.63 vs 0.7, so watch growth.
-- Keep testing aviation-incident stories with a surprising everyday cause: gimli-glider-v1 (n=1) beat the median, about 3x per the analysis (hypothesis).
-- Retest engineering-marvel topics with a stronger hook: taipei-101-ball-v1 (n=1) was below the median, so not enough data yet to drop.
-- by_country, walk_past, why_detail, india_asia and film each have n=2: not enough data yet.
+- News: double down. n=5, 2,045 median views vs 1,243 overall, but subs_per_1k is only 0.63.
+- Film: keep small and test. n=7, 311 views vs 1,243, kept 33.3 %, but subs_per_1k 1.64.
+- series_epic_indian (n=5): 311 views, subs_per_1k 2.64, 0 shares. Treat it as a niche subscriber play, not a reach driver.
+- by_country, walk_past, why_detail, india_asia and virality: not enough data yet (n=1-2 each).
 
 ## Per-video analyses
 
