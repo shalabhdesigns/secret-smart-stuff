@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-16 12:03 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-16 22:30 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - News topics got 6.58x the median views of film topics (pattern, n=5 vs 7). Film got more subs_per_1k (1.64 vs 0.63), so pair film with a stronger hook and payoff.
@@ -16,6 +16,32 @@ Updated 2026-11-16 12:03 UTC. Built from every published video's 48 h and 7 day 
 - by_country, walk_past, why_detail, india_asia and virality: not enough data yet (n=1-2 each).
 
 ## Per-video analyses
+
+### gimli-glider-v1 (7d) — at median
+- 1034 views · 66.18% viewed · 17 likes · 0 shares · 0 subs (median views 1243, n=21)
+- The Gimli Glider Short landed close to the channel median on reach (1,034 views vs 1,243) but held viewers better than usual (66.2% average viewed vs 57.5%), and it produced no shares, comments or subscribers; the Instagram Reel barely registered (52 views).
+  - ✅ Retention beat the channel median: average view percentage 66.18 vs 57.46, and average view duration 25s vs 21s, on a 37.6s video.
+  - ✅ The loop lead-in seems to have worked: the curve starts at 1.399 at 0.4s and is still above 1.0 at 4.1s (1.17), which points to rewatching or looping at the start.
+  - ✅ The story flattened out after about 24s, with 0.484 at 24.8s and 0.424 at 36.1s. Viewers who got through the 'under half the fuel' beat mostly stayed to the end.
+  - ✅ Likes were 17 vs a median of 13, so the people who watched liked it a bit more than usual.
+  - ✅ Engaged views were 481 of 1,034 views (about 47%), slightly below the median ratio (547 of 1,243, about 44%), so the viewer quality is similar to usual.
+  - ✅ The self-review scored accuracy 5 and loop 5, and the loop-style ending ('And it all began when...') matches the strong start of the retention curve.
+  - ❌ Reach was about 17% under the median (1,034 vs 1,243). Better retention did not turn into more views.
+  - ❌ No conversion: 0 comments, 0 shares and 0 subscribers gained (median 1). The self-review gave share a 4, but nothing was shared.
+  - ❌ The hook is one long, flat statistic ('In 1983, a 767 ran out of fuel at 41,000 feet.') that takes about 6s to say. Viewers fell from 1.17 at 4.1s to 0.977 at 6.0s, and by 9.8s only 0.79 were left.
+  - ❌ The kilograms-vs-pounds cause is the real 'secret' of the story, but it sits mid-video at 18.9s and viewers were still leaking there (0.615 to 0.547 between 17.3s and 19.2s).
+  - ❌ The learnings applied are mostly about other topics (Learjet ice and black box, Ramayana review blocks). Results landed at the median with no visible lift, so there is no sign they helped, and none can be promoted to a 'pattern'.
+  - ❌ The self-review's weakest scores were visual_credibility (3) and rewatch (3), and there was 1 replacement image.
+  - 📉 b1 @ 6.0 s: The statistic hook runs about 6s. Viewers who came in from the loop or replay leave once they realise nothing new has happened yet (1.17 at 4.1s to 0.977 at 6.0s).
+  - 📉 b3 @ 9.8 s: Over b3 and b4 (alarm over Ontario, then the engines quitting) retention fell from 0.875 to 0.79 and then 0.726 at 11.7s. The beats are plain narration of an event the hook had already given away.
+  - 📉 b7 @ 19.2 s: On 'Fuel was tracked in kilograms. The math used pounds.' retention fell from 0.615 to 0.547. The abstract unit-conversion explanation was probably hard to picture, and it came right after the Captain Pearson beat.
+  - 💡 [hook, hypothesis] Shorten the opening line to about 3-4s and open on the stakes ('A 767 lost both engines at 41,000 feet') instead of the date and the statistic, so the early loss between 4s and 10s shrinks.
+  - 💡 [story, hypothesis] Move the mistake (kilograms vs pounds) earlier, or tease it in the hook, and show it as a visual (two fuel gauges or a kg/lb label). The cause is the 'secret' this channel promises, so it should not wait until 19s.
+  - 💡 [loop, hypothesis] Keep the loop lead-in and the open-ended last line. The start of the curve was above 1.0 (1.399 at 0.4s), a sign of looping or rewatching. Test whether it also lifts views, since reach stayed under the median.
+  - 💡 [pacing, hypothesis] Combine or trim the b3 and b4 'alarm, then engines quit' beats, or add a new fact or visual change there, to stop the 0.875 to 0.726 slide between 7.9s and 11.7s.
+  - 💡 [title, hypothesis] The 'How did X run out of fuel mid-flight?' title gave typical reach and no shares or subscribers. Test a title that names the surprising cause or a debate question, which could prompt comments and shares.
+  - 💡 [visuals, hypothesis] Visual credibility scored 3 and one image had to be replaced. For real-event stories, use archive-style or clearly labelled images and check them for accuracy before the viewer reaches the key beat.
+  - 💡 [topic, hypothesis] Platform comparison: the Reel got 52 views, 40 reach, 1 like and a 65% skip rate, against 1,034 views on YouTube for the same video. The gap points to the Instagram audience or distribution, not the content. Judge topics on YouTube numbers and treat the Reel as a low-reach side channel.
 
 ### pilot-meals-v1 (48h) — below median
 - 150 views · 51.36999999999999% viewed · 3 likes · 0 shares · 0 subs (median views 382.5, n=24)
