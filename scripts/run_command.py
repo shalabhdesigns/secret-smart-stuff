@@ -629,7 +629,10 @@ def do_rerender(p: Pipeline, req: dict) -> int:
     if not j or not fetch_bundle(job, d) or not (d / "visuals.json").exists():
         alert(p, f"Pipeline problem: {job}", f"<!-- job:{job} -->\nNo saved media for {job}; a new version is needed.")
         return 1
-    p.state.db.execute("UPDATE jobs SET stage='visuals', status='failed', error=NULL WHERE id=?", (job,))
+    after = req.get("after", "visuals")          # the last stage to keep ("voice" re-makes the visuals too)
+    if after not in ("voice", "visuals"):
+        raise SystemExit("bad stage")
+    p.state.db.execute("UPDATE jobs SET stage=?, status='failed', error=NULL WHERE id=?", (after, job))
     p.state.db.commit()
     p.produce(j["topic_id"])
     j = p.state.get_job(job)
