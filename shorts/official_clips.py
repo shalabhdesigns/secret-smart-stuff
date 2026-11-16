@@ -35,8 +35,41 @@ def _dur(p: Path) -> float:
     return float(out or 0)
 
 
+VIDEOS_BASE = "https://media-rockstargames-com.akamaized.net/VI/downloads/videos"
+VIDEOS = {   # Rockstar's own direct downloads (rockstargames.com/VI/media/videos), 16 Nov 2026
+    "trailer_1": "GTAVI_Trailer_1",
+    "trailer_2": "GTAVI_Trailer_2",
+    "launch_trailer": "GTAVI_Launch_Trailer",
+    "extended_look": "GTAVI_An_Extended_Look",
+    "preload_now": "GTAVI_Pre-Load_Now",
+    "cover_art": "GTAVI_Official_Cover_Art_Landscape",
+}
+
+
 def sync() -> dict:
-    """Download the zip once, keep 1080p H.264 copies (no audio) in assets/official/clips/."""
+    """Stream each official video straight into a 1080p H.264 copy (no audio) in assets/official/clips/."""
+    CLIPS.mkdir(parents=True, exist_ok=True)
+    for slug, name in VIDEOS.items():
+        dst = CLIPS / f"{slug}.mp4"
+        if dst.exists() and _dur(dst) > 5:
+            continue
+        url = f"{VIDEOS_BASE}/{name}/{name}.mp4"
+        r = subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-user_agent", "Mozilla/5.0",
+                            "-headers", "Referer: https://www.rockstargames.com/\r\n", "-i", url, "-an",
+                            "-vf", "scale=-2:1080:flags=lanczos,fps=30", "-c:v", "libx264", "-preset", "veryfast",
+                            "-crf", "21", "-pix_fmt", "yuv420p", str(dst)], capture_output=True, text=True)
+        if r.returncode != 0:
+            print(f"  {slug}: FAILED {r.stderr[-300:]}")
+            dst.unlink(missing_ok=True)
+            continue
+        print(f"  {slug}: {_dur(dst):.1f} s")
+    for old in CLIPS.glob("*_video_clip.mp4"):
+        old.unlink()                       # the 1-second character clips from the zip are too short to use
+    return {"count": len(list(CLIPS.glob("*.mp4")))}
+
+
+def sync_zip() -> dict:
+    """(Unused since 16 Nov 2026: the zip only holds 1-second character clips.)"""
     CLIPS.mkdir(parents=True, exist_ok=True)
     have = sorted(CLIPS.glob("*.mp4"))
     if len(have) >= 5:
@@ -109,6 +142,63 @@ def contact_sheets(shots: dict, out: Path, per: int = 20) -> list[Path]:
     return sheets
 
 
+DESCRIBE = """These {n} numbered frames are shots from Rockstar's official GTA VI trailers (one frame per shot).
+For EACH number say in 6-14 plain words what the shot shows (who/what, place, action, time of day), so a video
+editor can pick it to match a line like "the box has no disc" or "Vice City at night". Name Jason or Lucia only if
+clearly them (Jason: man with short dark hair and beard; Lucia: woman with long dark hair).
+Mark "avoid" with a short reason when the shot is: a title card, logo, credits or mostly on-screen text; gun pointed
+at a person, shooting, blood or killing; nudity or sexual dancing; a black/blank or very blurry frame.
+Return JSON only: {{"shots": [{{"n": 1, "shows": "...", "avoid": ""}}, ...]}}"""
+
+
+def describe(shots: dict, per: int = 16) -> dict:
+    """Describe every shot with Claude (vision) so the writer can choose footage by meaning."""
+    import io
+    import os
+    from PIL import Image, ImageDraw
+    from shorts.config import load
+    from shorts.providers.llm import AnthropicLLM
+    cfg = load()
+    llm = AnthropicLLM(os.environ["ANTHROPIC_API_KEY"], cfg.pipeline["providers"]["llm"])
+    items = [(c, s, e) for c, lst in shots.items() for s, e in lst]
+    out: dict[str, dict] = {}
+    tmp = CLIPS / "_f.jpg"
+    usd = 0.0
+    for n in range(0, len(items), per):
+        chunk = items[n:n + per]
+        tw, th = 480, 270
+        sheet = Image.new("RGB", (tw * 4, th * ((len(chunk) + 3) // 4)), "black")
+        d = ImageDraw.Draw(sheet)
+        for i, (c, s, e) in enumerate(chunk):
+            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{(s + e) / 2:.2f}", "-i",
+                            str(CLIPS / f"{c}.mp4"), "-frames:v", "1", "-vf", f"scale={tw}:{th}", str(tmp)], check=True)
+            x, y = (i % 4) * tw, (i // 4) * th
+            sheet.paste(Image.open(tmp), (x, y))
+            d.rectangle([x, y, x + 34, y + 26], fill="yellow")
+            d.text((x + 6, y + 6), str(i + 1), fill="black")
+        buf = io.BytesIO()
+        sheet.save(buf, "JPEG", quality=80)
+        try:
+            r = llm.ask(DESCRIBE.format(n=len(chunk)), images=[buf.getvalue()], max_tokens=2500,
+                        model=cfg.pipeline["providers"]["llm"]["model_script"])
+            usd += r.usd
+            got = {int(x["n"]): x for x in (r.data or {}).get("shots", [])}
+        except Exception as ex:  # noqa: BLE001
+            print(f"  describe batch {n // per}: {ex}")
+            got = {}
+        for i, (c, s, e) in enumerate(chunk):
+            g = got.get(i + 1) or {}
+            if not g.get("shows"):
+                continue
+            sid = f"{c}_{int(s * 10):05d}"
+            out[sid] = {"clip": c, "start": s, "end": e, "shows": g["shows"].strip()}
+            if g.get("avoid"):
+                out[sid]["avoid"] = g["avoid"].strip()
+    tmp.unlink(missing_ok=True)
+    print(f"described {len(out)} of {len(items)} shots for ${usd:.2f}")
+    return out
+
+
 def shots_catalogue() -> dict:
     f = BASE / "shots.json"
     return json.loads(f.read_text()).get("shots", {}) if f.exists() else {}
@@ -150,5 +240,9 @@ if __name__ == "__main__":
         sh = detect_shots()
         (BASE / "shots_raw.json").write_text(json.dumps(sh, indent=1))
         print("shots:", {k: len(v) for k, v in sh.items()})
+        desc = describe(sh)
+        (BASE / "shots.json").write_text(json.dumps(
+            {"note": "Shots of Rockstar's official GTA VI videos (rockstargames.com/VI/media/videos), described by "
+                     "Claude from one frame each. 'avoid' = never use.", "shots": desc}, indent=1, ensure_ascii=False))
         if len(sys.argv) > 2:
             contact_sheets(sh, Path(sys.argv[2]))
