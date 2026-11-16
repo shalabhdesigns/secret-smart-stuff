@@ -1143,6 +1143,13 @@ class Pipeline:
                 clip, clip_from, clip_dir = Path(clips[first_key]["path"]), b_end - b_start, -1
             elif ck and not markers and img:
                 clip, clip_from = Path(ck["path"]), clip_cursor.get(img_key, 0.0)
+                if ck.get("official_clip"):
+                    # 16 Nov 2026: a reused trailer shot must show THAT shot again, not run on into the next one
+                    from shorts import official_clips as _oc
+                    _sh = _oc.shots_catalogue().get(ck["official_clip"]) or {}
+                    own = max(0.8, float(_sh.get("end", 0)) - float(_sh.get("start", 0)) - 0.1)
+                    if clip_from + min(b_end - b_start, own) > own:
+                        clip_from = 0.0
                 clip_cursor[img_key] = clip_from + (b_end - b_start)
             if clip and arrow:
                 arrow = None                          # still-based overlays would drift off target
