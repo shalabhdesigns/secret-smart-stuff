@@ -223,17 +223,30 @@ def best_match(text: str, exclude: set | None = None) -> str | None:
     return best
 
 
+def _letterbox(src: Path, t: float) -> str:
+    """Crop filter that removes cinema black bars (trailers are 2.39:1 inside 16:9), or '' if none."""
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-ss", f"{t:.2f}", "-i", str(src), "-t", "1.5",
+                        "-vf", "cropdetect=24:2:0", "-f", "null", "-"], capture_output=True, text=True)
+    found = re.findall(r"crop=(\d+):(\d+):(\d+):(\d+)", r.stderr)
+    if not found:
+        return ""
+    w, h, x, y = map(int, found[-1])
+    return f"crop={w}:{h}:{x}:{y}," if 300 < h < 1040 else ""
+
+
 def segment(shot_id: str, out: Path, seconds: float) -> Path:
-    """The shot as its own muted file, at least `seconds` long (runs on into the next shot if it is shorter)."""
+    """The shot as its own muted file, at least `seconds` long (runs on into the next shot if it is shorter).
+    Black bars are cropped off so the vertical frame is all picture."""
     sh = shots_catalogue()[shot_id]
     src = CLIPS / f"{sh['clip']}.mp4"
     if not src.exists():
         raise FileNotFoundError(f"official clip {sh['clip']} is not on this runner (run the official sync)")
     length = max(seconds + 0.3, 1.0)
     start = sh["start"] + 0.05
+    crop = _letterbox(src, start)
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{start:.2f}", "-i", str(src), "-t", f"{length:.2f}",
-                    "-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-pix_fmt", "yuv420p", str(out)],
-                   check=True)
+                    "-an", "-vf", f"{crop}scale=-2:1080", "-c:v", "libx264", "-preset", "veryfast", "-crf", "18",
+                    "-pix_fmt", "yuv420p", str(out)], check=True)
     return out
 
 
@@ -242,8 +255,10 @@ def still(shot_id: str, out: Path) -> Path:
     sh = shots_catalogue()[shot_id]
     src = CLIPS / f"{sh['clip']}.mp4"
     t = (sh["start"] + sh["end"]) / 2
+    crop = _letterbox(src, sh["start"] + 0.05)
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{t:.2f}", "-i", str(src), "-frames:v", "1",
-                    "-vf", "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920", str(out)], check=True)
+                    "-vf", f"{crop}scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920", str(out)],
+                   check=True)
     return out
 
 

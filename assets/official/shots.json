@@ -1,0 +1,1377 @@
+{
+ "note": "Shots of Rockstar's official GTA VI videos (rockstargames.com/VI/media/videos), described by Claude from one frame each. 'avoid' = never use. Trailer 1, Trailer 2 and Pre-Load shots described by Claude from contact sheets (16 Nov 2026).",
+ "shots": {
+  "cover_art_00000": {
+   "clip": "cover_art",
+   "start": 0.0,
+   "end": 32.67,
+   "shows": "GTA VI logo cover art collage on a dark purple background",
+   "avoid": "title card/logo"
+  },
+  "extended_look_00000": {
+   "clip": "extended_look",
+   "start": 0.0,
+   "end": 167.17,
+   "shows": "Two people from behind at a graffiti-covered elevator door in a dim hallway"
+  },
+  "extended_look_01671": {
+   "clip": "extended_look",
+   "start": 167.17,
+   "end": 169.67,
+   "shows": "Smiling shirtless tattooed man with dreadlocks and gold chains in a dim, smoky drug-cooking lab",
+   "avoid": "drugs"
+  },
+  "extended_look_01696": {
+   "clip": "extended_look",
+   "start": 169.67,
+   "end": 174.57,
+   "shows": "Woman with hoop earrings, man in white tee and tattooed man talking in a dim room"
+  },
+  "extended_look_01745": {
+   "clip": "extended_look",
+   "start": 174.57,
+   "end": 177.47,
+   "shows": "Gloved hands stirring pots among food boxes and supplies on a smoky lab table",
+   "avoid": "drugs"
+  },
+  "extended_look_01774": {
+   "clip": "extended_look",
+   "start": 177.47,
+   "end": 205.0,
+   "shows": "Tattooed dreadlocked man grinning, holding up a phone, workers at a table behind him"
+  },
+  "extended_look_02050": {
+   "clip": "extended_look",
+   "start": 205.0,
+   "end": 209.03,
+   "shows": "Two tattooed men in gold chains look at a phone together in a dim warehouse"
+  },
+  "extended_look_02090": {
+   "clip": "extended_look",
+   "start": 209.03,
+   "end": 211.73,
+   "shows": "Jason and Lucia standing in a dim room beside a lamp, looking wary"
+  },
+  "extended_look_02117": {
+   "clip": "extended_look",
+   "start": 211.73,
+   "end": 215.13,
+   "shows": "Man in white tank top beside dreadlocked man, both serious in a dark room"
+  },
+  "extended_look_02151": {
+   "clip": "extended_look",
+   "start": 215.13,
+   "end": 218.33,
+   "shows": "Masked, gloved workers cooking over steaming pots at a table in a hazy makeshift lab",
+   "avoid": "drugs"
+  },
+  "extended_look_02183": {
+   "clip": "extended_look",
+   "start": 218.33,
+   "end": 222.67,
+   "shows": "Dreadlocked man in the foreground, a couple standing wary behind him in a dark room"
+  },
+  "extended_look_02226": {
+   "clip": "extended_look",
+   "start": 222.67,
+   "end": 225.5,
+   "shows": "Phone lying on a dark scratched table showing an incoming call from Unknown"
+  },
+  "extended_look_02255": {
+   "clip": "extended_look",
+   "start": 225.5,
+   "end": 232.6,
+   "shows": "Tattooed man in gray sweatpants with a gold rifle hanging at his side, in the dark",
+   "avoid": "very dark frame, weapon in view"
+  },
+  "extended_look_02326": {
+   "clip": "extended_look",
+   "start": 232.6,
+   "end": 235.43,
+   "shows": "Low angle of a person's legs and sneakers by a folding chair and red bag, hazy room",
+   "avoid": "unclear, mostly dark and hard to read"
+  },
+  "extended_look_02354": {
+   "clip": "extended_look",
+   "start": 235.43,
+   "end": 236.97,
+   "shows": "Wide view of a smoky lab with people at a cluttered table under a hanging light",
+   "avoid": "drugs"
+  },
+  "extended_look_02369": {
+   "clip": "extended_look",
+   "start": 236.97,
+   "end": 246.17,
+   "shows": "Close-up of a bearded dreadlocked man with a bandana and gold chain, dark background"
+  },
+  "extended_look_02461": {
+   "clip": "extended_look",
+   "start": 246.17,
+   "end": 250.27,
+   "shows": "Shirtless man in underwear and a face mask against a wall, dark corridor, apparent blood",
+   "avoid": "possible blood or violence, partial undress"
+  },
+  "extended_look_02502": {
+   "clip": "extended_look",
+   "start": 250.27,
+   "end": 251.33,
+   "shows": "Smartphone on a dirty floor showing an incoming call from an unknown caller, dark"
+  },
+  "extended_look_02513": {
+   "clip": "extended_look",
+   "start": 251.33,
+   "end": 295.47,
+   "shows": "Man with a shoulder bag walking through a bright doorway into a tiled room, from behind"
+  },
+  "extended_look_02954": {
+   "clip": "extended_look",
+   "start": 295.47,
+   "end": 296.83,
+   "shows": "Armed man in tactical vest in a graffiti hallway, overturned chair, sparks flying, body on floor",
+   "avoid": "shooting, gun and body"
+  },
+  "extended_look_02968": {
+   "clip": "extended_look",
+   "start": 296.83,
+   "end": 302.1,
+   "shows": "Three people crouching and peeking around a corner by a graffiti-covered wall"
+  },
+  "extended_look_03021": {
+   "clip": "extended_look",
+   "start": 302.1,
+   "end": 324.27,
+   "shows": "Jason in a white t-shirt with a bag strap and Lucia crouching beside a graffiti wall, dim light"
+  },
+  "extended_look_03242": {
+   "clip": "extended_look",
+   "start": 324.27,
+   "end": 360.37,
+   "shows": "Person with a gun walking through a dim apartment lit by candles, green walls, night",
+   "avoid": "armed character, weapon HUD"
+  },
+  "extended_look_03603": {
+   "clip": "extended_look",
+   "start": 360.37,
+   "end": 364.9,
+   "shows": "Dark purple title card reading Rockstar Games Presents",
+   "avoid": "title card with text"
+  },
+  "extended_look_03649": {
+   "clip": "extended_look",
+   "start": 364.9,
+   "end": 369.3,
+   "shows": "Man in camo shorts stands by a red classic car in a sunny parking lot with an eagle mural, daytime",
+   "avoid": "possible gun aimed, uncertain"
+  },
+  "extended_look_03693": {
+   "clip": "extended_look",
+   "start": 369.3,
+   "end": 379.9,
+   "shows": "Glowing purple and orange VI logo on a dark background",
+   "avoid": "logo card"
+  },
+  "extended_look_03799": {
+   "clip": "extended_look",
+   "start": 379.9,
+   "end": 382.63,
+   "shows": "Woman in pink dress running along a Vice City street past a pickup and a delivery truck, daytime"
+  },
+  "extended_look_03826": {
+   "clip": "extended_look",
+   "start": 382.63,
+   "end": 384.43,
+   "shows": "Close-up of a fridge covered in magnets, photos and sticky notes, pink-lit kitchen"
+  },
+  "extended_look_03844": {
+   "clip": "extended_look",
+   "start": 384.43,
+   "end": 386.93,
+   "shows": "Tilted view of a messy bedroom with a pole, teddy bear, zebra rug and rose petals, sunlight",
+   "avoid": "pole suggests sexual dancing, ambiguous"
+  },
+  "extended_look_03869": {
+   "clip": "extended_look",
+   "start": 386.93,
+   "end": 389.4,
+   "shows": "Jason in a white tank top talking with Lucia in a pink-lit apartment bedroom"
+  },
+  "extended_look_03894": {
+   "clip": "extended_look",
+   "start": 389.4,
+   "end": 411.53,
+   "shows": "Woman in denim shorts lying on a pink bed looking at her phone"
+  },
+  "extended_look_04115": {
+   "clip": "extended_look",
+   "start": 411.53,
+   "end": 418.03,
+   "shows": "Man in dark open shirt standing in a teal room by a lit vanity mirror with a neon flamingo"
+  },
+  "extended_look_04180": {
+   "clip": "extended_look",
+   "start": 418.03,
+   "end": 445.17,
+   "shows": "Man seen from behind walking through a pink, tropical-wallpapered apartment hallway, daytime"
+  },
+  "extended_look_04451": {
+   "clip": "extended_look",
+   "start": 445.17,
+   "end": 450.13,
+   "shows": "Living-room TV showing a nervous cartoon bun character on a chair, dark screen"
+  },
+  "extended_look_04501": {
+   "clip": "extended_look",
+   "start": 450.13,
+   "end": 464.5,
+   "shows": "Same living-room TV showing a leafy tree branch against blue sky with birds"
+  },
+  "extended_look_04645": {
+   "clip": "extended_look",
+   "start": 464.5,
+   "end": 467.57,
+   "shows": "Wildlife meadow by a stream: elk, squirrel, small animals and a bird, sunny forest daytime"
+  },
+  "extended_look_04675": {
+   "clip": "extended_look",
+   "start": 467.57,
+   "end": 470.7,
+   "shows": "Close-up of a stag and curious rabbits in a sunny forest, daytime"
+  },
+  "extended_look_04707": {
+   "clip": "extended_look",
+   "start": 470.7,
+   "end": 478.67,
+   "shows": "Cartoon towering deli-meat sandwich with yellow topping on a wooden table outdoors, daytime"
+  },
+  "extended_look_04786": {
+   "clip": "extended_look",
+   "start": 478.67,
+   "end": 481.53,
+   "shows": "Sunny Vice City street with pink apartment building, palm trees and high-rise towers, daytime"
+  },
+  "extended_look_04815": {
+   "clip": "extended_look",
+   "start": 481.53,
+   "end": 483.57,
+   "shows": "Woman in magenta dress standing in a glass doorway, man's back in foreground, daytime"
+  },
+  "extended_look_04835": {
+   "clip": "extended_look",
+   "start": 483.57,
+   "end": 538.8,
+   "shows": "Red convertible stuck behind a big tanker truck on a sunny palm-lined street"
+  },
+  "extended_look_05388": {
+   "clip": "extended_look",
+   "start": 538.8,
+   "end": 544.07,
+   "shows": "Low angle of a person in pink falling or dangling off a bridge railing, high-rises behind, daytime",
+   "avoid": "possible violence or a person being thrown off a bridge"
+  },
+  "extended_look_05440": {
+   "clip": "extended_look",
+   "start": 544.07,
+   "end": 546.67,
+   "shows": "Man in blue shirt talking into a handheld device outside a pink storefront, people nearby, daytime"
+  },
+  "extended_look_05466": {
+   "clip": "extended_look",
+   "start": 546.67,
+   "end": 549.57,
+   "shows": "Group of people dancing provocatively on a drain grate in a dim covered area",
+   "avoid": "sexual dancing"
+  },
+  "extended_look_05495": {
+   "clip": "extended_look",
+   "start": 549.57,
+   "end": 551.33,
+   "shows": "Man in white tee and bandana aims shotgun toward camera, masked woman with gun beside him, palm trees, daytime",
+   "avoid": "guns pointed at camera/person"
+  },
+  "extended_look_05513": {
+   "clip": "extended_look",
+   "start": 551.33,
+   "end": 554.3,
+   "shows": "Night street with burning cars, man in red backpack aiming a gun at people",
+   "avoid": "shooting and gun pointed at people"
+  },
+  "extended_look_05543": {
+   "clip": "extended_look",
+   "start": 554.3,
+   "end": 560.8,
+   "shows": "Man in black tank top faces a woman in pink dress beside an old car at a motel, daytime"
+  },
+  "extended_look_05608": {
+   "clip": "extended_look",
+   "start": 560.8,
+   "end": 564.8,
+   "shows": "Person with bag seen from behind in a graffiti-covered ruined building, another person in the distance, ammo HUD",
+   "avoid": "likely armed confrontation (weapon HUD)"
+  },
+  "extended_look_06719": {
+   "clip": "extended_look",
+   "start": 671.9,
+   "end": 686.03,
+   "shows": "Two men talk on a rooftop terrace, one smoking, with a sunny Miami-style skyline behind them"
+  },
+  "extended_look_06860": {
+   "clip": "extended_look",
+   "start": 686.03,
+   "end": 694.37,
+   "shows": "Man and woman in a skeleton-back jacket, seen from behind, at a convenience store's glass doors at dusk"
+  },
+  "extended_look_06943": {
+   "clip": "extended_look",
+   "start": 694.37,
+   "end": 696.0,
+   "shows": "Woman in a red bandana mask and leather jacket pushes out of a store doorway, masked man behind her, daytime"
+  },
+  "extended_look_06960": {
+   "clip": "extended_look",
+   "start": 696.0,
+   "end": 701.83,
+   "shows": "Man stands by an old dark convertible on a dusty roadside with palm trees in golden-hour backlight"
+  },
+  "extended_look_07018": {
+   "clip": "extended_look",
+   "start": 701.83,
+   "end": 705.7,
+   "shows": "Man in a respirator mask and yellow gloves stands in a dim garage workshop beside a red tool chest"
+  },
+  "extended_look_07057": {
+   "clip": "extended_look",
+   "start": 705.7,
+   "end": 712.8,
+   "shows": "Woman in a skeleton-print jacket walks into a bright convenience store while a man crouches at the counter; game HUD visible"
+  },
+  "extended_look_07128": {
+   "clip": "extended_look",
+   "start": 712.8,
+   "end": 717.1,
+   "shows": "Masked man in a graphic tee holds a pistol behind a liquor store counter while a clerk leans over it",
+   "avoid": "gun pointed at a person during a robbery"
+  },
+  "extended_look_07171": {
+   "clip": "extended_look",
+   "start": 717.1,
+   "end": 718.9,
+   "shows": "Woman in a red bandana and cap and a man in a gray mask stand outside a Food Mart in daylight"
+  },
+  "extended_look_07189": {
+   "clip": "extended_look",
+   "start": 718.9,
+   "end": 720.67,
+   "shows": "Masked pair in caps and bandanas look down at the camera inside a bright convenience store"
+  },
+  "extended_look_07206": {
+   "clip": "extended_look",
+   "start": 720.67,
+   "end": 722.5,
+   "shows": "Low-angle shot of two bandana-masked people in caps under a gas station canopy on a sunny day"
+  },
+  "extended_look_07225": {
+   "clip": "extended_look",
+   "start": 722.5,
+   "end": 723.83,
+   "shows": "Man in a blue shirt aims a shotgun at the viewer, seen in a round convex store mirror",
+   "avoid": "gun pointed at a person"
+  },
+  "extended_look_07238": {
+   "clip": "extended_look",
+   "start": 723.83,
+   "end": 729.13,
+   "shows": "Heavyset man seen from behind walks through a dim, warm-lit convenience store with snack shelves; game HUD visible"
+  },
+  "extended_look_07291": {
+   "clip": "extended_look",
+   "start": 729.13,
+   "end": 731.63,
+   "shows": "Woman in a red bandana and white tank top raises an arm inside a car in bright sunlight"
+  },
+  "extended_look_07316": {
+   "clip": "extended_look",
+   "start": 731.63,
+   "end": 733.77,
+   "shows": "Man in a white shirt and khakis aims a shotgun in front of a Food Mart gas station, daytime",
+   "avoid": "gun aimed, shooting stance"
+  },
+  "extended_look_07337": {
+   "clip": "extended_look",
+   "start": 733.77,
+   "end": 735.13,
+   "shows": "Man seen from behind aims a shotgun across a sunny gas station lot with palm trees and parked cars",
+   "avoid": "gun aimed, shooting stance"
+  },
+  "extended_look_07351": {
+   "clip": "extended_look",
+   "start": 735.13,
+   "end": 744.67,
+   "shows": "Two men stand on a rooftop, one smoking, facing a hazy city skyline in daylight"
+  },
+  "extended_look_09994": {
+   "clip": "extended_look",
+   "start": 999.4,
+   "end": 1003.73,
+   "shows": "Three people at open van rear in an alley, man handing a duffel bag, daytime"
+  },
+  "extended_look_10037": {
+   "clip": "extended_look",
+   "start": 1003.73,
+   "end": 1008.1,
+   "shows": "Dark alley seen from inside van, man crouching, woman looking at phone, daytime"
+  },
+  "extended_look_10081": {
+   "clip": "extended_look",
+   "start": 1008.1,
+   "end": 1013.2,
+   "shows": "Man in backwards cap and woman look out from van down sunny palm-lined alley"
+  },
+  "extended_look_10132": {
+   "clip": "extended_look",
+   "start": 1013.2,
+   "end": 1017.2,
+   "shows": "Lucia in 'Baddie' crop top with a man behind her, in a sunny alley"
+  },
+  "extended_look_10172": {
+   "clip": "extended_look",
+   "start": 1017.2,
+   "end": 1019.67,
+   "shows": "View from beside van of sunny parking lot with palm trees, a motorcyclist, and parked cars"
+  },
+  "extended_look_10196": {
+   "clip": "extended_look",
+   "start": 1019.67,
+   "end": 1026.23,
+   "shows": "Man in cap and Lucia stand against a purple-tiled wall, looking wary, shade"
+  },
+  "extended_look_10262": {
+   "clip": "extended_look",
+   "start": 1026.23,
+   "end": 1029.87,
+   "shows": "Person on electric scooter passing colorful graffiti mural wall, ducks on sidewalk, daytime"
+  },
+  "extended_look_10298": {
+   "clip": "extended_look",
+   "start": 1029.87,
+   "end": 1033.0,
+   "shows": "Airboat speeding through green swamp waters with trees and a watchtower, daytime"
+  },
+  "extended_look_10330": {
+   "clip": "extended_look",
+   "start": 1033.0,
+   "end": 1036.03,
+   "shows": "Man in white tank top and cap shooting basketball under a weathered stilt house"
+  },
+  "extended_look_10360": {
+   "clip": "extended_look",
+   "start": 1036.03,
+   "end": 1038.7,
+   "shows": "Scuba diver silhouetted in underwater cave with light beams, teal water"
+  },
+  "extended_look_10387": {
+   "clip": "extended_look",
+   "start": 1038.7,
+   "end": 1042.2,
+   "shows": "Overhead view of Lucia bench pressing in a gym, green weight plates"
+  },
+  "extended_look_10422": {
+   "clip": "extended_look",
+   "start": 1042.2,
+   "end": 1045.0,
+   "shows": "Shirtless man in swim trunks at end of dock about to jump into ocean, sunny"
+  },
+  "extended_look_10450": {
+   "clip": "extended_look",
+   "start": 1045.0,
+   "end": 1046.9,
+   "shows": "Jet skis racing across water at sunset with Vice City skyline and palm trees"
+  },
+  "extended_look_10469": {
+   "clip": "extended_look",
+   "start": 1046.9,
+   "end": 1048.93,
+   "shows": "Binocular view of a man in a lit window, greenish night vision, zoom overlay",
+   "avoid": "blurry/dark binocular frame, voyeuristic"
+  },
+  "extended_look_10489": {
+   "clip": "extended_look",
+   "start": 1048.93,
+   "end": 1051.03,
+   "shows": "Person kayaking on city river with downtown Miami-style skyline and boats, daytime"
+  },
+  "extended_look_10510": {
+   "clip": "extended_look",
+   "start": 1051.03,
+   "end": 1061.8,
+   "shows": "Two men in green-lit light outside a club entrance at night, signs on door"
+  },
+  "extended_look_14634": {
+   "clip": "extended_look",
+   "start": 1463.47,
+   "end": 1464.9,
+   "shows": "Woman in dark outfit pressed against a wall by a man in a stairwell, tense confrontation, daytime",
+   "avoid": "Threatening physical confrontation, violence"
+  },
+  "extended_look_14649": {
+   "clip": "extended_look",
+   "start": 1464.9,
+   "end": 1472.37,
+   "shows": "Man in white suit and dark gloves leans on a stairwell railing, looking down, indoors"
+  },
+  "extended_look_14723": {
+   "clip": "extended_look",
+   "start": 1472.37,
+   "end": 1481.57,
+   "shows": "Man seen from behind in a nearly pitch-dark room, city lights faint in the distance, night",
+   "avoid": "Very dark, nearly blank frame"
+  },
+  "extended_look_14815": {
+   "clip": "extended_look",
+   "start": 1481.57,
+   "end": 1525.8,
+   "shows": "Dim office at night with glowing monitors, a silhouetted person holds a gun, city lights outside, game HUD visible",
+   "avoid": "Gun aimed, HUD on screen, very dark"
+  },
+  "extended_look_15258": {
+   "clip": "extended_look",
+   "start": 1525.8,
+   "end": 1537.3,
+   "shows": "Bloodied man lying on the floor, hands at his face, a woman crouching over him in a warehouse",
+   "avoid": "Blood and violence"
+  },
+  "extended_look_15373": {
+   "clip": "extended_look",
+   "start": 1537.3,
+   "end": 1548.5,
+   "shows": "Completely black frame",
+   "avoid": "Black/blank frame"
+  },
+  "extended_look_15485": {
+   "clip": "extended_look",
+   "start": 1548.5,
+   "end": 1550.73,
+   "shows": "Aerial view of a high-rise rooftop pool terrace with sunbathers, Vice City skyline behind, daytime"
+  },
+  "extended_look_15507": {
+   "clip": "extended_look",
+   "start": 1550.73,
+   "end": 1552.47,
+   "shows": "Three people fishing from a motorboat on calm green water near the shore, sunny day"
+  },
+  "extended_look_15524": {
+   "clip": "extended_look",
+   "start": 1552.47,
+   "end": 1556.4,
+   "shows": "Man in bucket hat sits in a neon-lit club booth while crowd members film with phones, night"
+  },
+  "extended_look_15564": {
+   "clip": "extended_look",
+   "start": 1556.4,
+   "end": 1558.0,
+   "shows": "Busy open-air hotel or restaurant corridor with patterned tile floor and people milling about, daytime"
+  },
+  "extended_look_15580": {
+   "clip": "extended_look",
+   "start": 1558.0,
+   "end": 1560.27,
+   "shows": "Two tattooed people sit at a table outside a graffitied motel, one raising a gun, bottles on the table",
+   "avoid": "Gun being handled and raised"
+  },
+  "extended_look_15602": {
+   "clip": "extended_look",
+   "start": 1560.27,
+   "end": 1565.93,
+   "shows": "Dark speedboat skimming across water beside a warehouse dock with palm trees, night",
+   "avoid": "Very dark"
+  },
+  "extended_look_15659": {
+   "clip": "extended_look",
+   "start": 1565.93,
+   "end": 1567.23,
+   "shows": "Street car meet in a parking lot with striped sports cars and stylish young people, palm trees, sunny day"
+  },
+  "extended_look_15672": {
+   "clip": "extended_look",
+   "start": 1567.23,
+   "end": 1568.33,
+   "shows": "Close-up of blue seaplane propeller and wing on the water, trees along the shore, daytime"
+  },
+  "extended_look_15683": {
+   "clip": "extended_look",
+   "start": 1568.33,
+   "end": 1569.87,
+   "shows": "Curly-haired man with a mustache in a blood-stained tank top holds a long tube on his shoulder, bright daylight",
+   "avoid": "Blood stains and weapon-like object"
+  },
+  "extended_look_15698": {
+   "clip": "extended_look",
+   "start": 1569.87,
+   "end": 1572.8,
+   "shows": "Vice City skyline silhouetted at sunset, orange sun glow over the city, helicopters in the sky"
+  },
+  "extended_look_15728": {
+   "clip": "extended_look",
+   "start": 1572.8,
+   "end": 1576.23,
+   "shows": "Man in floral shirt on boat deck, couple embracing beside him, daytime sea"
+  },
+  "extended_look_15762": {
+   "clip": "extended_look",
+   "start": 1576.23,
+   "end": 1608.07,
+   "shows": "Dark card with release date text, November 19, 2026",
+   "avoid": "mostly on-screen text, date card"
+  },
+  "launch_trailer_00000": {
+   "clip": "launch_trailer",
+   "start": 0.0,
+   "end": 2.67,
+   "shows": "Rockstar Games logo on black background",
+   "avoid": "logo card"
+  },
+  "launch_trailer_00026": {
+   "clip": "launch_trailer",
+   "start": 2.67,
+   "end": 9.97,
+   "shows": "Aerial view of Brian's Marina with boat storage racks beside the water, daytime"
+  },
+  "launch_trailer_00099": {
+   "clip": "launch_trailer",
+   "start": 9.97,
+   "end": 11.9,
+   "shows": "Two men working on a white yacht inside a boat shed, bright light"
+  },
+  "launch_trailer_00119": {
+   "clip": "launch_trailer",
+   "start": 11.9,
+   "end": 14.2,
+   "shows": "Jason, bearded man in cap and tank top, talking on phone at marina, daytime"
+  },
+  "launch_trailer_00142": {
+   "clip": "launch_trailer",
+   "start": 14.2,
+   "end": 15.17,
+   "shows": "Man stands on a dock looking at a seaplane on turquoise water, sunny"
+  },
+  "launch_trailer_00151": {
+   "clip": "launch_trailer",
+   "start": 15.17,
+   "end": 21.17,
+   "shows": "Vice City skyline at night, lit-up hotels and neon, aerial view",
+   "avoid": "faint Rockstar Games Presents text overlay"
+  },
+  "launch_trailer_00211": {
+   "clip": "launch_trailer",
+   "start": 21.17,
+   "end": 26.37,
+   "shows": "Grand Theft Auto VI logo on dark purple background",
+   "avoid": "logo or title card"
+  },
+  "launch_trailer_00263": {
+   "clip": "launch_trailer",
+   "start": 26.37,
+   "end": 27.83,
+   "shows": "Lucia leaning on door of a red convertible, man in sunglasses driving, city towers behind, daytime"
+  },
+  "launch_trailer_00278": {
+   "clip": "launch_trailer",
+   "start": 27.83,
+   "end": 29.4,
+   "shows": "Armed men wading through swamp water at sunset, silhouetted by mangroves",
+   "avoid": "armed men with guns, possible violence"
+  },
+  "launch_trailer_00294": {
+   "clip": "launch_trailer",
+   "start": 29.4,
+   "end": 32.8,
+   "shows": "Dark, moody shot of man in tactical vest touching his ear, green and red light",
+   "avoid": "very dark frame, armed tactical figure"
+  },
+  "launch_trailer_00328": {
+   "clip": "launch_trailer",
+   "start": 32.8,
+   "end": 35.07,
+   "shows": "Armed figure in tactical gear running down stairs in dark, smoky blue-lit room",
+   "avoid": "armed figure, dark and murky, possible shooting"
+  },
+  "launch_trailer_00350": {
+   "clip": "launch_trailer",
+   "start": 35.07,
+   "end": 36.47,
+   "shows": "Two silhouetted figures walk through a round vault door into a wrecked, debris-filled room",
+   "avoid": "dark and murky, possible robbery scene"
+  },
+  "launch_trailer_00364": {
+   "clip": "launch_trailer",
+   "start": 36.47,
+   "end": 38.0,
+   "shows": "Woman in warm sunset light by a window, wet hair, bare shoulders, silhouetted",
+   "avoid": "partial nudity, shower scene"
+  },
+  "launch_trailer_00380": {
+   "clip": "launch_trailer",
+   "start": 38.0,
+   "end": 39.0,
+   "shows": "Person with arms raised on a red-lit club stage, neon lights, night"
+  },
+  "launch_trailer_00390": {
+   "clip": "launch_trailer",
+   "start": 39.0,
+   "end": 40.43,
+   "shows": "Pickup truck on airport runway seen under a plane's landing gear, skyline at golden hour"
+  },
+  "launch_trailer_00404": {
+   "clip": "launch_trailer",
+   "start": 40.43,
+   "end": 42.33,
+   "shows": "Man in U.S. Army tee and woman lean on a maroon sports car by a container yard, daytime"
+  },
+  "launch_trailer_00423": {
+   "clip": "launch_trailer",
+   "start": 42.33,
+   "end": 45.07,
+   "shows": "Close-up of a bare hand and arm pressed on a dark wall beside a knob, indoors"
+  },
+  "launch_trailer_00450": {
+   "clip": "launch_trailer",
+   "start": 45.07,
+   "end": 46.97,
+   "shows": "Woman in jacket and jeans dancing in a club flooded with purple and magenta light"
+  },
+  "launch_trailer_00469": {
+   "clip": "launch_trailer",
+   "start": 46.97,
+   "end": 55.17,
+   "shows": "Helmeted rider on a dirt motorbike in a sunny alley with palm trees, daytime"
+  },
+  "launch_trailer_00551": {
+   "clip": "launch_trailer",
+   "start": 55.17,
+   "end": 57.07,
+   "shows": "Biplane trailing pink smoke over a crowded beach and city skyline, daytime"
+  },
+  "launch_trailer_00570": {
+   "clip": "launch_trailer",
+   "start": 57.07,
+   "end": 58.5,
+   "shows": "Shirtless muscular tattooed man lifting on a cable machine in a dim gym"
+  },
+  "launch_trailer_00585": {
+   "clip": "launch_trailer",
+   "start": 58.5,
+   "end": 59.9,
+   "shows": "Tattooed man in tank top lounging by a window with a snake on his arm, junk food nearby"
+  },
+  "launch_trailer_00599": {
+   "clip": "launch_trailer",
+   "start": 59.9,
+   "end": 63.17,
+   "shows": "Braided-hair person in armor vest on a rooftop ladder, explosion over the city at night",
+   "avoid": "armed person with explosion, gunfight action"
+  },
+  "launch_trailer_00631": {
+   "clip": "launch_trailer",
+   "start": 63.17,
+   "end": 67.07,
+   "shows": "Braided-hair person in tactical vest, moody close shot in dark teal light at night"
+  },
+  "launch_trailer_00670": {
+   "clip": "launch_trailer",
+   "start": 67.07,
+   "end": 68.53,
+   "shows": "Couple embracing on a balcony over the ocean at sunset"
+  },
+  "launch_trailer_00685": {
+   "clip": "launch_trailer",
+   "start": 68.53,
+   "end": 72.77,
+   "shows": "Person climbing on the side of a helicopter high above the city lights at night"
+  },
+  "launch_trailer_00727": {
+   "clip": "launch_trailer",
+   "start": 72.77,
+   "end": 73.8,
+   "shows": "Woman in cap aiming an assault rifle on a street, fireball behind her, daytime",
+   "avoid": "gun aimed, shooting and explosion"
+  },
+  "launch_trailer_00738": {
+   "clip": "launch_trailer",
+   "start": 73.8,
+   "end": 89.17,
+   "shows": "Vice City skyline at dusk with release date text, rating and platform logos",
+   "avoid": "title card with logos and on-screen text"
+  },
+  "preload_now_00000": {
+   "clip": "preload_now",
+   "start": 0.0,
+   "end": 5.2,
+   "shows": "black frame",
+   "avoid": "black frame"
+  },
+  "trailer_1_00232": {
+   "clip": "trailer_1",
+   "start": 23.27,
+   "end": 24.83,
+   "shows": "speedboat racing past a cargo ship and cranes in the port"
+  },
+  "trailer_1_00248": {
+   "clip": "trailer_1",
+   "start": 24.83,
+   "end": 27.43,
+   "shows": "woman dancing on a car roof at night on a city street"
+  },
+  "trailer_1_00274": {
+   "clip": "trailer_1",
+   "start": 27.43,
+   "end": 28.97,
+   "shows": "sunny street with colourful lowrider cars and a crowd"
+  },
+  "trailer_1_00289": {
+   "clip": "trailer_1",
+   "start": 28.97,
+   "end": 30.0,
+   "shows": "club with dancers (sexual dancing)",
+   "avoid": "club with dancers (sexual dancing"
+  },
+  "trailer_1_00300": {
+   "clip": "trailer_1",
+   "start": 30.0,
+   "end": 32.57,
+   "shows": "aerial view of Vice City at night, lights over the water"
+  },
+  "trailer_1_00325": {
+   "clip": "trailer_1",
+   "start": 32.57,
+   "end": 34.13,
+   "shows": "neon Ocean Drive at night, sports cars and crowds"
+  },
+  "trailer_1_00341": {
+   "clip": "trailer_1",
+   "start": 34.13,
+   "end": 35.67,
+   "shows": "packed nightclub crowd with a DJ under red lights"
+  },
+  "trailer_1_00356": {
+   "clip": "trailer_1",
+   "start": 35.67,
+   "end": 37.43,
+   "shows": "aerial view of a long bridge over turquoise sea to the Keys"
+  },
+  "trailer_1_00374": {
+   "clip": "trailer_1",
+   "start": 37.43,
+   "end": 39.8,
+   "shows": "woman in bikini posing on a rooftop pool (suggestive)",
+   "avoid": "woman in bikini posing on a rooftop pool (suggestive"
+  },
+  "trailer_1_00398": {
+   "clip": "trailer_1",
+   "start": 39.8,
+   "end": 41.33,
+   "shows": "giant VICE letters sign silhouetted at sunset"
+  },
+  "trailer_1_00413": {
+   "clip": "trailer_1",
+   "start": 41.33,
+   "end": 42.4,
+   "shows": "social-media style video: men partying on a boat (in-game app post)"
+  },
+  "trailer_1_00424": {
+   "clip": "trailer_1",
+   "start": 42.4,
+   "end": 43.9,
+   "shows": "social-media style video: man wrestling an alligator out of a backyard pool (in-game app post)"
+  },
+  "trailer_1_00439": {
+   "clip": "trailer_1",
+   "start": 43.9,
+   "end": 45.47,
+   "shows": "social video of a woman twerking on a car roof (suggestive)",
+   "avoid": "social video of a woman twerking on a car roof (suggestive"
+  },
+  "trailer_1_00454": {
+   "clip": "trailer_1",
+   "start": 45.47,
+   "end": 46.53,
+   "shows": "aerial night view of a car doing donuts in a crowd, smoke (street takeover)"
+  },
+  "trailer_1_00465": {
+   "clip": "trailer_1",
+   "start": 46.53,
+   "end": 47.53,
+   "shows": "social-media livestream of two people dancing in neon outfits with comments"
+  },
+  "trailer_1_00475": {
+   "clip": "trailer_1",
+   "start": 47.53,
+   "end": 48.6,
+   "shows": "security-camera view of a convenience store with an alligator walking in the door (Florida Man moment)"
+  },
+  "trailer_2_01188": {
+   "clip": "trailer_2",
+   "start": 118.83,
+   "end": 125.77,
+   "shows": "pickup truck with red tail lights on a dark misty street"
+  },
+  "trailer_2_01257": {
+   "clip": "trailer_2",
+   "start": 125.77,
+   "end": 126.73,
+   "shows": "busy Vice City street outside the Dominion Hotel, sports cars and people"
+  },
+  "trailer_2_01267": {
+   "clip": "trailer_2",
+   "start": 126.73,
+   "end": 129.37,
+   "shows": "strip club dancer in purple light",
+   "avoid": "strip club dancer in purple light"
+  },
+  "trailer_2_01293": {
+   "clip": "trailer_2",
+   "start": 129.37,
+   "end": 134.4,
+   "shows": "man on a TV screen in a living room with beer bottles"
+  },
+  "trailer_2_01344": {
+   "clip": "trailer_2",
+   "start": 134.4,
+   "end": 138.13,
+   "shows": "woman in an orange vest in a living room with a man on the sofa"
+  },
+  "trailer_2_01381": {
+   "clip": "trailer_2",
+   "start": 138.13,
+   "end": 139.1,
+   "shows": "helicopter chasing an airboat over the swamp"
+  },
+  "trailer_2_01391": {
+   "clip": "trailer_2",
+   "start": 139.1,
+   "end": 140.03,
+   "shows": "view from a helicopter cockpit over the swamp as a boat speeds below"
+  },
+  "trailer_2_01400": {
+   "clip": "trailer_2",
+   "start": 140.03,
+   "end": 141.83,
+   "shows": "Jason and Lucia jumping a jet ski over the waves, sunny"
+  },
+  "trailer_2_01418": {
+   "clip": "trailer_2",
+   "start": 141.83,
+   "end": 143.73,
+   "shows": "Jason riding a motorbike as a small plane flies low beside him"
+  },
+  "trailer_2_01437": {
+   "clip": "trailer_2",
+   "start": 143.73,
+   "end": 147.3,
+   "shows": "Lucia and Jason arguing in a dim motel bedroom"
+  },
+  "trailer_2_01473": {
+   "clip": "trailer_2",
+   "start": 147.3,
+   "end": 166.73,
+   "shows": "GTA VI logo end card",
+   "avoid": "GTA VI logo end card"
+  },
+  "trailer_1_00486": {
+   "clip": "trailer_1",
+   "start": 48.6,
+   "end": 49.9,
+   "shows": "bodycam view of police raid with gun",
+   "avoid": "bodycam view of police raid with gun"
+  },
+  "trailer_1_00499": {
+   "clip": "trailer_1",
+   "start": 49.9,
+   "end": 52.17,
+   "shows": "social video of a pickup truck at a gas station in a storm"
+  },
+  "trailer_1_00521": {
+   "clip": "trailer_1",
+   "start": 52.17,
+   "end": 53.97,
+   "shows": "social video of a man jumping off a green pickup under palm trees"
+  },
+  "trailer_1_00539": {
+   "clip": "trailer_1",
+   "start": 53.97,
+   "end": 55.0,
+   "shows": "nudity (man in garden)",
+   "avoid": "nudity (man in garden"
+  },
+  "trailer_1_00550": {
+   "clip": "trailer_1",
+   "start": 55.0,
+   "end": 57.33,
+   "shows": "mud party with woman in bikini (suggestive)",
+   "avoid": "mud party with woman in bikini (suggestive"
+  },
+  "trailer_1_00573": {
+   "clip": "trailer_1",
+   "start": 57.33,
+   "end": 59.53,
+   "shows": "social livestream of a man in a nightdress in a motel lot (neighbourhood watch)"
+  },
+  "trailer_1_00595": {
+   "clip": "trailer_1",
+   "start": 59.53,
+   "end": 60.47,
+   "shows": "violent fight in red light",
+   "avoid": "violent fight in red light"
+  },
+  "trailer_1_00604": {
+   "clip": "trailer_1",
+   "start": 60.47,
+   "end": 62.53,
+   "shows": "Jason driving a car past a billboard, hands on the wheel"
+  },
+  "trailer_1_00625": {
+   "clip": "trailer_1",
+   "start": 62.53,
+   "end": 63.57,
+   "shows": "Lucia with a red bandana holding cash in a car"
+  },
+  "trailer_1_00635": {
+   "clip": "trailer_1",
+   "start": 63.57,
+   "end": 64.57,
+   "shows": "in-game TV news 'LIVE' aerial of a flipped car crash in traffic (Weazel News)"
+  },
+  "trailer_1_00645": {
+   "clip": "trailer_1",
+   "start": 64.57,
+   "end": 65.63,
+   "shows": "in-game news about a prisoner with a face tattoo (Spanish text)"
+  },
+  "trailer_1_00656": {
+   "clip": "trailer_1",
+   "start": 65.63,
+   "end": 66.67,
+   "shows": "dirt bikes doing wheelies down a sunny suburban street"
+  },
+  "trailer_1_00666": {
+   "clip": "trailer_1",
+   "start": 66.67,
+   "end": 67.67,
+   "shows": "in-game TV news 'Dirt-bike dirt-bags' aerial of bikes and police on a city intersection"
+  },
+  "trailer_1_00676": {
+   "clip": "trailer_1",
+   "start": 67.67,
+   "end": 68.67,
+   "shows": "rapper posing by cars at night (in-game 'High Rollerz' magazine)"
+  },
+  "trailer_1_00686": {
+   "clip": "trailer_1",
+   "start": 68.67,
+   "end": 70.27,
+   "shows": "Lucia in a red bandana mask walking into a convenience store with Jason (robbery start)"
+  },
+  "trailer_1_00702": {
+   "clip": "trailer_1",
+   "start": 70.27,
+   "end": 72.83,
+   "shows": "red classic muscle car skidding in front of a pawn shop"
+  },
+  "trailer_1_00728": {
+   "clip": "trailer_1",
+   "start": 72.83,
+   "end": 76.5,
+   "shows": "Lucia leaning over Jason by a lamp in a motel room, intimate moment"
+  },
+  "trailer_1_00765": {
+   "clip": "trailer_1",
+   "start": 76.5,
+   "end": 90.03,
+   "shows": "GTA VI logo end card",
+   "avoid": "GTA VI logo end card"
+  },
+  "trailer_2_00000": {
+   "clip": "trailer_2",
+   "start": 0.0,
+   "end": 8.13,
+   "shows": "black Rockstar logo card",
+   "avoid": "black Rockstar logo card"
+  },
+  "trailer_2_00081": {
+   "clip": "trailer_2",
+   "start": 8.13,
+   "end": 9.8,
+   "shows": "stilt house in the Keys with a vintage car, sunny (Jason's home)"
+  },
+  "trailer_2_00098": {
+   "clip": "trailer_2",
+   "start": 9.8,
+   "end": 11.47,
+   "shows": "old man in a Hawaiian shirt walking up to a silver pickup truck"
+  },
+  "trailer_2_00114": {
+   "clip": "trailer_2",
+   "start": 11.47,
+   "end": 13.67,
+   "shows": "shirtless Jason climbing onto a roof by the water"
+  },
+  "trailer_2_00136": {
+   "clip": "trailer_2",
+   "start": 13.67,
+   "end": 18.83,
+   "shows": "old man in sunglasses and Hawaiian shirt gesturing by his pickup"
+  },
+  "trailer_2_00188": {
+   "clip": "trailer_2",
+   "start": 18.83,
+   "end": 23.27,
+   "shows": "view from a porch of a sunny Keys street with trucks"
+  },
+  "trailer_2_00232": {
+   "clip": "trailer_2",
+   "start": 23.27,
+   "end": 34.6,
+   "shows": "Jason in a cap and sunglasses driving, close-up"
+  },
+  "trailer_2_00346": {
+   "clip": "trailer_2",
+   "start": 34.6,
+   "end": 38.37,
+   "shows": "highway traffic into Vice City with green road signs and towers"
+  },
+  "trailer_2_00383": {
+   "clip": "trailer_2",
+   "start": 38.37,
+   "end": 41.6,
+   "shows": "man lifting weights at an outdoor beach gym, palm trees"
+  },
+  "trailer_2_00416": {
+   "clip": "trailer_2",
+   "start": 41.6,
+   "end": 45.27,
+   "shows": "couple walking into a shop carrying a cooler"
+  },
+  "trailer_2_00452": {
+   "clip": "trailer_2",
+   "start": 45.27,
+   "end": 49.83,
+   "shows": "driving past police cars and a colourful mural (from inside a car)"
+  },
+  "trailer_2_00498": {
+   "clip": "trailer_2",
+   "start": 49.83,
+   "end": 51.87,
+   "shows": "prison guard tower and razor-wire fence, sunny"
+  },
+  "trailer_2_00518": {
+   "clip": "trailer_2",
+   "start": 51.87,
+   "end": 60.57,
+   "shows": "man talking to an officer at a prison visitor window"
+  },
+  "trailer_2_00605": {
+   "clip": "trailer_2",
+   "start": 60.57,
+   "end": 63.1,
+   "shows": "man in a 'Let Freedom Reign' t-shirt walking through a prison yard"
+  },
+  "trailer_2_00631": {
+   "clip": "trailer_2",
+   "start": 63.1,
+   "end": 66.2,
+   "shows": "Lucia standing in a prison yard behind a fence at sunset"
+  },
+  "trailer_2_00662": {
+   "clip": "trailer_2",
+   "start": 66.2,
+   "end": 75.9,
+   "shows": "'Rockstar Games presents' title card",
+   "avoid": "'Rockstar Games presents' title card"
+  },
+  "trailer_2_00759": {
+   "clip": "trailer_2",
+   "start": 75.9,
+   "end": 79.5,
+   "shows": "dark blue close-up of two people embracing (night)"
+  },
+  "trailer_2_00795": {
+   "clip": "trailer_2",
+   "start": 79.5,
+   "end": 81.4,
+   "shows": "Jason and Lucia sharing a drink at an outdoor bar"
+  },
+  "trailer_1_00000": {
+   "clip": "trailer_1",
+   "start": 0.0,
+   "end": 2.67,
+   "shows": "ESRB rating card text",
+   "avoid": "ESRB rating card text"
+  },
+  "trailer_1_00026": {
+   "clip": "trailer_1",
+   "start": 2.67,
+   "end": 5.0,
+   "shows": "Vice City highway and skyline at a pink sunset, traffic"
+  },
+  "trailer_1_00050": {
+   "clip": "trailer_1",
+   "start": 5.0,
+   "end": 6.53,
+   "shows": "razor-wire prison fence at sunset"
+  },
+  "trailer_1_00065": {
+   "clip": "trailer_1",
+   "start": 6.53,
+   "end": 8.47,
+   "shows": "Lucia in an orange prison jumpsuit looking out a barred window"
+  },
+  "trailer_1_00084": {
+   "clip": "trailer_1",
+   "start": 8.47,
+   "end": 10.93,
+   "shows": "Lucia in an orange prison jumpsuit talking in an office"
+  },
+  "trailer_1_00109": {
+   "clip": "trailer_1",
+   "start": 10.93,
+   "end": 18.37,
+   "shows": "'Rockstar Games presents' text over Vice City beach skyline",
+   "avoid": "'Rockstar Games presents' text over Vice City beach skyline"
+  },
+  "trailer_1_00183": {
+   "clip": "trailer_1",
+   "start": 18.37,
+   "end": 21.73,
+   "shows": "airboat in golden swamp grass at sunrise (Everglades-like)"
+  },
+  "trailer_1_00217": {
+   "clip": "trailer_1",
+   "start": 21.73,
+   "end": 23.27,
+   "shows": "crowded sunny Vice City beach, people walking in swimwear"
+  },
+  "trailer_2_00814": {
+   "clip": "trailer_2",
+   "start": 81.4,
+   "end": 83.1,
+   "shows": "people sitting on a dock by boats at golden hour"
+  },
+  "trailer_2_00831": {
+   "clip": "trailer_2",
+   "start": 83.1,
+   "end": 85.1,
+   "shows": "sunset over the water from a wooden pier with string lights"
+  },
+  "trailer_2_00851": {
+   "clip": "trailer_2",
+   "start": 85.1,
+   "end": 86.0,
+   "shows": "boat workshop 'Brian's Boat Works' at night with a plane inside"
+  },
+  "trailer_2_00860": {
+   "clip": "trailer_2",
+   "start": 86.0,
+   "end": 88.23,
+   "shows": "roadside clean-up crew in orange vests with a police officer"
+  },
+  "trailer_2_00882": {
+   "clip": "trailer_2",
+   "start": 88.23,
+   "end": 89.5,
+   "shows": "Jason and Lucia standing in a small kitchen"
+  },
+  "trailer_2_00895": {
+   "clip": "trailer_2",
+   "start": 89.5,
+   "end": 92.0,
+   "shows": "busy neighbourhood bar at happy hour, signs on the walls"
+  },
+  "trailer_2_00920": {
+   "clip": "trailer_2",
+   "start": 92.0,
+   "end": 96.13,
+   "shows": "Lucia and Jason dancing in a crowded bar"
+  },
+  "trailer_2_00961": {
+   "clip": "trailer_2",
+   "start": 96.13,
+   "end": 97.67,
+   "shows": "Lucia in a green dress and Jason at a rooftop bar"
+  },
+  "trailer_2_00976": {
+   "clip": "trailer_2",
+   "start": 97.67,
+   "end": 99.67,
+   "shows": "close-up of Jason and Lucia holding hands"
+  },
+  "trailer_2_00996": {
+   "clip": "trailer_2",
+   "start": 99.67,
+   "end": 111.3,
+   "shows": "top-down view of a dark alley at night"
+  },
+  "trailer_2_01113": {
+   "clip": "trailer_2",
+   "start": 111.3,
+   "end": 117.1,
+   "shows": "man in green walking toward a motel with fire behind, night"
+  },
+  "trailer_2_01171": {
+   "clip": "trailer_2",
+   "start": 117.1,
+   "end": 118.83,
+   "shows": "Lucia firing from a truck window as police cars explode",
+   "avoid": "shooting"
+  },
+  "preload_now_00052": {
+   "clip": "preload_now",
+   "start": 5.2,
+   "end": 6.77,
+   "shows": "racer in a suit celebrating at a marina 'AudaCity' event, ferris wheel behind"
+  },
+  "preload_now_00067": {
+   "clip": "preload_now",
+   "start": 6.77,
+   "end": 9.03,
+   "shows": "GTA VI logo over a night street",
+   "avoid": "GTA VI logo over a night street"
+  },
+  "preload_now_00090": {
+   "clip": "preload_now",
+   "start": 9.03,
+   "end": 10.1,
+   "shows": "man in a bucket hat and sunglasses glaring by a window"
+  },
+  "preload_now_00101": {
+   "clip": "preload_now",
+   "start": 10.1,
+   "end": 11.2,
+   "shows": "violent fight in a pink-lit room",
+   "avoid": "violent fight in a pink-lit room"
+  },
+  "preload_now_00112": {
+   "clip": "preload_now",
+   "start": 11.2,
+   "end": 12.67,
+   "shows": "luxury yacht cruising along a sunny canal"
+  },
+  "preload_now_00126": {
+   "clip": "preload_now",
+   "start": 12.67,
+   "end": 17.57,
+   "shows": "armed crew moving through a dark stairwell",
+   "avoid": "weapons"
+  },
+  "preload_now_00175": {
+   "clip": "preload_now",
+   "start": 17.57,
+   "end": 18.57,
+   "shows": "man in a green tank top and sunglasses pointing in a beach house"
+  },
+  "preload_now_00185": {
+   "clip": "preload_now",
+   "start": 18.57,
+   "end": 29.13,
+   "shows": "logo and release date end card",
+   "avoid": "logo and release date end card"
+  }
+ }
+}
