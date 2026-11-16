@@ -507,7 +507,10 @@ class Pipeline:
                              est=0.08, web_search=True, model=rv_model, max_tokens=8000).data or {}
 
         rv = review(script, "review")
-        for round_ in range(2):
+        # 16 Nov 2026: footage videos lost good topics at this gate on small fixable points (a 9-word first line):
+        # give them 4 targeted repairs instead of 2 (each costs ~$0.25; no pictures are made yet)
+        n_repairs = 4 if (json.loads(topic.get("notes") or "{}") or {}).get("official_images") else 2
+        for round_ in range(n_repairs):
             if float(rv.get("total", 0)) >= bar and rv.get("verdict") != "reject":
                 break
             if rv.get("verdict") == "reject":
@@ -1379,6 +1382,11 @@ class Pipeline:
         hard = [f for f in flags if f.startswith("BLOCKING")]
         ok = (not c.get("blocking") and not hard and c.get("verdict") != "drop" and not c.get("unshowable")
               and all(sc.get(k, 0) >= v for k, v in self.CRITIC_PASS.items()) and mean >= self.CRITIC_MEAN)
+        # 16 Nov 2026: a video the critic says to SEND, with nothing blocking and solid facts, is not thrown away
+        # because one score is a point short (not-on-pc v1: verdict send, mean 3.89, hook 3 -> dropped)
+        if (not ok and c.get("verdict") == "send" and not c.get("blocking") and not hard and not c.get("unshowable")
+                and sc.get("accuracy", 0) >= 4 and sc.get("loop", 0) >= 3 and mean >= 3.5):
+            ok = True
         c.update(round=round_, mean=round(mean, 2), passed=ok, hard_flags=hard)
         hist = json.loads((d / "critique.json").read_text()) if (d / "critique.json").exists() else []
         hist.append(c)
