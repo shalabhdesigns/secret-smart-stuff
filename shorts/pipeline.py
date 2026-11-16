@@ -497,7 +497,7 @@ class Pipeline:
             lean = {"title": sc.get("title"),
                     "opening_line": (sc.get("scenes") or [{}])[0].get("narration", ""),
                     "scenes": sc.get("scenes"), "facts": sc.get("facts")}
-            if any(self._official_ref(v) for v in (sc.get("images") or {}).values()):
+            if any(self._official_ref(v) or str(v).upper().startswith("CLIP:") for v in (sc.get("images") or {}).values()):
                 lean["images"] = sc.get("images")      # official-image videos: the reviewer checks the image ids
             return self._llm(P.REVIEW.format(script=json.dumps(lean, ensure_ascii=False))
                              + (("\nThis video has its own approved format (judge it against this, not the default "
@@ -683,7 +683,15 @@ class Pipeline:
             if str(prompt_text).strip().upper().startswith("CLIP:"):
                 # owner (16 Nov 2026): GTA videos use Rockstar's own trailer footage, like the reference Shorts
                 from shorts import official_clips
-                shot_id = str(prompt_text).split(":", 1)[1].strip().split()[0]
+                shot_id = (str(prompt_text).split(":", 1)[1].strip().split() or [""])[0]
+                cat = official_clips.shots_catalogue()
+                if shot_id not in cat or cat[shot_id].get("avoid"):
+                    # an unknown or banned shot: use the closest usable one (never a black frame)
+                    alt = official_clips.best_match(f"{prompt_text} {first_focus.get(key, '')}",
+                                                    exclude=set(clip_keys.values()))
+                    self.state.log(f"{key}: shot '{shot_id}' not usable; using {alt}", "warn", job_id)
+                    shot_id = alt or shot_id
+                    images[key] = f"CLIP:{shot_id}"
                 try:
                     official_clips.still(shot_id, path)
                     out["images"][key] = {"path": str(path), "official": shot_id, "official_clip": shot_id,

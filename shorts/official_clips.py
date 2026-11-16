@@ -210,6 +210,19 @@ def shots_text() -> str:
                      for k, v in shots_catalogue().items() if not v.get("avoid"))
 
 
+def best_match(text: str, exclude: set | None = None) -> str | None:
+    """The usable shot whose description shares the most words with `text`."""
+    words = {w for w in re.findall(r"[a-z0-9]+", text.lower()) if len(w) > 2}
+    best, best_s = None, -1
+    for sid, it in shots_catalogue().items():
+        if it.get("avoid") or (exclude and sid in exclude) or it["end"] - it["start"] < 1.2:
+            continue
+        sc = len(words & set(re.findall(r"[a-z0-9]+", it["shows"].lower())))
+        if sc > best_s:
+            best, best_s = sid, sc
+    return best
+
+
 def segment(shot_id: str, out: Path, seconds: float) -> Path:
     """The shot as its own muted file, at least `seconds` long (runs on into the next shot if it is shorter)."""
     sh = shots_catalogue()[shot_id]

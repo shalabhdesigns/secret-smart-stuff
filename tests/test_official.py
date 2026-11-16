@@ -24,3 +24,22 @@ def test_visuals_line_credits_rockstar(tmp_path):
     assert "Rockstar Games" in Pipeline._visuals_line(tmp_path)
     (tmp_path / "visuals.json").write_text('{"images": {"img1": {}}}')
     assert "AI-generated" in Pipeline._visuals_line(Path(tmp_path))
+
+
+def test_clip_segment_and_still(tmp_path, monkeypatch):
+    import json
+    import subprocess
+    from shorts import official_clips as oc
+    monkeypatch.setattr(oc, "CLIPS", tmp_path)
+    monkeypatch.setattr(oc, "BASE", tmp_path)
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "testsrc=size=1920x1080:rate=30",
+                    "-t", "6", "-pix_fmt", "yuv420p", str(tmp_path / "trailer_x.mp4")], check=True)
+    (tmp_path / "shots.json").write_text(json.dumps({"shots": {
+        "trailer_x_00010": {"clip": "trailer_x", "start": 1.0, "end": 3.0, "shows": "a car on a beach road"},
+        "trailer_x_00030": {"clip": "trailer_x", "start": 3.0, "end": 6.0, "shows": "a gun fight", "avoid": "violence"}}}))
+    seg = oc.segment("trailer_x_00010", tmp_path / "s.mp4", 2.5)
+    assert 2.5 <= oc._dur(seg) <= 3.2
+    from PIL import Image
+    assert Image.open(oc.still("trailer_x_00010", tmp_path / "f.png")).size == (1080, 1920)
+    assert oc.best_match("car driving by the beach") == "trailer_x_00010"
+    assert "violence" not in oc.shots_text()
