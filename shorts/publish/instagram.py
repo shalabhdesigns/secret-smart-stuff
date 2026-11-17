@@ -64,6 +64,30 @@ def _kv_target() -> tuple[str, str, str] | None:
     return (tok, acc, ns) if tok and acc and ns else None
 
 
+KV_MAX = 24 * 1024 * 1024        # Cloudflare KV holds at most 25 MiB per value
+
+
+def _fit_for_kv(mp4: Path) -> Path:
+    """17 Nov 2026: footage videos are 27-35 MB (real motion compresses less than stills), over the 25 MiB the
+    Worker's store can hold, so their Reels failed. Re-encode a copy just under the limit (same picture, lower
+    bitrate; Instagram re-compresses anyway)."""
+    import subprocess
+    if mp4.stat().st_size <= KV_MAX:
+        return mp4
+    dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
+                                str(mp4)], capture_output=True, text=True).stdout.strip() or 40)
+    for target_mb in (22, 18, 14):
+        kbps = int(target_mb * 8 * 1024 / dur) - 160          # leave room for 160 kbps audio
+        out = mp4.with_name(f"ig_{target_mb}.mp4")
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(mp4), "-c:v", "libx264", "-preset", "medium",
+                        "-b:v", f"{kbps}k", "-maxrate", f"{int(kbps * 1.3)}k", "-bufsize", f"{kbps * 2}k",
+                        "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", str(out)],
+                       check=True)
+        if out.stat().st_size <= KV_MAX:
+            return out
+    return out
+
+
 def _kv_put(key: str, data: bytes | str, ttl: int | None = None) -> None:
     t = _kv_target()
     if not t:
@@ -345,6 +369,7 @@ def post(state, job_id: str, at_ts: float | None = None) -> dict:
     if not cont:
         with tempfile.TemporaryDirectory() as tmp:
             mp4, meta = _fetch(job_id, Path(tmp))
+            mp4 = _fit_for_kv(mp4)
             key = secrets.token_hex(16)
             _kv_put(f"media:{key}", mp4.read_bytes(), ttl=6 * 3600)
             url = f"{_worker_url(state)}/m/{key}.mp4"
