@@ -41,5 +41,7 @@ jobs:
           python -c 'import json,os,re,sys; j=os.environ["JOB"]; assert re.fullmatch(r"[a-z0-9-]{3,80}", j); json.dump({"action":"ig_one","job":j}, open(sys.argv[1],"w"))' "$RUNNER_TEMP/req.json"
           set -o pipefail
           python scripts/run_command.py "$RUNNER_TEMP/req.json" 2>&1 | tee "$RUNNER_TEMP/out.log"
+          # 17 Nov 2026: a Reel failed silently (the run "succeeded" with a problem in its output). Fail loudly.
+          if grep -q '"problems": \[[^]]' "$RUNNER_TEMP/out.log"; then echo "Reel not posted"; exit 1; fi
       - if: failure()
         run: python scripts/post_failure_log.py "$RUNNER_TEMP/out.log" "Run ${{ github.run_id }} failed (igpost)"
