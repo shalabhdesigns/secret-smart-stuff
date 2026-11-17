@@ -1029,6 +1029,21 @@ def main(path: str) -> int:
                              f"{notify.esc(c.get('summary', '')[:300])}")
         use_backup(p, job)
         return 0
+    if action == "ig_reschedule":
+        # 17 Nov 2026: move only the Instagram post of a video (e.g. Reels that failed and are now overdue)
+        # {"moves": {"job": "2026-11-17T12:30:00Z", ...}}
+        from shorts.publish import instagram as IG
+        done = {}
+        for job_id, when in (req.get("moves") or {}).items():
+            n = p.state.db.execute("UPDATE ig_posts SET publish_at=?, error=NULL WHERE job_id=? AND status='pending'",
+                                   (when, job_id)).rowcount
+            p.state.db.commit()
+            if n:
+                IG._kv_try(IG._kv_put, f"igdue:{job_id}", when, ttl=7 * 86400)
+            done[job_id] = f"Instagram at {when}" if n else "not pending"
+        print(json.dumps(done))
+        notify.send(p.state, "🕒 Instagram times:\n" + "\n".join(f"{k}: {v}" for k, v in done.items()), silent=True)
+        return 0
     if action == "reschedule":
         # move publish times of videos not yet public (YouTube + the Instagram queue + our records), and the planned
         # time of queued batch videos (topic notes). {"moves": {"job-or-topic": "2026-11-08T14:00:00Z", ...}}
