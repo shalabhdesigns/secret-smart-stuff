@@ -25,7 +25,8 @@
    "clip": "extended_look",
    "start": 169.67,
    "end": 174.57,
-   "shows": "Woman with hoop earrings, man in white tee and tattooed man talking in a dim room"
+   "shows": "Woman with hoop earrings, man in white tee and tattooed man talking in a dim room",
+   "avoid": "drugs"
   },
   "extended_look_01745": {
    "clip": "extended_look",
@@ -38,25 +39,29 @@
    "clip": "extended_look",
    "start": 177.47,
    "end": 205.0,
-   "shows": "Tattooed dreadlocked man grinning, holding up a phone, workers at a table behind him"
+   "shows": "Tattooed dreadlocked man grinning, holding up a phone, workers at a table behind him",
+   "avoid": "drugs"
   },
   "extended_look_02050": {
    "clip": "extended_look",
    "start": 205.0,
    "end": 209.03,
-   "shows": "Two tattooed men in gold chains look at a phone together in a dim warehouse"
+   "shows": "Two tattooed men in gold chains look at a phone together in a dim warehouse",
+   "avoid": "drugs"
   },
   "extended_look_02090": {
    "clip": "extended_look",
    "start": 209.03,
    "end": 211.73,
-   "shows": "Jason and Lucia standing in a dim room beside a lamp, looking wary"
+   "shows": "Jason and Lucia standing in a dim room beside a lamp, looking wary",
+   "avoid": "drugs"
   },
   "extended_look_02117": {
    "clip": "extended_look",
    "start": 211.73,
    "end": 215.13,
-   "shows": "Man in white tank top beside dreadlocked man, both serious in a dark room"
+   "shows": "Man in white tank top beside dreadlocked man, both serious in a dark room",
+   "avoid": "drugs"
   },
   "extended_look_02151": {
    "clip": "extended_look",
@@ -69,7 +74,8 @@
    "clip": "extended_look",
    "start": 218.33,
    "end": 222.67,
-   "shows": "Dreadlocked man in the foreground, a couple standing wary behind him in a dark room"
+   "shows": "Dreadlocked man in the foreground, a couple standing wary behind him in a dark room",
+   "avoid": "drugs"
   },
   "extended_look_02226": {
    "clip": "extended_look",
@@ -82,14 +88,14 @@
    "start": 225.5,
    "end": 232.6,
    "shows": "Tattooed man in gray sweatpants with a gold rifle hanging at his side, in the dark",
-   "avoid": "very dark frame, weapon in view"
+   "avoid": "drugs"
   },
   "extended_look_02326": {
    "clip": "extended_look",
    "start": 232.6,
    "end": 235.43,
    "shows": "Low angle of a person's legs and sneakers by a folding chair and red bag, hazy room",
-   "avoid": "unclear, mostly dark and hard to read"
+   "avoid": "drugs"
   },
   "extended_look_02354": {
    "clip": "extended_look",
@@ -102,14 +108,15 @@
    "clip": "extended_look",
    "start": 236.97,
    "end": 246.17,
-   "shows": "Close-up of a bearded dreadlocked man with a bandana and gold chain, dark background"
+   "shows": "Close-up of a bearded dreadlocked man with a bandana and gold chain, dark background",
+   "avoid": "drugs"
   },
   "extended_look_02461": {
    "clip": "extended_look",
    "start": 246.17,
    "end": 250.27,
    "shows": "Shirtless man in underwear and a face mask against a wall, dark corridor, apparent blood",
-   "avoid": "possible blood or violence, partial undress"
+   "avoid": "drugs"
   },
   "extended_look_02502": {
    "clip": "extended_look",
