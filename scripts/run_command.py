@@ -543,6 +543,15 @@ def do_produce(p: Pipeline, req: dict) -> int:
         # told once by report_failure; no failure issue/e-mail
         report_failure(p, job)
         return 0
+    if "credit balance is too low" in str(j.get("error") or ""):
+        # 17 Nov 2026: the Anthropic account ran dry and all 5 GTA videos of the day failed one by one. Keep the
+        # request (it restarts with the others) and tell the owner once, plainly.
+        hold_for_credits(p, req)
+        if not p.state.get_setting("anthropic_dry_told"):
+            p.state.set_setting("anthropic_dry_told", "1")
+            notify.send(p.state, "⚠️ The Anthropic API account is out of credit, so videos can't be written. "
+                                 "Add credit at console.anthropic.com → Settings → Billing; the held videos restart.")
+        return 0
     report_failure(p, job)
     return 1
 
