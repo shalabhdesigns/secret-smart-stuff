@@ -1624,6 +1624,107 @@
    "start": 1232.77,
    "end": 1260.6,
    "shows": "Man in green jacket walks along neon-lit Vice City street at night, parked SUV nearby"
+  },
+  "extended_look_07446": {
+   "clip": "extended_look",
+   "start": 744.67,
+   "end": 750.17,
+   "shows": "Vice City skyline at golden hour, rooftop crowd, helicopter and banner plane overhead"
+  },
+  "extended_look_07501": {
+   "clip": "extended_look",
+   "start": 750.17,
+   "end": 789.9,
+   "shows": "Car driving along a palm-lined Vice City highway at sunset with a minimap"
+  },
+  "extended_look_07899": {
+   "clip": "extended_look",
+   "start": 789.9,
+   "end": 820.13,
+   "shows": "Lucia and a man sit in a parked car, daytime, looking out the window"
+  },
+  "extended_look_08201": {
+   "clip": "extended_look",
+   "start": 820.13,
+   "end": 840.07,
+   "shows": "Masked man in a backwards cap in a car, glancing back, dim light"
+  },
+  "extended_look_08400": {
+   "clip": "extended_look",
+   "start": 840.07,
+   "end": 872.87,
+   "shows": "Player in a cap aims a rifle at a police car in a loading yard, wanted stars",
+   "avoid": "gun aimed and shooting at police, wanted-level HUD"
+  },
+  "extended_look_08728": {
+   "clip": "extended_look",
+   "start": 872.87,
+   "end": 874.0,
+   "shows": "Dark view from inside a car interior, dashboard and mirror, almost black",
+   "avoid": "very dark, nearly blank frame"
+  },
+  "extended_look_08740": {
+   "clip": "extended_look",
+   "start": 874.0,
+   "end": 881.63,
+   "shows": "Dark sedan parked at a parking garage entrance on a Miami-style street, daytime"
+  },
+  "extended_look_08816": {
+   "clip": "extended_look",
+   "start": 881.63,
+   "end": 900.53,
+   "shows": "Lucia gripping the steering wheel in a dim car, a man behind her"
+  },
+  "extended_look_12606": {
+   "clip": "extended_look",
+   "start": 1260.6,
+   "end": 1273.53,
+   "shows": "Partygoers in a neon-lit rooftop club at night; man in hat and sunglasses raises a hand"
+  },
+  "extended_look_12735": {
+   "clip": "extended_look",
+   "start": 1273.53,
+   "end": 1284.1,
+   "shows": "Group of dressed-up people talking near a colorful balloon arch at a night party"
+  },
+  "extended_look_12841": {
+   "clip": "extended_look",
+   "start": 1284.1,
+   "end": 1292.03,
+   "shows": "Man in brown jacket seen from behind faces several women inside a wood-paneled elevator"
+  },
+  "extended_look_12920": {
+   "clip": "extended_look",
+   "start": 1292.03,
+   "end": 1388.77,
+   "shows": "Dark office at night, two men in bright jackets examine a building model by city windows"
+  },
+  "extended_look_13887": {
+   "clip": "extended_look",
+   "start": 1388.77,
+   "end": 1395.17,
+   "shows": "Elderly man in bow tie and sunglasses raises a fist, a woman smiling beside him at a party"
+  },
+  "extended_look_13951": {
+   "clip": "extended_look",
+   "start": 1395.17,
+   "end": 1449.27,
+   "shows": "Silhouetted man aims a pistol down a dim hallway toward a window; bloodstains on floor, HUD visible",
+   "avoid": "gun pointed, blood, game HUD on screen"
+  },
+  "extended_look_14492": {
+   "clip": "extended_look",
+   "start": 1449.27,
+   "end": 1450.43,
+   "shows": "Two armed men in white suits and masks crouch inside an elevator",
+   "avoid": "armed men aiming guns, violent scene"
+  },
+  "extended_look_14504": {
+   "clip": "extended_look",
+   "start": 1450.43,
+   "end": 1463.47,
+   "shows": "Dark blue-lit corridor with a dim silhouetted woman standing near a door",
+   "avoid": "very dark, nearly unreadable frame"
   }
  }
 }
