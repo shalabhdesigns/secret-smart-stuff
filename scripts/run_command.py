@@ -1108,6 +1108,9 @@ def main(path: str) -> int:
     if action == "credit_hold":
         # park planned videos until credits are back (they restart from the analytics run)
         for it in req.get("items") or []:
+            if it.get("queue_nonce") and not it.get("topic"):     # look the queued item up (17 Nov 2026)
+                full = _queue_item(it["queue_nonce"]) or {}
+                it = {"queue_nonce": it["queue_nonce"], "nonce": it["queue_nonce"], "topic": full.get("topic")}
             hold_for_credits(p, it)
         print(p.state.get_setting("credit_held")[:500])
         return 0

@@ -1,0 +1,35 @@
+# 17 Nov 2026: a day's videos stopped because the Anthropic balance ran out, and nothing restarted them until
+# someone noticed. Every 15 minutes, while any video is held for credits, check whether the services can pay again
+# and restart the held videos at once. When nothing is held it stops after reading the state (about a minute).
+name: creditwatch
+on:
+  schedule:
+    - cron: "7,22,37,52 * * * *"
+  workflow_dispatch:
+concurrency: { group: shorts-state, cancel-in-progress: false, queue: max }
+permissions: { contents: write }
+jobs:
+  watch:
+    if: vars.SHORTS_MODE == 'live'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      SHORTS_MODE: live
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      BFL_API_KEY: ${{ secrets.BFL_API_KEY }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      GH_TOKEN: ${{ github.token }}
+      GH_DISPATCH_TOKEN: ${{ secrets.GH_DISPATCH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v5
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -q -r requirements.txt
+      - run: scripts/state_sync.sh pull
+      - id: w
+        run: |
+          python -c 'import json; from shorts.pipeline import Pipeline; from shorts.config import load; from shorts.dispatch import resume_credit_held; p = Pipeline(load()); r = resume_credit_held(p.state); print(json.dumps(r)); open("result.json","w").write(json.dumps(r))'
+          echo "restarted=$(python -c 'import json; print(1 if json.load(open("result.json")).get("restarted") else 0)')" >> "$GITHUB_OUTPUT"
+      - if: steps.w.outputs.restarted == '1'
+        run: scripts/state_sync.sh push

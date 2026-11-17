@@ -41,21 +41,58 @@ def resume_paused(state) -> list[str]:
     return started
 
 
+def anthropic_ok() -> bool | None:
+    """True if the Anthropic account can pay for a call right now; False if it is out of credit; None if unknown.
+    A one-token Haiku call (a tiny fraction of a cent). 17 Nov 2026: a day's 5 videos stopped on an empty balance."""
+    key = os.environ.get("ANTHROPIC_API_KEY", "")
+    if not key:
+        return None
+    try:
+        r = requests.post("https://api.anthropic.com/v1/messages", timeout=30,
+                          headers={"x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json"},
+                          json={"model": "claude-haiku-5-5", "max_tokens": 1, "messages": [{"role": "user", "content": "hi"}]})
+    except requests.RequestException:
+        return None
+    if r.status_code == 200:
+        return True
+    return False if "credit balance" in r.text.lower() else None
+
+
+def _travel(item: dict) -> dict:
+    """A held item that lives in config/daily_queue.json travels as its nonce (dispatch limit 65 KB)."""
+    from pathlib import Path
+    qf = Path(__file__).resolve().parent.parent / "config" / "daily_queue.json"
+    if item.get("queue_nonce"):
+        return {"queue_nonce": item["queue_nonce"]}
+    if item.get("nonce") and qf.exists() and any(q.get("nonce") == item["nonce"]
+                                                 for q in json.loads(qf.read_text()).get("queue") or []):
+        return {"queue_nonce": item["nonce"]}
+    return {k: v for k, v in item.items() if k != "then"}
+
+
 def resume_credit_held(state) -> dict:
-    """Restart videos held for low credits once the picture and voice credits can pay for them (~$0.80 of pictures
-    each). Runs with every analytics pass, so a top-up restarts them within 6 hours."""
+    """Restart videos held for low credits once the services can pay for them: Anthropic must answer, and the
+    picture credits must cover ~$0.80 a video. Runs with every analytics pass and every 15 minutes from
+    creditwatch.yml while anything is held, so a top-up restarts them within minutes."""
     held = json.loads(state.get_setting("credit_held") or "[]")
     if not held:
         return {"held": 0}
-    import os
+    if anthropic_ok() is False:
+        return {"held": len(held), "waiting": "Anthropic credit"}
     from . import usage
     b = usage.bfl(os.environ.get("BFL_API_KEY", "")) if os.environ.get("BFL_API_KEY") else {}
     if b.get("source") == "measured" and b.get("usd_left", 0) < 0.8 * len(held):
         return {"held": len(held), "waiting": f"BFL ${b.get('usd_left')}"}
-    # skip ones whose publish time has passed (they'd go out at the next free slot instead)
-    head = dict(held[0])
-    head["then"] = held[1:]
+    chain = [_travel(h) for h in held]
+    head = dict(chain[0])
+    head["then"] = chain[1:]
     if dispatch(head):
         state.set_setting("credit_held", "[]")
+        state.set_setting("anthropic_dry_told", "")
+        try:
+            from . import notify
+            notify.send(state, f"✅ Credits are back. Restarting {len(held)} held video(s) now.")
+        except Exception:  # noqa: BLE001
+            pass
         return {"restarted": len(held)}
     return {"held": len(held), "dispatch": "failed"}
