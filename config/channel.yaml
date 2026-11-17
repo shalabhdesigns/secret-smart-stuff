@@ -19,7 +19,7 @@ instagram:
 
 voice:
   provider: elevenlabs
-  voice_id: Xb7hH8MSUJpSbSDYk0k2   # Alice (premade) - chosen by owner 2026-10-24
+  voice_id: UgBBYS2sOqTuMpoF3BR0   # "Mark - Natural Conversations" (Voice Library) - owner 2026-11-18 (was Alice Xb7hH8MSUJpSbSDYk0k2)
   model_id: eleven_v4
   backup_voice_id: null             # premade voices are not removed; set one if Alice is ever unavailable
   pronunciations: {}                # e.g. {"tiffin": "TIF-in"}

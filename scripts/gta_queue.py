@@ -53,6 +53,44 @@ CRITIC = ("\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer foota
           "the first second has no hook, if the middle has filler, if there is no payoff, if a person/place/action "
           "line shows something clearly different (abstract lines like prices or sizes are carried by the callout "
           "over on-mood footage: that is fine, never BLOCKING), if a rumour is stated as fact, or if a price, date or size is not in the sources.")
+# 18 Nov 2026 (owner): "the voiceovers feel unnatural, the sentence construction is bad, the script is confusing,
+# the dialogues do not convey what they want to say ... do not shy away from making the videos longer."
+# Story format: natural spoken sentences, 45-70 s, no loop lead-in (shorts/prompts.py STORY_*).
+RULES_STORY = (
+    "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\n"
+    "The owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what "
+    "they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing "
+    "they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people "
+    "NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\n"
+    "BAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced "
+    "lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\n"
+    "GOOD: 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of "
+    "them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\n"
+    "FOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly "
+    "'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover "
+    "v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about "
+    "GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different "
+    "shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\n"
+    "SHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action "
+    "shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) "
+    "show on-mood footage with the number as a short callout.\n"
+    "REAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, and "
+    "put their name in that beat's callout (e.g. 'ROB NELSON, ROCKSTAR'). Never invent or reword a quote.\n"
+    "FOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved "
+    "pictures (commentary on the game), not 'a brand or logo as the subject'.\n"
+    "FACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say "
+    "plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE "
+    "asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our "
+    "gameplay.\n"
+    "LENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\n"
+    "VERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\n"
+    "LOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n")
+CRITIC_STORY = ("\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and "
+                "that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any "
+                "sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build "
+                "doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly "
+                "different, or if a rumour is stated as fact.")
+
 COVER = ("The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off "
          "faces.")
 
@@ -168,8 +206,8 @@ def build():
         if tid in FORMATS:
             angle += " FORMAT FOR THIS VIDEO (its own look and feel): " + FORMATS[tid]
         notes = {"object": "official GTA 6 footage", "question": title, "angle": angle,
-                 "format_rules": RULES + tail, "critic_rules": CRITIC, "official_images": "required",
-                 "open_hook": True, "words": [56, 66], "cover_rule": COVER,
+                 "format_rules": RULES_STORY + tail, "critic_rules": CRITIC_STORY, "official_images": "required",
+                 "open_hook": True, "words": [110, 170], "cover_rule": COVER, "style": "story",
                  "publish_at": at, "batch": "gta6-launch-footage",
                  # 17 Nov 2026: GTA videos went out as Education (27) with generic tags; Gaming (20) + GTA search terms
                  "seo": {"category_id": "20", "hashtags": ["#GTA6", "#GTAVI", "#GrandTheftAuto6"],

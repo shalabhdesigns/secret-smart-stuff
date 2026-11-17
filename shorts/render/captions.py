@@ -138,7 +138,14 @@ def words_from_char_alignment(chars: list[str], starts: list[float], ends: list[
     """Convert ElevenLabs-style character alignment into word timings."""
     words: list[Word] = []
     buf, ws, we = "", None, None
+    tag = False             # 18 Nov 2026: audio tags like [curious] are directions to the voice, never caption words
     for c, s, e in zip(chars, starts, ends):
+        if c == "[":
+            tag = True
+            continue
+        if tag:
+            tag = c != "]"
+            continue
         if c.isspace():
             if buf:
                 words.append(Word(buf, ws, we))  # type: ignore[arg-type]

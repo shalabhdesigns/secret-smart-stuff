@@ -56,6 +56,11 @@
   `shorts/official_clips.py`, scenes `CLIP:<shot>`; creators' own CC-licensed footage only with permission). Official
   or free stills only when no footage fits; Black Forest Labs images only as a last resort when genuinely needed.
   Story first: hook in the first second, escalating reveals, a "wow" payoff, a comment question, a seamless loop.
+- **Story format + natural voice** (owner, 18 Nov 2026): the old scripts were "unnatural, badly built, confusing".
+  GTA videos use `notes.style: "story"` (`shorts/prompts.py` STORY_*): a real person telling a friend a story, natural
+  complete sentences clear on one listen, hook -> escalating reveals -> wow payoff -> comment question, 45-70 s
+  (110-170 words), no loop lead-in, real Rockstar/Take-Two quotes word for word. Voice: "Mark - Natural
+  Conversations" (ElevenLabs Voice Library, eleven_v4) with up to 5 delivery tags per video.
 - **GTA 6 launch week: 5 videos a day** (owner, 16 Nov 2026), every 3 h over the US day (14:00, 17:00, 20:00,
   23:00, 02:00 UTC). Review the numbers after 7 days: 8 a day if views per video hold, back to 3 if they fall.
 - **Flag cost and policy risks before spending.** Never claim something works until it has been tested.

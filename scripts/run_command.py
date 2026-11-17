@@ -752,6 +752,9 @@ def main(path: str) -> int:
             raise SystemExit(f"queued item {req['queue_nonce']} not found in config/daily_queue.json")
         full.pop("day", None)
         full["then"] = req.get("then") or []
+        for k in ("hold", "test_while_held", "publish_at"):      # 18 Nov 2026: a held sample of a queued video
+            if k in req:
+                full[k] = req[k]
         req = full
     action = req.get("action")
     p = Pipeline(load())

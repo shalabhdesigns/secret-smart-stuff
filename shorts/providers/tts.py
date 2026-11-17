@@ -47,6 +47,10 @@ class ElevenLabsTTS:
             if r.status_code in (429, 500, 502, 503):
                 time.sleep(5 * (2 ** attempt))
                 continue
+            if r.status_code in (400, 404) and "voice" in r.text.lower() and not getattr(self, "_added", False):
+                self._added = True          # a Voice Library voice must be in the account first (18 Nov 2026: Mark)
+                if self._add_shared():
+                    continue
             if r.status_code != 200:
                 raise TTSError(f"ElevenLabs {r.status_code}: {r.text[:300]}")
             j = r.json()
@@ -64,6 +68,31 @@ class ElevenLabsTTS:
             chars = int(billed) if str(billed or "").isdigit() else len(text)
             return Speech(out, words, dur, chars / 1000 * self.rate, chars)
         raise TTSError("ElevenLabs kept failing")
+
+
+def _shared_lookup(key: str, voice_id: str) -> dict | None:
+    for q in ({"voice_id": voice_id}, {}):
+        try:
+            r = requests.get("https://api.elevenlabs.io/v1/shared-voices", headers={"xi-api-key": key},
+                             params={"page_size": 100, **q}, timeout=30)
+        except requests.RequestException:
+            return None
+        for v in (r.json().get("voices") or []) if r.ok else []:
+            if v.get("voice_id") == voice_id:
+                return v
+    return None
+
+
+def _add_shared_voice(key: str, voice_id: str) -> bool:
+    v = _shared_lookup(key, voice_id)
+    if not v or not v.get("public_owner_id"):
+        return False
+    r = requests.post(f"https://api.elevenlabs.io/v1/voices/add/{v['public_owner_id']}/{voice_id}",
+                      headers={"xi-api-key": key}, json={"new_name": v.get("name") or voice_id}, timeout=30)
+    return r.ok
+
+
+ElevenLabsTTS._add_shared = lambda self: _add_shared_voice(self.key, self.voice)
 
 
 class FakeTTS:

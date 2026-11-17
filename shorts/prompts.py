@@ -326,3 +326,139 @@ This is a NEWS TIE-IN video about the Learjet crash in Florida. Also treat these
 a crash, wreckage, fire, smoke, crash site, emergency vehicles or victims; any line that suggests what caused this
 crash; a missing line saying the cause is not known; jokes about the crash; victim names; sensational wording.
 """
+
+
+# ---- STORY format (owner, 18 Nov 2026) --------------------------------------------------------------------------
+# The owner: the voice sounded like AI, sentences were badly built, scripts were confusing and lines didn't say what
+# they meant ("Game Boy Color GTA 2 added two." / "Power Up Gaming: first fully written, voiced lead."). The 5-9-word
+# beat rule and the "Now you know the answer to..." loop produced telegraphic fragments. A topic with
+# notes.style == "story" uses these prompts instead: a real storyteller talking to a friend, longer when needed.
+
+STORY_SCRIPT = """TASK: script
+Write one YouTube Short / Instagram Reel as a STORY told out loud by a real person: a sharp, funny friend who knows
+games and is telling you something genuinely surprising. It must sound like a human talking, never like a list of
+facts read by a machine.
+Topic: {question}
+Angle and verified facts: {angle}
+Length: {words_lo}-{words_hi} words of narration (about {seconds_lo}-{seconds_hi} seconds). Use the length the story
+needs inside that range; never pad.
+
+HOW IT MUST SOUND (this is the most important part):
+- Write the whole narration first as one flowing spoken story, then split it into beats.
+- Every sentence is a complete, natural English sentence with a subject and a verb, the way people actually talk:
+  contractions (it's, you'd, they're), connecting words (so, but, and then, here's the thing, turns out).
+- ONE idea per sentence. A viewer who hears it ONCE, with no captions, must understand every sentence. If a
+  sentence needs to be read twice, rewrite it.
+- Never stack nouns or numbers ("Game Boy Color GTA 2 added two"), never "Label: fact" lines ("Power Up Gaming:
+  first lead"), never telegraph-style fragments. At most two deliberate one-word punches ("Nope." "Exactly.").
+- Name a source only when it adds trust, in plain words ("Rockstar says", "Take-Two's boss said", "a former Rockstar
+  developer revealed"). Never name a website mid-sentence; sources go in "facts" and the description.
+- When the brief has a REAL PERSON'S QUOTE (a Rockstar or Take-Two person), use it: say who they are, then their
+  exact words ("Rockstar's Rob Nelson put it like this: 'We're always semi-undercover.'"). Put the speaker's name in
+  that beat's "callout" (e.g. "ROB NELSON, ROCKSTAR"). Quotes must be word-for-word from the brief.
+- Light, natural humour where it fits (1-2 lines), never forced.
+
+STRUCTURE (a story, not a fact list):
+1. HOOK (sentence 1, max 12 words): a surprising claim, a contradiction or a mystery that creates a question the
+   viewer NEEDS answered. Say "GTA 6" in the first two sentences. No intro, no "did you know".
+2. SETUP (1-2 sentences): the context, so everyone can follow.
+3. BUILD (2-4 reveals): each one more surprising than the last. End a reveal with a small open loop when it helps
+   ("But that's not even the weird part.").
+4. PAYOFF: the wow moment, stated plainly. It must answer the hook.
+5. ENDING: one short question people genuinely want to answer in the comments (two clear sides). No "subscribe",
+   and NO loop lead-in ("Now you know the answer to..." is banned).
+
+VOICE DELIVERY: the voice model reads audio tags. On up to 5 beats, set "delivery" to ONE tag that fits how a person
+would say that line: "curious", "excited", "serious", "surprised", "laughs softly", "whispers", "short pause",
+"sarcastic". Never put tags inside the narration text itself.
+
+BEATS AND PICTURES:
+- Split the story into {beats_lo}-{beats_hi} beats. A beat is one sentence (or two very short ones), 2-5 seconds.
+  Never cut a sentence in the middle.
+- Every beat's "image" key points to a picture in "images". Picture rules are in the overrides below (official
+  footage shots, 'CLIP:<shot_id>'). Each beat shows what its words are about; change the shot every beat.
+- "callout": 1-4 words on screen, only for a number, a name or a key term (at most 6 beats). "pop": one emphatic
+  spoken word, at most 2 beats. No markers, no arrows, no cards.
+- "hook_card": 2-4 words for the thumbnail.
+
+FACTS: use the verified brief's facts and wording first. Never state a rumour as fact. If a fact needs so many
+hedges that the sentence gets confusing, leave that fact out instead.
+
+SELF-CHECK before answering (fix anything that fails): read the narration aloud in your head. Does it sound like a
+real person? Is every sentence clear on one listen? Does each reveal raise the stakes? Does the payoff answer the
+hook? Is it inside {words_lo}-{words_hi} words?
+
+Return JSON:
+{{"viable": true|false, "reason_if_not": str,
+ "title": "<=60 chars, accurate, makes people curious",
+ "thumb_text": "2-4 words, different words from the title",
+ "hook_card": "2-4 words",
+ "hooks": [5 alternative first sentences, max 12 words each], "chosen_hook": index,
+ "images": {{"img1": "CLIP:<shot_id>", "img2": "...", ...}},
+ "scenes": [{{"id": "b1", "narration": str, "image": "img1", "delivery": str|null, "focus": null,
+   "motion": "push"|"pull"|"drift"|"hold", "transition": "cut"|"whip"|"zoom_cut",
+   "callout": str|null, "pop": str|null, "arrow": null, "card_text": null, "tone": "normal"|"witty",
+   "markers": null}}],
+ "facts": [{{"claim": str, "sources": [url, ...], "main": true|false}}],
+ "description": "2-3 short sentences for the description, then 'Sources:' with the source names",
+ "hashtags": ["#..", "#.."] (3 max, relevant),
+ "affiliate_product": null}}"""
+
+STORY_REVIEW = """TASK: review
+You are an independent fact-checker AND script editor for a 40-70 second YouTube Short told as a spoken story. You
+did NOT write it. Check the main claims with web search where needed. Score 0-2 each:
+- hook: 2 = the first sentence creates a question the viewer needs answered; 1 = clear but mild; 0 = vague.
+- clarity: 2 = every sentence is complete, natural spoken English that a viewer understands on ONE listen;
+  1 = one or two awkward lines; 0 = fragments, stacked nouns, "Label: fact" lines or confusing sentences.
+- payoff: 2 = the build escalates and the payoff answers the hook with a real "wow"; 1 = answered but flat; 0 = not.
+- accuracy: 2 = every claim supported by a listed source or your check; 1 = small wording issues only; 0 = any
+  claim false, unsupported, or a rumour stated as fact.
+- visual_match: 2 = each beat's shot fits its words; 1 = some generic shots; 0 = a shot that misleads.
+For every unclear or unnatural sentence, give the exact rewritten sentence. Severity "blocker" for: false or
+unsupported claims, a rumour stated as fact, a misleading title, OR any sentence a viewer would not understand on one
+listen (clarity is a blocker in this format). Everything else is "minor".
+SCRIPT JSON:
+{script}
+Return JSON: {{"scores": {{"hook":n,"clarity":n,"payoff":n,"accuracy":n,"visual_match":n}},
+"total": sum, "problems": [{{"issue": str, "fix": str, "severity": "blocker"|"minor"}}],
+"verdict": "pass"|"fix"|"reject"}}"""
+
+STORY_CRITIC = """TASK: critic
+You are the final quality reviewer for a YouTube Short told as a spoken story (Rockstar's official GTA VI footage
+with a voiceover). You did not make it. Be strict: the owner rejects videos whose script is confusing, whose
+sentences are badly built, or that feel like an AI reading facts.
+
+IMAGE 1 is a contact sheet: one frame from the middle of every beat, in order, labelled with the beat id
+(captions burned in). IMAGE 2 is the first frame (left) and the last frame (right).
+
+What a strong video does:
+1. The first sentence creates real curiosity, over striking footage.
+2. Every sentence is natural spoken English, complete and clear on one listen; it sounds like a person telling a
+   friend a great story, with some personality.
+3. The build escalates (each reveal bigger), nothing is said twice, no filler, and the payoff is a real "wow"
+   that answers the hook. It ends on a comment question people want to answer.
+4. Each beat's footage shows what its words are about (abstract lines like prices are carried by a callout).
+5. Captions readable; callouts sparse.
+
+The script (beat id, start second, words, what the picture was meant to show):
+{beats}
+Title: {title}
+Facts and sources: {facts}
+Fact-checker notes: {review}
+Automatic flags: {flags}
+Automatic media checks: {qa}
+{previous}
+Score 1-5: hook_curiosity, clarity (natural, clear sentences), story (build + payoff), image_word_match,
+visual_credibility, accuracy, flow_pacing, rewatch, share.
+BLOCKING only for: a false or unsupported claim; a sentence most viewers would not understand; a hook with no
+curiosity; a picture that clearly contradicts its words; unreadable text. For each problem give the exact fix
+(which beat and the new sentence, or which shot to use).
+Return JSON: {{"scores": {{"hook_curiosity":n,"clarity":n,"story":n,"image_word_match":n,"visual_credibility":n,
+ "accuracy":n,"flow_pacing":n,"rewatch":n,"share":n}},
+ "blocking": [{{"beat": str, "problem": str, "fix": str}}],
+ "improvements": [{{"beat": str, "problem": str, "fix": str}}],
+ "retention_risks": [str], "unshowable": false,
+ "verdict": "send"|"fix"|"drop", "summary": "one sentence a busy owner can read"}}"""
+
+STORY_KEEP = ("Keep the story format: natural spoken sentences, hook first, escalating build, payoff, then the "
+              "comment question; no loop lead-in.")

@@ -141,7 +141,7 @@ class Pipeline:
         from . import carry
         extra += carry.for_ideas(self.state)
         r = self._llm(P.IDEAS.format(n=n, quotas=quotas, avoid=avoid, covered=covered, signals=sig) + extra, None, "ideas",
-                      system=P.SYSTEM_WRITER, model=self.cfg.pipeline["providers"]["llm"]["model_routine"])
+                      system=self._writer_sys(), model=self.cfg.pipeline["providers"]["llm"]["model_routine"])
         added = []
         for idea in (r.data or {}).get("ideas", []):
             q = idea.get("question", "").strip()
@@ -327,7 +327,13 @@ class Pipeline:
         r_ = self.cfg.channel["rules"]
         lo, hi = r_["target_seconds"]
         wps = r_["words_per_second"]
-        prompt = P.SCRIPT.format(video_rule=P.VIDEO_RULE if self.clips_on else "",
+        if self._story:
+            wl, wh = self._word_range()
+            prompt = P.STORY_SCRIPT.format(question=topic["title"], angle=idea.get("angle", ""), words_lo=wl,
+                                           words_hi=wh, seconds_lo=round(wl / 2.5), seconds_hi=round(wh / 2.5),
+                                           beats_lo=max(8, wl // 11), beats_hi=max(12, wh // 7))
+        else:
+          prompt = P.SCRIPT.format(video_rule=P.VIDEO_RULE if self.clips_on else "",
                                  motions_field=P.MOTIONS_FIELD if self.clips_on else "",
                                  object=idea.get("object", topic["title"]), question=topic["title"],
                                  angle=idea.get("angle", ""), pillar=topic.get("pillar"),
@@ -362,7 +368,7 @@ class Pipeline:
         (d / "learnings.json").write_text(json.dumps({"applied": applied, "text": ctx}, ensure_ascii=False, indent=1))
         if applied:
             self.state.log(f"applying {len(applied)} learnings from earlier videos", job_id=job_id)
-        r = self._llm(prompt, job_id, "script", est=0.25, system=P.SYSTEM_WRITER, web_search=True,
+        r = self._llm(prompt, job_id, "script", est=0.25, system=self._writer_sys(), web_search=True,
                       model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=12000)
         script = r.data or {}
         if script.get("viable") is False:
@@ -384,7 +390,7 @@ class Pipeline:
                     "fix": "Search the web and add at least two independent, credible source URLs "
                            "for the main claim (and one for every other claim). Keep everything else."}]),
                     script=json.dumps(script, ensure_ascii=False)),
-                job_id, "script_repair", est=0.2, system=P.SYSTEM_WRITER, web_search=True,
+                job_id, "script_repair", est=0.2, system=self._writer_sys(), web_search=True,
                 model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=12000)
             fixed = fx.data or {}
             fixed["cited_sources"] = (script.get("cited_sources") or []) + fx.sources
@@ -394,6 +400,19 @@ class Pipeline:
             script = fixed
         (d / "script.json").write_text(json.dumps(script, indent=2, ensure_ascii=False))
         return {"file": str(d / "script.json"), "content": script}
+
+    @property
+    def _story(self) -> bool:
+        """18 Nov 2026 (owner): topics with notes.style == "story" are told as natural spoken stories (P.STORY_*):
+        no 5-9-word beats, no loop lead-in, 40-70 s."""
+        return (getattr(self, "_topic_notes", None) or {}).get("style") == "story"
+
+    def _writer_sys(self) -> str:
+        if self._story:
+            return ("You write spoken scripts for short gaming videos. You sound like a real person: natural, clear, "
+                    "complete sentences, personality and good timing. Never state a fact you cannot support with a "
+                    "source; never invent numbers, dates, names or quotes.")
+        return P.SYSTEM_WRITER
 
     def _word_range(self) -> tuple[int, int]:
         """Total narration words. A topic can set its own range (16 Nov 2026: number-heavy GTA scripts ran 40-46 s
@@ -407,6 +426,10 @@ class Pipeline:
 
     def _length_rule(self) -> dict:
         lo, hi = self._word_range()
+        if self._story:
+            return {"issue": "length", "severity": "blocker",
+                    "fix": f"Keep the TOTAL narration between {lo} and {hi} words, in natural complete sentences "
+                           f"(one sentence per beat). If you add words anywhere, cut the same number elsewhere."}
         return {"issue": "length", "severity": "blocker",
                 "fix": f"Keep the TOTAL narration between {lo} and {hi} words across "
                        f"10-13 beats (4-9 words each). If you add words anywhere, cut the same number elsewhere."}
@@ -442,8 +465,9 @@ class Pipeline:
 
     def _validate_script(self, s: dict) -> None:
         scenes = s.get("scenes") or []
-        if not 9 <= len(scenes) <= 14:
-            raise StageFailed(f"script has {len(scenes)} beats (want 11-13)")
+        story = self._story
+        if not (8 <= len(scenes) <= 28 if story else 9 <= len(scenes) <= 14):
+            raise StageFailed(f"script has {len(scenes)} beats (want {'10-24' if story else '11-13'})")
         words = sum(len(sc.get("narration", "").split()) for sc in scenes)
         lo, hi = self._word_range()
         if words > hi * 1.08 or words < lo * 0.75:
@@ -451,7 +475,7 @@ class Pipeline:
         images = s.get("images") or {}
         footage = bool((getattr(self, "_topic_notes", None) or {}).get("official_images"))
         # 16 Nov 2026: footage videos cut to a new shot every beat (8-12); the 6-7 limit forced a paid repair each time
-        if not 4 <= len(images) <= (12 if footage else 9):
+        if not 4 <= len(images) <= (26 if story else 12 if footage else 9):
             raise StageFailed(f"script has {len(images)} images (want {'8-11' if footage else '6-7'})")
         for sc in scenes:
             if sc.get("image") and sc["image"] not in images:
@@ -464,6 +488,10 @@ class Pipeline:
                     sc["pop"] = None
         if sum(1 for sc in scenes if sc.get("card_text") and not sc.get("image")) > 1:
             raise StageFailed("more than one card beat")
+        if story:
+            for sc in scenes:          # audio tags live in "delivery", never inside the spoken words
+                sc["narration"] = re.sub(r"\s*\[[^\]]*\]\s*", " ", sc.get("narration", "")).strip()
+            return
         if scenes[-1].get("image") != scenes[0].get("image") and scenes[0].get("image"):
             scenes[-1]["image"] = scenes[0]["image"]          # loop: end on the opening picture
             scenes[-1]["card_text"] = None
@@ -512,7 +540,7 @@ class Pipeline:
                     "scenes": sc.get("scenes"), "facts": sc.get("facts")}
             if any(self._official_ref(v) or str(v).upper().startswith("CLIP:") for v in (sc.get("images") or {}).values()):
                 lean["images"] = sc.get("images")      # official-image videos: the reviewer checks the image ids
-            return self._llm(P.REVIEW.format(script=json.dumps(lean, ensure_ascii=False))
+            return self._llm((P.STORY_REVIEW if self._story else P.REVIEW).format(script=json.dumps(lean, ensure_ascii=False))
                              + (("\nThis video has its own approved format (judge it against this, not the default "
                                  "question-hook template):\n" + json.loads(topic.get("notes") or "{}")["format_rules"]
                                  .replace("@@SHOT_LIST@@", "(the shot list is not needed for this review)"))
@@ -533,7 +561,7 @@ class Pipeline:
                 "Fix every problem above. Remove or soften any claim you cannot support with a source "
                 "you can open. Keep the hook, the first scene's narration and chosen_hook consistent."}]
             fx = self._llm(P.FIX.format(problems=json.dumps(problems), script=json.dumps(script, ensure_ascii=False)),
-                           job_id, f"fix{round_ + 1}", est=0.25, system=P.SYSTEM_WRITER, web_search=True,
+                           job_id, f"fix{round_ + 1}", est=0.25, system=self._writer_sys(), web_search=True,
                            model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=12000)
             fixed = fx.data or {}
             fixed["cited_sources"] = (script.get("cited_sources") or []) + fx.sources
@@ -631,10 +659,10 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
                 continue
             key = f"sb_{sc['id']}"
             images[key] = f"CLIP:{shot}"
-            if sc is scenes[-1] and scenes[0].get("image"):
+            if sc is scenes[-1] and scenes[0].get("image") and not self._story:
                 continue                           # the last beat must keep the opening shot (loop)
             sc["image"] = key
-            if sc is scenes[0] and scenes[-1].get("image"):
+            if sc is scenes[0] and scenes[-1].get("image") and not self._story:
                 scenes[-1]["image"] = key          # keep the loop: the last beat uses the opening shot
             n += 1
         used = {sc.get("image") for sc in scenes}
@@ -649,7 +677,9 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
         script = json.loads((d / "script.json").read_text())
         self._sync_hook(script)
         scenes = script["scenes"]
-        text = " ".join(sc["narration"].strip() for sc in scenes)
+        TAGS = {"curious", "excited", "serious", "surprised", "laughs softly", "whispers", "short pause", "sarcastic"}
+        text = " ".join((f"[{sc['delivery']}] " if self._story and str(sc.get("delivery") or "").lower() in TAGS else "")
+                        + sc["narration"].strip() for sc in scenes)
         for word, say in (self.cfg.channel["voice"].get("pronunciations") or {}).items():
             text = re.sub(rf"\b{re.escape(word)}\b", say, text)
         reused = self._reuse_voice(d, text)
@@ -1055,7 +1085,7 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
         need: dict[str, float] = {}
         said: dict[str, list[str]] = {}
         for k, sc in enumerate(scenes):
-            if k == len(scenes) - 1:
+            if k == len(scenes) - 1 and not self._story:
                 continue                      # the last beat replays the opening clip backwards (loop)
             key = (out["beats"].get(sc["id"]) or {}).get("image") or sc.get("image")
             if not key or sc.get("markers"):
@@ -1256,7 +1286,7 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
                 sfx_events.append(("chime", b_start + 0.1, -18.0))
             clip, clip_from, clip_dir = None, 0.0, 1
             ck = clips.get(img_key) if img_key else None
-            if k == len(scenes) - 1 and scenes[0].get("image") and clips.get((vis["beats"].get(scenes[0]["id"]) or {}).get("image") or scenes[0]["image"]):
+            if k == len(scenes) - 1 and not self._story and scenes[0].get("image") and clips.get((vis["beats"].get(scenes[0]["id"]) or {}).get("image") or scenes[0]["image"]):
                 # loop: play the opening clip backwards so the last frame IS the first frame
                 first_key = (vis["beats"].get(scenes[0]["id"]) or {}).get("image") or scenes[0]["image"]
                 clip, clip_from, clip_dir = Path(clips[first_key]["path"]), b_end - b_start, -1
@@ -1329,7 +1359,7 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
     def _stage_qa(self, job_id: str, topic: dict, d: Path) -> dict:
         r = self._art(job_id, "render")
         voice = self._art(job_id, "voice")
-        rep = check_video(Path(r["video"]), max_seconds=60.0, min_seconds=8.0,
+        rep = check_video(Path(r["video"]), max_seconds=90.0 if self._story else 60.0, min_seconds=8.0,
                           expected_narration_s=voice["duration"])
         flags = self._art(job_id, "visuals").get("flags", [])
         out = rep.as_dict() | {"image_flags": flags}
@@ -1413,6 +1443,7 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
     # credibility 2, image match 2, mean 3.0 under the strict prompt. Gross problems are BLOCKING instead.
     CRITIC_PASS = {"hook_curiosity": 4, "accuracy": 4, "loop": 3, "visual_credibility": 2, "image_word_match": 2}
     CRITIC_MEAN = 3.0
+    STORY_PASS = {"hook_curiosity": 4, "clarity": 4, "story": 4, "accuracy": 4, "image_word_match": 3}
 
     def _beat_frames(self, d: Path) -> tuple[list[dict], float]:
         script = json.loads((d / "script.json").read_text())
@@ -1489,7 +1520,7 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
                     + json.dumps(previous.get("blocking", []), ensure_ascii=False)[:1500]
                     + "\nCheck those are fixed; do not invent new nitpicks unless they are real blocking problems.")
         qa_s = "; ".join(f"{c['name']}={'ok' if c['ok'] else 'FAIL'}" for c in qa.get("checks", []))
-        r = self._llm(P.CRITIC.format(beats=lines, title=script.get("title", ""),
+        r = self._llm((P.STORY_CRITIC if self._story else P.CRITIC).format(beats=lines, title=script.get("title", ""),
                                       facts=json.dumps(script.get("facts", []), ensure_ascii=False)[:3000],
                                       review=json.dumps(rv.get("problems", []), ensure_ascii=False)[:2000],
                                       flags=json.dumps(flags, ensure_ascii=False)[:1500], qa=qa_s, previous=prev)
@@ -1501,12 +1532,14 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
         sc = {k: float(v) for k, v in (c.get("scores") or {}).items() if isinstance(v, (int, float))}
         mean = sum(sc.values()) / len(sc) if sc else 0.0
         hard = [f for f in flags if f.startswith("BLOCKING")]
+        need = self.STORY_PASS if self._story else self.CRITIC_PASS
         ok = (not c.get("blocking") and not hard and c.get("verdict") != "drop" and not c.get("unshowable")
-              and all(sc.get(k, 0) >= v for k, v in self.CRITIC_PASS.items()) and mean >= self.CRITIC_MEAN)
+              and all(sc.get(k, 0) >= v for k, v in need.items()) and mean >= self.CRITIC_MEAN)
         # 16 Nov 2026: a video the critic says to SEND, with nothing blocking and solid facts, is not thrown away
         # because one score is a point short (not-on-pc v1: verdict send, mean 3.89, hook 3 -> dropped)
         if (not ok and c.get("verdict") == "send" and not c.get("blocking") and not hard and not c.get("unshowable")
-                and sc.get("accuracy", 0) >= 4 and sc.get("loop", 0) >= 3 and mean >= 3.5):
+                and sc.get("accuracy", 0) >= 4 and sc.get("loop" if not self._story else "clarity", 0) >= (3 if not self._story else 4)
+                and mean >= 3.5):
             ok = True
         c.update(round=round_, mean=round(mean, 2), passed=ok, hard_flags=hard)
         hist = json.loads((d / "critique.json").read_text()) if (d / "critique.json").exists() else []
@@ -1682,11 +1715,14 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
             if t_rules and "@@SHOT_LIST@@" in t_rules:
                 from shorts import official_clips
                 t_rules = t_rules.replace("@@SHOT_LIST@@", official_clips.shots_text())
-            fx = self._llm(tpl.format(note=note, length_rule=json.dumps(self._length_rule()),
-                                      script=json.dumps(script, ensure_ascii=False))
+            body = tpl.format(note=note, length_rule=json.dumps(self._length_rule()),
+                              script=json.dumps(script, ensure_ascii=False))
+            if self._story:
+                body = re.sub(r"Keep the format rules:.*?uses img1\.", P.STORY_KEEP, body, flags=re.S)
+            fx = self._llm(body
                            + ("\n\nTHIS VIDEO'S OWN FORMAT RULES (they win over the generic picture rules above):\n"
                               + t_rules if t_rules else ""),
-                           job_id, "owner_fix" if decision == "fix" else "self_fix", est=0.2, system=P.SYSTEM_WRITER,
+                           job_id, "owner_fix" if decision == "fix" else "self_fix", est=0.2, system=self._writer_sys(),
                            model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=12000).data or {}
             if not fx.get("scenes"):
                 raise StageFailed("the fix could not be applied (no script returned)")
@@ -1703,7 +1739,7 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
                     "issue": str(e), "fix": "Keep every change already made; only correct this rule. At most one "
                                             "beat may be a text card without a picture."}]),
                     script=json.dumps(fx, ensure_ascii=False)),
-                    job_id, "self_fix_repair", est=0.15, system=P.SYSTEM_WRITER,
+                    job_id, "self_fix_repair", est=0.15, system=self._writer_sys(),
                     model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=12000).data or {}
                 if not rp.get("scenes"):
                     raise StageFailed(f"the fix broke a rule and could not be repaired ({e})") from e
