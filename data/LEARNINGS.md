@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-16 22:30 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-17 08:27 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - News topics got 6.58x the median views of film topics (pattern, n=5 vs 7). Film got more subs_per_1k (1.64 vs 0.63), so pair film with a stronger hook and payoff.
@@ -16,6 +16,28 @@ Updated 2026-11-16 22:30 UTC. Built from every published video's 48 h and 7 day 
 - by_country, walk_past, why_detail, india_asia and virality: not enough data yet (n=1-2 each).
 
 ## Per-video analyses
+
+### taipei-101-ball-v1 (7d) — below median
+- 71 views · 52.72% viewed · 1 likes · 0 shares · 0 subs (median views 1221.5, n=22)
+- The Taipei 101 damper Short got 71 views in 7 days against a channel median of about 1,222. Viewers who did watch stayed almost as long as usual (52.7% vs 57.6%), so the problem was getting shown, not the content.
+  - ✅ Retention held up: average view duration was 20s against a 21s median, and average view percentage was 52.72% against 57.6%. Once people started the Short, it held them nearly as well as a typical channel video.
+  - ✅ The script has a clear question-to-answer arc. The hook asks about the golden ball, then the beats explain wind sway, the counter-swing, and the tuned mass damper in order. The self-review scored hook_curiosity and payoff at 4.
+  - ✅ On Instagram the video got 173 views, more than twice the YouTube count, with a 47.9% skip rate. That suggests the content is watchable when it is served, though this is one video with no benchmark for IG.
+  - ✅ The applied learnings (win: and pm: items from the Learjet and handrail videos) did not visibly help. Views were far below the median, so there is no sign they worked. I can't tell which ones mattered, and the pattern is not confirmed.
+  - ❌ Reach and engagement were very low: 71 views vs a 1,221.5 median, 15 engaged views vs 514, 1 like vs 13.5, and 0 subscribers gained vs a median of 1. The video was barely distributed, and the gap is far larger than any retention difference.
+  - ❌ Only 15 of 71 views (about 21%) counted as engaged, so many viewers likely swiped away within the first seconds. The retention curve is empty, so I can't say exactly where.
+  - ❌ The hook is a plain 'Why is a giant golden ball inside this skyscraper?' with a heuristic score of 38. It names no tension or surprise and may not have stopped the scroll in the feed.
+  - ❌ Self-review scored visual_credibility and image_word_match at only 3. With 7 images over 38 seconds, the visuals may not have clearly shown a golden ball inside a skyscraper.
+  - ❌ The share and rewatch scores were 3, and there were 0 shares and 0 comments. Nothing in the video gave viewers a reason to pass it on.
+  - ❌ The 02:00 UTC publish slot may have hurt early distribution, but this is untested.
+  - ❌ The IG reel got 3 interactions, 0 shares and 0 saves on 143 reach, so the weak response is not specific to YouTube.
+  - 📉 b1 @ 0 s: Only 15 of 71 views were engaged, which points to early swipe-away at the plain question hook. There is no retention curve to confirm this, so it is an inference from the engaged-view ratio and the IG skip rate (47.9%).
+  - 📉 b6 @ 14.88 s: Floors 87 and 92 are a dry location detail after the weight fact. A possible slump, but unverified because there is no retention data.
+  - 💡 [hook, hypothesis] Test a hook with a visible stake or surprise, such as the 660-tonne ball that keeps a skyscraper from swaying, instead of the generic 'Why is X inside Y?' question.
+  - 💡 [visuals, hypothesis] Make sure the first image clearly shows the golden ball inside the building. Weak image-word match (self-review 3) may have cost the swipe decision.
+  - 💡 [story, hypothesis] Cut or soften dry detail beats (floors 87-92) and use the space for the typhoon and quake moments, which carry more drama.
+  - 💡 [topic, hypothesis] Low views with near-normal retention point to weak distribution, not a bad topic. Don't drop engineering-marvel topics on one result. Try the topic again with a different hook before judging it.
+  - 💡 [pacing, hypothesis] Retention was healthy at a 38s length. Keep a similar length, but front-load the most surprising fact within the first 5 seconds.
 
 ### gimli-glider-v1 (7d) — at median
 - 1034 views · 66.18% viewed · 17 likes · 0 shares · 0 subs (median views 1243, n=21)
