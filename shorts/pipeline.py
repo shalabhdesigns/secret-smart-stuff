@@ -538,7 +538,8 @@ class Pipeline:
         the topic is dropped (QualityRejected) so the run can move on to a better topic."""
         path = d / "script.json"
         script = json.loads(path.read_text())
-        rv_model = self.cfg.pipeline["providers"]["llm"]["model_routine"]
+        # 18 Nov 2026: judging whether a script sounds human needs the stronger model (~$0.05 more per review)
+        rv_model = self.cfg.pipeline["providers"]["llm"]["model_script" if self._story else "model_routine"]
         bar = self.cfg.channel["rules"]["review_pass_score"]
 
         def review(sc: dict, tag: str) -> dict:
@@ -568,7 +569,8 @@ class Pipeline:
             problems = rv.get("problems", []) + [self._length_rule(), {"issue": "general", "severity": "blocker", "fix":
                 "Fix every problem above. Remove or soften any claim you cannot support with a source "
                 "you can open. Keep the hook, the first scene's narration and chosen_hook consistent."}]
-            fx = self._llm(P.FIX.format(problems=json.dumps(problems), script=json.dumps(script, ensure_ascii=False)),
+            fx = self._llm((P.STORY_REWRITE if self._story else P.FIX).format(
+                               problems=json.dumps(problems), script=json.dumps(script, ensure_ascii=False)),
                            job_id, f"fix{round_ + 1}", est=0.25, system=self._writer_sys(), web_search=True,
                            model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=12000)
             fixed = fx.data or {}

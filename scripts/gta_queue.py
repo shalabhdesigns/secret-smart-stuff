@@ -64,7 +64,7 @@ RULES_STORY = (
     "NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\n"
     "BAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced "
     "lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\n"
-    "GOOD: 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of "
+    "GOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of "
     "them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\n"
     "FOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly "
     "'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover "

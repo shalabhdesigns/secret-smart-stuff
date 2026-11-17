@@ -391,7 +391,7 @@ hook? Is it inside {words_lo}-{words_hi} words?
 
 Return JSON:
 {{"viable": true|false, "reason_if_not": str,
- "title": "<=60 chars, accurate, makes people curious",
+ "title": "<=60 chars, accurate, makes people curious; no time words (tonight, tomorrow): it is watched for weeks",
  "thumb_text": "2-4 words, different words from the title",
  "hook_card": "2-4 words",
  "hooks": [5 alternative first sentences, max 12 words each], "chosen_hook": index,
@@ -463,3 +463,12 @@ Return JSON: {{"scores": {{"hook_curiosity":n,"clarity":n,"story":n,"image_word_
 
 STORY_KEEP = ("Keep the story format: natural spoken sentences, hook first, escalating build, payoff, then the "
               "comment question; no loop lead-in.")
+
+STORY_REWRITE = """TASK: script
+An editor reviewed this spoken-story script and found the problems below. REWRITE it so every problem is solved:
+you may rewrite any sentence, change the hook, reorder or merge beats. It must read as a real person telling a
+friend a great story: natural complete sentences, clear on one listen, a hook that creates a question, reveals that
+escalate, a payoff that answers the hook, then a comment question. Keep the verified facts, their sources and the
+shots that still fit (change a shot when the words of its beat change). Same JSON schema; keep "facts" complete.
+Problems: {problems}
+Script: {script}"""
