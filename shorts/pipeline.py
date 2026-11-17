@@ -329,14 +329,7 @@ class Pipeline:
         wps = r_["words_per_second"]
         if self._story:
             wl, wh = self._word_range()
-            when = ""
-            if idea.get("publish_at"):
-                # 18 Nov 2026: a script said "tomorrow night" for a game that was that same night when it went live
-                from datetime import datetime, timedelta
-                t0 = datetime.fromisoformat(idea["publish_at"].replace("Z", "+00:00"))
-                when = (f" It goes LIVE at {t0:%A %d %B %Y, %H:%M} UTC = {(t0 - timedelta(hours=5)):%A %H:%M} in New York"
-                        f" = {(t0 + timedelta(hours=5, minutes=30)):%A %H:%M} in India. Every time word (today, tonight, "
-                        f"tomorrow, this week) must be true at THAT moment for a US viewer.")
+            when = self._when_line()
             prompt = P.STORY_SCRIPT.format(question=topic["title"] + when, angle=idea.get("angle", ""), words_lo=wl,
                                            words_hi=wh, seconds_lo=round(wl / 2.5), seconds_hi=round(wh / 2.5),
                                            beats_lo=max(8, wl // 11), beats_hi=max(12, wh // 7))
@@ -414,6 +407,18 @@ class Pipeline:
         """18 Nov 2026 (owner): topics with notes.style == "story" are told as natural spoken stories (P.STORY_*):
         no 5-9-word beats, no loop lead-in, 40-70 s."""
         return (getattr(self, "_topic_notes", None) or {}).get("style") == "story"
+
+    def _when_line(self) -> str:
+        """18 Nov 2026: scripts said "tomorrow night" for a game that was that same night when the video went live
+        (the writer runs the evening before). Tell writer and reviewer the moment the viewer hears it."""
+        at = (getattr(self, "_topic_notes", None) or {}).get("publish_at")
+        if not at:
+            return ""
+        from datetime import datetime, timedelta
+        t0 = datetime.fromisoformat(at.replace("Z", "+00:00"))
+        return (f" VIEWERS HEAR THIS FROM {t0:%A %d %B %Y, %H:%M} UTC = {(t0 - timedelta(hours=5)):%A %d %B, %H:%M} in "
+                f"New York = {(t0 + timedelta(hours=5, minutes=30)):%A %d %B, %H:%M} in India. Every time word (today, "
+                f"tonight, tomorrow, this week) must be true at THAT moment for a US viewer, not when you write it.")
 
     def _writer_sys(self) -> str:
         if self._story:
@@ -550,6 +555,7 @@ class Pipeline:
             if any(self._official_ref(v) or str(v).upper().startswith("CLIP:") for v in (sc.get("images") or {}).values()):
                 lean["images"] = sc.get("images")      # official-image videos: the reviewer checks the image ids
             return self._llm((P.STORY_REVIEW if self._story else P.REVIEW).format(script=json.dumps(lean, ensure_ascii=False))
+                             + (("\nTIMING (a wrong time word is a blocker):" + self._when_line()) if self._story else "")
                              + (("\nThis video has its own approved format (judge it against this, not the default "
                                  "question-hook template):\n" + json.loads(topic.get("notes") or "{}")["format_rules"]
                                  .replace("@@SHOT_LIST@@", "(the shot list is not needed for this review)"))
@@ -1536,7 +1542,8 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
                                       review=json.dumps(rv.get("problems", []), ensure_ascii=False)[:2000],
                                       flags=json.dumps(flags, ensure_ascii=False)[:1500], qa=qa_s, previous=prev)
                       + (((self._news(job_id) or {}).get("critic_rules") or P.NEWS_CRITIC) if self._news(job_id) else "")
-                      + self._topic_note(job_id, "critic_rules"),
+                      + self._topic_note(job_id, "critic_rules")
+                      + (("\nTIMING (a wrong time word is BLOCKING):" + self._when_line()) if self._story else ""),
                       job_id, f"critic{round_}", est=0.06, images=[sheet, pair],
                       model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=3000)
         c = r.data or {}
