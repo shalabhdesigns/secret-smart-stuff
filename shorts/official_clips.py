@@ -257,6 +257,32 @@ def _letterbox(src: Path, t: float) -> str:
     return f"crop={w}:{h}:{x}:{y}," if 300 < h < 1040 else ""
 
 
+def _clean_range(src: Path, start: float, end: float, min_piece: float = 0.9) -> tuple[float, float]:
+    """17 Nov 2026: detect_shots glues a cut piece shorter than 0.9 s onto the START of the next shot, so a 0.3 s
+    flash of another scene (the same face) opened one city shot used in every GTA video, and YouTube picked that
+    face as the thumbnail of 3 videos. Find the scene cuts inside [start, end] and keep the longest stretch made only
+    of pieces at least `min_piece` long (a cut between two long pieces is a normal run-on into the next shot)."""
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-ss", f"{start:.2f}", "-t", f"{max(end - start, 0.1):.2f}",
+                        "-i", str(src), "-vf", "select='gt(scene,0.30)',showinfo", "-f", "null", "-"],
+                       capture_output=True, text=True)
+    cuts = sorted(float(m) for m in re.findall(r"pts_time:([\d.]+)", r.stderr))
+    pts = [0.0] + [c for c in cuts if 0.05 < c < end - start - 0.05] + [end - start]
+    best, run_s, run_e = (0.0, 0.0), None, None
+    for a, b in zip(pts, pts[1:]):
+        if b - a >= min_piece:
+            run_s = a if run_s is None else run_s
+            run_e = b
+            if run_e - run_s > best[1] - best[0]:
+                best = (run_s, run_e)
+        else:
+            run_s = run_e = None
+    if best[1] - best[0] <= 0:                     # nothing long enough: keep the whole range
+        return start, end
+    s0 = start + best[0] + (0.04 if best[0] > 0 else 0.0)
+    e0 = start + best[1] - (0.04 if best[1] < end - start else 0.0)
+    return s0, e0
+
+
 def segment(shot_id: str, out: Path, seconds: float) -> Path:
     """The shot as its own muted file, at least `seconds` long (runs on into the next shot if it is shorter).
     Black bars are cropped off so the vertical frame is all picture."""
@@ -279,6 +305,7 @@ def segment(shot_id: str, out: Path, seconds: float) -> Path:
         if abs(v["start"] - end) > 0.2 or v.get("avoid"):
             break
         end = v["end"]
+    start, end = _clean_range(src, start, end)
     avail = max(0.5, end - start - 0.05)
     vf = f"{_letterbox(src, start)}scale=-2:1080"
     take = min(avail, length)

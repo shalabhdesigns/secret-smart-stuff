@@ -75,3 +75,23 @@ def test_storyboard_swaps_bad_shot(tmp_path, monkeypatch):
     assert s["images"][s["scenes"][1]["image"]] == "CLIP:trailer_x_00030"
     assert s["scenes"][2]["image"] == s["scenes"][0]["image"]
     assert (d / "storyboard.jpg").exists()
+
+
+def test_clean_range_drops_glued_flash(tmp_path):
+    """17 Nov 2026: a 0.3 s flash glued to the start of a shot (same face in 4 videos, YouTube's thumbnail)."""
+    import subprocess
+    from shorts import official_clips as oc
+    src = tmp_path / "t.mp4"
+    parts = [("red", 2), ("blue", 0.3), ("green", 3), ("yellow", 2)]
+    inputs, n = [], len(parts)
+    for c, d in parts:
+        inputs += ["-f", "lavfi", "-i", f"color=c={c}:s=320x180:r=30:d={d}"]
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *inputs, "-filter_complex",
+                    "".join(f"[{i}:v]" for i in range(n)) + f"concat=n={n}:v=1[v]", "-map", "[v]",
+                    "-pix_fmt", "yuv420p", str(src)], check=True)
+    s, e = oc._clean_range(src, 2.0, 5.3)            # blue flash glued onto the green shot
+    assert 2.25 < s < 2.45 and abs(e - 5.3) < 0.01
+    s, e = oc._clean_range(src, 2.35, 7.3)           # green runs on into yellow: a normal cut, keep both
+    assert abs(s - 2.35) < 0.01 and abs(e - 7.3) < 0.01
+    s, e = oc._clean_range(src, 0.0, 2.6)            # red, then the start of the flash: end before it
+    assert s == 0.0 and 1.9 < e < 2.05
