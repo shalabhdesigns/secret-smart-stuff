@@ -53,6 +53,7 @@ class Beat:
     transition: str = "cut"             # cut | whip | zoom_cut | reveal
     callout_label: str | None = None    # marks `focus` (style below) with this label
     indicator: str = "ring"             # ring | brackets | spotlight | pointer
+    tag_label: str | None = None        # a name or number shown over footage (story format), no pointer
     callout_at: float | None = None
     pops: list[Pop] = field(default_factory=list)
     arrow: Arrow | None = None
@@ -384,6 +385,10 @@ def render(beats: list[Beat], total: float, out: Path, pal: Palette, caption_y: 
             frame = frame.convert("RGBA")
             if b.focus and b.callout_label is not None:
                 frame = _callout(frame, b, to_out, t, pal)
+            elif b.tag_label and t - b.start > 0.15:
+                # 18 Nov 2026: footage beats had no way to show a name or number; a label slides in near the top
+                _label_box(ImageDraw.Draw(frame, "RGBA"), b.tag_label[:34], (W / 2, 330), pal,
+                           ease(min(1.0, (t - b.start - 0.15) / 0.25)))
             if b.arrow:
                 _arrow(frame, b.arrow, to_out, t, pal)
             for mk in b.markers:

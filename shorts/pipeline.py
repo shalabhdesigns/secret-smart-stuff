@@ -329,7 +329,15 @@ class Pipeline:
         wps = r_["words_per_second"]
         if self._story:
             wl, wh = self._word_range()
-            prompt = P.STORY_SCRIPT.format(question=topic["title"], angle=idea.get("angle", ""), words_lo=wl,
+            when = ""
+            if idea.get("publish_at"):
+                # 18 Nov 2026: a script said "tomorrow night" for a game that was that same night when it went live
+                from datetime import datetime, timedelta
+                t0 = datetime.fromisoformat(idea["publish_at"].replace("Z", "+00:00"))
+                when = (f" It goes LIVE at {t0:%A %d %B %Y, %H:%M} UTC = {(t0 - timedelta(hours=5)):%A %H:%M} in New York"
+                        f" = {(t0 + timedelta(hours=5, minutes=30)):%A %H:%M} in India. Every time word (today, tonight, "
+                        f"tomorrow, this week) must be true at THAT moment for a US viewer.")
+            prompt = P.STORY_SCRIPT.format(question=topic["title"] + when, angle=idea.get("angle", ""), words_lo=wl,
                                            words_hi=wh, seconds_lo=round(wl / 2.5), seconds_hi=round(wh / 2.5),
                                            beats_lo=max(8, wl // 11), beats_hi=max(12, wh // 7))
         else:
@@ -1309,6 +1317,7 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
                               indicator=indicator_at.get(k, "ring"),
                               callout_at=b_start + 0.25, pops=pops, arrow=arrow,
                               card_text=(sc.get("card_text") or "") if not img else "", markers=markers,
+                              tag_label=(sc.get("callout") or None) if (self._story and clip) else None,
                               # no opening text card: it would pop in on every replay and break the loop
                               hook_text=""))
         boxes = [b.focus for b in beats if b.focus]

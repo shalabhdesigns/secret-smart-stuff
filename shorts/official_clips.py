@@ -266,7 +266,9 @@ def _clean_range(src: Path, start: float, end: float, min_piece: float = 0.9) ->
                         "-i", str(src), "-vf", "select='gt(scene,0.30)',showinfo", "-f", "null", "-"],
                        capture_output=True, text=True)
     cuts = sorted(float(m) for m in re.findall(r"pts_time:([\d.]+)", r.stderr))
-    pts = [0.0] + [c for c in cuts if 0.05 < c < end - start - 0.05] + [end - start]
+    # 18 Nov 2026: a 2-frame flash in the LAST 0.05 s slipped through (it became the held last frame), so cuts right
+    # at the edges count too
+    pts = [0.0] + [c for c in cuts if 0.01 < c < end - start - 0.01] + [end - start]
     best, run_s, run_e = (0.0, 0.0), None, None
     for a, b in zip(pts, pts[1:]):
         if b - a >= min_piece:

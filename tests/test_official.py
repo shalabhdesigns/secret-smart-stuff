@@ -95,3 +95,18 @@ def test_clean_range_drops_glued_flash(tmp_path):
     assert abs(s - 2.35) < 0.01 and abs(e - 7.3) < 0.01
     s, e = oc._clean_range(src, 0.0, 2.6)            # red, then the start of the flash: end before it
     assert s == 0.0 and 1.9 < e < 2.05
+
+
+def test_clean_range_drops_two_frame_tail(tmp_path):
+    """18 Nov 2026: a 2-frame flash at the very end of a shot became its held last frame."""
+    import subprocess
+    from shorts import official_clips as oc
+    src = tmp_path / "t.mp4"
+    parts = [("red", 3), ("blue", 0.067), ("green", 2)]
+    inputs = []
+    for c, d in parts:
+        inputs += ["-f", "lavfi", "-i", f"color=c={c}:s=320x180:r=30:d={d}"]
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *inputs, "-filter_complex",
+                    "[0:v][1:v][2:v]concat=n=3:v=1[v]", "-map", "[v]", "-pix_fmt", "yuv420p", str(src)], check=True)
+    s, e = oc._clean_range(src, 0.0, 3.08)
+    assert s == 0.0 and 2.9 < e < 3.0

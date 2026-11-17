@@ -377,7 +377,8 @@ BEATS AND PICTURES:
   Never cut a sentence in the middle.
 - Every beat's "image" key points to a picture in "images". Picture rules are in the overrides below (official
   footage shots, 'CLIP:<shot_id>'). Each beat shows what its words are about; change the shot every beat.
-- "callout": 1-4 words on screen, only for a number, a name or a key term (at most 6 beats). "pop": one emphatic
+- "callout": 1-4 words shown as a label on screen, only for a number, a person's name or a key term (at most 5 beats,
+  max 24 characters, e.g. "7 PM ET", "ROB NELSON, ROCKSTAR"). "pop": one emphatic
   spoken word, at most 2 beats. No markers, no arrows, no cards.
 - "hook_card": 2-4 words for the thumbnail.
 
