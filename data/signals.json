@@ -1,9 +1,17 @@
 {
- "collected_at": "2026-11-16T06:45:03Z",
+ "collected_at": "2026-11-17T08:05:17Z",
  "errors": [
   "@simplethingshistories: ERROR: [youtube:tab] @simplethingshistories: This channel does not have a shorts tab"
  ],
  "all_titles": [
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Plastic Pipes Are Taking Over Modern Plumbing?!"
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Induction Cooktops Heat Pans Without a Flame?!"
+  },
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Ball Bearings Reduce Friction With Rolling?"
@@ -1197,14 +1205,6 @@
    "title": "Did You Know Carrots Used To Be Purple? 🥕💜"
   },
   {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Honey Never Spoils? 🍯⏳"
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Builders Used Eggs In Walls? 🥚🏗️"
-  },
-  {
    "channel": "@nameexplain",
    "title": "Why Are People From The Netherlands Called Dutch?"
   },
@@ -1775,13 +1775,6 @@
    "multiple": 3.7
   },
   {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Builders Used Eggs In Walls? 🥚🏗️",
-   "views": 11000,
-   "url": "https://www.youtube.com/shorts/5Hm1hbL6XMk",
-   "multiple": 3.7
-  },
-  {
    "channel": "@nameexplain",
    "title": "How Did France Get Its Name?",
    "views": 29000,
@@ -1790,16 +1783,16 @@
   },
   {
    "channel": "@nameexplain",
-   "title": "How Did Denmark get Its Name? #Shorts",
-   "views": 28000,
-   "url": "https://www.youtube.com/shorts/ve1z30df3lg",
-   "multiple": 3.4
+   "title": "How Did The Central African Republic Get Its Name? #Shorts",
+   "views": 29000,
+   "url": "https://www.youtube.com/shorts/hTmoSBq5xzs",
+   "multiple": 3.5
   },
   {
    "channel": "@nameexplain",
-   "title": "How Did The Central African Republic Get Its Name? #Shorts",
+   "title": "How Did Denmark get Its Name? #Shorts",
    "views": 28000,
-   "url": "https://www.youtube.com/shorts/hTmoSBq5xzs",
+   "url": "https://www.youtube.com/shorts/ve1z30df3lg",
    "multiple": 3.4
   },
   {
@@ -1843,13 +1836,6 @@
    "views": 26000,
    "url": "https://www.youtube.com/shorts/8X9rVA--EG4",
    "multiple": 3.2
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Honey Never Spoils? 🍯⏳",
-   "views": 9300,
-   "url": "https://www.youtube.com/shorts/TDtLqm-6AUo",
-   "multiple": 3.1
   },
   {
    "channel": "@historyofsimplethings",
@@ -2080,6 +2066,20 @@
    "title": "Did You Know the Hole in Soda Can Tabs Isn’t Just for Opening?",
    "views": 6400,
    "url": "https://www.youtube.com/shorts/KFdrdW_OgY8",
+   "multiple": 2.1
+  },
+  {
+   "channel": "@nameexplain",
+   "title": "Is PS Short For Something?",
+   "views": 17000,
+   "url": "https://www.youtube.com/shorts/3B1J4kBTQBE",
+   "multiple": 2.1
+  },
+  {
+   "channel": "@nameexplain",
+   "title": "How Did Burkina Faso Get Its Name? #Shorts",
+   "views": 17000,
+   "url": "https://www.youtube.com/shorts/3uqhcdtcaWs",
    "multiple": 2.1
   }
  ]
