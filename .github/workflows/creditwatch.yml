@@ -29,7 +29,7 @@ jobs:
       - run: scripts/state_sync.sh pull
       - id: w
         run: |
-          python -c 'import json; from shorts.pipeline import Pipeline; from shorts.config import load; from shorts.dispatch import resume_credit_held; p = Pipeline(load()); r = resume_credit_held(p.state); print(json.dumps(r)); open("result.json","w").write(json.dumps(r))'
+          python -c 'import json; from shorts.state import State; from shorts.config import load; from shorts.dispatch import resume_credit_held; st = State(load().path("state_db")); r = resume_credit_held(st); print(json.dumps(r)); open("result.json","w").write(json.dumps(r))'
           echo "restarted=$(python -c 'import json; print(1 if json.load(open("result.json")).get("restarted") else 0)')" >> "$GITHUB_OUTPUT"
       - if: steps.w.outputs.restarted == '1'
         run: scripts/state_sync.sh push
