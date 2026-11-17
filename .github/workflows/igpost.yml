@@ -34,7 +34,7 @@ jobs:
         with: { fetch-depth: 0 }
       - uses: actions/setup-python@v6
         with: { python-version: "3.12", cache: pip }
-      - run: pip install -q -r requirements.txt
+      - run: pip install -q -r requirements.txt && sudo apt-get install -y -qq ffmpeg > /dev/null   # Reels over 25 MiB are re-encoded (instagram._fit_for_kv)
       - run: scripts/state_sync.sh pull
       - name: Post the Reel at its minute
         run: |
