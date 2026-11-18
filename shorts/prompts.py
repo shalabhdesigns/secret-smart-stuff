@@ -387,6 +387,10 @@ BEATS AND PICTURES:
 FACTS: use the verified brief's facts and wording first. Never state a rumour as fact. If a fact needs so many
 hedges that the sentence gets confusing, leave that fact out instead.
 
+WHAT THE EDITOR REJECTS (avoid all of these in your first draft): a hook that claims more than the sources say;
+a hook that gives away the payoff; two lines that say the same thing; fragments or running gags ("Check."); lists
+stacked in one sentence ("no X, no Y, no Z"); "So" or "That's why" when it doesn't follow; a quote not word-for-word
+from the brief; any payoff or reason no source states.
 SELF-CHECK before answering (fix anything that fails): read the narration aloud in your head. Does it sound like a
 real person? Is every sentence clear on one listen? Does each reveal raise the stakes? Does the payoff answer the
 hook? Is it inside {words_lo}-{words_hi} words?

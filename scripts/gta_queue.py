@@ -154,21 +154,23 @@ V = {
 
 # owner (16 Nov 2026): each video must look and feel different -> its own format, pace and opening style
 FORMATS = {
- "gta6-ultimate-worth": "SHOPPING COUNTDOWN: 'Here's what $20 more gets you' - #3, #2, #1 extras, each with its price-tag style callout; ends on the verdict line.",
- "gta6-extended-look": "RAPID-FIRE LIST: four 'wait, you can do THAT?' features, fastest cuts of the week (1.5-2 s), energetic, each feature shown in action.",
- "gta6-13-years": "TIME MACHINE: a timeline told year by year (2013 -> 2018 -> 2023 -> 2025 -> 2026), each year as a big callout; nostalgic, slower pace.",
- "gta6-ps5-space": "PRACTICAL MATHS: a calm problem -> number reveal -> 'here's what to do' fix; friendly, useful, one witty line.",
- "gta6-lucia": "CHARACTER STORY: open on Lucia, slower emotional build, her journey in the trailers, the 29-year reveal as the twist.",
- "gta6-heat-vice-city": "NEWS FLASH: 'tonight' urgency, real-world-to-game reveal, upbeat.",
- "gta6-unlock-time": "COUNTDOWN CLOCK: the world map of times, fastest first, ending on the viewer's own time; urgent.",
- "gta6-vice-city-research": "BEHIND THE SCENES: documentary feel, 'in 2015 a team flew to Miami...', field-notes callouts (year, place), slow build to the reveal.",
- "gta6-no-disc": "UNBOXING MYSTERY: the empty box, the question, the CEO's answer as a quote card, then the twist line.",
- "gta6-almost-tokyo": "WHAT IF: alternate-history 'GTA Tokyo... GTA Rio... GTA Moscow' city-name callouts, then why it always comes home.",
- "gta6-biggest-launches": "RECORD BATTLE: GTA 5's records vs GTA 6's start, scoreboard style.",
- "gta6-real-florida": "TRAVEL GUIDE: real places, 'you can actually visit this', postcard feel.",
- "gta6-map-vs-florida": "WHAT'S MISSING: 'it has... it has... but it doesn't have...' checklist with ticks and one big cross.",
- "gta6-india-price": "PRICE TAG FLIP: two price tags side by side (2013 vs 2026), the doubling reveal, then the dollar twist.",
- "gta6-leak-war": "HEIST THRILLER: tense, the leak as a crime story, then Rockstar's response.",
+ # 18 Nov 2026: the old formats were gimmicks (checklists, countdowns, "Check." running gags) that produced fragments
+ # the story reviewer rightly rejects. Now each is a story SHAPE and a tone, told in natural sentences.
+ "gta6-ultimate-worth": "Tone: a friend helping you decide. Shape: the $20 question -> the three best extras, building to the best one -> an honest take.",
+ "gta6-extended-look": "Tone: excited. Shape: one jaw-dropping feature after another, each bigger than the last.",
+ "gta6-13-years": "Tone: nostalgic. Shape: a journey through the years, ending on the moment it finally arrives.",
+ "gta6-ps5-space": "Tone: calm and practical. Shape: the problem -> the real number -> what to do about it.",
+ "gta6-lucia": "Tone: warm, character-focused. Shape: the common belief -> the surprising history -> what really makes her a first.",
+ "gta6-heat-vice-city": "Tone: upbeat news. Shape: the surprising real-world event -> the details -> the clever game reference.",
+ "gta6-unlock-time": "Tone: urgent. Shape: who is already playing -> the times around the world -> the twist for the viewer.",
+ "gta6-vice-city-research": "Tone: documentary. Shape: how it started -> what they did -> what it means for the game.",
+ "gta6-no-disc": "Tone: curious. Shape: the empty box -> what the CEO actually said -> the bigger picture.",
+ "gta6-almost-tokyo": "Tone: 'what if'. Shape: the cities GTA almost went to -> why they never happened -> why it always comes back to America.",
+ "gta6-biggest-launches": "Tone: big-stakes sports commentary. Shape: the records GTA 5 set -> what GTA 6 is up against -> the question.",
+ "gta6-real-florida": "Tone: travel story. Shape: each region in Rockstar's words -> the real place it is compared to.",
+ "gta6-map-vs-florida": "Tone: playful. Shape: what Leonida captures -> the famous places Rockstar suggests it leaves out -> why (Rockstar's own words).",
+ "gta6-india-price": "Tone: surprised. Shape: the 2013 price -> the 2026 price -> the twist in dollars.",
+ "gta6-leak-war": "Tone: tense thriller. Shape: the 2022 break-in -> the leaked trailer -> the 2026 court fight.",
 }
 
 # publish times (UTC); 5 a day, every 3 h over the US day (owner, 16 Nov: 5 a day)

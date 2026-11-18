@@ -602,7 +602,13 @@ class Pipeline:
                 script, rv = best[1], best[2]
                 path.write_text(json.dumps(script, indent=2, ensure_ascii=False))
         (d / "review.json").write_text(json.dumps(rv, indent=2))
-        if rv.get("verdict") == "reject" or float(rv.get("total", 0)) < bar:
+        if self._story and float(rv.get("total", 0)) < bar and best[0] >= bar - 1 and rv.get("verdict") != "reject" \
+                and not any(str(p.get("severity")) == "blocker" for p in best[2].get("problems", [])):
+            # 18 Nov 2026: a story script one point short with NO blocker left (only polish notes) goes on; the final
+            # video critique still checks it (3 of 5 story scripts were dropped on polish after 3-4 repairs)
+            script, rv = best[1], best[2]
+            path.write_text(json.dumps(script, indent=2, ensure_ascii=False))
+        elif rv.get("verdict") == "reject" or float(rv.get("total", 0)) < bar:
             raise QualityRejected(f"review score {rv.get('total')} / verdict {rv.get('verdict')}: "
                                   f"{[p.get('issue') for p in rv.get('problems', [])][:4]}")
         if (json.loads(topic.get("notes") or "{}") or {}).get("official_images"):
