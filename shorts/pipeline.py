@@ -567,6 +567,9 @@ class Pipeline:
         # 16 Nov 2026: footage videos lost good topics at this gate on small fixable points (a 9-word first line):
         # give them 4 targeted repairs instead of 2 (each costs ~$0.25; no pictures are made yet)
         n_repairs = 4 if (json.loads(topic.get("notes") or "{}") or {}).get("official_images") else 2
+        if self._story:
+            n_repairs = 3          # 18 Nov 2026: Sonnet reviews cost ~$0.12; 4 rounds that didn't converge cost $1.23
+        best = (float(rv.get("total", 0)), script, rv)
         for round_ in range(n_repairs):
             if float(rv.get("total", 0)) >= bar and rv.get("verdict") != "reject":
                 break
@@ -592,6 +595,12 @@ class Pipeline:
             script = fixed
             path.write_text(json.dumps(script, indent=2, ensure_ascii=False))
             rv = review(script, f"review{round_ + 2}")
+            if float(rv.get("total", 0)) > best[0]:
+                best = (float(rv.get("total", 0)), script, rv)
+            elif self._story:
+                # 18 Nov 2026: a repair that scores worse is thrown away; the next repair starts from the best version
+                script, rv = best[1], best[2]
+                path.write_text(json.dumps(script, indent=2, ensure_ascii=False))
         (d / "review.json").write_text(json.dumps(rv, indent=2))
         if rv.get("verdict") == "reject" or float(rv.get("total", 0)) < bar:
             raise QualityRejected(f"review score {rv.get('total')} / verdict {rv.get('verdict')}: "

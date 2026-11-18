@@ -465,10 +465,11 @@ STORY_KEEP = ("Keep the story format: natural spoken sentences, hook first, esca
               "comment question; no loop lead-in.")
 
 STORY_REWRITE = """TASK: script
-An editor reviewed this spoken-story script and found the problems below. REWRITE it so every problem is solved:
-you may rewrite any sentence, change the hook, reorder or merge beats. It must read as a real person telling a
-friend a great story: natural complete sentences, clear on one listen, a hook that creates a question, reveals that
-escalate, a payoff that answers the hook, then a comment question. Keep the verified facts, their sources and the
-shots that still fit (change a shot when the words of its beat change). Same JSON schema; keep "facts" complete.
+An editor reviewed this spoken-story script and found the problems below. Fix EVERY problem, and only those:
+use the editor's exact rewritten sentence wherever one is given; rewrite only the beats the problems name (merge or
+drop a beat when the problem asks for it). Every other beat stays word-for-word the same, so you don't create new
+problems. Every sentence you write must be natural, complete and clear on one listen, and must follow logically
+from the one before (no "So" unless it really follows). Keep the verified facts and their sources; change a beat's
+shot only when its words change. Same JSON schema; keep "facts" complete.
 Problems: {problems}
 Script: {script}"""
