@@ -1,0 +1,46 @@
+# Debug a shot boundary in a cached official clip (18 Nov 2026: trailer_1_00300 opens with ~1 s of another shot).
+name: clipdebug
+on:
+  workflow_dispatch:
+    inputs:
+      shot: { description: "shot id", required: true }
+permissions: { contents: write }
+jobs:
+  dbg:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SHOT: ${{ github.event.inputs.shot }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -q -r requirements.txt && scripts/install_ffmpeg.sh
+      - uses: actions/cache/restore@v4
+        with:
+          path: assets/official/clips
+          key: official-clips-v1-${{ github.run_id }}
+          restore-keys: official-clips-v1-
+      - run: |
+          python - <<'PY'
+          import json, os, subprocess
+          from pathlib import Path
+          from shorts import official_clips as oc
+          sid = os.environ["SHOT"]
+          sh = oc.shots_catalogue()[sid]
+          src = oc.CLIPS / f"{sh['clip']}.mp4"
+          print("shot", sid, sh["start"], sh["end"])
+          print(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=start_time,duration:stream=start_time,codec_type", "-of", "json", str(src)], capture_output=True, text=True).stdout)
+          print("clean_range", oc._clean_range(src, sh["start"], sh["end"]))
+          r = subprocess.run(["ffmpeg", "-hide_banner", "-ss", f"{sh['start']-2:.2f}", "-t", "5", "-i", str(src), "-vf", "select='gt(scene,0.30)',showinfo", "-f", "null", "-"], capture_output=True, text=True)
+          import re
+          print("cuts from start-2:", [round(float(x) + sh["start"] - 2, 2) for x in re.findall(r"pts_time:([\d.]+)", r.stderr)])
+          out = Path(os.environ["RUNNER_TEMP"]) / "dbg"; out.mkdir()
+          subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{sh['start']-1.5:.2f}", "-t", "3", "-i", str(src), "-vf", "fps=10,scale=160:-1,tile=10x3", "-frames:v", "1", str(out / "around_start.jpg")], check=True)
+          seg = out / "seg.mp4"
+          oc.segment(sid, seg, 2.5)
+          subprocess.run(["ffmpeg", "-v", "error", "-i", str(seg), "-vf", "fps=10,scale=120:-1,tile=13x2", "-frames:v", "1", str(out / "segment.jpg")], check=True)
+          PY
+          gh release delete clipdebug --yes 2>/dev/null || true
+          gh release create clipdebug --draft --title "clip debug (private draft)" --notes "debug" "$RUNNER_TEMP"/dbg/*.jpg
