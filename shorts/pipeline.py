@@ -547,7 +547,7 @@ class Pipeline:
         rv_model = self.cfg.pipeline["providers"]["llm"]["model_script" if self._story else "model_routine"]
         bar = self.cfg.channel["rules"]["review_pass_score"]
 
-        def review(sc: dict, tag: str) -> dict:
+        def review(sc: dict, tag: str, previous: dict | None = None) -> dict:
             # The reviewer sees only what the viewer will get (no hook list or index to confuse it).
             lean = {"title": sc.get("title"),
                     "opening_line": (sc.get("scenes") or [{}])[0].get("narration", ""),
@@ -556,6 +556,13 @@ class Pipeline:
                 lean["images"] = sc.get("images")      # official-image videos: the reviewer checks the image ids
             return self._llm((P.STORY_REVIEW if self._story else P.REVIEW).format(script=json.dumps(lean, ensure_ascii=False))
                              + (("\nTIMING (a wrong time word is a blocker):" + self._when_line()) if self._story else "")
+                             + (("\nTHIS IS A RE-REVIEW. The previous review found these problems: "
+                                 + json.dumps([q.get("issue") for q in previous.get("problems", [])], ensure_ascii=False)[:2500]
+                                 + "\nCheck whether each one is fixed and score the script again. Raise a NEW problem only "
+                                   "if it is a blocker (a false or unsupported claim, a rumour stated as fact, a misleading "
+                                   "title, or a sentence a viewer would not understand). Do not hunt for fresh nitpicks: "
+                                   "18 Nov 2026, scripts never passed because every round found different small points.")
+                                if (self._story and previous) else "")
                              + (("\nThis video has its own approved format (judge it against this, not the default "
                                  "question-hook template):\n" + json.loads(topic.get("notes") or "{}")["format_rules"]
                                  .replace("@@SHOT_LIST@@", "(the shot list is not needed for this review)"))
@@ -594,7 +601,7 @@ class Pipeline:
                 continue
             script = fixed
             path.write_text(json.dumps(script, indent=2, ensure_ascii=False))
-            rv = review(script, f"review{round_ + 2}")
+            rv = review(script, f"review{round_ + 2}", previous=rv)
             if float(rv.get("total", 0)) > best[0]:
                 best = (float(rv.get("total", 0)), script, rv)
             elif self._story:
