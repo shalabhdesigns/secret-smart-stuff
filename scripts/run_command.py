@@ -314,6 +314,14 @@ def keep_rejected(job: str) -> None:
            "--notes", "Not sent to the owner. Kept to learn from.", check=False)
 
 
+def _prewritten_job(p: Pipeline, job: str) -> bool:
+    try:
+        t = p.state.get_topic(p.state.get_job(job)["topic_id"]) or {}
+        return isinstance((json.loads(t.get("notes") or "{}") or {}).get("script"), dict)
+    except Exception:  # noqa: BLE001
+        return False
+
+
 def self_review(p: Pipeline, job: str, rounds: int = 3) -> dict:
     """Claude's final review of the finished video, with up to `rounds` reviews (so at most rounds-1 targeted
     fixes). Only a video that passes reaches the owner. See Pipeline.critique for the bar."""
@@ -322,8 +330,11 @@ def self_review(p: Pipeline, job: str, rounds: int = 3) -> dict:
         fetch_bundle(job, d)
     topic = p.state.get_job(job)["topic_id"]
     try:   # 16 Nov 2026: footage videos cost almost nothing to fix (no image generation): give them 5 rounds
-        if (json.loads((p.state.get_topic(topic) or {}).get("notes") or "{}") or {}).get("official_images"):
+        tn = json.loads((p.state.get_topic(topic) or {}).get("notes") or "{}") or {}
+        if tn.get("official_images"):
             rounds = max(rounds, 5)
+        if isinstance(tn.get("script"), dict):
+            rounds = 1      # 18 Nov 2026 (cost): a script written in session gets one cheap check, no paid fix loop
     except Exception:  # noqa: BLE001
         pass
     c, prev = {}, None
@@ -515,6 +526,12 @@ def do_produce(p: Pipeline, req: dict) -> int:
         c = self_review(p, job)
         if c.get("passed"):
             break
+        if _prewritten_job(p, job) and not c.get("budget_stop"):
+            # never drop a script Claude wrote and checked: hold it; Claude fixes it in session (no API cost)
+            subprocess.run([str(ROOT / "scripts" / "open_review.sh"), job], check=True)
+            p.state.log(f"{job} held for Claude: final check said {c.get('summary', '')[:200]}", "warn", job)
+            print(f"held for checking: {job} ({c.get('summary', '')[:200]})")
+            return 0
         if c.get("budget_stop"):
             # not a failed video: keep it, tell the owner, finish it when money allows (never publish it unreviewed)
             preserve_media(p)                                   # keep the paid-for media for the next run

@@ -110,3 +110,26 @@ def test_clean_range_drops_two_frame_tail(tmp_path):
                     "[0:v][1:v][2:v]concat=n=3:v=1[v]", "-map", "[v]", "-pix_fmt", "yuv420p", str(src)], check=True)
     s, e = oc._clean_range(src, 0.0, 3.08)
     assert s == 0.0 and 2.9 < e < 3.0
+
+
+def test_prewritten_script_skips_paid_stages(tmp_path):
+    """18 Nov 2026 (owner, cost): a script written in session is used as is: no script or review LLM call."""
+    from shorts.pipeline import Pipeline
+    p = Pipeline.__new__(Pipeline)
+    scenes = [{"id": f"b{i}", "narration": f"This is a clear natural sentence number {i} about the game.",
+               "image": f"img{i}", "delivery": None, "focus": None, "motion": "push", "transition": "cut",
+               "callout": None, "pop": None, "arrow": None, "card_text": None, "tone": "normal", "markers": None}
+              for i in range(1, 13)]
+    script = {"title": "t", "hook_card": "h", "images": {f"img{i}": f"CLIP:trailer_1_{i:05d}" for i in range(1, 13)},
+              "scenes": scenes, "facts": [{"claim": "c", "sources": ["https://example.com"], "main": True}],
+              "description": "d", "hashtags": ["#gta6"]}
+    p._topic_notes = {"style": "story", "official_images": "required", "script": script, "words": [100, 180]}
+    from types import SimpleNamespace
+    p.cfg = SimpleNamespace(channel={"rules": {"target_seconds": [30, 36], "words_per_second": 2.4}}, pipeline={})
+    p._llm = lambda *a, **k: (_ for _ in ()).throw(AssertionError("no LLM call expected"))
+    logged = []
+    p.state = type("S", (), {"log": lambda self, *a, **k: logged.append(a)})()
+    out = p._stage_script("j", {"title": "t", "notes": "{}"}, tmp_path)
+    assert out["content"]["scenes"][0]["narration"].startswith("This is")
+    rv = p._stage_review("j", {"title": "t", "notes": "{}"}, tmp_path)
+    assert rv["content"]["verdict"] == "pass" and logged
