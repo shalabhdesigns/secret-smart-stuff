@@ -354,8 +354,10 @@ HOW IT MUST SOUND (this is the most important part):
 - Name a source only when it adds trust, in plain words ("Rockstar says", "Take-Two's boss said", "a former Rockstar
   developer revealed"). Never name a website mid-sentence; sources go in "facts" and the description.
 - When the brief has a REAL PERSON'S QUOTE (a Rockstar or Take-Two person), use it: say who they are, then their
-  exact words ("Rockstar's Rob Nelson put it like this: 'We're always semi-undercover.'"). Put the speaker's name in
-  that beat's "callout" (e.g. "ROB NELSON, ROCKSTAR"). Quotes must be word-for-word from the brief.
+  exact words ("Rockstar's Rob Nelson put it like this: 'We're always semi-undercover.'"). Put "QUOTE:" and the
+  speaker in that beat's "callout" (e.g. "QUOTE: ROB NELSON, ROCKSTAR"), and give quote beats a shot of a PLACE (city,
+  street, building) - never a game character's face, so nobody thinks that character is the real person.
+  Quotes must be word-for-word from the brief.
 - Light, natural humour where it fits (1-2 lines), never forced.
 
 STRUCTURE (a story, not a fact list):
@@ -378,7 +380,7 @@ BEATS AND PICTURES:
 - Every beat's "image" key points to a picture in "images". Picture rules are in the overrides below (official
   footage shots, 'CLIP:<shot_id>'). Each beat shows what its words are about; change the shot every beat.
 - "callout": 1-4 words shown as a label on screen, only for a number, a person's name or a key term (at most 5 beats,
-  max 24 characters, e.g. "7 PM ET", "ROB NELSON, ROCKSTAR"). "pop": one emphatic
+  max 34 characters, e.g. "7 PM ET", "QUOTE: ROB NELSON, ROCKSTAR"). "pop": one emphatic
   spoken word, at most 2 beats. No markers, no arrows, no cards.
 - "hook_card": 2-4 words for the thumbnail.
 
