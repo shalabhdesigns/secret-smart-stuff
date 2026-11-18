@@ -57,7 +57,8 @@ def write_ass(words: list[Word], out: Path, font: str = "Inter", font_size: int 
               y_center: int = 1180, uppercase: bool = True,
               overlays: list[tuple[float, float, str]] | None = None,
               handle: tuple[float, float, str] | None = None,
-              hook: tuple[list[str], float] | None = None, hook_y: int = 560) -> Path:
+              hook: tuple[list[str], float] | None = None, hook_y: int = 560,
+              badge: str | None = None, duration: float = 0.0) -> Path:
     """Write an .ass subtitle file.
 
     The word being spoken is highlighted (karaoke style) - a common retention
@@ -84,6 +85,13 @@ def write_ass(words: list[Word], out: Path, font: str = "Inter", font_size: int 
         f"Style: HookA,{font},84,&H00FFFFFF,&H00FFFFFF,&H00FF3B1F,&H00FF3B1F,-1,0,0,0,100,100,0,0,3,22,0,5,40,40,0,1",
         f"Style: HookB,{font},84,&H00FF3B1F,&H00FF3B1F,&H00E0D6FF,&H00E0D6FF,-1,0,0,0,100,100,0,0,3,22,0,5,40,40,0,1",
     ]
+    # topic badge (owner, 19 Nov 2026: "the first screens don't have any GTA 6 branding"): our own text badge, never a
+    # game's logo artwork - big above the opening hook, and a small tag in the top-left corner for the whole video so
+    # any frame the feed picks as the thumbnail says what the video is about
+    style_badges = [
+        f"Style: BadgeBig,{font},104,&H00FFFFFF,&H00FFFFFF,&H00882EFF,&H00882EFF,-1,0,0,0,100,100,2,0,3,20,0,5,40,40,0,1",
+        f"Style: BadgeSmall,{font},46,&H00FFFFFF,&H00FFFFFF,&H00882EFF,&H00882EFF,-1,0,0,0,100,100,1,0,3,10,0,7,48,40,250,1",
+    ]
     lines = [
         "[Script Info]",
         "ScriptType: v4.00+",
@@ -100,6 +108,7 @@ def write_ass(words: list[Word], out: Path, font: str = "Inter", font_size: int 
         style_top,
         style_handle,
         *style_hooks,
+        *style_badges,
         "",
         "[Events]",
         "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text",
@@ -128,6 +137,12 @@ def write_ass(words: list[Word], out: Path, font: str = "Inter", font_size: int 
             st = "HookA" if i == 0 else "HookB"
             lines.append(f"Dialogue: 3,{_ts(0)},{_ts(1.8)},{st},,0,0,0,,{{\\fad(0,250)}}{tag}{_esc(text)}")
             lines.append(f"Dialogue: 3,{_ts(max(0, end - 0.7))},{_ts(end)},{st},,0,0,0,,{{\\fad(250,0)}}{tag}{_esc(text)}")
+    if badge:
+        total = max(duration, hook[1] if hook else 0.0, words[-1].end if words else 0.0)
+        b = _esc(badge.upper())
+        y_big = (hook_y - 150) if (hook and hook[0]) else 420
+        lines.append(f"Dialogue: 4,{_ts(0)},{_ts(1.8)},BadgeBig,,0,0,0,,{{\\an5\\pos(540,{max(150, y_big)})\\fad(0,250)}}{b}")
+        lines.append(f"Dialogue: 4,{_ts(1.8)},{_ts(total)},BadgeSmall,,0,0,0,,{{\\fad(300,0)}}{b}")
     if handle and handle[1] > handle[0]:
         lines.append(f"Dialogue: 2,{_ts(handle[0])},{_ts(handle[1])},Handle,,0,0,0,,{{\\fad(500,500)}}{_esc(handle[2])}")
     out.write_text("\n".join(lines) + "\n", encoding="utf-8")

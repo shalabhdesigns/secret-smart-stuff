@@ -217,7 +217,7 @@ def build():
             angle += " FORMAT FOR THIS VIDEO (its own look and feel): " + FORMATS[tid]
         notes = {"object": "official GTA 6 footage", "question": title, "angle": angle,
                  "format_rules": RULES_STORY + tail, "critic_rules": CRITIC_STORY, "official_images": "required",
-                 "open_hook": True, "words": [110, 170], "cover_rule": COVER, "style": "story", **({"script": SCRIPTS[tid]} if tid in SCRIPTS else {}),
+                 "open_hook": True, "words": [110, 170], "cover_rule": COVER, "style": "story", "badge": "GTA 6", **({"script": SCRIPTS[tid]} if tid in SCRIPTS else {}),
                  "publish_at": at, "batch": "gta6-launch-footage",
                  # 17 Nov 2026: GTA videos went out as Education (27) with generic tags; Gaming (20) + GTA search terms
                  "seo": {"category_id": "20", "hashtags": ["#GTA6", "#GTAVI", "#GrandTheftAuto6"],

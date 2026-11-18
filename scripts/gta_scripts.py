@@ -87,7 +87,7 @@ S["gta6-india-price"] = dict(
 )
 
 S["gta6-leak-war"] = dict(
-    title="Rockstar's war on GTA 6 leakers",
+    title="GTA 6: Rockstar's war on the leakers",
     thumb_text="STOLEN GAME",
     hook_card="STOLEN IN 2022",
     beats=[
@@ -129,7 +129,7 @@ S["gta6-leak-war"] = dict(
 )
 
 S["gta6-almost-tokyo"] = dict(
-    title="GTA almost went to Tokyo",
+    title="GTA 6 is in America, but GTA almost went to Tokyo",
     thumb_text="GTA TOKYO?",
     hook_card="GTA TOKYO?",
     beats=[
@@ -169,7 +169,7 @@ S["gta6-almost-tokyo"] = dict(
 )
 
 S["gta6-real-florida"] = dict(
-    title="The real places behind GTA 6's map",
+    title="GTA 6's map: the real places you can visit",
     thumb_text="REAL PLACES",
     hook_card="VISIT GTA 6?",
     beats=[
@@ -250,7 +250,7 @@ S["gta6-florida-man"] = dict(
 )
 
 S["gta6-not-on-pc"] = dict(
-    title="Why GTA 6 still isn't on PC",
+    title="GTA 6 still isn't on PC. Here's why",
     thumb_text="NO PC VERSION",
     hook_card="WHERE'S PC?",
     beats=[

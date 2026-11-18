@@ -1411,6 +1411,7 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
         except Exception:  # noqa: BLE001
             pass
         ass = write_ass(words, d / "captions.ass", y_center=y_cap, hook=hook, hook_y=hook_y,
+                        badge=tnotes.get("badge"), duration=end,
                         font=self.cfg.channel["style"]["caption_font"],
                         font_size=self.cfg.channel["style"]["caption_size"],
                         highlight=ass_colour(self.cfg.channel["style"].get("caption_highlight", "#FFE500")),
