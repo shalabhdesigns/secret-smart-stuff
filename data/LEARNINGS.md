@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-18 17:38 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-18 20:54 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - News topics got 6.58x the median views of film topics (pattern, n=5 vs 7). Film got more subs_per_1k (1.64 vs 0.63), so pair film with a stronger hook and payoff.
@@ -16,6 +16,38 @@ Updated 2026-11-18 17:38 UTC. Built from every published video's 48 h and 7 day 
 - by_country, walk_past, why_detail, india_asia and virality: not enough data yet (n=1-2 each).
 
 ## Per-video analyses
+
+### gta6-not-on-pc-v2 (48h) — below median
+- 4 views · 90.37% viewed · 1 likes · 0 shares · 0 subs (median views 160, n=27)
+- YouTube barely distributed this Short (4 views vs a median of 160), so the strong 90% average viewed isn't a reliable signal, while the same video got 1,401 views on Instagram.
+  - ✅ The few YouTube viewers stayed: average view percentage was 90.37% vs a median of 57.54%, and average view duration was 27s vs 21s. With 4 views this is only a weak hint that the 29s length and fast beats hold attention.
+  - ✅ On Instagram the video reached 1,097 accounts with 1,401 views and a 33.5% skip rate. The average watch time of 12,995 is probably milliseconds, about 13s, which would be under half of the 29.2s runtime. Treat that as an assumption about the unit.
+  - ✅ The hook is a direct question that names the topic (GTA 6 on PC), and the script pays it off with a concrete answer (the Take-Two CEO's comment, then the GTA V and Red Dead 2 PC delays). The self-review scored hook_curiosity and payoff at 4 each.
+  - ✅ The closing line, 'Now you know the answer to...', is cut off on purpose to lead back into the hook. That may help looping and would be consistent with the 90% average viewed, but one video can't confirm it.
+  - ❌ YouTube distribution essentially failed: 4 views, 2 engaged views, 1 like, 0 comments, 0 shares and 0 subscribers gained. Every metric is at or below the channel median. Nothing here points to the content itself, since the viewers who did arrive watched almost to the end.
+  - ❌ Engagement on Instagram is thin too: 7 likes, 1 save, 0 comments and 0 shares on 1,401 views. The video is watchable but not very shareable or discussable. The self-review scored rewatch and share at 3.
+  - ❌ No retention curve was provided, so I can't point to where viewers left. Any drop-point claim would be a guess.
+  - ❌ Many carried-over lessons were applied (weekly, wins, postmortems, and a long list of gta6 review blockers and owner drop/fix/stop notes). I can't tell whether they helped. The 90% average viewed fits them, but the 4 views mean the sample is too small to credit or blame them. The many 'owner:drop' notes on gta6 videos suggest this pillar has struggled before.
+  - ❌ The topic is a news-style, time-sensitive piece (a Thursday announcement) on a pillar the owner has dropped several times. That may suit Instagram's audience better than YouTube's feed here.
+  - 💡 [topic, hypothesis] Don't judge the gta6 pillar on this video. YouTube gave it almost no impressions while Instagram gave it 1,401 views. Check the other gta6 videos' views before deciding to drop or keep it.
+  - 💡 [length, hypothesis] Keep this ~29s length and beat density for news-explainer Shorts. The 90% average viewed on YouTube supports it, but only weakly given the tiny sample.
+  - 💡 [loop, hypothesis] Keep the cut-off closing line that leads into the hook. Test it on a video with real distribution to see if average viewed stays above 80%.
+  - 💡 [story, hypothesis] Add a debate or share trigger at the end (e.g. a pointed question for PC players) to lift comments and shares, which were 0 on both platforms.
+  - 💡 [title, hypothesis] Compare this title ('Why GTA 6 isn't on PC yet') against a more searchable or curiosity-driven one on the next gta6 video, to see whether the YouTube reach problem is about packaging.
+
+### gta6-cheaper-than-gta5-v8 (48h) — below median
+- 4 views · 107.89999999999999% viewed · 1 likes · 0 shares · 0 subs (median views 160, n=27)
+- The Short got only 4 views in 48h against a channel median of 160, so it barely reached anyone; the one viewer signal (watched the full length and then some) is too small to read as a quality sign.
+  - ✅ The few viewers who saw it stayed: average view percentage was 107.9% (channel median 57.5%) and average view duration was 43s (median 21s), which points to full watches or a rewatch. With 4 views, though, this is anecdotal.
+  - ✅ The title and the first line state a clear, curiosity-driven claim that matches (GTA 6 at $79.99 vs GTA 5 at $59.99, adjusted for inflation), and the script argues it in a clean sequence of short beats.
+  - ❌ Distribution failed: 4 views, 1 engaged view, 1 like, 0 comments, 0 shares and 0 subscribers gained, all at or below the channel medians. The problem is reach, not what happened after people clicked.
+  - ❌ No retention curve was provided, so I can't say where viewers dropped off or what worked inside the video.
+  - ❌ The title is a flat claim with a number. It may not have given the algorithm or viewers enough to pick up, but this can't be tested from one video.
+  - ❌ The final line, 'Now you know the answer to...', is an unfinished sentence. It may have been meant as a loop into the opener, but there's no data showing it worked.
+  - 💡 [topic, hypothesis] Don't judge the GTA 6 pillar from this single video. Publish a second or third GTA 6 Short with a different angle and compare views against the 160 median before deciding.
+  - 💡 [title, hypothesis] Test a more provocative or question-style title for price/value topics (for example, 'Is GTA 6 really more expensive?') against this flat claim to see whether early impressions improve.
+  - 💡 [loop, hypothesis] If the ending is meant to loop back into the opener, make the last line grammatically complete and echo the first line. A dangling 'answer to...' reads as a cut-off if the loop doesn't land.
+  - 💡 [hook, hypothesis] Keep the opening question, but check whether the first 3 seconds show something visual or surprising rather than only text. Retention data on the next upload will show whether the hook holds.
 
 ### taipei-101-ball-v1 (7d) — below median
 - 71 views · 52.72% viewed · 1 likes · 0 shares · 0 subs (median views 1221.5, n=22)
