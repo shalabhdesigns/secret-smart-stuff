@@ -1372,7 +1372,7 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
                               indicator=indicator_at.get(k, "ring"),
                               callout_at=b_start + 0.25, pops=pops, arrow=arrow,
                               card_text=(sc.get("card_text") or "") if not img else "", markers=markers,
-                              tag_label=(sc.get("callout") or None) if (self._story and clip) else None,
+                              tag_label=(sc.get("callout") or None) if (self._story and not sc.get("focus")) else None,
                               # no opening text card: it would pop in on every replay and break the loop
                               hook_text=""))
         boxes = [b.focus for b in beats if b.focus]
