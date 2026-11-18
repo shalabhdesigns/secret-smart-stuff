@@ -61,6 +61,11 @@
   complete sentences clear on one listen, hook -> escalating reveals -> wow payoff -> comment question, 45-70 s
   (110-170 words), no loop lead-in, real Rockstar/Take-Two quotes word for word. Voice: "Mark - Natural
   Conversations" (ElevenLabs Voice Library, eleven_v4) with up to 5 delivery tags per video.
+- **Scripts are written by Claude in session, not by the API** (owner, 18 Nov 2026: "$20 every 3-4 days is way too
+  much ... create a video on the first try"). Claude researches, writes and fact-checks each day's scripts and picks
+  every shot from `assets/official/shots.json` in `scripts/gta_scripts.py` -> `config/gta_scripts.json` ->
+  `notes.script`. The pipeline then skips the paid script/review/repair/storyboard stages; one Haiku final check;
+  a failing video is held for Claude, never dropped. API cost per video: a few cents.
 - **GTA 6 launch week: 5 videos a day** (owner, 16 Nov 2026), every 3 h over the US day (14:00, 17:00, 20:00,
   23:00, 02:00 UTC). Review the numbers after 7 days: 8 a day if views per video hold, back to 3 if they fall.
 - **Flag cost and policy risks before spending.** Never claim something works until it has been tested.

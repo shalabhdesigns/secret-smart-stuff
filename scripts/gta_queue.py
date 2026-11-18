@@ -1,6 +1,7 @@
 """GTA 6 launch week, footage edition (owner, 16 Nov 2026): 5 videos a day, Rockstar's own trailer footage,
 story-first scripts. Built into config/daily_queue.json."""
 import json
+from pathlib import Path
 import sys
 
 sys.path.insert(0, "/home/claude/shorts-system")
@@ -153,6 +154,10 @@ V = {
 }
 
 # owner (16 Nov 2026): each video must look and feel different -> its own format, pace and opening style
+# 18 Nov 2026 (cost): scripts written and verified by Claude in session (scripts/gta_scripts.py)
+_SF = Path(__file__).resolve().parent.parent / "config" / "gta_scripts.json"
+SCRIPTS = json.loads(_SF.read_text()) if _SF.exists() else {}
+
 FORMATS = {
  # 18 Nov 2026: the old formats were gimmicks (checklists, countdowns, "Check." running gags) that produced fragments
  # the story reviewer rightly rejects. Now each is a story SHAPE and a tone, told in natural sentences.
@@ -210,7 +215,7 @@ def build():
             angle += " FORMAT FOR THIS VIDEO (its own look and feel): " + FORMATS[tid]
         notes = {"object": "official GTA 6 footage", "question": title, "angle": angle,
                  "format_rules": RULES_STORY + tail, "critic_rules": CRITIC_STORY, "official_images": "required",
-                 "open_hook": True, "words": [110, 170], "cover_rule": COVER, "style": "story",
+                 "open_hook": True, "words": [110, 170], "cover_rule": COVER, "style": "story", **({"script": SCRIPTS[tid]} if tid in SCRIPTS else {}),
                  "publish_at": at, "batch": "gta6-launch-footage",
                  # 17 Nov 2026: GTA videos went out as Education (27) with generic tags; Gaming (20) + GTA search terms
                  "seo": {"category_id": "20", "hashtags": ["#GTA6", "#GTAVI", "#GrandTheftAuto6"],

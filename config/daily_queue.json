@@ -662,6 +662,236 @@
      ],
      "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
      "style": "story",
+     "script": {
+      "viable": true,
+      "title": "The GTA 5 record GTA 6 has to beat",
+      "thumb_text": "GTA 6 VS GTA 5",
+      "hook_card": "$1B IN 3 DAYS?",
+      "hooks": [
+       "GTA 6 is finally out, and it's chasing one of the biggest records in entertainment."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:launch_trailer_00685",
+       "img2": "OFFICIAL:v_24ba6644de",
+       "img3": "OFFICIAL:v_fdac18d437",
+       "img4": "OFFICIAL:v_07edb091bb",
+       "img5": "CLIP:trailer_1_00398",
+       "img6": "CLIP:trailer_1_00341",
+       "img7": "CLIP:trailer_2_00346",
+       "img8": "CLIP:extended_look_12920",
+       "img9": "CLIP:extended_look_07446",
+       "img10": "CLIP:extended_look_09166",
+       "img11": "OFFICIAL:v_c670974867",
+       "img12": "CLIP:trailer_1_00300"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "GTA 6 is finally out, and it's chasing one of the biggest records in entertainment.",
+        "image": "img1",
+        "delivery": "excited",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "Back in 2013, GTA 5 made over eight hundred million dollars in its first twenty-four hours.",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "$815.7M IN 24 HOURS",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "It also sold more than eleven million copies on that first day.",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "11.21M COPIES",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "Three days later, it passed one billion dollars.",
+        "image": "img4",
+        "delivery": "surprised",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "$1B IN 3 DAYS",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "Guinness World Records called it the fastest entertainment product ever to make a billion dollars.",
+        "image": "img5",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "That means it beat every movie, album and game that came before it.",
+        "image": "img6",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "So can GTA 6 beat that?",
+        "image": "img7",
+        "delivery": "curious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "Take-Two hasn't shared a single sales number yet.",
+        "image": "img8",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "But earlier this month, the company said pre-orders were \"tracking far above our initial expectations.\"",
+        "image": "img9",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "QUOTE: TAKE-TWO",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "Here's the funny part: GTA 6's biggest rival isn't another game.",
+        "image": "img10",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b11",
+        "narration": "It's GTA 5, the game it replaces.",
+        "image": "img11",
+        "delivery": "laughs softly",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b12",
+        "narration": "Does GTA 6 hit a billion dollars in three days? Yes or no?",
+        "image": "img12",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "GTA V made $815.7 million in its first 24 hours, sold 11.21 million copies in 24 hours and reached $1 billion in three days, the fastest entertainment property to do so (Guinness World Records).",
+        "sources": [
+         "https://www.guinnessworldrecords.com/news/2013/10/confirmed-grand-theft--auto-breaks-six-sales-world-records-51900"
+        ],
+        "main": true
+       },
+       {
+        "claim": "Take-Two, November 2026: GTA 6 pre-orders are 'tracking far above our initial expectations'; no pre-order numbers published.",
+        "sources": [
+         "https://shacknews.com/article/151308/grand-theft-auto-6-pre-orders-q2-fy27"
+        ],
+        "main": true
+       }
+      ],
+      "description": "GTA 5 made $815.7 million in a day and $1 billion in three. Can GTA 6 beat its own big brother?\nSources: Guinness World Records (2013), Shacknews (Take-Two earnings, Nov 2026).",
+      "hashtags": [
+       "#GTA6",
+       "#GTA5",
+       "#GrandTheftAuto"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)"
+     },
      "publish_at": "2026-11-19T14:00:00Z",
      "batch": "gta6-launch-footage",
      "seo": {
@@ -711,6 +941,227 @@
      ],
      "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
      "style": "story",
+     "script": {
+      "viable": true,
+      "title": "GTA 6 costs double GTA 5 in India, but there's a twist",
+      "thumb_text": "DOUBLE THE PRICE?",
+      "hook_card": "2X THE PRICE?",
+      "hooks": [
+       "In India, GTA 6 costs exactly twice what GTA 5 did."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:trailer_2_00416",
+       "img2": "OFFICIAL:v_c670974867",
+       "img3": "CLIP:trailer_2_00232",
+       "img4": "CLIP:extended_look_15485",
+       "img5": "CLIP:trailer_2_00346",
+       "img6": "CLIP:trailer_1_00325",
+       "img7": "CLIP:extended_look_09166",
+       "img8": "CLIP:extended_look_10833",
+       "img9": "CLIP:extended_look_12327",
+       "img10": "CLIP:extended_look_15698",
+       "img11": "CLIP:trailer_2_00795"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "In India, GTA 6 costs exactly twice what GTA 5 did.",
+        "image": "img1",
+        "delivery": "surprised",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "2X",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "When GTA 5 launched here in 2013, it cost 2,999 rupees.",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "₹2,999 IN 2013",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "GTA 6's standard edition is 5,999.",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "₹5,999",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "And the Ultimate Edition goes all the way up to 7,499.",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "₹7,499 ULTIMATE",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "That sounds brutal, until you look at America.",
+        "image": "img5",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "Over there, GTA 5 cost sixty dollars, and GTA 6 costs eighty.",
+        "image": "img6",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "$59.99 → $79.99",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "That's only about a third more, not double.",
+        "image": "img7",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "+33%",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "So India's price really did jump much more than America's.",
+        "image": "img8",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "But here's the twist: eighty dollars is roughly 6,900 rupees.",
+        "image": "img9",
+        "delivery": "curious",
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "$80 ≈ ₹6,900",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "So even after doubling, Indian players still pay about 900 rupees less than Americans.",
+        "image": "img10",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b11",
+        "narration": "Would you pay 5,999 on day one, or wait for a sale?",
+        "image": "img11",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "GTA V launched in India at Rs 2,999 in 2013 (distributor E-xpress Interactive).",
+        "sources": [
+         "https://www.mcvuk.com/update-grand-theft-auto-5-price-to-remain-rs-2999/"
+        ],
+        "main": true
+       },
+       {
+        "claim": "GTA 6 in India: Rs 5,999 standard, Rs 7,499 Ultimate; US $79.99; $80 is about Rs 6,900.",
+        "sources": [
+         "https://www.mysmartprice.com/gear/gaming/gaming-news/gta-6-pre-orders-go-live-in-india-standard-edition-costs-rs-5999-ultimate-edition-priced-at-rs-7499/"
+        ],
+        "main": true
+       },
+       {
+        "claim": "GTA V launched at $59.99 in the US; GTA 6 is $79.99.",
+        "sources": [
+         "https://hothardware.com/news/gta-6-launch-80-single-player-title-rockstar-reveals"
+        ],
+        "main": false
+       }
+      ],
+      "description": "GTA 5 was Rs 2,999 in 2013. GTA 6 is Rs 5,999. In dollars, India still pays less than America.\nSources: MCV (2013), MySmartPrice (2026).",
+      "hashtags": [
+       "#GTA6",
+       "#GTA6India",
+       "#GrandTheftAuto"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)"
+     },
      "publish_at": "2026-11-19T17:00:00Z",
      "batch": "gta6-launch-footage",
      "seo": {
@@ -760,6 +1211,243 @@
      ],
      "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
      "style": "story",
+     "script": {
+      "viable": true,
+      "title": "Rockstar's war on GTA 6 leakers",
+      "thumb_text": "STOLEN GAME",
+      "hook_card": "STOLEN IN 2022",
+      "hooks": [
+       "Someone stole GTA 6 years before it came out."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:trailer_2_00996",
+       "img2": "CLIP:extended_look_02226",
+       "img3": "CLIP:trailer_2_00452",
+       "img4": "CLIP:trailer_2_00498",
+       "img5": "CLIP:trailer_2_01188",
+       "img6": "CLIP:trailer_1_00300",
+       "img7": "CLIP:trailer_1_00026",
+       "img8": "CLIP:extended_look_02502",
+       "img9": "CLIP:extended_look_12920",
+       "img10": "CLIP:extended_look_12327",
+       "img11": "CLIP:launch_trailer_00685",
+       "img12": "CLIP:trailer_2_00961"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "Someone stole GTA 6 years before it came out.",
+        "image": "img1",
+        "delivery": "serious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "In September 2022, a hacker posted early development footage of the game online.",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "SEPT 2022",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "It was a huge leak, and the hacker was caught.",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "In 2023, a UK court ordered the teenager behind it to be held in a secure hospital, with no end date.",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "UK COURT, 2023",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "But the leaks didn't stop there.",
+        "image": "img5",
+        "delivery": "short pause",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "In December 2023, GTA 6's very first trailer leaked online before its premiere.",
+        "image": "img6",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "DEC 2023",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "So Rockstar just released it early, hours ahead of plan.",
+        "image": "img7",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "Then this August, new clips started showing up online.",
+        "image": "img8",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "AUG 2026",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "This time, Take-Two went to court.",
+        "image": "img9",
+        "delivery": "serious",
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "It won orders telling Microsoft, which owns GitHub, and Discord to help identify who posted them.",
+        "image": "img10",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "MICROSOFT + DISCORD",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b11",
+        "narration": "From a stolen build to court orders, Rockstar has been fighting leakers right up to launch day.",
+        "image": "img11",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b12",
+        "narration": "Did you watch the leaks, or did you wait for the real thing?",
+        "image": "img12",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "Sept 2022: a hacker leaked early GTA 6 development footage; in Dec 2023 a UK court gave the teenager behind it an indefinite hospital order.",
+        "sources": [
+         "https://www.techradar.com/gaming/gta-6-hacker-who-intended-to-return-to-cyber-crime-as-soon-as-possible-sentenced-to-an-indefinite-hospital-order"
+        ],
+        "main": true
+       },
+       {
+        "claim": "Dec 2023: GTA 6 trailer 1 leaked online, so Rockstar released it early.",
+        "sources": [
+         "https://www.videogameschronicle.com/news/the-gta-6-trailer-has-allegedly-leaked-online/"
+        ],
+        "main": true
+       },
+       {
+        "claim": "Aug 2026: after new GTA 6 clips leaked, Take-Two won court orders requiring Microsoft (owner of GitHub) and Discord to help identify the accounts (AFP).",
+        "sources": [
+         "https://www.khaleejtimes.com/entertainment/gaming/gta-6-publisher-subpoenas-bid-to-unmask-leaks"
+        ],
+        "main": true
+       }
+      ],
+      "description": "From the 2022 hack to 2026 court orders: how Rockstar and Take-Two fought GTA 6 leaks.\nSources: TechRadar, VGC, AFP via Khaleej Times.",
+      "hashtags": [
+       "#GTA6",
+       "#Rockstar",
+       "#GrandTheftAuto"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)"
+     },
      "publish_at": "2026-11-19T20:00:00Z",
      "batch": "gta6-launch-footage",
      "seo": {
@@ -809,6 +1497,236 @@
      ],
      "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
      "style": "story",
+     "script": {
+      "viable": true,
+      "title": "GTA almost went to Tokyo",
+      "thumb_text": "GTA TOKYO?",
+      "hook_card": "GTA TOKYO?",
+      "hooks": [
+       "GTA almost left America, and one city came really close."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:trailer_1_00325",
+       "img2": "CLIP:extended_look_12327",
+       "img3": "CLIP:trailer_1_00300",
+       "img4": "CLIP:extended_look_15698",
+       "img5": "CLIP:trailer_2_00346",
+       "img6": "CLIP:extended_look_07446",
+       "img7": "CLIP:trailer_1_00026",
+       "img8": "CLIP:trailer_1_00248",
+       "img9": "CLIP:extended_look_12920",
+       "img10": "CLIP:trailer_1_00398",
+       "img11": "CLIP:extended_look_10450",
+       "img12": "CLIP:extended_look_15485"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "GTA almost left America, and one city came really close.",
+        "image": "img1",
+        "delivery": "curious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "Obbe Vermeij, a former technical director at Rockstar North, says a GTA set in Tokyo \"almost actually happened.\"",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "QUOTE: OBBE VERMEIJ",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "And Tokyo wasn't the only city on the table.",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "He says Rio, Moscow and Istanbul were considered too.",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "RIO, MOSCOW, ISTANBUL",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "So why does every numbered GTA still end up in America?",
+        "image": "img5",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "Rockstar co-founder Dan Houser has a simple answer.",
+        "image": "img6",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "He says other countries may have great cities, \"but they're not American cities.\"",
+        "image": "img7",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "QUOTE: DAN HOUSER",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "For him, GTA needs America's guns and its larger-than-life characters.",
+        "image": "img8",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "There's a practical problem too.",
+        "image": "img9",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "Vermeij says a whole new country is \"just not realistic\" when there's only a GTA every twelve years.",
+        "image": "img10",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "QUOTE: OBBE VERMEIJ",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b11",
+        "narration": "So after thirteen years, GTA 6 is going back to a city fans already know and love: Vice City.",
+        "image": "img11",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b12",
+        "narration": "If GTA ever does leave America, which city should it be?",
+        "image": "img12",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "Former Rockstar North technical director Obbe Vermeij said GTA: Tokyo 'almost actually happened', and Rio, Moscow and Istanbul were also considered; a new country is 'just not realistic' 'when there's a GTA every 12 years'.",
+        "sources": [
+         "https://hitmarker.net/news/rockstar-reportedly-considered-grand-theft-auto-games-set-in-tokyo-rio-moscow-and-istanbul-former-developer-claims-1606106"
+        ],
+        "main": true
+       },
+       {
+        "claim": "Dan Houser: other countries 'may have great cities, but they're not American cities'; GTA needs guns and larger-than-life characters (Lex Fridman interview).",
+        "sources": [
+         "https://www.pcgamer.com/games/action/rockstar-co-founder-dan-houser-says-theres-a-reason-the-grand-theft-auto-games-are-always-set-in-us-cities-guns"
+        ],
+        "main": true
+       }
+      ],
+      "description": "GTA Tokyo almost happened. Why GTA always comes back to America, in Rockstar's own words.\nSources: GamesHub via Hitmarker (Obbe Vermeij), PC Gamer (Dan Houser).",
+      "hashtags": [
+       "#GTA6",
+       "#GTA",
+       "#Rockstar"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)"
+     },
      "publish_at": "2026-11-19T23:00:00Z",
      "batch": "gta6-launch-footage",
      "seo": {
@@ -858,6 +1776,220 @@
      ],
      "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
      "style": "story",
+     "script": {
+      "viable": true,
+      "title": "The real places behind GTA 6's map",
+      "thumb_text": "REAL PLACES",
+      "hook_card": "VISIT GTA 6?",
+      "hooks": [
+       "You can actually visit the places GTA 6 is based on."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:trailer_1_00356",
+       "img2": "CLIP:trailer_1_00217",
+       "img3": "CLIP:extended_look_07446",
+       "img4": "CLIP:trailer_2_00188",
+       "img5": "CLIP:launch_trailer_00026",
+       "img6": "CLIP:trailer_1_00183",
+       "img7": "CLIP:extended_look_10298",
+       "img8": "CLIP:extended_look_04645",
+       "img9": "CLIP:extended_look_11148",
+       "img10": "CLIP:trailer_2_00081",
+       "img11": "CLIP:extended_look_10489"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "You can actually visit the places GTA 6 is based on.",
+        "image": "img1",
+        "delivery": "excited",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "The game is set in Leonida, Rockstar's version of Florida.",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "And its big city, Vice City, is inspired by Miami.",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "Rockstar says the Leonida Keys have \"some of the most beautiful and dangerous waters in all of America.\"",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "QUOTE: ROCKSTAR",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "Most outlets compare them to the real Florida Keys, the chain of islands south of Miami.",
+        "image": "img5",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "FLORIDA KEYS",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "Then there's Grassrivers, where Rockstar promises \"deadlier predators and weirder discoveries.\"",
+        "image": "img6",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "QUOTE: ROCKSTAR",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "It looks a lot like the Everglades, the huge wetland where real airboats skim across the grass.",
+        "image": "img7",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "EVERGLADES",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "And Mount Kalaga, Rockstar says, offers \"prime hunting, fishing, and off-road trails.\"",
+        "image": "img8",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "QUOTE: ROCKSTAR",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "Florida doesn't really have mountains, so that one is more Rockstar than reality.",
+        "image": "img9",
+        "delivery": "laughs softly",
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "Rockstar hasn't named the real places itself, but the resemblance is hard to miss.",
+        "image": "img10",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b11",
+        "narration": "Which one would you visit first: the Keys, the Everglades, or Miami?",
+        "image": "img11",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "Rockstar's descriptions: the Leonida Keys have 'some of the most beautiful and dangerous waters in all of America'; Grassrivers has 'deadlier predators and weirder discoveries'; Mount Kalaga 'offers prime hunting, fishing, and off-road trails'. Outlets compare the Leonida Keys to the Florida Keys and Grassrivers to the Everglades; Rockstar hasn't named real places.",
+        "sources": [
+         "https://www.pcgamer.com/games/grand-theft-auto/gta6-map"
+        ],
+        "main": true
+       },
+       {
+        "claim": "Florida has no mountains: its highest point, Britton Hill, is 345 feet (105 m).",
+        "sources": [
+         "https://en.wikipedia.org/wiki/Britton_Hill"
+        ],
+        "main": false
+       }
+      ],
+      "description": "Leonida is Rockstar's Florida. Here are the real places its regions are compared to.\nSources: Rockstar Games via PC Gamer.",
+      "hashtags": [
+       "#GTA6",
+       "#Florida",
+       "#GrandTheftAuto"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)"
+     },
      "publish_at": "2026-11-20T02:00:00Z",
      "batch": "gta6-launch-footage",
      "seo": {
