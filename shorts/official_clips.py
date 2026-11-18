@@ -285,6 +285,42 @@ def _clean_range(src: Path, start: float, end: float, min_piece: float = 0.9) ->
     return s0, e0
 
 
+def _hard_cuts(src: Path, start: float, end: float) -> list[float]:
+    """Cuts inside [start, end] (seconds from start), found two ways: ffmpeg's scene score and a plain frame-difference
+    test. 18 Nov 2026: the scene score missed a hard cut from a face to a night aerial (trailer_1 at 31.0 s), so a
+    1-second shot of a stranger opened 'trailer_1_00300' in five videos."""
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-ss", f"{start:.2f}", "-t", f"{max(end - start, 0.1):.2f}",
+                        "-i", str(src), "-vf", "select='gt(scene,0.30)',showinfo", "-f", "null", "-"],
+                       capture_output=True, text=True)
+    cuts = {round(float(m), 2) for m in re.findall(r"pts_time:([\d.]+)", r.stderr)}
+    w, h, fps = 32, 18, 15
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{start:.2f}", "-t", f"{max(end - start, 0.1):.2f}",
+                          "-i", str(src), "-vf", f"fps={fps},scale={w}:{h},format=gray", "-f", "rawvideo", "-"],
+                         capture_output=True).stdout
+    n = len(raw) // (w * h)
+    prev = None
+    for i in range(n):
+        fr = raw[i * w * h:(i + 1) * w * h]
+        if prev is not None:
+            diff = sum(abs(a - b) for a, b in zip(fr, prev)) / (w * h)
+            if diff > 28:
+                t = round(i / fps, 2)
+                if all(abs(t - c) > 0.12 for c in cuts):
+                    cuts.add(t)
+        prev = fr
+    return sorted(cuts)
+
+
+def _shot_piece(src: Path, start: float, end: float) -> tuple[float, float]:
+    """The piece of a catalogued shot that its description is about: shots are described from their MIDDLE frame,
+    so keep the stretch between the cuts around the middle (missed cuts merged a stranger's face into a city shot)."""
+    cuts = [c for c in _hard_cuts(src, start, end) if 0.01 < c < end - start - 0.01]
+    mid = (end - start) / 2
+    a = max([0.0] + [c for c in cuts if c <= mid])
+    b = min([end - start] + [c for c in cuts if c > mid])
+    return start + a + (0.04 if a > 0 else 0.0), start + b - (0.04 if b < end - start else 0.0)
+
+
 def segment(shot_id: str, out: Path, seconds: float) -> Path:
     """The shot as its own muted file, at least `seconds` long (runs on into the next shot if it is shorter).
     Black bars are cropped off so the vertical frame is all picture."""
@@ -293,13 +329,16 @@ def segment(shot_id: str, out: Path, seconds: float) -> Path:
     if not src.exists():
         raise FileNotFoundError(f"official clip {sh['clip']} is not on this runner (run the official sync)")
     length = max(seconds + 0.3, 1.0)
-    start = sh["start"] + 0.05
+    start, own_end = _shot_piece(src, sh["start"], sh["end"])
+    start += 0.02
     # 16 Nov 2026: a beat longer than its shot ran on into the next shots, once into a banned one. Now it may only
     # run on into the following shots that are described and allowed; then it slows down (max 1.6x); then holds.
     cat = shots_catalogue()
     same = sorted((v for v in cat.values() if v["clip"] == sh["clip"]), key=lambda v: v["start"])
-    end = sh["end"]
+    end = own_end
     for v in same:
+        if own_end < sh["end"] - 0.1:
+            break                         # the shot itself holds a hidden cut: never run on past it
         if end - start >= length:
             break
         if v["start"] < end - 0.05:

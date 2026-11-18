@@ -133,3 +133,17 @@ def test_prewritten_script_skips_paid_stages(tmp_path):
     assert out["content"]["scenes"][0]["narration"].startswith("This is")
     rv = p._stage_review("j", {"title": "t", "notes": "{}"}, tmp_path)
     assert rv["content"]["verdict"] == "pass" and logged
+
+
+def test_shot_piece_keeps_the_described_middle(tmp_path):
+    """18 Nov 2026: a 1-second stranger's face hid inside 'trailer_1_00300' (missed cut); keep the middle piece."""
+    import subprocess
+    from shorts import official_clips as oc
+    src = tmp_path / "t.mp4"
+    inputs = []
+    for c, d in [("red", 1.0), ("navy", 1.57)]:
+        inputs += ["-f", "lavfi", "-i", f"color=c={c}:s=320x180:r=30:d={d}"]
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *inputs, "-filter_complex", "[0:v][1:v]concat=n=2:v=1[v]",
+                    "-map", "[v]", "-pix_fmt", "yuv420p", str(src)], check=True)
+    s, e = oc._shot_piece(src, 0.0, 2.57)
+    assert 0.95 < s < 1.15 and abs(e - 2.57) < 0.01
