@@ -194,7 +194,7 @@ PLAN = [
  # 18 Nov 2026: gta6-vice-city-research dropped twice at the script check (its payoff and quote were not verifiable first-hand); slot left empty
  ("2026-11-17", "2026-11-18T23:00:00Z", "gta6-no-disc"),   # started by hand 18 Nov 07:35Z (the 00:17Z daily run was held)
  ("2026-11-17", "2026-11-19T02:00:00Z", "gta6-map-vs-florida"),   # started by hand 18 Nov 07:35Z (the 00:17Z daily run was held)
- ("2026-11-19", "2026-11-19T14:00:00Z", "gta6-biggest-launches"),
+ ("2026-11-18", "2026-11-19T14:00:00Z", "gta6-biggest-launches"),   # made 18 Nov as the first test of pre-written scripts
  ("2026-11-19", "2026-11-19T17:00:00Z", "gta6-india-price"),
  ("2026-11-19", "2026-11-19T20:00:00Z", "gta6-leak-war"),
  ("2026-11-19", "2026-11-19T23:00:00Z", "gta6-almost-tokyo"),
