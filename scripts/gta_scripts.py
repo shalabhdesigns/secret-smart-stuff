@@ -208,6 +208,89 @@ S["gta6-real-florida"] = dict(
 )
 
 
+# 19 Nov 2026: remakes in the new style of two 16 Nov videos that had under 100 views at 48 h (owner chose remake)
+S["gta6-florida-man"] = dict(
+    title="GTA 6's wildest scenes really happened in Florida",
+    thumb_text="IT REALLY HAPPENED",
+    hook_card="THIS WAS REAL?",
+    beats=[
+        ("Some of the wildest scenes in GTA 6's first trailer actually happened in real life.",
+         "CLIP:trailer_1_00475", None, "surprised"),
+        ("When the trailer dropped in December 2023, fans started matching its moments to real viral videos from "
+         "Florida.", "CLIP:trailer_1_00325", "DEC 2023", None),
+        ("Remember the woman dancing on top of a moving car?", "CLIP:trailer_1_00248", None, "curious"),
+        ("Know Your Meme traced it to a real clip from Miami's MacArthur Causeway, during spring break 2017.",
+         "CLIP:trailer_2_00346", "MIAMI, 2017", None),
+        ("Then there's the man hauling a huge alligator out of a backyard pool.", "CLIP:trailer_1_00424", None, None),
+        ("A real trapper did exactly that, and a Florida news station filmed it in 2019.",
+         "CLIP:extended_look_15485", "FLORIDA NEWS, 2019", None),
+        ("And the alligator wandering into a store? A real one walked into a Florida Walmart back in 2013.",
+         "CLIP:extended_look_07238", "WALMART, 2013", "laughs softly"),
+        ("Even the dirt bikes popping wheelies through the streets were on South Florida news.",
+         "CLIP:trailer_1_00656", None, None),
+        ("Rockstar has never said which clips inspired these scenes.", "CLIP:extended_look_12920", None, None),
+        ("But next time GTA 6 feels way over the top, remember that real Florida got there first.",
+         "CLIP:trailer_1_00183", None, None),
+        ("What's the craziest Florida story you've ever heard?", "CLIP:extended_look_10298", None, None),
+    ],
+    facts=[
+        {"claim": "Know Your Meme (6 Dec 2023) matched GTA VI trailer moments to real Florida videos: a woman twerking "
+                  "on a car on Miami's MacArthur Causeway during spring break (March 2017); a trapper dragging a large "
+                  "alligator out of a pool (WPBF 25 News, April 2019); an alligator at a Florida Walmart (Sky News, "
+                  "October 2013); ATVs and dirt bikes racing in South Florida (NBC 6, February 2023).",
+         "sources": ["https://knowyourmeme.com/editorials/every-reference-to-real-life-videos-in-the-grand-theft-auto-vi-trailer"],
+         "main": True},
+        {"claim": "Rockstar has not confirmed which real clips inspired the trailer.",
+         "sources": ["https://knowyourmeme.com/editorials/every-reference-to-real-life-videos-in-the-grand-theft-auto-vi-trailer"],
+         "main": False},
+    ],
+    description="Fans matched GTA 6's craziest trailer moments to real Florida videos. Rockstar hasn't said which "
+                "inspired it.\nSource: Know Your Meme (Dec 2023).",
+    hashtags=["#GTA6", "#FloridaMan", "#GrandTheftAuto"],
+)
+
+S["gta6-not-on-pc"] = dict(
+    title="Why GTA 6 still isn't on PC",
+    thumb_text="NO PC VERSION",
+    hook_card="WHERE'S PC?",
+    beats=[
+        ("GTA 6 is finally out, but PC players still can't play it.", "CLIP:trailer_2_00232", None, "serious"),
+        ("It launched on November 19th on PlayStation 5 and Xbox Series X and S only.",
+         "CLIP:launch_trailer_00685", "PS5 + XBOX ONLY", None),
+        ("And Rockstar still hasn't announced a PC date.", "CLIP:extended_look_12920", None, None),
+        ("So why make PC players wait?", "CLIP:trailer_2_00346", None, "curious"),
+        ("Take-Two's boss, Strauss Zelnick, says Rockstar always starts on console.", "CLIP:extended_look_07446",
+         "QUOTE: ZELNICK, TAKE-TWO", None),
+        ("In his words, the core audience has to \"be served first and best.\"", "CLIP:trailer_1_00325",
+         "QUOTE: ZELNICK, TAKE-TWO", None),
+        ("And if history is any guide, PC players know this wait well.", "CLIP:extended_look_09166", None, None),
+        ("GTA 5 came out on consoles in September 2013, and only reached PC in April 2015.",
+         "OFFICIAL:v_24ba6644de", "19 MONTHS LATER", None),
+        ("Red Dead Redemption 2 waited just over a year for its PC version.", "CLIP:extended_look_04645",
+         "1 YEAR+", None),
+        ("So if history repeats, PC players could be waiting a year or more.", "CLIP:trailer_2_01188", None, None),
+        ("Rockstar hasn't said that, but the pattern is hard to ignore.", "CLIP:extended_look_15698", None, None),
+        ("PC players, would you wait, or buy a console just for GTA 6?", "CLIP:trailer_2_00795", None, None),
+    ],
+    facts=[
+        {"claim": "GTA 6 launched on 19 Nov 2026 on PS5 and Xbox Series X|S only; no PC date announced.",
+         "sources": ["https://frvr.com/blog/news/gta-6-boss-defends-late-pc-release-console-must-be-served-first-and-best/"],
+         "main": True},
+        {"claim": "Strauss Zelnick: Rockstar always starts on console; the core must 'be served first and best' "
+                  "(Bloomberg, via FRVR, May 2026).",
+         "sources": ["https://frvr.com/blog/news/gta-6-boss-defends-late-pc-release-console-must-be-served-first-and-best/",
+                     "https://pcgamer.com/gaming-industry/pc-players-arent-grand-theft-auto-6s-core-audience-take-two-ceo-says-and-thats-why-we-have-to-wait-for-it"],
+         "main": True},
+        {"claim": "GTA V: consoles Sept 2013, PC April 2015. Red Dead Redemption 2: consoles Oct 2018, PC Nov 2019.",
+         "sources": ["https://frvr.com/blog/news/gta-6-boss-defends-late-pc-release-console-must-be-served-first-and-best/"],
+         "main": False},
+    ],
+    description="GTA 6 is out on PS5 and Xbox, but not PC. Take-Two's boss explains why, and history hints at the wait.\n"
+                "Sources: FRVR (Bloomberg interview), PC Gamer.",
+    hashtags=["#GTA6", "#PCGaming", "#GrandTheftAuto"],
+)
+
+
 def build(topic: str, v: dict) -> dict:
     images, scenes = {}, []
     for i, (text, shot, callout, delivery) in enumerate(v["beats"], 1):

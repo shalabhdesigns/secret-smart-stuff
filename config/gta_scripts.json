@@ -1130,5 +1130,457 @@
   ],
   "affiliate_product": null,
   "written_by": "Claude in session (verified)"
+ },
+ "gta6-florida-man": {
+  "viable": true,
+  "title": "GTA 6's wildest scenes really happened in Florida",
+  "thumb_text": "IT REALLY HAPPENED",
+  "hook_card": "THIS WAS REAL?",
+  "hooks": [
+   "Some of the wildest scenes in GTA 6's first trailer actually happened in real life."
+  ],
+  "chosen_hook": 0,
+  "images": {
+   "img1": "CLIP:trailer_1_00475",
+   "img2": "CLIP:trailer_1_00325",
+   "img3": "CLIP:trailer_1_00248",
+   "img4": "CLIP:trailer_2_00346",
+   "img5": "CLIP:trailer_1_00424",
+   "img6": "CLIP:extended_look_15485",
+   "img7": "CLIP:extended_look_07238",
+   "img8": "CLIP:trailer_1_00656",
+   "img9": "CLIP:extended_look_12920",
+   "img10": "CLIP:trailer_1_00183",
+   "img11": "CLIP:extended_look_10298"
+  },
+  "scenes": [
+   {
+    "id": "b1",
+    "narration": "Some of the wildest scenes in GTA 6's first trailer actually happened in real life.",
+    "image": "img1",
+    "delivery": "surprised",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b2",
+    "narration": "When the trailer dropped in December 2023, fans started matching its moments to real viral videos from Florida.",
+    "image": "img2",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "DEC 2023",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "Remember the woman dancing on top of a moving car?",
+    "image": "img3",
+    "delivery": "curious",
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b4",
+    "narration": "Know Your Meme traced it to a real clip from Miami's MacArthur Causeway, during spring break 2017.",
+    "image": "img4",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "MIAMI, 2017",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b5",
+    "narration": "Then there's the man hauling a huge alligator out of a backyard pool.",
+    "image": "img5",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b6",
+    "narration": "A real trapper did exactly that, and a Florida news station filmed it in 2019.",
+    "image": "img6",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "FLORIDA NEWS, 2019",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b7",
+    "narration": "And the alligator wandering into a store? A real one walked into a Florida Walmart back in 2013.",
+    "image": "img7",
+    "delivery": "laughs softly",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "WALMART, 2013",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b8",
+    "narration": "Even the dirt bikes popping wheelies through the streets were on South Florida news.",
+    "image": "img8",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b9",
+    "narration": "Rockstar has never said which clips inspired these scenes.",
+    "image": "img9",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b10",
+    "narration": "But next time GTA 6 feels way over the top, remember that real Florida got there first.",
+    "image": "img10",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b11",
+    "narration": "What's the craziest Florida story you've ever heard?",
+    "image": "img11",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   }
+  ],
+  "facts": [
+   {
+    "claim": "Know Your Meme (6 Dec 2023) matched GTA VI trailer moments to real Florida videos: a woman twerking on a car on Miami's MacArthur Causeway during spring break (March 2017); a trapper dragging a large alligator out of a pool (WPBF 25 News, April 2019); an alligator at a Florida Walmart (Sky News, October 2013); ATVs and dirt bikes racing in South Florida (NBC 6, February 2023).",
+    "sources": [
+     "https://knowyourmeme.com/editorials/every-reference-to-real-life-videos-in-the-grand-theft-auto-vi-trailer"
+    ],
+    "main": true
+   },
+   {
+    "claim": "Rockstar has not confirmed which real clips inspired the trailer.",
+    "sources": [
+     "https://knowyourmeme.com/editorials/every-reference-to-real-life-videos-in-the-grand-theft-auto-vi-trailer"
+    ],
+    "main": false
+   }
+  ],
+  "description": "Fans matched GTA 6's craziest trailer moments to real Florida videos. Rockstar hasn't said which inspired it.\nSource: Know Your Meme (Dec 2023).",
+  "hashtags": [
+   "#GTA6",
+   "#FloridaMan",
+   "#GrandTheftAuto"
+  ],
+  "affiliate_product": null,
+  "written_by": "Claude in session (verified)"
+ },
+ "gta6-not-on-pc": {
+  "viable": true,
+  "title": "Why GTA 6 still isn't on PC",
+  "thumb_text": "NO PC VERSION",
+  "hook_card": "WHERE'S PC?",
+  "hooks": [
+   "GTA 6 is finally out, but PC players still can't play it."
+  ],
+  "chosen_hook": 0,
+  "images": {
+   "img1": "CLIP:trailer_2_00232",
+   "img2": "CLIP:launch_trailer_00685",
+   "img3": "CLIP:extended_look_12920",
+   "img4": "CLIP:trailer_2_00346",
+   "img5": "CLIP:extended_look_07446",
+   "img6": "CLIP:trailer_1_00325",
+   "img7": "CLIP:extended_look_09166",
+   "img8": "OFFICIAL:v_24ba6644de",
+   "img9": "CLIP:extended_look_04645",
+   "img10": "CLIP:trailer_2_01188",
+   "img11": "CLIP:extended_look_15698",
+   "img12": "CLIP:trailer_2_00795"
+  },
+  "scenes": [
+   {
+    "id": "b1",
+    "narration": "GTA 6 is finally out, but PC players still can't play it.",
+    "image": "img1",
+    "delivery": "serious",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b2",
+    "narration": "It launched on November 19th on PlayStation 5 and Xbox Series X and S only.",
+    "image": "img2",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "PS5 + XBOX ONLY",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "And Rockstar still hasn't announced a PC date.",
+    "image": "img3",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b4",
+    "narration": "So why make PC players wait?",
+    "image": "img4",
+    "delivery": "curious",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b5",
+    "narration": "Take-Two's boss, Strauss Zelnick, says Rockstar always starts on console.",
+    "image": "img5",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "QUOTE: ZELNICK, TAKE-TWO",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b6",
+    "narration": "In his words, the core audience has to \"be served first and best.\"",
+    "image": "img6",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "QUOTE: ZELNICK, TAKE-TWO",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b7",
+    "narration": "And if history is any guide, PC players know this wait well.",
+    "image": "img7",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b8",
+    "narration": "GTA 5 came out on consoles in September 2013, and only reached PC in April 2015.",
+    "image": "img8",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "19 MONTHS LATER",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b9",
+    "narration": "Red Dead Redemption 2 waited just over a year for its PC version.",
+    "image": "img9",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "1 YEAR+",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b10",
+    "narration": "So if history repeats, PC players could be waiting a year or more.",
+    "image": "img10",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b11",
+    "narration": "Rockstar hasn't said that, but the pattern is hard to ignore.",
+    "image": "img11",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b12",
+    "narration": "PC players, would you wait, or buy a console just for GTA 6?",
+    "image": "img12",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   }
+  ],
+  "facts": [
+   {
+    "claim": "GTA 6 launched on 19 Nov 2026 on PS5 and Xbox Series X|S only; no PC date announced.",
+    "sources": [
+     "https://frvr.com/blog/news/gta-6-boss-defends-late-pc-release-console-must-be-served-first-and-best/"
+    ],
+    "main": true
+   },
+   {
+    "claim": "Strauss Zelnick: Rockstar always starts on console; the core must 'be served first and best' (Bloomberg, via FRVR, May 2026).",
+    "sources": [
+     "https://frvr.com/blog/news/gta-6-boss-defends-late-pc-release-console-must-be-served-first-and-best/",
+     "https://pcgamer.com/gaming-industry/pc-players-arent-grand-theft-auto-6s-core-audience-take-two-ceo-says-and-thats-why-we-have-to-wait-for-it"
+    ],
+    "main": true
+   },
+   {
+    "claim": "GTA V: consoles Sept 2013, PC April 2015. Red Dead Redemption 2: consoles Oct 2018, PC Nov 2019.",
+    "sources": [
+     "https://frvr.com/blog/news/gta-6-boss-defends-late-pc-release-console-must-be-served-first-and-best/"
+    ],
+    "main": false
+   }
+  ],
+  "description": "GTA 6 is out on PS5 and Xbox, but not PC. Take-Two's boss explains why, and history hints at the wait.\nSources: FRVR (Bloomberg interview), PC Gamer.",
+  "hashtags": [
+   "#GTA6",
+   "#PCGaming",
+   "#GrandTheftAuto"
+  ],
+  "affiliate_product": null,
+  "written_by": "Claude in session (verified)"
  }
 }

@@ -199,6 +199,8 @@ PLAN = [
  ("2026-11-19", "2026-11-19T20:00:00Z", "gta6-leak-war"),
  ("2026-11-19", "2026-11-19T23:00:00Z", "gta6-almost-tokyo"),
  ("2026-11-19", "2026-11-20T02:00:00Z", "gta6-real-florida"),
+ ("2026-11-20", "2026-11-20T14:00:00Z", "gta6-florida-man"),   # remake in the new style (16 Nov version: 21 views at 48 h)
+ ("2026-11-20", "2026-11-20T17:00:00Z", "gta6-not-on-pc"),     # remake in the new style (16 Nov version: 6 views at 48 h)
 ]
 
 
