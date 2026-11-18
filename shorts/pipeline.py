@@ -568,14 +568,17 @@ class Pipeline:
                                  .replace("@@SHOT_LIST@@", "(the shot list is not needed for this review)"))
                                 if (json.loads(topic.get("notes") or "{}") or {}).get("format_rules") else ""),
                              job_id, tag,
-                             est=0.08, web_search=True, model=rv_model, max_tokens=8000).data or {}
+                             # 18 Nov 2026 (cost): a story re-review only checks the earlier problems: Haiku, no search
+                             est=0.08, web_search=not (self._story and previous),
+                             model=(self.cfg.pipeline["providers"]["llm"]["model_routine"] if (self._story and previous)
+                                    else rv_model), max_tokens=8000).data or {}
 
         rv = review(script, "review")
         # 16 Nov 2026: footage videos lost good topics at this gate on small fixable points (a 9-word first line):
         # give them 4 targeted repairs instead of 2 (each costs ~$0.25; no pictures are made yet)
         n_repairs = 4 if (json.loads(topic.get("notes") or "{}") or {}).get("official_images") else 2
         if self._story:
-            n_repairs = 3          # 18 Nov 2026: Sonnet reviews cost ~$0.12; 4 rounds that didn't converge cost $1.23
+            n_repairs = 2          # 18 Nov 2026: 4 rounds that never converged cost $1.23; at most 2 repairs
         best = (float(rv.get("total", 0)), script, rv)
         for round_ in range(n_repairs):
             if float(rv.get("total", 0)) >= bar and rv.get("verdict") != "reject":
@@ -1366,7 +1369,7 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
                 from .render import cover as _cover
                 cp = d / "cover_plan.json"
                 if not cp.exists() or json.loads(cp.read_text()).get("script_mtime") != (d / "script.json").stat().st_mtime:
-                    ask = lambda prompt: self._llm(prompt, job_id, "cover", est=0.03, max_tokens=600,  # noqa: E731
+                    ask = lambda prompt: self._llm(prompt, job_id, "cover", est=0.01, max_tokens=600,  # noqa: E731
                                                    model=self.cfg.pipeline["providers"]["llm"]["model_script"]).data
                     fb = json.loads((d / "cover_feedback.json").read_text()) if (d / "cover_feedback.json").exists() else None
                     plan_ = _cover.plan(ask, json.loads((d / "script.json").read_text()), bool(tnotes.get("news")),
@@ -1567,7 +1570,9 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
                       + self._topic_note(job_id, "critic_rules")
                       + (("\nTIMING (a wrong time word is BLOCKING):" + self._when_line()) if self._story else ""),
                       job_id, f"critic{round_}", est=0.06, images=[sheet, pair],
-                      model=self.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=3000)
+                      # 18 Nov 2026 (cost): round 1 judges on Sonnet; re-checks of fixes run on Haiku (20x cheaper)
+                      model=self.cfg.pipeline["providers"]["llm"]["model_script" if round_ <= 1 else "model_routine"],
+                      max_tokens=3000)
         c = r.data or {}
         sc = {k: float(v) for k, v in (c.get("scores") or {}).items() if isinstance(v, (int, float))}
         mean = sum(sc.values()) / len(sc) if sc else 0.0

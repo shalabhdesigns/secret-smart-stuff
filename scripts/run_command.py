@@ -354,6 +354,17 @@ def self_review(p: Pipeline, job: str, rounds: int = 3) -> dict:
 
 
 def do_produce(p: Pipeline, req: dict) -> int:
+    tid = req.get("topic") or (req.get("topic_def") or {}).get("id")
+    if tid and req.get("fresh") and not req.get("force"):
+        # 18 Nov 2026 (cost): $10 of a $20 balance went on attempts that never published. A topic whose script was
+        # dropped twice in the last 36 hours is not tried a third time.
+        cutoff = time.time() - 36 * 3600
+        drops = [j for j in p.state.jobs() if j["topic_id"] == tid and j["status"] == "rejected"
+                 and float(j.get("created_at") or 0) >= cutoff and "review score" in str(j.get("error") or "")]
+        if len(drops) >= 2:
+            print(f"skip {tid}: dropped {len(drops)} times in 36 h (cost guard)")
+            p.state.log(f"{tid} skipped: its script was dropped {len(drops)} times in 36 h", "warn")
+            return 0
     for skip in req.get("skip") or []:
         for jj in p.state.jobs():
             if jj["topic_id"] == skip:
