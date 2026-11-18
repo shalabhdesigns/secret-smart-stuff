@@ -66,6 +66,9 @@
   every shot from `assets/official/shots.json` in `scripts/gta_scripts.py` -> `config/gta_scripts.json` ->
   `notes.script`. The pipeline then skips the paid script/review/repair/storyboard stages; one Haiku final check;
   a failing video is held for Claude, never dropped. API cost per video: a few cents.
+- **Daily cost check** (owner, 18 Nov 2026: "each day check how much we are spending on each video and find ways to
+  further reduce it ... bring it down to bare minimum"). Every day run `scripts/cost_report.py` on the state db, report
+  cost per video and the waste (spend on videos not published), find the biggest remaining cost and cut it.
 - **GTA 6 launch week: 5 videos a day** (owner, 16 Nov 2026), every 3 h over the US day (14:00, 17:00, 20:00,
   23:00, 02:00 UTC). Review the numbers after 7 days: 8 a day if views per video hold, back to 3 if they fall.
 - **Flag cost and policy risks before spending.** Never claim something works until it has been tested.
