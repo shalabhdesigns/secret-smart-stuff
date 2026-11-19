@@ -153,7 +153,7 @@ S["gta6-almost-tokyo"] = dict(
         ("So why does every numbered GTA still end up in America?", "CLIP:trailer_2_00346", None, None),
         ("Rockstar co-founder Dan Houser has a simple answer.", "CLIP:extended_look_07446", None, None),
         ("He says other countries may have great cities, \"but they're not American cities.\"",
-         "CLIP:trailer_2_00188", "QUOTE: DAN HOUSER", None),
+         "CLIP:trailer_2_00188", None, None),
         ("For him, GTA needs guns and larger-than-life characters, and America has both.", "CLIP:extended_look_03021", None,
          None),
         ("There's a practical problem too.", "CLIP:trailer_2_00232", None, None),

@@ -892,7 +892,7 @@
     "focus": null,
     "motion": "push",
     "transition": "cut",
-    "callout": "QUOTE: DAN HOUSER",
+    "callout": null,
     "pop": null,
     "arrow": null,
     "card_text": null,
