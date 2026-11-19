@@ -1390,6 +1390,10 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
             try:
                 from .render import cover as _cover
                 cp = d / "cover_plan.json"
+                _pw = (self._prewritten or {}).get("cover")
+                if _pw and _pw.get("lines") and not cp.exists():   # 19 Nov 2026: written in session, no paid call
+                    cp.write_text(json.dumps({**_pw, "script_mtime": (d / "script.json").stat().st_mtime},
+                                             ensure_ascii=False))
                 if not cp.exists() or json.loads(cp.read_text()).get("script_mtime") != (d / "script.json").stat().st_mtime:
                     ask = lambda prompt: self._llm(prompt, job_id, "cover", est=0.01, max_tokens=600,  # noqa: E731
                                                    model=self.cfg.pipeline["providers"]["llm"]["model_script"]).data
@@ -1411,7 +1415,7 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
         except Exception:  # noqa: BLE001
             pass
         ass = write_ass(words, d / "captions.ass", y_center=y_cap, hook=hook, hook_y=hook_y,
-                        badge=tnotes.get("badge"), duration=end,
+                        badge=tnotes.get("badge"), duration=end, hook_outro=not self._story,
                         font=self.cfg.channel["style"]["caption_font"],
                         font_size=self.cfg.channel["style"]["caption_size"],
                         highlight=ass_colour(self.cfg.channel["style"].get("caption_highlight", "#FFE500")),
@@ -1494,7 +1498,8 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
             ask = lambda prompt: self._llm(prompt, job_id, "cover", est=0.03,  # noqa: E731
                                            model=self.cfg.pipeline["providers"]["llm"]["model_script"],
                                            max_tokens=600).data
-            cp = cover.make(ask, d, news=bool(news), news_rule=(news or {}).get("cover_rule"))
+            cp = cover.make(ask, d, news=bool(news), news_rule=(news or {}).get("cover_rule"),
+                            badge=(json.loads(topic.get("notes") or "{}") or {}).get("badge"))
             meta["cover"] = {"file": "cover.jpg", "lines": cp["lines"], "image": cp["image"]}
         except Exception as e:  # noqa: BLE001 - a missing cover never blocks a video
             self.state.log(f"cover not made: {e}", "warn", job_id)

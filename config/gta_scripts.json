@@ -227,7 +227,14 @@
    "#GrandTheftAuto"
   ],
   "affiliate_product": null,
-  "written_by": "Claude in session (verified)"
+  "written_by": "Claude in session (verified)",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "$1B IN 3 DAYS?"
+   ],
+   "why": "written in session"
+  }
  },
  "gta6-india-price": {
   "viable": true,
@@ -235,16 +242,16 @@
   "thumb_text": "DOUBLE THE PRICE?",
   "hook_card": "2X THE PRICE?",
   "hooks": [
-   "In India, GTA 6 costs exactly twice what GTA 5 did."
+   "In India, GTA 6 costs double what GTA 5 did, but there's a twist."
   ],
   "chosen_hook": 0,
   "images": {
-   "img1": "CLIP:trailer_2_00416",
+   "img1": "CLIP:extended_look_10132",
    "img2": "OFFICIAL:v_c670974867",
    "img3": "CLIP:trailer_2_00232",
    "img4": "CLIP:extended_look_15485",
    "img5": "CLIP:trailer_2_00346",
-   "img6": "CLIP:trailer_1_00325",
+   "img6": "CLIP:trailer_2_00416",
    "img7": "CLIP:extended_look_09166",
    "img8": "CLIP:extended_look_10833",
    "img9": "CLIP:extended_look_12327",
@@ -254,13 +261,13 @@
   "scenes": [
    {
     "id": "b1",
-    "narration": "In India, GTA 6 costs exactly twice what GTA 5 did.",
+    "narration": "In India, GTA 6 costs double what GTA 5 did, but there's a twist.",
     "image": "img1",
     "delivery": "surprised",
     "focus": null,
     "motion": "push",
     "transition": "cut",
-    "callout": "2X",
+    "callout": null,
     "pop": null,
     "arrow": null,
     "card_text": null,
@@ -284,7 +291,7 @@
    },
    {
     "id": "b3",
-    "narration": "GTA 6's standard edition is 5,999.",
+    "narration": "GTA 6's standard edition is 5,999 rupees.",
     "image": "img3",
     "delivery": null,
     "focus": null,
@@ -299,7 +306,7 @@
    },
    {
     "id": "b4",
-    "narration": "And the Ultimate Edition goes all the way up to 7,499.",
+    "narration": "And the Ultimate Edition goes up to 7,499 rupees.",
     "image": "img4",
     "delivery": null,
     "focus": null,
@@ -359,7 +366,7 @@
    },
    {
     "id": "b8",
-    "narration": "So India's price really did jump much more than America's.",
+    "narration": "So the bigger jump really is in India.",
     "image": "img8",
     "delivery": null,
     "focus": null,
@@ -374,13 +381,13 @@
    },
    {
     "id": "b9",
-    "narration": "But here's the twist: eighty dollars is roughly 6,900 rupees.",
+    "narration": "But here's the twist: with the rupee at about 94 to the dollar, eighty dollars is now around 7,500 rupees.",
     "image": "img9",
     "delivery": "curious",
     "focus": null,
     "motion": "drift",
     "transition": "cut",
-    "callout": "$80 ≈ ₹6,900",
+    "callout": "$80 ≈ ₹7,500",
     "pop": null,
     "arrow": null,
     "card_text": null,
@@ -389,7 +396,7 @@
    },
    {
     "id": "b10",
-    "narration": "So even after doubling, Indian players still pay about 900 rupees less than Americans.",
+    "narration": "So even after doubling, Indian players still pay about 1,500 rupees less than Americans.",
     "image": "img10",
     "delivery": null,
     "focus": null,
@@ -404,7 +411,7 @@
    },
    {
     "id": "b11",
-    "narration": "Would you pay 5,999 on day one, or wait for a sale?",
+    "narration": "Would you pay 5,999 rupees on day one, or wait for a sale?",
     "image": "img11",
     "delivery": null,
     "focus": null,
@@ -427,7 +434,7 @@
     "main": true
    },
    {
-    "claim": "GTA 6 in India: Rs 5,999 standard, Rs 7,499 Ultimate; US $79.99; $80 is about Rs 6,900.",
+    "claim": "GTA 6 in India: Rs 5,999 standard, Rs 7,499 Ultimate; US price $79.99.",
     "sources": [
      "https://www.mysmartprice.com/gear/gaming/gaming-news/gta-6-pre-orders-go-live-in-india-standard-edition-costs-rs-5999-ultimate-edition-priced-at-rs-7499/"
     ],
@@ -439,44 +446,59 @@
      "https://hothardware.com/news/gta-6-launch-80-single-player-title-rockstar-reveals"
     ],
     "main": false
+   },
+   {
+    "claim": "Mid-November 2026 the rupee trades at about 94 to the US dollar (93.63 on 17 Nov 2026), so $79.99 is about Rs 7,500, roughly Rs 1,500 more than India's Rs 5,999 standard edition.",
+    "sources": [
+     "https://hdfcsky.com/news/rupee-rises-31-paise-to-93-63-against-us-dollar-in-early-trade-november-17-2026"
+    ],
+    "main": true
    }
   ],
-  "description": "GTA 5 was Rs 2,999 in 2013. GTA 6 is Rs 5,999. In dollars, India still pays less than America.\nSources: MCV (2013), MySmartPrice (2026).",
+  "description": "GTA 5 was Rs 2,999 in 2013. GTA 6 is Rs 5,999. In dollars, India still pays less than America.\nSources: MCV (2013), MySmartPrice (2026), HDFC Sky (exchange rate, Nov 2026).",
   "hashtags": [
    "#GTA6",
    "#GTA6India",
    "#GrandTheftAuto"
   ],
   "affiliate_product": null,
-  "written_by": "Claude in session (verified)"
+  "written_by": "Claude in session (verified)",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "DOUBLE PRICE",
+    "IN INDIA?"
+   ],
+   "why": "written in session"
+  }
  },
  "gta6-leak-war": {
   "viable": true,
   "title": "GTA 6: Rockstar's war on the leakers",
-  "thumb_text": "STOLEN GAME",
-  "hook_card": "STOLEN IN 2022",
+  "thumb_text": "LEAKED IN 2022",
+  "hook_card": "LEAKED IN 2022",
   "hooks": [
-   "Someone stole GTA 6 years before it came out."
+   "Four years before GTA 6 came out, a hacker leaked footage of it to the whole internet."
   ],
   "chosen_hook": 0,
   "images": {
-   "img1": "CLIP:trailer_2_00996",
-   "img2": "CLIP:extended_look_02226",
+   "img1": "CLIP:extended_look_08816",
+   "img2": "CLIP:extended_look_03894",
    "img3": "CLIP:trailer_2_00452",
    "img4": "CLIP:trailer_2_00498",
    "img5": "CLIP:trailer_2_01188",
    "img6": "CLIP:trailer_1_00300",
-   "img7": "CLIP:trailer_1_00026",
-   "img8": "CLIP:extended_look_02502",
+   "img7": "CLIP:trailer_2_00346",
+   "img8": "CLIP:extended_look_02226",
    "img9": "CLIP:extended_look_12920",
    "img10": "CLIP:extended_look_12327",
    "img11": "CLIP:launch_trailer_00685",
-   "img12": "CLIP:trailer_2_00961"
+   "img12": "CLIP:trailer_2_00920"
   },
   "scenes": [
    {
     "id": "b1",
-    "narration": "Someone stole GTA 6 years before it came out.",
+    "narration": "Four years before GTA 6 came out, a hacker leaked footage of it to the whole internet.",
     "image": "img1",
     "delivery": "serious",
     "focus": null,
@@ -491,7 +513,7 @@
    },
    {
     "id": "b2",
-    "narration": "In September 2022, a hacker posted early development footage of the game online.",
+    "narration": "In September 2022, the hacker posted early development clips of the game online.",
     "image": "img2",
     "delivery": null,
     "focus": null,
@@ -506,7 +528,7 @@
    },
    {
     "id": "b3",
-    "narration": "It was a huge leak, and the hacker was caught.",
+    "narration": "He was a teenager, and he was caught.",
     "image": "img3",
     "delivery": null,
     "focus": null,
@@ -521,13 +543,13 @@
    },
    {
     "id": "b4",
-    "narration": "In 2023, a UK court ordered the teenager behind it to be held in a secure hospital, with no end date.",
+    "narration": "In December 2023, a UK court gave him a hospital order with no end date.",
     "image": "img4",
     "delivery": null,
     "focus": null,
     "motion": "push",
     "transition": "cut",
-    "callout": "UK COURT, 2023",
+    "callout": "UK COURT, DEC 2023",
     "pop": null,
     "arrow": null,
     "card_text": null,
@@ -551,13 +573,13 @@
    },
    {
     "id": "b6",
-    "narration": "In December 2023, GTA 6's very first trailer leaked online before its premiere.",
+    "narration": "That same month, GTA 6's very first trailer leaked online before its premiere.",
     "image": "img6",
     "delivery": null,
     "focus": null,
     "motion": "drift",
     "transition": "cut",
-    "callout": "DEC 2023",
+    "callout": "TRAILER 1 LEAKED",
     "pop": null,
     "arrow": null,
     "card_text": null,
@@ -566,7 +588,7 @@
    },
    {
     "id": "b7",
-    "narration": "So Rockstar just released it early, hours ahead of plan.",
+    "narration": "So Rockstar released the trailer early, before its planned premiere.",
     "image": "img7",
     "delivery": null,
     "focus": null,
@@ -602,7 +624,7 @@
     "focus": null,
     "motion": "drift",
     "transition": "cut",
-    "callout": null,
+    "callout": "TAKE-TWO GOES TO COURT",
     "pop": null,
     "arrow": null,
     "card_text": null,
@@ -611,7 +633,7 @@
    },
    {
     "id": "b10",
-    "narration": "It won orders telling Microsoft, which owns GitHub, and Discord to help identify who posted them.",
+    "narration": "Take-Two won court orders making Microsoft, which owns GitHub, and Discord help identify who posted the clips.",
     "image": "img10",
     "delivery": null,
     "focus": null,
@@ -626,7 +648,7 @@
    },
    {
     "id": "b11",
-    "narration": "From a stolen build to court orders, Rockstar has been fighting leakers right up to launch day.",
+    "narration": "From leaked footage to court orders, Rockstar has been fighting leakers for four years.",
     "image": "img11",
     "delivery": null,
     "focus": null,
@@ -657,14 +679,14 @@
   ],
   "facts": [
    {
-    "claim": "Sept 2022: a hacker leaked early GTA 6 development footage; in Dec 2023 a UK court gave the teenager behind it an indefinite hospital order.",
+    "claim": "Sept 2022: a teenage hacker leaked early GTA 6 development footage; in Dec 2023 a UK court gave him an indefinite hospital order. GTA 6 came out on 19 Nov 2026, about four years later.",
     "sources": [
      "https://www.techradar.com/gaming/gta-6-hacker-who-intended-to-return-to-cyber-crime-as-soon-as-possible-sentenced-to-an-indefinite-hospital-order"
     ],
     "main": true
    },
    {
-    "claim": "Dec 2023: GTA 6 trailer 1 leaked online, so Rockstar released it early.",
+    "claim": "Dec 2023: GTA 6 trailer 1 leaked online, so Rockstar released it early, before its planned premiere.",
     "sources": [
      "https://www.videogameschronicle.com/news/the-gta-6-trailer-has-allegedly-leaked-online/"
     ],
@@ -685,35 +707,44 @@
    "#GrandTheftAuto"
   ],
   "affiliate_product": null,
-  "written_by": "Claude in session (verified)"
+  "written_by": "Claude in session (verified)",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "LEAKED",
+    "4 YEARS EARLY"
+   ],
+   "why": "written in session"
+  }
  },
  "gta6-almost-tokyo": {
   "viable": true,
   "title": "GTA 6 is in America, but GTA almost went to Tokyo",
-  "thumb_text": "GTA TOKYO?",
-  "hook_card": "GTA TOKYO?",
+  "thumb_text": "ALMOST TOKYO?",
+  "hook_card": "ALMOST TOKYO?",
   "hooks": [
-   "GTA almost left America, and one city came really close."
+   "GTA almost went to Tokyo, so why does it always end up in America?"
   ],
   "chosen_hook": 0,
   "images": {
-   "img1": "CLIP:trailer_1_00325",
-   "img2": "CLIP:extended_look_12327",
-   "img3": "CLIP:trailer_1_00300",
-   "img4": "CLIP:extended_look_15698",
-   "img5": "CLIP:trailer_2_00346",
-   "img6": "CLIP:extended_look_07446",
-   "img7": "CLIP:trailer_1_00026",
-   "img8": "CLIP:trailer_1_00248",
-   "img9": "CLIP:extended_look_12920",
-   "img10": "CLIP:trailer_1_00398",
-   "img11": "CLIP:extended_look_10450",
-   "img12": "CLIP:extended_look_15485"
+   "img1": "CLIP:extended_look_12327",
+   "img2": "CLIP:extended_look_15698",
+   "img3": "CLIP:extended_look_12606",
+   "img4": "CLIP:trailer_1_00300",
+   "img5": "CLIP:extended_look_11275",
+   "img6": "CLIP:trailer_2_00346",
+   "img7": "CLIP:extended_look_07446",
+   "img8": "CLIP:extended_look_07899",
+   "img9": "CLIP:extended_look_03021",
+   "img10": "CLIP:trailer_2_00232",
+   "img11": "CLIP:extended_look_08816",
+   "img12": "CLIP:extended_look_05708",
+   "img13": "CLIP:extended_look_15485"
   },
   "scenes": [
    {
     "id": "b1",
-    "narration": "GTA almost left America, and one city came really close.",
+    "narration": "GTA almost went to Tokyo, so why does it always end up in America?",
     "image": "img1",
     "delivery": "curious",
     "focus": null,
@@ -728,11 +759,26 @@
    },
    {
     "id": "b2",
-    "narration": "Obbe Vermeij, a former technical director at Rockstar North, says a GTA set in Tokyo \"almost actually happened.\"",
+    "narration": "Obbe Vermeij used to be a technical director at Rockstar North.",
     "image": "img2",
     "delivery": null,
     "focus": null,
     "motion": "push",
+    "transition": "cut",
+    "callout": "OBBE VERMEIJ, EX-ROCKSTAR",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "He says a GTA set in Tokyo \"almost actually happened.\"",
+    "image": "img3",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
     "transition": "cut",
     "callout": "QUOTE: OBBE VERMEIJ",
     "pop": null,
@@ -742,14 +788,14 @@
     "markers": null
    },
    {
-    "id": "b3",
+    "id": "b4",
     "narration": "And Tokyo wasn't the only city on the table.",
-    "image": "img3",
+    "image": "img4",
     "delivery": null,
     "focus": null,
-    "motion": "drift",
+    "motion": "push",
     "transition": "cut",
-    "callout": null,
+    "callout": "TOKYO + 3 MORE",
     "pop": null,
     "arrow": null,
     "card_text": null,
@@ -757,9 +803,9 @@
     "markers": null
    },
    {
-    "id": "b4",
+    "id": "b5",
     "narration": "He says Rio, Moscow and Istanbul were considered too.",
-    "image": "img4",
+    "image": "img5",
     "delivery": null,
     "focus": null,
     "motion": "push",
@@ -772,23 +818,8 @@
     "markers": null
    },
    {
-    "id": "b5",
-    "narration": "So why does every numbered GTA still end up in America?",
-    "image": "img5",
-    "delivery": null,
-    "focus": null,
-    "motion": "push",
-    "transition": "cut",
-    "callout": null,
-    "pop": null,
-    "arrow": null,
-    "card_text": null,
-    "tone": "normal",
-    "markers": null
-   },
-   {
     "id": "b6",
-    "narration": "Rockstar co-founder Dan Houser has a simple answer.",
+    "narration": "So why does every numbered GTA still end up in America?",
     "image": "img6",
     "delivery": null,
     "focus": null,
@@ -803,23 +834,8 @@
    },
    {
     "id": "b7",
-    "narration": "He says other countries may have great cities, \"but they're not American cities.\"",
+    "narration": "Rockstar co-founder Dan Houser has a simple answer.",
     "image": "img7",
-    "delivery": null,
-    "focus": null,
-    "motion": "push",
-    "transition": "cut",
-    "callout": "QUOTE: DAN HOUSER",
-    "pop": null,
-    "arrow": null,
-    "card_text": null,
-    "tone": "normal",
-    "markers": null
-   },
-   {
-    "id": "b8",
-    "narration": "For him, GTA needs America's guns and its larger-than-life characters.",
-    "image": "img8",
     "delivery": null,
     "focus": null,
     "motion": "push",
@@ -832,8 +848,23 @@
     "markers": null
    },
    {
+    "id": "b8",
+    "narration": "He says other countries may have great cities, \"but they're not American cities.\"",
+    "image": "img8",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "QUOTE: DAN HOUSER",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
     "id": "b9",
-    "narration": "There's a practical problem too.",
+    "narration": "For him, GTA needs America's guns and its larger-than-life characters.",
     "image": "img9",
     "delivery": null,
     "focus": null,
@@ -848,23 +879,8 @@
    },
    {
     "id": "b10",
-    "narration": "Vermeij says a whole new country is \"just not realistic\" when there's only a GTA every twelve years.",
+    "narration": "There's a practical problem too.",
     "image": "img10",
-    "delivery": null,
-    "focus": null,
-    "motion": "push",
-    "transition": "cut",
-    "callout": "QUOTE: OBBE VERMEIJ",
-    "pop": null,
-    "arrow": null,
-    "card_text": null,
-    "tone": "normal",
-    "markers": null
-   },
-   {
-    "id": "b11",
-    "narration": "So after thirteen years, GTA 6 is going back to a city fans already know and love: Vice City.",
-    "image": "img11",
     "delivery": null,
     "focus": null,
     "motion": "push",
@@ -877,12 +893,42 @@
     "markers": null
    },
    {
+    "id": "b11",
+    "narration": "Vermeij says a whole new country is \"just not realistic\" when there's only a GTA every twelve years.",
+    "image": "img11",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "QUOTE: OBBE VERMEIJ",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
     "id": "b12",
-    "narration": "If GTA ever does leave America, which city should it be?",
+    "narration": "So after thirteen years, GTA 6 went back to a city fans already know and love: Vice City.",
     "image": "img12",
     "delivery": null,
     "focus": null,
     "motion": "drift",
+    "transition": "cut",
+    "callout": "VICE CITY",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b13",
+    "narration": "If GTA ever does leave America, which city should it be?",
+    "image": "img13",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
     "transition": "cut",
     "callout": null,
     "pop": null,
@@ -915,23 +961,31 @@
    "#Rockstar"
   ],
   "affiliate_product": null,
-  "written_by": "Claude in session (verified)"
+  "written_by": "Claude in session (verified)",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "ALMOST IN",
+    "TOKYO?"
+   ],
+   "why": "written in session"
+  }
  },
  "gta6-real-florida": {
   "viable": true,
   "title": "GTA 6's map: the real places you can visit",
-  "thumb_text": "REAL PLACES",
-  "hook_card": "VISIT GTA 6?",
+  "thumb_text": "REAL PLACES?",
+  "hook_card": "REAL PLACES?",
   "hooks": [
-   "You can actually visit the places GTA 6 is based on."
+   "GTA 6's map is based on real places, and you can actually go to them."
   ],
   "chosen_hook": 0,
   "images": {
-   "img1": "CLIP:trailer_1_00356",
+   "img1": "CLIP:extended_look_11275",
    "img2": "CLIP:trailer_1_00217",
    "img3": "CLIP:extended_look_07446",
-   "img4": "CLIP:trailer_2_00188",
-   "img5": "CLIP:launch_trailer_00026",
+   "img4": "CLIP:launch_trailer_00026",
+   "img5": "CLIP:extended_look_10422",
    "img6": "CLIP:trailer_1_00183",
    "img7": "CLIP:extended_look_10298",
    "img8": "CLIP:extended_look_04645",
@@ -942,7 +996,7 @@
   "scenes": [
    {
     "id": "b1",
-    "narration": "You can actually visit the places GTA 6 is based on.",
+    "narration": "GTA 6's map is based on real places, and you can actually go to them.",
     "image": "img1",
     "delivery": "excited",
     "focus": null,
@@ -963,7 +1017,7 @@
     "focus": null,
     "motion": "push",
     "transition": "cut",
-    "callout": null,
+    "callout": "LEONIDA = FLORIDA",
     "pop": null,
     "arrow": null,
     "card_text": null,
@@ -972,13 +1026,13 @@
    },
    {
     "id": "b3",
-    "narration": "And its big city, Vice City, is inspired by Miami.",
+    "narration": "And its big city, Vice City, is basically Miami.",
     "image": "img3",
     "delivery": null,
     "focus": null,
     "motion": "drift",
     "transition": "cut",
-    "callout": null,
+    "callout": "VICE CITY = MIAMI",
     "pop": null,
     "arrow": null,
     "card_text": null,
@@ -1002,7 +1056,7 @@
    },
    {
     "id": "b5",
-    "narration": "Most outlets compare them to the real Florida Keys, the chain of islands south of Miami.",
+    "narration": "Outlets compare them to the real Florida Keys, the chain of islands south of Miami.",
     "image": "img5",
     "delivery": null,
     "focus": null,
@@ -1017,7 +1071,7 @@
    },
    {
     "id": "b6",
-    "narration": "Then there's Grassrivers, where Rockstar promises \"deadlier predators and weirder discoveries.\"",
+    "narration": "Then comes Grassrivers, and Rockstar promises \"deadlier predators and weirder discoveries.\"",
     "image": "img6",
     "delivery": null,
     "focus": null,
@@ -1032,7 +1086,7 @@
    },
    {
     "id": "b7",
-    "narration": "It looks a lot like the Everglades, the huge wetland where real airboats skim across the grass.",
+    "narration": "Grassrivers looks a lot like the Everglades, the huge wetland where real airboats skim across the grass.",
     "image": "img7",
     "delivery": null,
     "focus": null,
@@ -1098,7 +1152,7 @@
     "focus": null,
     "motion": "push",
     "transition": "cut",
-    "callout": null,
+    "callout": "KEYS, EVERGLADES OR MIAMI?",
     "pop": null,
     "arrow": null,
     "card_text": null,
@@ -1129,7 +1183,15 @@
    "#GrandTheftAuto"
   ],
   "affiliate_product": null,
-  "written_by": "Claude in session (verified)"
+  "written_by": "Claude in session (verified)",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "REAL PLACES",
+    "YOU CAN VISIT"
+   ],
+   "why": "written in session"
+  }
  },
  "gta6-florida-man": {
   "viable": true,
@@ -1343,7 +1405,14 @@
    "#GrandTheftAuto"
   ],
   "affiliate_product": null,
-  "written_by": "Claude in session (verified)"
+  "written_by": "Claude in session (verified)",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "THIS WAS REAL?"
+   ],
+   "why": "written in session"
+  }
  },
  "gta6-not-on-pc": {
   "viable": true,
@@ -1581,7 +1650,14 @@
    "#GrandTheftAuto"
   ],
   "affiliate_product": null,
-  "written_by": "Claude in session (verified)"
+  "written_by": "Claude in session (verified)",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "WHERE'S PC?"
+   ],
+   "why": "written in session"
+  }
  },
  "gta6-review-scores": {
   "viable": true,
@@ -1827,7 +1903,14 @@
    "#GrandTheftAuto"
   ],
   "affiliate_product": null,
-  "written_by": "Claude in session (verified)"
+  "written_by": "Claude in session (verified)",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "ALMOST PERFECT?"
+   ],
+   "why": "written in session"
+  }
  },
  "gta6-cast-one-liners": {
   "viable": true,
@@ -2073,7 +2156,14 @@
    "#GrandTheftAuto"
   ],
   "affiliate_product": null,
-  "written_by": "Claude in session (verified)"
+  "written_by": "Claude in session (verified)",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "ONE LINE EACH"
+   ],
+   "why": "written in session"
+  }
  },
  "gta6-trailer2-record": {
   "viable": true,
@@ -2320,6 +2410,13 @@
    "#GrandTheftAuto"
   ],
   "affiliate_product": null,
-  "written_by": "Claude in session (verified)"
+  "written_by": "Claude in session (verified)",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "475 MILLION?"
+   ],
+   "why": "written in session"
+  }
  }
 }

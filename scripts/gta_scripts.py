@@ -55,67 +55,72 @@ S["gta6-india-price"] = dict(
     title="GTA 6 costs double GTA 5 in India, but there's a twist",
     thumb_text="DOUBLE THE PRICE?",
     hook_card="2X THE PRICE?",
+    cover_lines=["DOUBLE PRICE", "IN INDIA?"],
     beats=[
-        ("In India, GTA 6 costs exactly twice what GTA 5 did.", "CLIP:trailer_2_00416", "2X", "surprised"),
+        ("In India, GTA 6 costs double what GTA 5 did, but there's a twist.", "CLIP:extended_look_10132", None, "surprised"),
         ("When GTA 5 launched here in 2013, it cost 2,999 rupees.", "OFFICIAL:v_c670974867", "₹2,999 IN 2013", None),
-        ("GTA 6's standard edition is 5,999.", "CLIP:trailer_2_00232", "₹5,999", None),
-        ("And the Ultimate Edition goes all the way up to 7,499.", "CLIP:extended_look_15485", "₹7,499 ULTIMATE",
-         None),
+        ("GTA 6's standard edition is 5,999 rupees.", "CLIP:trailer_2_00232", "₹5,999", None),
+        ("And the Ultimate Edition goes up to 7,499 rupees.", "CLIP:extended_look_15485", "₹7,499 ULTIMATE", None),
         ("That sounds brutal, until you look at America.", "CLIP:trailer_2_00346", None, None),
-        ("Over there, GTA 5 cost sixty dollars, and GTA 6 costs eighty.", "CLIP:trailer_1_00325",
+        ("Over there, GTA 5 cost sixty dollars, and GTA 6 costs eighty.", "CLIP:trailer_2_00416",
          "$59.99 → $79.99", None),
         ("That's only about a third more, not double.", "CLIP:extended_look_09166", "+33%", None),
-        ("So India's price really did jump much more than America's.", "CLIP:extended_look_10833", None, None),
-        ("But here's the twist: eighty dollars is roughly 6,900 rupees.", "CLIP:extended_look_12327",
-         "$80 ≈ ₹6,900", "curious"),
-        ("So even after doubling, Indian players still pay about 900 rupees less than Americans.",
+        ("So the bigger jump really is in India.", "CLIP:extended_look_10833", None, None),
+        ("But here's the twist: with the rupee at about 94 to the dollar, eighty dollars is now around 7,500 rupees.",
+         "CLIP:extended_look_12327", "$80 ≈ ₹7,500", "curious"),
+        ("So even after doubling, Indian players still pay about 1,500 rupees less than Americans.",
          "CLIP:extended_look_15698", None, None),
-        ("Would you pay 5,999 on day one, or wait for a sale?", "CLIP:trailer_2_00795", None, None),
+        ("Would you pay 5,999 rupees on day one, or wait for a sale?", "CLIP:trailer_2_00795", None, None),
     ],
     facts=[
         {"claim": "GTA V launched in India at Rs 2,999 in 2013 (distributor E-xpress Interactive).",
          "sources": ["https://www.mcvuk.com/update-grand-theft-auto-5-price-to-remain-rs-2999/"], "main": True},
-        {"claim": "GTA 6 in India: Rs 5,999 standard, Rs 7,499 Ultimate; US $79.99; $80 is about Rs 6,900.",
+        {"claim": "GTA 6 in India: Rs 5,999 standard, Rs 7,499 Ultimate; US price $79.99.",
          "sources": ["https://www.mysmartprice.com/gear/gaming/gaming-news/gta-6-pre-orders-go-live-in-india-standard-edition-costs-rs-5999-ultimate-edition-priced-at-rs-7499/"],
          "main": True},
         {"claim": "GTA V launched at $59.99 in the US; GTA 6 is $79.99.",
          "sources": ["https://hothardware.com/news/gta-6-launch-80-single-player-title-rockstar-reveals"], "main": False},
+        {"claim": "Mid-November 2026 the rupee trades at about 94 to the US dollar (93.63 on 17 Nov 2026), so $79.99 is "
+                  "about Rs 7,500, roughly Rs 1,500 more than India's Rs 5,999 standard edition.",
+         "sources": ["https://hdfcsky.com/news/rupee-rises-31-paise-to-93-63-against-us-dollar-in-early-trade-november-17-2026"],
+         "main": True},
     ],
     description="GTA 5 was Rs 2,999 in 2013. GTA 6 is Rs 5,999. In dollars, India still pays less than America.\n"
-                "Sources: MCV (2013), MySmartPrice (2026).",
+                "Sources: MCV (2013), MySmartPrice (2026), HDFC Sky (exchange rate, Nov 2026).",
     hashtags=["#GTA6", "#GTA6India", "#GrandTheftAuto"],
 )
 
 S["gta6-leak-war"] = dict(
     title="GTA 6: Rockstar's war on the leakers",
-    thumb_text="STOLEN GAME",
-    hook_card="STOLEN IN 2022",
+    thumb_text="LEAKED IN 2022",
+    hook_card="LEAKED IN 2022",
+    cover_lines=["LEAKED", "4 YEARS EARLY"],
     beats=[
-        ("Someone stole GTA 6 years before it came out.", "CLIP:trailer_2_00996", None, "serious"),
-        ("In September 2022, a hacker posted early development footage of the game online.",
-         "CLIP:extended_look_02226", "SEPT 2022", None),
-        ("It was a huge leak, and the hacker was caught.",
-         "CLIP:trailer_2_00452", None, None),
-        ("In 2023, a UK court ordered the teenager behind it to be held in a secure hospital, with no end date.",
-         "CLIP:trailer_2_00498", "UK COURT, 2023", None),
+        ("Four years before GTA 6 came out, a hacker leaked footage of it to the whole internet.",
+         "CLIP:extended_look_08816", None, "serious"),
+        ("In September 2022, the hacker posted early development clips of the game online.",
+         "CLIP:extended_look_03894", "SEPT 2022", None),
+        ("He was a teenager, and he was caught.", "CLIP:trailer_2_00452", None, None),
+        ("In December 2023, a UK court gave him a hospital order with no end date.",
+         "CLIP:trailer_2_00498", "UK COURT, DEC 2023", None),
         ("But the leaks didn't stop there.", "CLIP:trailer_2_01188", None, "short pause"),
-        ("In December 2023, GTA 6's very first trailer leaked online before its premiere.",
-         "CLIP:trailer_1_00300", "DEC 2023", None),
-        ("So Rockstar just released it early, hours ahead of plan.", "CLIP:trailer_1_00026", None, None),
-        ("Then this August, new clips started showing up online.", "CLIP:extended_look_02502", "AUG 2026", None),
-        ("This time, Take-Two went to court.", "CLIP:extended_look_12920", None, "serious"),
-        ("It won orders telling Microsoft, which owns GitHub, and Discord to help identify who posted them.",
-         "CLIP:extended_look_12327", "MICROSOFT + DISCORD", None),
-        ("From a stolen build to court orders, Rockstar has been fighting leakers right up to launch day.",
+        ("That same month, GTA 6's very first trailer leaked online before its premiere.",
+         "CLIP:trailer_1_00300", "TRAILER 1 LEAKED", None),
+        ("So Rockstar released the trailer early, before its planned premiere.", "CLIP:trailer_2_00346", None, None),
+        ("Then this August, new clips started showing up online.", "CLIP:extended_look_02226", "AUG 2026", None),
+        ("This time, Take-Two went to court.", "CLIP:extended_look_12920", "TAKE-TWO GOES TO COURT", "serious"),
+        ("Take-Two won court orders making Microsoft, which owns GitHub, and Discord help identify who posted the "
+         "clips.", "CLIP:extended_look_12327", "MICROSOFT + DISCORD", None),
+        ("From leaked footage to court orders, Rockstar has been fighting leakers for four years.",
          "CLIP:launch_trailer_00685", None, None),
-        ("Did you watch the leaks, or did you wait for the real thing?", "CLIP:trailer_2_00961", None, None),
+        ("Did you watch the leaks, or did you wait for the real thing?", "CLIP:trailer_2_00920", None, None),
     ],
     facts=[
-        {"claim": "Sept 2022: a hacker leaked early GTA 6 development footage; in Dec 2023 a UK court gave the teenager "
-                  "behind it an indefinite hospital order.",
+        {"claim": "Sept 2022: a teenage hacker leaked early GTA 6 development footage; in Dec 2023 a UK court gave him "
+                  "an indefinite hospital order. GTA 6 came out on 19 Nov 2026, about four years later.",
          "sources": ["https://www.techradar.com/gaming/gta-6-hacker-who-intended-to-return-to-cyber-crime-as-soon-as-possible-sentenced-to-an-indefinite-hospital-order"],
          "main": True},
-        {"claim": "Dec 2023: GTA 6 trailer 1 leaked online, so Rockstar released it early.",
+        {"claim": "Dec 2023: GTA 6 trailer 1 leaked online, so Rockstar released it early, before its planned premiere.",
          "sources": ["https://www.videogameschronicle.com/news/the-gta-6-trailer-has-allegedly-leaked-online/"],
          "main": True},
         {"claim": "Aug 2026: after new GTA 6 clips leaked, Take-Two won court orders requiring Microsoft (owner of "
@@ -130,26 +135,30 @@ S["gta6-leak-war"] = dict(
 
 S["gta6-almost-tokyo"] = dict(
     title="GTA 6 is in America, but GTA almost went to Tokyo",
-    thumb_text="GTA TOKYO?",
-    hook_card="GTA TOKYO?",
+    thumb_text="ALMOST TOKYO?",
+    hook_card="ALMOST TOKYO?",
+    cover_lines=["ALMOST IN", "TOKYO?"],
     beats=[
-        ("GTA almost left America, and one city came really close.", "CLIP:trailer_1_00325", None, "curious"),
-        ("Obbe Vermeij, a former technical director at Rockstar North, says a GTA set in Tokyo \"almost actually "
-         "happened.\"", "CLIP:extended_look_12327", "QUOTE: OBBE VERMEIJ", None),
-        ("And Tokyo wasn't the only city on the table.", "CLIP:trailer_1_00300", None, None),
-        ("He says Rio, Moscow and Istanbul were considered too.", "CLIP:extended_look_15698",
+        ("GTA almost went to Tokyo, so why does it always end up in America?", "CLIP:extended_look_12327", None,
+         "curious"),
+        ("Obbe Vermeij used to be a technical director at Rockstar North.", "CLIP:extended_look_15698",
+         "OBBE VERMEIJ, EX-ROCKSTAR", None),
+        ("He says a GTA set in Tokyo \"almost actually happened.\"", "CLIP:extended_look_12606",
+         "QUOTE: OBBE VERMEIJ", None),
+        ("And Tokyo wasn't the only city on the table.", "CLIP:trailer_1_00300", "TOKYO + 3 MORE", None),
+        ("He says Rio, Moscow and Istanbul were considered too.", "CLIP:extended_look_11275",
          "RIO, MOSCOW, ISTANBUL", None),
         ("So why does every numbered GTA still end up in America?", "CLIP:trailer_2_00346", None, None),
         ("Rockstar co-founder Dan Houser has a simple answer.", "CLIP:extended_look_07446", None, None),
         ("He says other countries may have great cities, \"but they're not American cities.\"",
-         "CLIP:trailer_1_00026", "QUOTE: DAN HOUSER", None),
-        ("For him, GTA needs America's guns and its larger-than-life characters.", "CLIP:trailer_1_00248", None,
+         "CLIP:extended_look_07899", "QUOTE: DAN HOUSER", None),
+        ("For him, GTA needs America's guns and its larger-than-life characters.", "CLIP:extended_look_03021", None,
          None),
-        ("There's a practical problem too.", "CLIP:extended_look_12920", None, None),
+        ("There's a practical problem too.", "CLIP:trailer_2_00232", None, None),
         ("Vermeij says a whole new country is \"just not realistic\" when there's only a GTA every twelve years.",
-         "CLIP:trailer_1_00398", "QUOTE: OBBE VERMEIJ", None),
-        ("So after thirteen years, GTA 6 is going back to a city fans already know and love: Vice City.",
-         "CLIP:extended_look_10450", None, None),
+         "CLIP:extended_look_08816", "QUOTE: OBBE VERMEIJ", None),
+        ("So after thirteen years, GTA 6 went back to a city fans already know and love: Vice City.",
+         "CLIP:extended_look_05708", "VICE CITY", None),
         ("If GTA ever does leave America, which city should it be?", "CLIP:extended_look_15485", None, None),
     ],
     facts=[
@@ -170,19 +179,22 @@ S["gta6-almost-tokyo"] = dict(
 
 S["gta6-real-florida"] = dict(
     title="GTA 6's map: the real places you can visit",
-    thumb_text="REAL PLACES",
-    hook_card="VISIT GTA 6?",
+    thumb_text="REAL PLACES?",
+    hook_card="REAL PLACES?",
+    cover_lines=["REAL PLACES", "YOU CAN VISIT"],
     beats=[
-        ("You can actually visit the places GTA 6 is based on.", "CLIP:trailer_1_00356", None, "excited"),
-        ("The game is set in Leonida, Rockstar's version of Florida.", "CLIP:trailer_1_00217", None, None),
-        ("And its big city, Vice City, is inspired by Miami.", "CLIP:extended_look_07446", None, None),
+        ("GTA 6's map is based on real places, and you can actually go to them.", "CLIP:extended_look_11275",
+         None, "excited"),
+        ("The game is set in Leonida, Rockstar's version of Florida.", "CLIP:trailer_1_00217", "LEONIDA = FLORIDA",
+         None),
+        ("And its big city, Vice City, is basically Miami.", "CLIP:extended_look_07446", "VICE CITY = MIAMI", None),
         ("Rockstar says the Leonida Keys have \"some of the most beautiful and dangerous waters in all of "
-         "America.\"", "CLIP:trailer_2_00188", "QUOTE: ROCKSTAR", None),
-        ("Most outlets compare them to the real Florida Keys, the chain of islands south of Miami.",
-         "CLIP:launch_trailer_00026", "FLORIDA KEYS", None),
-        ("Then there's Grassrivers, where Rockstar promises \"deadlier predators and weirder discoveries.\"",
+         "America.\"", "CLIP:launch_trailer_00026", "QUOTE: ROCKSTAR", None),
+        ("Outlets compare them to the real Florida Keys, the chain of islands south of Miami.",
+         "CLIP:extended_look_10422", "FLORIDA KEYS", None),
+        ("Then comes Grassrivers, and Rockstar promises \"deadlier predators and weirder discoveries.\"",
          "CLIP:trailer_1_00183", "QUOTE: ROCKSTAR", None),
-        ("It looks a lot like the Everglades, the huge wetland where real airboats skim across the grass.",
+        ("Grassrivers looks a lot like the Everglades, the huge wetland where real airboats skim across the grass.",
          "CLIP:extended_look_10298", "EVERGLADES", None),
         ("And Mount Kalaga, Rockstar says, offers \"prime hunting, fishing, and off-road trails.\"",
          "CLIP:extended_look_04645", "QUOTE: ROCKSTAR", None),
@@ -190,8 +202,8 @@ S["gta6-real-florida"] = dict(
          "CLIP:extended_look_11148", None, "laughs softly"),
         ("Rockstar hasn't named the real places itself, but the resemblance is hard to miss.",
          "CLIP:trailer_2_00081", None, None),
-        ("Which one would you visit first: the Keys, the Everglades, or Miami?", "CLIP:extended_look_10489", None,
-         None),
+        ("Which one would you visit first: the Keys, the Everglades, or Miami?", "CLIP:extended_look_10489",
+         "KEYS, EVERGLADES OR MIAMI?", None),
     ],
     facts=[
         {"claim": "Rockstar's descriptions: the Leonida Keys have 'some of the most beautiful and dangerous waters in "
@@ -432,7 +444,9 @@ def build(topic: str, v: dict) -> dict:
     return {"viable": True, "title": v["title"], "thumb_text": v["thumb_text"], "hook_card": v["hook_card"],
             "hooks": [v["beats"][0][0]], "chosen_hook": 0, "images": images, "scenes": scenes,
             "facts": v["facts"], "description": v["description"], "hashtags": v["hashtags"],
-            "affiliate_product": None, "written_by": "Claude in session (verified)"}
+            "affiliate_product": None, "written_by": "Claude in session (verified)",
+            # cover + opening card words, written here (no paid cover call); the picture is the first beat's shot
+            "cover": {"image": "img1", "lines": v.get("cover_lines") or [v["hook_card"]], "why": "written in session"}}
 
 
 def check(topic: str, s: dict) -> list[str]:
@@ -453,6 +467,14 @@ def check(topic: str, s: dict) -> list[str]:
     for sc in s["scenes"]:
         if len(sc["callout"] or "") > 34:
             errs.append(f"{topic}: long callout {sc['callout']}")
+        # 19 Nov 2026: a 5 s beat on a 1.5 s shot ran on into an unrelated in-game social post. Mark beats whose shot
+        # is clearly shorter than the line (about 2.8 spoken words a second; clips slow down at most 1.6x).
+        kind, _, sid = s["images"].get(sc["image"], "").partition(":")
+        if kind == "CLIP" and sid in shots:
+            secs = len(sc["narration"].split()) / 2.8
+            have = shots[sid]["end"] - shots[sid]["start"]
+            if have * 1.25 < secs:
+                print(f"  warning {topic} {sc['id']}: line ~{secs:.1f}s, shot {sid} {have:.1f}s (runs on)")
     return errs
 
 

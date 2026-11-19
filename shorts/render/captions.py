@@ -58,7 +58,7 @@ def write_ass(words: list[Word], out: Path, font: str = "Inter", font_size: int 
               overlays: list[tuple[float, float, str]] | None = None,
               handle: tuple[float, float, str] | None = None,
               hook: tuple[list[str], float] | None = None, hook_y: int = 560,
-              badge: str | None = None, duration: float = 0.0) -> Path:
+              badge: str | None = None, duration: float = 0.0, hook_outro: bool = True) -> Path:
     """Write an .ass subtitle file.
 
     The word being spoken is highlighted (karaoke style) - a common retention
@@ -89,7 +89,7 @@ def write_ass(words: list[Word], out: Path, font: str = "Inter", font_size: int 
     # game's logo artwork - big above the opening hook, and a small tag in the top-left corner for the whole video so
     # any frame the feed picks as the thumbnail says what the video is about
     style_badges = [
-        f"Style: BadgeBig,{font},104,&H00FFFFFF,&H00FFFFFF,&H00882EFF,&H00882EFF,-1,0,0,0,100,100,2,0,3,20,0,5,40,40,0,1",
+        f"Style: BadgeBig,{font},200,&H00FFFFFF,&H00FFFFFF,&H00882EFF,&H00882EFF,-1,0,0,0,100,100,2,0,3,30,0,5,40,40,0,1",
         f"Style: BadgeSmall,{font},46,&H00FFFFFF,&H00FFFFFF,&H00882EFF,&H00882EFF,-1,0,0,0,100,100,1,0,3,10,0,7,48,40,250,1",
     ]
     lines = [
@@ -128,19 +128,26 @@ def write_ass(words: list[Word], out: Path, font: str = "Inter", font_size: int 
             )
     for (s, e, text) in overlays or []:
         lines.append(f"Dialogue: 1,{_ts(s)},{_ts(e)},Top,,0,0,0,,{_esc(text)}")
+    badge_y = None
+    if badge and hook and hook[0]:
+        # 19 Nov 2026: the big badge sat on top of the opening card and hid its words. The badge now takes the
+        # card's place and the card moves down below it. (20 Nov 2026, owner: the GTA branding on the first screen gets
+        # instant views) Both are big, like the cover, inside the part every feed crop keeps.
+        badge_y, hook_y = 520, 760
     if hook and hook[0] and hook[1] > 3:
         end = hook[1]
         for i, text in enumerate([t for t in hook[0] if t][:2]):
-            size = max(48, min(84, int(1480 / max(1, len(text)))))
-            y = hook_y + i * 128
+            size = max(48, min(112 if badge_y else 84, int((1800 if badge_y else 1480) / max(1, len(text)))))
+            y = hook_y + i * (160 if badge_y else 128)
             tag = f"{{\\an5\\pos(540,{y})\\fs{size}}}"
             st = "HookA" if i == 0 else "HookB"
             lines.append(f"Dialogue: 3,{_ts(0)},{_ts(1.8)},{st},,0,0,0,,{{\\fad(0,250)}}{tag}{_esc(text)}")
-            lines.append(f"Dialogue: 3,{_ts(max(0, end - 0.7))},{_ts(end)},{st},,0,0,0,,{{\\fad(250,0)}}{tag}{_esc(text)}")
+            if hook_outro:   # the loop's last frame; story videos don't loop, so no card at the end
+                lines.append(f"Dialogue: 3,{_ts(max(0, end - 0.7))},{_ts(end)},{st},,0,0,0,,{{\\fad(250,0)}}{tag}{_esc(text)}")
     if badge:
         total = max(duration, hook[1] if hook else 0.0, words[-1].end if words else 0.0)
         b = _esc(badge.upper())
-        y_big = (hook_y - 150) if (hook and hook[0]) else 420
+        y_big = badge_y if badge_y is not None else 420
         lines.append(f"Dialogue: 4,{_ts(0)},{_ts(1.8)},BadgeBig,,0,0,0,,{{\\an5\\pos(540,{max(150, y_big)})\\fad(0,250)}}{b}")
         lines.append(f"Dialogue: 4,{_ts(1.8)},{_ts(total)},BadgeSmall,,0,0,0,,{{\\fad(300,0)}}{b}")
     if handle and handle[1] > handle[0]:

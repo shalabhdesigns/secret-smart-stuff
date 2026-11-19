@@ -321,6 +321,9 @@ def _shot_piece(src: Path, start: float, end: float) -> tuple[float, float]:
     return start + a + (0.04 if a > 0 else 0.0), start + b - (0.04 if b < end - start else 0.0)
 
 
+_OVERLAY = re.compile(r"social|livestream|in-game app|tv news|on-screen text|text card|suggestive", re.I)
+
+
 def segment(shot_id: str, out: Path, seconds: float) -> Path:
     """The shot as its own muted file, at least `seconds` long (runs on into the next shot if it is shorter).
     Black bars are cropped off so the vertical frame is all picture."""
@@ -345,6 +348,8 @@ def segment(shot_id: str, out: Path, seconds: float) -> Path:
             continue
         if abs(v["start"] - end) > 0.2 or v.get("avoid"):
             break
+        if _OVERLAY.search(v.get("shows", "")) and not _OVERLAY.search(sh.get("shows", "")):
+            break                         # 19 Nov 2026: never run on into an in-game social post, TV or text card
         end = v["end"]
     start, end = _clean_range(src, start, end)
     avail = max(0.5, end - start - 0.05)
