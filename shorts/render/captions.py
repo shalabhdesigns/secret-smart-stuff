@@ -58,7 +58,8 @@ def write_ass(words: list[Word], out: Path, font: str = "Inter", font_size: int 
               overlays: list[tuple[float, float, str]] | None = None,
               handle: tuple[float, float, str] | None = None,
               hook: tuple[list[str], float] | None = None, hook_y: int = 560,
-              badge: str | None = None, duration: float = 0.0, hook_outro: bool = True) -> Path:
+              badge: str | None = None, duration: float = 0.0, hook_outro: bool = True,
+              badge_text: bool = True) -> Path:
     """Write an .ass subtitle file.
 
     The word being spoken is highlighted (karaoke style) - a common retention
@@ -134,6 +135,8 @@ def write_ass(words: list[Word], out: Path, font: str = "Inter", font_size: int 
         # card's place and the card moves down below it. (20 Nov 2026, owner: the GTA branding on the first screen gets
         # instant views) Both are big, like the cover, inside the part every feed crop keeps.
         badge_y, hook_y = 520, 760
+        if not badge_text:      # the real logo image sits at y 300-640 (overlay in finalize)
+            hook_y = 790
     if hook and hook[0] and hook[1] > 3:
         end = hook[1]
         for i, text in enumerate([t for t in hook[0] if t][:2]):
@@ -144,7 +147,7 @@ def write_ass(words: list[Word], out: Path, font: str = "Inter", font_size: int 
             lines.append(f"Dialogue: 3,{_ts(0)},{_ts(1.8)},{st},,0,0,0,,{{\\fad(0,250)}}{tag}{_esc(text)}")
             if hook_outro:   # the loop's last frame; story videos don't loop, so no card at the end
                 lines.append(f"Dialogue: 3,{_ts(max(0, end - 0.7))},{_ts(end)},{st},,0,0,0,,{{\\fad(250,0)}}{tag}{_esc(text)}")
-    if badge:
+    if badge and badge_text:
         total = max(duration, hook[1] if hook else 0.0, words[-1].end if words else 0.0)
         b = _esc(badge.upper())
         y_big = badge_y if badge_y is not None else 420

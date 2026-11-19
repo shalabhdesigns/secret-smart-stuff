@@ -101,6 +101,7 @@ ZONES = {"upper": (430, 820), "lower": (1110, 1500)}
 
 # With a topic badge the group is taller (badge + 2 lines): it uses the 3:4 crop's upper or lower part.
 ZONES_BADGE = {"upper": (300, 960), "lower": (980, 1640)}
+ZONES_LOGO = {"upper": (250, 1120), "lower": (810, 1680)}
 PINK = (0xFF, 0x2E, 0x88)
 
 
@@ -128,10 +129,18 @@ def _badge(base: Image.Image, text: str, cx: int, cy: int) -> int:
 
 def render(picture: Path, lines: list[str], out: Path, zone: str | None = None, badge: str | None = None) -> Path:
     base = _fill(Image.open(picture))
-    zones = ZONES_BADGE if badge else ZONES
+    from . import logo as _logo
+    real = _logo.has_logo(badge)
+    zones = ZONES_LOGO if real else ZONES_BADGE if badge else ZONES
     zone = zone or min(zones, key=lambda z: _busy(base, *zones[z]))
     z0, z1 = zones[zone]
-    if badge:
+    if real:     # owner, 20 Nov 2026: the real GTA VI logo, only
+        lg = _logo.logo(badge, 600)
+        rgba = base.convert("RGBA")
+        rgba.alpha_composite(lg, (W // 2 - lg.width // 2, z0 - lg.width // 16))
+        base = rgba.convert("RGB")
+        z0 += lg.height - lg.width // 8 + 10
+    elif badge:
         bh = 200
         _badge(base, badge.upper(), W // 2, z0 + bh // 2 + 20)
         z0 += bh + 70
@@ -140,11 +149,11 @@ def render(picture: Path, lines: list[str], out: Path, zone: str | None = None, 
     pad_x, pad_y, gap, radius = 44, 28, 20, 18
     blocks = []
     for i, t in enumerate(lines):
-        f, size = _fit(t, W - 2 * 70 - 2 * pad_x, start=150 if badge else 176)
+        f, size = _fit(t, W - 2 * 70 - 2 * pad_x, start=128 if real else 150 if badge else 176)
         x0, y0, x1, y1 = d.textbbox((0, 0), t, font=f)
         blocks.append((t, f, x1 - x0, y1 - y0, x0, y0, i))
     total = sum(b[3] + 2 * pad_y for b in blocks) + gap * (len(blocks) - 1)
-    y = int((z0 + z1) / 2 - total / 2)
+    y = z0 if real else int((z0 + z1) / 2 - total / 2)
     shadow = Image.new("L", (W, H), 0)
     sd = ImageDraw.Draw(shadow)
     yy = y

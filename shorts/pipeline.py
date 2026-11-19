@@ -1414,14 +1414,21 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
                 hook_y = 190
         except Exception:  # noqa: BLE001
             pass
+        from .render import logo as _logo
+        real_logo = _logo.has_logo(tnotes.get("badge"))
+        overlays = []
+        if real_logo:    # owner, 20 Nov 2026: the real GTA VI logo, big on the first screen, small in the corner after
+            overlays = [(_logo.frame_png(tnotes["badge"], d / "logo_big.png", 520, (540, 470)), 0.0, 1.8),
+                        (_logo.frame_png(tnotes["badge"], d / "logo_small.png", 190, (150, 300)), 1.8, end + 1)]
         ass = write_ass(words, d / "captions.ass", y_center=y_cap, hook=hook, hook_y=hook_y,
                         badge=tnotes.get("badge"), duration=end, hook_outro=not self._story,
+                        badge_text=not real_logo,
                         font=self.cfg.channel["style"]["caption_font"],
                         font_size=self.cfg.channel["style"]["caption_size"],
                         highlight=ass_colour(self.cfg.channel["style"].get("caption_highlight", "#FFE500")),
                         handle=((3.0, end - 2.5, self.cfg.channel["channel"]["handle"])
                                 if self.cfg.channel["style"].get("onscreen_handle") and end > 9 else None))
-        final = A.finalize(video, audio, ass, d / "final.mp4")
+        final = A.finalize(video, audio, ass, d / "final.mp4", overlays=overlays)
         return {"video": str(final), "duration": end, "beats": len(beats), "music": str(music) if music else None}
 
     # ---- F (part 2): media QA

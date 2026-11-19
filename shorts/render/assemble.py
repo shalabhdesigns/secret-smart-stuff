@@ -154,14 +154,22 @@ def mix_audio(plan: AudioPlan, duration: float, out: Path) -> Path:
     return out
 
 
-def finalize(video: Path, audio: Path, ass: Path | None, out: Path) -> Path:
-    """Burn captions, mux audio, final H.264/AAC encode for YouTube."""
-    vf = "format=yuv420p"
+def finalize(video: Path, audio: Path, ass: Path | None, out: Path,
+             overlays: list[tuple[Path, float, float]] | None = None) -> Path:
+    """Burn captions, mux audio, final H.264/AAC encode for YouTube. `overlays`: full-frame transparent PNGs shown
+    from..to seconds (the GTA VI logo, 20 Nov 2026), under the captions."""
+    chain, inputs, last = [], [], "0:v"
+    for i, (png, t0, t1) in enumerate(overlays or []):
+        inputs += ["-i", str(png)]
+        chain.append(f"[{last}][{i + 2}:v]overlay=0:0:enable='between(t,{t0:.2f},{t1:.2f})'[o{i}]")
+        last = f"o{i}"
+    sub = "format=yuv420p"
     if ass:
         ass_arg = str(ass).replace(":", r"\:").replace("'", r"\'")
-        vf = f"ass='{ass_arg}':fontsdir='{FONTS_DIR}',format=yuv420p"
-    run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(video), "-i", str(audio),
-         "-vf", vf, "-map", "0:v:0", "-map", "1:a:0",
+        sub = f"ass='{ass_arg}':fontsdir='{FONTS_DIR}',format=yuv420p"
+    chain.append(f"[{last}]{sub}[v]")
+    run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(video), "-i", str(audio), *inputs,
+         "-filter_complex", ";".join(chain), "-map", "[v]", "-map", "1:a:0",
          "-c:v", "libx264", "-preset", "medium", "-crf", "19", "-profile:v", "high",
          "-r", str(FPS), "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
          "-movflags", "+faststart", "-shortest", str(out)])
