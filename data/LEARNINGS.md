@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-18 20:54 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-19 07:55 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - News topics got 6.58x the median views of film topics (pattern, n=5 vs 7). Film got more subs_per_1k (1.64 vs 0.63), so pair film with a stronger hook and payoff.
@@ -16,6 +16,51 @@ Updated 2026-11-18 20:54 UTC. Built from every published video's 48 h and 7 day 
 - by_country, walk_past, why_detail, india_asia and virality: not enough data yet (n=1-2 each).
 
 ## Per-video analyses
+
+### gta6-florida-man-v5 (48h) — below median
+- 7 views · 41.05% viewed · 1 likes · 0 shares · 0 subs (median views 160, n=29)
+- At 48 hours the Short reached 7 views against a channel median of 160, and viewers who started it mostly left around second 13, so the GTA 6 topic and its opening need a rethink before the next one.
+  - ✅ Engagement per viewer was strong for the few people who watched: 4 of 7 views were engaged (57%) versus a median of 71 of 160 (44%), and 1 like from 7 views (14%) versus a median of 3 from 160 (1.9%).
+  - ✅ The hook was a short, specific question ("A gator walked into a store?") that gives a concrete image and an ~32-second runtime, which is a reasonable length for the format.
+  - ❌ Reach was the main failure: 7 views versus a median of 160, with 4 engaged views versus 71.
+  - ❌ Retention was weak: average view percentage was 41.05% versus a median of 57.74%, and average view duration was 13s versus 21s. The average viewer stopped around second 13 of a 31.6s video.
+  - ❌ No subscribers were gained, and there were 0 comments and 0 shares, matching the median but giving no growth signal.
+  - ❌ The title promises "scenes that really happened" while the script's payoff is that the clips were matched to Florida footage. That mismatch may have hurt both clicks and the sense of a payoff.
+  - ❌ The retention curve is empty, so the drop point below is inferred from the timing of the average view duration and the script, not measured.
+  - ❌ learnings_applied: 'win:' lessons (runway-numbers-v1, gimli-glider-v1, placebo-buttons-v2, learjet-wing-ice-v2) and the pilot-meals and placebo-buttons postmortems were carried in, but one video at 7 views cannot show whether they helped. The pillar also carries multiple 'owner:drop' and 'review:...blocking' entries (gta6-cheaper-than-gta5, gta6-not-on-pc, gta6-florida-man, gta6-no-disc), so this result fits a pattern of weak GTA 6 performance rather than a fluke.
+  - 📉 b4: Outlets say the real clip: MacArthur Causeway. @ 9.84 s: Hypothesis: the average viewer leaves around second 13, which falls late in this beat, just before b5. Around this point the video shifts to a new claim and a new location (a Causeway clip), after a run of Florida/Miami claims in b2 to b4. Viewers may have lost the thread of which clip is real.
+  - 📉 b2–b3: Fans matched GTA 6 to Florida videos / Outlets matched this dancer to Miami, 2017. @ 2.4 s: Hypothesis: the hook promises a gator story, but the first two beats move to a GTA 6 comparison and a dancer clip. Viewers who expected the gator may have left before the story reached its first payoff.
+  - 💡 [topic, hypothesis] Pause new gta6-pillar Shorts and test a different pillar for the next 3 to 5 videos; only return to GTA 6 if a rebuilt version reaches at least the channel median views.
+  - 💡 [hook, hypothesis] Test a claim-style hook (e.g., 'Fans thought this GTA 6 clip was real. It's from Florida.') against the question hook on the same topic, and keep the one that holds more viewers past 13s.
+  - 💡 [story, hypothesis] Limit each Short to one claim and one source clip in the first 15 seconds, and cut the Screen Rant and GTA Boom beats into a single example.
+  - 💡 [pacing, hypothesis] Move the most visual proof (the clip itself) into the first 10 seconds so viewers see the evidence before the second-13 drop-off.
+  - 💡 [title, hypothesis] Make the title match the payoff: if the video shows the clips were misattributed, say so in the title rather than 'scenes that really happened'.
+  - 💡 [length, hypothesis] Keep Shorts near 30 seconds, but check retention before changing length; the 13s average view duration here does not show that length is the problem.
+  - 💡 [loop, hypothesis] Keep the loop lead-in, since there is no data on rewatches here; check rewatch rate on the next video before deciding whether it helps.
+
+### gta6-trailer-record-v1 (48h) — above median
+- 1108 views · 74.67% viewed · 30 likes · 0 shares · 0 subs (median views 157, n=29)
+- The GTA 6 trailer Short got 1,108 views at 48h against a channel median of 157 (about 7x), with 569 engaged views, a 74.7% average view percentage (median 57.5%), and 30 likes (median 2), but it gained zero subscribers and drew no comments or shares.
+  - ✅ Views (1,108 vs median 157), engaged views (569 vs 69), and average view percentage (74.67% vs 57.54%) are all well above the channel median at the same age.
+  - ✅ Likes were 30 vs a median of 2, a strong sign that the viewers who stayed liked the video.
+  - ✅ The average view duration of 26s on a 34.7s video means the typical viewer watched about three-quarters of it, which points to a hook and story that held attention.
+  - ✅ The Question hook ('Why did GTA 6's trailer come early?') opens with a direct, curiosity-driven question. This is a plausible driver of the strong early retention, but one video cannot confirm it.
+  - ✅ The topic was a news-driven, widely searched subject (a leaked trailer and record view counts), which is a likely reason for the outlier reach.
+  - ✅ Applied learnings: the features list 'learnings_applied' includes several earlier wins (runway-numbers-v1, gimli-glider-v1, placebo-buttons-v2, learjet-wing-ice-v2) and a set of pilot-meals and placebo-buttons lessons. The result is consistent with them having helped, but the data cannot isolate their effect. Treat this as a hypothesis.
+  - ❌ Subscribers gained was 0, the same as the median, so the outsized views did not convert into channel growth.
+  - ❌ Comments and shares were both 0, the same as the median, so the video did not generate conversation or sharing.
+  - ❌ The retention curve is empty, so I cannot locate where viewers dropped off. The drop_points list is left empty rather than guessed.
+  - ❌ Self-review scores were weakest on image_word_match (3), flow_pacing (3), rewatch (3), and share (3), which suggests the visuals may not match the spoken words closely enough and the piece may not invite rewatching or sharing.
+  - ❌ The script ends mid-sentence ('That's the real answer to...') as a loop device. Loop was self-rated 5, but without retention data I cannot confirm that the loop works.
+  - ❌ No instagram_reel numbers were provided, so no cross-platform comparison is possible.
+  - ❌ Only one video is in this sample, and the channel median is based on n=29, so the result is a single data point against a small baseline.
+  - 💡 [topic, hypothesis] Breaking, news-driven GTA 6 explainers can reach far above the channel median. Test more timely hooks on this pillar before committing to evergreen topics.
+  - 💡 [hook, hypothesis] Keep the direct question hook ('Why did X happen?') for the next several videos and compare its 48h average view percentage against the median of about 57.5%.
+  - 💡 [visuals, hypothesis] Match each on-screen image to the word being spoken. Image-word match self-scored 3/5, so audit the 9 images against the beat timings before publishing.
+  - 💡 [pacing, hypothesis] Flow and pacing self-scored 3/5 despite a strong average view duration. Check whether the beats between 12s and 30s are dense enough to hold attention.
+  - 💡 [story, hypothesis] Add a clear reason for viewers to comment or subscribe, such as a direct question or a 'what's your take' prompt, since comments, shares, and subscribers all stayed at zero.
+  - 💡 [loop, hypothesis] Pull the retention curve for this video before judging the loop. If retention spikes back to the start, keep the cut-off loop lead-in; if not, end on a complete sentence.
+  - 💡 [title, hypothesis] Test a title that matches the hook question, since the current title ('The GTA 6 trailer that broke YouTube') frames the video as a claim rather than a question.
 
 ### gta6-not-on-pc-v2 (48h) — below median
 - 4 views · 90.37% viewed · 1 likes · 0 shares · 0 subs (median views 160, n=27)
