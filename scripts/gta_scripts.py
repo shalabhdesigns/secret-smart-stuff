@@ -225,6 +225,7 @@ S["gta6-florida-man"] = dict(
     title="GTA 6's wildest scenes really happened in Florida",
     thumb_text="IT REALLY HAPPENED",
     hook_card="THIS WAS REAL?",
+    cover_lines=["THIS WAS", "REAL?"],
     beats=[
         ("Some of the wildest scenes in GTA 6's first trailer actually happened in real life.",
          "CLIP:trailer_1_00475", None, "surprised"),
@@ -308,8 +309,9 @@ S["gta6-review-scores"] = dict(
     title="GTA 6 tied the highest Metacritic score ever",
     thumb_text="99 / 100?",
     hook_card="ALMOST PERFECT?",
+    cover_lines=["99 OUT OF 100", "ON METACRITIC?"],
     beats=[
-        ("GTA 6's reviews are in, and the number is almost perfect.", "CLIP:launch_trailer_00685", None, "excited"),
+        ("GTA 6's reviews are in, and the number is almost perfect.", "CLIP:extended_look_10196", None, "excited"),
         ("When the reviews landed, it scored 99 out of 100 on Metacritic.", "CLIP:trailer_1_00300", "99 / 100 METACRITIC", None),
         ("That ties The Legend of Zelda: Ocarina of Time for the highest score Metacritic has ever recorded.",
          "CLIP:trailer_1_00398", "TIED: OCARINA OF TIME", "surprised"),
@@ -392,8 +394,9 @@ S["gta6-trailer2-record"] = dict(
     title="GTA 6 Trailer 2: 475 million views in a day?",
     thumb_text="475M IN 1 DAY?",
     hook_card="475 MILLION?",
+    cover_lines=["475 MILLION", "IN ONE DAY?"],
     beats=[
-        ("In May 2025, GTA 6 fans got some really bad news.", "CLIP:trailer_2_01188", None, "serious"),
+        ("In May 2025, GTA 6 fans got some really bad news.", "CLIP:trailer_2_01437", None, "serious"),
         ("The game was delayed, from 2025 into 2026.", "CLIP:extended_look_15698", "DELAYED TO 2026", None),
         ("Then, just days later, on a random Tuesday, Rockstar dropped trailer two with no warning at all.",
          "CLIP:trailer_2_00232", None, "surprised"),

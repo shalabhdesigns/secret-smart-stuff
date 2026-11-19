@@ -66,6 +66,11 @@
   every shot from `assets/official/shots.json` in `scripts/gta_scripts.py` -> `config/gta_scripts.json` ->
   `notes.script`. The pipeline then skips the paid script/review/repair/storyboard stages; one Haiku final check;
   a failing video is held for Claude, never dropped. API cost per video: a few cents.
+- **GTA branding on every first screen** (owner, 20 Nov 2026: "GTA 5 or GTA 6 branding in the thumbnail or first
+  screen gains instant views"; his best Reels showed Lucia's face or GTA V cover art). Every GTA video: a big pink
+  "GTA 6" slab (our own design, never Rockstar's logo) above 2 short cover lines on the cover (`cover.render(badge=)`)
+  and on the first 1.8 s (`write_ass(badge=)`); the first beat's shot is a strong character shot (it is also the
+  cover picture); scripts set `cover_lines` (true, said in the video). Use "GTA 5" when the video is about GTA 5.
 - **Daily cost check** (owner, 18 Nov 2026: "each day check how much we are spending on each video and find ways to
   further reduce it ... bring it down to bare minimum"). Every day run `scripts/cost_report.py` on the state db, report
   cost per video and the waste (spend on videos not published), find the biggest remaining cost and cut it.

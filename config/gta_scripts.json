@@ -1409,7 +1409,8 @@
   "cover": {
    "image": "img1",
    "lines": [
-    "THIS WAS REAL?"
+    "THIS WAS",
+    "REAL?"
    ],
    "why": "written in session"
   }
@@ -1669,7 +1670,7 @@
   ],
   "chosen_hook": 0,
   "images": {
-   "img1": "CLIP:launch_trailer_00685",
+   "img1": "CLIP:extended_look_10196",
    "img2": "CLIP:trailer_1_00300",
    "img3": "CLIP:trailer_1_00398",
    "img4": "CLIP:trailer_1_00325",
@@ -1907,7 +1908,8 @@
   "cover": {
    "image": "img1",
    "lines": [
-    "ALMOST PERFECT?"
+    "99 OUT OF 100",
+    "ON METACRITIC?"
    ],
    "why": "written in session"
   }
@@ -2175,7 +2177,7 @@
   ],
   "chosen_hook": 0,
   "images": {
-   "img1": "CLIP:trailer_2_01188",
+   "img1": "CLIP:trailer_2_01437",
    "img2": "CLIP:extended_look_15698",
    "img3": "CLIP:trailer_2_00232",
    "img4": "CLIP:trailer_2_01400",
@@ -2414,7 +2416,8 @@
   "cover": {
    "image": "img1",
    "lines": [
-    "475 MILLION?"
+    "475 MILLION",
+    "IN ONE DAY?"
    ],
    "why": "written in session"
   }
