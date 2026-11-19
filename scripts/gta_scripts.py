@@ -291,6 +291,136 @@ S["gta6-not-on-pc"] = dict(
 )
 
 
+# 20 Nov 2026: three new post-launch topics (records, characters, records/hype), researched and verified 19 Nov
+S["gta6-review-scores"] = dict(
+    title="GTA 6 tied the highest Metacritic score ever",
+    thumb_text="99 / 100?",
+    hook_card="ALMOST PERFECT?",
+    beats=[
+        ("GTA 6's reviews are in, and the number is almost perfect.", "CLIP:launch_trailer_00685", None, "excited"),
+        ("When the reviews landed, it scored 99 out of 100 on Metacritic.", "CLIP:trailer_1_00300", "99 / 100 METACRITIC", None),
+        ("That ties The Legend of Zelda: Ocarina of Time for the highest score Metacritic has ever recorded.",
+         "CLIP:trailer_1_00398", "TIED: OCARINA OF TIME", "surprised"),
+        ("And out of well over a hundred reviews, not a single one was mixed or negative.", "CLIP:trailer_1_00325",
+         "0 MIXED, 0 NEGATIVE", None),
+        ("IGN, GameSpot, Eurogamer and The Guardian all gave it a perfect score.", "CLIP:extended_look_07446",
+         "100/100 FROM IGN + GAMESPOT", None),
+        ("IGN even called it \"the single most impressive video game I have ever played.\"", "CLIP:trailer_1_00356",
+         "QUOTE: IGN REVIEW", None),
+        ("So is it perfect? Not quite.", "CLIP:trailer_2_01188", None, "curious"),
+        ("Many reviewers knocked it for running at thirty frames per second, with no performance mode.",
+         "CLIP:extended_look_09432", "30 FPS, NO PERFORMANCE MODE", None),
+        ("Some also say the story's pacing sags in places.", "CLIP:extended_look_07501", None, None),
+        ("But almost every review praises the same thing: Leonida itself.", "CLIP:trailer_1_00217", None, None),
+        ("One roundup calls Vice City the most reactive city Rockstar has ever built.", "CLIP:extended_look_10262",
+         None, None),
+        ("Thirteen years after GTA 5, the critics say the wait was worth it.", "CLIP:launch_trailer_00670", None,
+         None),
+        ("So is 99 too high, or does GTA 6 really deserve it?", "CLIP:trailer_2_00961", None, None),
+    ],
+    facts=[
+        {"claim": "GTA 6: Metacritic 99 (PS5, 147 critic reviews; Xbox Series X|S 99 from 14) and OpenCritic Top Critic "
+                  "Average 99 with 100% recommending; IGN, GameSpot, Eurogamer and The Guardian scored it 100; IGN: "
+                  "'the single most impressive video game I have ever played'.",
+         "sources": ["https://endgametools.com/en/gta-6/news/gta-6-reviews"], "main": True},
+        {"claim": "The 99 is tied with Ocarina of Time for the highest score Metacritic has recorded; zero mixed or "
+                  "negative reviews; criticisms: 30fps cap with no performance mode, pacing sags in places; praise for "
+                  "Leonida's density, 'the most reactive city Rockstar has built'.",
+         "sources": ["https://outputlag.com/featured-slider/gta-6-review-roundup/"], "main": True},
+    ],
+    description="GTA 6 scores 99 on Metacritic, tied with Ocarina of Time for the site's best ever. What critics loved "
+                "and what they didn't.\nSources: Endgame Tools, Output Lag (review roundups, 18 Nov 2026).",
+    hashtags=["#GTA6", "#GTA6Review", "#GrandTheftAuto"],
+)
+
+S["gta6-cast-one-liners"] = dict(
+    title="GTA 6's characters in Rockstar's own words",
+    thumb_text="WHO ARE THEY?",
+    hook_card="ONE LINE EACH",
+    beats=[
+        ("Rockstar sums up each GTA 6 character in one sentence, and one is way too relatable.",
+         "CLIP:extended_look_03021", None, "curious"),
+        ("First, Jason Duval, one of the two leads.", "CLIP:trailer_2_00232", None, None),
+        ("Rockstar's line: \"Jason wants an easy life, but things just keep getting harder.\"",
+         "CLIP:trailer_2_00081", "QUOTE: ROCKSTAR GAMES", None),
+        ("Then Lucia Caminos, who starts the story in prison.", "CLIP:trailer_1_00065", None, None),
+        ("Her line: \"Lucia's father taught her to fight as soon as she could walk.\"", "CLIP:trailer_2_00498",
+         "QUOTE: ROCKSTAR GAMES", None),
+        ("Brian Heder is Jason's landlord, and he runs a boat yard in the Keys.", "CLIP:launch_trailer_00026",
+         None, None),
+        ("Rockstar says: \"Brian's a classic drug runner from the golden age of smuggling in the Keys.\"",
+         "CLIP:trailer_2_00851", "QUOTE: ROCKSTAR GAMES", None),
+        ("In Vice City, Boobie Ike owns property, a club and a recording studio.", "CLIP:trailer_1_00341", None,
+         None),
+        ("The warning: \"Boobie's all smiles until it's time to talk business.\"", "CLIP:trailer_1_00325",
+         "QUOTE: ROCKSTAR GAMES", None),
+        ("Raul Bautista is a bank robber who is always hunting for talent.", "CLIP:extended_look_12920",
+         None, None),
+        ("But the best line goes to Jason's friend, Cal Hampton.", "CLIP:trailer_2_00895", None, None),
+        ("Rockstar says: \"Cal is at the low tide of America and happy there.\"", "CLIP:trailer_2_00831",
+         "QUOTE: ROCKSTAR GAMES", "laughs softly"),
+        ("Which GTA 6 character are you most excited to meet?", "CLIP:trailer_2_00795", None, None),
+    ],
+    facts=[
+        {"claim": "Rockstar's character descriptions: 'Jason wants an easy life, but things just keep getting harder.' "
+                  "'Lucia's father taught her to fight as soon as she could walk.' 'Brian's a classic drug runner from "
+                  "the golden age of smuggling in the Keys.' (Jason's landlord, boat yard) 'Boobie's all smiles until "
+                  "it's time to talk business.' (real estate, a club, a recording studio) Raul: 'a seasoned bank "
+                  "robber always on the hunt for talent'. 'Cal is at the low tide of America and happy there.'",
+         "sources": ["https://www.gtaboom.com/every-gta-6-character-confirmed-so-far-156f"], "main": True},
+        {"claim": "Cal's official bio: 'at the low tide of America'; Lucia's bio suggests lifelong fighting.",
+         "sources": ["https://www.gamesradar.com/games/grand-theft-auto/gta-6-characters"], "main": False},
+    ],
+    description="Rockstar describes each GTA 6 character in one line. Jason, Lucia, Brian, Boobie, Raul and Cal, in "
+                "Rockstar's own words.\nSources: Rockstar Games character descriptions via GTA BOOM and GamesRadar+.",
+    hashtags=["#GTA6", "#JasonAndLucia", "#GrandTheftAuto"],
+)
+
+S["gta6-trailer2-record"] = dict(
+    title="GTA 6 Trailer 2: 475 million views in a day?",
+    thumb_text="475M IN 1 DAY?",
+    hook_card="475 MILLION?",
+    beats=[
+        ("In May 2025, GTA 6 fans got some really bad news.", "CLIP:trailer_2_01188", None, "serious"),
+        ("The game was delayed, from 2025 into 2026.", "CLIP:extended_look_15698", "DELAYED TO 2026", None),
+        ("Then, just days later, on a random Tuesday, Rockstar dropped trailer two with no warning at all.",
+         "CLIP:trailer_2_00232", None, "surprised"),
+        ("And people watched it like nothing before.", "CLIP:trailer_2_01400", None, None),
+        ("Rockstar says it got 475 million views in its first twenty-four hours, across every platform.",
+         "CLIP:trailer_2_00920", "475M VIEWS IN 24 HOURS", None),
+        ("For comparison, the first trailer got about 93 million views on YouTube on its first day.",
+         "CLIP:trailer_1_00300", "TRAILER 1: 93M", None),
+        ("And that was already a record.", "CLIP:trailer_1_00398", None, None),
+        ("So who held the big record before trailer two?", "CLIP:trailer_2_00346", None, "curious"),
+        ("A movie. The Deadpool and Wolverine trailer had 365 million views, with help from a Super Bowl airing.",
+         "CLIP:extended_look_15524", "DEADPOOL & WOLVERINE: 365M", None),
+        ("GTA 6 beat it by more than a hundred million.", "CLIP:trailer_1_00341", "+110M", None),
+        ("Rockstar says that makes it the biggest video launch ever, though that's its own count.",
+         "CLIP:extended_look_12920", None, None),
+        ("A delay, a surprise trailer, and nearly half a billion views in one day.", "CLIP:launch_trailer_00685",
+         None, None),
+        ("Where were you when trailer two dropped?", "CLIP:trailer_2_00795", None, None),
+    ],
+    facts=[
+        {"claim": "Days after the delay to 2026, trailer 2 dropped completely unannounced on a Tuesday (May 2025); "
+                  "Rockstar claims 475 million views across platforms in 24 hours, the biggest video launch ever, "
+                  "over five times trailer 1's 93 million in its first day.",
+         "sources": ["https://opencritic.com/news/16087/rockstar-claims-gta-6s-second-trailer-was-the-biggest-video-launch-of-all-time-with-nearly-half-a-billion-views-in-one-day"],
+         "main": True},
+        {"claim": "Rockstar told The Hollywood Reporter: 475M views across all platforms in 24 h; previous record the "
+                  "Deadpool & Wolverine trailer with 365M (helped by a Super Bowl airing); trailer 1 got about 93M on "
+                  "YouTube in its first day.",
+         "sources": ["https://www.techradar.com/gaming/the-latest-grand-theft-auto-6-trailer-has-set-a-major-record-by-racking-up-475-million-views-in-just-24-hours",
+                     "https://www.tweaktown.com/news/105135/grand-theft-auto-6-trailer-2-hits-475-million-views-blowing-away-deadpool-wolverines-record/index.html"],
+         "main": True},
+    ],
+    description="A delay, then a surprise trailer: Rockstar says GTA 6's trailer 2 hit 475 million views in 24 hours, "
+                "beating Deadpool & Wolverine.\nSources: TechRadar, TweakTown, TheGamer (Rockstar via The Hollywood "
+                "Reporter).",
+    hashtags=["#GTA6", "#GTA6Trailer", "#GrandTheftAuto"],
+)
+
+
 def build(topic: str, v: dict) -> dict:
     images, scenes = {}, []
     for i, (text, shot, callout, delivery) in enumerate(v["beats"], 1):

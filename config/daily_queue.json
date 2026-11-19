@@ -3036,6 +3036,895 @@
      }
     }
    }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-review-scores",
+   "fresh": true,
+   "nonce": "gta-footage-gta6-review-scores",
+   "day": "2026-11-20",
+   "topic_def": {
+    "id": "gta6-review-scores",
+    "title": "GTA 6 tied the highest Metacritic score ever",
+    "pillar": "gta6",
+    "notes": {
+     "object": "official GTA 6 footage",
+     "question": "GTA 6 tied the highest Metacritic score ever",
+     "angle": "VERIFIED 19 Nov 2026. Publishes 20 Nov 20:00 UTC. HOOK: 'GTA 6's reviews are in, and the number is almost perfect.' Facts: Metacritic 99 (PS5, 147 critic reviews; Xbox 99 from 14) and OpenCritic Top Critic Average 99, 100% recommend (Endgame Tools, 18 Nov 2026, https://endgametools.com/en/gta-6/news/gta-6-reviews); 99 is 'tied with Ocarina of Time for the highest score the site has ever recorded', zero mixed or negative reviews (Output Lag, 18 Nov 2026, https://outputlag.com/featured-slider/gta-6-review-roundup/). IGN, GameSpot, Eurogamer, The Guardian: 100 (Endgame Tools). IGN: 'the single most impressive video game I have ever played' (Endgame Tools). Criticism (Output Lag): 30fps cap with no performance mode; pacing sags in places. Praise: Leonida's density, 'the most reactive city Rockstar has built' (Output Lag's words). CTA: 'Is 99 too high?' FORMAT FOR THIS VIDEO (its own look and feel): Tone: a big verdict being read out. Shape: the score -> the record it ties -> the perfect scores -> the honest criticism -> what everyone agrees on.",
+     "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): man beside a custom sports car in a neon garage\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+     "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
+     "official_images": "required",
+     "open_hook": true,
+     "words": [
+      110,
+      170
+     ],
+     "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
+     "style": "story",
+     "badge": "GTA 6",
+     "script": {
+      "viable": true,
+      "title": "GTA 6 tied the highest Metacritic score ever",
+      "thumb_text": "99 / 100?",
+      "hook_card": "ALMOST PERFECT?",
+      "hooks": [
+       "GTA 6's reviews are in, and the number is almost perfect."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:launch_trailer_00685",
+       "img2": "CLIP:trailer_1_00300",
+       "img3": "CLIP:trailer_1_00398",
+       "img4": "CLIP:trailer_1_00325",
+       "img5": "CLIP:extended_look_07446",
+       "img6": "CLIP:trailer_1_00356",
+       "img7": "CLIP:trailer_2_01188",
+       "img8": "CLIP:extended_look_09432",
+       "img9": "CLIP:extended_look_07501",
+       "img10": "CLIP:trailer_1_00217",
+       "img11": "CLIP:extended_look_10262",
+       "img12": "CLIP:launch_trailer_00670",
+       "img13": "CLIP:trailer_2_00961"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "GTA 6's reviews are in, and the number is almost perfect.",
+        "image": "img1",
+        "delivery": "excited",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "When the reviews landed, it scored 99 out of 100 on Metacritic.",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "99 / 100 METACRITIC",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "That ties The Legend of Zelda: Ocarina of Time for the highest score Metacritic has ever recorded.",
+        "image": "img3",
+        "delivery": "surprised",
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "TIED: OCARINA OF TIME",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "And out of well over a hundred reviews, not a single one was mixed or negative.",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "0 MIXED, 0 NEGATIVE",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "IGN, GameSpot, Eurogamer and The Guardian all gave it a perfect score.",
+        "image": "img5",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "100/100 FROM IGN + GAMESPOT",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "IGN even called it \"the single most impressive video game I have ever played.\"",
+        "image": "img6",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "QUOTE: IGN REVIEW",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "So is it perfect? Not quite.",
+        "image": "img7",
+        "delivery": "curious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "Many reviewers knocked it for running at thirty frames per second, with no performance mode.",
+        "image": "img8",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "30 FPS, NO PERFORMANCE MODE",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "Some also say the story's pacing sags in places.",
+        "image": "img9",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "But almost every review praises the same thing: Leonida itself.",
+        "image": "img10",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b11",
+        "narration": "One roundup calls Vice City the most reactive city Rockstar has ever built.",
+        "image": "img11",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b12",
+        "narration": "Thirteen years after GTA 5, the critics say the wait was worth it.",
+        "image": "img12",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b13",
+        "narration": "So is 99 too high, or does GTA 6 really deserve it?",
+        "image": "img13",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "GTA 6: Metacritic 99 (PS5, 147 critic reviews; Xbox Series X|S 99 from 14) and OpenCritic Top Critic Average 99 with 100% recommending; IGN, GameSpot, Eurogamer and The Guardian scored it 100; IGN: 'the single most impressive video game I have ever played'.",
+        "sources": [
+         "https://endgametools.com/en/gta-6/news/gta-6-reviews"
+        ],
+        "main": true
+       },
+       {
+        "claim": "The 99 is tied with Ocarina of Time for the highest score Metacritic has recorded; zero mixed or negative reviews; criticisms: 30fps cap with no performance mode, pacing sags in places; praise for Leonida's density, 'the most reactive city Rockstar has built'.",
+        "sources": [
+         "https://outputlag.com/featured-slider/gta-6-review-roundup/"
+        ],
+        "main": true
+       }
+      ],
+      "description": "GTA 6 scores 99 on Metacritic, tied with Ocarina of Time for the site's best ever. What critics loved and what they didn't.\nSources: Endgame Tools, Output Lag (review roundups, 18 Nov 2026).",
+      "hashtags": [
+       "#GTA6",
+       "#GTA6Review",
+       "#GrandTheftAuto"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)"
+     },
+     "publish_at": "2026-11-20T20:00:00Z",
+     "batch": "gta6-launch-footage",
+     "seo": {
+      "category_id": "20",
+      "hashtags": [
+       "#GTA6",
+       "#GTAVI",
+       "#GrandTheftAuto6"
+      ],
+      "tags": [
+       "GTA 6",
+       "GTA VI",
+       "Grand Theft Auto 6",
+       "Grand Theft Auto VI",
+       "GTA 6 news",
+       "GTA 6 trailer",
+       "Rockstar Games",
+       "Vice City",
+       "Jason and Lucia",
+       "Leonida"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-cast-one-liners",
+   "fresh": true,
+   "nonce": "gta-footage-gta6-cast-one-liners",
+   "day": "2026-11-20",
+   "topic_def": {
+    "id": "gta6-cast-one-liners",
+    "title": "GTA 6's characters in Rockstar's own words",
+    "pillar": "gta6",
+    "notes": {
+     "object": "official GTA 6 footage",
+     "question": "GTA 6's characters in Rockstar's own words",
+     "angle": "VERIFIED 19 Nov 2026 - CAREFUL WORDING. HOOK: 'Rockstar sums up every GTA 6 character in one sentence.' Rockstar's character descriptions, word for word as GTA BOOM prints them (https://www.gtaboom.com/every-gta-6-character-confirmed-so-far-156f; Cal's phrase also in GamesRadar https://www.gamesradar.com/games/grand-theft-auto/gta-6-characters): 'Jason wants an easy life, but things just keep getting harder.' / 'Lucia's father taught her to fight as soon as she could walk.' / 'Brian's a classic drug runner from the golden age of smuggling in the Keys.' (Jason's landlord, runs a boat yard) / 'Boobie's all smiles until it's time to talk business.' (property, a club, a recording studio) / Raul: a seasoned bank robber always on the hunt for talent / 'Cal is at the low tide of America and happy there.' (Jason's friend). Quote beats show places, never faces. Payoff: Cal's line. CTA: 'Which character are you most excited to meet?' FORMAT FOR THIS VIDEO (its own look and feel): Tone: playful roll call. Shape: one character at a time, each with Rockstar's own one-liner, saving the funniest line for last.",
+     "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): man beside a custom sports car in a neon garage\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+     "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
+     "official_images": "required",
+     "open_hook": true,
+     "words": [
+      110,
+      170
+     ],
+     "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
+     "style": "story",
+     "badge": "GTA 6",
+     "script": {
+      "viable": true,
+      "title": "GTA 6's characters in Rockstar's own words",
+      "thumb_text": "WHO ARE THEY?",
+      "hook_card": "ONE LINE EACH",
+      "hooks": [
+       "Rockstar sums up each GTA 6 character in one sentence, and one is way too relatable."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:extended_look_03021",
+       "img2": "CLIP:trailer_2_00232",
+       "img3": "CLIP:trailer_2_00081",
+       "img4": "CLIP:trailer_1_00065",
+       "img5": "CLIP:trailer_2_00498",
+       "img6": "CLIP:launch_trailer_00026",
+       "img7": "CLIP:trailer_2_00851",
+       "img8": "CLIP:trailer_1_00341",
+       "img9": "CLIP:trailer_1_00325",
+       "img10": "CLIP:extended_look_12920",
+       "img11": "CLIP:trailer_2_00895",
+       "img12": "CLIP:trailer_2_00831",
+       "img13": "CLIP:trailer_2_00795"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "Rockstar sums up each GTA 6 character in one sentence, and one is way too relatable.",
+        "image": "img1",
+        "delivery": "curious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "First, Jason Duval, one of the two leads.",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "Rockstar's line: \"Jason wants an easy life, but things just keep getting harder.\"",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "QUOTE: ROCKSTAR GAMES",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "Then Lucia Caminos, who starts the story in prison.",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "Her line: \"Lucia's father taught her to fight as soon as she could walk.\"",
+        "image": "img5",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "QUOTE: ROCKSTAR GAMES",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "Brian Heder is Jason's landlord, and he runs a boat yard in the Keys.",
+        "image": "img6",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "Rockstar says: \"Brian's a classic drug runner from the golden age of smuggling in the Keys.\"",
+        "image": "img7",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "QUOTE: ROCKSTAR GAMES",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "In Vice City, Boobie Ike owns property, a club and a recording studio.",
+        "image": "img8",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "The warning: \"Boobie's all smiles until it's time to talk business.\"",
+        "image": "img9",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "QUOTE: ROCKSTAR GAMES",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "Raul Bautista is a bank robber who is always hunting for talent.",
+        "image": "img10",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b11",
+        "narration": "But the best line goes to Jason's friend, Cal Hampton.",
+        "image": "img11",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b12",
+        "narration": "Rockstar says: \"Cal is at the low tide of America and happy there.\"",
+        "image": "img12",
+        "delivery": "laughs softly",
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "QUOTE: ROCKSTAR GAMES",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b13",
+        "narration": "Which GTA 6 character are you most excited to meet?",
+        "image": "img13",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "Rockstar's character descriptions: 'Jason wants an easy life, but things just keep getting harder.' 'Lucia's father taught her to fight as soon as she could walk.' 'Brian's a classic drug runner from the golden age of smuggling in the Keys.' (Jason's landlord, boat yard) 'Boobie's all smiles until it's time to talk business.' (real estate, a club, a recording studio) Raul: 'a seasoned bank robber always on the hunt for talent'. 'Cal is at the low tide of America and happy there.'",
+        "sources": [
+         "https://www.gtaboom.com/every-gta-6-character-confirmed-so-far-156f"
+        ],
+        "main": true
+       },
+       {
+        "claim": "Cal's official bio: 'at the low tide of America'; Lucia's bio suggests lifelong fighting.",
+        "sources": [
+         "https://www.gamesradar.com/games/grand-theft-auto/gta-6-characters"
+        ],
+        "main": false
+       }
+      ],
+      "description": "Rockstar describes each GTA 6 character in one line. Jason, Lucia, Brian, Boobie, Raul and Cal, in Rockstar's own words.\nSources: Rockstar Games character descriptions via GTA BOOM and GamesRadar+.",
+      "hashtags": [
+       "#GTA6",
+       "#JasonAndLucia",
+       "#GrandTheftAuto"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)"
+     },
+     "publish_at": "2026-11-20T23:00:00Z",
+     "batch": "gta6-launch-footage",
+     "seo": {
+      "category_id": "20",
+      "hashtags": [
+       "#GTA6",
+       "#GTAVI",
+       "#GrandTheftAuto6"
+      ],
+      "tags": [
+       "GTA 6",
+       "GTA VI",
+       "Grand Theft Auto 6",
+       "Grand Theft Auto VI",
+       "GTA 6 news",
+       "GTA 6 trailer",
+       "Rockstar Games",
+       "Vice City",
+       "Jason and Lucia",
+       "Leonida"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-trailer2-record",
+   "fresh": true,
+   "nonce": "gta-footage-gta6-trailer2-record",
+   "day": "2026-11-20",
+   "topic_def": {
+    "id": "gta6-trailer2-record",
+    "title": "GTA 6 Trailer 2: 475 million views in a day?",
+    "pillar": "gta6",
+    "notes": {
+     "object": "official GTA 6 footage",
+     "question": "GTA 6 Trailer 2: 475 million views in a day?",
+     "angle": "VERIFIED 19 Nov 2026. Publishes 21 Nov 02:00 UTC. HOOK: 'In May 2025, GTA 6 fans got really bad news.' Facts: days after a delay to 2026, trailer 2 dropped 'completely unannounced' on 'a random Tuesday' (TheGamer via OpenCritic, 8 May 2025, https://opencritic.com/news/16087/rockstar-claims-gta-6s-second-trailer-was-the-biggest-video-launch-of-all-time-with-nearly-half-a-billion-views-in-one-day). Rockstar told The Hollywood Reporter it got 475 million views across all platforms in 24 hours, the biggest video launch ever by its count; the previous record, the Deadpool & Wolverine trailer, had 365 million 'with the help of a Super Bowl airing'; trailer 1 got about 93 million on YouTube in its first day (TechRadar, https://www.techradar.com/gaming/the-latest-grand-theft-auto-6-trailer-has-set-a-major-record-by-racking-up-475-million-views-in-just-24-hours; TweakTown, https://www.tweaktown.com/news/105135/grand-theft-auto-6-trailer-2-hits-475-million-views-blowing-away-deadpool-wolverines-record/index.html). Say these are Rockstar's own numbers. CTA: 'Where were you when trailer 2 dropped?' FORMAT FOR THIS VIDEO (its own look and feel): Tone: comeback story. Shape: the bad news -> the surprise drop -> the number -> the movie it beat -> the payoff.",
+     "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): man beside a custom sports car in a neon garage\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+     "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
+     "official_images": "required",
+     "open_hook": true,
+     "words": [
+      110,
+      170
+     ],
+     "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
+     "style": "story",
+     "badge": "GTA 6",
+     "script": {
+      "viable": true,
+      "title": "GTA 6 Trailer 2: 475 million views in a day?",
+      "thumb_text": "475M IN 1 DAY?",
+      "hook_card": "475 MILLION?",
+      "hooks": [
+       "In May 2025, GTA 6 fans got some really bad news."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:trailer_2_01188",
+       "img2": "CLIP:extended_look_15698",
+       "img3": "CLIP:trailer_2_00232",
+       "img4": "CLIP:trailer_2_01400",
+       "img5": "CLIP:trailer_2_00920",
+       "img6": "CLIP:trailer_1_00300",
+       "img7": "CLIP:trailer_1_00398",
+       "img8": "CLIP:trailer_2_00346",
+       "img9": "CLIP:extended_look_15524",
+       "img10": "CLIP:trailer_1_00341",
+       "img11": "CLIP:extended_look_12920",
+       "img12": "CLIP:launch_trailer_00685",
+       "img13": "CLIP:trailer_2_00795"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "In May 2025, GTA 6 fans got some really bad news.",
+        "image": "img1",
+        "delivery": "serious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "The game was delayed, from 2025 into 2026.",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "DELAYED TO 2026",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "Then, just days later, on a random Tuesday, Rockstar dropped trailer two with no warning at all.",
+        "image": "img3",
+        "delivery": "surprised",
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "And people watched it like nothing before.",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "Rockstar says it got 475 million views in its first twenty-four hours, across every platform.",
+        "image": "img5",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "475M VIEWS IN 24 HOURS",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "For comparison, the first trailer got about 93 million views on YouTube on its first day.",
+        "image": "img6",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "TRAILER 1: 93M",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "And that was already a record.",
+        "image": "img7",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "So who held the big record before trailer two?",
+        "image": "img8",
+        "delivery": "curious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "A movie. The Deadpool and Wolverine trailer had 365 million views, with help from a Super Bowl airing.",
+        "image": "img9",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "DEADPOOL & WOLVERINE: 365M",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "GTA 6 beat it by more than a hundred million.",
+        "image": "img10",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "+110M",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b11",
+        "narration": "Rockstar says that makes it the biggest video launch ever, though that's its own count.",
+        "image": "img11",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b12",
+        "narration": "A delay, a surprise trailer, and nearly half a billion views in one day.",
+        "image": "img12",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b13",
+        "narration": "Where were you when trailer two dropped?",
+        "image": "img13",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "Days after the delay to 2026, trailer 2 dropped completely unannounced on a Tuesday (May 2025); Rockstar claims 475 million views across platforms in 24 hours, the biggest video launch ever, over five times trailer 1's 93 million in its first day.",
+        "sources": [
+         "https://opencritic.com/news/16087/rockstar-claims-gta-6s-second-trailer-was-the-biggest-video-launch-of-all-time-with-nearly-half-a-billion-views-in-one-day"
+        ],
+        "main": true
+       },
+       {
+        "claim": "Rockstar told The Hollywood Reporter: 475M views across all platforms in 24 h; previous record the Deadpool & Wolverine trailer with 365M (helped by a Super Bowl airing); trailer 1 got about 93M on YouTube in its first day.",
+        "sources": [
+         "https://www.techradar.com/gaming/the-latest-grand-theft-auto-6-trailer-has-set-a-major-record-by-racking-up-475-million-views-in-just-24-hours",
+         "https://www.tweaktown.com/news/105135/grand-theft-auto-6-trailer-2-hits-475-million-views-blowing-away-deadpool-wolverines-record/index.html"
+        ],
+        "main": true
+       }
+      ],
+      "description": "A delay, then a surprise trailer: Rockstar says GTA 6's trailer 2 hit 475 million views in 24 hours, beating Deadpool & Wolverine.\nSources: TechRadar, TweakTown, TheGamer (Rockstar via The Hollywood Reporter).",
+      "hashtags": [
+       "#GTA6",
+       "#GTA6Trailer",
+       "#GrandTheftAuto"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)"
+     },
+     "publish_at": "2026-11-21T02:00:00Z",
+     "batch": "gta6-launch-footage",
+     "seo": {
+      "category_id": "20",
+      "hashtags": [
+       "#GTA6",
+       "#GTAVI",
+       "#GrandTheftAuto6"
+      ],
+      "tags": [
+       "GTA 6",
+       "GTA VI",
+       "Grand Theft Auto 6",
+       "Grand Theft Auto VI",
+       "GTA 6 news",
+       "GTA 6 trailer",
+       "Rockstar Games",
+       "Vice City",
+       "Jason and Lucia",
+       "Leonida"
+      ]
+     }
+    }
+   }
   }
  ]
 }
