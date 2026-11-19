@@ -1732,6 +1732,55 @@
    "end": 1463.47,
    "shows": "Dark blue-lit corridor with a dim silhouetted woman standing near a door",
    "avoid": "very dark, nearly unreadable frame"
+  },
+  "extended_look_06342": {
+   "clip": "extended_look",
+   "start": 634.23,
+   "end": 639.3,
+   "shows": "Person lying motionless on a dark, dim floor beside a desk chair, indoors",
+   "avoid": "possible victim or body, very dark frame"
+  },
+  "extended_look_06393": {
+   "clip": "extended_look",
+   "start": 639.3,
+   "end": 642.2,
+   "shows": "Rooftop bar with Effluvia sign on a green wall, patrons seated at high tables, daytime"
+  },
+  "extended_look_06422": {
+   "clip": "extended_look",
+   "start": 642.2,
+   "end": 645.07,
+   "shows": "Sunny rooftop bar with hanging lights, patrons at the counter, city skyline and sea behind"
+  },
+  "extended_look_06450": {
+   "clip": "extended_look",
+   "start": 645.07,
+   "end": 650.6,
+   "shows": "Group of friends seated at a rooftop table with drinks in bright sunshine"
+  },
+  "extended_look_06506": {
+   "clip": "extended_look",
+   "start": 650.6,
+   "end": 653.53,
+   "shows": "Friends chatting at a rooftop table, Effluvia sign behind them, sunny afternoon"
+  },
+  "extended_look_06535": {
+   "clip": "extended_look",
+   "start": 653.53,
+   "end": 659.57,
+   "shows": "Four people at a white table with flowers and cocktails on a sunny rooftop terrace"
+  },
+  "extended_look_06595": {
+   "clip": "extended_look",
+   "start": 659.57,
+   "end": 663.23,
+   "shows": "Group laughing at a rooftop table under the Effluvia sign, bright daylight"
+  },
+  "extended_look_06632": {
+   "clip": "extended_look",
+   "start": 663.23,
+   "end": 671.9,
+   "shows": "Blonde woman in floral top stands up from the table beside an older man, rooftop party, daytime"
   }
  }
 }
