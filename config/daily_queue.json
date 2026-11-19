@@ -1736,8 +1736,9 @@
        "img8": "CLIP:extended_look_02226",
        "img9": "CLIP:extended_look_12920",
        "img10": "CLIP:extended_look_12327",
-       "img11": "CLIP:launch_trailer_00685",
-       "img12": "CLIP:trailer_2_00920"
+       "img11": "CLIP:extended_look_07899",
+       "img12": "CLIP:launch_trailer_00685",
+       "img13": "CLIP:trailer_2_00920"
       },
       "scenes": [
        {
@@ -1757,7 +1758,7 @@
        },
        {
         "id": "b2",
-        "narration": "In September 2022, the hacker posted early development clips of the game online.",
+        "narration": "In September 2022, he posted early development clips of the game online.",
         "image": "img2",
         "delivery": null,
         "focus": null,
@@ -1787,7 +1788,7 @@
        },
        {
         "id": "b4",
-        "narration": "In December 2023, a UK court gave him a hospital order with no end date.",
+        "narration": "In December 2023, a UK court sent him to a hospital, with no end date.",
         "image": "img4",
         "delivery": null,
         "focus": null,
@@ -1817,7 +1818,7 @@
        },
        {
         "id": "b6",
-        "narration": "That same month, GTA 6's very first trailer leaked online before its premiere.",
+        "narration": "That same month, GTA 6's very first trailer leaked online.",
         "image": "img6",
         "delivery": null,
         "focus": null,
@@ -1877,8 +1878,23 @@
        },
        {
         "id": "b10",
-        "narration": "Take-Two won court orders making Microsoft, which owns GitHub, and Discord help identify who posted the clips.",
+        "narration": "It got court orders against two big platforms.",
         "image": "img10",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "COURT ORDERS",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b11",
+        "narration": "Now Microsoft, which owns GitHub, and Discord have to help find who posted the clips.",
+        "image": "img11",
         "delivery": null,
         "focus": null,
         "motion": "push",
@@ -1891,12 +1907,12 @@
         "markers": null
        },
        {
-        "id": "b11",
+        "id": "b12",
         "narration": "From leaked footage to court orders, Rockstar has been fighting leakers for four years.",
-        "image": "img11",
+        "image": "img12",
         "delivery": null,
         "focus": null,
-        "motion": "push",
+        "motion": "drift",
         "transition": "cut",
         "callout": null,
         "pop": null,
@@ -1906,12 +1922,12 @@
         "markers": null
        },
        {
-        "id": "b12",
+        "id": "b13",
         "narration": "Did you watch the leaks, or did you wait for the real thing?",
-        "image": "img12",
+        "image": "img13",
         "delivery": null,
         "focus": null,
-        "motion": "drift",
+        "motion": "push",
         "transition": "cut",
         "callout": null,
         "pop": null,
