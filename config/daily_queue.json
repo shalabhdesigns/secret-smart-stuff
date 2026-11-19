@@ -1449,8 +1449,9 @@
        "img7": "CLIP:extended_look_09166",
        "img8": "CLIP:extended_look_10833",
        "img9": "CLIP:extended_look_12327",
-       "img10": "CLIP:extended_look_15698",
-       "img11": "CLIP:trailer_2_00795"
+       "img10": "CLIP:extended_look_10196",
+       "img11": "CLIP:extended_look_15698",
+       "img12": "CLIP:trailer_2_00795"
       },
       "scenes": [
        {
@@ -1575,11 +1576,26 @@
        },
        {
         "id": "b9",
-        "narration": "But here's the twist: with the rupee at about 94 to the dollar, eighty dollars is now around 7,500 rupees.",
+        "narration": "The real twist is the exchange rate.",
         "image": "img9",
         "delivery": "curious",
         "focus": null,
         "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "At about 94 rupees to the dollar, eighty dollars is around 7,500 rupees.",
+        "image": "img10",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
         "transition": "cut",
         "callout": "$80 ≈ RS 7,500",
         "pop": null,
@@ -1589,9 +1605,9 @@
         "markers": null
        },
        {
-        "id": "b10",
-        "narration": "So even after doubling, Indian players still pay about 1,500 rupees less than Americans.",
-        "image": "img10",
+        "id": "b11",
+        "narration": "So for the standard edition, Indian players actually pay about 1,500 rupees less than Americans.",
+        "image": "img11",
         "delivery": null,
         "focus": null,
         "motion": "push",
@@ -1604,12 +1620,12 @@
         "markers": null
        },
        {
-        "id": "b11",
+        "id": "b12",
         "narration": "Would you pay 5,999 rupees on day one, or wait for a sale?",
-        "image": "img11",
+        "image": "img12",
         "delivery": null,
         "focus": null,
-        "motion": "push",
+        "motion": "drift",
         "transition": "cut",
         "callout": null,
         "pop": null,
@@ -1974,7 +1990,12 @@
         "LEAKED",
         "4 YEARS EARLY"
        ],
-       "why": "written in session"
+       "why": "written in session",
+       "frame": {
+        "image": "img1",
+        "t": 5.0,
+        "x": 0.66
+       }
       }
      },
      "publish_at": "2026-11-19T20:00:00Z",
@@ -2029,11 +2050,11 @@
      "badge": "GTA 6",
      "script": {
       "viable": true,
-      "title": "GTA 6 is in America, but GTA almost went to Tokyo",
+      "title": "GTA 6 is in America, but Tokyo nearly won, says an ex-dev",
       "thumb_text": "ALMOST TOKYO?",
       "hook_card": "ALMOST TOKYO?",
       "hooks": [
-       "GTA almost went to Tokyo, so why does it always end up in America?"
+       "A former Rockstar developer says GTA almost went to Tokyo, so why does it always end up in America?"
       ],
       "chosen_hook": 0,
       "images": {
@@ -2054,7 +2075,7 @@
       "scenes": [
        {
         "id": "b1",
-        "narration": "GTA almost went to Tokyo, so why does it always end up in America?",
+        "narration": "A former Rockstar developer says GTA almost went to Tokyo, so why does it always end up in America?",
         "image": "img1",
         "delivery": "curious",
         "focus": null,
@@ -2278,7 +2299,12 @@
         "ALMOST IN",
         "TOKYO?"
        ],
-       "why": "written in session"
+       "why": "written in session",
+       "frame": {
+        "image": "img8",
+        "t": 4.0,
+        "x": 0.33
+       }
       }
      },
      "publish_at": "2026-11-19T23:00:00Z",
@@ -2333,11 +2359,11 @@
      "badge": "GTA 6",
      "script": {
       "viable": true,
-      "title": "GTA 6's map: the real places you can visit",
+      "title": "GTA 6's map: the real places it looks like",
       "thumb_text": "REAL PLACES?",
       "hook_card": "REAL PLACES?",
       "hooks": [
-       "GTA 6's map is based on real places, and you can actually go to them."
+       "GTA 6's map looks a lot like real places, and you can actually visit them."
       ],
       "chosen_hook": 0,
       "images": {
@@ -2356,7 +2382,7 @@
       "scenes": [
        {
         "id": "b1",
-        "narration": "GTA 6's map is based on real places, and you can actually go to them.",
+        "narration": "GTA 6's map looks a lot like real places, and you can actually visit them.",
         "image": "img1",
         "delivery": "excited",
         "focus": null,
@@ -2371,13 +2397,13 @@
        },
        {
         "id": "b2",
-        "narration": "The game is set in Leonida, Rockstar's version of Florida.",
+        "narration": "The game is set in Leonida, which is widely seen as Rockstar's Florida.",
         "image": "img2",
         "delivery": null,
         "focus": null,
         "motion": "push",
         "transition": "cut",
-        "callout": "LEONIDA = FLORIDA",
+        "callout": "LEONIDA",
         "pop": null,
         "arrow": null,
         "card_text": null,
@@ -2386,13 +2412,13 @@
        },
        {
         "id": "b3",
-        "narration": "And its big city, Vice City, is basically Miami.",
+        "narration": "And its big city, Vice City, is clearly inspired by Miami.",
         "image": "img3",
         "delivery": null,
         "focus": null,
         "motion": "drift",
         "transition": "cut",
-        "callout": "VICE CITY = MIAMI",
+        "callout": "VICE CITY",
         "pop": null,
         "arrow": null,
         "card_text": null,

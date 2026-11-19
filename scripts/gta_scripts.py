@@ -66,9 +66,10 @@ S["gta6-india-price"] = dict(
          "$59.99 → $79.99", None),
         ("That's only about a third more, not double.", "CLIP:extended_look_09166", "+33%", None),
         ("So the bigger jump really is in India.", "CLIP:extended_look_10833", None, None),
-        ("But here's the twist: with the rupee at about 94 to the dollar, eighty dollars is now around 7,500 rupees.",
-         "CLIP:extended_look_12327", "$80 ≈ ₹7,500", "curious"),
-        ("So even after doubling, Indian players still pay about 1,500 rupees less than Americans.",
+        ("The real twist is the exchange rate.", "CLIP:extended_look_12327", None, "curious"),
+        ("At about 94 rupees to the dollar, eighty dollars is around 7,500 rupees.", "CLIP:extended_look_10196",
+         "$80 ≈ ₹7,500", None),
+        ("So for the standard edition, Indian players actually pay about 1,500 rupees less than Americans.",
          "CLIP:extended_look_15698", None, None),
         ("Would you pay 5,999 rupees on day one, or wait for a sale?", "CLIP:trailer_2_00795", None, None),
     ],
@@ -95,6 +96,7 @@ S["gta6-leak-war"] = dict(
     thumb_text="LEAKED IN 2022",
     hook_card="LEAKED IN 2022",
     cover_lines=["LEAKED", "4 YEARS EARLY"],
+    cover_frame={"image": "img1", "t": 5.0, "x": 0.66},   # Lucia in a bandana
     beats=[
         ("Four years before GTA 6 came out, a hacker leaked footage of it to the whole internet.",
          "CLIP:extended_look_08816", None, "serious"),
@@ -135,13 +137,14 @@ S["gta6-leak-war"] = dict(
 )
 
 S["gta6-almost-tokyo"] = dict(
-    title="GTA 6 is in America, but GTA almost went to Tokyo",
+    title="GTA 6 is in America, but Tokyo nearly won, says an ex-dev",
     thumb_text="ALMOST TOKYO?",
     hook_card="ALMOST TOKYO?",
     cover_lines=["ALMOST IN", "TOKYO?"],
+    cover_frame={"image": "img8", "t": 4.0, "x": 0.33},   # Jason facing camera
     beats=[
-        ("GTA almost went to Tokyo, so why does it always end up in America?", "CLIP:extended_look_12327", None,
-         "curious"),
+        ("A former Rockstar developer says GTA almost went to Tokyo, so why does it always end up in America?",
+         "CLIP:extended_look_12327", None, "curious"),
         ("Obbe Vermeij used to be a technical director at Rockstar North.", "CLIP:extended_look_15698",
          "OBBE VERMEIJ, EX-ROCKSTAR", None),
         ("He says a GTA set in Tokyo \"almost actually happened.\"", "CLIP:extended_look_12606",
@@ -179,16 +182,16 @@ S["gta6-almost-tokyo"] = dict(
 )
 
 S["gta6-real-florida"] = dict(
-    title="GTA 6's map: the real places you can visit",
+    title="GTA 6's map: the real places it looks like",
     thumb_text="REAL PLACES?",
     hook_card="REAL PLACES?",
     cover_lines=["REAL PLACES", "YOU CAN VISIT"],
     beats=[
-        ("GTA 6's map is based on real places, and you can actually go to them.", "CLIP:extended_look_11275",
+        ("GTA 6's map looks a lot like real places, and you can actually visit them.", "CLIP:extended_look_11275",
          None, "excited"),
-        ("The game is set in Leonida, Rockstar's version of Florida.", "CLIP:trailer_1_00217", "LEONIDA = FLORIDA",
+        ("The game is set in Leonida, which is widely seen as Rockstar's Florida.", "CLIP:trailer_1_00217", "LEONIDA",
          None),
-        ("And its big city, Vice City, is basically Miami.", "CLIP:extended_look_07446", "VICE CITY = MIAMI", None),
+        ("And its big city, Vice City, is clearly inspired by Miami.", "CLIP:extended_look_07446", "VICE CITY", None),
         ("Rockstar says the Leonida Keys have \"some of the most beautiful and dangerous waters in all of "
          "America.\"", "CLIP:launch_trailer_00026", "QUOTE: ROCKSTAR", None),
         ("Outlets compare them to the real Florida Keys, the chain of islands south of Miami.",
