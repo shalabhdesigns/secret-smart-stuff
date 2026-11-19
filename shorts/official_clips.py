@@ -344,6 +344,8 @@ def segment(shot_id: str, out: Path, seconds: float) -> Path:
             break                         # the shot itself holds a hidden cut: never run on past it
         if end - start >= length:
             break
+        if length - (end - start) < 0.8 and length / max(0.5, end - start) <= 1.6:
+            break                         # 19 Nov 2026: a few frames of the next shot read as a flash; slow down instead
         if v["start"] < end - 0.05:
             continue
         if abs(v["start"] - end) > 0.2 or v.get("avoid"):
