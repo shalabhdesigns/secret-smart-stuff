@@ -445,6 +445,8 @@ def build(topic: str, v: dict) -> dict:
         scenes.append({"id": f"b{i}", "narration": text, "image": key, "delivery": delivery, "focus": None,
                        "motion": "push" if i % 3 else "drift", "transition": "cut", "callout": callout, "pop": None,
                        "arrow": None, "card_text": None, "tone": "normal", "markers": None})
+        if callout:   # 19 Nov 2026: the caption font has no rupee sign (it rendered as an empty box)
+            scenes[-1]["callout"] = callout.replace("₹", "RS ")
     return {"viable": True, "title": v["title"], "thumb_text": v["thumb_text"], "hook_card": v["hook_card"],
             "hooks": [v["beats"][0][0]], "chosen_hook": 0, "images": images, "scenes": scenes,
             "facts": v["facts"], "description": v["description"], "hashtags": v["hashtags"],

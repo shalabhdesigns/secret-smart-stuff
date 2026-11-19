@@ -387,7 +387,7 @@ def render(beats: list[Beat], total: float, out: Path, pal: Palette, caption_y: 
                 frame = _callout(frame, b, to_out, t, pal)
             elif b.tag_label and t - b.start > 0.15:
                 # 18 Nov 2026: footage beats had no way to show a name or number; a label slides in near the top
-                _label_box(ImageDraw.Draw(frame, "RGBA"), b.tag_label[:34], (W / 2, 330), pal,
+                _label_box(ImageDraw.Draw(frame, "RGBA"), b.tag_label[:34], (W / 2, 372), pal,
                            ease(min(1.0, (t - b.start - 0.15) / 0.25)))
             if b.arrow:
                 _arrow(frame, b.arrow, to_out, t, pal)
