@@ -1,0 +1,37 @@
+# Full-size frames of the official GTA VI logo cards (owner, 20 Nov 2026: use the real GTA 6 logo on covers).
+name: logograb
+on: { workflow_dispatch: {} }
+permissions: { contents: write }
+jobs:
+  grab:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env: { GH_TOKEN: "${{ github.token }}" }
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -q -r requirements.txt && scripts/install_ffmpeg.sh
+      - uses: actions/cache/restore@v4
+        with:
+          path: assets/official/clips
+          key: official-clips-v1-${{ github.run_id }}
+          restore-keys: official-clips-v1-
+      - run: |
+          python - <<'PY'
+          import os, subprocess
+          from pathlib import Path
+          from shorts import official_clips as oc
+          out = Path(os.environ["RUNNER_TEMP"]) / "logo"; out.mkdir()
+          cat = oc.shots_catalogue()
+          for sid in ["launch_trailer_00211", "trailer_2_01473", "trailer_1_00765", "extended_look_03693", "cover_art_00000", "preload_now_00067"]:
+              sh = cat[sid]; src = oc.CLIPS / f"{sh['clip']}.mp4"
+              if not src.exists(): print("missing", src); continue
+              L = sh["end"] - sh["start"]
+              for i, f in enumerate((0.3, 0.6, 0.9)):
+                  t = sh["start"] + L * f
+                  subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{t:.2f}", "-i", str(src), "-frames:v", "1", str(out / f"{sid}_{i}.png")], check=True)
+          print(sorted(p.name for p in out.iterdir()))
+          PY
+          gh release delete logograb --yes 2>/dev/null || true
+          gh release create logograb --draft --title "logo frames (private draft)" --notes "logo frames" "$RUNNER_TEMP"/logo/*.png
