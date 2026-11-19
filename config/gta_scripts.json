@@ -1005,7 +1005,12 @@
     "ALMOST IN",
     "TOKYO?"
    ],
-   "why": "written in session"
+   "why": "written in session",
+   "frame": {
+    "image": "img9",
+    "t": 3.5,
+    "x": 0.85
+   }
   }
  },
  "gta6-real-florida": {

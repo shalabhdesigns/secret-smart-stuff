@@ -2299,7 +2299,12 @@
         "ALMOST IN",
         "TOKYO?"
        ],
-       "why": "written in session"
+       "why": "written in session",
+       "frame": {
+        "image": "img9",
+        "t": 3.5,
+        "x": 0.85
+       }
       }
      },
      "publish_at": "2026-11-19T23:00:00Z",

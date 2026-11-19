@@ -141,6 +141,7 @@ S["gta6-almost-tokyo"] = dict(
     thumb_text="ALMOST TOKYO?",
     hook_card="ALMOST TOKYO?",
     cover_lines=["ALMOST IN", "TOKYO?"],
+    cover_frame={"image": "img9", "t": 3.5, "x": 0.85},   # Jason close-up
     beats=[
         ("A former Rockstar developer says GTA almost went to Tokyo, so why does it always end up in America?",
          "CLIP:extended_look_12327", None, "curious"),
