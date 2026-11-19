@@ -1,9 +1,13 @@
 {
- "collected_at": "2026-11-17T08:05:17Z",
+ "collected_at": "2026-11-19T07:36:34Z",
  "errors": [
   "@simplethingshistories: ERROR: [youtube:tab] @simplethingshistories: This channel does not have a shorts tab"
  ],
  "all_titles": [
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Dry Cleaning Doesn’t Actually Keep Clothes Dry?!"
+  },
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Plastic Pipes Are Taking Over Modern Plumbing?!"
@@ -1201,8 +1205,8 @@
    "title": "Did You Know Oil Comes From Ancient Life? 🛢️😮"
   },
   {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Carrots Used To Be Purple? 🥕💜"
+   "channel": "@nameexplain",
+   "title": "How Did Boomers Get Their Name?"
   },
   {
    "channel": "@nameexplain",
@@ -1667,28 +1671,28 @@
    "title": "How Did Austria Get Its Name? #Shorts",
    "views": 290000,
    "url": "https://www.youtube.com/shorts/FL3QhU8Qnk0",
-   "multiple": 35.4
+   "multiple": 35.8
   },
   {
    "channel": "@nameexplain",
    "title": "How Did Albania Get Its Name? #Short",
    "views": 148000,
    "url": "https://www.youtube.com/shorts/ZBhLog20r7A",
-   "multiple": 18.0
+   "multiple": 18.3
   },
   {
    "channel": "@nameexplain",
    "title": "How Did Finland Get Its Name?",
    "views": 139000,
    "url": "https://www.youtube.com/shorts/9TfBENxGKM0",
-   "multiple": 17.0
+   "multiple": 17.2
   },
   {
    "channel": "@nameexplain",
    "title": "Why Slovakia & Slovenia Have Similar Names",
    "views": 117000,
    "url": "https://www.youtube.com/shorts/HVPXShUrUIc",
-   "multiple": 14.3
+   "multiple": 14.4
   },
   {
    "channel": "@historyofsimplethings",
@@ -1698,25 +1702,18 @@
    "multiple": 7.0
   },
   {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Carrots Used To Be Purple? 🥕💜",
-   "views": 19000,
-   "url": "https://www.youtube.com/shorts/tDJ4EZgdJUQ",
-   "multiple": 6.3
-  },
-  {
    "channel": "@nameexplain",
    "title": "How Did Afghanistan Get Its Name? #Short",
    "views": 50000,
    "url": "https://www.youtube.com/shorts/yt3KGZOu0aM",
-   "multiple": 6.1
+   "multiple": 6.2
   },
   {
    "channel": "@nameexplain",
    "title": "How Did El Salvador Get Its Name? #shorts",
    "views": 45000,
    "url": "https://www.youtube.com/shorts/MSekKfY92kw",
-   "multiple": 5.5
+   "multiple": 5.6
   },
   {
    "channel": "@historyofsimplethings",
@@ -1744,14 +1741,14 @@
    "title": "UK Country Names Explain",
    "views": 34000,
    "url": "https://www.youtube.com/shorts/yZWFg_BkxH8",
-   "multiple": 4.1
+   "multiple": 4.2
   },
   {
    "channel": "@nameexplain",
    "title": "How Did Canada Get Its Name? #Shorts",
    "views": 32000,
    "url": "https://www.youtube.com/shorts/pvt4HXh-drg",
-   "multiple": 3.9
+   "multiple": 4.0
   },
   {
    "channel": "@nameexplain",
@@ -1779,21 +1776,21 @@
    "title": "How Did France Get Its Name?",
    "views": 29000,
    "url": "https://www.youtube.com/shorts/Egrv1P5FVeo",
-   "multiple": 3.5
+   "multiple": 3.6
   },
   {
    "channel": "@nameexplain",
    "title": "How Did The Central African Republic Get Its Name? #Shorts",
    "views": 29000,
    "url": "https://www.youtube.com/shorts/hTmoSBq5xzs",
-   "multiple": 3.5
+   "multiple": 3.6
   },
   {
    "channel": "@nameexplain",
    "title": "How Did Denmark get Its Name? #Shorts",
    "views": 28000,
    "url": "https://www.youtube.com/shorts/ve1z30df3lg",
-   "multiple": 3.4
+   "multiple": 3.5
   },
   {
    "channel": "@historyofsimplethings",
@@ -1838,6 +1835,20 @@
    "multiple": 3.2
   },
   {
+   "channel": "@nameexplain",
+   "title": "How Did Fiji Get Its Name?",
+   "views": 25000,
+   "url": "https://www.youtube.com/shorts/HEledlIMqa0",
+   "multiple": 3.1
+  },
+  {
+   "channel": "@nameexplain",
+   "title": "How Did Armenia Get Its Name? #Shorts",
+   "views": 25000,
+   "url": "https://www.youtube.com/shorts/a44QMU88JmE",
+   "multiple": 3.1
+  },
+  {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Basketball Began as a Winter Game?",
    "views": 8900,
@@ -1846,16 +1857,16 @@
   },
   {
    "channel": "@nameexplain",
-   "title": "How Did Fiji Get Its Name?",
-   "views": 25000,
-   "url": "https://www.youtube.com/shorts/HEledlIMqa0",
+   "title": "How Did Georgia Get Its Name?",
+   "views": 24000,
+   "url": "https://www.youtube.com/shorts/Ge4-C4aPiFM",
    "multiple": 3.0
   },
   {
    "channel": "@nameexplain",
-   "title": "How Did Armenia Get Its Name? #Shorts",
-   "views": 25000,
-   "url": "https://www.youtube.com/shorts/a44QMU88JmE",
+   "title": "How Did Algeria Get Its Name? #Shorts",
+   "views": 24000,
+   "url": "https://www.youtube.com/shorts/jFdXZeDpX9k",
    "multiple": 3.0
   },
   {
@@ -1868,22 +1879,8 @@
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Glass Is Made From Melted Sand?",
-   "views": 8600,
+   "views": 8700,
    "url": "https://www.youtube.com/shorts/UY0magmo8dQ",
-   "multiple": 2.9
-  },
-  {
-   "channel": "@nameexplain",
-   "title": "How Did Georgia Get Its Name?",
-   "views": 24000,
-   "url": "https://www.youtube.com/shorts/Ge4-C4aPiFM",
-   "multiple": 2.9
-  },
-  {
-   "channel": "@nameexplain",
-   "title": "How Did Algeria Get Its Name? #Shorts",
-   "views": 24000,
-   "url": "https://www.youtube.com/shorts/jFdXZeDpX9k",
    "multiple": 2.9
   },
   {
@@ -1961,21 +1958,21 @@
    "title": "How Did Brunei Get Its Name? #Shorts",
    "views": 20000,
    "url": "https://www.youtube.com/shorts/4LarInTV84I",
-   "multiple": 2.4
+   "multiple": 2.5
   },
   {
    "channel": "@nameexplain",
    "title": "How Did Azerbaijan Get Its Name? #Shorts",
    "views": 20000,
    "url": "https://www.youtube.com/shorts/5fSMfBDQxB8",
-   "multiple": 2.4
+   "multiple": 2.5
   },
   {
    "channel": "@nameexplain",
    "title": "How Did Australia Get Its Name? #Shorts",
    "views": 20000,
    "url": "https://www.youtube.com/shorts/6nxScDW-4eQ",
-   "multiple": 2.4
+   "multiple": 2.5
   },
   {
    "channel": "@historyofsimplethings",
@@ -2043,7 +2040,7 @@
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Drainage Pipes Have Ridges for a Reason?",
-   "views": 6300,
+   "views": 6400,
    "url": "https://www.youtube.com/shorts/8yHiwcyXb2s",
    "multiple": 2.1
   },
