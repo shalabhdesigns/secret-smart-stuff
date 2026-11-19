@@ -128,8 +128,10 @@ def postmortems(p) -> dict:
                                        retention=json.dumps(_retention(state, vid, beats, secs)),
                                        beats=json.dumps(beats)[:4000],
                                        features=json.dumps({k: v for k, v in feats.items() if k != "beats"})[:2000]),
-                         job, f"postmortem_{tag}", est=0.03,
-                         model=p.cfg.pipeline["providers"]["llm"]["model_script"], max_tokens=2000)
+                         job, f"postmortem_{tag}", est=0.01,
+                         # Haiku (cost check 19 Nov 2026): reading numbers into a short verdict; Sonnet cost ~$0.055 per
+                         # analysis, ~$0.11 per published video - more than the voice. Facts/copyright checks untouched.
+                         model=p.cfg.pipeline["providers"]["llm"]["model_routine"], max_tokens=1500)
             data = (res.data or {}) | {"metrics": snap, "medians": med, "n_compared": n}
             with state.tx() as db:
                 db.execute("INSERT OR REPLACE INTO video_reviews(video_id, tag, job_id, data, at) VALUES (?,?,?,?,?)",
