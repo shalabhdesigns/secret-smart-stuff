@@ -1,47 +1,47 @@
 {
-  "videos_considered": 13,
+  "videos_considered": 14,
   "enough_data": true,
   "pillars": {
     "by_country": {
       "n": 1,
-      "median_views_vs_channel": 0.86,
+      "median_views_vs_channel": 0.9,
       "avg_view_pct": 50.3,
       "subs_per_1k_views": 0.8
     },
     "walk_past": {
       "n": 2,
-      "median_views_vs_channel": 1.68,
+      "median_views_vs_channel": 1.76,
       "avg_view_pct": 63.4,
       "subs_per_1k_views": 0.21
     },
     "why_detail": {
       "n": 2,
-      "median_views_vs_channel": 0.89,
+      "median_views_vs_channel": 0.93,
       "avg_view_pct": 68.1,
       "subs_per_1k_views": 1.17
     },
     "india_asia": {
       "n": 1,
-      "median_views_vs_channel": 1.02,
+      "median_views_vs_channel": 1.07,
       "avg_view_pct": 55.2,
       "subs_per_1k_views": 1.36
     },
     "news": {
       "n": 5,
-      "median_views_vs_channel": 1.42,
+      "median_views_vs_channel": 1.49,
       "avg_view_pct": 74.9,
       "subs_per_1k_views": 0.63
     },
     "film": {
       "n": 1,
-      "median_views_vs_channel": 1.0,
+      "median_views_vs_channel": 1.05,
       "avg_view_pct": 42.1,
       "subs_per_1k_views": 0.69
     },
     "virality": {
-      "n": 1,
-      "median_views_vs_channel": 0.72,
-      "avg_view_pct": 66.2,
+      "n": 2,
+      "median_views_vs_channel": 0.75,
+      "avg_view_pct": 57.4,
       "subs_per_1k_views": 0.0
     }
   }

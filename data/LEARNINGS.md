@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-19 12:01 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-19 21:00 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - News-style topics got more views than film topics: 2,045 vs 311 median (pattern, n=5 vs 7). Film kept more subs per 1k, so do not judge on views alone.
@@ -16,6 +16,86 @@ Updated 2026-11-19 12:01 UTC. Built from every published video's 48 h and 7 day 
 - Walk_past, why_detail, by_country, india_asia, virality: not enough data yet (n=2–3). Walk_past's median views (2,417, n=2) are too thin to act on.
 
 ## Per-video analyses
+
+### gta6-13-years-v2 (48h) — above median
+- 235 views · 46.12% viewed · 6 likes · 0 shares · 1 subs (median views 157, n=31)
+- The GTA 6 delay-timeline Short beat the channel median on views (235 vs 157), engaged views (126 vs 69), likes and subscribers, but retention fell off steeply through the stacked date recap, so the next version should compress that recap.
+  - ✅ Reach and engagement were above the channel median: 235 views vs 157, 126 engaged views vs 69, 6 likes vs 2, and 1 subscriber gained vs 0.
+  - ✅ The question hook held the opening: retention was 1.0 at 4.6s, and viewers rewatched the first seconds (1.135 at 0.4s), which fits the loop lead-in.
+  - ✅ The GTA 6 delay-timeline topic drew above-median views and engaged views on its own merits.
+  - ✅ Instagram Reels matched YouTube on scale (191 views, 160 reach vs 235 YouTube views), so the content travelled across platforms and the gap is not a platform problem.
+  - ❌ Average view percentage was 46.12% vs a 57.74% median, and average view duration was 19s vs 21s, so most viewers left before the end.
+  - ❌ Retention decayed steadily through the four-date recap (b2 to b5), falling from 1.0 to 0.421 by 19.4s.
+  - ❌ Only about 15% of viewers reached the final beat (0.151 at 40.5s), so the 'Now you know the answer to...' payoff was seen by few viewers.
+  - ❌ Zero comments and zero shares on both platforms, and 0 saves on Instagram: the video was watched but not talked about or passed on.
+  - ❌ Self-review scored flow_pacing (3) and rewatch (3) lowest, and the retention curve confirms both weaknesses.
+  - ❌ Instagram skip rate was 42.8%, which fits the early drop on both platforms.
+  - 📉 b2 @ 6.8 s: Largest single loss: viewers fell from 1.0 at 4.6s to 0.746 at 6.8s, as the first date card ('September 2013: GTA 5 launches.') replaced the hook. The hook's promise was answered and the next beat looked like a list of dates.
+  - 📉 b3 @ 11.0 s: Retention fell from 0.682 to 0.603 during the second date card ('October 2018: a different game, RDR2.'), another text-led timeline entry with no clear visual payoff.
+  - 📉 b4 @ 15.2 s: Retention fell from 0.564 to 0.500 as the December 2023 trailer date appeared, continuing the same date-by-date pattern.
+  - 📉 b5 @ 19.4 s: Retention fell from 0.484 to 0.421 on the May 2025 slip card, the fourth date in roughly 15 seconds. This is where the list-style recap was clearly exhausting viewers.
+  - 📉 b7 @ 32.1 s: Retention fell from 0.286 to 0.238 during 'The sticky notes sighed. Politely.' This joke line may have read as filler rather than a payoff, though one line cannot prove that.
+  - 💡 [story, hypothesis] Limit timeline recaps to 2 or 3 dates, or give each date its own visual change, since retention dropped about 25% on the first date card and kept sliding through the rest.
+  - 💡 [pacing, hypothesis] Insert a visual or pattern interrupt roughly every 4 to 5 seconds during list-style sections; the steady decline from 6.8s to 25.7s suggests viewers need a new reason to stay.
+  - 💡 [hook, hypothesis] Keep the question-style hook (retention 1.0 at 4.6s, with rewatches at the start), but make the first date card visually stronger so the payoff of the hook is not followed by a drop.
+  - 💡 [visuals, hypothesis] Test one distinct visual per date card rather than text-only timeline cards; the 9 images over 42s did not stop the decline during the date sequence.
+  - 💡 [length, hypothesis] Test a shorter cut (around 30s) of this format, since only about 15% of viewers reached the end at 42.2s and average view percentage was 46%.
+  - 💡 [loop, hypothesis] Make the final line point back to the hook, since the 'Now you know the answer to...' ending was reached by about 15% of viewers and the loop is the main lever for rewatches.
+  - 💡 [title, hypothesis] The title's '13 years' promise is not paid off until about 35.6s, when retention was already 0.175; if the title stays, deliver the 13-year answer earlier in the script.
+  - 💡 [topic, hypothesis] Keep the GTA 6 delay-timeline topic in the mix, since it beat the median on views and engaged views, but treat that as a single-video signal.
+
+### gta6-extended-look-v2 (48h) — below median
+- 44 views · 68.91% viewed · 1 likes · 0 shares · 0 subs (median views 160, n=31)
+- The Short underperformed the channel median on reach (44 views vs 160, 18 engaged vs 71) even though viewers who started it watched a larger share (68.9% vs 57.5%), so the main problem looks like packaging and distribution, with a mid-video drop as a secondary issue; Instagram did far better (429 views), which points to a platform or audience difference.
+  - ✅ The question hook held the opening: retention went from 1.333 at 0.3s to 1.222 by 4.4s, so the first few seconds did their job.
+  - ✅ Average view percentage (68.91%) beat the channel median (57.54%), so people who stayed watched most of the video.
+  - ✅ The 27.5s runtime fits the format: the average viewer watched about 19s and the final beat was still on screen for the viewers who stayed.
+  - ✅ Instagram Reels reached 363 accounts and 429 views, roughly 10x the Shorts views, so the content has some pull on that audience.
+  - ✅ Applied learnings: the hook uses a clear question, and the 'win' lessons were applied, but this single video cannot show whether they helped (it is below median).
+  - ❌ Title mismatch: the title promises '27 minutes of GTA 6 gameplay', but the Short is a 27-second explainer about cop recognition. Viewers who expected gameplay likely left, and the title probably limited impressions.
+  - ❌ Reach was low: 44 views and 18 engaged views, both well under median, with zero subscribers gained and only 1 like.
+  - ❌ Retention fell steadily after 5.8s, with two sharp drops (b2 and b6) and a smaller one at b3 and b8.
+  - ❌ Dense mechanics in the middle (stars, witness and alarm rules, tactics) gave viewers no visual payoff for each fact.
+  - ❌ Instagram skip rate was 36.7%, so the content also struggled to hold attention on Reels.
+  - ❌ The owner dropped several GTA 6 angles (cheaper-than-GTA5, not-on-PC, florida-man, no-disc) and many gta6 reviews were blocking, so this pillar carries known risk.
+  - 📉 b2 @ 5.8 s: Retention fell from 1.222 to 1.0 (about -18%) as 'Yes. Icons show what cops know.' gave the answer and then started explaining icons with no visual payoff. The hook's question was answered before viewers had a reason to stay.
+  - 📉 b3 @ 8.5 s: Retention fell from 0.944 to 0.833 (about -12%) during 'Your face, clothes, even if you're armed.' The list of what cops know is abstract and is not tied to a clear on-screen example.
+  - 📉 b6 @ 16.8 s: The largest drop: retention fell from 0.556 to 0.444 (about -20%) at 'Burn the car, take a van.' This is an abrupt shift to a new tactic topic after the witness/alarm explanation, so the thread was lost.
+  - 📉 b8 @ 20.9 s: Retention fell from 0.444 to 0.389 (about -12%) during 'Cops hunt the outfit, not just cars.' The viewer had already been through several facts, and this line repeats the core idea without a new visual.
+  - 💡 [title, hypothesis] Make the title match what the Short actually delivers (a 27-second explainer), and never promise footage or length the video does not contain.
+  - 💡 [hook, hypothesis] Keep the question hook, but do not answer it in full in the first 4 seconds; hold the 'yes' for the end or give it as a teaser.
+  - 💡 [pacing, hypothesis] Limit each beat to one fact with one visual, and cut tangents (like tactics after the witness rule) so each drop point has a clear reason to stay.
+  - 💡 [story, hypothesis] Use a single through-line such as 'Scenario → what cops see → what happens', rather than switching topics mid-video.
+  - 💡 [visuals, hypothesis] Pair each list item (face, clothes, armed, stars) with an on-screen example or icon change, so the image matches the spoken point.
+  - 💡 [topic, hypothesis] Test GTA 6 explainers with an accurate title and a tighter structure before deciding on the pillar; Instagram response suggests the angle has some pull.
+  - 💡 [length, hypothesis] Keep Shorts around 25–30 seconds; the viewers who stayed watched most of it, so the length itself was not the problem.
+  - 💡 [loop, hypothesis] Loop data is unclear here (retention above 1.0 at the start suggests rewatching, but there is no end-loop metric), so track loop rewatch before relying on it.
+
+### runway-numbers-v1 (7d) — below median
+- 1026 views · 48.67% viewed · 14 likes · 0 shares · 0 subs (median views 1200, n=23)
+- Views (1,026) landed about 14% under the channel median of 1,200 and average view percentage was weak at 48.67% against 57.46%, though engaged views (553) and likes (14) beat the median, so the hook drew people in but the middle lost them, mainly around the magnetic-heading rule at 6–9 seconds.
+  - ✅ The question hook held viewers through the opening: retention went from 1.19 at 0.4s to 1.05 at 4.7s, which means rewatching and early attention stayed strong.
+  - ✅ Engaged views (553 vs 481 median) and likes (14 vs 13) beat the channel median, so the viewers who stayed engaged with the content.
+  - ✅ The 'runway 27 = west' payoff and the 'look down, no map app' line in b4–b5 kept the 10–17s section at a slow, steady decline (0.541 to 0.474) rather than a cliff.
+  - ✅ The loop lead-in ('Next time you land, ask yourself...') gives the Short a clear ending that matches the question hook.
+  - ✅ Applied learnings (hook formula 'The Question', loop lead-in, and the learjet and handrail wins) have no direct measurement here. The opening's strong hold is consistent with them helping, but one video cannot confirm it.
+  - ❌ The biggest cliff is at 4.7–6.9s, where retention fell from 1.051 to 0.738 (about 30% of viewers gone) in the window covering 'It's secretly a compass direction' and the start of 'Round the magnetic heading to ten, drop the zero.' The rule is abstract and arrives before any visual payoff.
+  - ❌ The drop continued through b3, falling to 0.595 by 9.1s, so the rounding and zero-dropping rule lost roughly 40% of the audience over about 4 seconds.
+  - ❌ The Fairbanks renaming story (b10, 30–38s) is a long, niche history beat. Retention fell steadily through it (0.327 to 0.26) with no clear reset.
+  - ❌ Average view percentage (48.67%) is well below median (57.46%) even though average view duration (21s) matched the median. Most of the gap comes from the early and mid-video drop.
+  - ❌ Subscribers gained were 0 vs a median of 1.
+  - ❌ Cross-platform: the Instagram Reel reached 128 views and 112 reach, versus 1,026 on YouTube, but its interactions per view (4 of 128, about 3.1%) are higher than YouTube's (15 of 1,026, about 1.5%). The skip rate on Reels was 42%. The gap points to a smaller, more responsive Instagram audience, and the Reel's engagement suggests the content itself is not the problem.
+  - 📉 b2 to b3 @ 6.9 s: The largest single drop (1.051 to 0.738). 'It's secretly a compass direction' is followed right away by an abstract arithmetic rule with no on-screen visual, and viewers leave at the moment the rule starts.
+  - 📉 b3 @ 9.1 s: Retention keeps falling (0.595) while the rounding rule is still being explained. The rule is still on screen and has not yet paid off with the 270 example that comes at 10s.
+  - 📉 b10 @ 32.8 s: Steady decline through the Fairbanks renaming story (0.304 to 0.26 over about 4 seconds). The long, niche historical detail gives no visual reset or new hook.
+  - 📉 b11 @ 39.2 s: The 'Add a zero: that's where you're pointing' step has the last notable drop (0.242 to 0.21). The viewer is being asked to do a mental step after a long history detail, with a fading attention span.
+  - 💡 [pacing, hypothesis] Do not state a rule before showing its payoff: in the first 10 seconds, show the runway 27 example on screen, then state the rule ('round to ten, drop the zero') and cut to the 270-degree result within 2 seconds.
+  - 💡 [visuals, hypothesis] When explaining the heading math, use an on-screen graphic (e.g., a compass with 270 highlighted and the 'drop the zero' step animated) so the viewer is not holding an abstract rule in their head.
+  - 💡 [story, hypothesis] Keep the Fairbanks example to one line or move it to the end as a bonus, rather than an 8-second mid-video detour.
+  - 💡 [hook, hypothesis] Keep the question hook ('What does the 27 on this runway actually mean?'): it held the first 4.7 seconds at a strong 1.05 retention, so reuse the 'question + concrete object on screen' structure.
+  - 💡 [length, hypothesis] Test a tighter 30–35 second cut of this format, removing the Fairbanks beat and compressing the rule explanation, and compare average view percentage against the 57.46% median.
+  - 💡 [loop, hypothesis] Keep the loop lead-in ending ('Next time you land, ask yourself...'), since it sets up a clear rewatch hook, and check next time whether the final 2 seconds hold retention above 0.2.
+  - 💡 [topic, hypothesis] Aviation/runway explainers are still worth making: engaged views and likes beat the median, but the views gap suggests the format needs tighter pacing rather than a different topic.
 
 ### gta6-florida-man-v5 (48h) — below median
 - 7 views · 41.05% viewed · 1 likes · 0 shares · 0 subs (median views 160, n=29)
