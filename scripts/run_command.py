@@ -941,6 +941,35 @@ def main(path: str) -> int:
         gh("issue", "create", "--title", f"Calibration: final review of {job}", "--body", body[:60000], check=False)
         print(body)
         return 0
+    if action == "set_cover":
+        # 19 Nov 2026: Claude picks a better cover frame for a made video: {"job", "frame": {"image", "t", "x"},
+        # "lines"?}. Re-renders the cover from the saved clips (no paid call), updates the review release (which the
+        # uploads and the Instagram post read) and, if the video is already on YouTube, its thumbnail.
+        from shorts.render import cover
+        from shorts.publish.youtube import set_thumbnail
+        job = req["job"]
+        d = ROOT / "build" / job
+        if not fetch_bundle(job, d) or not (d / "script.json").exists():
+            print(f"{job}: no saved media"); return 1
+        jj = p.state.get_job(job)
+        tn = json.loads((p.state.get_topic(jj["topic_id"]) or {}).get("notes") or "{}") if jj else {}
+        cp = d / "cover_plan.json"
+        plan_ = json.loads(cp.read_text()) if cp.exists() else json.loads((d / "cover.json").read_text())
+        plan_["frame"] = req.get("frame") or plan_.get("frame")
+        if req.get("lines"):
+            plan_["lines"] = req["lines"]
+        cp.write_text(json.dumps(plan_, ensure_ascii=False))
+        cover.make(None, d, badge=tn.get("badge"))
+        subprocess.run(["bash", "-c", f'cd "{d}" && tar -czf /tmp/media.tgz --exclude=./final.mp4 --exclude=./video.mp4 '
+                        '--exclude=./mix.wav --exclude=./mix.bed.wav --exclude=./media.tgz --exclude=./prior . && '
+                        f'mv /tmp/media.tgz "{d}/media.tgz"'], check=True)
+        gh("release", "upload", f"review-{job}", str(d / "cover.jpg"), str(d / "media.tgz"), "--clobber")
+        r = p.state.db.execute("SELECT video_id FROM uploads WHERE job_id=? AND video_id IS NOT NULL", (job,)).fetchone()
+        if r:
+            t = set_thumbnail(r["video_id"], d / "cover.jpg", p.state)
+            print("thumbnail", t)
+        print(f"{job}: cover set {plan_['lines']}")
+        return 0
     if action == "covers_backfill":
         # owner, 3 Nov 2026: give every published video a designed cover. YouTube: set by API. Instagram: its API can't
         # change the cover of a Reel that is already up, so the owner gets each cover in Telegram to set in the app.

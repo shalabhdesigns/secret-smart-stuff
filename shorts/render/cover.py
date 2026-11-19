@@ -171,6 +171,19 @@ def make(llm_ask, d: Path, news: bool = False, news_rule: str | None = None, bad
     early = d / "cover_plan.json"            # made at render time for videos that open with the hook (same words)
     p = json.loads(early.read_text()) if early.exists() else plan(llm_ask, script, news, news_rule)
     pic = d / f"{p['image']}.png"
+    fr = p.get("frame")
+    if fr and (d / f"{fr.get('image', p['image'])}_clip.mp4").exists():
+        # 19 Nov 2026: a shot's middle frame can be dark or empty; Claude picks the exact frame (a face) instead:
+        # {"image": "img1", "t": seconds into that clip, "x": 0-1 where the 9:16 window is centred}
+        import subprocess
+        full = d / "cover_frame_full.png"
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{float(fr.get('t', 0)):.2f}", "-i",
+                        str(d / f"{fr.get('image', p['image'])}_clip.mp4"), "-frames:v", "1", str(full)], check=True)
+        im = Image.open(full).convert("RGB")
+        cw = min(im.width, round(im.height * 9 / 16))
+        x0 = max(0, min(im.width - cw, round(im.width * float(fr.get("x", 0.5)) - cw / 2)))
+        pic = d / "cover_frame.png"
+        im.crop((x0, 0, x0 + cw, im.height)).save(pic)
     if not pic.exists():
         cands = sorted(d.glob("img*.png"))
         if not cands:
