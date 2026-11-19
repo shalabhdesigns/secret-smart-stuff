@@ -483,6 +483,14 @@ def check(topic: str, s: dict) -> list[str]:
             have = shots[sid]["end"] - shots[sid]["start"]
             if have * 1.25 < secs:
                 print(f"  warning {topic} {sc['id']}: line ~{secs:.1f}s, shot {sid} {have:.1f}s (runs on)")
+            # 19 Nov 2026: "QUOTE: <name>" over a character reads as if that character were the real person. Long
+            # shot ranges (> 8 s) often hide other scenes with people, so they are not safe either.
+            import re as _re
+            who = (sc["callout"] or "").upper().partition("QUOTE:")[2].split(",")[0].strip()
+            if who and who not in ("ROCKSTAR", "ROCKSTAR GAMES", "TAKE-TWO") and (
+                    have > 8 or _re.search(r"\b(man|woman|men|women|couple|person|jason|lucia|girl|guy)\b",
+                                           shots[sid].get("shows", ""), _re.I)):
+                errs.append(f"{topic} {sc['id']}: quote label over people or a long mixed shot ({sid})")
     return errs
 
 
