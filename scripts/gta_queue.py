@@ -157,6 +157,16 @@ V = {
   "VERIFIED 19 Nov 2026 - CAREFUL WORDING. HOOK: 'Rockstar sums up every GTA 6 character in one sentence.' Rockstar's character descriptions, word for word as GTA BOOM prints them (https://www.gtaboom.com/every-gta-6-character-confirmed-so-far-156f; Cal's phrase also in GamesRadar https://www.gamesradar.com/games/grand-theft-auto/gta-6-characters): 'Jason wants an easy life, but things just keep getting harder.' / 'Lucia's father taught her to fight as soon as she could walk.' / 'Brian's a classic drug runner from the golden age of smuggling in the Keys.' (Jason's landlord, runs a boat yard) / 'Boobie's all smiles until it's time to talk business.' (property, a club, a recording studio) / Raul: a seasoned bank robber always on the hunt for talent / 'Cal is at the low tide of America and happy there.' (Jason's friend). Quote beats show places, never faces. Payoff: Cal's line. CTA: 'Which character are you most excited to meet?'"),
  "gta6-trailer2-record": ("GTA 6 Trailer 2: 475 million views in a day?",
   "VERIFIED 19 Nov 2026. Publishes 21 Nov 02:00 UTC. HOOK: 'In May 2025, GTA 6 fans got really bad news.' Facts: days after a delay to 2026, trailer 2 dropped 'completely unannounced' on 'a random Tuesday' (TheGamer via OpenCritic, 8 May 2025, https://opencritic.com/news/16087/rockstar-claims-gta-6s-second-trailer-was-the-biggest-video-launch-of-all-time-with-nearly-half-a-billion-views-in-one-day). Rockstar told The Hollywood Reporter it got 475 million views across all platforms in 24 hours, the biggest video launch ever by its count; the previous record, the Deadpool & Wolverine trailer, had 365 million 'with the help of a Super Bowl airing'; trailer 1 got about 93 million on YouTube in its first day (TechRadar, https://www.techradar.com/gaming/the-latest-grand-theft-auto-6-trailer-has-set-a-major-record-by-racking-up-475-million-views-in-just-24-hours; TweakTown, https://www.tweaktown.com/news/105135/grand-theft-auto-6-trailer-2-hits-475-million-views-blowing-away-deadpool-wolverines-record/index.html). Say these are Rockstar's own numbers. CTA: 'Where were you when trailer 2 dropped?'"),
+  "gta6-stream-record": ("GTA 6 launch: 7.9 million people watching at once",
+  "VERIFIED 20 Nov 2026. Publishes 21 Nov 14:00 UTC. Script in gta_scripts.py. Streams Charts (preliminary): peak over 7.91M concurrent viewers, biggest game launch ever; Twitch 3.31M, beating League of Legends' Worlds 2022 final (3.11M); 36M Twitch hours in one day; ~4.6x Valorant's 2020 closed beta (1.74M); La Velada 2025 boxing still Twitch's overall record (9.68M) (https://streamscharts.com/news/gta-6-streaming-records; https://maketecheasier.com/gta-6-concurrent-viewer-record-streams-charts/). DE-CIX record 33.03 Tbps (Variety via Yahoo, https://uk.news.yahoo.com/gta-6-launch-breaks-internet-150958798.html). CTA: playing or watching?"),
+  "gta6-dexter-apartment": ("GTA 6 fans found Dexter's apartment in Vice City",
+  "VERIFIED 20 Nov 2026 - CAREFUL WORDING. Publishes 21 Nov 17:00 UTC. Script in gta_scripts.py. Players found Trinity Apartments (nod to the Trinity Killer), can't go inside; rooftop knife, tape, rope, syringe; a boat that resembles Slice of Life; Rockstar hasn't identified it as Dexter's home; fans flagged the building in August (Dexerto, https://www.dexerto.com/gta/gta-6-players-find-dexters-apartment-serial-killer-kit-and-can-even-steal-his-boat-3429888/; TheWrap, https://www.thewrap.com/culture-lifestyle/culture/gta-6-dexter-morgan-apartment-easter-egg/). Always 'fans/players say'. CTA: which TV show next?"),
+  "gta6-story-length": ("GTA 6 is about 50 hours long, one review says",
+  "VERIFIED 20 Nov 2026. Publishes 21 Nov 20:00 UTC. Script in gta_scripts.py. ScreenRant (https://screenrant.com/gta-6-main-story-length-completion/): main story roughly 50 hours across five chapters; its reviewer finished at 50h42m with some side content; GTA main stories ~30 hours since San Andreas; map roughly twice GTA 5; 100% could hit triple digits. $59.99 -> $79.99 (HotHardware). Arithmetic: ~$1.60 an hour. CTA: hours played?"),
+  "gta6-sales-estimate": ("GTA 6 sold 19 million copies? Here's the catch",
+  "VERIFIED 20 Nov 2026 - CAREFUL WORDING. Publishes 21 Nov 23:00 UTC. Script in gta_scripts.py. Sensor Tower ESTIMATE: 19.1M copies, ~$1.84B by the morning of release; Netflix Extended Look helped drive a sixfold jump in pre-orders; Take-Two has confirmed no numbers; Zelnick: 'we still aren't ready to declare victory' (Reuters via Yahoo, https://finance.yahoo.com/media-advertising/articles/two-set-shatter-sales-records-162847652.html; Men's Journal). GTA V 11.21M / $815.7M in 24 h (Guinness). Never state the estimate as fact. CTA: bought it day one?"),
+  "gta6-first-look-2021": ("GTA 6 fans think we saw it back in 2021",
+  "VERIFIED 20 Nov 2026 - FAN THEORY. Publishes 22 Nov 02:00 UTC. Script in gta_scripts.py. A Belville house in GTA 6 matches a house image exclusive to GTA: San Andreas - Definitive Edition (2021), speculated to come from GTA 6 development; 'line up to the smallest details, like the placement of plants and trees'; VGC: 'may have been our first look' (https://www.videogameschronicle.com/news/gta-6-players-discover-our-real-first-look-at-the-game-was-likely-hidden-in-a-2021-remaster/). Trailer 1: Dec 2023. No fan names. CTA: other clues?"),
 }
 
 # owner (16 Nov 2026): each video must look and feel different -> its own format, pace and opening style
@@ -185,6 +195,11 @@ FORMATS = {
  "gta6-cast-one-liners": "Tone: playful roll call. Shape: one character at a time, each with Rockstar's own one-liner, saving the funniest line for last.",
  "gta6-trailer2-record": "Tone: comeback story. Shape: the bad news -> the surprise drop -> the number -> the movie it beat -> the payoff.",
  "gta6-leak-war": "Tone: tense thriller. Shape: the 2022 break-in -> the leaked trailer -> the 2026 court fight.",
+ "gta6-stream-record": "Tone: breathless live-sports record call. Shape: the crowd -> records falling one by one -> the one record left standing.",
+ "gta6-dexter-apartment": "Tone: hushed, spooky true-crime. Shape: the discovery -> the building -> the creepy roof -> the boat -> not confirmed.",
+ "gta6-story-length": "Tone: practical, a friend doing the maths. Shape: the question -> the hours -> the comparison -> the price per hour.",
+ "gta6-sales-estimate": "Tone: sceptical business reporter. Shape: the huge number -> the catch -> the GTA 5 benchmark -> what Take-Two says.",
+ "gta6-first-look-2021": "Tone: detective. Shape: the clue in 2021 -> the match in 2026 -> the details -> a fan theory, clearly labelled.",
 }
 
 # publish times (UTC); 5 a day, every 3 h over the US day (owner, 16 Nov: 5 a day)
@@ -213,6 +228,11 @@ PLAN = [
  ("2026-11-20", "2026-11-20T20:00:00Z", "gta6-review-scores"),
  ("2026-11-20", "2026-11-20T23:00:00Z", "gta6-cast-one-liners"),
  ("2026-11-20", "2026-11-21T02:00:00Z", "gta6-trailer2-record"),
+ ("2026-11-21", "2026-11-21T14:00:00Z", "gta6-stream-record"),
+ ("2026-11-21", "2026-11-21T17:00:00Z", "gta6-dexter-apartment"),
+ ("2026-11-21", "2026-11-21T20:00:00Z", "gta6-story-length"),
+ ("2026-11-21", "2026-11-21T23:00:00Z", "gta6-sales-estimate"),
+ ("2026-11-21", "2026-11-22T02:00:00Z", "gta6-first-look-2021"),
 ]
 
 

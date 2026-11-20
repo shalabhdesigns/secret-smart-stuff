@@ -441,6 +441,235 @@ S["gta6-trailer2-record"] = dict(
 )
 
 
+# ---- 21 Nov 2026 (written and fact-checked in session, 20 Nov) ----
+
+S["gta6-stream-record"] = dict(
+    title="GTA 6 launch: 7.9 million people watching at once",
+    thumb_text="7.9M WATCHING",
+    hook_card="7.9 MILLION?",
+    cover_lines=["7.9 MILLION", "WATCHING AT ONCE"],
+    beats=[
+        ("When GTA 6 unlocked this week, almost eight million people watched other people play it, all at once.",
+         "CLIP:trailer_2_00232", None, "excited"),
+        ("Streams Charts, which tracks livestreams, counted an early peak of over 7.9 million viewers.",
+         "CLIP:extended_look_15524", "7.91M AT ONCE", None),
+        ("That's the biggest game launch it has ever recorded.", "CLIP:extended_look_12735", None, None),
+        ("The old launch record was Valorant's closed beta in 2020, with about 1.7 million.",
+         "CLIP:extended_look_09432", "VALORANT, 2020: 1.74M", None),
+        ("GTA 6 pulled in more than four times that.", "CLIP:launch_trailer_00685", "4.6X", "surprised"),
+        ("On Twitch alone, it peaked at 3.31 million.", "CLIP:extended_look_12606", "TWITCH: 3.31M", None),
+        ("That beat the Twitch record for any game, set by League of Legends in 2022.", "CLIP:extended_look_12327",
+         "LOL WORLDS 2022: 3.11M", None),
+        ("In one day, Twitch viewers watched thirty-six million hours of it.", "CLIP:extended_look_11437",
+         "36M HOURS IN ONE DAY", None),
+        ("Even the internet felt it: an internet exchange called DE-CIX set a traffic record.", "CLIP:extended_look_07501",
+         "33 TERABITS A SECOND", None),
+        ("So has anything drawn a bigger crowd on Twitch? Just one thing.", "CLIP:trailer_2_00346", None, "curious"),
+        ("A 2025 boxing night called La Velada, with 9.68 million.", "CLIP:extended_look_05648", "LA VELADA: 9.68M",
+         None),
+        ("So no game launch has ever pulled a crowd like this one, by Streams Charts' count.",
+         "CLIP:extended_look_07446", None, None),
+        ("Were you playing it, or watching someone play it?", "CLIP:trailer_2_00920", None, None),
+    ],
+    facts=[
+        {"claim": "Streams Charts (preliminary): GTA 6 peaked at more than 7.91 million concurrent viewers across "
+                  "livestreaming platforms, the biggest game launch ever (all platforms); 3.31 million on Twitch, "
+                  "overtaking League of Legends (3,111,143, T1-DRX Worlds 2022 final), the previous gaming record; "
+                  "36,060,208 Twitch hours watched in one day, the most by a game; about 4.6 times Valorant's closed "
+                  "beta; La Velada (2025 boxing event) still holds Twitch's overall record with 9.68 million.",
+         "sources": ["https://streamscharts.com/news/gta-6-streaming-records"], "main": True},
+        {"claim": "The previous launch leader was Valorant's closed beta in 2020 with a 1,737,267 peak (Streams Charts "
+                  "data); GTA 6's combined peak was more than 7.88 million within three hours of release.",
+         "sources": ["https://maketecheasier.com/gta-6-concurrent-viewer-record-streams-charts/"], "main": True},
+        {"claim": "DE-CIX, an internet exchange operator, reached a new record-breaking high of 33.03 terabits per "
+                  "second during the GTA 6 launch (Variety); Streams Charts: 7.91 million concurrent viewers at peak.",
+         "sources": ["https://uk.news.yahoo.com/gta-6-launch-breaks-internet-150958798.html"], "main": True},
+    ],
+    description="Almost 8 million people watched GTA 6 streams at the same time. The records it broke, and the one "
+                "it didn't.\nSources: Streams Charts (preliminary data), Make Tech Easier, Variety.",
+    hashtags=["#GTA6", "#Twitch", "#GrandTheftAuto"],
+)
+
+S["gta6-dexter-apartment"] = dict(
+    title="GTA 6 fans found Dexter's apartment in Vice City",
+    thumb_text="DEXTER'S APARTMENT?",
+    hook_card="DEXTER'S PLACE?",
+    cover_lines=["DEXTER'S", "APARTMENT?"],
+    beats=[
+        ("GTA 6 fans have found a TV serial killer's apartment, hiding in Vice City.", "CLIP:extended_look_08816",
+         None, "whispers"),
+        ("In the show Dexter, he lives in Miami.", "CLIP:trailer_1_00300", None, None),
+        ("And Vice City is Rockstar's Miami.", "CLIP:extended_look_04786", None, None),
+        ("Players found his building. It's called Trinity Apartments, a nod to the show's Trinity Killer.",
+         "CLIP:extended_look_04180", "TRINITY APARTMENTS", None),
+        ("TheWrap says it's nearly a complete recreation of Dexter's apartment.", "CLIP:extended_look_04115", None,
+         None),
+        ("You can walk right up to the door, but you can't go inside.", "CLIP:extended_look_00000", None, None),
+        ("The creepy part is on the roof.", "CLIP:trailer_2_00114", None, "serious"),
+        ("Players found a knife, tape, rope and a syringe up there.", "CLIP:extended_look_07018", None, None),
+        ("Let's not ask what that's for.", "CLIP:launch_trailer_00423", None, "laughs softly"),
+        ("Down at the docks, there's a boat you can steal.", "CLIP:launch_trailer_00026", None, None),
+        ("Fans say it looks just like Slice of Life, Dexter's boat.", "CLIP:extended_look_15728", "SLICE OF LIFE?",
+         None),
+        ("Has Rockstar confirmed it? No. It hasn't said this is Dexter's home.", "CLIP:extended_look_12920", None,
+         None),
+        ("But fans had spotted this building back in August, months before launch.", "CLIP:extended_look_09766",
+         None, None),
+        ("Which TV show should GTA hide next?", "CLIP:trailer_2_00920", None, None),
+    ],
+    facts=[
+        {"claim": "Players found Dexter Morgan's apartment in Vice City; the complex is called Trinity Apartments (a "
+                  "nod to the Trinity Killer); players can walk up to the door but cannot enter; on the roof is a "
+                  "kill kit with a knife, tape, rope and a syringe; nearby players can steal a boat that resembles "
+                  "Dexter's 'Slice of Life'; Rockstar hasn't explicitly identified the location as Dexter's home; "
+                  "fans first flagged the building in August.",
+         "sources": ["https://www.dexerto.com/gta/gta-6-players-find-dexters-apartment-serial-killer-kit-and-can-even-steal-his-boat-3429888/"],
+         "main": True},
+        {"claim": "TheWrap: 'nearly a complete recreation of Dexter Morgan's Miami apartment from the hit series "
+                  "Dexter'; players can steal the 'Slice of Life' boat, find tools on the roof, and cannot enter.",
+         "sources": ["https://www.thewrap.com/culture-lifestyle/culture/gta-6-dexter-morgan-apartment-easter-egg/"],
+         "main": True},
+    ],
+    description="GTA 6 players found what looks like Dexter Morgan's Miami apartment in Vice City, a rooftop kit and "
+                "his boat. Rockstar hasn't confirmed it.\nSources: Dexerto, TheWrap (19 Nov 2026).",
+    hashtags=["#GTA6", "#Dexter", "#GTA6EasterEgg"],
+)
+
+S["gta6-story-length"] = dict(
+    title="GTA 6 is about 50 hours long, one review says",
+    thumb_text="50 HOURS?",
+    hook_card="HOW LONG?",
+    cover_lines=["50 HOURS", "OF STORY?"],
+    beats=[
+        ("How long does it actually take to finish GTA 6's story?", "CLIP:extended_look_07899", None, "curious"),
+        ("ScreenRant's reviewer reached the end in fifty hours and forty-two minutes.", "CLIP:extended_look_11437",
+         "50 HOURS 42 MINUTES", None),
+        ("And that included some side content.", "CLIP:extended_look_10330", None, None),
+        ("ScreenRant puts the main story at roughly fifty hours, told across five chapters.",
+         "CLIP:trailer_2_00346", "5 CHAPTERS", None),
+        ("Now compare that with GTA 5.", "OFFICIAL:v_c670974867", None, None),
+        ("Since San Andreas, the main GTA stories have landed at around thirty hours.", "OFFICIAL:v_24ba6644de",
+         "ABOUT 30 HOURS", None),
+        ("So this one gives you roughly twenty extra hours of story.", "CLIP:extended_look_07501", "+20 HOURS",
+         "surprised"),
+        ("And the map it all happens on is roughly twice the size of GTA 5's.", "CLIP:extended_look_11275", None,
+         None),
+        ("Now the price. The standard edition costs $79.99.", "CLIP:trailer_2_00416", "$79.99", None),
+        ("Spread over fifty hours, that's about a dollar sixty an hour.", "CLIP:extended_look_09166",
+         "ABOUT $1.60 AN HOUR", None),
+        ("ScreenRant says one hundred percent could take triple digits.", "CLIP:extended_look_10360",
+         "100%: 100+ HOURS?", None),
+        ("So it costs twenty dollars more than GTA 5, but gives you about twenty more hours of story.",
+         "CLIP:extended_look_05748", None, None),
+        ("How many hours have you played so far?", "CLIP:extended_look_03869", None, None),
+    ],
+    facts=[
+        {"claim": "ScreenRant: GTA 6's main story 'takes roughly 50 hours to complete, taking place across five "
+                  "chapters'; its reviewer reached story completion at 50 hours and 42 minutes while doing some side "
+                  "content; previous GTA games 'have landed around the 30-hour mark for main story content since GTA: "
+                  "San Andreas'; the map is roughly twice the size of GTA 5; 100% completion could easily hit a "
+                  "triple-digit runtime.",
+         "sources": ["https://screenrant.com/gta-6-main-story-length-completion/"], "main": True},
+        {"claim": "GTA V launched at $59.99 in the US; GTA 6 is $79.99. $79.99 over 50 hours is about $1.60 an hour "
+                  "(arithmetic).",
+         "sources": ["https://hothardware.com/news/gta-6-launch-80-single-player-title-rockstar-reveals"], "main": True},
+    ],
+    description="One review finished GTA 6's story in 50 hours 42 minutes. How that compares with GTA 5, and what it "
+                "means for the $80 price.\nSources: ScreenRant (18 Nov 2026), HotHardware.",
+    hashtags=["#GTA6", "#GTA6Review", "#GrandTheftAuto"],
+)
+
+S["gta6-sales-estimate"] = dict(
+    title="GTA 6 sold 19 million copies? Here's the catch",
+    thumb_text="19 MILLION?",
+    hook_card="19 MILLION?",
+    cover_lines=["19 MILLION", "COPIES?"],
+    beats=[
+        ("By the morning GTA 6 came out, it may have already sold nineteen million copies.",
+         "CLIP:extended_look_10196", None, "surprised"),
+        ("But here's the catch. It's an estimate from an analytics firm, Sensor Tower, not from Rockstar.",
+         "CLIP:extended_look_12920", None, None),
+        ("Its estimate: about 19.1 million copies and 1.84 billion dollars.", "CLIP:extended_look_09994",
+         "19.1M COPIES, $1.84B", None),
+        ("Now think back to GTA 5's launch in 2013.", "OFFICIAL:v_c670974867", None, None),
+        ("In its first twenty-four hours, it sold 11.21 million copies and made 815.7 million dollars.",
+         "OFFICIAL:v_24ba6644de", "GTA 5: 11.21M, $815.7M", None),
+        ("Those numbers were confirmed by Guinness World Records.", "OFFICIAL:v_fdac18d437", None, None),
+        ("If the estimate is right, GTA 6 beat GTA 5's whole first day by Thursday morning.",
+         "CLIP:launch_trailer_00685", None, "excited"),
+        ("Sensor Tower says the Extended Look on Netflix helped drive a sixfold jump in pre-orders.",
+         "CLIP:extended_look_04451", "6X PRE-ORDERS", None),
+        ("And what does Take-Two say? It hasn't confirmed a single sales number.", "CLIP:extended_look_07446", None,
+         None),
+        ("Earlier this month, its CEO Strauss Zelnick even said, \"we still aren't ready to declare victory.\"",
+         "CLIP:trailer_2_01188", "QUOTE: STRAUSS ZELNICK, TAKE-TWO", "serious"),
+        ("So until Take-Two shares real numbers, it's only an estimate. A very big one.", "CLIP:extended_look_09166",
+         None, None),
+        ("Did you buy GTA 6 on day one?", "CLIP:trailer_2_00920", None, None),
+    ],
+    facts=[
+        {"claim": "Sensor Tower estimates GTA VI sold 19.1 million units as of Thursday morning (19 Nov 2026), about "
+                  "$1.84 billion in revenue; Take-Two has not given official sales figures; Zelnick on the earnings "
+                  "call earlier this month: 'we still aren't ready to declare victory'; Sensor Tower: the Netflix "
+                  "'Extended Look' helped drive a sixfold jump in pre-orders.",
+         "sources": ["https://finance.yahoo.com/media-advertising/articles/two-set-shatter-sales-records-162847652.html"],
+         "main": True},
+        {"claim": "GTA VI sold an estimated 19.1 million copies by the morning of its release (Sensor Tower); "
+                  "'Take-Two hasn't confirmed any numbers yet'.",
+         "sources": ["https://www.mensjournal.com/news/gta-6-sales-19-million-copies-gta-v-record"], "main": True},
+        {"claim": "GTA V made $815.7 million and sold 11.21 million copies in its first 24 hours (Guinness World "
+                  "Records).",
+         "sources": ["https://www.guinnessworldrecords.com/news/2013/10/confirmed-grand-theft--auto-breaks-six-sales-world-records-51900"],
+         "main": True},
+    ],
+    description="An analytics firm estimates GTA 6 sold 19.1 million copies by launch morning. Take-Two hasn't "
+                "confirmed a number yet.\nSources: Reuters (via Yahoo Finance), Men's Journal, Guinness World Records.",
+    hashtags=["#GTA6", "#GTA5", "#GrandTheftAuto"],
+)
+
+S["gta6-first-look-2021"] = dict(
+    title="GTA 6 fans think we saw it back in 2021",
+    thumb_text="SEEN IN 2021?",
+    hook_card="SEEN IN 2021?",
+    cover_lines=["FIRST SEEN", "IN 2021?"],
+    beats=[
+        ("Fans think GTA 6 was hiding in plain sight, years before its first trailer.", "CLIP:extended_look_03021",
+         None, "curious"),
+        ("In 2021, Rockstar released a remaster of GTA San Andreas.", "CLIP:trailer_1_00026",
+         "SAN ANDREAS REMASTER, 2021", None),
+        ("It had a picture of a house that only appeared in that version.", "CLIP:trailer_2_00188", None, None),
+        ("Some fans wondered if it came from GTA 6's development.", "CLIP:extended_look_12920", None, None),
+        ("Now the game is out, and fans mapping Leonida found that same house, in Belville.",
+         "CLIP:extended_look_11275", "BELVILLE", None),
+        ("VGC says the two images line up down to the smallest details.", "CLIP:extended_look_10262", None,
+         "surprised"),
+        ("Even the plants and trees outside are in the same places.", "CLIP:extended_look_04786", None, None),
+        ("So that 2021 picture may have been our first look at GTA 6.", "CLIP:trailer_2_00232", None, None),
+        ("The first official trailer only came in December 2023.", "CLIP:trailer_1_00300", "TRAILER 1: DEC 2023",
+         None),
+        ("To be clear, it's a fan theory. Rockstar hasn't confirmed it.", "CLIP:trailer_2_00346", None, "serious"),
+        ("But if fans are right, GTA 6 was first seen in 2021, and almost nobody noticed.",
+         "CLIP:extended_look_07446", None, None),
+        ("What other GTA 6 clues do you think fans missed?", "CLIP:trailer_2_00920", None, None),
+    ],
+    facts=[
+        {"claim": "A house in Belville in GTA 6 matches a house image from GTA: San Andreas - Definitive Edition "
+                  "(2021); the image was exclusive to that edition and was speculated to come from GTA 6 development; "
+                  "found by a member of the GTA VI Mapping server; 'The two images of the houses line up to the "
+                  "smallest details, like the placement of plants and trees outside of the home'; VGC: it 'may have "
+                  "been our first look at GTA 6'. A fan theory; no Rockstar comment reported.",
+         "sources": ["https://www.videogameschronicle.com/news/gta-6-players-discover-our-real-first-look-at-the-game-was-likely-hidden-in-a-2021-remaster/"],
+         "main": True},
+        {"claim": "GTA 6's first trailer was released in December 2023.",
+         "sources": ["https://www.videogameschronicle.com/news/the-gta-6-trailer-has-allegedly-leaked-online/"],
+         "main": False},
+    ],
+    description="Fans matched a house in GTA 6's Belville to a picture in 2021's San Andreas remaster. Was it our "
+                "first look? A fan theory; Rockstar hasn't confirmed it.\nSource: VGC (18 Nov 2026).",
+    hashtags=["#GTA6", "#GTASanAndreas", "#GrandTheftAuto"],
+)
+
+
 def build(topic: str, v: dict) -> dict:
     images, scenes = {}, []
     for i, (text, shot, callout, delivery) in enumerate(v["beats"], 1):

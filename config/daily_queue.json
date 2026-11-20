@@ -4096,6 +4096,1524 @@
      }
     }
    }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-stream-record",
+   "fresh": true,
+   "nonce": "gta-footage-gta6-stream-record",
+   "day": "2026-11-21",
+   "topic_def": {
+    "id": "gta6-stream-record",
+    "title": "GTA 6 launch: 7.9 million people watching at once",
+    "pillar": "gta6",
+    "notes": {
+     "object": "official GTA 6 footage",
+     "question": "GTA 6 launch: 7.9 million people watching at once",
+     "angle": "VERIFIED 20 Nov 2026. Publishes 21 Nov 14:00 UTC. Script in gta_scripts.py. Streams Charts (preliminary): peak over 7.91M concurrent viewers, biggest game launch ever; Twitch 3.31M, beating League of Legends' Worlds 2022 final (3.11M); 36M Twitch hours in one day; ~4.6x Valorant's 2020 closed beta (1.74M); La Velada 2025 boxing still Twitch's overall record (9.68M) (https://streamscharts.com/news/gta-6-streaming-records; https://maketecheasier.com/gta-6-concurrent-viewer-record-streams-charts/). DE-CIX record 33.03 Tbps (Variety via Yahoo, https://uk.news.yahoo.com/gta-6-launch-breaks-internet-150958798.html). CTA: playing or watching? FORMAT FOR THIS VIDEO (its own look and feel): Tone: breathless live-sports record call. Shape: the crowd -> records falling one by one -> the one record left standing.",
+     "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): man beside a custom sports car in a neon garage\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+     "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
+     "official_images": "required",
+     "open_hook": true,
+     "words": [
+      110,
+      170
+     ],
+     "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
+     "style": "story",
+     "badge": "GTA 6",
+     "script": {
+      "viable": true,
+      "title": "GTA 6 launch: 7.9 million people watching at once",
+      "thumb_text": "7.9M WATCHING",
+      "hook_card": "7.9 MILLION?",
+      "hooks": [
+       "When GTA 6 unlocked this week, almost eight million people watched other people play it, all at once."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:trailer_2_00232",
+       "img2": "CLIP:extended_look_15524",
+       "img3": "CLIP:extended_look_12735",
+       "img4": "CLIP:extended_look_09432",
+       "img5": "CLIP:launch_trailer_00685",
+       "img6": "CLIP:extended_look_12606",
+       "img7": "CLIP:extended_look_12327",
+       "img8": "CLIP:extended_look_11437",
+       "img9": "CLIP:extended_look_07501",
+       "img10": "CLIP:trailer_2_00346",
+       "img11": "CLIP:extended_look_05648",
+       "img12": "CLIP:extended_look_07446",
+       "img13": "CLIP:trailer_2_00920"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "When GTA 6 unlocked this week, almost eight million people watched other people play it, all at once.",
+        "image": "img1",
+        "delivery": "excited",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "Streams Charts, which tracks livestreams, counted an early peak of over 7.9 million viewers.",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "7.91M AT ONCE",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "That's the biggest game launch it has ever recorded.",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "The old launch record was Valorant's closed beta in 2020, with about 1.7 million.",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "VALORANT, 2020: 1.74M",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "GTA 6 pulled in more than four times that.",
+        "image": "img5",
+        "delivery": "surprised",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "4.6X",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "On Twitch alone, it peaked at 3.31 million.",
+        "image": "img6",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "TWITCH: 3.31M",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "That beat the Twitch record for any game, set by League of Legends in 2022.",
+        "image": "img7",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "LOL WORLDS 2022: 3.11M",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "In one day, Twitch viewers watched thirty-six million hours of it.",
+        "image": "img8",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "36M HOURS IN ONE DAY",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "Even the internet felt it: an internet exchange called DE-CIX set a traffic record.",
+        "image": "img9",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "33 TERABITS A SECOND",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "So has anything drawn a bigger crowd on Twitch? Just one thing.",
+        "image": "img10",
+        "delivery": "curious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b11",
+        "narration": "A 2025 boxing night called La Velada, with 9.68 million.",
+        "image": "img11",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "LA VELADA: 9.68M",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b12",
+        "narration": "So no game launch has ever pulled a crowd like this one, by Streams Charts' count.",
+        "image": "img12",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b13",
+        "narration": "Were you playing it, or watching someone play it?",
+        "image": "img13",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "Streams Charts (preliminary): GTA 6 peaked at more than 7.91 million concurrent viewers across livestreaming platforms, the biggest game launch ever (all platforms); 3.31 million on Twitch, overtaking League of Legends (3,111,143, T1-DRX Worlds 2022 final), the previous gaming record; 36,060,208 Twitch hours watched in one day, the most by a game; about 4.6 times Valorant's closed beta; La Velada (2025 boxing event) still holds Twitch's overall record with 9.68 million.",
+        "sources": [
+         "https://streamscharts.com/news/gta-6-streaming-records"
+        ],
+        "main": true
+       },
+       {
+        "claim": "The previous launch leader was Valorant's closed beta in 2020 with a 1,737,267 peak (Streams Charts data); GTA 6's combined peak was more than 7.88 million within three hours of release.",
+        "sources": [
+         "https://maketecheasier.com/gta-6-concurrent-viewer-record-streams-charts/"
+        ],
+        "main": true
+       },
+       {
+        "claim": "DE-CIX, an internet exchange operator, reached a new record-breaking high of 33.03 terabits per second during the GTA 6 launch (Variety); Streams Charts: 7.91 million concurrent viewers at peak.",
+        "sources": [
+         "https://uk.news.yahoo.com/gta-6-launch-breaks-internet-150958798.html"
+        ],
+        "main": true
+       }
+      ],
+      "description": "Almost 8 million people watched GTA 6 streams at the same time. The records it broke, and the one it didn't.\nSources: Streams Charts (preliminary data), Make Tech Easier, Variety.",
+      "hashtags": [
+       "#GTA6",
+       "#Twitch",
+       "#GrandTheftAuto"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)",
+      "cover": {
+       "image": "img1",
+       "lines": [
+        "7.9 MILLION",
+        "WATCHING AT ONCE"
+       ],
+       "why": "written in session"
+      }
+     },
+     "publish_at": "2026-11-21T14:00:00Z",
+     "batch": "gta6-launch-footage",
+     "seo": {
+      "category_id": "20",
+      "hashtags": [
+       "#GTA6",
+       "#GTAVI",
+       "#GrandTheftAuto6"
+      ],
+      "tags": [
+       "GTA 6",
+       "GTA VI",
+       "Grand Theft Auto 6",
+       "Grand Theft Auto VI",
+       "GTA 6 news",
+       "GTA 6 trailer",
+       "Rockstar Games",
+       "Vice City",
+       "Jason and Lucia",
+       "Leonida"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-dexter-apartment",
+   "fresh": true,
+   "nonce": "gta-footage-gta6-dexter-apartment",
+   "day": "2026-11-21",
+   "topic_def": {
+    "id": "gta6-dexter-apartment",
+    "title": "GTA 6 fans found Dexter's apartment in Vice City",
+    "pillar": "gta6",
+    "notes": {
+     "object": "official GTA 6 footage",
+     "question": "GTA 6 fans found Dexter's apartment in Vice City",
+     "angle": "VERIFIED 20 Nov 2026 - CAREFUL WORDING. Publishes 21 Nov 17:00 UTC. Script in gta_scripts.py. Players found Trinity Apartments (nod to the Trinity Killer), can't go inside; rooftop knife, tape, rope, syringe; a boat that resembles Slice of Life; Rockstar hasn't identified it as Dexter's home; fans flagged the building in August (Dexerto, https://www.dexerto.com/gta/gta-6-players-find-dexters-apartment-serial-killer-kit-and-can-even-steal-his-boat-3429888/; TheWrap, https://www.thewrap.com/culture-lifestyle/culture/gta-6-dexter-morgan-apartment-easter-egg/). Always 'fans/players say'. CTA: which TV show next? FORMAT FOR THIS VIDEO (its own look and feel): Tone: hushed, spooky true-crime. Shape: the discovery -> the building -> the creepy roof -> the boat -> not confirmed.",
+     "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): man beside a custom sports car in a neon garage\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+     "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
+     "official_images": "required",
+     "open_hook": true,
+     "words": [
+      110,
+      170
+     ],
+     "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
+     "style": "story",
+     "badge": "GTA 6",
+     "script": {
+      "viable": true,
+      "title": "GTA 6 fans found Dexter's apartment in Vice City",
+      "thumb_text": "DEXTER'S APARTMENT?",
+      "hook_card": "DEXTER'S PLACE?",
+      "hooks": [
+       "GTA 6 fans have found a TV serial killer's apartment, hiding in Vice City."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:extended_look_08816",
+       "img2": "CLIP:trailer_1_00300",
+       "img3": "CLIP:extended_look_04786",
+       "img4": "CLIP:extended_look_04180",
+       "img5": "CLIP:extended_look_04115",
+       "img6": "CLIP:extended_look_00000",
+       "img7": "CLIP:trailer_2_00114",
+       "img8": "CLIP:extended_look_07018",
+       "img9": "CLIP:launch_trailer_00423",
+       "img10": "CLIP:launch_trailer_00026",
+       "img11": "CLIP:extended_look_15728",
+       "img12": "CLIP:extended_look_12920",
+       "img13": "CLIP:extended_look_09766",
+       "img14": "CLIP:trailer_2_00920"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "GTA 6 fans have found a TV serial killer's apartment, hiding in Vice City.",
+        "image": "img1",
+        "delivery": "whispers",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "In the show Dexter, he lives in Miami.",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "And Vice City is Rockstar's Miami.",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "Players found his building. It's called Trinity Apartments, a nod to the show's Trinity Killer.",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "TRINITY APARTMENTS",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "TheWrap says it's nearly a complete recreation of Dexter's apartment.",
+        "image": "img5",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "You can walk right up to the door, but you can't go inside.",
+        "image": "img6",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "The creepy part is on the roof.",
+        "image": "img7",
+        "delivery": "serious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "Players found a knife, tape, rope and a syringe up there.",
+        "image": "img8",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "Let's not ask what that's for.",
+        "image": "img9",
+        "delivery": "laughs softly",
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "Down at the docks, there's a boat you can steal.",
+        "image": "img10",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b11",
+        "narration": "Fans say it looks just like Slice of Life, Dexter's boat.",
+        "image": "img11",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "SLICE OF LIFE?",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b12",
+        "narration": "Has Rockstar confirmed it? No. It hasn't said this is Dexter's home.",
+        "image": "img12",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b13",
+        "narration": "But fans had spotted this building back in August, months before launch.",
+        "image": "img13",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b14",
+        "narration": "Which TV show should GTA hide next?",
+        "image": "img14",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "Players found Dexter Morgan's apartment in Vice City; the complex is called Trinity Apartments (a nod to the Trinity Killer); players can walk up to the door but cannot enter; on the roof is a kill kit with a knife, tape, rope and a syringe; nearby players can steal a boat that resembles Dexter's 'Slice of Life'; Rockstar hasn't explicitly identified the location as Dexter's home; fans first flagged the building in August.",
+        "sources": [
+         "https://www.dexerto.com/gta/gta-6-players-find-dexters-apartment-serial-killer-kit-and-can-even-steal-his-boat-3429888/"
+        ],
+        "main": true
+       },
+       {
+        "claim": "TheWrap: 'nearly a complete recreation of Dexter Morgan's Miami apartment from the hit series Dexter'; players can steal the 'Slice of Life' boat, find tools on the roof, and cannot enter.",
+        "sources": [
+         "https://www.thewrap.com/culture-lifestyle/culture/gta-6-dexter-morgan-apartment-easter-egg/"
+        ],
+        "main": true
+       }
+      ],
+      "description": "GTA 6 players found what looks like Dexter Morgan's Miami apartment in Vice City, a rooftop kit and his boat. Rockstar hasn't confirmed it.\nSources: Dexerto, TheWrap (19 Nov 2026).",
+      "hashtags": [
+       "#GTA6",
+       "#Dexter",
+       "#GTA6EasterEgg"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)",
+      "cover": {
+       "image": "img1",
+       "lines": [
+        "DEXTER'S",
+        "APARTMENT?"
+       ],
+       "why": "written in session"
+      }
+     },
+     "publish_at": "2026-11-21T17:00:00Z",
+     "batch": "gta6-launch-footage",
+     "seo": {
+      "category_id": "20",
+      "hashtags": [
+       "#GTA6",
+       "#GTAVI",
+       "#GrandTheftAuto6"
+      ],
+      "tags": [
+       "GTA 6",
+       "GTA VI",
+       "Grand Theft Auto 6",
+       "Grand Theft Auto VI",
+       "GTA 6 news",
+       "GTA 6 trailer",
+       "Rockstar Games",
+       "Vice City",
+       "Jason and Lucia",
+       "Leonida"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-story-length",
+   "fresh": true,
+   "nonce": "gta-footage-gta6-story-length",
+   "day": "2026-11-21",
+   "topic_def": {
+    "id": "gta6-story-length",
+    "title": "GTA 6 is about 50 hours long, one review says",
+    "pillar": "gta6",
+    "notes": {
+     "object": "official GTA 6 footage",
+     "question": "GTA 6 is about 50 hours long, one review says",
+     "angle": "VERIFIED 20 Nov 2026. Publishes 21 Nov 20:00 UTC. Script in gta_scripts.py. ScreenRant (https://screenrant.com/gta-6-main-story-length-completion/): main story roughly 50 hours across five chapters; its reviewer finished at 50h42m with some side content; GTA main stories ~30 hours since San Andreas; map roughly twice GTA 5; 100% could hit triple digits. $59.99 -> $79.99 (HotHardware). Arithmetic: ~$1.60 an hour. CTA: hours played? FORMAT FOR THIS VIDEO (its own look and feel): Tone: practical, a friend doing the maths. Shape: the question -> the hours -> the comparison -> the price per hour.",
+     "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): man beside a custom sports car in a neon garage\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+     "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
+     "official_images": "required",
+     "open_hook": true,
+     "words": [
+      110,
+      170
+     ],
+     "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
+     "style": "story",
+     "badge": "GTA 6",
+     "script": {
+      "viable": true,
+      "title": "GTA 6 is about 50 hours long, one review says",
+      "thumb_text": "50 HOURS?",
+      "hook_card": "HOW LONG?",
+      "hooks": [
+       "How long does it actually take to finish GTA 6's story?"
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:extended_look_07899",
+       "img2": "CLIP:extended_look_11437",
+       "img3": "CLIP:extended_look_10330",
+       "img4": "CLIP:trailer_2_00346",
+       "img5": "OFFICIAL:v_c670974867",
+       "img6": "OFFICIAL:v_24ba6644de",
+       "img7": "CLIP:extended_look_07501",
+       "img8": "CLIP:extended_look_11275",
+       "img9": "CLIP:trailer_2_00416",
+       "img10": "CLIP:extended_look_09166",
+       "img11": "CLIP:extended_look_10360",
+       "img12": "CLIP:extended_look_05748",
+       "img13": "CLIP:extended_look_03869"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "How long does it actually take to finish GTA 6's story?",
+        "image": "img1",
+        "delivery": "curious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "ScreenRant's reviewer reached the end in fifty hours and forty-two minutes.",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "50 HOURS 42 MINUTES",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "And that included some side content.",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "ScreenRant puts the main story at roughly fifty hours, told across five chapters.",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "5 CHAPTERS",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "Now compare that with GTA 5.",
+        "image": "img5",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "Since San Andreas, the main GTA stories have landed at around thirty hours.",
+        "image": "img6",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "ABOUT 30 HOURS",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "So this one gives you roughly twenty extra hours of story.",
+        "image": "img7",
+        "delivery": "surprised",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "+20 HOURS",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "And the map it all happens on is roughly twice the size of GTA 5's.",
+        "image": "img8",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "Now the price. The standard edition costs $79.99.",
+        "image": "img9",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "$79.99",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "Spread over fifty hours, that's about a dollar sixty an hour.",
+        "image": "img10",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "ABOUT $1.60 AN HOUR",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b11",
+        "narration": "ScreenRant says one hundred percent could take triple digits.",
+        "image": "img11",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "100%: 100+ HOURS?",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b12",
+        "narration": "So it costs twenty dollars more than GTA 5, but gives you about twenty more hours of story.",
+        "image": "img12",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b13",
+        "narration": "How many hours have you played so far?",
+        "image": "img13",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "ScreenRant: GTA 6's main story 'takes roughly 50 hours to complete, taking place across five chapters'; its reviewer reached story completion at 50 hours and 42 minutes while doing some side content; previous GTA games 'have landed around the 30-hour mark for main story content since GTA: San Andreas'; the map is roughly twice the size of GTA 5; 100% completion could easily hit a triple-digit runtime.",
+        "sources": [
+         "https://screenrant.com/gta-6-main-story-length-completion/"
+        ],
+        "main": true
+       },
+       {
+        "claim": "GTA V launched at $59.99 in the US; GTA 6 is $79.99. $79.99 over 50 hours is about $1.60 an hour (arithmetic).",
+        "sources": [
+         "https://hothardware.com/news/gta-6-launch-80-single-player-title-rockstar-reveals"
+        ],
+        "main": true
+       }
+      ],
+      "description": "One review finished GTA 6's story in 50 hours 42 minutes. How that compares with GTA 5, and what it means for the $80 price.\nSources: ScreenRant (18 Nov 2026), HotHardware.",
+      "hashtags": [
+       "#GTA6",
+       "#GTA6Review",
+       "#GrandTheftAuto"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)",
+      "cover": {
+       "image": "img1",
+       "lines": [
+        "50 HOURS",
+        "OF STORY?"
+       ],
+       "why": "written in session"
+      }
+     },
+     "publish_at": "2026-11-21T20:00:00Z",
+     "batch": "gta6-launch-footage",
+     "seo": {
+      "category_id": "20",
+      "hashtags": [
+       "#GTA6",
+       "#GTAVI",
+       "#GrandTheftAuto6"
+      ],
+      "tags": [
+       "GTA 6",
+       "GTA VI",
+       "Grand Theft Auto 6",
+       "Grand Theft Auto VI",
+       "GTA 6 news",
+       "GTA 6 trailer",
+       "Rockstar Games",
+       "Vice City",
+       "Jason and Lucia",
+       "Leonida"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-sales-estimate",
+   "fresh": true,
+   "nonce": "gta-footage-gta6-sales-estimate",
+   "day": "2026-11-21",
+   "topic_def": {
+    "id": "gta6-sales-estimate",
+    "title": "GTA 6 sold 19 million copies? Here's the catch",
+    "pillar": "gta6",
+    "notes": {
+     "object": "official GTA 6 footage",
+     "question": "GTA 6 sold 19 million copies? Here's the catch",
+     "angle": "VERIFIED 20 Nov 2026 - CAREFUL WORDING. Publishes 21 Nov 23:00 UTC. Script in gta_scripts.py. Sensor Tower ESTIMATE: 19.1M copies, ~$1.84B by the morning of release; Netflix Extended Look helped drive a sixfold jump in pre-orders; Take-Two has confirmed no numbers; Zelnick: 'we still aren't ready to declare victory' (Reuters via Yahoo, https://finance.yahoo.com/media-advertising/articles/two-set-shatter-sales-records-162847652.html; Men's Journal). GTA V 11.21M / $815.7M in 24 h (Guinness). Never state the estimate as fact. CTA: bought it day one? FORMAT FOR THIS VIDEO (its own look and feel): Tone: sceptical business reporter. Shape: the huge number -> the catch -> the GTA 5 benchmark -> what Take-Two says.",
+     "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): man beside a custom sports car in a neon garage\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+     "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
+     "official_images": "required",
+     "open_hook": true,
+     "words": [
+      110,
+      170
+     ],
+     "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
+     "style": "story",
+     "badge": "GTA 6",
+     "script": {
+      "viable": true,
+      "title": "GTA 6 sold 19 million copies? Here's the catch",
+      "thumb_text": "19 MILLION?",
+      "hook_card": "19 MILLION?",
+      "hooks": [
+       "By the morning GTA 6 came out, it may have already sold nineteen million copies."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:extended_look_10196",
+       "img2": "CLIP:extended_look_12920",
+       "img3": "CLIP:extended_look_09994",
+       "img4": "OFFICIAL:v_c670974867",
+       "img5": "OFFICIAL:v_24ba6644de",
+       "img6": "OFFICIAL:v_fdac18d437",
+       "img7": "CLIP:launch_trailer_00685",
+       "img8": "CLIP:extended_look_04451",
+       "img9": "CLIP:extended_look_07446",
+       "img10": "CLIP:trailer_2_01188",
+       "img11": "CLIP:extended_look_09166",
+       "img12": "CLIP:trailer_2_00920"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "By the morning GTA 6 came out, it may have already sold nineteen million copies.",
+        "image": "img1",
+        "delivery": "surprised",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "But here's the catch. It's an estimate from an analytics firm, Sensor Tower, not from Rockstar.",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "Its estimate: about 19.1 million copies and 1.84 billion dollars.",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "19.1M COPIES, $1.84B",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "Now think back to GTA 5's launch in 2013.",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "In its first twenty-four hours, it sold 11.21 million copies and made 815.7 million dollars.",
+        "image": "img5",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "GTA 5: 11.21M, $815.7M",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "Those numbers were confirmed by Guinness World Records.",
+        "image": "img6",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "If the estimate is right, GTA 6 beat GTA 5's whole first day by Thursday morning.",
+        "image": "img7",
+        "delivery": "excited",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "Sensor Tower says the Extended Look on Netflix helped drive a sixfold jump in pre-orders.",
+        "image": "img8",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "6X PRE-ORDERS",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "And what does Take-Two say? It hasn't confirmed a single sales number.",
+        "image": "img9",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "Earlier this month, its CEO Strauss Zelnick even said, \"we still aren't ready to declare victory.\"",
+        "image": "img10",
+        "delivery": "serious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "QUOTE: STRAUSS ZELNICK, TAKE-TWO",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b11",
+        "narration": "So until Take-Two shares real numbers, it's only an estimate. A very big one.",
+        "image": "img11",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b12",
+        "narration": "Did you buy GTA 6 on day one?",
+        "image": "img12",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "Sensor Tower estimates GTA VI sold 19.1 million units as of Thursday morning (19 Nov 2026), about $1.84 billion in revenue; Take-Two has not given official sales figures; Zelnick on the earnings call earlier this month: 'we still aren't ready to declare victory'; Sensor Tower: the Netflix 'Extended Look' helped drive a sixfold jump in pre-orders.",
+        "sources": [
+         "https://finance.yahoo.com/media-advertising/articles/two-set-shatter-sales-records-162847652.html"
+        ],
+        "main": true
+       },
+       {
+        "claim": "GTA VI sold an estimated 19.1 million copies by the morning of its release (Sensor Tower); 'Take-Two hasn't confirmed any numbers yet'.",
+        "sources": [
+         "https://www.mensjournal.com/news/gta-6-sales-19-million-copies-gta-v-record"
+        ],
+        "main": true
+       },
+       {
+        "claim": "GTA V made $815.7 million and sold 11.21 million copies in its first 24 hours (Guinness World Records).",
+        "sources": [
+         "https://www.guinnessworldrecords.com/news/2013/10/confirmed-grand-theft--auto-breaks-six-sales-world-records-51900"
+        ],
+        "main": true
+       }
+      ],
+      "description": "An analytics firm estimates GTA 6 sold 19.1 million copies by launch morning. Take-Two hasn't confirmed a number yet.\nSources: Reuters (via Yahoo Finance), Men's Journal, Guinness World Records.",
+      "hashtags": [
+       "#GTA6",
+       "#GTA5",
+       "#GrandTheftAuto"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)",
+      "cover": {
+       "image": "img1",
+       "lines": [
+        "19 MILLION",
+        "COPIES?"
+       ],
+       "why": "written in session"
+      }
+     },
+     "publish_at": "2026-11-21T23:00:00Z",
+     "batch": "gta6-launch-footage",
+     "seo": {
+      "category_id": "20",
+      "hashtags": [
+       "#GTA6",
+       "#GTAVI",
+       "#GrandTheftAuto6"
+      ],
+      "tags": [
+       "GTA 6",
+       "GTA VI",
+       "Grand Theft Auto 6",
+       "Grand Theft Auto VI",
+       "GTA 6 news",
+       "GTA 6 trailer",
+       "Rockstar Games",
+       "Vice City",
+       "Jason and Lucia",
+       "Leonida"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-first-look-2021",
+   "fresh": true,
+   "nonce": "gta-footage-gta6-first-look-2021",
+   "day": "2026-11-21",
+   "topic_def": {
+    "id": "gta6-first-look-2021",
+    "title": "GTA 6 fans think we saw it back in 2021",
+    "pillar": "gta6",
+    "notes": {
+     "object": "official GTA 6 footage",
+     "question": "GTA 6 fans think we saw it back in 2021",
+     "angle": "VERIFIED 20 Nov 2026 - FAN THEORY. Publishes 22 Nov 02:00 UTC. Script in gta_scripts.py. A Belville house in GTA 6 matches a house image exclusive to GTA: San Andreas - Definitive Edition (2021), speculated to come from GTA 6 development; 'line up to the smallest details, like the placement of plants and trees'; VGC: 'may have been our first look' (https://www.videogameschronicle.com/news/gta-6-players-discover-our-real-first-look-at-the-game-was-likely-hidden-in-a-2021-remaster/). Trailer 1: Dec 2023. No fan names. CTA: other clues? FORMAT FOR THIS VIDEO (its own look and feel): Tone: detective. Shape: the clue in 2021 -> the match in 2026 -> the details -> a fan theory, clearly labelled.",
+     "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): man beside a custom sports car in a neon garage\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+     "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
+     "official_images": "required",
+     "open_hook": true,
+     "words": [
+      110,
+      170
+     ],
+     "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
+     "style": "story",
+     "badge": "GTA 6",
+     "script": {
+      "viable": true,
+      "title": "GTA 6 fans think we saw it back in 2021",
+      "thumb_text": "SEEN IN 2021?",
+      "hook_card": "SEEN IN 2021?",
+      "hooks": [
+       "Fans think GTA 6 was hiding in plain sight, years before its first trailer."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:extended_look_03021",
+       "img2": "CLIP:trailer_1_00026",
+       "img3": "CLIP:trailer_2_00188",
+       "img4": "CLIP:extended_look_12920",
+       "img5": "CLIP:extended_look_11275",
+       "img6": "CLIP:extended_look_10262",
+       "img7": "CLIP:extended_look_04786",
+       "img8": "CLIP:trailer_2_00232",
+       "img9": "CLIP:trailer_1_00300",
+       "img10": "CLIP:trailer_2_00346",
+       "img11": "CLIP:extended_look_07446",
+       "img12": "CLIP:trailer_2_00920"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "Fans think GTA 6 was hiding in plain sight, years before its first trailer.",
+        "image": "img1",
+        "delivery": "curious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "In 2021, Rockstar released a remaster of GTA San Andreas.",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "SAN ANDREAS REMASTER, 2021",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "It had a picture of a house that only appeared in that version.",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "Some fans wondered if it came from GTA 6's development.",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "Now the game is out, and fans mapping Leonida found that same house, in Belville.",
+        "image": "img5",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "BELVILLE",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "VGC says the two images line up down to the smallest details.",
+        "image": "img6",
+        "delivery": "surprised",
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "Even the plants and trees outside are in the same places.",
+        "image": "img7",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "So that 2021 picture may have been our first look at GTA 6.",
+        "image": "img8",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "The first official trailer only came in December 2023.",
+        "image": "img9",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "TRAILER 1: DEC 2023",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "To be clear, it's a fan theory. Rockstar hasn't confirmed it.",
+        "image": "img10",
+        "delivery": "serious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b11",
+        "narration": "But if fans are right, GTA 6 was first seen in 2021, and almost nobody noticed.",
+        "image": "img11",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b12",
+        "narration": "What other GTA 6 clues do you think fans missed?",
+        "image": "img12",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "A house in Belville in GTA 6 matches a house image from GTA: San Andreas - Definitive Edition (2021); the image was exclusive to that edition and was speculated to come from GTA 6 development; found by a member of the GTA VI Mapping server; 'The two images of the houses line up to the smallest details, like the placement of plants and trees outside of the home'; VGC: it 'may have been our first look at GTA 6'. A fan theory; no Rockstar comment reported.",
+        "sources": [
+         "https://www.videogameschronicle.com/news/gta-6-players-discover-our-real-first-look-at-the-game-was-likely-hidden-in-a-2021-remaster/"
+        ],
+        "main": true
+       },
+       {
+        "claim": "GTA 6's first trailer was released in December 2023.",
+        "sources": [
+         "https://www.videogameschronicle.com/news/the-gta-6-trailer-has-allegedly-leaked-online/"
+        ],
+        "main": false
+       }
+      ],
+      "description": "Fans matched a house in GTA 6's Belville to a picture in 2021's San Andreas remaster. Was it our first look? A fan theory; Rockstar hasn't confirmed it.\nSource: VGC (18 Nov 2026).",
+      "hashtags": [
+       "#GTA6",
+       "#GTASanAndreas",
+       "#GrandTheftAuto"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)",
+      "cover": {
+       "image": "img1",
+       "lines": [
+        "FIRST SEEN",
+        "IN 2021?"
+       ],
+       "why": "written in session"
+      }
+     },
+     "publish_at": "2026-11-22T02:00:00Z",
+     "batch": "gta6-launch-footage",
+     "seo": {
+      "category_id": "20",
+      "hashtags": [
+       "#GTA6",
+       "#GTAVI",
+       "#GrandTheftAuto6"
+      ],
+      "tags": [
+       "GTA 6",
+       "GTA VI",
+       "Grand Theft Auto 6",
+       "Grand Theft Auto VI",
+       "GTA 6 news",
+       "GTA 6 trailer",
+       "Rockstar Games",
+       "Vice City",
+       "Jason and Lucia",
+       "Leonida"
+      ]
+     }
+    }
+   }
   }
  ]
 }
