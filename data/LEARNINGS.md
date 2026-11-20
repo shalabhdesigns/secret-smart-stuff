@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-19 21:00 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-20 07:45 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - News-style topics got more views than film topics: 2,045 vs 311 median (pattern, n=5 vs 7). Film kept more subs per 1k, so do not judge on views alone.
@@ -16,6 +16,57 @@ Updated 2026-11-19 21:00 UTC. Built from every published video's 48 h and 7 day 
 - Walk_past, why_detail, by_country, india_asia, virality: not enough data yet (n=2–3). Walk_past's median views (2,417, n=2) are too thin to act on.
 
 ## Per-video analyses
+
+### gta6-lucia-v3 (48h) — above median
+- 324 views · 58.56% viewed · 6 likes · 0 shares · 1 subs (median views 157, n=33)
+- The video beat the channel median on views (324 vs 157), engaged views (169 vs 69) and likes (6 vs 2), and average view percentage was roughly level (58.56% vs 57.54%), but average view duration was slightly short (18s vs 20s), so viewers likely left around the 'Technically, no' answer; with one video this is a hypothesis.
+  - ✅ Views (324 vs channel median 157) and engaged views (169 vs 69) were both well above the median at the same age.
+  - ✅ Likes were 6 vs a median of 2, and the video gained 1 subscriber vs a median of 0.
+  - ✅ Average view percentage (58.56%) was slightly above the median (57.54%), so the video held attention proportionally about as well as typical channel videos.
+  - ✅ The question hook ('Was GTA 6's Lucia GTA's first woman?', hook_heuristic 41) plausibly drove the strong engaged-view count, though one video cannot prove it.
+  - ✅ Instagram Reels reached more people than the Short (1,545 views and 1,233 reach vs 324 Shorts views), so the content has cross-platform appeal.
+  - ❌ Average view duration (18s) was below the median (20s), and the video is 31.6s long, so many viewers left before the payoff.
+  - ❌ Comments and shares were both 0, matching the median but giving no sign of sharing pull.
+  - ❌ On Instagram, the skip rate was 30.1% and there were only 21 total interactions (18 likes, 3 saves, 0 shares) on 1,545 views, so engagement per view was thin there too.
+  - ❌ The title ('Lucia is the GTA hero we waited 29 years for') promises a hero story, but the script resolves to 'Technically, no' and then a different first-fully-written-lead claim. That mismatch may have hurt the payoff.
+  - ❌ Self-review scored image_word_match and payoff at 3, the two weakest areas, which fits a visual or payoff gap.
+  - ❌ No retention curve was provided (retention is empty), so the drop points below are inferred from timing and script, not measured.
+  - ❌ The features contain no learnings_applied field, so I cannot judge whether earlier lessons helped.
+  - 📉 b7: Twenty-nine years. Quite the loading screen. @ 19.2 s: Inferred: average view duration of 18s suggests the typical exit falls just before this point. The on-screen beat is a joke-style pause rather than new information, so viewers who were waiting for the answer may have lost patience.
+  - 📉 b8: So is she first? Technically, no. @ 22.56 s: Inferred: the question hook is answered with a 'no', which may deflate the curiosity the hook created. Viewers who expected a yes/no answer may leave before the Power Up Gaming payoff in b9.
+  - 💡 [hook, hypothesis] Keep using a question hook that is answered within the first 25 seconds, and test it against a bold statement hook on the next GTA 6 video to see which holds more viewers.
+  - 💡 [story, hypothesis] Move the real answer (the Power Up Gaming first fully voiced lead) earlier, before the 'Technically, no' pivot, so the payoff arrives before viewers drop off around 18–22s.
+  - 💡 [title, hypothesis] Match the title to the question the video answers (e.g., 'Was Lucia GTA's first woman?') rather than a claim the script does not fully deliver, and track whether title-hook alignment changes average view duration.
+  - 💡 [visuals, hypothesis] When a beat names a character or game moment, show that exact image on screen, since image_word_match was self-scored at 3 and likely contributed to the weak payoff.
+  - 💡 [pacing, hypothesis] Cut the 'Twenty-nine years. Quite the loading screen.' joke beat or shorten it, to remove a likely dead spot around 19s.
+  - 💡 [length, hypothesis] Test a tighter cut of about 20–25 seconds on the next video, since the average view duration of 18s suggests much of the 31.6s runtime is not being watched.
+  - 💡 [loop, hypothesis] The loop lead-in ('Now you know the answer to...') is set up, but no rewatch data was provided, so record rewatch rate on the next videos before judging whether the loop works.
+  - 💡 [topic, hypothesis] Treat GTA 6 as a promising pillar given strong Shorts engaged views and Reels reach, but confirm with at least 3–5 more videos in this pillar before scaling it.
+
+### gta6-ps5-space-v2 (48h) — below median
+- 90 views · 48.34% viewed · 2 likes · 0 shares · 0 subs (median views 160, n=33)
+- This GTA 6 Short underperformed the channel median on YouTube (90 views vs 160, 48% average view percentage vs 58%), with viewers dropping off steeply before the answer arrived at 27 seconds, while the same video did better on Instagram (1,357 views, 1,103 reach).
+  - ✅ The opening question hook ('Will GTA 6 fit an 825GB PS5?') held the first few seconds well: retention was still about 1.08 at 3.8s, with no drop from the hook beat.
+  - ✅ Instagram reach (1,103) and views (1,357) were strong for the same video, so the content has some pull on that platform.
+  - ✅ The 'Check free space' and 'Delete games, or add an M.2 SSD' beats (b8–b9) lost almost no viewers (retention flat at 0.289 and drops only to 0.263), so the practical, actionable part kept the viewers who stayed.
+  - ❌ The answer came too late. 'It fits, if you clear 212 GB' only appears at 27.1s, after retention had already fallen to about 0.26. Most viewers left before getting the payoff of the hook's question.
+  - ❌ The biggest single losses came in the middle of the setup, not at the hook: retention fell from 1.08 to 0.90 at b2 (the 212 GB pre-load claim) and from 0.76 to 0.68 by 8.9s. The viewer was asked a question and then fed a new number before getting a clear answer.
+  - ❌ The video restates the 825GB figure and then the 667GB usable figure, then 212GB and a third of that, a stack of numbers in 20 seconds that is hard to follow on a phone.
+  - ❌ The ending is a cliffhanger prompt ('What are you deleting?' then 'Before launch, ask yourself...'), and it lost a lot of viewers right at the end (0.26 to 0.13 at 31s). The final line is also cut off, so it does not feel like a clean finish.
+  - ❌ Retention at 0.5 of the video was about 0.40, so only about 40% of viewers reached the midpoint. Average view percentage (48%) is below the channel median of 58%.
+  - ❌ Engagement was weak: 2 likes, 0 comments, 0 shares, 0 subscribers gained, and 38 engaged views (vs median 71).
+  - ❌ The learnings applied to this video (many carried over from earlier gta6 and postmortem lessons) do not show a clear benefit. The video still landed below median, and the features list has many gta6 variants marked 'drop' or 'stop'. There is no clear evidence in this single video that applying these lessons helped.
+  - 📉 b2 @ 5.5 s: Largest drop (1.08 to 0.90). The hook asked a yes/no question, and the next line introduced a new figure ('pre-load needs up to 212 gigabytes') before answering it. Viewers who wanted the answer felt it was being withheld, and the 212 GB number was not yet tied to their own drive.
+  - 📉 b2 @ 7.2 s: Second steady loss (0.90 to 0.76) while the pre-load size was still on screen with no explanation of why it matters. Viewers were still waiting for whether their PS5 fits.
+  - 📉 b4 @ 14.1 s: Drop of about 0.10 (0.58 to 0.47) during the 'original PS5 has an 825-gigabyte drive' beat. This repeats the hook's number, so it feels like the video is restating itself rather than advancing toward the answer.
+  - 📉 b11 @ 31.3 s: Biggest late drop (0.26 to 0.13). The answer had just been given at 27s, so the 'What are you deleting?' prompt reads as an open-ended question that viewers did not want to engage with, and the ending felt like a sign-off.
+  - 💡 [hook, hypothesis] Give the answer to the hook question in the first 10 seconds (e.g., 'Yes, it fits, if you clear about 212 GB') and then explain, instead of saving the answer until 27s.
+  - 💡 [story, hypothesis] Limit each explainer to one main number and explain it before introducing another. Avoid stacking 825 GB, 667 GB, 212 GB and 'a third' in the same 20 seconds.
+  - 💡 [pacing, hypothesis] Cut repeated restatements of the headline figure (the 825 GB line in b4) and move straight to the next point to avoid mid-video drops.
+  - 💡 [loop, hypothesis] Finish the final line completely and tie the ending back to the opening question, instead of ending on an unfinished prompt ('Before launch, ask yourself...').
+  - 💡 [topic, hypothesis] Treat the gta6 pillar as weak for this channel: several earlier gta6 variants were dropped or stopped, and this video is below median. Test gta6 topics only with a clear, single-answer hook.
+  - 💡 [visuals, hypothesis] Keep practical 'do this now' steps (check free space, delete games, M.2 SSD) on screen as they are spoken, since that section held viewers best.
+  - 💡 [length, hypothesis] Keep the Short near 30 seconds or less; the viewer average watch time was 16s, so a shorter script with the answer up front is likely to hold more of the audience.
 
 ### gta6-13-years-v2 (48h) — above median
 - 235 views · 46.12% viewed · 6 likes · 0 shares · 1 subs (median views 157, n=31)
