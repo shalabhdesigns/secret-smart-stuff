@@ -1977,7 +1977,8 @@
    "img10": "CLIP:extended_look_08740",
    "img11": "CLIP:extended_look_15698",
    "img12": "CLIP:trailer_2_00831",
-   "img13": "CLIP:trailer_2_00795"
+   "img13": "CLIP:trailer_2_00895",
+   "img14": "CLIP:trailer_2_00795"
   },
   "scenes": [
    {
@@ -2132,7 +2133,7 @@
    },
    {
     "id": "b11",
-    "narration": "And the way-too-relatable one? It goes to Jason's friend, Cal Hampton.",
+    "narration": "And the way-too-relatable one goes to Jason's friend, Cal Hampton.",
     "image": "img11",
     "delivery": null,
     "focus": null,
@@ -2149,7 +2150,7 @@
     "id": "b12",
     "narration": "Rockstar says: \"Cal is at the low tide of America and happy there.\"",
     "image": "img12",
-    "delivery": "laughs softly",
+    "delivery": null,
     "focus": null,
     "motion": "drift",
     "transition": "cut",
@@ -2162,8 +2163,23 @@
    },
    {
     "id": "b13",
-    "narration": "Which GTA 6 character are you most excited to meet?",
+    "narration": "In other words, he's at the bottom, and he's completely fine with it. Honestly? Same.",
     "image": "img13",
+    "delivery": "laughs softly",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "SAME, CAL",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b14",
+    "narration": "Which GTA 6 character are you most excited to meet?",
+    "image": "img14",
     "delivery": null,
     "focus": null,
     "motion": "push",

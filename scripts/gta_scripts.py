@@ -373,9 +373,11 @@ S["gta6-cast-one-liners"] = dict(
          "QUOTE: ROCKSTAR GAMES", None),
         ("Raul Bautista is a bank robber who is always hunting for talent.", "CLIP:extended_look_08740",
          None, None),
-        ("And the way-too-relatable one? It goes to Jason's friend, Cal Hampton.", "CLIP:extended_look_15698", None, None),
+        ("And the way-too-relatable one goes to Jason's friend, Cal Hampton.", "CLIP:extended_look_15698", None, None),
         ("Rockstar says: \"Cal is at the low tide of America and happy there.\"", "CLIP:trailer_2_00831",
-         "QUOTE: ROCKSTAR GAMES", "laughs softly"),
+         "QUOTE: ROCKSTAR GAMES", None),
+        ("In other words, he's at the bottom, and he's completely fine with it. Honestly? Same.",
+         "CLIP:trailer_2_00895", "SAME, CAL", "laughs softly"),
         ("Which GTA 6 character are you most excited to meet?", "CLIP:trailer_2_00795", None, None),
     ],
     facts=[
