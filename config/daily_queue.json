@@ -78,11 +78,11 @@
      "badge": "GTA 6",
      "script": {
       "viable": true,
-      "title": "GTA 6's wildest scenes really happened in Florida",
+      "title": "GTA 6's wildest scenes match real Florida videos",
       "thumb_text": "IT REALLY HAPPENED",
       "hook_card": "THIS WAS REAL?",
       "hooks": [
-       "Some of the wildest scenes in GTA 6's first trailer actually happened in real life."
+       "Some of the wildest scenes in GTA 6's first trailer look just like real viral videos."
       ],
       "chosen_hook": 0,
       "images": {
@@ -91,17 +91,16 @@
        "img3": "CLIP:trailer_1_00248",
        "img4": "CLIP:trailer_2_00346",
        "img5": "CLIP:trailer_1_00424",
-       "img6": "CLIP:trailer_1_00635",
-       "img7": "CLIP:trailer_1_00475",
-       "img8": "CLIP:trailer_1_00666",
-       "img9": "CLIP:extended_look_12920",
-       "img10": "CLIP:trailer_1_00183",
-       "img11": "CLIP:extended_look_10298"
+       "img6": "CLIP:trailer_1_00475",
+       "img7": "CLIP:extended_look_11148",
+       "img8": "CLIP:extended_look_12920",
+       "img9": "CLIP:trailer_1_00183",
+       "img10": "CLIP:extended_look_10298"
       },
       "scenes": [
        {
         "id": "b1",
-        "narration": "Some of the wildest scenes in GTA 6's first trailer actually happened in real life.",
+        "narration": "Some of the wildest scenes in GTA 6's first trailer look just like real viral videos.",
         "image": "img1",
         "delivery": "surprised",
         "focus": null,
@@ -177,7 +176,7 @@
        {
         "id": "b6",
         "narration": "A real trapper did exactly that, and a Florida news station filmed it in 2019.",
-        "image": "img6",
+        "image": "img5",
         "delivery": null,
         "focus": null,
         "motion": "drift",
@@ -192,7 +191,7 @@
        {
         "id": "b7",
         "narration": "And the alligator wandering into a store? A real one walked into a Florida Walmart back in 2013.",
-        "image": "img7",
+        "image": "img6",
         "delivery": "laughs softly",
         "focus": null,
         "motion": "push",
@@ -206,8 +205,8 @@
        },
        {
         "id": "b8",
-        "narration": "Even the dirt bikes and ATVs racing through the streets made South Florida news.",
-        "image": "img8",
+        "narration": "Even dirt bike crews racing around South Florida made the local news.",
+        "image": "img7",
         "delivery": null,
         "focus": null,
         "motion": "push",
@@ -222,7 +221,7 @@
        {
         "id": "b9",
         "narration": "Rockstar has never said which clips inspired these scenes.",
-        "image": "img9",
+        "image": "img8",
         "delivery": null,
         "focus": null,
         "motion": "drift",
@@ -237,7 +236,7 @@
        {
         "id": "b10",
         "narration": "But next time GTA 6 feels way over the top, remember that real Florida got there first.",
-        "image": "img10",
+        "image": "img9",
         "delivery": null,
         "focus": null,
         "motion": "push",
@@ -252,7 +251,7 @@
        {
         "id": "b11",
         "narration": "What's the craziest Florida story you've ever heard?",
-        "image": "img11",
+        "image": "img10",
         "delivery": null,
         "focus": null,
         "motion": "push",
@@ -2631,11 +2630,11 @@
      "badge": "GTA 6",
      "script": {
       "viable": true,
-      "title": "GTA 6's wildest scenes really happened in Florida",
+      "title": "GTA 6's wildest scenes match real Florida videos",
       "thumb_text": "IT REALLY HAPPENED",
       "hook_card": "THIS WAS REAL?",
       "hooks": [
-       "Some of the wildest scenes in GTA 6's first trailer actually happened in real life."
+       "Some of the wildest scenes in GTA 6's first trailer look just like real viral videos."
       ],
       "chosen_hook": 0,
       "images": {
@@ -2644,17 +2643,16 @@
        "img3": "CLIP:trailer_1_00248",
        "img4": "CLIP:trailer_2_00346",
        "img5": "CLIP:trailer_1_00424",
-       "img6": "CLIP:trailer_1_00635",
-       "img7": "CLIP:trailer_1_00475",
-       "img8": "CLIP:trailer_1_00666",
-       "img9": "CLIP:extended_look_12920",
-       "img10": "CLIP:trailer_1_00183",
-       "img11": "CLIP:extended_look_10298"
+       "img6": "CLIP:trailer_1_00475",
+       "img7": "CLIP:extended_look_11148",
+       "img8": "CLIP:extended_look_12920",
+       "img9": "CLIP:trailer_1_00183",
+       "img10": "CLIP:extended_look_10298"
       },
       "scenes": [
        {
         "id": "b1",
-        "narration": "Some of the wildest scenes in GTA 6's first trailer actually happened in real life.",
+        "narration": "Some of the wildest scenes in GTA 6's first trailer look just like real viral videos.",
         "image": "img1",
         "delivery": "surprised",
         "focus": null,
@@ -2730,7 +2728,7 @@
        {
         "id": "b6",
         "narration": "A real trapper did exactly that, and a Florida news station filmed it in 2019.",
-        "image": "img6",
+        "image": "img5",
         "delivery": null,
         "focus": null,
         "motion": "drift",
@@ -2745,7 +2743,7 @@
        {
         "id": "b7",
         "narration": "And the alligator wandering into a store? A real one walked into a Florida Walmart back in 2013.",
-        "image": "img7",
+        "image": "img6",
         "delivery": "laughs softly",
         "focus": null,
         "motion": "push",
@@ -2759,8 +2757,8 @@
        },
        {
         "id": "b8",
-        "narration": "Even the dirt bikes and ATVs racing through the streets made South Florida news.",
-        "image": "img8",
+        "narration": "Even dirt bike crews racing around South Florida made the local news.",
+        "image": "img7",
         "delivery": null,
         "focus": null,
         "motion": "push",
@@ -2775,7 +2773,7 @@
        {
         "id": "b9",
         "narration": "Rockstar has never said which clips inspired these scenes.",
-        "image": "img9",
+        "image": "img8",
         "delivery": null,
         "focus": null,
         "motion": "drift",
@@ -2790,7 +2788,7 @@
        {
         "id": "b10",
         "narration": "But next time GTA 6 feels way over the top, remember that real Florida got there first.",
-        "image": "img10",
+        "image": "img9",
         "delivery": null,
         "focus": null,
         "motion": "push",
@@ -2805,7 +2803,7 @@
        {
         "id": "b11",
         "narration": "What's the craziest Florida story you've ever heard?",
-        "image": "img11",
+        "image": "img10",
         "delivery": null,
         "focus": null,
         "motion": "push",
@@ -3519,8 +3517,8 @@
        "img7": "CLIP:trailer_2_00851",
        "img8": "CLIP:trailer_1_00341",
        "img9": "CLIP:trailer_1_00325",
-       "img10": "CLIP:extended_look_12920",
-       "img11": "CLIP:trailer_2_00895",
+       "img10": "CLIP:extended_look_08740",
+       "img11": "CLIP:extended_look_15698",
        "img12": "CLIP:trailer_2_00831",
        "img13": "CLIP:trailer_2_00795"
       },
@@ -3587,7 +3585,7 @@
        },
        {
         "id": "b5",
-        "narration": "Her line: \"Lucia's father taught her to fight as soon as she could walk.\"",
+        "narration": "Rockstar's bio says: \"Lucia's father taught her to fight as soon as she could walk.\"",
         "image": "img5",
         "delivery": null,
         "focus": null,
