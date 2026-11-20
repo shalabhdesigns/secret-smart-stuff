@@ -670,6 +670,93 @@ S["gta6-first-look-2021"] = dict(
 )
 
 
+# ---- RESERVE scripts (20 Nov 2026, owner away): evergreen, no time words; used only if a slot is empty ----
+S["gta6-trailer-songs"] = dict(
+    title="GTA 6's trailers brought two old songs back to life",
+    thumb_text="TWO OLD SONGS",
+    hook_card="TWO OLD SONGS",
+    cover_lines=["TWO OLD SONGS", "BACK TO LIFE"],
+    beats=[
+        ("GTA 6 didn't just break view records. It brought two old songs back from the dead.",
+         "CLIP:trailer_2_00920", None, "excited"),
+        ("The first trailer used Tom Petty's Love Is a Long Road, a song from 1989.", "CLIP:trailer_1_00300",
+         "TRAILER 1: TOM PETTY, 1989", None),
+        ("After that trailer dropped, Spotify streams of the song jumped by about thirty-seven thousand percent.",
+         "CLIP:trailer_1_00325", "+37,000%", "surprised"),
+        ("And here's a nice detail: Tom Petty was born in Gainesville, Florida.", "CLIP:trailer_1_00356",
+         "BORN IN FLORIDA", None),
+        ("That's the state GTA 6's Leonida is based on.", "CLIP:extended_look_11275", None, None),
+        ("Then the second trailer did it again, only bigger.", "CLIP:trailer_2_00346", None, "short pause"),
+        ("It used Hot Together by The Pointer Sisters, a song from 1986.", "CLIP:extended_look_10196",
+         "TRAILER 2: POINTER SISTERS, 1986", None),
+        ("In the two hours after that trailer came out, its Spotify streams surged by one hundred and eighty-two "
+         "thousand percent.", "CLIP:trailer_1_00341", "+182,000%", "excited"),
+        ("That's almost five times Tom Petty's jump.", "CLIP:extended_look_08740", None, None),
+        ("Two songs from the eighties, suddenly everywhere again, because of one game.", "CLIP:trailer_2_00831",
+         None, None),
+        ("Which song would you put on GTA 6's radio?", "CLIP:launch_trailer_00026", None, None),
+    ],
+    facts=[
+        {"claim": "GTA 6 trailer 1 (Dec 2023) used Tom Petty's 'Love Is A Long Road' (1989, Full Moon Fever); "
+                  "Spotify streams rose by 36,979% compared with the week before (IGN citing Spotify, via GameSpot); "
+                  "Tom Petty was born in Gainesville, Florida, in 1950; GTA 6's Leonida is based on Florida.",
+         "sources": ["https://www.gamespot.com/articles/gta-6-trailer-helps-tom-petty-song-surge-37000-on-spotify/1100-6519729/",
+                     "https://tompetty.com/blogs/news/tom-petty-s-love-is-a-long-road-from-full-moon-fever-featured-in-trailer-1-of-grand-theft-auto-vi"],
+         "main": True},
+        {"claim": "GTA 6 trailer 2 used the 1986 song 'Hot Together' by The Pointer Sisters; its Spotify streams "
+                  "'surged by 182,000% in the two hours after the trailer's release'; the Tom Petty song saw 'a "
+                  "similar (though somewhat more modest) 37,000% increase'. 182,000 / 37,000 = 4.9.",
+         "sources": ["https://www.techradar.com/gaming/spotify-streams-of-the-latest-grand-theft-auto-6-trailer-song-increased-by-182-000-percent-just-two-hours-after-the-trailer-dropped"],
+         "main": True},
+    ],
+    description="Tom Petty's 'Love Is a Long Road' (+37,000% on Spotify) and The Pointer Sisters' 'Hot Together' "
+                "(+182,000% in two hours): how GTA 6's trailers revived two 80s songs.\n"
+                "Sources: GameSpot/IGN, TechRadar, tompetty.com.",
+    hashtags=["#GTA6", "#TomPetty", "#PointerSisters"],
+)
+
+S["gta6-vice-city-1986"] = dict(
+    title="GTA 6 isn't our first trip to Vice City",
+    thumb_text="BACK TO VICE CITY",
+    hook_card="1986 VS NOW",
+    cover_lines=["VICE CITY", "1986 VS NOW"],
+    beats=[
+        ("GTA 6 isn't the first time Rockstar has taken us to Vice City.", "CLIP:extended_look_10132", None,
+         "curious"),
+        ("The first trip was GTA Vice City, which came out in October 2002 on the PlayStation 2.",
+         "CLIP:trailer_1_00300", "OCT 2002, PS2", None),
+        ("It was set in 1986, in a city based heavily on Miami.", "CLIP:trailer_1_00325", "SET IN 1986", None),
+        ("You played as gangster Tommy Vercetti, voiced by the actor Ray Liotta.", "CLIP:extended_look_08740",
+         "TOMMY VERCETTI", None),
+        ("It was a huge hit, with over seventeen and a half million copies sold.", "CLIP:trailer_1_00341",
+         "17.5M COPIES", "surprised"),
+        ("It was one of the PlayStation 2's best-selling games.", "CLIP:trailer_2_00346", None, None),
+        ("Now GTA 6 brings Vice City back, inside a state called Leonida, inspired by Florida.",
+         "CLIP:extended_look_11275", "LEONIDA", None),
+        ("And instead of one gangster, there are two leads: Jason Duval and Lucia Caminos.", "CLIP:trailer_2_00920",
+         "JASON + LUCIA", "excited"),
+        ("Same city name, more than twenty years later, and a whole new story.", "CLIP:trailer_2_00831", None, None),
+        ("Did you ever play the original Vice City?", "CLIP:launch_trailer_00026", None, None),
+    ],
+    facts=[
+        {"claim": "GTA Vice City 'was released in October 2002 for the PlayStation 2'; 'set in 1986 in fictional "
+                  "Vice City, which is based heavily on the city of Miami, Florida'; protagonist 'gangster Tommy "
+                  "Vercetti (voiced by Ray Liotta)'; 'has sold over 17.5 million copies overall'; 'one of the "
+                  "PlayStation 2's best-selling games with 14.2 million copies sold'.",
+         "sources": ["https://en.wikipedia.org/wiki/Grand_Theft_Auto:_Vice_City"], "main": True},
+        {"claim": "'GTA 6 takes place in the state of Leonida, a fictional location inspired by Florida'; 'our two "
+                  "protagonists, Jason Duval and Lucia Caminos'; Rockstar's site: 'Vice City, USA.' and 'Home to the "
+                  "neon-soaked streets of Vice City and beyond'.",
+         "sources": ["https://www.destructoid.com/?p=436313",
+                     "https://www.rockstargames.com/VI/only-in-leonida/vice-city"], "main": True},
+    ],
+    description="GTA Vice City (PS2, October 2002) was set in 1986 with Tommy Vercetti, voiced by Ray Liotta, and "
+                "sold over 17.5 million copies. GTA 6 brings Vice City back with Jason and Lucia.\n"
+                "Sources: Wikipedia, Destructoid, Rockstar Games.",
+    hashtags=["#GTA6", "#GTAViceCity", "#GrandTheftAuto"],
+)
+
+
 def build(topic: str, v: dict) -> dict:
     images, scenes = {}, []
     for i, (text, shot, callout, delivery) in enumerate(v["beats"], 1):

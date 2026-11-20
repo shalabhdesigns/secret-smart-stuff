@@ -167,6 +167,10 @@ V = {
   "VERIFIED 20 Nov 2026 - CAREFUL WORDING. Publishes 21 Nov 23:00 UTC. Script in gta_scripts.py. Sensor Tower ESTIMATE: 19.1M copies, ~$1.84B by the morning of release; Netflix Extended Look helped drive a sixfold jump in pre-orders; Take-Two has confirmed no numbers; Zelnick: 'we still aren't ready to declare victory' (Reuters via Yahoo, https://finance.yahoo.com/media-advertising/articles/two-set-shatter-sales-records-162847652.html; Men's Journal). GTA V 11.21M / $815.7M in 24 h (Guinness). Never state the estimate as fact. CTA: bought it day one?"),
   "gta6-first-look-2021": ("GTA 6 fans think we saw it back in 2021",
   "VERIFIED 20 Nov 2026 - FAN THEORY. Publishes 22 Nov 02:00 UTC. Script in gta_scripts.py. A Belville house in GTA 6 matches a house image exclusive to GTA: San Andreas - Definitive Edition (2021), speculated to come from GTA 6 development; 'line up to the smallest details, like the placement of plants and trees'; VGC: 'may have been our first look' (https://www.videogameschronicle.com/news/gta-6-players-discover-our-real-first-look-at-the-game-was-likely-hidden-in-a-2021-remaster/). Trailer 1: Dec 2023. No fan names. CTA: other clues?"),
+  "gta6-trailer-songs": ("GTA 6's trailers brought two old songs back to life",
+  "RESERVE (evergreen), VERIFIED 20 Nov 2026. Script in gta_scripts.py. Tom Petty 'Love Is A Long Road' (1989) +36,979% Spotify after trailer 1 (IGN/GameSpot); The Pointer Sisters 'Hot Together' (1986) +182,000% in two hours after trailer 2 (TechRadar). CTA: which song on GTA 6's radio?"),
+  "gta6-vice-city-1986": ("GTA 6 isn't our first trip to Vice City",
+  "RESERVE (evergreen), VERIFIED 20 Nov 2026. Script in gta_scripts.py. GTA Vice City: PS2, Oct 2002, set in 1986, Miami-based, Tommy Vercetti voiced by Ray Liotta, 17.5M+ copies (Wikipedia). GTA 6: Leonida inspired by Florida, leads Jason Duval and Lucia Caminos (Destructoid). CTA: played the original?"),
 }
 
 # owner (16 Nov 2026): each video must look and feel different -> its own format, pace and opening style
@@ -200,6 +204,8 @@ FORMATS = {
  "gta6-story-length": "Tone: practical, a friend doing the maths. Shape: the question -> the hours -> the comparison -> the price per hour.",
  "gta6-sales-estimate": "Tone: sceptical business reporter. Shape: the huge number -> the catch -> the GTA 5 benchmark -> what Take-Two says.",
  "gta6-first-look-2021": "Tone: detective. Shape: the clue in 2021 -> the match in 2026 -> the details -> a fan theory, clearly labelled.",
+ "gta6-trailer-songs": "Tone: music nerd, delighted. Shape: the claim -> song one + number -> Florida link -> song two, bigger -> comparison.",
+ "gta6-vice-city-1986": "Tone: nostalgic friend. Shape: not the first trip -> 2002 game facts -> the hit -> the new Vice City -> the new leads.",
 }
 
 # publish times (UTC); 5 a day, every 3 h over the US day (owner, 16 Nov: 5 a day)
@@ -236,6 +242,12 @@ PLAN = [
 ]
 
 
+# 20 Nov 2026 (owner away 21-27 Nov): evergreen scripts (no time words) that fill any GTA slot the script desk
+# could not fill. Each needs a finished, fact-checked script in scripts/gta_scripts.py. The daily run uses them in
+# this order and only once.
+RESERVE = ["gta6-trailer-songs", "gta6-vice-city-1986"]
+
+
 def build():
     from shorts.official import catalogue_text
     from shorts.official_clips import shots_text
@@ -243,7 +255,7 @@ def build():
             + "\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\n"
             + catalogue_text(("GTA V",)))
     q = []
-    for day, at, tid in PLAN:
+    for day, at, tid in PLAN + [(None, None, t) for t in RESERVE]:
         title, angle = V[tid]
         if tid in FORMATS:
             angle += " FORMAT FOR THIS VIDEO (its own look and feel): " + FORMATS[tid]
@@ -255,8 +267,14 @@ def build():
                  "seo": {"category_id": "20", "hashtags": ["#GTA6", "#GTAVI", "#GrandTheftAuto6"],
                          "tags": ["GTA 6", "GTA VI", "Grand Theft Auto 6", "Grand Theft Auto VI", "GTA 6 news",
                                   "GTA 6 trailer", "Rockstar Games", "Vice City", "Jason and Lucia", "Leonida"]}}
-        q.append({"action": "produce", "topic": tid, "fresh": True, "nonce": f"gta-footage-{tid}", "day": day,
+        # 20 Nov 2026: a remake of a topic on a later day needs its own nonce (the daily run skips used nonces)
+        nonce = f"gta-footage-{tid}" if (day or "") <= "2026-11-20" else f"gta-footage-{tid}-{day}"
+        q.append({"action": "produce", "topic": tid, "fresh": True, "nonce": nonce, "day": day,
                   "topic_def": {"id": tid, "title": title, "pillar": "gta6", "notes": notes}})
+        if day is None:          # RESERVE: no day, no slot; the daily run gives it an empty slot
+            q[-1].pop("day")
+            q[-1]["reserve"] = True
+            q[-1]["nonce"] = f"gta-reserve-{tid}"
     return q
 
 
@@ -265,4 +283,4 @@ if __name__ == "__main__":
     q = build()
     json.dump({"note": "GTA 6 launch week, footage edition (owner, 16 Nov 2026): 5 a day, Rockstar footage. "
                "Built by scripts/gta_queue.py.", "queue": q}, open(out, "w"), indent=1, ensure_ascii=False)
-    print(len(q), sorted({x['day'] for x in q}))
+    print(len(q), sorted({x['day'] for x in q if x.get('day')}), 'reserves:', sum(1 for x in q if x.get('reserve')))

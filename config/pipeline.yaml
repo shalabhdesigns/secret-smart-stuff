@@ -3,6 +3,7 @@ mode: dry_run            # dry_run (fake providers, no spend) | live
 
 quiet_from: "2026-11-20T18:30:00Z"    # 00:00 IST 21 Nov
 quiet_until: "2026-11-27T03:30:00Z"   # owner away 21-27 Nov (back ~09:00 IST 27 Nov): no Telegram messages or alert issues
+gta_reserve_until: "2026-11-30"   # evergreen reserve scripts fill empty GTA slots (owner away)
 series_hold: false   # 18 Nov 2026: owner approved the story-format sample (heat-vice-city-v3); queue resumes
 daily_paused_until: "2026-11-30"   # owner, 14 Nov 2026: the GTA 6 series (3 a day, config/daily_queue.json) replaces the normal daily video for the rest of November
 

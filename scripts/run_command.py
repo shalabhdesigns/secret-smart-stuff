@@ -407,8 +407,20 @@ def do_produce(p: Pipeline, req: dict) -> int:
         if qf.exists() and p.state.get_setting("last_daily_ist") != today:
             # owner (5 Nov 2026): a planned batch is made one video per day, in order, before normal daily topics
             done = json.loads(p.state.get_setting("daily_queue_done") or "[]")
-            todays = [it for it in json.loads(qf.read_text()).get("queue") or []
-                      if it.get("day") == today and it.get("nonce") not in done]
+            allq = json.loads(qf.read_text()).get("queue") or []
+            todays = [it for it in allq if it.get("day") == today and it.get("nonce") not in done]
+            # 20 Nov 2026 (owner away 21-27 Nov): if the script desk did not fill all 5 GTA slots for today, evergreen
+            # reserve scripts ("reserve": true, written and fact-checked in advance) take the empty slots
+            if today <= str(p.cfg.pipeline.get("gta_reserve_until") or ""):
+                nxt_day = time.strftime("%Y-%m-%d", time.gmtime(time.time() + 5.5 * 3600 + 86400))
+                slots = [f"{today}T14:00:00Z", f"{today}T17:00:00Z", f"{today}T20:00:00Z", f"{today}T23:00:00Z",
+                         f"{nxt_day}T02:00:00Z"]
+                have = {((it.get("topic_def") or {}).get("notes") or {}).get("publish_at") for it in todays}
+                used = {jj["topic_id"] for jj in p.state.jobs()}
+                res = [it for it in allq if it.get("reserve") and it.get("nonce") not in done and it.get("topic") not in used]
+                for slot, it in zip([s_ for s_ in slots if s_ not in have], res):
+                    todays.append({**it, "slot": slot})
+                    p.state.log(f"daily: reserve {it.get('topic')} fills the empty {slot} slot", "warn")
             if todays:
                 # owner (14 Nov 2026): several planned videos a day -> one chain; each keeps its fixed publish time
                 for it in todays:
@@ -419,13 +431,16 @@ def do_produce(p: Pipeline, req: dict) -> int:
                 head["then"] = todays[1:]
                 req.clear()
                 req.update(head)
+                if req.get("slot") and req.get("topic_def"):
+                    req["topic_def"] = json.loads(json.dumps(req["topic_def"]))
+                    req["topic_def"]["notes"]["publish_at"] = req["slot"]
                 print(f"daily: making today's {len(todays)} planned videos: {[t.get('topic') for t in todays]}")
                 chain_next(p, req)        # 14 Nov 2026: main() chained the plain daily request, so queue the rest here
                 nxt = head
             for item in ([] if todays else json.loads(qf.read_text()).get("queue") or []):
                 made = any(jj["topic_id"] == item.get("topic") and jj["status"] in
                            ("published", "approved", "review", "running", "paused") for jj in p.state.jobs())
-                if item.get("nonce") not in done and not made and not item.get("day"):   # dated items wait for their day
+                if item.get("nonce") not in done and not made and not item.get("day") and not item.get("reserve"):
                     nxt = item
                     break
         if nxt and "then" not in nxt:          # a single planned video (a dated chain was booked above)
@@ -779,7 +794,8 @@ def _compact(item: dict) -> dict:
     """16 Nov 2026: a queued GTA item is ~27 KB, and GitHub caps a dispatch at 65 KB, so a chain of 5 can't travel
     whole. Items that live in config/daily_queue.json travel as their nonce and are looked up again on arrival."""
     if item.get("nonce") and item.get("topic_def") and _queue_item(item["nonce"]):
-        return {"queue_nonce": item["nonce"], "then": [_compact(t) for t in item.get("then") or []]}
+        return {"queue_nonce": item["nonce"], **({"slot": item["slot"]} if item.get("slot") else {}),
+                "then": [_compact(t) for t in item.get("then") or []]}
     return {**item, "then": [_compact(t) for t in item.get("then") or []]} if item.get("then") else item
 
 
@@ -791,10 +807,14 @@ def main(path: str) -> int:
             raise SystemExit(f"queued item {req['queue_nonce']} not found in config/daily_queue.json")
         full.pop("day", None)
         full["then"] = req.get("then") or []
-        for k in ("hold", "test_while_held", "publish_at"):      # 18 Nov 2026: a held sample of a queued video
+        for k in ("hold", "test_while_held", "publish_at", "slot"):      # 18 Nov 2026: a held sample of a queued video
             if k in req:
                 full[k] = req[k]
         req = full
+    if req.get("slot") and req.get("topic_def"):
+        # 20 Nov 2026: a reserve script filling an empty slot today (owner away): it takes that slot's publish time
+        req["topic_def"] = json.loads(json.dumps(req["topic_def"]))
+        req["topic_def"].setdefault("notes", {})["publish_at"] = req["slot"]
     action = req.get("action")
     p = Pipeline(load())
     if req.get("owner_ok_extra_daily_usd"):
