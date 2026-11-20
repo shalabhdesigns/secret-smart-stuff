@@ -134,7 +134,10 @@ def render(picture: Path, lines: list[str], out: Path, zone: str | None = None, 
     zones = ZONES_LOGO if real else ZONES_BADGE if badge else ZONES
     zone = zone or min(zones, key=lambda z: _busy(base, *zones[z]))
     z0, z1 = zones[zone]
-    if real:     # owner, 20 Nov 2026: the real GTA VI logo, only
+    if real:     # owner, 20 Nov 2026: the real GTA VI logo, only (and no "GTA 6" words repeated under it)
+        import re as _re
+        lines = [x for x in (_re.sub(r"^\s*GTA\s*(6|VI)\b[:,']?S?\s*", "", t, flags=_re.I).strip() for t in lines) if x] \
+            or lines
         lg = _logo.logo(badge, 600)
         rgba = base.convert("RGBA")
         rgba.alpha_composite(lg, (W // 2 - lg.width // 2, z0 - lg.width // 16))

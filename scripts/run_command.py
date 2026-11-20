@@ -941,6 +941,16 @@ def main(path: str) -> int:
         gh("issue", "create", "--title", f"Calibration: final review of {job}", "--body", body[:60000], check=False)
         print(body)
         return 0
+    if action == "set_covers":   # 20 Nov 2026: put the real logo on every older GTA video's thumbnail in one run
+        bad = 0
+        for item in req["items"]:
+            try:
+                tmp = Path(tempfile.mkstemp(suffix=".json")[1])
+                tmp.write_text(json.dumps({**item, "action": "set_cover"}))
+                bad += main(str(tmp)) or 0
+            except Exception as e:  # one old bundle must not stop the rest
+                print(f"{item.get('job')}: {e}"); bad += 1
+        return 1 if bad else 0
     if action == "set_cover":
         # 19 Nov 2026: Claude picks a better cover frame for a made video: {"job", "frame": {"image", "t", "x"},
         # "lines"?}. Re-renders the cover from the saved clips (no paid call), updates the review release (which the
@@ -959,7 +969,7 @@ def main(path: str) -> int:
         if req.get("lines"):
             plan_["lines"] = req["lines"]
         cp.write_text(json.dumps(plan_, ensure_ascii=False))
-        cover.make(None, d, badge=tn.get("badge"))
+        cover.make(None, d, badge=req.get("badge") or tn.get("badge"))
         subprocess.run(["bash", "-c", f'cd "{d}" && tar -czf /tmp/media.tgz --exclude=./final.mp4 --exclude=./video.mp4 '
                         '--exclude=./mix.wav --exclude=./mix.bed.wav --exclude=./media.tgz --exclude=./prior . && '
                         f'mv /tmp/media.tgz "{d}/media.tgz"'], check=True)
