@@ -4396,9 +4396,9 @@
        ],
        "why": "written in session",
        "frame": {
-        "image": "img1",
-        "t": 1.0,
-        "x": 0.5
+        "shot": "trailer_2_01400",
+        "f": 0.5,
+        "x": 0.68
        }
       }
      },
@@ -4723,9 +4723,9 @@
        ],
        "why": "written in session",
        "frame": {
-        "image": "img7",
-        "t": 1.0,
-        "x": 0.5
+        "shot": "extended_look_08201",
+        "f": 0.5,
+        "x": 0.3
        }
       }
      },
@@ -5034,9 +5034,9 @@
        ],
        "why": "written in session",
        "frame": {
-        "image": "img13",
-        "t": 1.2,
-        "x": 0.5
+        "shot": "extended_look_09432",
+        "f": 0.5,
+        "x": 0.55
        }
       }
      },
@@ -5336,9 +5336,9 @@
        ],
        "why": "written in session",
        "frame": {
-        "image": "img12",
-        "t": 2.0,
-        "x": 0.5
+        "shot": "trailer_1_00686",
+        "f": 0.5,
+        "x": 0.28
        }
       }
      },
@@ -5631,9 +5631,9 @@
        ],
        "why": "written in session",
        "frame": {
-        "image": "img1",
-        "t": 2.0,
-        "x": 0.5
+        "shot": "trailer_1_00065",
+        "f": 0.5,
+        "x": 0.42
        }
       }
      },
@@ -5908,7 +5908,12 @@
         "EXPLODED ON SPOTIFY",
         "THANKS TO THE TRAILERS"
        ],
-       "why": "written in session"
+       "why": "written in session",
+       "frame": {
+        "shot": "trailer_1_00248",
+        "f": 0.5,
+        "x": 0.35
+       }
       }
      },
      "publish_at": null,
@@ -6167,7 +6172,12 @@
         "VS GTA 6'S VICE CITY",
         "WHAT CHANGED?"
        ],
-       "why": "written in session"
+       "why": "written in session",
+       "frame": {
+        "shot": "trailer_1_00217",
+        "f": 0.5,
+        "x": 0.2
+       }
       }
      },
      "publish_at": null,

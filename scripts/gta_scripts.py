@@ -448,7 +448,7 @@ S["gta6-stream-record"] = dict(
     thumb_text="7.9M WATCHING",
     hook_card="7.9 MILLION?",
     cover_lines=["7.9 MILLION WATCHED", "OTHERS PLAY IT", "AT THE SAME TIME"],
-    cover_frame={"image": "img1", "t": 1.0, "x": 0.5},
+    cover_frame={"shot": "trailer_2_01400", "f": 0.5, "x": 0.68},   # jet-ski jump
     beats=[
         ("When GTA 6 unlocked this week, almost eight million people watched other people play it, all at once.",
          "CLIP:trailer_2_00232", None, "excited"),
@@ -496,7 +496,7 @@ S["gta6-dexter-apartment"] = dict(
     thumb_text="DEXTER'S APARTMENT?",
     hook_card="DEXTER'S PLACE?",
     cover_lines=["FANS SAY THEY FOUND", "DEXTER'S APARTMENT", "IN VICE CITY"],
-    cover_frame={"image": "img7", "t": 1.0, "x": 0.5},
+    cover_frame={"shot": "extended_look_08201", "f": 0.5, "x": 0.3},   # masked man
     beats=[
         ("GTA 6 fans have found a TV serial killer's apartment, hiding in Vice City.", "CLIP:extended_look_08816",
          None, "whispers"),
@@ -542,7 +542,7 @@ S["gta6-story-length"] = dict(
     thumb_text="50 HOURS?",
     hook_card="HOW LONG?",
     cover_lines=["HOW MANY HOURS", "TO FINISH THE STORY?", "A REVIEWER TIMED IT"],
-    cover_frame={"image": "img13", "t": 1.2, "x": 0.5},
+    cover_frame={"shot": "extended_look_09432", "f": 0.5, "x": 0.55},   # police chase
     beats=[
         ("How long does it actually take to finish GTA 6's story?", "CLIP:extended_look_07899", None, "curious"),
         ("ScreenRant's reviewer reached the end in fifty hours and forty-two minutes.", "CLIP:extended_look_11437",
@@ -587,7 +587,7 @@ S["gta6-sales-estimate"] = dict(
     thumb_text="19 MILLION?",
     hook_card="19 MILLION?",
     cover_lines=["19 MILLION SOLD", "ON DAY ONE?", "HERE'S THE CATCH"],
-    cover_frame={"image": "img12", "t": 2.0, "x": 0.5},
+    cover_frame={"shot": "trailer_1_00686", "f": 0.5, "x": 0.28},   # masked Lucia, robbery
     beats=[
         ("By the morning GTA 6 came out, it may have already sold nineteen million copies.",
          "CLIP:extended_look_10196", None, "surprised"),
@@ -636,7 +636,7 @@ S["gta6-first-look-2021"] = dict(
     thumb_text="SEEN IN 2021?",
     hook_card="SEEN IN 2021?",
     cover_lines=["FANS SAY WE SAW IT", "BACK IN 2021", "WITHOUT NOTICING"],
-    cover_frame={"image": "img1", "t": 2.0, "x": 0.5},
+    cover_frame={"shot": "trailer_1_00065", "f": 0.5, "x": 0.42},   # Lucia in prison
     beats=[
         ("Fans think GTA 6 was hiding in plain sight, years before its first trailer.", "CLIP:extended_look_03021",
          None, "curious"),
@@ -681,6 +681,7 @@ S["gta6-trailer-songs"] = dict(
     thumb_text="TWO OLD SONGS",
     hook_card="TWO OLD SONGS",
     cover_lines=["TWO 80s SONGS", "EXPLODED ON SPOTIFY", "THANKS TO THE TRAILERS"],
+    cover_frame={"shot": "trailer_1_00248", "f": 0.5, "x": 0.35},   # dancing on a car roof
     beats=[
         ("GTA 6 didn't just break view records. It brought two old songs back from the dead.",
          "CLIP:trailer_2_00920", None, "excited"),
@@ -725,6 +726,7 @@ S["gta6-vice-city-1986"] = dict(
     thumb_text="BACK TO VICE CITY",
     hook_card="1986 VS NOW",
     cover_lines=["VICE CITY IN 1986", "VS GTA 6'S VICE CITY", "WHAT CHANGED?"],
+    cover_frame={"shot": "trailer_1_00217", "f": 0.5, "x": 0.2},   # Vice City beach
     beats=[
         ("GTA 6 isn't the first time Rockstar has taken us to Vice City.", "CLIP:extended_look_10132", None,
          "curious"),

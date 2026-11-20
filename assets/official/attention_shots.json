@@ -1,0 +1,55 @@
+{
+ "_note": "21 Nov 2026 (owner): cover pictures must grab attention. Official shots for cover_frame {'shot': id, 'f': 0-1, 'x': 0-1}. Preview frames first with the shotframes workflow; rotate, never repeat a recent one. Checked frames (f=0.5, x): trailer_2_01400 0.68 jet ski; extended_look_08201 0.3 masked man; extended_look_09432 0.55 police chase; trailer_1_00686 0.28 masked Lucia; trailer_1_00065 0.42 Lucia in prison; trailer_1_00248 0.35 dancing on car; trailer_1_00217 0.2 beach; extended_look_06943 0.38 masked Lucia leather jacket; extended_look_07171 0.4 masked pair outside store; extended_look_07189 0.38 masked pair inside store; trailer_2_00114 0.45 shirtless Jason on roof; trailer_2_01113 0.5 fire behind a motel",
+ "robbery/masks": [
+  "extended_look_06943",
+  "extended_look_07018",
+  "extended_look_07171",
+  "extended_look_07189",
+  "extended_look_07206",
+  "extended_look_07291",
+  "trailer_1_00625",
+  "trailer_1_00686",
+  "extended_look_08201"
+ ],
+ "police/prison": [
+  "trailer_1_00645",
+  "trailer_1_00666",
+  "trailer_2_00452",
+  "trailer_2_00498",
+  "trailer_2_00518",
+  "trailer_2_00605",
+  "trailer_2_00631",
+  "trailer_1_00050",
+  "trailer_1_00065",
+  "trailer_1_00084",
+  "trailer_2_00860",
+  "extended_look_09432"
+ ],
+ "glamour/party": [
+  "extended_look_10132",
+  "extended_look_10422",
+  "extended_look_10510",
+  "extended_look_15524",
+  "launch_trailer_00380",
+  "launch_trailer_00450",
+  "launch_trailer_00551",
+  "launch_trailer_00570",
+  "trailer_1_00248",
+  "trailer_1_00341",
+  "trailer_2_00114",
+  "trailer_2_00383",
+  "trailer_1_00217",
+  "preload_now_00175",
+  "extended_look_12606"
+ ],
+ "danger/stunts": [
+  "extended_look_10450",
+  "trailer_1_00232",
+  "trailer_1_00424",
+  "trailer_1_00475",
+  "trailer_2_01400",
+  "trailer_1_00521",
+  "trailer_1_00635",
+  "trailer_2_01113"
+ ]
+}
