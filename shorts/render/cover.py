@@ -197,6 +197,7 @@ def make(llm_ask, d: Path, news: bool = False, news_rule: str | None = None, bad
     p = json.loads(early.read_text()) if early.exists() else plan(llm_ask, script, news, news_rule)
     pic = d / f"{p['image']}.png"
     fr = p.get("frame")
+    zone = (fr or {}).get("zone") or ("lower" if (fr or {}).get("shot") else None)   # people's faces sit up top
     if fr and fr.get("shot"):
         # 21 Nov 2026 (owner: cover pictures must grab attention): any official shot, not only ones in the video -
         # e.g. a masked robbery, a police chase, a beach. {"shot": id, "f": 0-1 point in the shot, "x": 0-1 crop}
@@ -235,7 +236,7 @@ def make(llm_ask, d: Path, news: bool = False, news_rule: str | None = None, bad
         if not cands:
             raise FileNotFoundError("no pictures for the cover")
         pic = cands[0]
-    render(pic, p["lines"], d / "cover.jpg", badge=badge)
+    render(pic, p["lines"], d / "cover.jpg", badge=badge, zone=zone)
     p["file"] = str(d / "cover.jpg")
     (d / "cover.json").write_text(json.dumps(p, ensure_ascii=False, indent=1))
     return p
