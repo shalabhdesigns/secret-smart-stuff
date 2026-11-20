@@ -1473,7 +1473,8 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
                         (_logo.frame_png(tnotes["badge"], d / "logo_small.png", 190, (150, 300)), 1.8, end + 1)]
         ass = write_ass(words, d / "captions.ass", y_center=y_cap, hook=hook, hook_y=hook_y,
                         badge=tnotes.get("badge"), duration=end, hook_outro=not self._story,
-                        badge_text=not real_logo,
+                        # owner, 20 Nov 2026: never the old pink "GTA 6" text again; no logo file -> no badge
+                        badge_text=not (real_logo or str(tnotes.get("badge") or "").upper() in _logo.LOGOS),
                         font=self.cfg.channel["style"]["caption_font"],
                         font_size=self.cfg.channel["style"]["caption_size"],
                         highlight=ass_colour(self.cfg.channel["style"].get("caption_highlight", "#FFE500")),
