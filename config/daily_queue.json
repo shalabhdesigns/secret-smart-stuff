@@ -86,14 +86,14 @@
       ],
       "chosen_hook": 0,
       "images": {
-       "img1": "CLIP:trailer_1_00475",
+       "img1": "CLIP:extended_look_10196",
        "img2": "CLIP:trailer_1_00325",
        "img3": "CLIP:trailer_1_00248",
        "img4": "CLIP:trailer_2_00346",
        "img5": "CLIP:trailer_1_00424",
-       "img6": "CLIP:extended_look_15485",
-       "img7": "CLIP:extended_look_07238",
-       "img8": "CLIP:trailer_1_00656",
+       "img6": "CLIP:trailer_1_00635",
+       "img7": "CLIP:trailer_1_00475",
+       "img8": "CLIP:trailer_1_00666",
        "img9": "CLIP:extended_look_12920",
        "img10": "CLIP:trailer_1_00183",
        "img11": "CLIP:extended_look_10298"
@@ -131,7 +131,7 @@
        },
        {
         "id": "b3",
-        "narration": "Remember the woman dancing on top of a moving car?",
+        "narration": "Remember the woman dancing on top of a car?",
         "image": "img3",
         "delivery": "curious",
         "focus": null,
@@ -206,7 +206,7 @@
        },
        {
         "id": "b8",
-        "narration": "Even the dirt bikes popping wheelies through the streets were on South Florida news.",
+        "narration": "Even the dirt bikes and ATVs racing through the streets made South Florida news.",
         "image": "img8",
         "delivery": null,
         "focus": null,
@@ -2639,14 +2639,14 @@
       ],
       "chosen_hook": 0,
       "images": {
-       "img1": "CLIP:trailer_1_00475",
+       "img1": "CLIP:extended_look_10196",
        "img2": "CLIP:trailer_1_00325",
        "img3": "CLIP:trailer_1_00248",
        "img4": "CLIP:trailer_2_00346",
        "img5": "CLIP:trailer_1_00424",
-       "img6": "CLIP:extended_look_15485",
-       "img7": "CLIP:extended_look_07238",
-       "img8": "CLIP:trailer_1_00656",
+       "img6": "CLIP:trailer_1_00635",
+       "img7": "CLIP:trailer_1_00475",
+       "img8": "CLIP:trailer_1_00666",
        "img9": "CLIP:extended_look_12920",
        "img10": "CLIP:trailer_1_00183",
        "img11": "CLIP:extended_look_10298"
@@ -2684,7 +2684,7 @@
        },
        {
         "id": "b3",
-        "narration": "Remember the woman dancing on top of a moving car?",
+        "narration": "Remember the woman dancing on top of a car?",
         "image": "img3",
         "delivery": "curious",
         "focus": null,
@@ -2759,7 +2759,7 @@
        },
        {
         "id": "b8",
-        "narration": "Even the dirt bikes popping wheelies through the streets were on South Florida news.",
+        "narration": "Even the dirt bikes and ATVs racing through the streets made South Florida news.",
         "image": "img8",
         "delivery": null,
         "focus": null,
@@ -3358,7 +3358,7 @@
        },
        {
         "id": "b10",
-        "narration": "But almost every review praises the same thing: Leonida itself.",
+        "narration": "Reviewers also praise how packed and detailed the game's world feels.",
         "image": "img10",
         "delivery": null,
         "focus": null,
@@ -3373,7 +3373,7 @@
        },
        {
         "id": "b11",
-        "narration": "One roundup calls Vice City the most reactive city Rockstar has ever built.",
+        "narration": "One roundup calls it the most reactive city Rockstar has built.",
         "image": "img11",
         "delivery": null,
         "focus": null,
@@ -3506,7 +3506,7 @@
       "thumb_text": "WHO ARE THEY?",
       "hook_card": "ONE LINE EACH",
       "hooks": [
-       "Rockstar sums up each GTA 6 character in one sentence, and one is way too relatable."
+       "Rockstar sums up its GTA 6 characters in one sentence each, and one of them is way too relatable."
       ],
       "chosen_hook": 0,
       "images": {
@@ -3527,7 +3527,7 @@
       "scenes": [
        {
         "id": "b1",
-        "narration": "Rockstar sums up each GTA 6 character in one sentence, and one is way too relatable.",
+        "narration": "Rockstar sums up its GTA 6 characters in one sentence each, and one of them is way too relatable.",
         "image": "img1",
         "delivery": "curious",
         "focus": null,
@@ -3572,7 +3572,7 @@
        },
        {
         "id": "b4",
-        "narration": "Then Lucia Caminos, who starts the story in prison.",
+        "narration": "Then Lucia Caminos, the other lead.",
         "image": "img4",
         "delivery": null,
         "focus": null,
@@ -3677,7 +3677,7 @@
        },
        {
         "id": "b11",
-        "narration": "But the best line goes to Jason's friend, Cal Hampton.",
+        "narration": "And the way-too-relatable one? It goes to Jason's friend, Cal Hampton.",
         "image": "img11",
         "delivery": null,
         "focus": null,
@@ -3905,7 +3905,7 @@
        },
        {
         "id": "b6",
-        "narration": "For comparison, the first trailer got about 93 million views on YouTube on its first day.",
+        "narration": "For comparison, the first trailer got about 93 million views in its first day, on YouTube alone.",
         "image": "img6",
         "delivery": null,
         "focus": null,
@@ -3920,7 +3920,7 @@
        },
        {
         "id": "b7",
-        "narration": "And that was already a record.",
+        "narration": "And that was already huge for a GTA trailer.",
         "image": "img7",
         "delivery": null,
         "focus": null,
