@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-20 07:45 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-20 20:43 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - News-style topics got more views than film topics: 2,045 vs 311 median (pattern, n=5 vs 7). Film kept more subs per 1k, so do not judge on views alone.
@@ -16,6 +16,30 @@ Updated 2026-11-20 07:45 UTC. Built from every published video's 48 h and 7 day 
 - Walk_past, why_detail, by_country, india_asia, virality: not enough data yet (n=2–3). Walk_past's median views (2,417, n=2) are too thin to act on.
 
 ## Per-video analyses
+
+### pilot-meals-v1 (7d) — below median
+- 535 views · 52.5% viewed · 5 likes · 0 shares · 0 subs (median views 1117.0, n=24)
+- This Short underperformed the channel median on YouTube (535 views vs 1,117; 218 engaged views vs 514; 5 likes vs 13.5), though it held average view duration at the median and did much better on Instagram (1,589 views), so the topic may work better on that platform than on YouTube.
+  - ✅ Average view duration (21s) matched the channel median, so the 39-second runtime was not too long for viewers who stayed.
+  - ✅ The first ~6 seconds held viewers well: retention went from 1.207 at 0.4s to 0.94 at 6.3s, and the 'Question' hook was followed by a clear answer (b2, b3).
+  - ✅ Instagram performance was strong relative to YouTube: 1,589 views (about 3x the YouTube count), 25 total interactions vs 5 on YouTube, and a 29.5% skip rate.
+  - ✅ Average view percentage (52.5%) was close to the channel median (56.9%), so the video was not abandoned early on average.
+  - ❌ The largest single retention drop came at the b3-to-b4 transition (8.2s to 10.2s, 0.82 to 0.627), losing about 19 percentage points of the audience in two seconds.
+  - ❌ Zero comments and zero shares on YouTube, matching the median but giving no social lift; subscribers gained was 0 vs a median of 1.
+  - ❌ Retention fell below 50% by about 19-20 seconds, before the middle of the script, so most viewers left before the payoff.
+  - ❌ The video ends on an unfinished line ('Now you'll know the answer to...'), so the payoff is never delivered on screen, which likely hurts the share and rewatch signals the self-review scored at 3 each.
+  - ❌ The 'learnings_applied' list (learjet, handrail, ramayana, tiffin lessons) cannot be linked to any measured outcome here. There is no control group or before/after comparison, so there is no evidence these lessons helped or hurt. The self-review mean of 3.89 is an internal score, not an audience signal.
+  - 📉 b3 -> b4 @ 10.0 s: Largest drop (0.82 to 0.627 between 8.2s and 10.2s). The b3 caveat ('It's airline policy, not a worldwide law') feels like a deflating answer to the hook question, then b4 jumps to a new 1975 omelet story. Viewers may have left at the answer or at the abrupt change of topic. (Hypothesis)
+  - 📉 b2 -> b3 @ 6.6 s: Retention dropped about 0.12 across the b2 line ('One bad meal is unlikely to reach both') and into b3. The answer is being delivered as a qualifier before any story has started, which may signal that the video is a short explainer rather than a payoff.
+  - 📉 b7 -> b8 @ 23.9 s: Steady decline (0.447 to 0.392) at the lasagna joke line 'Backups are great, until they share lasagna.' Smaller than the b4 drop, but a clear point of loss in the middle of the video.
+  - 📉 b9 @ 27.8 s: Drop of about 0.046 around 'Many airlines make the two pilots pick different dishes,' which is a generic, factual statement with no visual or story hook behind it.
+  - 💡 [story, hypothesis] Do not give the answer ('airline policy, not a law') before the story has begun; open the body with the 1975 omelet story and deliver the policy answer at the end.
+  - 💡 [pacing, hypothesis] Cut or merge the caveat line in b3 so the story beat starts within about 6 seconds; the biggest loss happened at that transition.
+  - 💡 [loop, hypothesis] Finish the final line with the actual answer, or make the loop lead-in point to the hook, so the ending gives a payoff instead of trailing off.
+  - 💡 [hook, hypothesis] The question hook held the first seconds well (retention above 1 at the start, likely from loop replays), so keep question-style hooks but test a more concrete first line.
+  - 💡 [length, hypothesis] Reduce the 86-word, 39-second script; about half the viewers were gone by ~19s, so target a tighter runtime for topics where the payoff is a single fact.
+  - 💡 [topic, hypothesis] Test this topic again with a story-led format, and compare YouTube and Instagram results before deciding whether to keep it, since Instagram performance was much stronger.
+  - 💡 [title, hypothesis] Keep the title's concrete question format, but check whether the 'pilots vs co-pilots' framing attracts the audience on YouTube (535 views vs 1,117 median) compared with Instagram.
 
 ### gta6-lucia-v3 (48h) — above median
 - 324 views · 58.56% viewed · 6 likes · 0 shares · 1 subs (median views 157, n=33)
