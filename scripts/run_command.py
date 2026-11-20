@@ -1392,6 +1392,18 @@ def main(path: str) -> int:
         if not JOB_RE.fullmatch(job):
             return 1
         print(json.dumps(ig.publish_due(p.state, early_min=60, only=job), default=str))
+        # 21 Nov 2026: a cover set right after the upload (video still processing) was replaced by a video frame on
+        # YouTube for 3 videos. Set it again now, at the minute the video goes public.
+        try:
+            from shorts.publish.youtube import set_thumbnail
+            up = p.state.db.execute("SELECT video_id FROM uploads WHERE job_id=? AND video_id IS NOT NULL",
+                                    (job,)).fetchone()
+            tmp = Path(tempfile.mkdtemp())
+            gh("release", "download", f"review-{job}", "-p", "cover.jpg", "-D", str(tmp), check=False)
+            if up and (tmp / "cover.jpg").exists():
+                print("youtube cover again:", json.dumps(set_thumbnail(up["video_id"], tmp / "cover.jpg")))
+        except Exception as e:  # noqa: BLE001
+            print("youtube cover again failed:", e)
         return 0
     if action == "ig_manual":
         # the owner posted this Reel by hand (Telegram "I posted it" button): never auto-post it later
