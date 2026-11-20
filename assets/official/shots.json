@@ -1781,6 +1781,65 @@
    "start": 663.23,
    "end": 671.9,
    "shows": "Blonde woman in floral top stands up from the table beside an older man, rooftop party, daytime"
+  },
+  "out_now_00000": {
+   "clip": "out_now",
+   "start": 0.0,
+   "end": 5.2,
+   "shows": "Completely black frame, nothing visible",
+   "avoid": "black/blank frame"
+  },
+  "out_now_00052": {
+   "clip": "out_now",
+   "start": 5.2,
+   "end": 6.77,
+   "shows": "Daytime marina promenade, woman watches a racing-suit mascot cheer by AudaCity sign, Ferris wheel behind"
+  },
+  "out_now_00067": {
+   "clip": "out_now",
+   "start": 6.77,
+   "end": 9.03,
+   "shows": "Grand Theft Auto VI logo over a neon-lit street at dusk with cars",
+   "avoid": "title card/logo"
+  },
+  "out_now_00090": {
+   "clip": "out_now",
+   "start": 9.03,
+   "end": 10.1,
+   "shows": "Man in bucket hat and sunglasses stands by a bright window, looking at camera"
+  },
+  "out_now_00101": {
+   "clip": "out_now",
+   "start": 10.1,
+   "end": 11.2,
+   "shows": "Muscular man in tank top brawls with shirtless tattooed man in dim pink-lit room",
+   "avoid": "violent fight, possibly sexualized shirtless scene"
+  },
+  "out_now_00112": {
+   "clip": "out_now",
+   "start": 11.2,
+   "end": 12.67,
+   "shows": "Luxury white yacht speeding through water by a sunny Miami-like waterfront in daytime"
+  },
+  "out_now_00126": {
+   "clip": "out_now",
+   "start": 12.67,
+   "end": 17.57,
+   "shows": "Dark stairwell with armed tactical officers in helmets moving in formation, aiming weapons",
+   "avoid": "guns pointed, raid scene, very dark"
+  },
+  "out_now_00175": {
+   "clip": "out_now",
+   "start": 17.57,
+   "end": 18.57,
+   "shows": "Blond man in teal tank top and sunglasses shouts in a sunlit doorway by water"
+  },
+  "out_now_00185": {
+   "clip": "out_now",
+   "start": 18.57,
+   "end": 29.13,
+   "shows": "Grand Theft Auto VI end card: logo, 'Out Now', purple background, platform and rating logos",
+   "avoid": "title card with logo and mostly on-screen text"
   }
  }
 }
