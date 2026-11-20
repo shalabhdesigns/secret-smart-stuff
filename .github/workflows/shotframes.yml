@@ -1,0 +1,40 @@
+# Frames of chosen official shots, to pick cover pictures (21 Nov 2026). Input: shot ids, comma separated.
+name: shotframes
+on:
+  workflow_dispatch:
+    inputs:
+      shots: { description: "shot ids, comma separated", required: true }
+permissions: { contents: write }
+jobs:
+  grab:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env: { GH_TOKEN: "${{ github.token }}", SHOTS: "${{ github.event.inputs.shots }}" }
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -q -r requirements.txt && scripts/install_ffmpeg.sh
+      - uses: actions/cache/restore@v4
+        with:
+          path: assets/official/clips
+          key: official-clips-v1-${{ github.run_id }}
+          restore-keys: official-clips-v1-
+      - run: |
+          python - <<'PY'
+          import os, re, subprocess
+          from pathlib import Path
+          from shorts import official_clips as oc
+          out = Path(os.environ["RUNNER_TEMP"]) / "frames"; out.mkdir()
+          cat = oc.shots_catalogue()
+          for sid in [x.strip() for x in os.environ["SHOTS"].split(",") if re.fullmatch(r"[a-z0-9_]{3,60}", x.strip())]:
+              sh = cat.get(sid)
+              if not sh: print("unknown", sid); continue
+              src = oc.CLIPS / f"{sh['clip']}.mp4"
+              for f in (0.2, 0.5, 0.8):
+                  t = sh["start"] + (sh["end"] - sh["start"]) * f
+                  subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{t:.2f}", "-i", str(src), "-frames:v", "1",
+                                  "-vf", "scale=480:-1", str(out / f"{sid}_{int(f*10)}.jpg")], check=True)
+          PY
+          gh release delete shotframes --yes 2>/dev/null || true
+          gh release create shotframes --draft --title "shot frames (private draft)" --notes "frames" "$RUNNER_TEMP"/frames/*.jpg

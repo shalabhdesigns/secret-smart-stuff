@@ -852,8 +852,12 @@ if __name__ == "__main__":
                 errs.append(f"{t}: cover_lines must be 3 lines, 6-12 words, each <= 22 characters ({lines})")
             if any(x.upper().startswith(("GTA 6", "GTA VI")) for x in lines):
                 errs.append(f"{t}: a cover line starts with 'GTA 6' (the logo already says it)")
-        img = (c.get("frame") or {}).get("image") or c.get("image") or "img1"
-        key = (out[t]["images"].get(img, ""), round(float((c.get("frame") or {}).get("t", -1)), 1))
+        fr = c.get("frame") or {}
+        if fr.get("shot"):
+            key = ("CLIP:" + fr["shot"], round(float(fr.get("f", 0.5)), 1))
+        else:
+            img = fr.get("image") or c.get("image") or "img1"
+            key = (out[t]["images"].get(img, ""), round(float(fr.get("t", -1)), 1))
         if t in new and key in seen and seen[key] != t:
             print(f"  warning {t}: cover picture {key[0]} (t={key[1]}) also used by {seen[key]}; set cover_frame")
         seen.setdefault(key, t)

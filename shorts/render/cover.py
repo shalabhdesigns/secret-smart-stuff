@@ -127,6 +127,17 @@ def _badge(base: Image.Image, text: str, cx: int, cy: int) -> int:
     return ph
 
 
+def _crop_bars(im: Image.Image) -> Image.Image:
+    """Trailer frames have black letterbox bars: cut them off before cropping to 9:16."""
+    g = im.convert("L")
+    w, h = g.size
+    rows = [sum(g.getpixel((x, y)) for x in range(0, w, max(1, w // 64))) for y in range(h)]
+    lim = 64 * 18
+    top = next((y for y in range(h) if rows[y] > lim), 0)
+    bot = next((y for y in range(h - 1, -1, -1) if rows[y] > lim), h - 1)
+    return im.crop((0, top, w, bot + 1)) if bot - top > h // 3 else im
+
+
 def render(picture: Path, lines: list[str], out: Path, zone: str | None = None, badge: str | None = None) -> Path:
     base = _fill(Image.open(picture))
     from . import logo as _logo
@@ -186,6 +197,27 @@ def make(llm_ask, d: Path, news: bool = False, news_rule: str | None = None, bad
     p = json.loads(early.read_text()) if early.exists() else plan(llm_ask, script, news, news_rule)
     pic = d / f"{p['image']}.png"
     fr = p.get("frame")
+    if fr and fr.get("shot"):
+        # 21 Nov 2026 (owner: cover pictures must grab attention): any official shot, not only ones in the video -
+        # e.g. a masked robbery, a police chase, a beach. {"shot": id, "f": 0-1 point in the shot, "x": 0-1 crop}
+        try:
+            import subprocess
+            from .. import official_clips as oc
+            sh = oc.shots_catalogue()[fr["shot"]]
+            src = oc.CLIPS / f"{sh['clip']}.mp4"
+            t = sh["start"] + (sh["end"] - sh["start"]) * float(fr.get("f", 0.5))
+            full = d / "cover_frame_full.png"
+            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{t:.2f}", "-i", str(src), "-frames:v", "1",
+                            str(full)], check=True)
+            im = _crop_bars(Image.open(full).convert("RGB"))
+            cw = min(im.width, round(im.height * 9 / 16))
+            x0 = max(0, min(im.width - cw, round(im.width * float(fr.get("x", 0.5)) - cw / 2)))
+            pic = d / "cover_frame.png"
+            im.crop((x0, 0, x0 + cw, im.height)).save(pic)
+            fr = None
+        except Exception as e:  # noqa: BLE001
+            print("cover shot frame failed, using the video's own picture:", e)
+            fr = None
     if fr and (d / f"{fr.get('image', p['image'])}_clip.mp4").exists():
         # 19 Nov 2026: a shot's middle frame can be dark or empty; Claude picks the exact frame (a face) instead:
         # {"image": "img1", "t": seconds into that clip, "x": 0-1 where the 9:16 window is centred}
