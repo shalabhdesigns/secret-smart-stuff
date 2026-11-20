@@ -126,13 +126,28 @@ def test_prewritten_script_skips_paid_stages(tmp_path):
     p._topic_notes = {"style": "story", "official_images": "required", "script": script, "words": [100, 180]}
     from types import SimpleNamespace
     p.cfg = SimpleNamespace(channel={"rules": {"target_seconds": [30, 36], "words_per_second": 2.4}}, pipeline={})
-    p._llm = lambda *a, **k: (_ for _ in ()).throw(AssertionError("no LLM call expected"))
+    calls = []
+
+    def llm(prompt, job, what, **k):          # 20 Nov 2026: only the cheap Haiku text pre-check, nothing else
+        calls.append((what, k.get("model")))
+        assert what == "precheck" and "b12" in prompt
+        return type("R", (), {"data": {"blocking": [], "summary": "ok"}})()
+    p._llm = llm
+    p.build = tmp_path.parent
+    p.cfg.pipeline = {"providers": {"llm": {"model_routine": "haiku"}}}
     logged = []
     p.state = type("S", (), {"log": lambda self, *a, **k: logged.append(a)})()
     out = p._stage_script("j", {"title": "t", "notes": "{}"}, tmp_path)
     assert out["content"]["scenes"][0]["narration"].startswith("This is")
     rv = p._stage_review("j", {"title": "t", "notes": "{}"}, tmp_path)
-    assert rv["content"]["verdict"] == "pass" and logged
+    assert rv["content"]["verdict"] == "pass" and logged and calls == [("precheck", "haiku")]
+    # a BLOCKING point holds the video before the voice is paid for
+    p._llm = lambda *a, **k: type("R", (), {"data": {"blocking": [{"beat": "b3", "problem": "unsupported 'most'",
+                                                                   "fix": "say 'many'"}], "summary": "fix b3"}})()
+    import pytest
+    from shorts.pipeline import HeldForClaude
+    with pytest.raises(HeldForClaude, match="b3: unsupported"):
+        p._stage_review("j", {"title": "t", "notes": "{}"}, tmp_path)
 
 
 def test_shot_piece_keeps_the_described_middle(tmp_path):

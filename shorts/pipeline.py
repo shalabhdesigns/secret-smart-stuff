@@ -36,6 +36,10 @@ class StageFailed(RuntimeError):
     pass
 
 
+class HeldForClaude(StageFailed):
+    """20 Nov 2026 (cost): a pre-written script the text check would block is held BEFORE the voice is paid for."""
+
+
 class QualityRejected(StageFailed):
     """The script could not reach the quality bar; drop the topic instead of retrying it."""
 
@@ -226,6 +230,10 @@ class Pipeline:
                 arts = getattr(self, f"_stage_{stage}")(job_id, topic, d)
                 self.state.finish_stage(job_id, stage, arts)
                 self.state.log(f"stage {stage} done", job_id=job_id)
+            except HeldForClaude as e:
+                self.state.set_job_status(job_id, "review", f"held for Claude before voice: {e}"[:400])
+                self.state.log(f"{job_id} held for Claude: script check said {e}"[:500], "warn", job_id)
+                return job_id
             except QualityRejected as e:
                 self.state.set_job_status(job_id, "rejected", f"{stage}: {e}")
                 self.state.set_topic_status(topic_id, "rejected")
@@ -555,6 +563,47 @@ class Pipeline:
         if hits:
             raise StageFailed(f"script mentions banned topic words: {hits}")
 
+    def _precheck(self, job_id: str, script: dict) -> dict:
+        """20 Nov 2026 (cost): on 19-20 Nov, 17 of 26 pre-written versions were held by the final check, almost all for
+        SCRIPT problems (an unsupported word, a clumsy line, a shot whose description contradicts its line). Each had
+        already paid ~$0.07 for the voice plus ~5 Actions minutes of rendering. This runs the same story critic on
+        the text (words + what each shot shows) on Haiku (~$0.003) before the voice; a BLOCKING point holds the
+        video for Claude at once. It never drops a video, and any error just skips it (the final check still runs)."""
+        if not self.cfg.pipeline.get("precheck_prewritten", True) or \
+                (getattr(self, "_topic_notes", None) or {}).get("precheck") is False:
+            return {"skipped": True}
+        try:
+            from . import official_clips
+            cat = official_clips.shots_catalogue()
+            imgs = script.get("images") or {}
+            lines = []
+            for sc in script.get("scenes") or []:
+                ref = str(imgs.get(sc.get("image"), sc.get("image") or ""))
+                shot = ref.split(":", 1)[1] if ref.upper().startswith("CLIP:") else ""
+                shows = (cat.get(shot) or {}).get("shows") or ref
+                call = f" [callout: {sc['callout']}]" if sc.get("callout") else ""
+                lines.append(f"{sc.get('id')} \"{sc.get('narration', '')}\"{call} | picture: {str(shows)[:200]}")
+            r = self._llm(P.STORY_PRECHECK.format(beats="\n".join(lines), title=script.get("title", ""),
+                                                  facts=json.dumps(script.get("facts", []), ensure_ascii=False)[:3000])
+                          + (("\n" + rules) if isinstance(rules := (self._topic_notes or {}).get("critic_rules"), str) else "")
+                          + (("\nTIMING (a wrong time word is BLOCKING):" + self._when_line()) if self._story else ""),
+                          job_id, "precheck", est=0.01, model=self.cfg.pipeline["providers"]["llm"]["model_routine"],
+                          max_tokens=1500)
+            c = r.data or {}
+        except BudgetExceeded:
+            raise
+        except Exception as e:  # noqa: BLE001
+            self.state.log(f"script pre-check skipped: {e}", "warn", job_id)
+            return {"skipped": True}
+        blocking = [b for b in (c.get("blocking") or []) if isinstance(b, dict) and b.get("problem")]
+        if blocking:
+            (self.build / job_id).mkdir(parents=True, exist_ok=True)
+            (self.build / job_id / "precheck.json").write_text(json.dumps(c, indent=1, ensure_ascii=False))
+            pts = " | ".join(f"{b.get('beat')}: {b.get('problem')} FIX: {b.get('fix', '')}" for b in blocking)
+            raise HeldForClaude(f"{c.get('summary', '')} || {pts}"[:1500])
+        self.state.log("script pre-check: ok before voice", job_id=job_id)
+        return c
+
     def _stage_review(self, job_id: str, topic: dict, d: Path) -> dict:
         """Independent review, then up to 2 targeted repairs. If it still scores below the bar,
         the topic is dropped (QualityRejected) so the run can move on to a better topic."""
@@ -562,8 +611,10 @@ class Pipeline:
         script = json.loads(path.read_text())
         if self._prewritten:
             # facts, wording and shots were checked by Claude in session; no paid review or storyboard pass
+            pre = self._precheck(job_id, script)
             (d / "review.json").write_text(json.dumps({"verdict": "pass", "total": 10, "problems": [],
-                                                       "note": "pre-written and verified by Claude in session"}))
+                                                       "note": "pre-written and verified by Claude in session",
+                                                       "precheck": pre}, ensure_ascii=False))
             return {"file": str(d / "review.json"), "content": {"verdict": "pass"}}
         # 18 Nov 2026: judging whether a script sounds human needs the stronger model (~$0.05 more per review)
         rv_model = self.cfg.pipeline["providers"]["llm"]["model_script" if self._story else "model_routine"]

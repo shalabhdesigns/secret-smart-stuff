@@ -467,6 +467,22 @@ Return JSON: {{"scores": {{"hook_curiosity":n,"clarity":n,"story":n,"image_word_
  "retention_risks": [str], "unshowable": false,
  "verdict": "send"|"fix"|"drop", "summary": "one sentence a busy owner can read"}}"""
 
+STORY_PRECHECK = """TASK: critic
+You check a spoken-story YouTube Short SCRIPT before its voice is recorded (Rockstar's official GTA VI footage with a
+voiceover). You did not write it. Later, a final reviewer will watch the finished video; here you only stop problems
+that are already visible in the text, so money is not spent voicing a script that will be sent back.
+For each beat: its words, any on-screen callout, and a description of the footage chosen for it.
+{beats}
+Title: {title}
+Facts and sources: {facts}
+BLOCKING only for: a claim stronger than or missing from the facts list (a word like "most", "every", "exactly"
+the source does not say); a sentence most viewers would not understand on one listen, or a fragment; a hook with no
+curiosity; a payoff that does not answer the hook; the same point said twice; a picture description that clearly
+contradicts its words (a line about a person over a different person, a place over another place). Abstract lines
+(prices, dates, numbers) over on-mood footage are fine. Do not block for taste or small wording preferences.
+For each problem give the exact fix (the beat and the new sentence, or the kind of shot to use).
+Return JSON: {{"blocking": [{{"beat": str, "problem": str, "fix": str}}], "summary": "one sentence"}}"""
+
 STORY_KEEP = ("Keep the story format: natural spoken sentences, hook first, escalating build, payoff, then the "
               "comment question; no loop lead-in.")
 

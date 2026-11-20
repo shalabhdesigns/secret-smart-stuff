@@ -565,6 +565,11 @@ def do_produce(p: Pipeline, req: dict) -> int:
     if j["status"] == "paused":
         paused_note(p, job, j.get("error") or "budget limit")
         return 0
+    if j["status"] == "review" and str(j.get("error") or "").startswith("held for Claude before voice"):
+        # 20 Nov 2026 (cost): the text check found a real script problem before the voice was paid for. Claude fixes
+        # it in session (scripts/gta_scripts.py) and remakes it; nothing is published and the owner is not alerted.
+        print(f"held for checking (before voice): {job} ({str(j.get('error'))[:300]})")
+        return 0
     if j["status"] == "rejected" and req.get("topic"):
         use_backup(p, job)                 # dropped at the review gate: the backup takes the slot
         # a planned video (series or batch) that failed a check is a handled drop, not a crashed run: the owner is
