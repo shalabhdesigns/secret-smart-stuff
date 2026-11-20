@@ -542,7 +542,7 @@ S["gta6-story-length"] = dict(
     thumb_text="50 HOURS?",
     hook_card="HOW LONG?",
     cover_lines=["HOW MANY HOURS", "TO FINISH THE STORY?", "A REVIEWER TIMED IT"],
-    cover_frame={"shot": "extended_look_09432", "f": 0.5, "x": 0.55},   # police chase
+    cover_frame={"shot": "extended_look_09432", "f": 0.5, "x": 0.4},   # police chase
     beats=[
         ("How long does it actually take to finish GTA 6's story?", "CLIP:extended_look_07899", None, "curious"),
         ("ScreenRant's reviewer reached the end in fifty hours and forty-two minutes.", "CLIP:extended_look_11437",
@@ -587,7 +587,7 @@ S["gta6-sales-estimate"] = dict(
     thumb_text="19 MILLION?",
     hook_card="19 MILLION?",
     cover_lines=["19 MILLION SOLD", "ON DAY ONE?", "HERE'S THE CATCH"],
-    cover_frame={"shot": "trailer_1_00686", "f": 0.5, "x": 0.28},   # masked Lucia, robbery
+    cover_frame={"shot": "trailer_1_00686", "f": 0.5, "x": 0.35},   # masked Lucia, robbery
     beats=[
         ("By the morning GTA 6 came out, it may have already sold nineteen million copies.",
          "CLIP:extended_look_10196", None, "surprised"),
@@ -636,7 +636,7 @@ S["gta6-first-look-2021"] = dict(
     thumb_text="SEEN IN 2021?",
     hook_card="SEEN IN 2021?",
     cover_lines=["FANS SAY WE SAW IT", "BACK IN 2021", "WITHOUT NOTICING"],
-    cover_frame={"shot": "trailer_1_00065", "f": 0.5, "x": 0.42},   # Lucia in prison
+    cover_frame={"shot": "trailer_1_00065", "f": 0.5, "x": 0.2},   # Lucia in prison
     beats=[
         ("Fans think GTA 6 was hiding in plain sight, years before its first trailer.", "CLIP:extended_look_03021",
          None, "curious"),
@@ -681,7 +681,7 @@ S["gta6-trailer-songs"] = dict(
     thumb_text="TWO OLD SONGS",
     hook_card="TWO OLD SONGS",
     cover_lines=["TWO 80s SONGS", "EXPLODED ON SPOTIFY", "THANKS TO THE TRAILERS"],
-    cover_frame={"shot": "trailer_1_00248", "f": 0.5, "x": 0.35},   # dancing on a car roof
+    cover_frame={"shot": "trailer_1_00248", "f": 0.5, "x": 0.25},   # dancing on a car roof
     beats=[
         ("GTA 6 didn't just break view records. It brought two old songs back from the dead.",
          "CLIP:trailer_2_00920", None, "excited"),
