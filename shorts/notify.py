@@ -26,7 +26,26 @@ def chat_id(state) -> str | None:
     return state.get_setting("telegram_chat_id") if state else None
 
 
+def quiet_now() -> bool:
+    """Owner away (20 Nov 2026: "I DO NOT WANT ANY INTERRUPTIONS WHATSOEVER" 21-27 Nov): no Telegram messages until
+    config/pipeline.yaml `quiet_until` (UTC ISO). Everything still runs and is logged; Claude's daily runs read the logs."""
+    import datetime as _dt
+    try:
+        import yaml
+        cfg = yaml.safe_load((Path(__file__).resolve().parents[1] / "config" / "pipeline.yaml").read_text()) or {}
+        q, f = cfg.get("quiet_until"), cfg.get("quiet_from")
+        if not q:
+            return False
+        iso = lambda x: _dt.datetime.fromisoformat(str(x).replace("Z", "+00:00"))  # noqa: E731
+        now = _dt.datetime.now(_dt.timezone.utc)
+        return (not f or now >= iso(f)) and now < iso(q)
+    except Exception:  # noqa: BLE001
+        return False
+
+
 def enabled(state) -> bool:
+    if quiet_now():
+        return False
     return bool(_token() and chat_id(state))
 
 

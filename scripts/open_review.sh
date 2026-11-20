@@ -18,6 +18,10 @@ if gh release view "$TAG" >/dev/null 2>&1; then
 else
   gh release create "$TAG" "${files[@]}" --prerelease --title "Review: $JOB" --notes "Review bundle for $JOB (not published)."
 fi
+# owner away (config quiet_from/quiet_until): no review issue, so GitHub sends him no e-mail
+if python -c 'import sys; sys.path.insert(0, "."); from shorts.notify import quiet_now; sys.exit(0 if quiet_now() else 1)' 2>/dev/null; then
+  echo "quiet mode: review issue skipped for $JOB"; exit 0
+fi
 url=$(gh release view "$TAG" --json assets -q '.assets[] | select(.name=="final.mp4") | .url')
 {
   echo "<!-- job:$JOB -->"

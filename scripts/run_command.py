@@ -56,11 +56,17 @@ def alert(p: Pipeline, title: str, body: str) -> None:
     import re as _re
     clean = _re.sub(r"<!--.*?-->", "", body).strip()
     notify.send(p.state, f"⚠️ {notify.esc(title)}\n{notify.esc(clean[:900])}")
+    if notify.quiet_now():   # owner away: logged only; Claude's daily runs read the events
+        p.state.log(f"ALERT {title}: {clean[:1500]}", "error")
+        return
     gh("label", "create", "alert", "--color", "B60205", check=False)
     gh("issue", "create", "--label", "alert", "--title", title[:120], "--body", body[:60000], check=False)
 
 
 def comment(job: str, text: str, close: bool = False) -> None:
+    from shorts.notify import quiet_now
+    if quiet_now():          # owner away: no issue comments (GitHub would e-mail him)
+        return
     n = issue_for(job)
     if n:
         gh("issue", "comment", n, "--body", text, check=False)
