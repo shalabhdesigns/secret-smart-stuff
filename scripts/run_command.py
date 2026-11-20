@@ -952,6 +952,19 @@ def main(path: str) -> int:
         gh("issue", "create", "--title", f"Calibration: final review of {job}", "--body", body[:60000], check=False)
         print(body)
         return 0
+    if action == "health":
+        # 20 Nov 2026: can everything run unattended? Credits, logins, limits. Printed (no messages); Claude reads it.
+        from shorts import usage
+        from shorts.dispatch import anthropic_ok
+        out = {"anthropic_ok": anthropic_ok(),
+               "elevenlabs": usage.elevenlabs(os.environ.get("ELEVENLABS_API_KEY", "")),
+               "youtube": usage.youtube(), "instagram": usage.instagram()}
+        try:
+            out["youtube_live"] = usage.youtube_live(p.state)
+        except Exception as e:  # noqa: BLE001
+            out["youtube_live"] = f"error: {e}"
+        print("HEALTH " + json.dumps(out, default=str))
+        return 0
     if action == "set_covers":   # 20 Nov 2026: put the real logo on every older GTA video's thumbnail in one run
         bad = 0
         for item in req["items"]:
