@@ -80,6 +80,32 @@
   23:00, 02:00 UTC). Review the numbers after 7 days: 8 a day if views per video hold, back to 3 if they fall.
 - **Flag cost and policy risks before spending.** Never claim something works until it has been tested.
 
+## Owner away 21-27 Nov 2026 (owner, 20 Nov: "I DO NOT WANT ANY INTERRUPTIONS WHATSOEVER ... without requiring any
+input, intervention, or approval from me")
+- Two scheduled Claude runs (cloud, not his laptop):
+  - **Morning check 07:41 IST**: held/failed videos -> fix the real problems in `scripts/gta_scripts.py`, remake
+    (queue item + new `nonce` + `retire_jobs`), look at the frames (contact sheet), approve with its slot; check that
+    yesterday's videos went public on YouTube and were posted on Instagram (`ig_posts`); read failed Actions runs'
+    logs and fix the cause; if tomorrow has no scripts, write them.
+  - **Script desk 12:41 IST**: learning loop (`scripts/gta_learn.py`, `docs/GTA_LEARNINGS.md`), cost check,
+    tomorrow's 5 scripts.
+  - Both append results to `docs/AWAY_LOG.md`. Never message or ask the owner.
+- Approvals: auto-publish until 30 Nov (`approval.auto_until`). Claude may approve a held video after fixing it and
+  checking its frames. Safety net (`shorts/dispatch.deadline_publish`, every 15 min): a video still held 90 min before
+  its slot is published unless the final check found a factual problem; one held before the voice is remade without
+  the pre-check 4 h before its slot.
+- Quiet mode (`quiet_from`/`quiet_until` in `config/pipeline.yaml`): no Telegram messages, no GitHub issues or
+  comments (they e-mail him). Errors go to the state `events` table; failed runs are read with
+  `gh api repos/shalabhdesigns/secret-smart-stuff/actions/runs?status=failure` and the job logs API.
+- Limits: YouTube upload quota ~6 uploads a day (5 videos + 1 remake upload at most; a remake before upload costs no
+  quota). November budget $155 ($121 used by 20 Nov). Instagram login valid to 27 Dec.
+- **Learning** (owner, 20 Nov 2026): learn only from GTA videos (`scripts/gta_learn.py`, `docs/GTA_LEARNINGS.md`);
+  every finding has numbers and changes the next scripts; experiments have a test and a control; nothing generic or
+  repeated. The old generic per-video post-mortems are off for GTA videos.
+- **Ambition** (owner, 20 Nov 2026): don't let caution about monetisation or copyright rule ideas out by default;
+  explore. Still never: re-upload other creators' videos without permission, publish false claims, or present the
+  channel as Rockstar's (any of these can get the channel removed, which ends growth).
+
 ## Before sending any video
 - A frame contact sheet, plus full-size frames of anything doubtful.
 - First frame vs last frame (the loop).
@@ -87,7 +113,7 @@
 - Send a 3× loop preview with it.
 
 ## Systems
-- **Code:** private repo `shalabhdesigns/secret-smart-stuff` (named `bhaukaali-toons` 26–28 Oct; GitHub redirects
+- **Code:** public repo (since Nov 2026; unlimited Actions minutes) `shalabhdesigns/secret-smart-stuff` (named `bhaukaali-toons` 26–28 Oct; GitHub redirects
   the old name).
   - Everything runs on GitHub Actions; nothing runs on the owner's laptop.
   - State lives in SQLite on the `state` branch.

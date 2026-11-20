@@ -684,6 +684,7 @@ def build(topic: str, v: dict) -> dict:
             "hooks": [v["beats"][0][0]], "chosen_hook": 0, "images": images, "scenes": scenes,
             "facts": v["facts"], "description": v["description"], "hashtags": v["hashtags"],
             "affiliate_product": None, "written_by": "Claude in session (verified)",
+            "experiment": v.get("experiment"),     # docs/GTA_LEARNINGS.md experiment id, e.g. "E1-short"
             # cover + opening card words, written here (no paid cover call); the picture is the first beat's shot
             "cover": {"image": "img1", "lines": v.get("cover_lines") or [v["hook_card"]], "why": "written in session",
                       **({"frame": v["cover_frame"]} if v.get("cover_frame") else {})}}

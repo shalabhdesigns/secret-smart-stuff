@@ -105,6 +105,11 @@ def postmortems(p) -> dict:
     rows = state.db.execute("SELECT u.job_id, u.video_id, u.url FROM uploads u WHERE u.status='live'").fetchall()
     for r in rows:
         vid, job = r["video_id"], r["job_id"]
+        if str(job).startswith("gta"):
+            # owner, 20 Nov 2026: GTA videos learn only from GTA videos, with numbers, and every finding must change
+            # the next scripts. That is scripts/gta_learn.py + docs/GTA_LEARNINGS.md (Claude's daily run), not this
+            # generic per-video note that compared against the old product videos.
+            continue
         for tag, hours in AGES.items():
             if state.db.execute("SELECT 1 FROM video_reviews WHERE video_id=? AND tag=?", (vid, tag)).fetchone():
                 continue

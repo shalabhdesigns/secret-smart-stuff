@@ -382,6 +382,16 @@ def youtube_live(state) -> dict:
             out[v["id"]] = {"views": int(s.get("viewCount") or 0), "likes": int(s.get("likeCount") or 0),
                             "comments": int(s.get("commentCount") or 0), "at": _now_iso()}
     state.set_setting("yt_live_json", json.dumps(out))
+    # 20 Nov 2026: keep the history too, so the GTA analysis can compare videos at the same age (24 h) on YouTube
+    # without the Analytics API's 1-2 day lag
+    try:
+        with state.tx() as db:
+            db.execute("CREATE TABLE IF NOT EXISTS yt_live (video_id TEXT, at REAL, views INTEGER, likes INTEGER, comments INTEGER)")
+            t = time.time()
+            db.executemany("INSERT INTO yt_live VALUES (?,?,?,?,?)",
+                           [(k, t, v["views"], v["likes"], v["comments"]) for k, v in out.items()])
+    except Exception:  # noqa: BLE001
+        pass
     return {"videos": len(out)}
 
 
