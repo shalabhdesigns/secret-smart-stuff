@@ -138,7 +138,7 @@ def render(picture: Path, lines: list[str], out: Path, zone: str | None = None, 
         import re as _re
         lines = [x for x in (_re.sub(r"^\s*GTA\s*(6|VI)\b[:,']?S?\s*", "", t, flags=_re.I).strip() for t in lines) if x] \
             or lines
-        lg = _logo.logo(badge, 600)
+        lg = _logo.logo(badge, 600 if len([x for x in lines if x]) <= 2 else 500)
         rgba = base.convert("RGBA")
         rgba.alpha_composite(lg, (W // 2 - lg.width // 2, z0 - lg.width // 16))
         base = rgba.convert("RGB")
@@ -148,11 +148,13 @@ def render(picture: Path, lines: list[str], out: Path, zone: str | None = None, 
         _badge(base, badge.upper(), W // 2, z0 + bh // 2 + 20)
         z0 += bh + 70
     d = ImageDraw.Draw(base)
-    lines = [x for x in lines if x][:2] or ["?"]
+    # owner, 21 Nov 2026: cover words too short to know what the video is about -> up to 3 descriptive lines
+    lines = [x for x in lines if x][:3] or ["?"]
     pad_x, pad_y, gap, radius = 44, 28, 20, 18
     blocks = []
     for i, t in enumerate(lines):
-        f, size = _fit(t, W - 2 * 70 - 2 * pad_x, start=128 if real else 150 if badge else 176)
+        f, size = _fit(t, W - 2 * 70 - 2 * pad_x,
+                       start=(104 if len(lines) == 3 else 128) if real else 150 if badge else 176)
         x0, y0, x1, y1 = d.textbbox((0, 0), t, font=f)
         blocks.append((t, f, x1 - x0, y1 - y0, x0, y0, i))
     total = sum(b[3] + 2 * pad_y for b in blocks) + gap * (len(blocks) - 1)

@@ -447,7 +447,8 @@ S["gta6-stream-record"] = dict(
     title="GTA 6 launch: 7.9 million people watching at once",
     thumb_text="7.9M WATCHING",
     hook_card="7.9 MILLION?",
-    cover_lines=["7.9 MILLION", "WATCHING AT ONCE"],
+    cover_lines=["7.9 MILLION WATCHED", "OTHERS PLAY IT", "AT THE SAME TIME"],
+    cover_frame={"image": "img1", "t": 1.0, "x": 0.5},
     beats=[
         ("When GTA 6 unlocked this week, almost eight million people watched other people play it, all at once.",
          "CLIP:trailer_2_00232", None, "excited"),
@@ -494,7 +495,8 @@ S["gta6-dexter-apartment"] = dict(
     title="GTA 6 fans found Dexter's apartment in Vice City",
     thumb_text="DEXTER'S APARTMENT?",
     hook_card="DEXTER'S PLACE?",
-    cover_lines=["DEXTER'S", "APARTMENT?"],
+    cover_lines=["FANS SAY THEY FOUND", "DEXTER'S APARTMENT", "IN VICE CITY"],
+    cover_frame={"image": "img7", "t": 1.0, "x": 0.5},
     beats=[
         ("GTA 6 fans have found a TV serial killer's apartment, hiding in Vice City.", "CLIP:extended_look_08816",
          None, "whispers"),
@@ -539,7 +541,8 @@ S["gta6-story-length"] = dict(
     title="GTA 6 is about 50 hours long, one review says",
     thumb_text="50 HOURS?",
     hook_card="HOW LONG?",
-    cover_lines=["50 HOURS", "OF STORY?"],
+    cover_lines=["HOW MANY HOURS", "TO FINISH THE STORY?", "A REVIEWER TIMED IT"],
+    cover_frame={"image": "img13", "t": 1.2, "x": 0.5},
     beats=[
         ("How long does it actually take to finish GTA 6's story?", "CLIP:extended_look_07899", None, "curious"),
         ("ScreenRant's reviewer reached the end in fifty hours and forty-two minutes.", "CLIP:extended_look_11437",
@@ -583,7 +586,8 @@ S["gta6-sales-estimate"] = dict(
     title="GTA 6 sold 19 million copies? Here's the catch",
     thumb_text="19 MILLION?",
     hook_card="19 MILLION?",
-    cover_lines=["19 MILLION", "COPIES?"],
+    cover_lines=["19 MILLION SOLD", "ON DAY ONE?", "HERE'S THE CATCH"],
+    cover_frame={"image": "img12", "t": 2.0, "x": 0.5},
     beats=[
         ("By the morning GTA 6 came out, it may have already sold nineteen million copies.",
          "CLIP:extended_look_10196", None, "surprised"),
@@ -631,7 +635,8 @@ S["gta6-first-look-2021"] = dict(
     title="GTA 6 fans think we saw it back in 2021",
     thumb_text="SEEN IN 2021?",
     hook_card="SEEN IN 2021?",
-    cover_lines=["FIRST SEEN", "IN 2021?"],
+    cover_lines=["FANS SAY WE SAW IT", "BACK IN 2021", "WITHOUT NOTICING"],
+    cover_frame={"image": "img1", "t": 2.0, "x": 0.5},
     beats=[
         ("Fans think GTA 6 was hiding in plain sight, years before its first trailer.", "CLIP:extended_look_03021",
          None, "curious"),
@@ -675,7 +680,7 @@ S["gta6-trailer-songs"] = dict(
     title="GTA 6's trailers brought two old songs back to life",
     thumb_text="TWO OLD SONGS",
     hook_card="TWO OLD SONGS",
-    cover_lines=["TWO OLD SONGS", "BACK TO LIFE"],
+    cover_lines=["TWO 80s SONGS", "EXPLODED ON SPOTIFY", "THANKS TO THE TRAILERS"],
     beats=[
         ("GTA 6 didn't just break view records. It brought two old songs back from the dead.",
          "CLIP:trailer_2_00920", None, "excited"),
@@ -719,7 +724,7 @@ S["gta6-vice-city-1986"] = dict(
     title="GTA 6 isn't our first trip to Vice City",
     thumb_text="BACK TO VICE CITY",
     hook_card="1986 VS NOW",
-    cover_lines=["VICE CITY", "1986 VS NOW"],
+    cover_lines=["VICE CITY IN 1986", "VS GTA 6'S VICE CITY", "WHAT CHANGED?"],
     beats=[
         ("GTA 6 isn't the first time Rockstar has taken us to Vice City.", "CLIP:extended_look_10132", None,
          "curious"),
@@ -814,6 +819,19 @@ def check(topic: str, s: dict) -> list[str]:
     return errs
 
 
+def _recent_plan(days: int) -> list:
+    """PLAN rows from (today - 1) to today + days, plus reserves: the scripts whose covers are checked strictly."""
+    import datetime as dt
+    sys.path.insert(0, str(ROOT / "scripts"))
+    try:
+        import gta_queue as q
+    except Exception:  # noqa: BLE001
+        return []
+    lo = max(dt.date.today().isoformat(), "2026-11-21")       # the rule starts with the 21 Nov videos
+    hi = (dt.date.today() + dt.timedelta(days=days)).isoformat()
+    return [r for r in q.PLAN if lo <= r[0] <= hi] + [(None, None, t) for t in getattr(q, "RESERVE", [])]
+
+
 if __name__ == "__main__":
     out, errs = {}, []
     for t, v in S.items():
@@ -821,6 +839,24 @@ if __name__ == "__main__":
         errs += check(t, out[t])
         print(t, sum(len(sc["narration"].split()) for sc in out[t]["scenes"]), "words,",
               len(out[t]["scenes"]), "beats,", len(set(out[t]["images"].values())), "shots")
+    # 21 Nov 2026 (owner): cover words must say what the video is about -> 3 lines, 6-12 words, each <= 22 characters,
+    # never starting with "GTA 6" (the real logo is above them). And no cover picture repeated from a recent video.
+    new = {t for t in out if t in {x[2] for x in _recent_plan(4)}}
+    seen = {}
+    for t in list(out)[::-1]:
+        c = out[t].get("cover") or {}
+        lines = c.get("lines") or []
+        if t in new:
+            words = sum(len(x.split()) for x in lines)
+            if len(lines) != 3 or not 6 <= words <= 12 or any(len(x) > 22 for x in lines):
+                errs.append(f"{t}: cover_lines must be 3 lines, 6-12 words, each <= 22 characters ({lines})")
+            if any(x.upper().startswith(("GTA 6", "GTA VI")) for x in lines):
+                errs.append(f"{t}: a cover line starts with 'GTA 6' (the logo already says it)")
+        img = (c.get("frame") or {}).get("image") or c.get("image") or "img1"
+        key = (out[t]["images"].get(img, ""), round(float((c.get("frame") or {}).get("t", -1)), 1))
+        if t in new and key in seen and seen[key] != t:
+            print(f"  warning {t}: cover picture {key[0]} (t={key[1]}) also used by {seen[key]}; set cover_frame")
+        seen.setdefault(key, t)
     if errs:
         print("\n".join(errs))
         sys.exit(1)

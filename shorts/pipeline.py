@@ -1469,8 +1469,10 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
         real_logo = _logo.has_logo(tnotes.get("badge"))
         overlays = []
         if real_logo:    # owner, 20 Nov 2026: the real GTA VI logo, big on the first screen, small in the corner after
-            overlays = [(_logo.frame_png(tnotes["badge"], d / "logo_big.png", 520, (540, 470)), 0.0, 1.8),
-                        (_logo.frame_png(tnotes["badge"], d / "logo_small.png", 190, (150, 300)), 1.8, end + 1)]
+            _hl = [t for t in (hook[0] if hook else []) if t]
+            _show = 2.6 if len(_hl) >= 3 or sum(len(t) for t in _hl) > 24 else 1.8   # matches the opening card
+            overlays = [(_logo.frame_png(tnotes["badge"], d / "logo_big.png", 520, (540, 470)), 0.0, _show),
+                        (_logo.frame_png(tnotes["badge"], d / "logo_small.png", 190, (150, 300)), _show, end + 1)]
         ass = write_ass(words, d / "captions.ass", y_center=y_cap, hook=hook, hook_y=hook_y,
                         badge=tnotes.get("badge"), duration=end, hook_outro=not self._story,
                         # owner, 20 Nov 2026: never the old pink "GTA 6" text again; no logo file -> no badge

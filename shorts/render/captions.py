@@ -139,12 +139,17 @@ def write_ass(words: list[Word], out: Path, font: str = "Inter", font_size: int 
             hook_y = 790
     if hook and hook[0] and hook[1] > 3:
         end = hook[1]
-        for i, text in enumerate([t for t in hook[0] if t][:2]):
-            size = max(48, min(112 if badge_y else 84, int((1800 if badge_y else 1480) / max(1, len(text)))))
-            y = hook_y + i * (160 if badge_y else 128)
+        hl = [t for t in hook[0] if t][:3]          # owner, 21 Nov 2026: up to 3 descriptive lines, longer on screen
+        if len(hl) == 3 and badge_y:
+            hook_y -= 40                             # keep the third line clear of the spoken captions
+        show = 2.6 if len(hl) == 3 or sum(len(t) for t in hl) > 24 else 1.8
+        for i, text in enumerate(hl):
+            size = max(48, min((96 if len(hl) == 3 else 112) if badge_y else 84,
+                               int((1800 if badge_y else 1480) / max(1, len(text)))))
+            y = hook_y + i * ((140 if len(hl) == 3 else 160) if badge_y else 128)
             tag = f"{{\\an5\\pos(540,{y})\\fs{size}}}"
             st = "HookA" if i == 0 else "HookB"
-            lines.append(f"Dialogue: 3,{_ts(0)},{_ts(1.8)},{st},,0,0,0,,{{\\fad(0,250)}}{tag}{_esc(text)}")
+            lines.append(f"Dialogue: 3,{_ts(0)},{_ts(show)},{st},,0,0,0,,{{\\fad(0,250)}}{tag}{_esc(text)}")
             if hook_outro:   # the loop's last frame; story videos don't loop, so no card at the end
                 lines.append(f"Dialogue: 3,{_ts(max(0, end - 0.7))},{_ts(end)},{st},,0,0,0,,{{\\fad(250,0)}}{tag}{_esc(text)}")
     if badge and badge_text:

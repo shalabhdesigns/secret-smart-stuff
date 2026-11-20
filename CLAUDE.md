@@ -71,7 +71,11 @@
   actual GTA 6 logo ... only". Every GTA video: the real GTA VI logo (`assets/brand/gta6_logo.png`, cut unchanged
   from Rockstar's trailer end card; `shorts/render/logo.py`) above 2 short cover lines on the cover, big on the first
   1.8 s and small in the corner after (`finalize(overlays=)`); the first beat's shot is a strong character shot;
-  scripts set `cover_lines` (true, said in the video) and may set `cover_frame`. Never make the channel itself look
+  scripts set `cover_lines` (true, said in the video) and may set `cover_frame`. Owner, 21 Nov 2026: the cover words
+  were too short to know what the video is about -> `cover_lines` = 3 lines, 6-12 words, each <= 22 characters, that
+  say clearly what the video is about AND leave a question (e.g. "19 MILLION SOLD / ON DAY ONE? / HERE'S THE CATCH");
+  never a line starting with "GTA 6"; no cover picture repeated from a recent video (`cover_frame`). The checker
+  enforces this; the opening card shows them for 2.6 s. Never make the channel itself look
   like Rockstar's; descriptions keep "fan commentary, not affiliated".
 - **Daily cost check** (owner, 18 Nov 2026: "each day check how much we are spending on each video and find ways to
   further reduce it ... bring it down to bare minimum"). Every day run `scripts/cost_report.py` on the state db, report

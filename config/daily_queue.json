@@ -4390,10 +4390,16 @@
       "cover": {
        "image": "img1",
        "lines": [
-        "7.9 MILLION",
-        "WATCHING AT ONCE"
+        "7.9 MILLION WATCHED",
+        "OTHERS PLAY IT",
+        "AT THE SAME TIME"
        ],
-       "why": "written in session"
+       "why": "written in session",
+       "frame": {
+        "image": "img1",
+        "t": 1.0,
+        "x": 0.5
+       }
       }
      },
      "publish_at": "2026-11-21T14:00:00Z",
@@ -4711,10 +4717,16 @@
       "cover": {
        "image": "img1",
        "lines": [
-        "DEXTER'S",
-        "APARTMENT?"
+        "FANS SAY THEY FOUND",
+        "DEXTER'S APARTMENT",
+        "IN VICE CITY"
        ],
-       "why": "written in session"
+       "why": "written in session",
+       "frame": {
+        "image": "img7",
+        "t": 1.0,
+        "x": 0.5
+       }
       }
      },
      "publish_at": "2026-11-21T17:00:00Z",
@@ -5016,10 +5028,16 @@
       "cover": {
        "image": "img1",
        "lines": [
-        "50 HOURS",
-        "OF STORY?"
+        "HOW MANY HOURS",
+        "TO FINISH THE STORY?",
+        "A REVIEWER TIMED IT"
        ],
-       "why": "written in session"
+       "why": "written in session",
+       "frame": {
+        "image": "img13",
+        "t": 1.2,
+        "x": 0.5
+       }
       }
      },
      "publish_at": "2026-11-21T20:00:00Z",
@@ -5312,10 +5330,16 @@
       "cover": {
        "image": "img1",
        "lines": [
-        "19 MILLION",
-        "COPIES?"
+        "19 MILLION SOLD",
+        "ON DAY ONE?",
+        "HERE'S THE CATCH"
        ],
-       "why": "written in session"
+       "why": "written in session",
+       "frame": {
+        "image": "img12",
+        "t": 2.0,
+        "x": 0.5
+       }
       }
      },
      "publish_at": "2026-11-21T23:00:00Z",
@@ -5601,10 +5625,16 @@
       "cover": {
        "image": "img1",
        "lines": [
-        "FIRST SEEN",
-        "IN 2021?"
+        "FANS SAY WE SAW IT",
+        "BACK IN 2021",
+        "WITHOUT NOTICING"
        ],
-       "why": "written in session"
+       "why": "written in session",
+       "frame": {
+        "image": "img1",
+        "t": 2.0,
+        "x": 0.5
+       }
       }
      },
      "publish_at": "2026-11-22T02:00:00Z",
@@ -5874,8 +5904,9 @@
       "cover": {
        "image": "img1",
        "lines": [
-        "TWO OLD SONGS",
-        "BACK TO LIFE"
+        "TWO 80s SONGS",
+        "EXPLODED ON SPOTIFY",
+        "THANKS TO THE TRAILERS"
        ],
        "why": "written in session"
       }
@@ -6132,8 +6163,9 @@
       "cover": {
        "image": "img1",
        "lines": [
-        "VICE CITY",
-        "1986 VS NOW"
+        "VICE CITY IN 1986",
+        "VS GTA 6'S VICE CITY",
+        "WHAT CHANGED?"
        ],
        "why": "written in session"
       }
