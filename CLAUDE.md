@@ -82,14 +82,11 @@
 
 ## Owner away 21-27 Nov 2026 (owner, 20 Nov: "I DO NOT WANT ANY INTERRUPTIONS WHATSOEVER ... without requiring any
 input, intervention, or approval from me")
-- Two scheduled Claude runs (cloud, not his laptop):
-  - **Morning check 07:41 IST**: held/failed videos -> fix the real problems in `scripts/gta_scripts.py`, remake
-    (queue item + new `nonce` + `retire_jobs`), look at the frames (contact sheet), approve with its slot; check that
-    yesterday's videos went public on YouTube and were posted on Instagram (`ig_posts`); read failed Actions runs'
-    logs and fix the cause; if tomorrow has no scripts, write them.
-  - **Script desk 12:41 IST**: learning loop (`scripts/gta_learn.py`, `docs/GTA_LEARNINGS.md`), cost check,
-    tomorrow's 5 scripts.
-  - Both append results to `docs/AWAY_LOG.md`. Never message or ask the owner.
+- One scheduled Claude run a day (cloud, not his laptop), **"Daily GTA scripts + cost check", 12:41 IST**: learning
+  loop (`scripts/gta_learn.py`, `docs/GTA_LEARNINGS.md`), cost check, tomorrow's 5 scripts, and a safety pass on
+  today's videos (made at 05:47 IST; first slot 19:30 IST): held/failed -> fix real problems in `scripts/gta_scripts.py`,
+  remake (queue item + new `nonce` + `retire_jobs`), look at the frames, approve with its slot. It appends results to
+  `docs/AWAY_LOG.md` and never messages or asks the owner.
 - Approvals: auto-publish until 30 Nov (`approval.auto_until`). Claude may approve a held video after fixing it and
   checking its frames. Safety net (`shorts/dispatch.deadline_publish`, every 15 min): a video still held 90 min before
   its slot is published unless the final check found a factual problem; one held before the voice is remade without
