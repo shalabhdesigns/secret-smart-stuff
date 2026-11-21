@@ -3795,9 +3795,8 @@
    "img7": "OFFICIAL:v_24ba6644de",
    "img8": "CLIP:launch_trailer_00685",
    "img9": "CLIP:extended_look_07501",
-   "img10": "CLIP:extended_look_10833",
-   "img11": "CLIP:trailer_2_00346",
-   "img12": "CLIP:trailer_2_00920"
+   "img10": "CLIP:trailer_2_00346",
+   "img11": "CLIP:trailer_2_00920"
   },
   "scenes": [
    {
@@ -3862,7 +3861,7 @@
    },
    {
     "id": "b5",
-    "narration": "Remember that nineteen million estimate? The real number was much bigger.",
+    "narration": "Before launch, an analytics firm had estimated nineteen million copies. The real number was much bigger.",
     "image": "img5",
     "delivery": "surprised",
     "focus": null,
@@ -3892,7 +3891,7 @@
    },
    {
     "id": "b7",
-    "narration": "In its first twenty-four hours, it made 815.7 million dollars, and that was a world record.",
+    "narration": "In its first twenty-four hours, it made 815.7 million dollars, a Guinness World Record.",
     "image": "img7",
     "delivery": null,
     "focus": null,
@@ -3937,7 +3936,7 @@
    },
    {
     "id": "b10",
-    "narration": "GTA 6 passed that before day one was even over.",
+    "narration": "Rockstar calls it the biggest entertainment launch in history.",
     "image": "img10",
     "delivery": null,
     "focus": null,
@@ -3952,26 +3951,11 @@
    },
    {
     "id": "b11",
-    "narration": "Rockstar calls it the biggest entertainment launch in history.",
+    "narration": "Did you buy it on day one, or are you waiting for a sale? Pick a side. Follow for a new GTA 6 secret every day.",
     "image": "img11",
     "delivery": null,
     "focus": null,
     "motion": "push",
-    "transition": "cut",
-    "callout": null,
-    "pop": null,
-    "arrow": null,
-    "card_text": null,
-    "tone": "normal",
-    "markers": null
-   },
-   {
-    "id": "b12",
-    "narration": "Did you buy it on day one, or are you waiting for a sale? Pick a side. Follow for a new GTA 6 secret every day.",
-    "image": "img12",
-    "delivery": null,
-    "focus": null,
-    "motion": "drift",
     "transition": "cut",
     "callout": null,
     "pop": null,
@@ -4004,14 +3988,14 @@
     "main": true
    },
    {
-    "claim": "Sensor Tower had estimated 19.1 million copies by the morning of release.",
+    "claim": "Sensor Tower, an analytics firm, had estimated 19.1 million copies by the morning of release.",
     "sources": [
      "https://finance.yahoo.com/media-advertising/articles/two-set-shatter-sales-records-162847652.html"
     ],
     "main": false
    },
    {
-    "claim": "GTA V made $815.7 million in its first 24 hours (Guinness World Records). $3.79B / $815.7M = 4.6.",
+    "claim": "GTA V made $815.7 million in its first 24 hours, one of six sales world records confirmed by Guinness World Records. $3.79B / $815.7M = 4.6.",
     "sources": [
      "https://www.guinnessworldrecords.com/news/2013/10/confirmed-grand-theft--auto-breaks-six-sales-world-records-51900"
     ],
@@ -4601,7 +4585,7 @@
   "thumb_text": "SECRET STATION",
   "hook_card": "SECRET STATION?",
   "hooks": [
-   "GTA 6 has a secret radio station, and most players will never find it."
+   "GTA 6 has a secret radio station, and it isn't on the normal dial."
   ],
   "chosen_hook": 0,
   "images": {
@@ -4617,7 +4601,7 @@
   "scenes": [
    {
     "id": "b1",
-    "narration": "GTA 6 has a secret radio station, and most players will never find it.",
+    "narration": "GTA 6 has a secret radio station, and it isn't on the normal dial.",
     "image": "img1",
     "delivery": "curious",
     "focus": null,
@@ -4647,7 +4631,7 @@
    },
    {
     "id": "b3",
-    "narration": "It's not on the normal dial. To unlock it, you scan four posters.",
+    "narration": "To unlock it, you have to scan four posters around Vice City.",
     "image": "img3",
     "delivery": null,
     "focus": null,
