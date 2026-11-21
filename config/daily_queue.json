@@ -4154,7 +4154,7 @@
        "img8": "CLIP:extended_look_11437",
        "img9": "CLIP:extended_look_07501",
        "img10": "CLIP:trailer_2_00346",
-       "img11": "CLIP:extended_look_05648",
+       "img11": "CLIP:trailer_1_00341",
        "img12": "CLIP:extended_look_07446",
        "img13": "CLIP:trailer_2_00920"
       },
@@ -4326,7 +4326,7 @@
        },
        {
         "id": "b12",
-        "narration": "So no game launch has ever pulled a crowd like this one, by Streams Charts' count.",
+        "narration": "So by Streams Charts' count, only a boxing night has ever beaten it on Twitch.",
         "image": "img12",
         "delivery": null,
         "focus": null,
@@ -4469,13 +4469,12 @@
        "img5": "CLIP:extended_look_04115",
        "img6": "CLIP:extended_look_00000",
        "img7": "CLIP:trailer_2_00114",
-       "img8": "CLIP:extended_look_07018",
-       "img9": "CLIP:launch_trailer_00423",
-       "img10": "CLIP:launch_trailer_00026",
-       "img11": "CLIP:extended_look_15728",
-       "img12": "CLIP:extended_look_12920",
-       "img13": "CLIP:extended_look_09766",
-       "img14": "CLIP:trailer_2_00920"
+       "img8": "CLIP:launch_trailer_00423",
+       "img9": "CLIP:launch_trailer_00026",
+       "img10": "CLIP:extended_look_15728",
+       "img11": "CLIP:extended_look_12920",
+       "img12": "CLIP:extended_look_09766",
+       "img13": "CLIP:trailer_2_00920"
       },
       "scenes": [
        {
@@ -4570,7 +4569,7 @@
        },
        {
         "id": "b7",
-        "narration": "The creepy part is on the roof.",
+        "narration": "The creepy part is on the roof, where players found a knife, tape, rope and a syringe.",
         "image": "img7",
         "delivery": "serious",
         "focus": null,
@@ -4585,9 +4584,9 @@
        },
        {
         "id": "b8",
-        "narration": "Players found a knife, tape, rope and a syringe up there.",
+        "narration": "Let's not ask what that's for.",
         "image": "img8",
-        "delivery": null,
+        "delivery": "laughs softly",
         "focus": null,
         "motion": "push",
         "transition": "cut",
@@ -4600,9 +4599,9 @@
        },
        {
         "id": "b9",
-        "narration": "Let's not ask what that's for.",
+        "narration": "Down at the docks, there's a boat you can steal.",
         "image": "img9",
-        "delivery": "laughs softly",
+        "delivery": null,
         "focus": null,
         "motion": "drift",
         "transition": "cut",
@@ -4615,23 +4614,8 @@
        },
        {
         "id": "b10",
-        "narration": "Down at the docks, there's a boat you can steal.",
-        "image": "img10",
-        "delivery": null,
-        "focus": null,
-        "motion": "push",
-        "transition": "cut",
-        "callout": null,
-        "pop": null,
-        "arrow": null,
-        "card_text": null,
-        "tone": "normal",
-        "markers": null
-       },
-       {
-        "id": "b11",
         "narration": "Fans say it looks just like Slice of Life, Dexter's boat.",
-        "image": "img11",
+        "image": "img10",
         "delivery": null,
         "focus": null,
         "motion": "push",
@@ -4644,8 +4628,23 @@
         "markers": null
        },
        {
-        "id": "b12",
+        "id": "b11",
         "narration": "Has Rockstar confirmed it? No. It hasn't said this is Dexter's home.",
+        "image": "img11",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b12",
+        "narration": "But fans had spotted this building back in August.",
         "image": "img12",
         "delivery": null,
         "focus": null,
@@ -4660,23 +4659,8 @@
        },
        {
         "id": "b13",
-        "narration": "But fans had spotted this building back in August, months before launch.",
-        "image": "img13",
-        "delivery": null,
-        "focus": null,
-        "motion": "push",
-        "transition": "cut",
-        "callout": null,
-        "pop": null,
-        "arrow": null,
-        "card_text": null,
-        "tone": "normal",
-        "markers": null
-       },
-       {
-        "id": "b14",
         "narration": "Which TV show should GTA hide next?",
-        "image": "img14",
+        "image": "img13",
         "delivery": null,
         "focus": null,
         "motion": "push",
@@ -4971,7 +4955,7 @@
        },
        {
         "id": "b12",
-        "narration": "So it costs twenty dollars more than GTA 5, but gives you about twenty more hours of story.",
+        "narration": "So you pay twenty dollars more than GTA 5 did, but you get a lot more game.",
         "image": "img12",
         "delivery": null,
         "focus": null,
@@ -5266,7 +5250,7 @@
        },
        {
         "id": "b11",
-        "narration": "So until Take-Two shares real numbers, it's only an estimate. A very big one.",
+        "narration": "Even so, nineteen million would beat GTA 5's first day of about eleven million.",
         "image": "img11",
         "delivery": null,
         "focus": null,
@@ -5403,7 +5387,7 @@
       "chosen_hook": 0,
       "images": {
        "img1": "CLIP:extended_look_03021",
-       "img2": "CLIP:trailer_1_00026",
+       "img2": "CLIP:trailer_2_00996",
        "img3": "CLIP:trailer_2_00188",
        "img4": "CLIP:extended_look_12920",
        "img5": "CLIP:extended_look_11275",
@@ -5478,7 +5462,7 @@
        },
        {
         "id": "b5",
-        "narration": "Now the game is out, and fans mapping Leonida found that same house, in Belville.",
+        "narration": "Then fans mapping GTA 6's world found that same house, in Belville.",
         "image": "img5",
         "delivery": null,
         "focus": null,
@@ -5568,7 +5552,7 @@
        },
        {
         "id": "b11",
-        "narration": "But if fans are right, GTA 6 was first seen in 2021, and almost nobody noticed.",
+        "narration": "If fans are right, we first saw GTA 6 back in 2021.",
         "image": "img11",
         "delivery": null,
         "focus": null,
