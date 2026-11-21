@@ -866,7 +866,7 @@ S["gta6-kodak-radio"] = dict(
          "CLIP:extended_look_10262", "SCAN 4 POSTERS", None),
         ("Three are in La Perle: Aunt Zola's Soul Food, TWA Ponya Tattoo, and the Drip Drops clothing store.", "CLIP:extended_look_12327", "3 IN LA PERLE", None),
         ("The fourth is upstairs at the Jack of Hearts club in Crosstown.", "CLIP:extended_look_10510",
-         "JACK OF HEARTS, CROSSTOWN", None),
+         "JACK OF HEARTS CLUB", None),
         ("Find all four, and you unlock twenty-two songs, including Kodak Black's own.", "CLIP:extended_look_12735",
          "22 SONGS", "excited"),
         ("Going for one hundred percent? You need it.", "CLIP:extended_look_11275", None, None),
@@ -990,7 +990,7 @@ S["gta6-trailer-songs"] = dict(
         ("GTA 6 didn't just break view records. It brought two old songs back from the dead.",
          "CLIP:trailer_2_00920", None, "excited"),
         ("The first trailer used Tom Petty's Love Is a Long Road, a song from 1989.", "CLIP:trailer_1_00300",
-         "TRAILER 1: TOM PETTY, 1989", None),
+         "TOM PETTY, 1989", None),
         ("After that trailer dropped, Spotify streams of the song jumped by about thirty-seven thousand percent.",
          "CLIP:trailer_1_00325", "+37,000%", "surprised"),
         ("And here's a nice detail: Tom Petty was born in Gainesville, Florida.", "CLIP:trailer_1_00356",
@@ -998,7 +998,7 @@ S["gta6-trailer-songs"] = dict(
         ("That's the state GTA 6's Leonida is based on.", "CLIP:extended_look_11275", None, None),
         ("Then the second trailer did it again, only bigger.", "CLIP:trailer_2_00346", None, "short pause"),
         ("It used Hot Together by The Pointer Sisters, a song from 1986.", "CLIP:extended_look_10196",
-         "TRAILER 2: POINTER SISTERS, 1986", None),
+         "POINTER SISTERS, 1986", None),
         ("In the two hours after that trailer came out, its Spotify streams surged by one hundred and eighty-two "
          "thousand percent.", "CLIP:trailer_1_00341", "+182,000%", "excited"),
         ("That's almost five times Tom Petty's jump.", "CLIP:extended_look_08740", None, None),
@@ -1148,6 +1148,9 @@ if __name__ == "__main__":
     # 21 Nov 2026 (owner): cover words must say what the video is about -> 3 lines, 6-12 words, each <= 22 characters,
     # never starting with "GTA 6" (the real logo is above them). And no cover picture repeated from a recent video.
     new = {t for t in out if t in {x[2] for x in _recent_plan(4)}}
+    import datetime as _dt
+    _ist = (_dt.datetime.utcnow() + _dt.timedelta(hours=5, minutes=30)).date().isoformat()
+    todo = {x[2] for x in _recent_plan(4) if x[0] is None or x[0] > _ist}     # not made yet (tomorrow on + reserves)
     seen = {}
     for t in list(out)[::-1]:
         c = out[t].get("cover") or {}
@@ -1156,6 +1159,11 @@ if __name__ == "__main__":
             words = sum(len(x.split()) for x in lines)
             if len(lines) != 3 or not 6 <= words <= 12 or any(len(x) > 22 for x in lines):
                 errs.append(f"{t}: cover_lines must be 3 lines, 6-12 words, each <= 22 characters ({lines})")
+            # 21 Nov 2026: a 24-character callout ("32.5M COPIES PRE-RELEASE") ran under the corner logo and lost
+            # its first digit; 23 characters fit ("AVATAR: $2.92B ALL-TIME").
+            for sc in out[t]["scenes"] if t in todo else []:
+                if len(sc["callout"] or "") > 23:
+                    errs.append(f"{t} {sc['id']}: callout over 23 characters runs under the logo ({sc['callout']})")
             if any(x.upper().startswith(("GTA 6", "GTA VI")) for x in lines):
                 errs.append(f"{t}: a cover line starts with 'GTA 6' (the logo already says it)")
         fr = c.get("frame") or {}
