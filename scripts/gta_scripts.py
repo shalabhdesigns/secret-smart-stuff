@@ -448,7 +448,7 @@ S["gta6-stream-record"] = dict(
     thumb_text="7.9M WATCHING",
     hook_card="7.9 MILLION?",
     cover_lines=["7.9 MILLION WATCHED", "OTHERS PLAY IT", "AT THE SAME TIME"],
-    cover_frame={"shot": "trailer_2_00961", "f": 0.5, "x": 0.4},   # Lucia, gold dress (R3: face)
+    cover_frame={"shot": "trailer_2_01400", "f": 0.5, "x": 0.68},   # jet ski, Jason + Lucia (cover as published)
     beats=[
         ("When GTA 6 unlocked this week, almost eight million people watched other people play it, all at once.",
          "CLIP:trailer_2_00232", None, "excited"),
@@ -496,7 +496,7 @@ S["gta6-dexter-apartment"] = dict(
     thumb_text="DEXTER'S APARTMENT?",
     hook_card="DEXTER'S PLACE?",
     cover_lines=["FANS SAY THEY FOUND", "DEXTER'S APARTMENT", "IN VICE CITY"],
-    cover_frame={"shot": "extended_look_03869", "f": 0.5, "x": 0.2},   # Jason, tank top (R3: face)
+    cover_frame={"shot": "extended_look_08201", "f": 0.5, "x": 0.3},   # masked man (cover as published)
     beats=[
         ("GTA 6 fans have found a TV serial killer's apartment, hiding in Vice City.", "CLIP:extended_look_08816",
          None, "whispers"),
@@ -636,7 +636,7 @@ S["gta6-first-look-2021"] = dict(
     thumb_text="SEEN IN 2021?",
     hook_card="SEEN IN 2021?",
     cover_lines=["FANS SAY WE SAW IT", "BACK IN 2021", "WITHOUT NOTICING"],
-    cover_frame={"shot": "trailer_1_00065", "f": 0.5, "x": 0.2},   # Lucia in prison
+    cover_frame={"shot": "extended_look_10196", "f": 0.5, "x": 0.5},   # Lucia close-up (cover as published, 21 Nov fix)
     beats=[
         ("Fans think GTA 6 was hiding in plain sight, years before its first trailer.", "CLIP:extended_look_03021",
          None, "curious"),
@@ -671,6 +671,310 @@ S["gta6-first-look-2021"] = dict(
     ],
     description="Fans matched a house in GTA 6's Belville to a picture in 2021's San Andreas remaster. Was it our "
                 "first look? A fan theory; Rockstar hasn't confirmed it.\nSource: VGC (18 Nov 2026).",
+    hashtags=["#GTA6", "#GTASanAndreas", "#GrandTheftAuto"],
+)
+
+
+# ---- 21 Nov 2026 (daily run): remake of tonight's sales video (Rockstar published official numbers on 20 Nov) ----
+S["gta6-official-sales"] = dict(
+    title="GTA 6 made $3.79 billion on day one, Rockstar says",
+    thumb_text="$3.79 BILLION",
+    hook_card="$3.79 BILLION?",
+    cover_lines=["$3.79 BILLION", "IN ONE DAY?", "BIGGER THAN ANY MOVIE"],
+    cover_frame={"shot": "launch_trailer_00119", "f": 0.5, "x": 0.67},   # Jason on the phone, marina (R3: face)
+    beats=[
+        ("By the end of day one, GTA 6 had made more money than any movie ever made in its whole run.",
+         "CLIP:extended_look_10132", None, "excited"),
+        ("Rockstar just announced it: 3.79 billion dollars in day one sales.", "CLIP:extended_look_07446",
+         "$3.79 BILLION", None),
+        ("That counts pre-orders and sales worldwide, up to the end of launch day.", "CLIP:trailer_1_00300",
+         "TO THE END OF 19 NOV", None),
+        ("Rockstar also says it sold 32.5 million copies before the game even came out.",
+         "CLIP:extended_look_09994", "32.5M COPIES PRE-RELEASE", None),
+        ("Remember that nineteen million estimate? The real number was much bigger.",
+         "CLIP:extended_look_12920", None, "surprised"),
+        ("Now go back to GTA 5 in 2013.", "OFFICIAL:v_c670974867", None, None),
+        ("In its first twenty-four hours, it made 815.7 million dollars, and that was a world record.",
+         "OFFICIAL:v_24ba6644de", "GTA 5: $815.7M", None),
+        ("So GTA 6's first day was more than four times bigger.", "CLIP:launch_trailer_00685", "4.6X GTA 5", None),
+        ("And the movies? Avatar, the highest-grossing film ever, made about 2.9 billion dollars in its whole run.",
+         "CLIP:extended_look_07501", "AVATAR: $2.92B ALL-TIME", None),
+        ("GTA 6 passed that before day one was even over.", "CLIP:extended_look_10833", None, None),
+        ("Rockstar calls it the biggest entertainment launch in history.", "CLIP:trailer_2_00346", None, None),
+        ("Did you buy it on day one, or are you waiting for a sale? Pick a side. "
+         "Follow for a new GTA 6 secret every day.", "CLIP:trailer_2_00920", None, None),
+    ],
+    facts=[
+        {"claim": "Rockstar Games press release (Take-Two 8-K exhibit 99.1, New York, 20 Nov 2026): 'Grand Theft Auto "
+                  "VI Shatters Entertainment Box Office Records with $3.79 Billion in Day One Retail Sales'; day one "
+                  "retail sales based on company estimates through end of day November 19th worldwide; 'sold 32.5 "
+                  "million units pre-release, a new record across all platforms'; 'the biggest entertainment launch "
+                  "in history'.",
+         "sources": ["https://www.sec.gov/Archives/edgar/data/0000946581/000162828026075217/exhibit9918k.htm"],
+         "main": True},
+        {"claim": "Variety: 'preorder and first-day sales reached $3.79 billion, the game developer announced "
+                  "Friday'; it 'has already out-grossed the highest grossing movie of all time, 'Avengers: Endgame' ($2.9 "
+                  "billion), in one day' (Wikipedia: Avatar now holds that record at $2.923B; both are below $3.79B).",
+         "sources": ["https://au.variety.com/2026/more/news/gta-6-sales-billions-first-day-42778/"], "main": True},
+        {"claim": "Highest-grossing film: Avatar, $2.923 billion worldwide (reclaimed the record from Avengers: "
+                  "Endgame, $2.797 billion, in March 2021).",
+         "sources": ["https://en.wikipedia.org/wiki/List_of_box_office_records_set_by_Avengers:_Endgame"],
+         "main": True},
+        {"claim": "Sensor Tower had estimated 19.1 million copies by the morning of release.",
+         "sources": ["https://finance.yahoo.com/media-advertising/articles/two-set-shatter-sales-records-162847652.html"],
+         "main": False},
+        {"claim": "GTA V made $815.7 million in its first 24 hours (Guinness World Records). $3.79B / $815.7M = 4.6.",
+         "sources": ["https://www.guinnessworldrecords.com/news/2013/10/confirmed-grand-theft--auto-breaks-six-sales-world-records-51900"],
+         "main": True},
+    ],
+    description="Rockstar says GTA 6 made $3.79 billion in day one retail sales (pre-orders included, to the end of "
+                "19 Nov) and sold 32.5 million copies before release: more than any film's whole box office run.\n"
+                "Sources: Rockstar Games / Take-Two press release (20 Nov 2026), Variety, Guinness World Records, "
+                "Wikipedia (box office records).",
+    hashtags=["#GTA6", "#GTA5", "#GrandTheftAuto"],
+)
+
+
+# ---- 22 Nov 2026 batch (written 21 Nov by the daily run; E1 short = kodak-radio + true-fat-jason; E2 = all) ----
+S["gta6-console-best"] = dict(
+    title="GTA 6 runs best on one console. Here's which",
+    thumb_text="WHICH CONSOLE?",
+    hook_card="WHICH CONSOLE?",
+    cover_lines=["WHICH CONSOLE", "RUNS IT BEST?", "ONE STRUGGLES"],
+    cover_frame={"shot": "trailer_1_00625", "f": 0.5, "x": 0.44},   # Lucia, red bandana, cash (R3: face)
+    experiment="E1-long",
+    beats=[
+        ("On the wrong console, GTA 6 can drop to around twenty frames a second.", "CLIP:trailer_2_00232", None,
+         "serious"),
+        ("Digital Foundry tested them all. First, the bad news.",
+         "CLIP:extended_look_09166", None, None),
+        ("Every console aims for thirty frames a second. There's no sixty F P S mode.",
+         "CLIP:extended_look_07501", "30 FPS ON EVERY CONSOLE", None),
+        ("Rockstar told Kotaku the consoles can't run its simulation any faster.",
+         "CLIP:extended_look_12327", None, None),
+        ("So which one holds thirty best?", "CLIP:extended_look_10833", None, "curious"),
+        ("Last place: the Xbox Series S.", "CLIP:trailer_1_00702", "LAST: SERIES S", None),
+        ("It runs at just 720p, and in big shootouts it falls to around twenty.",
+         "CLIP:extended_look_09432", "720p, ~20 FPS", None),
+        ("The base PS5 and Series X sit in the middle, both at 1440p.", "CLIP:trailer_2_00346",
+         "PS5 + SERIES X: 1440p", None),
+        ("Blow up enough cars, and the PS5 dips to twenty-three.", "CLIP:trailer_2_01113", "PS5: DIPS TO 23",
+         None),
+        ("The Series X dips a bit lower, but on a 120 hertz VRR TV, those dips feel smoother.",
+         "CLIP:extended_look_11192", "SERIES X: VRR HELPS", None),
+        ("And the winner is the PS5 Pro.", "CLIP:launch_trailer_00685", "WINNER: PS5 PRO", "excited"),
+        ("It's the only one with ray-traced shadows, and it looks close to native 4K.",
+         "CLIP:extended_look_07446", "NEAR-4K + RT SHADOWS", None),
+        ("In normal play, Digital Foundry saw no drops in fifty hours.", "CLIP:extended_look_11275",
+         None, None),
+        ("PlayStation or Xbox: which side are you on? Follow for a new GTA 6 secret every day.",
+         "CLIP:trailer_2_00920", None, None),
+    ],
+    facts=[
+        {"claim": "Digital Foundry (18 Nov 2026): every version targets 30 fps, no 40/60 fps mode; PS5 Pro 1440p "
+                  "internal with PSSR to a near-4K image, the only version with ray-traced shadows, brief drops to "
+                  "~24 fps only in an explosion-heavy test, ranked best; base PS5 and Series X 1440p internal, "
+                  "spatially upscaled; Series X dips a touch below PS5 (~20-22 fps worst) with 120 Hz VRR and LFC "
+                  "smoothing dips on a compatible TV; Series S 720p with FSR to ~1080p, 'around 20 FPS or lower' in "
+                  "the heaviest action, a 'distant fourth'.",
+         "sources": ["https://www.gtaboom.com/digital-foundry-finds-that-gta-6-indeed-runs-best-on-ps5-pro-b72f"],
+         "main": True},
+        {"claim": "Base PS5 dips as low as 23 fps when blowing up vehicles; DF saw no dips in normal play over 50+ "
+                  "hours on PS5 Pro; DF called the Pro 'the best way to play this game by far'.",
+         "sources": ["https://www.altchar.com/game-news/gta-vi-dips-as-low-as-23fps-on-base-ps5-in-heavy-action-digital-foundry-finds-aJybE7x7IsZa"],
+         "main": True},
+        {"claim": "Rockstar's Marc Chambers to Kotaku (18 Nov 2026): the hardware 'is not powerful enough to run the "
+                  "game's complex simulation at higher frame rates'.",
+         "sources": ["https://endgametools.com/en/gta-6/news/gta-6-30-fps-target",
+                     "https://kotaku.com/grand-theft-auto-6-gta6-performance-framerate-ps5-xbox-series-x-s-2000758096"],
+         "main": True},
+    ],
+    description="Digital Foundry tested GTA 6 on PS5, PS5 Pro, Xbox Series X and Series S. All aim for 30 fps; one "
+                "holds it best, one struggles.\nSources: Digital Foundry (via GTA BOOM, AltChar, Endgame Tools), "
+                "Kotaku.",
+    hashtags=["#GTA6", "#PS5Pro", "#Xbox"],
+)
+
+S["gta6-dating-lucia"] = dict(
+    title="Is dating Lucia in GTA 6 cheating? Couples disagree",
+    thumb_text="IS IT CHEATING?",
+    hook_card="IS IT CHEATING?",
+    cover_lines=["IS DATING LUCIA", "CHEATING?", "COUPLES ARE ARGUING"],
+    cover_frame={"shot": "trailer_1_00728", "f": 0.5, "x": 0.3},   # Lucia leaning over Jason, motel (R3: face)
+    experiment="E1-long",
+    beats=[
+        ("GTA 6 is starting real arguments between real couples, all because of Lucia.",
+         "CLIP:trailer_2_00920", None, "amused"),
+        ("Jason and Lucia are a couple, and you look after the relationship.",
+         "CLIP:extended_look_03869", None, None),
+        ("Buy her flowers, pick up groceries, fix up the house, and a little heart pops up.",
+         "CLIP:trailer_2_00416", None, None),
+        ("You can hold her hand.", "CLIP:trailer_2_00976", None, None),
+        ("And Vice says even robbing a bank together counts as quality time.", "CLIP:extended_look_07189", None,
+         None),
+        ("Ignore her goodnight text, and it can hurt the relationship a little.", "CLIP:extended_look_02226", None,
+         None),
+        ("Online, people are fighting over whether dating Lucia is cheating on your real partner.",
+         "CLIP:extended_look_06535", None, None),
+        ("One Reddit user wrote, \"Don't treat AI better than your actual girl.\"", "CLIP:trailer_1_00300", None,
+         None),
+        ("Others say if a game character ends your relationship, it was going to end anyway.",
+         "CLIP:extended_look_06595", None, None),
+        ("Some couples are even signing ten-day deals: no interruptions until November 29th.",
+         "CLIP:trailer_2_01344", "10-DAY 'GTA CONTRACTS'", None),
+        ("And here's the twist: in the game, you can't cheat on Lucia at all.", "CLIP:trailer_2_01437", None,
+         "surprised"),
+        ("There's no other romance, and you can't break up.", "CLIP:trailer_2_00759", None, None),
+        ("Is dating Lucia cheating: yes or no? Pick a side. Follow for a new GTA 6 secret every day.",
+         "CLIP:extended_look_07899", None, None),
+    ],
+    facts=[
+        {"claim": "Relationship tasks Lucia appreciates (Chapter 1): fix the car, buy flowers, pick up groceries, order "
+                  "a necklace, haircut, house repairs; a heart notification appears when an action changes the "
+                  "relationship; no romance option with anyone else and you can't break up (Output Lag, checked 20 "
+                  "Nov 2026).",
+         "sources": ["https://outputlag.com/guides/gta-6-lucia-relationship/"], "main": True},
+        {"claim": "Vice (18 Nov 2026): hold R2 to hold hands; 'Even robbing a bank together counts as quality time'; "
+                  "ignoring the goodnight text 'can hurt their relationship a little'; the romance is optional.",
+         "sources": ["https://www.vice.com/en/article/gta-6-dating-vice-city/"], "main": True},
+        {"claim": "Unilad (19 Nov 2026): heated arguments across TikTok, X and Reddit over whether in-game courtship "
+                  "counts as cheating; a Reddit user: 'Don't treat AI better than your actual girl.'; pushback: 'If "
+                  "'dating' a non-existent digital character is the cause for your relationship to end, it was going "
+                  "to end anyway.'; couples signing 10-day 'contracts' to stop mission interruptions until November "
+                  "29.",
+         "sources": ["https://www.unilad.com/technology/gta-6-sparks-fierce-debate-in-game-courtship-counts-as-cheating-513504-20261119"],
+         "main": True},
+    ],
+    description="Flowers, groceries, holding hands: GTA 6 lets you look after Jason and Lucia's relationship, and "
+                "real couples are arguing about it.\nSources: Unilad, Vice, Output Lag.",
+    hashtags=["#GTA6", "#Lucia", "#GrandTheftAuto"],
+)
+
+S["gta6-kodak-radio"] = dict(
+    title="GTA 6 has a secret Kodak Black radio station",
+    thumb_text="SECRET STATION",
+    hook_card="SECRET STATION?",
+    cover_lines=["KODAK BLACK HAS", "A SECRET STATION", "HOW TO UNLOCK IT"],
+    cover_frame={"shot": "trailer_2_00795", "f": 0.5, "x": 0.31},   # Lucia + Jason, drinks at a bar (R3: face)
+    experiment="E1-short",
+    beats=[
+        ("GTA 6 has a secret radio station, and most players will never find it.", "CLIP:extended_look_07899",
+         None, "curious"),
+        ("It's hosted by Florida rapper Kodak Black, and it's called The Sniper of La Perle.",
+         "CLIP:extended_look_12606", "THE SNIPER OF LA PERLE", None),
+        ("It's not on the normal dial. To unlock it, you scan four posters.",
+         "CLIP:extended_look_10262", "SCAN 4 POSTERS", None),
+        ("Three are in La Perle: Aunt Zola's Soul Food, TWA Ponya Tattoo, and the Drip Drops clothing store.", "CLIP:extended_look_12327", "3 IN LA PERLE", None),
+        ("The fourth is upstairs at the Jack of Hearts club in Crosstown.", "CLIP:extended_look_10510",
+         "JACK OF HEARTS, CROSSTOWN", None),
+        ("Find all four, and you unlock twenty-two songs, including Kodak Black's own.", "CLIP:extended_look_12735",
+         "22 SONGS", "excited"),
+        ("And if you want one hundred percent, you need it.", "CLIP:extended_look_11275", None, None),
+        ("Kodak Black or Weird Al's eighties station: which side are you on? Follow for a new GTA 6 secret every day.",
+         "CLIP:extended_look_05748", None, None),
+    ],
+    facts=[
+        {"claim": "Vice (20 Nov 2026): a hidden playlist, 'The Sniper of La Perle', hosted by Kodak Black, not on the "
+                  "main dial; unlocked by scanning four posters: Aunt Zola's Soul Food (cashier), TWA Ponya Tattoo "
+                  "(entrance) and Drip Drops clothing store (counter) in La Perle, and an upstairs studio poster at "
+                  "the Jack of Hearts club in Crosstown; 22 songs including Kodak Black tracks; needed for the 'Unique "
+                  "Playlists' requirement for 100% completion.",
+         "sources": ["https://www.vice.com/en/article/gta-6-players-discover-secret-radio-station-hosted-by-florida-rap-star-kodak-black/"],
+         "main": True},
+        {"claim": "Weird Al hosts an '80s hits radio station in GTA 6 (Kotaku's list of details players spotted).",
+         "sources": ["https://kotaku.com/18-coolest-details-players-have-spotted-in-gta-6-so-far-2000758435"],
+         "main": False},
+    ],
+    description="How to unlock The Sniper of La Perle, GTA 6's hidden Kodak Black station: four posters, three in "
+                "La Perle and one in Crosstown.\nSources: Vice, Kotaku.",
+    hashtags=["#GTA6", "#KodakBlack", "#GTA6Tips"],
+)
+
+S["gta6-weird-secrets"] = dict(
+    title="GTA 6's weirdest secrets players found in week one",
+    thumb_text="BIGFOOT IS REAL?",
+    hook_card="BIGFOOT?",
+    cover_lines=["BIGFOOT IS REAL?", "PLAYERS FOUND", "THE WEIRDEST SECRETS"],
+    cover_frame={"shot": "launch_trailer_00263", "f": 0.5, "x": 0.25},   # Lucia in a red convertible (R3: face)
+    experiment="E1-long",
+    beats=[
+        ("GTA 6 players have found Bigfoot, and he's not even the weirdest secret.", "CLIP:extended_look_10196",
+         None, "amused"),
+        ("Kotaku rounded up what players spotted, and it gets strange fast.",
+         "CLIP:trailer_1_00183", None, None),
+        ("First, Bigfoot is real. And UFOs exist too.", "CLIP:extended_look_04675", "BIGFOOT + UFOs", "surprised"),
+        ("Somewhere out there, there's even a giant crab monster.", "CLIP:extended_look_10360", None, None),
+        ("Get stranded at sea, and a dog riding a jet ski can show up to save you.", "CLIP:extended_look_10450",
+         None, None),
+        ("It takes you to an island of dogs, with hidden treasure worth over twelve hundred dollars.",
+         "CLIP:trailer_2_00188", "$1,200+ TREASURE", None),
+        ("Fans think it's based on Loosy, a real Florida dog whose jet ski ride went viral.",
+         "CLIP:launch_trailer_00026", "LOOSY, FORT LAUDERDALE", None),
+        ("Rockstar hasn't confirmed that.", "CLIP:trailer_1_00398", None, None),
+        ("There are sixty-two different kinds of birds.", "CLIP:extended_look_04645", "62 KINDS OF BIRDS", None),
+        ("And one of them is an old friend: Tony, the bird from GTA San Andreas, makes a cameo.",
+         "CLIP:extended_look_04501", "TONY FROM SAN ANDREAS", None),
+        ("You can even steal a scooter from an old lady.", "CLIP:extended_look_10262", None, "laughs softly"),
+        ("So the real secret is how much Rockstar hid, everywhere.", "CLIP:extended_look_07446", None, None),
+        ("Bigfoot or the jet ski dog: which is the best secret? Follow for a new GTA 6 secret every day.",
+         "CLIP:trailer_2_00232", None, None),
+    ],
+    facts=[
+        {"claim": "Kotaku (19-20 Nov 2026), details players spotted: steal a scooter from an old lady; a dog can ride a "
+                  "jet ski; Bigfoot is real, UFOs exist, and there is a giant crab monster; 62 different kinds of "
+                  "birds; Tony the bird from San Andreas makes a cameo; Weird Al hosts an '80s station.",
+         "sources": ["https://kotaku.com/18-coolest-details-players-have-spotted-in-gta-6-so-far-2000758435"],
+         "main": True},
+        {"claim": "Parade (20 Nov 2026): if a protagonist is stranded at sea, 'a dog riding a jet-ski will appear' and "
+                  "takes them to an island of dogs with hidden treasure worth over $1,200; the dog is 'likely based "
+                  "on a real-life pup', Loosy, whose personal-watercraft ride in Fort Lauderdale went viral in May; "
+                  "not confirmed by Rockstar.",
+         "sources": ["https://parade.com/entertainment/gta-6-players-discover-beloved-character-may-be-based-on-real-florida-dog"],
+         "main": True},
+    ],
+    description="Bigfoot, UFOs, a giant crab monster, a jet-ski rescue dog and a San Andreas cameo: the strangest "
+                "things players found in GTA 6's first days.\nSources: Kotaku, Parade.",
+    hashtags=["#GTA6", "#GTA6Secrets", "#GrandTheftAuto"],
+)
+
+S["gta6-true-fat-jason"] = dict(
+    title="GTA 6 players are trying to make Jason fat",
+    thumb_text="TRUE FAT JASON",
+    hook_card="HOW FAT?",
+    cover_lines=["HOW FAT CAN", "JASON GET?", "PLAYERS TRIED IT"],
+    cover_frame={"shot": "extended_look_10387", "f": 0.5, "x": 0.5},   # Lucia bench pressing (R3: face)
+    experiment="E1-short",
+    beats=[
+        ("GTA 6 players have a new mission: make Jason as fat as possible.", "CLIP:extended_look_03021", None,
+         "amused"),
+        ("San Andreas' old weight system is back.", "CLIP:trailer_2_00383", None, None),
+        ("Eat too much, and Jason or Lucia gains weight. Work out, and they build muscle.",
+         "CLIP:extended_look_10387", None, None),
+        ("One fan posted a max weight, low muscle Jason and called him True Fat Jason.", "CLIP:trailer_2_00114",
+         "'TRUE FAT JASON'", None),
+        ("The trick GamesRadar shared: eat at least four burgers or tacos, sleep, and skip the gym.",
+         "CLIP:extended_look_04707", "4+ BURGERS, NO GYM", None),
+        ("But here's the twist: True Fat Jason isn't very fat at all.", "CLIP:extended_look_03869", None,
+         "surprised"),
+        ("GamesRadar says neither he nor max weight Lucia gets as big as Arthur Morgan at his heaviest.",
+         "CLIP:extended_look_10196", None, None),
+        ("Gym Jason or True Fat Jason: which one are you building? Follow for a new GTA 6 secret every day.",
+         "CLIP:trailer_2_00232", None, None),
+    ],
+    facts=[
+        {"claim": "GamesRadar (19 Nov 2026): a fan posted 'max weight, low muscle Jason AKA the True Fat Jason'; a fan "
+                  "method: 'eat at least four burgers or tacos', sleep, eat more, avoid workouts; 'Neither seems quite "
+                  "as big as Arthur Morgan's at his heaviest'; headline: 'True Fat Jason' and 'max weight Lucia' "
+                  "aren't very fat at all.",
+         "sources": ["https://www.gamesradar.com/games/grand-theft-auto/gta-6-players-confirm-true-fat-jason-and-max-weight-lucia-arent-very-fat-at-all-setting-the-stage-for-the-first-pc-mod-to-super-size-them/"],
+         "main": True},
+        {"claim": "LADbible: Rockstar is bringing back San Andreas' weight and muscle system; 'Eating changes Jason and "
+                  "Lucia's body weight.' 'Exercise visibly builds and tones their muscles.'",
+         "sources": ["https://www.ladbible.com/entertainment/gaming/gta-6-gameplay-lucia-jason-weight-gain-feature-578092-20260827"],
+         "main": True},
+    ],
+    description="San Andreas' weight system is back, and players are chasing 'True Fat Jason'. It turns out he isn't "
+                "very fat at all.\nSources: GamesRadar, LADbible.",
     hashtags=["#GTA6", "#GTASanAndreas", "#GrandTheftAuto"],
 )
 

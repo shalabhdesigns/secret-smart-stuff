@@ -28,8 +28,8 @@
   {
    "shot": "extended_look_07899",
    "f": 0.5,
-   "x": 0.5,
-   "shows": "Lucia in a car"
+   "x": 0.62,
+   "shows": "Lucia in a car (face right of centre; checked 21 Nov)"
   },
   {
    "shot": "extended_look_10196",
@@ -66,6 +66,36 @@
    "f": 0.5,
    "x": 0.2,
    "shows": "Lucia in prison"
+  },
+  {
+   "shot": "trailer_1_00625",
+   "f": 0.5,
+   "x": 0.44,
+   "shows": "Lucia, red bandana round her neck, cash in a car (checked 21 Nov)"
+  },
+  {
+   "shot": "launch_trailer_00263",
+   "f": 0.5,
+   "x": 0.25,
+   "shows": "Lucia leaning on a red convertible, Jason driving (checked 21 Nov)"
+  },
+  {
+   "shot": "trailer_2_00795",
+   "f": 0.5,
+   "x": 0.31,
+   "shows": "Lucia + Jason with drinks at an outdoor bar (checked 21 Nov)"
+  },
+  {
+   "shot": "launch_trailer_00119",
+   "f": 0.5,
+   "x": 0.67,
+   "shows": "Jason on the phone at the marina (checked 21 Nov)"
+  },
+  {
+   "shot": "extended_look_10387",
+   "f": 0.5,
+   "x": 0.5,
+   "shows": "Lucia bench pressing, face up, gym (checked 21 Nov)"
   }
  ],
  "robbery/masks": [

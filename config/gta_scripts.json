@@ -2751,9 +2751,9 @@
    ],
    "why": "written in session",
    "frame": {
-    "shot": "trailer_2_00961",
+    "shot": "trailer_2_01400",
     "f": 0.5,
-    "x": 0.4
+    "x": 0.68
    }
   }
  },
@@ -3012,9 +3012,9 @@
    ],
    "why": "written in session",
    "frame": {
-    "shot": "extended_look_03869",
+    "shot": "extended_look_08201",
     "f": 0.5,
-    "x": 0.2
+    "x": 0.3
    }
   }
  },
@@ -3770,9 +3770,1451 @@
    ],
    "why": "written in session",
    "frame": {
-    "shot": "trailer_1_00065",
+    "shot": "extended_look_10196",
     "f": 0.5,
-    "x": 0.2
+    "x": 0.5
+   }
+  }
+ },
+ "gta6-official-sales": {
+  "viable": true,
+  "title": "GTA 6 made $3.79 billion on day one, Rockstar says",
+  "thumb_text": "$3.79 BILLION",
+  "hook_card": "$3.79 BILLION?",
+  "hooks": [
+   "By the end of day one, GTA 6 had made more money than any movie ever made in its whole run."
+  ],
+  "chosen_hook": 0,
+  "images": {
+   "img1": "CLIP:extended_look_10132",
+   "img2": "CLIP:extended_look_07446",
+   "img3": "CLIP:trailer_1_00300",
+   "img4": "CLIP:extended_look_09994",
+   "img5": "CLIP:extended_look_12920",
+   "img6": "OFFICIAL:v_c670974867",
+   "img7": "OFFICIAL:v_24ba6644de",
+   "img8": "CLIP:launch_trailer_00685",
+   "img9": "CLIP:extended_look_07501",
+   "img10": "CLIP:extended_look_10833",
+   "img11": "CLIP:trailer_2_00346",
+   "img12": "CLIP:trailer_2_00920"
+  },
+  "scenes": [
+   {
+    "id": "b1",
+    "narration": "By the end of day one, GTA 6 had made more money than any movie ever made in its whole run.",
+    "image": "img1",
+    "delivery": "excited",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b2",
+    "narration": "Rockstar just announced it: 3.79 billion dollars in day one sales.",
+    "image": "img2",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "$3.79 BILLION",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "That counts pre-orders and sales worldwide, up to the end of launch day.",
+    "image": "img3",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "TO THE END OF 19 NOV",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b4",
+    "narration": "Rockstar also says it sold 32.5 million copies before the game even came out.",
+    "image": "img4",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "32.5M COPIES PRE-RELEASE",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b5",
+    "narration": "Remember that nineteen million estimate? The real number was much bigger.",
+    "image": "img5",
+    "delivery": "surprised",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b6",
+    "narration": "Now go back to GTA 5 in 2013.",
+    "image": "img6",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b7",
+    "narration": "In its first twenty-four hours, it made 815.7 million dollars, and that was a world record.",
+    "image": "img7",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "GTA 5: $815.7M",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b8",
+    "narration": "So GTA 6's first day was more than four times bigger.",
+    "image": "img8",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "4.6X GTA 5",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b9",
+    "narration": "And the movies? Avatar, the highest-grossing film ever, made about 2.9 billion dollars in its whole run.",
+    "image": "img9",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "AVATAR: $2.92B ALL-TIME",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b10",
+    "narration": "GTA 6 passed that before day one was even over.",
+    "image": "img10",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b11",
+    "narration": "Rockstar calls it the biggest entertainment launch in history.",
+    "image": "img11",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b12",
+    "narration": "Did you buy it on day one, or are you waiting for a sale? Pick a side. Follow for a new GTA 6 secret every day.",
+    "image": "img12",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   }
+  ],
+  "facts": [
+   {
+    "claim": "Rockstar Games press release (Take-Two 8-K exhibit 99.1, New York, 20 Nov 2026): 'Grand Theft Auto VI Shatters Entertainment Box Office Records with $3.79 Billion in Day One Retail Sales'; day one retail sales based on company estimates through end of day November 19th worldwide; 'sold 32.5 million units pre-release, a new record across all platforms'; 'the biggest entertainment launch in history'.",
+    "sources": [
+     "https://www.sec.gov/Archives/edgar/data/0000946581/000162828026075217/exhibit9918k.htm"
+    ],
+    "main": true
+   },
+   {
+    "claim": "Variety: 'preorder and first-day sales reached $3.79 billion, the game developer announced Friday'; it 'has already out-grossed the highest grossing movie of all time, 'Avengers: Endgame' ($2.9 billion), in one day' (Wikipedia: Avatar now holds that record at $2.923B; both are below $3.79B).",
+    "sources": [
+     "https://au.variety.com/2026/more/news/gta-6-sales-billions-first-day-42778/"
+    ],
+    "main": true
+   },
+   {
+    "claim": "Highest-grossing film: Avatar, $2.923 billion worldwide (reclaimed the record from Avengers: Endgame, $2.797 billion, in March 2021).",
+    "sources": [
+     "https://en.wikipedia.org/wiki/List_of_box_office_records_set_by_Avengers:_Endgame"
+    ],
+    "main": true
+   },
+   {
+    "claim": "Sensor Tower had estimated 19.1 million copies by the morning of release.",
+    "sources": [
+     "https://finance.yahoo.com/media-advertising/articles/two-set-shatter-sales-records-162847652.html"
+    ],
+    "main": false
+   },
+   {
+    "claim": "GTA V made $815.7 million in its first 24 hours (Guinness World Records). $3.79B / $815.7M = 4.6.",
+    "sources": [
+     "https://www.guinnessworldrecords.com/news/2013/10/confirmed-grand-theft--auto-breaks-six-sales-world-records-51900"
+    ],
+    "main": true
+   }
+  ],
+  "description": "Rockstar says GTA 6 made $3.79 billion in day one retail sales (pre-orders included, to the end of 19 Nov) and sold 32.5 million copies before release: more than any film's whole box office run.\nSources: Rockstar Games / Take-Two press release (20 Nov 2026), Variety, Guinness World Records, Wikipedia (box office records).",
+  "hashtags": [
+   "#GTA6",
+   "#GTA5",
+   "#GrandTheftAuto"
+  ],
+  "affiliate_product": null,
+  "written_by": "Claude in session (verified)",
+  "experiment": null,
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "$3.79 BILLION",
+    "IN ONE DAY?",
+    "BIGGER THAN ANY MOVIE"
+   ],
+   "why": "written in session",
+   "frame": {
+    "shot": "launch_trailer_00119",
+    "f": 0.5,
+    "x": 0.67
+   }
+  }
+ },
+ "gta6-console-best": {
+  "viable": true,
+  "title": "GTA 6 runs best on one console. Here's which",
+  "thumb_text": "WHICH CONSOLE?",
+  "hook_card": "WHICH CONSOLE?",
+  "hooks": [
+   "On the wrong console, GTA 6 can drop to around twenty frames a second."
+  ],
+  "chosen_hook": 0,
+  "images": {
+   "img1": "CLIP:trailer_2_00232",
+   "img2": "CLIP:extended_look_09166",
+   "img3": "CLIP:extended_look_07501",
+   "img4": "CLIP:extended_look_12327",
+   "img5": "CLIP:extended_look_10833",
+   "img6": "CLIP:trailer_1_00702",
+   "img7": "CLIP:extended_look_09432",
+   "img8": "CLIP:trailer_2_00346",
+   "img9": "CLIP:trailer_2_01113",
+   "img10": "CLIP:extended_look_11192",
+   "img11": "CLIP:launch_trailer_00685",
+   "img12": "CLIP:extended_look_07446",
+   "img13": "CLIP:extended_look_11275",
+   "img14": "CLIP:trailer_2_00920"
+  },
+  "scenes": [
+   {
+    "id": "b1",
+    "narration": "On the wrong console, GTA 6 can drop to around twenty frames a second.",
+    "image": "img1",
+    "delivery": "serious",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b2",
+    "narration": "Digital Foundry tested them all. First, the bad news.",
+    "image": "img2",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "Every console aims for thirty frames a second. There's no sixty F P S mode.",
+    "image": "img3",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "30 FPS ON EVERY CONSOLE",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b4",
+    "narration": "Rockstar told Kotaku the consoles can't run its simulation any faster.",
+    "image": "img4",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b5",
+    "narration": "So which one holds thirty best?",
+    "image": "img5",
+    "delivery": "curious",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b6",
+    "narration": "Last place: the Xbox Series S.",
+    "image": "img6",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "LAST: SERIES S",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b7",
+    "narration": "It runs at just 720p, and in big shootouts it falls to around twenty.",
+    "image": "img7",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "720p, ~20 FPS",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b8",
+    "narration": "The base PS5 and Series X sit in the middle, both at 1440p.",
+    "image": "img8",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "PS5 + SERIES X: 1440p",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b9",
+    "narration": "Blow up enough cars, and the PS5 dips to twenty-three.",
+    "image": "img9",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "PS5: DIPS TO 23",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b10",
+    "narration": "The Series X dips a bit lower, but on a 120 hertz VRR TV, those dips feel smoother.",
+    "image": "img10",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "SERIES X: VRR HELPS",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b11",
+    "narration": "And the winner is the PS5 Pro.",
+    "image": "img11",
+    "delivery": "excited",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "WINNER: PS5 PRO",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b12",
+    "narration": "It's the only one with ray-traced shadows, and it looks close to native 4K.",
+    "image": "img12",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "NEAR-4K + RT SHADOWS",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b13",
+    "narration": "In normal play, Digital Foundry saw no drops in fifty hours.",
+    "image": "img13",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b14",
+    "narration": "PlayStation or Xbox: which side are you on? Follow for a new GTA 6 secret every day.",
+    "image": "img14",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   }
+  ],
+  "facts": [
+   {
+    "claim": "Digital Foundry (18 Nov 2026): every version targets 30 fps, no 40/60 fps mode; PS5 Pro 1440p internal with PSSR to a near-4K image, the only version with ray-traced shadows, brief drops to ~24 fps only in an explosion-heavy test, ranked best; base PS5 and Series X 1440p internal, spatially upscaled; Series X dips a touch below PS5 (~20-22 fps worst) with 120 Hz VRR and LFC smoothing dips on a compatible TV; Series S 720p with FSR to ~1080p, 'around 20 FPS or lower' in the heaviest action, a 'distant fourth'.",
+    "sources": [
+     "https://www.gtaboom.com/digital-foundry-finds-that-gta-6-indeed-runs-best-on-ps5-pro-b72f"
+    ],
+    "main": true
+   },
+   {
+    "claim": "Base PS5 dips as low as 23 fps when blowing up vehicles; DF saw no dips in normal play over 50+ hours on PS5 Pro; DF called the Pro 'the best way to play this game by far'.",
+    "sources": [
+     "https://www.altchar.com/game-news/gta-vi-dips-as-low-as-23fps-on-base-ps5-in-heavy-action-digital-foundry-finds-aJybE7x7IsZa"
+    ],
+    "main": true
+   },
+   {
+    "claim": "Rockstar's Marc Chambers to Kotaku (18 Nov 2026): the hardware 'is not powerful enough to run the game's complex simulation at higher frame rates'.",
+    "sources": [
+     "https://endgametools.com/en/gta-6/news/gta-6-30-fps-target",
+     "https://kotaku.com/grand-theft-auto-6-gta6-performance-framerate-ps5-xbox-series-x-s-2000758096"
+    ],
+    "main": true
+   }
+  ],
+  "description": "Digital Foundry tested GTA 6 on PS5, PS5 Pro, Xbox Series X and Series S. All aim for 30 fps; one holds it best, one struggles.\nSources: Digital Foundry (via GTA BOOM, AltChar, Endgame Tools), Kotaku.",
+  "hashtags": [
+   "#GTA6",
+   "#PS5Pro",
+   "#Xbox"
+  ],
+  "affiliate_product": null,
+  "written_by": "Claude in session (verified)",
+  "experiment": "E1-long",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "WHICH CONSOLE",
+    "RUNS IT BEST?",
+    "ONE STRUGGLES"
+   ],
+   "why": "written in session",
+   "frame": {
+    "shot": "trailer_1_00625",
+    "f": 0.5,
+    "x": 0.44
+   }
+  }
+ },
+ "gta6-dating-lucia": {
+  "viable": true,
+  "title": "Is dating Lucia in GTA 6 cheating? Couples disagree",
+  "thumb_text": "IS IT CHEATING?",
+  "hook_card": "IS IT CHEATING?",
+  "hooks": [
+   "GTA 6 is starting real arguments between real couples, all because of Lucia."
+  ],
+  "chosen_hook": 0,
+  "images": {
+   "img1": "CLIP:trailer_2_00920",
+   "img2": "CLIP:extended_look_03869",
+   "img3": "CLIP:trailer_2_00416",
+   "img4": "CLIP:trailer_2_00976",
+   "img5": "CLIP:extended_look_07189",
+   "img6": "CLIP:extended_look_02226",
+   "img7": "CLIP:extended_look_06535",
+   "img8": "CLIP:trailer_1_00300",
+   "img9": "CLIP:extended_look_06595",
+   "img10": "CLIP:trailer_2_01344",
+   "img11": "CLIP:trailer_2_01437",
+   "img12": "CLIP:trailer_2_00759",
+   "img13": "CLIP:extended_look_07899"
+  },
+  "scenes": [
+   {
+    "id": "b1",
+    "narration": "GTA 6 is starting real arguments between real couples, all because of Lucia.",
+    "image": "img1",
+    "delivery": "amused",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b2",
+    "narration": "Jason and Lucia are a couple, and you look after the relationship.",
+    "image": "img2",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "Buy her flowers, pick up groceries, fix up the house, and a little heart pops up.",
+    "image": "img3",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b4",
+    "narration": "You can hold her hand.",
+    "image": "img4",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b5",
+    "narration": "And Vice says even robbing a bank together counts as quality time.",
+    "image": "img5",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b6",
+    "narration": "Ignore her goodnight text, and it can hurt the relationship a little.",
+    "image": "img6",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b7",
+    "narration": "Online, people are fighting over whether dating Lucia is cheating on your real partner.",
+    "image": "img7",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b8",
+    "narration": "One Reddit user wrote, \"Don't treat AI better than your actual girl.\"",
+    "image": "img8",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b9",
+    "narration": "Others say if a game character ends your relationship, it was going to end anyway.",
+    "image": "img9",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b10",
+    "narration": "Some couples are even signing ten-day deals: no interruptions until November 29th.",
+    "image": "img10",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "10-DAY 'GTA CONTRACTS'",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b11",
+    "narration": "And here's the twist: in the game, you can't cheat on Lucia at all.",
+    "image": "img11",
+    "delivery": "surprised",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b12",
+    "narration": "There's no other romance, and you can't break up.",
+    "image": "img12",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b13",
+    "narration": "Is dating Lucia cheating: yes or no? Pick a side. Follow for a new GTA 6 secret every day.",
+    "image": "img13",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   }
+  ],
+  "facts": [
+   {
+    "claim": "Relationship tasks Lucia appreciates (Chapter 1): fix the car, buy flowers, pick up groceries, order a necklace, haircut, house repairs; a heart notification appears when an action changes the relationship; no romance option with anyone else and you can't break up (Output Lag, checked 20 Nov 2026).",
+    "sources": [
+     "https://outputlag.com/guides/gta-6-lucia-relationship/"
+    ],
+    "main": true
+   },
+   {
+    "claim": "Vice (18 Nov 2026): hold R2 to hold hands; 'Even robbing a bank together counts as quality time'; ignoring the goodnight text 'can hurt their relationship a little'; the romance is optional.",
+    "sources": [
+     "https://www.vice.com/en/article/gta-6-dating-vice-city/"
+    ],
+    "main": true
+   },
+   {
+    "claim": "Unilad (19 Nov 2026): heated arguments across TikTok, X and Reddit over whether in-game courtship counts as cheating; a Reddit user: 'Don't treat AI better than your actual girl.'; pushback: 'If 'dating' a non-existent digital character is the cause for your relationship to end, it was going to end anyway.'; couples signing 10-day 'contracts' to stop mission interruptions until November 29.",
+    "sources": [
+     "https://www.unilad.com/technology/gta-6-sparks-fierce-debate-in-game-courtship-counts-as-cheating-513504-20261119"
+    ],
+    "main": true
+   }
+  ],
+  "description": "Flowers, groceries, holding hands: GTA 6 lets you look after Jason and Lucia's relationship, and real couples are arguing about it.\nSources: Unilad, Vice, Output Lag.",
+  "hashtags": [
+   "#GTA6",
+   "#Lucia",
+   "#GrandTheftAuto"
+  ],
+  "affiliate_product": null,
+  "written_by": "Claude in session (verified)",
+  "experiment": "E1-long",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "IS DATING LUCIA",
+    "CHEATING?",
+    "COUPLES ARE ARGUING"
+   ],
+   "why": "written in session",
+   "frame": {
+    "shot": "trailer_1_00728",
+    "f": 0.5,
+    "x": 0.3
+   }
+  }
+ },
+ "gta6-kodak-radio": {
+  "viable": true,
+  "title": "GTA 6 has a secret Kodak Black radio station",
+  "thumb_text": "SECRET STATION",
+  "hook_card": "SECRET STATION?",
+  "hooks": [
+   "GTA 6 has a secret radio station, and most players will never find it."
+  ],
+  "chosen_hook": 0,
+  "images": {
+   "img1": "CLIP:extended_look_07899",
+   "img2": "CLIP:extended_look_12606",
+   "img3": "CLIP:extended_look_10262",
+   "img4": "CLIP:extended_look_12327",
+   "img5": "CLIP:extended_look_10510",
+   "img6": "CLIP:extended_look_12735",
+   "img7": "CLIP:extended_look_11275",
+   "img8": "CLIP:extended_look_05748"
+  },
+  "scenes": [
+   {
+    "id": "b1",
+    "narration": "GTA 6 has a secret radio station, and most players will never find it.",
+    "image": "img1",
+    "delivery": "curious",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b2",
+    "narration": "It's hosted by Florida rapper Kodak Black, and it's called The Sniper of La Perle.",
+    "image": "img2",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "THE SNIPER OF LA PERLE",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "It's not on the normal dial. To unlock it, you scan four posters.",
+    "image": "img3",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "SCAN 4 POSTERS",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b4",
+    "narration": "Three are in La Perle: Aunt Zola's Soul Food, TWA Ponya Tattoo, and the Drip Drops clothing store.",
+    "image": "img4",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "3 IN LA PERLE",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b5",
+    "narration": "The fourth is upstairs at the Jack of Hearts club in Crosstown.",
+    "image": "img5",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "JACK OF HEARTS, CROSSTOWN",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b6",
+    "narration": "Find all four, and you unlock twenty-two songs, including Kodak Black's own.",
+    "image": "img6",
+    "delivery": "excited",
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "22 SONGS",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b7",
+    "narration": "And if you want one hundred percent, you need it.",
+    "image": "img7",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b8",
+    "narration": "Kodak Black or Weird Al's eighties station: which side are you on? Follow for a new GTA 6 secret every day.",
+    "image": "img8",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   }
+  ],
+  "facts": [
+   {
+    "claim": "Vice (20 Nov 2026): a hidden playlist, 'The Sniper of La Perle', hosted by Kodak Black, not on the main dial; unlocked by scanning four posters: Aunt Zola's Soul Food (cashier), TWA Ponya Tattoo (entrance) and Drip Drops clothing store (counter) in La Perle, and an upstairs studio poster at the Jack of Hearts club in Crosstown; 22 songs including Kodak Black tracks; needed for the 'Unique Playlists' requirement for 100% completion.",
+    "sources": [
+     "https://www.vice.com/en/article/gta-6-players-discover-secret-radio-station-hosted-by-florida-rap-star-kodak-black/"
+    ],
+    "main": true
+   },
+   {
+    "claim": "Weird Al hosts an '80s hits radio station in GTA 6 (Kotaku's list of details players spotted).",
+    "sources": [
+     "https://kotaku.com/18-coolest-details-players-have-spotted-in-gta-6-so-far-2000758435"
+    ],
+    "main": false
+   }
+  ],
+  "description": "How to unlock The Sniper of La Perle, GTA 6's hidden Kodak Black station: four posters, three in La Perle and one in Crosstown.\nSources: Vice, Kotaku.",
+  "hashtags": [
+   "#GTA6",
+   "#KodakBlack",
+   "#GTA6Tips"
+  ],
+  "affiliate_product": null,
+  "written_by": "Claude in session (verified)",
+  "experiment": "E1-short",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "KODAK BLACK HAS",
+    "A SECRET STATION",
+    "HOW TO UNLOCK IT"
+   ],
+   "why": "written in session",
+   "frame": {
+    "shot": "trailer_2_00795",
+    "f": 0.5,
+    "x": 0.31
+   }
+  }
+ },
+ "gta6-weird-secrets": {
+  "viable": true,
+  "title": "GTA 6's weirdest secrets players found in week one",
+  "thumb_text": "BIGFOOT IS REAL?",
+  "hook_card": "BIGFOOT?",
+  "hooks": [
+   "GTA 6 players have found Bigfoot, and he's not even the weirdest secret."
+  ],
+  "chosen_hook": 0,
+  "images": {
+   "img1": "CLIP:extended_look_10196",
+   "img2": "CLIP:trailer_1_00183",
+   "img3": "CLIP:extended_look_04675",
+   "img4": "CLIP:extended_look_10360",
+   "img5": "CLIP:extended_look_10450",
+   "img6": "CLIP:trailer_2_00188",
+   "img7": "CLIP:launch_trailer_00026",
+   "img8": "CLIP:trailer_1_00398",
+   "img9": "CLIP:extended_look_04645",
+   "img10": "CLIP:extended_look_04501",
+   "img11": "CLIP:extended_look_10262",
+   "img12": "CLIP:extended_look_07446",
+   "img13": "CLIP:trailer_2_00232"
+  },
+  "scenes": [
+   {
+    "id": "b1",
+    "narration": "GTA 6 players have found Bigfoot, and he's not even the weirdest secret.",
+    "image": "img1",
+    "delivery": "amused",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b2",
+    "narration": "Kotaku rounded up what players spotted, and it gets strange fast.",
+    "image": "img2",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "First, Bigfoot is real. And UFOs exist too.",
+    "image": "img3",
+    "delivery": "surprised",
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "BIGFOOT + UFOs",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b4",
+    "narration": "Somewhere out there, there's even a giant crab monster.",
+    "image": "img4",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b5",
+    "narration": "Get stranded at sea, and a dog riding a jet ski can show up to save you.",
+    "image": "img5",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b6",
+    "narration": "It takes you to an island of dogs, with hidden treasure worth over twelve hundred dollars.",
+    "image": "img6",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "$1,200+ TREASURE",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b7",
+    "narration": "Fans think it's based on Loosy, a real Florida dog whose jet ski ride went viral.",
+    "image": "img7",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "LOOSY, FORT LAUDERDALE",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b8",
+    "narration": "Rockstar hasn't confirmed that.",
+    "image": "img8",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b9",
+    "narration": "There are sixty-two different kinds of birds.",
+    "image": "img9",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "62 KINDS OF BIRDS",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b10",
+    "narration": "And one of them is an old friend: Tony, the bird from GTA San Andreas, makes a cameo.",
+    "image": "img10",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "TONY FROM SAN ANDREAS",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b11",
+    "narration": "You can even steal a scooter from an old lady.",
+    "image": "img11",
+    "delivery": "laughs softly",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b12",
+    "narration": "So the real secret is how much Rockstar hid, everywhere.",
+    "image": "img12",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b13",
+    "narration": "Bigfoot or the jet ski dog: which is the best secret? Follow for a new GTA 6 secret every day.",
+    "image": "img13",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   }
+  ],
+  "facts": [
+   {
+    "claim": "Kotaku (19-20 Nov 2026), details players spotted: steal a scooter from an old lady; a dog can ride a jet ski; Bigfoot is real, UFOs exist, and there is a giant crab monster; 62 different kinds of birds; Tony the bird from San Andreas makes a cameo; Weird Al hosts an '80s station.",
+    "sources": [
+     "https://kotaku.com/18-coolest-details-players-have-spotted-in-gta-6-so-far-2000758435"
+    ],
+    "main": true
+   },
+   {
+    "claim": "Parade (20 Nov 2026): if a protagonist is stranded at sea, 'a dog riding a jet-ski will appear' and takes them to an island of dogs with hidden treasure worth over $1,200; the dog is 'likely based on a real-life pup', Loosy, whose personal-watercraft ride in Fort Lauderdale went viral in May; not confirmed by Rockstar.",
+    "sources": [
+     "https://parade.com/entertainment/gta-6-players-discover-beloved-character-may-be-based-on-real-florida-dog"
+    ],
+    "main": true
+   }
+  ],
+  "description": "Bigfoot, UFOs, a giant crab monster, a jet-ski rescue dog and a San Andreas cameo: the strangest things players found in GTA 6's first days.\nSources: Kotaku, Parade.",
+  "hashtags": [
+   "#GTA6",
+   "#GTA6Secrets",
+   "#GrandTheftAuto"
+  ],
+  "affiliate_product": null,
+  "written_by": "Claude in session (verified)",
+  "experiment": "E1-long",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "BIGFOOT IS REAL?",
+    "PLAYERS FOUND",
+    "THE WEIRDEST SECRETS"
+   ],
+   "why": "written in session",
+   "frame": {
+    "shot": "launch_trailer_00263",
+    "f": 0.5,
+    "x": 0.25
+   }
+  }
+ },
+ "gta6-true-fat-jason": {
+  "viable": true,
+  "title": "GTA 6 players are trying to make Jason fat",
+  "thumb_text": "TRUE FAT JASON",
+  "hook_card": "HOW FAT?",
+  "hooks": [
+   "GTA 6 players have a new mission: make Jason as fat as possible."
+  ],
+  "chosen_hook": 0,
+  "images": {
+   "img1": "CLIP:extended_look_03021",
+   "img2": "CLIP:trailer_2_00383",
+   "img3": "CLIP:extended_look_10387",
+   "img4": "CLIP:trailer_2_00114",
+   "img5": "CLIP:extended_look_04707",
+   "img6": "CLIP:extended_look_03869",
+   "img7": "CLIP:extended_look_10196",
+   "img8": "CLIP:trailer_2_00232"
+  },
+  "scenes": [
+   {
+    "id": "b1",
+    "narration": "GTA 6 players have a new mission: make Jason as fat as possible.",
+    "image": "img1",
+    "delivery": "amused",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b2",
+    "narration": "San Andreas' old weight system is back.",
+    "image": "img2",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "Eat too much, and Jason or Lucia gains weight. Work out, and they build muscle.",
+    "image": "img3",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b4",
+    "narration": "One fan posted a max weight, low muscle Jason and called him True Fat Jason.",
+    "image": "img4",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "'TRUE FAT JASON'",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b5",
+    "narration": "The trick GamesRadar shared: eat at least four burgers or tacos, sleep, and skip the gym.",
+    "image": "img5",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "4+ BURGERS, NO GYM",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b6",
+    "narration": "But here's the twist: True Fat Jason isn't very fat at all.",
+    "image": "img6",
+    "delivery": "surprised",
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b7",
+    "narration": "GamesRadar says neither he nor max weight Lucia gets as big as Arthur Morgan at his heaviest.",
+    "image": "img7",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b8",
+    "narration": "Gym Jason or True Fat Jason: which one are you building? Follow for a new GTA 6 secret every day.",
+    "image": "img8",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   }
+  ],
+  "facts": [
+   {
+    "claim": "GamesRadar (19 Nov 2026): a fan posted 'max weight, low muscle Jason AKA the True Fat Jason'; a fan method: 'eat at least four burgers or tacos', sleep, eat more, avoid workouts; 'Neither seems quite as big as Arthur Morgan's at his heaviest'; headline: 'True Fat Jason' and 'max weight Lucia' aren't very fat at all.",
+    "sources": [
+     "https://www.gamesradar.com/games/grand-theft-auto/gta-6-players-confirm-true-fat-jason-and-max-weight-lucia-arent-very-fat-at-all-setting-the-stage-for-the-first-pc-mod-to-super-size-them/"
+    ],
+    "main": true
+   },
+   {
+    "claim": "LADbible: Rockstar is bringing back San Andreas' weight and muscle system; 'Eating changes Jason and Lucia's body weight.' 'Exercise visibly builds and tones their muscles.'",
+    "sources": [
+     "https://www.ladbible.com/entertainment/gaming/gta-6-gameplay-lucia-jason-weight-gain-feature-578092-20260827"
+    ],
+    "main": true
+   }
+  ],
+  "description": "San Andreas' weight system is back, and players are chasing 'True Fat Jason'. It turns out he isn't very fat at all.\nSources: GamesRadar, LADbible.",
+  "hashtags": [
+   "#GTA6",
+   "#GTASanAndreas",
+   "#GrandTheftAuto"
+  ],
+  "affiliate_product": null,
+  "written_by": "Claude in session (verified)",
+  "experiment": "E1-short",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "HOW FAT CAN",
+    "JASON GET?",
+    "PLAYERS TRIED IT"
+   ],
+   "why": "written in session",
+   "frame": {
+    "shot": "extended_look_10387",
+    "f": 0.5,
+    "x": 0.5
    }
   }
  },
