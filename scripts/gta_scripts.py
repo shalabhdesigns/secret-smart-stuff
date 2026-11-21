@@ -685,7 +685,7 @@ S["gta6-official-sales"] = dict(
     beats=[
         ("By the end of day one, GTA 6 had made more money than any movie ever made in its whole run.",
          "CLIP:extended_look_10132", None, "excited"),
-        ("Rockstar just announced it: 3.79 billion dollars in day one sales.", "CLIP:extended_look_07446",
+        ("On Friday, Rockstar announced it: 3.79 billion dollars in day one sales.", "CLIP:extended_look_07446",
          "$3.79 BILLION", None),
         ("That counts pre-orders and sales worldwide, up to the end of launch day.", "CLIP:trailer_1_00300",
          "TO THE END OF 19 NOV", None),
