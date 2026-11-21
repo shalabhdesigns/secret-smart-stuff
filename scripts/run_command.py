@@ -1153,6 +1153,15 @@ def main(path: str) -> int:
                              f"{notify.esc(c.get('summary', '')[:300])}")
         use_backup(p, job)
         return 0
+    if action == "ig_hold":
+        # 21 Nov 2026 (owner away): cancel only the pending Instagram post of a video whose facts went out of date
+        # before it went public (its replacement takes the slot). No owner message, no "stop" feedback.
+        from shorts.publish import instagram as IG
+        done = {j: IG.hold(p.state, j) for j in req.get("jobs") or []}
+        for j, r in done.items():
+            p.state.log(f"{j}: Instagram post {r} ({req.get('why', 'replaced')})", "info", job_id=j)
+        print(json.dumps(done))
+        return 0
     if action == "ig_reschedule":
         # 17 Nov 2026: move only the Instagram post of a video (e.g. Reels that failed and are now overdue)
         # {"moves": {"job": "2026-11-17T12:30:00Z", ...}}
