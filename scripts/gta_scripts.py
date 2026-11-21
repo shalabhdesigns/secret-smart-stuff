@@ -448,7 +448,7 @@ S["gta6-stream-record"] = dict(
     thumb_text="7.9M WATCHING",
     hook_card="7.9 MILLION?",
     cover_lines=["7.9 MILLION WATCHED", "OTHERS PLAY IT", "AT THE SAME TIME"],
-    cover_frame={"shot": "trailer_2_01400", "f": 0.5, "x": 0.68},   # jet-ski jump
+    cover_frame={"shot": "trailer_2_00961", "f": 0.5, "x": 0.4},   # Lucia, gold dress (R3: face)
     beats=[
         ("When GTA 6 unlocked this week, almost eight million people watched other people play it, all at once.",
          "CLIP:trailer_2_00232", None, "excited"),
@@ -496,7 +496,7 @@ S["gta6-dexter-apartment"] = dict(
     thumb_text="DEXTER'S APARTMENT?",
     hook_card="DEXTER'S PLACE?",
     cover_lines=["FANS SAY THEY FOUND", "DEXTER'S APARTMENT", "IN VICE CITY"],
-    cover_frame={"shot": "extended_look_08201", "f": 0.5, "x": 0.3},   # masked man
+    cover_frame={"shot": "extended_look_03869", "f": 0.5, "x": 0.2},   # Jason, tank top (R3: face)
     beats=[
         ("GTA 6 fans have found a TV serial killer's apartment, hiding in Vice City.", "CLIP:extended_look_08816",
          None, "whispers"),
@@ -542,7 +542,7 @@ S["gta6-story-length"] = dict(
     thumb_text="50 HOURS?",
     hook_card="HOW LONG?",
     cover_lines=["HOW MANY HOURS", "TO FINISH THE STORY?", "A REVIEWER TIMED IT"],
-    cover_frame={"shot": "extended_look_09432", "f": 0.5, "x": 0.4},   # police chase
+    cover_frame={"shot": "trailer_1_00084", "f": 0.6, "x": 0.5},   # Lucia, prison jumpsuit (R3: face)
     beats=[
         ("How long does it actually take to finish GTA 6's story?", "CLIP:extended_look_07899", None, "curious"),
         ("ScreenRant's reviewer reached the end in fifty hours and forty-two minutes.", "CLIP:extended_look_11437",
@@ -681,7 +681,7 @@ S["gta6-trailer-songs"] = dict(
     thumb_text="TWO OLD SONGS",
     hook_card="TWO OLD SONGS",
     cover_lines=["TWO 80s SONGS", "EXPLODED ON SPOTIFY", "THANKS TO THE TRAILERS"],
-    cover_frame={"shot": "trailer_1_00248", "f": 0.5, "x": 0.25},   # dancing on a car roof
+    cover_frame={"shot": "extended_look_10132", "f": 0.5, "x": 0.4},   # Lucia + Jason, party (R3: face)
     beats=[
         ("GTA 6 didn't just break view records. It brought two old songs back from the dead.",
          "CLIP:trailer_2_00920", None, "excited"),
@@ -726,7 +726,7 @@ S["gta6-vice-city-1986"] = dict(
     thumb_text="BACK TO VICE CITY",
     hook_card="1986 VS NOW",
     cover_lines=["VICE CITY IN 1986", "VS GTA 6'S VICE CITY", "WHAT CHANGED?"],
-    cover_frame={"shot": "trailer_1_00217", "f": 0.5, "x": 0.2},   # Vice City beach
+    cover_frame={"shot": "extended_look_07899", "f": 0.5, "x": 0.5},   # Lucia in a car (R3: face)
     beats=[
         ("GTA 6 isn't the first time Rockstar has taken us to Vice City.", "CLIP:extended_look_10132", None,
          "curious"),
@@ -860,6 +860,10 @@ if __name__ == "__main__":
         else:
             img = fr.get("image") or c.get("image") or "img1"
             key = (out[t]["images"].get(img, ""), round(float(fr.get("t", -1)), 1))
+        # 21 Nov analysis (R3 in docs/GTA_LEARNINGS.md): a clear Lucia/Jason face on the cover wins, faceless ones flop
+        faces = {f["shot"] for f in json.loads((ROOT / "assets/official/attention_shots.json").read_text()).get("faces", [])}
+        if t in new and fr.get("shot") and fr["shot"] not in faces:
+            print(f"  warning {t}: cover shot {fr['shot']} is not in the 'faces' list (rule R3: use a Lucia/Jason face)")
         if t in new and key in seen and seen[key] != t:
             print(f"  warning {t}: cover picture {key[0]} (t={key[1]}) also used by {seen[key]}; set cover_frame")
         seen.setdefault(key, t)

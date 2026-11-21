@@ -1,5 +1,73 @@
 {
- "_note": "x = where the subject sits across the full trailer frame (0 left, 1 right); the cover shows a narrow 9:16 slice around it. 21 Nov 2026 (owner): cover pictures must grab attention. Official shots for cover_frame {'shot': id, 'f': 0-1, 'x': 0-1}. Preview frames first with the shotframes workflow; rotate, never repeat a recent one. Checked frames (f=0.5, x): trailer_2_01400 0.68 jet ski; extended_look_08201 0.3 masked man; extended_look_09432 0.4 police chase; trailer_1_00686 0.35 masked Lucia; trailer_1_00065 0.2 Lucia in prison; trailer_1_00248 0.25 dancing on car; trailer_1_00217 0.2 beach; extended_look_06943 0.44 masked Lucia leather jacket; extended_look_07171 0.4 masked pair outside store; extended_look_07189 0.35 masked pair inside store; trailer_2_00114 0.45 shirtless Jason on roof; trailer_2_01113 0.5 fire behind a motel",
+ "_note": "x = where the subject sits across the full trailer frame (0 left, 1 right); the cover shows a narrow 9:16 slice around it. 21 Nov 2026 (owner): cover pictures must grab attention. Official shots for cover_frame {'shot': id, 'f': 0-1, 'x': 0-1}. Preview frames first with the shotframes workflow; rotate, never repeat a recent one. Checked frames (f=0.5, x): trailer_2_01400 0.68 jet ski; extended_look_08201 0.3 masked man; extended_look_09432 0.4 police chase; trailer_1_00686 0.35 masked Lucia; trailer_1_00065 0.2 Lucia in prison; trailer_1_00248 0.25 dancing on car; trailer_1_00217 0.2 beach; extended_look_06943 0.44 masked Lucia leather jacket; extended_look_07171 0.4 masked pair outside store; extended_look_07189 0.35 masked pair inside store; trailer_2_00114 0.45 shirtless Jason on roof; trailer_2_01113 0.5 fire behind a motel | 21 Nov analysis: covers with a clear Lucia/Jason face did best (Lucia 1,583 IG; masked Lucia/cast 1,267-1,647); faceless covers were the flops (dark car 739). Use 'faces' first; the other lists only when the story needs it.",
+ "faces": [
+  {
+   "shot": "extended_look_10132",
+   "f": 0.5,
+   "x": 0.4,
+   "shows": "Lucia crop top + Jason"
+  },
+  {
+   "shot": "trailer_1_00084",
+   "f": 0.6,
+   "x": 0.5,
+   "shows": "Lucia orange prison jumpsuit"
+  },
+  {
+   "shot": "trailer_2_00631",
+   "f": 0.5,
+   "x": 0.25,
+   "shows": "Lucia in prison yard"
+  },
+  {
+   "shot": "trailer_1_00728",
+   "f": 0.5,
+   "x": 0.3,
+   "shows": "Lucia leaning over Jason, motel"
+  },
+  {
+   "shot": "extended_look_07899",
+   "f": 0.5,
+   "x": 0.5,
+   "shows": "Lucia in a car"
+  },
+  {
+   "shot": "extended_look_10196",
+   "f": 0.5,
+   "x": 0.5,
+   "shows": "Lucia close-up"
+  },
+  {
+   "shot": "extended_look_03869",
+   "f": 0.5,
+   "x": 0.2,
+   "shows": "Jason in tank top"
+  },
+  {
+   "shot": "trailer_2_00961",
+   "f": 0.5,
+   "x": 0.4,
+   "shows": "Lucia gold dress"
+  },
+  {
+   "shot": "trailer_2_00232",
+   "f": 0.5,
+   "x": 0.6,
+   "shows": "Jason driving"
+  },
+  {
+   "shot": "trailer_1_00686",
+   "f": 0.5,
+   "x": 0.35,
+   "shows": "masked Lucia"
+  },
+  {
+   "shot": "trailer_1_00065",
+   "f": 0.5,
+   "x": 0.2,
+   "shows": "Lucia in prison"
+  }
+ ],
  "robbery/masks": [
   "extended_look_06943",
   "extended_look_07018",

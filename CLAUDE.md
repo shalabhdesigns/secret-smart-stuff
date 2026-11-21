@@ -77,7 +77,7 @@
   never a line starting with "GTA 6"; no cover picture repeated from a recent video (`cover_frame`). The checker
   enforces this; the opening card shows them for 2.6 s. Owner, 21 Nov 2026: cover pictures must grab attention
   ("our goal is attention"): use the boldest official moments (masked robberies, police/prison, chases, stunts, beach
-  and party shots) from `assets/official/attention_shots.json` via `cover_frame {"shot", "f", "x"}` (any official shot,
+  and party shots) from `assets/official/attention_shots.json` (the `faces` list FIRST: 21 Nov numbers show a clear Lucia/Jason face on the cover wins, faceless covers flop; rules R2-R5 in docs/GTA_LEARNINGS.md) via `cover_frame {"shot", "f", "x"}` (any official shot,
   not only ones in the video); preview with the `shotframes` workflow; rotate them. Not nudity, gore or a picture
   the video contradicts: YouTube and Instagram stop recommending those, which costs the reach we want. Never make the channel itself look
   like Rockstar's; descriptions keep "fan commentary, not affiliated".

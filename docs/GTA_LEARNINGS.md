@@ -39,10 +39,37 @@ the next videos; identifying patterns and improving is Claude's job, not the own
     of Instagram views: 23:00 UTC 5-36 %; all other slots 28-160 % (02:00 68-76 %, 12:00 72 %, 14:00 72-160 %,
     17:00 99-151 %, 20:00 28-127 %). 4 of 4 videos, so it's a pattern worth testing, not proof (E3).
 
+- F6 Full analysis (21 Nov 04:18 UTC, all 23 GTA videos; IG + YT live counts; table in the owner report):
+  - Version decides most: story + real logo (7 videos, 19-21 Nov) median 1,471 IG views vs 346 (old format, 11)
+    and 382 (story without logo, 4). Watch time 19-28 s vs 9-16 s; skip 21-33 % vs 27-44 %. Every IG share
+    (13 of 14) and most saves came from the logo videos.
+  - Cover picture: a clear Lucia/Jason face (Lucia 1,583; cast 1,267; masked Lucia covers 1,4xx) beats faceless
+    covers. The one logo video with a dark car cover (PC v3) got 739, half the others. Faceless covers before the
+    logo were mostly 135-350.
+  - Topic: characters, records (biggest launches 1,389; review scores 1,471), real world / practical (Tokyo
+    1,647; real places 1,470; India price 1,531) and "does it affect me" tech (PS5 1,357) win. Events (NBA 198),
+    launch timing (184), timelines (192) and trailer trivia (135) lose. Same as F3, now on 23 videos.
+  - Shares and saves come from practical / real-world facts (Tokyo 4+4, real places 4+2, India 3).
+  - Comments: ~0 on Instagram everywhere. YouTube: PC v3 got 13 (PC vs console argument) - a side-taking
+    question gets comments; a neutral one does not.
+  - YouTube: either ~1.0-1.2k or under 400. All 4 videos at 23:00 UTC were under 210 (E3 moves that slot).
+    In the logo era every non-23:00 video reached ~1.1k except leak-war (381).
+  - Followers: IG 8 total from ~25k views (E2 tests a follow line). YT subscribers 15 -> 49.
+  - Length: the 50-65 s story videos hold 19-28 s average watch; E1 still tests 40 s.
+
 ## Adopted rules (proven on our GTA numbers)
 - R1 (20 Nov): real GTA VI logo on the cover and first screen + story format (F1).
 - R2 (20 Nov): favour character, "does this affect me" (price/console/storage) and record topics; avoid event and
   trailer-trivia topics (F3). Re-check when 10 more videos have numbers.
+  Confirmed 21 Nov on 23 videos (F6): every daily batch has >= 3 of 5 from characters / records / real-world
+  practical / "does it affect me"; at most 1 news/drama; no events, timelines or trailer trivia.
+- R3 (21 Nov): cover picture = a clear Lucia or Jason face (or masked Lucia) from `faces` in
+  `assets/official/attention_shots.json`; no faceless covers (cars, buildings, scenery, crowds). Never the same
+  face shot two days running (F6).
+- R4 (21 Nov): the last beat asks a side-taking question that splits viewers ("PS5 or PC - which side are you
+  on?"), never a neutral "what do you think?" (F6: 13 YT comments on the PC vs console video vs ~0 elsewhere).
+- R5 (21 Nov): at least 1 of 5 daily videos is a practical / real-world fact viewers save or send (price in
+  rupees/dollars, size, where places are in real life, what console you need) - these get all the shares (F6).
 
 ## Experiments log
 <!-- newest first: E<n> | started | change | hypothesis | videos (test / control) | result with numbers | decision -->
