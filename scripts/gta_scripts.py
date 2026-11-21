@@ -691,7 +691,7 @@ S["gta6-official-sales"] = dict(
          "TO THE END OF 19 NOV", None),
         ("Rockstar also says it sold 32.5 million copies before the game even came out.",
          "CLIP:extended_look_09994", "32.5M COPIES PRE-RELEASE", None),
-        ("Before launch, an analytics firm had estimated nineteen million copies. The real number was much bigger.",
+        ("Before launch, an analytics firm had estimated nineteen million copies. Rockstar's own number is much bigger.",
          "CLIP:extended_look_12920", None, "surprised"),
         ("Now go back to GTA 5 in 2013.", "OFFICIAL:v_c670974867", None, None),
         ("In its first twenty-four hours, it made 815.7 million dollars, a Guinness World Record.",
