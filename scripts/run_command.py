@@ -413,8 +413,9 @@ def do_produce(p: Pipeline, req: dict) -> int:
             # reserve scripts ("reserve": true, written and fact-checked in advance) take the empty slots
             if today <= str(p.cfg.pipeline.get("gta_reserve_until") or ""):
                 nxt_day = time.strftime("%Y-%m-%d", time.gmtime(time.time() + 5.5 * 3600 + 86400))
-                slots = [f"{today}T14:00:00Z", f"{today}T17:00:00Z", f"{today}T20:00:00Z", f"{today}T23:00:00Z",
-                         f"{nxt_day}T02:00:00Z"]
+                # slot times (UTC) from config gta_slots; an hour below 06 belongs to the next UTC day
+                hm = p.cfg.pipeline.get("gta_slots") or ["14:00", "17:00", "20:00", "23:00", "02:00"]
+                slots = [f"{nxt_day if int(h[:2]) < 6 else today}T{h}:00Z" for h in hm]
                 have = {((it.get("topic_def") or {}).get("notes") or {}).get("publish_at") for it in todays}
                 used = {jj["topic_id"] for jj in p.state.jobs()}
                 res = [it for it in allq if it.get("reserve") and it.get("nonce") not in done and it.get("topic") not in used]

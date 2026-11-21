@@ -84,8 +84,8 @@
 - **Daily cost check** (owner, 18 Nov 2026: "each day check how much we are spending on each video and find ways to
   further reduce it ... bring it down to bare minimum"). Every day run `scripts/cost_report.py` on the state db, report
   cost per video and the waste (spend on videos not published), find the biggest remaining cost and cut it.
-- **GTA 6 launch week: 5 videos a day** (owner, 16 Nov 2026), every 3 h over the US day (14:00, 17:00, 20:00,
-  23:00, 02:00 UTC). Review the numbers after 7 days: 8 a day if views per video hold, back to 3 if they fall.
+- **GTA 6 launch week: 5 videos a day** (owner, 16 Nov 2026). Slots in `config/pipeline.yaml` `gta_slots`: from 22 Nov
+  12:00, 14:00, 17:00, 20:00, 02:00 UTC (the 23:00 slot was weak on YouTube; experiment E3). Review the numbers after 7 days: 8 a day if views per video hold, back to 3 if they fall.
 - **Flag cost and policy risks before spending.** Never claim something works until it has been tested.
 
 ## Owner away 21-27 Nov 2026 (owner, 20 Nov: "I DO NOT WANT ANY INTERRUPTIONS WHATSOEVER ... without requiring any

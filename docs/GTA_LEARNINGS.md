@@ -31,6 +31,14 @@ the next videos; identifying patterns and improving is Claude's job, not the own
   format and logo. Not enough data to say why yet; keep collecting (the YouTube Data API counts are now saved every
   6 h, table `yt_live`).
 
+- F5 Posting time (21 Nov, from the owner's screenshots, 09:37 IST; 23 videos):
+  - Instagram: no time pattern. Before the logo, every slot had hits (1,350-1,580) and flops (135-350); since the
+    logo every slot gets ~1,270-1,650 except the PC video at 17:00 UTC (727). Topic and cover decide, not the hour.
+  - YouTube: the 23:00 UTC slot (04:30 IST) is weak every time: PS5 152, no disc 202, Tokyo 76, characters 121
+    (5 h old) - while the SAME videos did well on Instagram (1,357 / 566 / 1,647 / 1,267). YouTube views as a share
+    of Instagram views: 23:00 UTC 5-36 %; all other slots 28-160 % (02:00 68-76 %, 12:00 72 %, 14:00 72-160 %,
+    17:00 99-151 %, 20:00 28-127 %). 4 of 4 videos, so it's a pattern worth testing, not proof (E3).
+
 ## Adopted rules (proven on our GTA numbers)
 - R1 (20 Nov): real GTA VI logo on the cover and first screen + story format (F1).
 - R2 (20 Nov): favour character, "does this affect me" (price/console/storage) and record topics; avoid event and
@@ -38,6 +46,10 @@ the next videos; identifying patterns and improving is Claude's job, not the own
 
 ## Experiments log
 <!-- newest first: E<n> | started | change | hypothesis | videos (test / control) | result with numbers | decision -->
+- E3 | from 22 Nov | slots 12:00, 14:00, 17:00, 20:00, 02:00 UTC (the 23:00 slot moves to 12:00 = 17:30 IST; config
+  gta_slots) | the 12:00 video gets >= 50 % of its Instagram views on YouTube at 24 h, like the other slots, while the
+  23:00 videos got 5-36 % | 22-24 Nov 12:00 videos vs 19-21 Nov 23:00 videos, same metric | result: pending |
+  decision: pending (if adopted, keep 23:00 out; if not, go back)
 - E2 | from 22 Nov scripts | every video's last beat ends with a follow line after the comment question, e.g.
   "Follow for a new GTA 6 secret every day." | Instagram followers per 1,000 Reel views rise from ~0.1 (19-21 Nov)
   to 1+ | all videos 22-24 Nov vs 19-21 Nov (account-level: daily follower and subscriber gain per 1,000 views) |
