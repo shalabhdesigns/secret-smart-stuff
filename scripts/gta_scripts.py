@@ -942,21 +942,22 @@ S["gta6-true-fat-jason"] = dict(
     cover_frame={"shot": "extended_look_10387", "f": 0.5, "x": 0.5},   # Lucia bench pressing (R3: face)
     experiment="E1-short",
     beats=[
-        ("GTA 6 players have a new mission: make Jason as fat as possible.", "CLIP:extended_look_03021", None,
+        ("GTA 6 players have a new goal: make Jason as fat as possible.", "CLIP:extended_look_03021", None,
          "amused"),
         ("San Andreas' old weight system is back.", "CLIP:trailer_2_00383", None, None),
         ("Eat too much, and Jason or Lucia gains weight. Work out, and they build muscle.",
          "CLIP:extended_look_10387", None, None),
-        ("One fan posted a max weight, low muscle Jason and called him True Fat Jason.", "CLIP:trailer_2_00114",
+        ("One fan posted a max weight, low muscle Jason and called him True Fat Jason.", "CLIP:trailer_2_00232",
          "'TRUE FAT JASON'", None),
         ("The trick GamesRadar shared: eat at least four burgers or tacos, sleep, and skip the gym.",
          "CLIP:extended_look_07238", "4+ BURGERS, NO GYM", None),
         ("But here's the twist: True Fat Jason isn't very fat at all.", "CLIP:extended_look_03869", None,
          "surprised"),
-        ("GamesRadar says neither he nor max weight Lucia seems quite as big as Arthur Morgan at his heaviest.",
+        ("GamesRadar compared him and max weight Lucia to Red Dead 2's Arthur Morgan at his heaviest.",
          "CLIP:extended_look_10196", None, None),
+        ("Neither seems quite as big.", "CLIP:extended_look_03021", None, None),
         ("Gym Jason or True Fat Jason: which one are you building? Follow for more GTA 6 secrets.",
-         "CLIP:trailer_2_00232", None, None),
+         "CLIP:extended_look_05748", None, None),
     ],
     facts=[
         {"claim": "GamesRadar (19 Nov 2026): a fan posted 'max weight, low muscle Jason AKA the True Fat Jason'; a fan "

@@ -4995,23 +4995,23 @@
   "thumb_text": "TRUE FAT JASON",
   "hook_card": "HOW FAT?",
   "hooks": [
-   "GTA 6 players have a new mission: make Jason as fat as possible."
+   "GTA 6 players have a new goal: make Jason as fat as possible."
   ],
   "chosen_hook": 0,
   "images": {
    "img1": "CLIP:extended_look_03021",
    "img2": "CLIP:trailer_2_00383",
    "img3": "CLIP:extended_look_10387",
-   "img4": "CLIP:trailer_2_00114",
+   "img4": "CLIP:trailer_2_00232",
    "img5": "CLIP:extended_look_07238",
    "img6": "CLIP:extended_look_03869",
    "img7": "CLIP:extended_look_10196",
-   "img8": "CLIP:trailer_2_00232"
+   "img8": "CLIP:extended_look_05748"
   },
   "scenes": [
    {
     "id": "b1",
-    "narration": "GTA 6 players have a new mission: make Jason as fat as possible.",
+    "narration": "GTA 6 players have a new goal: make Jason as fat as possible.",
     "image": "img1",
     "delivery": "amused",
     "focus": null,
@@ -5101,7 +5101,7 @@
    },
    {
     "id": "b7",
-    "narration": "GamesRadar says neither he nor max weight Lucia seems quite as big as Arthur Morgan at his heaviest.",
+    "narration": "GamesRadar compared him and max weight Lucia to Red Dead 2's Arthur Morgan at his heaviest.",
     "image": "img7",
     "delivery": null,
     "focus": null,
@@ -5116,11 +5116,26 @@
    },
    {
     "id": "b8",
+    "narration": "Neither seems quite as big.",
+    "image": "img1",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b9",
     "narration": "Gym Jason or True Fat Jason: which one are you building? Follow for more GTA 6 secrets.",
     "image": "img8",
     "delivery": null,
     "focus": null,
-    "motion": "push",
+    "motion": "drift",
     "transition": "cut",
     "callout": null,
     "pop": null,
