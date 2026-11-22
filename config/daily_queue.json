@@ -6661,7 +6661,7 @@
        },
        {
         "id": "b2",
-        "narration": "Vice says it's hosted by Florida rapper Kodak Black, and it's called The Sniper of La Perle.",
+        "narration": "Vice says it's hosted by rapper Kodak Black, and it's called The Sniper of La Perle.",
         "image": "img2",
         "delivery": null,
         "focus": null,
@@ -6912,7 +6912,7 @@
        },
        {
         "id": "b3",
-        "narration": "First, Bigfoot is real. And UFOs exist too.",
+        "narration": "First, players have spotted Bigfoot in the game. And UFOs too.",
         "image": "img3",
         "delivery": "surprised",
         "focus": null,
@@ -7180,7 +7180,7 @@
        "img2": "CLIP:trailer_2_00383",
        "img3": "CLIP:extended_look_10387",
        "img4": "CLIP:trailer_2_00114",
-       "img5": "CLIP:extended_look_04707",
+       "img5": "CLIP:extended_look_07238",
        "img6": "CLIP:extended_look_03869",
        "img7": "CLIP:extended_look_10196",
        "img8": "CLIP:trailer_2_00232"
