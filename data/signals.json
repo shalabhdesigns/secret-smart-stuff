@@ -1,9 +1,13 @@
 {
- "collected_at": "2026-11-21T07:21:42Z",
+ "collected_at": "2026-11-22T07:02:22Z",
  "errors": [
   "@simplethingshistories: ERROR: [youtube:tab] @simplethingshistories: This channel does not have a shorts tab"
  ],
  "all_titles": [
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Elevators Use Counterweights to Save Energy?"
+  },
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Water Towers Are Built So High up Purposefully?"
@@ -1199,10 +1203,6 @@
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Candles Were Used to Track Time?"
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Whistles Were Used to 'Send Messages'?"
   },
   {
    "channel": "@nameexplain",
