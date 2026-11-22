@@ -230,13 +230,13 @@
    "clip": "extended_look",
    "start": 450.13,
    "end": 464.5,
-   "shows": "Same living-room TV showing a leafy tree branch against blue sky with birds"
+   "shows": "Living-room TV: opens ~1 s on a cartoon bun character, then a hazy sky over hills (no birds visible; checked 22 Nov)"
   },
   "extended_look_04645": {
    "clip": "extended_look",
    "start": 464.5,
    "end": 467.57,
-   "shows": "Wildlife meadow by a stream: elk, squirrel, small animals and a bird, sunny forest daytime"
+   "shows": "Wildlife meadow by a stream: a squirrel leaps, wild boars lie in the grass, elk behind (no birds visible; checked 22 Nov)"
   },
   "extended_look_04675": {
    "clip": "extended_look",
@@ -1491,7 +1491,7 @@
    "clip": "extended_look",
    "start": 1067.47,
    "end": 1069.97,
-   "shows": "Overhead view of a silver car on a cracked road, daytime, with debris and a tire"
+   "shows": "Overhead view of a silver car on a cracked road, daytime, with debris and a tire (a weapon-wheel HUD menu appears over it; checked 22 Nov)"
   },
   "extended_look_10699": {
    "clip": "extended_look",
