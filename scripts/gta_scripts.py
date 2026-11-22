@@ -869,8 +869,8 @@ S["gta6-kodak-radio"] = dict(
          "JACK OF HEARTS CLUB", None),
         ("Find all four, and you unlock twenty-two songs, including Kodak Black's own.", "CLIP:extended_look_12735",
          "22 SONGS", "excited"),
-        ("Going for one hundred percent? You need it.", "CLIP:extended_look_11275", None, None),
-        ("Kodak Black or Weird Al's eighties station: which side are you on? Follow for more GTA 6 secrets.",
+        ("Going for one hundred percent completion? You need this station.", "CLIP:extended_look_11275", None, None),
+        ("Kodak Black's hidden station or the normal radio: which side are you on? Follow for more GTA 6 secrets.",
          "CLIP:extended_look_05748", None, None),
     ],
     facts=[
