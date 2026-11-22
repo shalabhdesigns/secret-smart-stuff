@@ -5986,7 +5986,7 @@
        "img3": "CLIP:extended_look_07501",
        "img4": "CLIP:extended_look_12327",
        "img5": "CLIP:extended_look_10833",
-       "img6": "CLIP:trailer_1_00702",
+       "img6": "CLIP:extended_look_10674",
        "img7": "CLIP:extended_look_09432",
        "img8": "CLIP:trailer_2_00346",
        "img9": "CLIP:trailer_2_01113",
@@ -6029,7 +6029,7 @@
        },
        {
         "id": "b3",
-        "narration": "Every console aims for thirty frames a second. There's no sixty F P S mode.",
+        "narration": "Every console aims for thirty frames a second. There's no sixty frames mode.",
         "image": "img3",
         "delivery": null,
         "focus": null,
@@ -6194,7 +6194,7 @@
        },
        {
         "id": "b14",
-        "narration": "PlayStation or Xbox: which side are you on? Follow for more GTA 6 secrets.",
+        "narration": "PlayStation or Xbox: which side are you on? Follow for more GTA 6 tips.",
         "image": "img14",
         "delivery": null,
         "focus": null,
@@ -6312,7 +6312,7 @@
       "thumb_text": "IS IT CHEATING?",
       "hook_card": "IS IT CHEATING?",
       "hooks": [
-       "GTA 6 is starting real arguments between real couples, all because of Lucia."
+       "Real couples are arguing over GTA 6. The question: is dating Lucia cheating?"
       ],
       "chosen_hook": 0,
       "images": {
@@ -6333,7 +6333,7 @@
       "scenes": [
        {
         "id": "b1",
-        "narration": "GTA 6 is starting real arguments between real couples, all because of Lucia.",
+        "narration": "Real couples are arguing over GTA 6. The question: is dating Lucia cheating?",
         "image": "img1",
         "delivery": "amused",
         "focus": null,
@@ -6348,7 +6348,7 @@
        },
        {
         "id": "b2",
-        "narration": "Jason and Lucia are a couple, and you look after the relationship.",
+        "narration": "In the game, you can look after Jason and Lucia's relationship.",
         "image": "img2",
         "delivery": null,
         "focus": null,
@@ -6513,7 +6513,7 @@
        },
        {
         "id": "b13",
-        "narration": "Is dating Lucia cheating: yes or no? Pick a side. Follow for more GTA 6 secrets.",
+        "narration": "Is dating Lucia cheating: yes or no? Pick a side. Follow for more GTA 6 facts.",
         "image": "img13",
         "delivery": null,
         "focus": null,
@@ -7826,7 +7826,7 @@
        },
        {
         "id": "b8",
-        "narration": "Bigger map or more detail: which matters more to you? Pick a side. Follow for more GTA 6 secrets.",
+        "narration": "Bigger map or more detail: which matters more to you? Pick a side. Follow for more GTA 6 facts.",
         "image": "img8",
         "delivery": null,
         "focus": null,
@@ -8112,7 +8112,7 @@
        },
        {
         "id": "b11",
-        "narration": "Story first, or online first: which one do you care about more? Pick a side. Follow for more GTA 6 secrets.",
+        "narration": "Story first, or online first: which one do you care about more? Pick a side. Follow for more GTA 6 facts.",
         "image": "img11",
         "delivery": null,
         "focus": null,
@@ -8366,7 +8366,7 @@
        },
        {
         "id": "b9",
-        "narration": "Critics or players: who got GTA 6 right? Pick a side. Follow for more GTA 6 secrets.",
+        "narration": "Critics or players: who got GTA 6 right? Pick a side. Follow for more GTA 6 facts.",
         "image": "img9",
         "delivery": null,
         "focus": null,

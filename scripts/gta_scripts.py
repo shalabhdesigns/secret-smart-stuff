@@ -748,12 +748,12 @@ S["gta6-console-best"] = dict(
          "serious"),
         ("Digital Foundry tested them all. First, the bad news.",
          "CLIP:extended_look_09166", None, None),
-        ("Every console aims for thirty frames a second. There's no sixty F P S mode.",
+        ("Every console aims for thirty frames a second. There's no sixty frames mode.",
          "CLIP:extended_look_07501", "30 FPS ON EVERY CONSOLE", None),
         ("Rockstar told Kotaku the consoles can't run its simulation any faster.",
          "CLIP:extended_look_12327", None, None),
         ("So which one holds thirty best?", "CLIP:extended_look_10833", None, "curious"),
-        ("Last place: the Xbox Series S.", "CLIP:trailer_1_00702", "LAST: SERIES S", None),
+        ("Last place: the Xbox Series S.", "CLIP:extended_look_10674", "LAST: SERIES S", None),
         ("It runs at just 720p, and in big shootouts it falls to around twenty.",
          "CLIP:extended_look_09432", "720p, ~20 FPS", None),
         ("The base PS5 and Series X sit in the middle, both at 1440p.", "CLIP:trailer_2_00346",
@@ -767,7 +767,7 @@ S["gta6-console-best"] = dict(
          "CLIP:extended_look_07446", "NEAR-4K + RT SHADOWS", None),
         ("On the Pro, Digital Foundry saw no drops in fifty hours of normal play.", "CLIP:extended_look_11275",
          None, None),
-        ("PlayStation or Xbox: which side are you on? Follow for more GTA 6 secrets.",
+        ("PlayStation or Xbox: which side are you on? Follow for more GTA 6 tips.",
          "CLIP:trailer_2_00920", None, None),
     ],
     facts=[
@@ -803,9 +803,9 @@ S["gta6-dating-lucia"] = dict(
     cover_frame={"shot": "trailer_1_00728", "f": 0.5, "x": 0.3},   # Lucia leaning over Jason, motel (R3: face)
     experiment="E1-long",
     beats=[
-        ("GTA 6 is starting real arguments between real couples, all because of Lucia.",
+        ("Real couples are arguing over GTA 6. The question: is dating Lucia cheating?",
          "CLIP:trailer_2_00920", None, "amused"),
-        ("Jason and Lucia are a couple, and you look after the relationship.",
+        ("In the game, you can look after Jason and Lucia's relationship.",
          "CLIP:extended_look_03869", None, None),
         ("Buy her flowers, pick up groceries, fix up the house, and a little heart pops up.",
          "CLIP:trailer_2_00416", None, None),
@@ -825,7 +825,7 @@ S["gta6-dating-lucia"] = dict(
         ("And here's the twist: in the game, there's no one else to date.", "CLIP:trailer_2_00759", None,
          "surprised"),
         ("And you can't break up with her.", "CLIP:trailer_2_01437", None, None),
-        ("Is dating Lucia cheating: yes or no? Pick a side. Follow for more GTA 6 secrets.",
+        ("Is dating Lucia cheating: yes or no? Pick a side. Follow for more GTA 6 facts.",
          "CLIP:extended_look_07899", None, None),
     ],
     facts=[
@@ -1053,7 +1053,7 @@ S["gta6-map-size"] = dict(
          "170+ ANIMAL SPECIES", "surprised"),
         ("And one estimate says driving across it takes about thirty-five minutes.", "CLIP:extended_look_07501",
          "~35 MIN TO CROSS", None),
-        ("Bigger map or more detail: which matters more to you? Pick a side. Follow for more GTA 6 secrets.",
+        ("Bigger map or more detail: which matters more to you? Pick a side. Follow for more GTA 6 facts.",
          "CLIP:extended_look_11275", None, None),
     ],
     facts=[
@@ -1102,7 +1102,7 @@ S["gta6-online-when"] = dict(
         ("Meanwhile, Take-Two says it will keep supporting GTA Online on GTA 5.", "OFFICIAL:v_07edb091bb", None,
          None),
         ("Story first, or online first: which one do you care about more? Pick a side. Follow for more GTA 6 "
-         "secrets.", "CLIP:extended_look_05748", None, None),
+         "facts.", "CLIP:extended_look_05748", None, None),
     ],
     facts=[
         {"claim": "Leonipedia (updated 21 Nov 2026): 'Status as of November 21, 2026: no online mode announced for GTA "
@@ -1146,7 +1146,7 @@ S["gta6-zelda-score"] = dict(
         ("Its user score fell from nine point six to eight point seven in under a day.", "CLIP:extended_look_11437",
          "ZELDA: 9.6 TO 8.7", None),
         ("Push Square says it looks like GTA 6 fans hitting back.", "CLIP:extended_look_12606", None, None),
-        ("Critics or players: who got GTA 6 right? Pick a side. Follow for more GTA 6 secrets.",
+        ("Critics or players: who got GTA 6 right? Pick a side. Follow for more GTA 6 facts.",
          "CLIP:extended_look_05748", None, None),
     ],
     facts=[
