@@ -903,7 +903,7 @@ S["gta6-weird-secrets"] = dict(
         ("Kotaku rounded up what players spotted, and it gets strange fast.",
          "CLIP:extended_look_15524", None, None),
         ("First, players have spotted Bigfoot in the game. And UFOs too.", "CLIP:trailer_1_00183", "BIGFOOT + UFOs", "surprised"),
-        ("Somewhere out there, there's even a giant crab monster.", "CLIP:extended_look_10360", None, None),
+        ("There's even a giant crab monster.", "CLIP:extended_look_10360", None, None),
         ("Get stranded at sea, and a dog riding a jet ski can show up to save you.", "CLIP:extended_look_10450",
          None, None),
         ("It takes you to an island of dogs, with hidden treasure worth over twelve hundred dollars.",
