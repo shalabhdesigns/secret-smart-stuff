@@ -1005,7 +1005,7 @@ S["gta6-lucia-actor"] = dict(
          "CLIP:extended_look_07899", None, None),
         ("His message to fans ended with: See y'all in Leonida.", "CLIP:trailer_1_00356", None, None),
         ("Lucia or Jason: whose story are you here for? Pick a side. Follow for more GTA 6 secrets.",
-         "CLIP:extended_look_05748", None, None),
+         "CLIP:extended_look_10919", None, None),
     ],
     facts=[
         {"claim": "LADbible (19 Nov 2026): Lucia is played by Manni L Perez (she shared the character graphic on her "
@@ -1100,7 +1100,7 @@ S["gta6-online-when"] = dict(
         ("Meanwhile, Take-Two says it will keep supporting GTA Online on GTA 5.", "OFFICIAL:v_07edb091bb", None,
          None),
         ("Story first, or online first: which one do you care about more? Pick a side. Follow for more GTA 6 "
-         "facts.", "CLIP:extended_look_05748", None, None),
+         "facts.", "CLIP:extended_look_09766", None, None),
     ],
     facts=[
         {"claim": "Leonipedia (updated 21 Nov 2026): 'Status as of November 21, 2026: no online mode announced for GTA "
@@ -1145,7 +1145,7 @@ S["gta6-zelda-score"] = dict(
          "ZELDA: 9.6 TO 8.7", None),
         ("Push Square says it looks like GTA 6 fans hitting back.", "CLIP:extended_look_12606", None, None),
         ("Critics or players: who got GTA 6 right? Pick a side. Follow for more GTA 6 facts.",
-         "CLIP:extended_look_05748", None, None),
+         "CLIP:extended_look_12735", None, None),
     ],
     facts=[
         {"claim": "GTABase (21 Nov 2026): PS5 user score 5.6/10 vs critic score 99 (152 critics); 'Almost 30,000 user "
@@ -1197,7 +1197,7 @@ S["gta6-egg-tower"] = dict(
         ("Even the achievement is a joke: The Truth Is Out There.", "CLIP:trailer_1_00300", "TRUTH IS OUT THERE",
          None),
         ("Egg tower or alien rescue: which one are you trying first? Pick a side. Follow for more GTA 6 secrets.",
-         "CLIP:extended_look_05748", None, None),
+         "CLIP:extended_look_12606", None, None),
     ],
     facts=[
         {"claim": "ComicBook (20 Nov 2026): a radio tower in South Vice-Dale County, arguably the highest point in the "
