@@ -7374,6 +7374,1391 @@
   },
   {
    "action": "produce",
+   "topic": "gta6-lucia-actor",
+   "fresh": true,
+   "nonce": "gta-footage-gta6-lucia-actor-2026-11-23",
+   "day": "2026-11-23",
+   "topic_def": {
+    "id": "gta6-lucia-actor",
+    "title": "GTA 6's Lucia actress was in GTA 5 all along",
+    "pillar": "gta6",
+    "notes": {
+     "object": "official GTA 6 footage",
+     "question": "GTA 6's Lucia actress was in GTA 5 all along",
+     "angle": "VERIFIED 22 Nov 2026. Publishes 23 Nov 12:00 UTC. Script in gta_scripts.py. LADbible/Yahoo/ScreenRant (19 Nov): Manni L. Perez plays Lucia (Game Awards Best Performance nomination; first credit Clubber 2 in GTA V; unnamed blackjack dealer in a 2019 GTA Online update; Jessica Jones, The Blacklist, Law & Order; Muay Thai, BJJ, MMA; 2018 Paz quote). Dylan Rourke posted that he played Jason (his video game debut; Station 19, Modern Family; 'See y'all in Leonida.'). CTA: Lucia or Jason? FORMAT FOR THIS VIDEO (its own look and feel): Tone: fan-detective, warm. Shape: the hidden cameo -> who she is -> the tiny GTA 5 role -> the Online role -> who she is off screen -> Jason's actor.",
+     "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): man beside a custom sports car in a neon garage\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+     "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
+     "official_images": "required",
+     "open_hook": true,
+     "words": [
+      110,
+      170
+     ],
+     "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
+     "style": "story",
+     "badge": "GTA 6",
+     "script": {
+      "viable": true,
+      "title": "GTA 6's Lucia actress was in GTA 5 all along",
+      "thumb_text": "SHE WAS IN GTA 5",
+      "hook_card": "SHE WAS IN GTA 5?",
+      "hooks": [
+       "The woman who plays Lucia in GTA 6 was already in GTA 5. You just never noticed."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:extended_look_08816",
+       "img2": "CLIP:extended_look_10196",
+       "img3": "OFFICIAL:v_c670974867",
+       "img4": "CLIP:trailer_1_00341",
+       "img5": "OFFICIAL:v_7f4ce4e75d",
+       "img6": "CLIP:trailer_2_01293",
+       "img7": "CLIP:extended_look_10387",
+       "img8": "CLIP:extended_look_03021",
+       "img9": "CLIP:trailer_2_00232",
+       "img10": "CLIP:extended_look_07899",
+       "img11": "CLIP:trailer_1_00356",
+       "img12": "CLIP:extended_look_05748"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "The woman who plays Lucia in GTA 6 was already in GTA 5. You just never noticed.",
+        "image": "img1",
+        "delivery": "curious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "Her name is Manni Perez, and she's nominated at the Game Awards for Best Performance, as Lucia.",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "LUCIA: MANNI L. PEREZ",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "LADbible checked her IMDb, and her very first credit is GTA 5.",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "FIRST CREDIT: GTA 5",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "She voiced a character called Clubber number two.",
+        "image": "img4",
+        "delivery": "amused",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "'CLUBBER 2'",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "Then, in a 2019 GTA Online update, she was a blackjack dealer with no name.",
+        "image": "img5",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "UNNAMED DEALER, 2019",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "On TV, she's been in Jessica Jones, The Blacklist and Law and Order.",
+        "image": "img6",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "And she trains in Muay Thai, Brazilian jiu-jitsu and MMA.",
+        "image": "img7",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "Back in 2018, she said her biggest fear was playing a woman who needs to be saved by a man.",
+        "image": "img8",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "And Jason? Dylan Rourke posted on Instagram that he played him.",
+        "image": "img9",
+        "delivery": "excited",
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "JASON: DYLAN ROURKE",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "It's his first video game. Before this, he was on Station 19 and Modern Family.",
+        "image": "img10",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b11",
+        "narration": "His message to fans ended with: See y'all in Leonida.",
+        "image": "img11",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b12",
+        "narration": "Lucia or Jason: whose story are you here for? Pick a side. Follow for more GTA 6 secrets.",
+        "image": "img12",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "LADbible (19 Nov 2026): Lucia is played by Manni L Perez (she shared the character graphic on her Instagram); her first IMDb credit is 'Clubber 2' in GTA V; TV: Jessica Jones, The Blacklist, Chicago P.D., Law & Order: SVU; trains Muay Thai, Brazilian jiu-jitsu, MMA. Dylan Rourke revealed on Instagram that he played Jason; his statement ends 'See y'all in Leonida.'; his credits include Station 19 and Modern Family.",
+        "sources": [
+         "https://www.ladbible.com/entertainment/gaming/gta-6-jason-lucia-manni-perez-dylan-rourke-484374-20261119"
+        ],
+        "main": true
+       },
+       {
+        "claim": "Yahoo (19 Nov 2026): Perez was nominated at the Game Awards for Best Performance for her voice work as Lucia; credited as the voice of Clubber #2 in GTA V; an unnamed blackjack dealer in a 2019 GTA Online update; 2018 Paz Magazine: 'my biggest fear is to play a woman that needs to be saved by a man'.",
+        "sources": [
+         "https://www.yahoo.com/entertainment/celebrity/article/the-gta-6-voice-actor-for-lucia-has-finally-been-revealed-what-to-know-about-manni-perez-161144388.html"
+        ],
+        "main": true
+       },
+       {
+        "claim": "ScreenRant (19 Nov 2026): Jason is played by Dylan Rourke; GTA 6 is his video game debut; earlier TV parts include Station 19 (three episodes) and Modern Family.",
+        "sources": [
+         "https://screenrant.com/gta-6-cast-voice-actors/"
+        ],
+        "main": true
+       }
+      ],
+      "description": "Lucia's actress Manni L. Perez had a tiny voice role in GTA 5 years before GTA 6. Plus Jason's actor, Dylan Rourke.\nSources: LADbible, Yahoo, ScreenRant.",
+      "hashtags": [
+       "#GTA6",
+       "#Lucia",
+       "#GTA5"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)",
+      "experiment": "E1-long",
+      "cover": {
+       "image": "img1",
+       "lines": [
+        "LUCIA'S ACTRESS",
+        "WAS IN GTA 5?",
+        "SPOT HER ROLE"
+       ],
+       "why": "written in session",
+       "frame": {
+        "shot": "trailer_2_00961",
+        "f": 0.5,
+        "x": 0.4
+       }
+      }
+     },
+     "publish_at": "2026-11-23T12:00:00Z",
+     "batch": "gta6-launch-footage",
+     "seo": {
+      "category_id": "20",
+      "hashtags": [
+       "#GTA6",
+       "#GTAVI",
+       "#GrandTheftAuto6"
+      ],
+      "tags": [
+       "GTA 6",
+       "GTA VI",
+       "Grand Theft Auto 6",
+       "Grand Theft Auto VI",
+       "GTA 6 news",
+       "GTA 6 trailer",
+       "Rockstar Games",
+       "Vice City",
+       "Jason and Lucia",
+       "Leonida"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-map-size",
+   "fresh": true,
+   "nonce": "gta-footage-gta6-map-size-2026-11-23",
+   "day": "2026-11-23",
+   "topic_def": {
+    "id": "gta6-map-size",
+    "title": "GTA 6's map vs GTA 5: how big is it really?",
+    "pillar": "gta6",
+    "notes": {
+     "object": "official GTA 6 footage",
+     "question": "GTA 6's map vs GTA 5: how big is it really?",
+     "angle": "VERIFIED 22 Nov 2026. Publishes 23 Nov 14:00 UTC. Script in gta_scripts.py. No official square-mile figure (GTA Zone); about twice GTA 5 per Rockstar (Forbes); 3x RDR2 per TGG (SlashGear); six regions; 170+ animal species (Game Informer via Forbes); ~35 min to drive across (estimate, SlashGear). CTA: bigger map or more detail? FORMAT FOR THIS VIDEO (its own look and feel): Tone: practical myth-buster, quick. Shape: the question -> no official number -> what Rockstar has said -> what's reported -> how long it takes to cross.",
+     "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): man beside a custom sports car in a neon garage\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+     "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
+     "official_images": "required",
+     "open_hook": true,
+     "words": [
+      110,
+      170
+     ],
+     "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
+     "style": "story",
+     "badge": "GTA 6",
+     "script": {
+      "viable": true,
+      "title": "GTA 6's map vs GTA 5: how big is it really?",
+      "thumb_text": "HOW BIG?",
+      "hook_card": "HOW BIG?",
+      "hooks": [
+       "How much bigger is GTA 6's map than GTA 5's? Here's what's actually known."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:trailer_2_00232",
+       "img2": "CLIP:trailer_1_00300",
+       "img3": "OFFICIAL:v_3360902d78",
+       "img4": "CLIP:trailer_1_00183",
+       "img5": "CLIP:extended_look_10298",
+       "img6": "CLIP:extended_look_04645",
+       "img7": "CLIP:extended_look_07501",
+       "img8": "CLIP:extended_look_11275"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "How much bigger is GTA 6's map than GTA 5's? Here's what's actually known.",
+        "image": "img1",
+        "delivery": "curious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "First, Rockstar has never given a size in square miles.",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "But Forbes reports Rockstar puts it at around twice the size of GTA 5's map.",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "ABOUT 2x GTA 5",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "And a YouTuber who spoke to Rockstar says it's three times Red Dead Redemption 2.",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "3x RDR2 (REPORTED)",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "There are six regions, from Vice City to the swamps and the Keys.",
+        "image": "img5",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "6 REGIONS",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "Game Informer counted more than a hundred and seventy animal species.",
+        "image": "img6",
+        "delivery": "surprised",
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "170+ ANIMAL SPECIES",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "And one estimate says driving across it takes about thirty-five minutes.",
+        "image": "img7",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "~35 MIN TO CROSS",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "Bigger map or more detail: which matters more to you? Pick a side. Follow for more GTA 6 secrets.",
+        "image": "img8",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "GTA Zone (updated 29 Oct 2026): 'Rockstar still hasn't published a square-mile figure, but it now gives ratios' (roughly twice GTA 5).",
+        "sources": [
+         "https://gta-zone.com/news/gta-6-map-size/"
+        ],
+        "main": true
+       },
+       {
+        "claim": "Forbes (6 Oct 2026): 'GTA 6's Leonida is around twice the size of GTA 5's map, per Rockstar'; six regions (Vice City, Leonida Keys, Grassrivers, Port Gellhorn, Ambrosia, Mount Kalaga National Park); more than 170 animal species (Game Informer cover story).",
+        "sources": [
+         "https://www.forbes.com/sites/brianmazique/2026/10/06/gta-6s-map-is-about-twice-the-size-of-gta-5-with-hurricanes-and-170-animal-species/"
+        ],
+        "main": true
+       },
+       {
+        "claim": "SlashGear (19 Nov 2026): YouTuber TGG says Rockstar told him the map is three times RDR2's and twice GTA V's; estimates (from outside Rockstar) say about 35 minutes to drive across the map.",
+        "sources": [
+         "https://www.slashgear.com/2319631/grand-theft-auto-6-map-huge-bigger-than-originally-thought/"
+        ],
+        "main": true
+       }
+      ],
+      "description": "Rockstar never gave GTA 6's map size in square miles. Here's what's reported: about twice GTA 5, six regions, 170+ animal species.\nSources: Forbes, SlashGear, GTA Zone.",
+      "hashtags": [
+       "#GTA6",
+       "#GTA6Map",
+       "#GTA5"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)",
+      "experiment": "E1-short",
+      "cover": {
+       "image": "img1",
+       "lines": [
+        "TWICE AS BIG",
+        "AS GTA 5?",
+        "WHAT WE KNOW"
+       ],
+       "why": "written in session",
+       "frame": {
+        "shot": "trailer_2_00232",
+        "f": 0.5,
+        "x": 0.6
+       }
+      }
+     },
+     "publish_at": "2026-11-23T14:00:00Z",
+     "batch": "gta6-launch-footage",
+     "seo": {
+      "category_id": "20",
+      "hashtags": [
+       "#GTA6",
+       "#GTAVI",
+       "#GrandTheftAuto6"
+      ],
+      "tags": [
+       "GTA 6",
+       "GTA VI",
+       "Grand Theft Auto 6",
+       "Grand Theft Auto VI",
+       "GTA 6 news",
+       "GTA 6 trailer",
+       "Rockstar Games",
+       "Vice City",
+       "Jason and Lucia",
+       "Leonida"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-online-when",
+   "fresh": true,
+   "nonce": "gta-footage-gta6-online-when-2026-11-23",
+   "day": "2026-11-23",
+   "topic_def": {
+    "id": "gta6-online-when",
+    "title": "GTA 6 has no online mode. When is it coming?",
+    "pillar": "gta6",
+    "notes": {
+     "object": "official GTA 6 footage",
+     "question": "GTA 6 has no online mode. When is it coming?",
+     "angle": "VERIFIED 22 Nov 2026 (status as of 21 Nov). Publishes 23 Nov 17:00 UTC. Script in gta_scripts.py. Single-player only (store pages; Leonipedia, GameVerse); GTA Online came 1 Oct 2013, two weeks after GTA V; no announced online mode or date; Twitch CEO Clancy to Bloomberg ('next year when they launch multiplayer'); Schreier: expected 2027; Take-Two keeps supporting GTA Online. CTA: story first or online first? FORMAT FOR THIS VIDEO (its own look and feel): Tone: a friend answering a worried player, calm. Shape: the bad news -> GTA 5 did the same -> no date -> the biggest hint -> what's confirmed.",
+     "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): man beside a custom sports car in a neon garage\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+     "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
+     "official_images": "required",
+     "open_hook": true,
+     "words": [
+      110,
+      170
+     ],
+     "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
+     "style": "story",
+     "badge": "GTA 6",
+     "script": {
+      "viable": true,
+      "title": "GTA 6 has no online mode. When is it coming?",
+      "thumb_text": "NO ONLINE?",
+      "hook_card": "NO ONLINE?",
+      "hooks": [
+       "You can't play GTA 6 with your friends. Not online, and not on the same couch."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:extended_look_03021",
+       "img2": "CLIP:extended_look_09166",
+       "img3": "OFFICIAL:v_c670974867",
+       "img4": "OFFICIAL:v_7f4ce4e75d",
+       "img5": "CLIP:extended_look_12920",
+       "img6": "CLIP:extended_look_15524",
+       "img7": "CLIP:extended_look_12606",
+       "img8": "CLIP:extended_look_07446",
+       "img9": "CLIP:trailer_1_00398",
+       "img10": "OFFICIAL:v_07edb091bb",
+       "img11": "CLIP:extended_look_05748"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "You can't play GTA 6 with your friends. Not online, and not on the same couch.",
+        "image": "img1",
+        "delivery": "serious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "The store pages say it plainly: Grand Theft Auto Six is a single-player experience.",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "SINGLE-PLAYER ONLY",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "But GTA 5 didn't have online on day one either. It came out on September 17th, 2013.",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "GTA Online followed two weeks later, on October 1st.",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "+2 WEEKS",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "So where is GTA 6's online mode? So far, Rockstar and Take-Two haven't announced one, or a date.",
+        "image": "img5",
+        "delivery": "curious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "NO DATE YET",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "The biggest hint came from Twitch's boss, Dan Clancy, in September.",
+        "image": "img6",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "He told Bloomberg there'd be a big bump with GTA 6, \"but then an even bigger one next year when they launch multiplayer.\"",
+        "image": "img7",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "'NEXT YEAR'",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "Bloomberg's Jason Schreier has also reported that the online part is expected in 2027.",
+        "image": "img8",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "EXPECTED: 2027",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "Rockstar hasn't confirmed that.",
+        "image": "img9",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "Meanwhile, Take-Two says it will keep supporting GTA Online on GTA 5.",
+        "image": "img10",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b11",
+        "narration": "Story first, or online first: which one do you care about more? Pick a side. Follow for more GTA 6 secrets.",
+        "image": "img11",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "Leonipedia (updated 21 Nov 2026): 'Status as of November 21, 2026: no online mode announced for GTA 6'; the PlayStation and Xbox store pages say 'Grand Theft Auto VI is a single-player experience'; PlayStation Store: 1 player; Bloomberg's Jason Schreier (14 Oct 2026): the online component 'is expected to be released in 2027'; Zelnick: 'We do expect to support GTA Online going forward.'",
+        "sources": [
+         "https://leonipedia.com/guides/online-release-date/"
+        ],
+        "main": true
+       },
+       {
+        "claim": "GameVerse (19 Nov 2026): GTA 6 is out and solo only: no online, no co-op, no split-screen; Rockstar and Take-Two have not announced, named or dated an online mode.",
+        "sources": [
+         "https://gameverse.app/blog/gta-6-multiplayer"
+        ],
+        "main": true
+       },
+       {
+        "claim": "Just Jared (17 Nov 2026): GTA V launched 17 Sept 2013 and GTA Online arrived 1 Oct 2013, about two weeks later; Twitch CEO Dan Clancy to Bloomberg (Sept 2026): 'You are going to see this big bump with GTA 6, but then an even bigger one next year when they launch multiplayer.'",
+        "sources": [
+         "https://www.justjared.com/2026/11/17/gta-6-online-release-date-multiplayer-launch/"
+        ],
+        "main": true
+       }
+      ],
+      "description": "GTA 6 launched single-player only. GTA Online came two weeks after GTA 5; for GTA 6, Rockstar hasn't announced an online mode or date.\nSources: Leonipedia, GameVerse, Just Jared (Bloomberg).",
+      "hashtags": [
+       "#GTA6",
+       "#GTAOnline",
+       "#GTA6Online"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)",
+      "experiment": "E1-long",
+      "cover": {
+       "image": "img1",
+       "lines": [
+        "NO ONLINE MODE?",
+        "WHEN DOES IT",
+        "FINALLY COME?"
+       ],
+       "why": "written in session",
+       "frame": {
+        "shot": "extended_look_03869",
+        "f": 0.5,
+        "x": 0.2
+       }
+      }
+     },
+     "publish_at": "2026-11-23T17:00:00Z",
+     "batch": "gta6-launch-footage",
+     "seo": {
+      "category_id": "20",
+      "hashtags": [
+       "#GTA6",
+       "#GTAVI",
+       "#GrandTheftAuto6"
+      ],
+      "tags": [
+       "GTA 6",
+       "GTA VI",
+       "Grand Theft Auto 6",
+       "Grand Theft Auto VI",
+       "GTA 6 news",
+       "GTA 6 trailer",
+       "Rockstar Games",
+       "Vice City",
+       "Jason and Lucia",
+       "Leonida"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-zelda-score",
+   "fresh": true,
+   "nonce": "gta-footage-gta6-zelda-score-2026-11-23",
+   "day": "2026-11-23",
+   "topic_def": {
+    "id": "gta6-zelda-score",
+    "title": "GTA 6's Metacritic fight just dragged in Zelda",
+    "pillar": "gta6",
+    "notes": {
+     "object": "official GTA 6 footage",
+     "question": "GTA 6's Metacritic fight just dragged in Zelda",
+     "angle": "VERIFIED 22 Nov 2026 - CAREFUL WORDING (scores change; dated 21 Nov). Publishes 23 Nov 20:00 UTC. Script in gta_scripts.py. GTABase/Notebookcheck/CBR/Push Square: critics 99 (ties Ocarina), PS5 user score 5.6 on 21 Nov, ~30K negative ratings, complaints (30 fps, bugs, slow start, no disc); Ocarina user score 9.6 -> 8.7 in under a day; Push Square: looks like GTA 6 fans hitting back. CTA: critics or players? FORMAT FOR THIS VIDEO (its own look and feel): Tone: gossip about an internet war, amused. Shape: the two numbers -> why players are angry -> the twist (Zelda) -> the revenge.",
+     "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): man beside a custom sports car in a neon garage\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+     "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
+     "official_images": "required",
+     "open_hook": true,
+     "words": [
+      110,
+      170
+     ],
+     "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
+     "style": "story",
+     "badge": "GTA 6",
+     "script": {
+      "viable": true,
+      "title": "GTA 6's Metacritic fight just dragged in Zelda",
+      "thumb_text": "99 OR 5.6?",
+      "hook_card": "99 OR 5.6?",
+      "hooks": [
+       "GTA 6's score fight has dragged in a game from 1998: Zelda."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:trailer_1_00728",
+       "img2": "CLIP:extended_look_07446",
+       "img3": "CLIP:extended_look_10037",
+       "img4": "CLIP:extended_look_15524",
+       "img5": "CLIP:extended_look_09166",
+       "img6": "CLIP:extended_look_07351",
+       "img7": "CLIP:extended_look_11437",
+       "img8": "CLIP:extended_look_12606",
+       "img9": "CLIP:extended_look_05748"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "GTA 6's score fight has dragged in a game from 1998: Zelda.",
+        "image": "img1",
+        "delivery": "amused",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "On Metacritic, critics gave it ninety-nine. That ties the all-time record.",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "CRITICS: 99",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "But on November 21st, its PlayStation 5 user score was just five point six.",
+        "image": "img3",
+        "delivery": "surprised",
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "PLAYERS: 5.6",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "GTABase counted almost thirty thousand negative ratings.",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "~30,000 NEGATIVE",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "The complaints: thirty frames a second, bugs, a slow start, and no disc.",
+        "image": "img5",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "Then it got weird. The other game with a ninety-nine is Zelda: Ocarina of Time.",
+        "image": "img6",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "Its user score fell from nine point six to eight point seven in under a day.",
+        "image": "img7",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "ZELDA: 9.6 TO 8.7",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "Push Square says it looks like GTA 6 fans hitting back.",
+        "image": "img8",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "Critics or players: who got GTA 6 right? Pick a side. Follow for more GTA 6 secrets.",
+        "image": "img9",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "GTABase (21 Nov 2026): PS5 user score 5.6/10 vs critic score 99 (152 critics); 'Almost 30,000 user ratings are negative, 44% of the total'; complaints include 30 FPS, bugs, slow pace at the start, no physical copy; Ocarina of Time (N64) also has a 99.",
+        "sources": [
+         "https://www.gtabase.com/gta-6/articles/gta-6-review-bombed-on-metacritic"
+        ],
+        "main": true
+       },
+       {
+        "claim": "Notebookcheck (21 Nov 2026): GTA 6 user score 'currently 5.6/10'; its 99 Metascore ties the N64 Zelda for best of all time; Ocarina of Time's user rating fell 'from 9.6 to 8.7' in less than 24 hours.",
+        "sources": [
+         "https://www.notebookcheck.net/Zelda-Ocarina-of-Time-Metacritic-user-rating-sinks-in-response-to-GTA-6-review-bombing.1456403.0.html"
+        ],
+        "main": true
+       },
+       {
+        "claim": "Push Square (21 Nov 2026): fans of the Rockstar release 'appear to have launched a counter-attack' on Ocarina of Time; CBR (21 Nov 2026): complaints about bugs, 30 fps and no physical disc.",
+        "sources": [
+         "https://www.pushsquare.com/news/2026/11/gta-6-ps5-review-bombing-out-of-control-as-zelda-receives-revenge-ratings",
+         "https://www.cbr.com/grand-theft-auto-6-metacritic-user-rating-review-scores/"
+        ],
+        "main": true
+       }
+      ],
+      "description": "Critics gave GTA 6 a 99 on Metacritic; players gave it 5.6 (PS5, 21 Nov). Then Zelda: Ocarina of Time's user score dropped.\nSources: GTABase, Notebookcheck, Push Square, CBR.",
+      "hashtags": [
+       "#GTA6",
+       "#Metacritic",
+       "#Zelda"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)",
+      "experiment": "E1-short",
+      "cover": {
+       "image": "img1",
+       "lines": [
+        "CRITICS SAY 99",
+        "PLAYERS SAY 5.6",
+        "WHO'S RIGHT?"
+       ],
+       "why": "written in session",
+       "frame": {
+        "shot": "trailer_2_00631",
+        "f": 0.5,
+        "x": 0.25
+       }
+      }
+     },
+     "publish_at": "2026-11-23T20:00:00Z",
+     "batch": "gta6-launch-footage",
+     "seo": {
+      "category_id": "20",
+      "hashtags": [
+       "#GTA6",
+       "#GTAVI",
+       "#GrandTheftAuto6"
+      ],
+      "tags": [
+       "GTA 6",
+       "GTA VI",
+       "Grand Theft Auto 6",
+       "Grand Theft Auto VI",
+       "GTA 6 news",
+       "GTA 6 trailer",
+       "Rockstar Games",
+       "Vice City",
+       "Jason and Lucia",
+       "Leonida"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-egg-tower",
+   "fresh": true,
+   "nonce": "gta-footage-gta6-egg-tower-2026-11-23",
+   "day": "2026-11-23",
+   "topic_def": {
+    "id": "gta6-egg-tower",
+    "title": "GTA 6 hid a real Easter egg at the top of a tower",
+    "pillar": "gta6",
+    "notes": {
+     "object": "official GTA 6 footage",
+     "question": "GTA 6 hid a real Easter egg at the top of a tower",
+     "angle": "VERIFIED 22 Nov 2026. Publishes 24 Nov 02:00 UTC. Script in gta_scripts.py. ComicBook (20 Nov): egg nest on a radio tower in South Vice-Dale County, throw one for a windshield cutscene; Port Gellhorn alien abduction after 2am, Jason's rescue (code 2-3-4-1 at a military airfield), a living alien, achievement 'The Truth is Out There'. CTA: egg tower or alien rescue? FORMAT FOR THIS VIDEO (its own look and feel): Tone: insider tip turning spooky. Shape: the climb -> the egg nest -> the cutscene -> the light in the sky -> the alien rescue -> the joke achievement.",
+     "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): man beside a custom sports car in a neon garage\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+     "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
+     "official_images": "required",
+     "open_hook": true,
+     "words": [
+      110,
+      170
+     ],
+     "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
+     "style": "story",
+     "badge": "GTA 6",
+     "script": {
+      "viable": true,
+      "title": "GTA 6 hid a real Easter egg at the top of a tower",
+      "thumb_text": "AT THE VERY TOP",
+      "hook_card": "AT THE TOP?",
+      "hooks": [
+       "Climb what may be the highest point in GTA 6, and you find a real Easter egg."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:extended_look_07899",
+       "img2": "CLIP:extended_look_11275",
+       "img3": "CLIP:extended_look_15698",
+       "img4": "CLIP:extended_look_07446",
+       "img5": "CLIP:extended_look_04835",
+       "img6": "CLIP:trailer_1_00398",
+       "img7": "CLIP:trailer_2_01188",
+       "img8": "CLIP:trailer_2_00996",
+       "img9": "CLIP:extended_look_02513",
+       "img10": "CLIP:launch_trailer_00390",
+       "img11": "CLIP:extended_look_00000",
+       "img12": "CLIP:trailer_1_00300",
+       "img13": "CLIP:extended_look_05748"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "Climb what may be the highest point in GTA 6, and you find a real Easter egg.",
+        "image": "img1",
+        "delivery": "curious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "It's a radio tower in South Vice-Dale County, and the climb is long.",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "SOUTH VICE-DALE",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "At the top, there's a nest of brightly colored eggs.",
+        "image": "img3",
+        "delivery": "amused",
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "A NEST OF EGGS",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "Throw one off the tower, and it triggers a special cutscene.",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "The egg lands on someone's windshield.",
+        "image": "img5",
+        "delivery": "laughs softly",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "But there's something stranger in the sky.",
+        "image": "img6",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "In Port Gellhorn, after 2 a.m., a bright light can appear above you.",
+        "image": "img7",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "PORT GELLHORN, 2 AM",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "Run toward it, and you might see a woman being abducted by aliens.",
+        "image": "img8",
+        "delivery": "surprised",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "Play as Jason, and it becomes a rescue mission at an abandoned research facility.",
+        "image": "img9",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "The door code is found at a military airfield.",
+        "image": "img10",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "CODE: 2-3-4-1",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b11",
+        "narration": "Inside, you can find a living alien and carry it out.",
+        "image": "img11",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b12",
+        "narration": "Even the achievement is a joke: The Truth Is Out There.",
+        "image": "img12",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "TRUTH IS OUT THERE",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b13",
+        "narration": "Egg tower or alien rescue: which one are you trying first? Pick a side. Follow for more GTA 6 secrets.",
+        "image": "img13",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "ComicBook (20 Nov 2026): a radio tower in South Vice-Dale County, arguably the highest point in the game, long climb; 'players are rewarded with a literal nest of eggs at the top'; throwing one off 'will actually trigger a special cutscene' (the egg hits someone's windshield). Alien abduction: Port Gellhorn, outside at 2am or later, a bright light in the sky; running toward it you may see a woman being abducted by aliens; as Jason, a rescue quest at an abandoned research facility in Pelican Valley, entry code 2-3-4-1 found at a military airfield; a living alien Jason can carry out; achievement 'The Truth is Out There'.",
+        "sources": [
+         "https://comicbook.com/gaming/list/5-most-exciting-gta-6-easter-eggs-players-have-found-after-launch-day/"
+        ],
+        "main": true
+       }
+      ],
+      "description": "A literal Easter egg nest on top of a radio tower in South Vice-Dale County, and an alien abduction in Port Gellhorn after 2 a.m.\nSource: ComicBook.",
+      "hashtags": [
+       "#GTA6",
+       "#GTA6Secrets",
+       "#EasterEgg"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)",
+      "experiment": "E1-long",
+      "cover": {
+       "image": "img1",
+       "lines": [
+        "HIDDEN EASTER EGG",
+        "AT THE VERY TOP",
+        "HOW TO FIND IT"
+       ],
+       "why": "written in session",
+       "frame": {
+        "shot": "extended_look_10132",
+        "f": 0.5,
+        "x": 0.4
+       }
+      }
+     },
+     "publish_at": "2026-11-24T02:00:00Z",
+     "batch": "gta6-launch-footage",
+     "seo": {
+      "category_id": "20",
+      "hashtags": [
+       "#GTA6",
+       "#GTAVI",
+       "#GrandTheftAuto6"
+      ],
+      "tags": [
+       "GTA 6",
+       "GTA VI",
+       "Grand Theft Auto 6",
+       "Grand Theft Auto VI",
+       "GTA 6 news",
+       "GTA 6 trailer",
+       "Rockstar Games",
+       "Vice City",
+       "Jason and Lucia",
+       "Leonida"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "action": "produce",
    "topic": "gta6-trailer-songs",
    "fresh": true,
    "nonce": "gta-reserve-gta6-trailer-songs",
@@ -7620,9 +9005,9 @@
        ],
        "why": "written in session",
        "frame": {
-        "shot": "extended_look_10132",
+        "shot": "trailer_1_00065",
         "f": 0.5,
-        "x": 0.4
+        "x": 0.2
        }
       }
      },

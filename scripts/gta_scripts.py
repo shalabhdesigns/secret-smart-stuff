@@ -979,13 +979,252 @@ S["gta6-true-fat-jason"] = dict(
 )
 
 
+# ---- 23 Nov 2026 batch (written 22 Nov by the daily run; E1 short = map-size + zelda-score; E2 = all) ----
+S["gta6-lucia-actor"] = dict(
+    title="GTA 6's Lucia actress was in GTA 5 all along",
+    thumb_text="SHE WAS IN GTA 5",
+    hook_card="SHE WAS IN GTA 5?",
+    cover_lines=["LUCIA'S ACTRESS", "WAS IN GTA 5?", "SPOT HER ROLE"],
+    cover_frame={"shot": "trailer_2_00961", "f": 0.5, "x": 0.4},   # Lucia, green dress, rooftop bar (R3: face)
+    experiment="E1-long",
+    beats=[
+        ("The woman who plays Lucia in GTA 6 was already in GTA 5. You just never noticed.",
+         "CLIP:extended_look_08816", None, "curious"),
+        ("Her name is Manni Perez, and she's nominated at the Game Awards for Best Performance, as Lucia.",
+         "CLIP:extended_look_10196", "LUCIA: MANNI L. PEREZ", None),
+        ("LADbible checked her IMDb, and her very first credit is GTA 5.", "OFFICIAL:v_c670974867",
+         "FIRST CREDIT: GTA 5", None),
+        ("She voiced a character called Clubber number two.", "CLIP:trailer_1_00341", "'CLUBBER 2'", "amused"),
+        ("Then, in a 2019 GTA Online update, she was a blackjack dealer with no name.", "OFFICIAL:v_7f4ce4e75d",
+         "UNNAMED DEALER, 2019", None),
+        ("On TV, she's been in Jessica Jones, The Blacklist and Law and Order.", "CLIP:trailer_2_01293", None, None),
+        ("And she trains in Muay Thai, Brazilian jiu-jitsu and MMA.", "CLIP:extended_look_10387", None, None),
+        ("Back in 2018, she said her biggest fear was playing a woman who needs to be saved by a man.",
+         "CLIP:extended_look_03021", None, None),
+        ("And Jason? Dylan Rourke posted on Instagram that he played him.", "CLIP:trailer_2_00232",
+         "JASON: DYLAN ROURKE", "excited"),
+        ("It's his first video game. Before this, he was on Station 19 and Modern Family.",
+         "CLIP:extended_look_07899", None, None),
+        ("His message to fans ended with: See y'all in Leonida.", "CLIP:trailer_1_00356", None, None),
+        ("Lucia or Jason: whose story are you here for? Pick a side. Follow for more GTA 6 secrets.",
+         "CLIP:extended_look_05748", None, None),
+    ],
+    facts=[
+        {"claim": "LADbible (19 Nov 2026): Lucia is played by Manni L Perez (she shared the character graphic on her "
+                  "Instagram); her first IMDb credit is 'Clubber 2' in GTA V; TV: Jessica Jones, The Blacklist, "
+                  "Chicago P.D., Law & Order: SVU; trains Muay Thai, Brazilian jiu-jitsu, MMA. Dylan Rourke revealed "
+                  "on Instagram that he played Jason; his statement ends 'See y'all in Leonida.'; his credits include "
+                  "Station 19 and Modern Family.",
+         "sources": ["https://www.ladbible.com/entertainment/gaming/gta-6-jason-lucia-manni-perez-dylan-rourke-484374-20261119"],
+         "main": True},
+        {"claim": "Yahoo (19 Nov 2026): Perez was nominated at the Game Awards for Best Performance for her voice work "
+                  "as Lucia; credited as the voice of Clubber #2 in GTA V; an unnamed blackjack dealer in a 2019 GTA "
+                  "Online update; 2018 Paz Magazine: 'my biggest fear is to play a woman that needs to be saved by a "
+                  "man'.",
+         "sources": ["https://www.yahoo.com/entertainment/celebrity/article/the-gta-6-voice-actor-for-lucia-has-finally-been-revealed-what-to-know-about-manni-perez-161144388.html"],
+         "main": True},
+        {"claim": "ScreenRant (19 Nov 2026): Jason is played by Dylan Rourke; GTA 6 is his video game debut; earlier TV "
+                  "parts include Station 19 (three episodes) and Modern Family.",
+         "sources": ["https://screenrant.com/gta-6-cast-voice-actors/"], "main": True},
+    ],
+    description="Lucia's actress Manni L. Perez had a tiny voice role in GTA 5 years before GTA 6. Plus Jason's "
+                "actor, Dylan Rourke.\nSources: LADbible, Yahoo, ScreenRant.",
+    hashtags=["#GTA6", "#Lucia", "#GTA5"],
+)
+
+S["gta6-map-size"] = dict(
+    title="GTA 6's map vs GTA 5: how big is it really?",
+    thumb_text="HOW BIG?",
+    hook_card="HOW BIG?",
+    cover_lines=["TWICE AS BIG", "AS GTA 5?", "WHAT WE KNOW"],
+    cover_frame={"shot": "trailer_2_00232", "f": 0.5, "x": 0.6},   # Jason driving, close-up (R3: face)
+    experiment="E1-short",
+    beats=[
+        ("How much bigger is GTA 6's map than GTA 5's? Here's what's actually known.", "CLIP:trailer_2_00232",
+         None, "curious"),
+        ("First, Rockstar has never given a size in square miles.", "CLIP:trailer_1_00300", None, None),
+        ("But Forbes reports Rockstar puts it at around twice the size of GTA 5's map.", "OFFICIAL:v_3360902d78",
+         "ABOUT 2x GTA 5", None),
+        ("And a YouTuber who spoke to Rockstar says it's three times Red Dead Redemption 2.",
+         "CLIP:trailer_1_00183", "3x RDR2 (REPORTED)", None),
+        ("There are six regions, from Vice City to the swamps and the Keys.", "CLIP:extended_look_10298", "6 REGIONS",
+         None),
+        ("Game Informer counted more than a hundred and seventy animal species.", "CLIP:extended_look_04645",
+         "170+ ANIMAL SPECIES", "surprised"),
+        ("And one estimate says driving across it takes about thirty-five minutes.", "CLIP:extended_look_07501",
+         "~35 MIN TO CROSS", None),
+        ("Bigger map or more detail: which matters more to you? Pick a side. Follow for more GTA 6 secrets.",
+         "CLIP:extended_look_11275", None, None),
+    ],
+    facts=[
+        {"claim": "GTA Zone (updated 29 Oct 2026): 'Rockstar still hasn't published a square-mile figure, but it now "
+                  "gives ratios' (roughly twice GTA 5).",
+         "sources": ["https://gta-zone.com/news/gta-6-map-size/"], "main": True},
+        {"claim": "Forbes (6 Oct 2026): 'GTA 6's Leonida is around twice the size of GTA 5's map, per Rockstar'; six "
+                  "regions (Vice City, Leonida Keys, Grassrivers, Port Gellhorn, Ambrosia, Mount Kalaga National "
+                  "Park); more than 170 animal species (Game Informer cover story).",
+         "sources": ["https://www.forbes.com/sites/brianmazique/2026/10/06/gta-6s-map-is-about-twice-the-size-of-gta-5-with-hurricanes-and-170-animal-species/"],
+         "main": True},
+        {"claim": "SlashGear (19 Nov 2026): YouTuber TGG says Rockstar told him the map is three times RDR2's and twice "
+                  "GTA V's; estimates (from outside Rockstar) say about 35 minutes to drive across the map.",
+         "sources": ["https://www.slashgear.com/2319631/grand-theft-auto-6-map-huge-bigger-than-originally-thought/"],
+         "main": True},
+    ],
+    description="Rockstar never gave GTA 6's map size in square miles. Here's what's reported: about twice GTA 5, "
+                "six regions, 170+ animal species.\nSources: Forbes, SlashGear, GTA Zone.",
+    hashtags=["#GTA6", "#GTA6Map", "#GTA5"],
+)
+
+S["gta6-online-when"] = dict(
+    title="GTA 6 has no online mode. When is it coming?",
+    thumb_text="NO ONLINE?",
+    hook_card="NO ONLINE?",
+    cover_lines=["NO ONLINE MODE?", "WHEN DOES IT", "FINALLY COME?"],
+    cover_frame={"shot": "extended_look_03869", "f": 0.5, "x": 0.2},   # Jason in a tank top with Lucia (R3: face)
+    experiment="E1-long",
+    beats=[
+        ("You can't play GTA 6 with your friends. Not online, and not on the same couch.",
+         "CLIP:extended_look_03021", None, "serious"),
+        ("The store pages say it plainly: Grand Theft Auto Six is a single-player experience.",
+         "CLIP:extended_look_09166", "SINGLE-PLAYER ONLY", None),
+        ("But GTA 5 didn't have online on day one either. It came out on September 17th, 2013.",
+         "OFFICIAL:v_c670974867", None, None),
+        ("GTA Online followed two weeks later, on October 1st.", "OFFICIAL:v_7f4ce4e75d", "+2 WEEKS", None),
+        ("So where is GTA 6's online mode? So far, Rockstar and Take-Two haven't announced one, or a date.",
+         "CLIP:extended_look_12920", "NO DATE YET", "curious"),
+        ("The biggest hint came from Twitch's boss, Dan Clancy, in September.", "CLIP:extended_look_15524", None,
+         None),
+        ("He told Bloomberg there'd be a big bump with GTA 6, \"but then an even bigger one next year when they "
+         "launch multiplayer.\"", "CLIP:extended_look_12606", "'NEXT YEAR'", None),
+        ("Bloomberg's Jason Schreier has also reported that the online part is expected in 2027.",
+         "CLIP:extended_look_07446", "EXPECTED: 2027", None),
+        ("Rockstar hasn't confirmed that.", "CLIP:trailer_1_00398", None, None),
+        ("Meanwhile, Take-Two says it will keep supporting GTA Online on GTA 5.", "OFFICIAL:v_07edb091bb", None,
+         None),
+        ("Story first, or online first: which one do you care about more? Pick a side. Follow for more GTA 6 "
+         "secrets.", "CLIP:extended_look_05748", None, None),
+    ],
+    facts=[
+        {"claim": "Leonipedia (updated 21 Nov 2026): 'Status as of November 21, 2026: no online mode announced for GTA "
+                  "6'; the PlayStation and Xbox store pages say 'Grand Theft Auto VI is a single-player experience'; "
+                  "PlayStation Store: 1 player; Bloomberg's Jason Schreier (14 Oct 2026): the online component 'is "
+                  "expected to be released in 2027'; Zelnick: 'We do expect to support GTA Online going forward.'",
+         "sources": ["https://leonipedia.com/guides/online-release-date/"], "main": True},
+        {"claim": "GameVerse (19 Nov 2026): GTA 6 is out and solo only: no online, no co-op, no split-screen; Rockstar "
+                  "and Take-Two have not announced, named or dated an online mode.",
+         "sources": ["https://gameverse.app/blog/gta-6-multiplayer"], "main": True},
+        {"claim": "Just Jared (17 Nov 2026): GTA V launched 17 Sept 2013 and GTA Online arrived 1 Oct 2013, about two "
+                  "weeks later; Twitch CEO Dan Clancy to Bloomberg (Sept 2026): 'You are going to see this big bump "
+                  "with GTA 6, but then an even bigger one next year when they launch multiplayer.'",
+         "sources": ["https://www.justjared.com/2026/11/17/gta-6-online-release-date-multiplayer-launch/"],
+         "main": True},
+    ],
+    description="GTA 6 launched single-player only. GTA Online came two weeks after GTA 5; for GTA 6, Rockstar hasn't "
+                "announced an online mode or date.\nSources: Leonipedia, GameVerse, Just Jared (Bloomberg).",
+    hashtags=["#GTA6", "#GTAOnline", "#GTA6Online"],
+)
+
+S["gta6-zelda-score"] = dict(
+    title="GTA 6's Metacritic fight just dragged in Zelda",
+    thumb_text="99 OR 5.6?",
+    hook_card="99 OR 5.6?",
+    cover_lines=["CRITICS SAY 99", "PLAYERS SAY 5.6", "WHO'S RIGHT?"],
+    cover_frame={"shot": "trailer_2_00631", "f": 0.5, "x": 0.25},   # Lucia in the prison yard (R3: face)
+    experiment="E1-short",
+    beats=[
+        ("GTA 6's score fight has dragged in a game from 1998: Zelda.", "CLIP:trailer_1_00728", None, "amused"),
+        ("On Metacritic, critics gave it ninety-nine. That ties the all-time record.", "CLIP:extended_look_07446",
+         "CRITICS: 99", None),
+        ("But on November 21st, its PlayStation 5 user score was just five point six.", "CLIP:extended_look_10037",
+         "PLAYERS: 5.6", "surprised"),
+        ("GTABase counted almost thirty thousand negative ratings.", "CLIP:extended_look_15524",
+         "~30,000 NEGATIVE", None),
+        ("The complaints: thirty frames a second, bugs, a slow start, and no disc.", "CLIP:extended_look_09166",
+         None, None),
+        ("Then it got weird. The other game with a ninety-nine is Zelda: Ocarina of Time.",
+         "CLIP:extended_look_07351", None, None),
+        ("Its user score fell from nine point six to eight point seven in under a day.", "CLIP:extended_look_11437",
+         "ZELDA: 9.6 TO 8.7", None),
+        ("Push Square says it looks like GTA 6 fans hitting back.", "CLIP:extended_look_12606", None, None),
+        ("Critics or players: who got GTA 6 right? Pick a side. Follow for more GTA 6 secrets.",
+         "CLIP:extended_look_05748", None, None),
+    ],
+    facts=[
+        {"claim": "GTABase (21 Nov 2026): PS5 user score 5.6/10 vs critic score 99 (152 critics); 'Almost 30,000 user "
+                  "ratings are negative, 44% of the total'; complaints include 30 FPS, bugs, slow pace at the start, "
+                  "no physical copy; Ocarina of Time (N64) also has a 99.",
+         "sources": ["https://www.gtabase.com/gta-6/articles/gta-6-review-bombed-on-metacritic"], "main": True},
+        {"claim": "Notebookcheck (21 Nov 2026): GTA 6 user score 'currently 5.6/10'; its 99 Metascore ties the N64 "
+                  "Zelda for best of all time; Ocarina of Time's user rating fell 'from 9.6 to 8.7' in less than 24 "
+                  "hours.",
+         "sources": ["https://www.notebookcheck.net/Zelda-Ocarina-of-Time-Metacritic-user-rating-sinks-in-response-to-GTA-6-review-bombing.1456403.0.html"],
+         "main": True},
+        {"claim": "Push Square (21 Nov 2026): fans of the Rockstar release 'appear to have launched a counter-attack' on "
+                  "Ocarina of Time; CBR (21 Nov 2026): complaints about bugs, 30 fps and no physical disc.",
+         "sources": ["https://www.pushsquare.com/news/2026/11/gta-6-ps5-review-bombing-out-of-control-as-zelda-receives-revenge-ratings",
+                     "https://www.cbr.com/grand-theft-auto-6-metacritic-user-rating-review-scores/"],
+         "main": True},
+    ],
+    description="Critics gave GTA 6 a 99 on Metacritic; players gave it 5.6 (PS5, 21 Nov). Then Zelda: Ocarina of "
+                "Time's user score dropped.\nSources: GTABase, Notebookcheck, Push Square, CBR.",
+    hashtags=["#GTA6", "#Metacritic", "#Zelda"],
+)
+
+S["gta6-egg-tower"] = dict(
+    title="GTA 6 hid a real Easter egg at the top of a tower",
+    thumb_text="AT THE VERY TOP",
+    hook_card="AT THE TOP?",
+    cover_lines=["HIDDEN EASTER EGG", "AT THE VERY TOP", "HOW TO FIND IT"],
+    cover_frame={"shot": "extended_look_10132", "f": 0.5, "x": 0.4},   # Lucia in the 'Baddie' crop top (R3: face)
+    experiment="E1-long",
+    beats=[
+        ("Climb what may be the highest point in GTA 6, and you find a real Easter egg.",
+         "CLIP:extended_look_07899", None, "curious"),
+        ("It's a radio tower in South Vice-Dale County, and the climb is long.", "CLIP:extended_look_11275",
+         "SOUTH VICE-DALE", None),
+        ("At the top, there's a nest of brightly colored eggs.", "CLIP:extended_look_15698", "A NEST OF EGGS",
+         "amused"),
+        ("Throw one off the tower, and it triggers a special cutscene.", "CLIP:extended_look_07446", None, None),
+        ("The egg lands on someone's windshield.", "CLIP:extended_look_04835", None, "laughs softly"),
+        ("But there's something stranger in the sky.", "CLIP:trailer_1_00398", None, None),
+        ("In Port Gellhorn, after 2 a.m., a bright light can appear above you.", "CLIP:trailer_2_01188",
+         "PORT GELLHORN, 2 AM", None),
+        ("Run toward it, and you might see a woman being abducted by aliens.", "CLIP:trailer_2_00996", None,
+         "surprised"),
+        ("Play as Jason, and it becomes a rescue mission at an abandoned research facility.",
+         "CLIP:extended_look_02513", None, None),
+        ("The door code is found at a military airfield.", "CLIP:launch_trailer_00390",
+         "CODE: 2-3-4-1", None),
+        ("Inside, you can find a living alien and carry it out.", "CLIP:extended_look_00000", None, None),
+        ("Even the achievement is a joke: The Truth Is Out There.", "CLIP:trailer_1_00300", "TRUTH IS OUT THERE",
+         None),
+        ("Egg tower or alien rescue: which one are you trying first? Pick a side. Follow for more GTA 6 secrets.",
+         "CLIP:extended_look_05748", None, None),
+    ],
+    facts=[
+        {"claim": "ComicBook (20 Nov 2026): a radio tower in South Vice-Dale County, arguably the highest point in the "
+                  "game, long climb; 'players are rewarded with a literal nest of eggs at the top'; throwing one off "
+                  "'will actually trigger a special cutscene' (the egg hits someone's windshield). Alien abduction: "
+                  "Port Gellhorn, outside at 2am or later, a bright light in the sky; running toward it you may see a "
+                  "woman being abducted by aliens; as Jason, a rescue quest at an abandoned research facility in "
+                  "Pelican Valley, entry code 2-3-4-1 found at a military airfield; a living alien Jason can carry "
+                  "out; achievement 'The Truth is Out There'.",
+         "sources": ["https://comicbook.com/gaming/list/5-most-exciting-gta-6-easter-eggs-players-have-found-after-launch-day/"],
+         "main": True},
+    ],
+    description="A literal Easter egg nest on top of a radio tower in South Vice-Dale County, and an alien abduction "
+                "in Port Gellhorn after 2 a.m.\nSource: ComicBook.",
+    hashtags=["#GTA6", "#GTA6Secrets", "#EasterEgg"],
+)
+
+
 # ---- RESERVE scripts (20 Nov 2026, owner away): evergreen, no time words; used only if a slot is empty ----
 S["gta6-trailer-songs"] = dict(
     title="GTA 6's trailers brought two old songs back to life",
     thumb_text="TWO OLD SONGS",
     hook_card="TWO OLD SONGS",
     cover_lines=["TWO 80s SONGS", "EXPLODED ON SPOTIFY", "THANKS TO THE TRAILERS"],
-    cover_frame={"shot": "extended_look_10132", "f": 0.5, "x": 0.4},   # Lucia + Jason, party (R3: face)
+    cover_frame={"shot": "trailer_1_00065", "f": 0.5, "x": 0.2},   # Lucia in prison (R3: face)
     beats=[
         ("GTA 6 didn't just break view records. It brought two old songs back from the dead.",
          "CLIP:trailer_2_00920", None, "excited"),
