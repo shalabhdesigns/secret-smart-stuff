@@ -4317,18 +4317,18 @@
   "thumb_text": "IS IT CHEATING?",
   "hook_card": "IS IT CHEATING?",
   "hooks": [
-   "Real couples are arguing over GTA 6. The question: is dating Lucia cheating?"
+   "Is dating Lucia in GTA 6 cheating on your real partner? Real couples can't agree."
   ],
   "chosen_hook": 0,
   "images": {
-   "img1": "CLIP:trailer_2_00920",
+   "img1": "CLIP:trailer_1_00728",
    "img2": "CLIP:extended_look_03869",
    "img3": "CLIP:trailer_2_00416",
    "img4": "CLIP:trailer_2_00976",
    "img5": "CLIP:trailer_1_00686",
    "img6": "CLIP:extended_look_03894",
    "img7": "CLIP:extended_look_06535",
-   "img8": "CLIP:trailer_1_00300",
+   "img8": "CLIP:extended_look_10037",
    "img9": "CLIP:extended_look_06595",
    "img10": "CLIP:trailer_2_01344",
    "img11": "CLIP:trailer_2_00759",
@@ -4338,7 +4338,7 @@
   "scenes": [
    {
     "id": "b1",
-    "narration": "Real couples are arguing over GTA 6. The question: is dating Lucia cheating?",
+    "narration": "Is dating Lucia in GTA 6 cheating on your real partner? Real couples can't agree.",
     "image": "img1",
     "delivery": "amused",
     "focus": null,
@@ -4428,7 +4428,7 @@
    },
    {
     "id": "b7",
-    "narration": "Online, people are fighting over whether dating Lucia is cheating on your real partner.",
+    "narration": "On TikTok, X and Reddit, the arguments are getting heated.",
     "image": "img7",
     "delivery": null,
     "focus": null,
@@ -4473,7 +4473,7 @@
    },
    {
     "id": "b10",
-    "narration": "Some couples are even signing ten-day deals: no interruptions until November 29th.",
+    "narration": "Some couples are even signing ten-day contracts, so nobody interrupts a mission until November 29th.",
     "image": "img10",
     "delivery": null,
     "focus": null,
