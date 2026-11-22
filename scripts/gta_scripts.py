@@ -908,7 +908,7 @@ S["gta6-weird-secrets"] = dict(
          None, None),
         ("It takes you to an island of dogs, with hidden treasure worth over twelve hundred dollars.",
          "CLIP:extended_look_15728", "$1,200+ TREASURE", None),
-        ("Fans think it's based on Loosy, a real Florida dog whose jet ski ride went viral.",
+        ("Parade says it's likely based on Loosy, a real Florida dog whose jet ski ride went viral.",
          "CLIP:launch_trailer_00026", "LOOSY, FORT LAUDERDALE", None),
         ("Rockstar hasn't confirmed that.", "CLIP:trailer_1_00398", None, None),
         ("You can even steal a scooter from an old lady.", "CLIP:extended_look_10262", None, "laughs softly"),
