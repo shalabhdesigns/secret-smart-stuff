@@ -1,9 +1,13 @@
 {
- "collected_at": "2026-11-22T07:02:22Z",
+ "collected_at": "2026-11-23T08:02:58Z",
  "errors": [
   "@simplethingshistories: ERROR: [youtube:tab] @simplethingshistories: This channel does not have a shorts tab"
  ],
  "all_titles": [
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Steel Rebar Has Bumps for a Reason?"
+  },
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Elevators Use Counterweights to Save Energy?"
@@ -1199,10 +1203,6 @@
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Early Cars Didn’t Have Seat Belts?"
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Candles Were Used to Track Time?"
   },
   {
    "channel": "@nameexplain",
