@@ -6320,6 +6320,1106 @@
    }
   }
  },
+ "gta6-xbox-60fps": {
+  "viable": true,
+  "title": "GTA 6's Xbox glitch breaks the 30 fps lock",
+  "thumb_text": "BEAT THE 30 FPS LOCK",
+  "hook_card": "30 FPS? NOT ON XBOX",
+  "hooks": [
+   "GTA 6 is locked to thirty frames a second. But Xbox players found a way around it."
+  ],
+  "chosen_hook": 0,
+  "images": {
+   "img1": "CLIP:extended_look_07899",
+   "img2": "CLIP:extended_look_10037",
+   "img3": "CLIP:extended_look_11192",
+   "img4": "CLIP:extended_look_09166",
+   "img5": "CLIP:extended_look_09432",
+   "img6": "CLIP:extended_look_10833",
+   "img7": "CLIP:extended_look_07501",
+   "img8": "CLIP:launch_trailer_00469",
+   "img9": "CLIP:extended_look_12327",
+   "img10": "CLIP:extended_look_03021"
+  },
+  "scenes": [
+   {
+    "id": "b1",
+    "narration": "GTA 6 is locked to thirty frames a second. But Xbox players found a way around it.",
+    "image": "img1",
+    "delivery": "curious",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b2",
+    "narration": "A player on Reddit spotted it first.",
+    "image": "img2",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "It only works on Xbox, with Quick Resume, and a 120 hertz TV.",
+    "image": "img3",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "XBOX + 120HZ TV ONLY",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b4",
+    "narration": "Set your Xbox to sixty hertz, then start the game.",
+    "image": "img4",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "STEP 1: 60HZ",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b5",
+    "narration": "When the six stars appear in the intro, switch back to 120.",
+    "image": "img5",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "STEP 2: BACK TO 120HZ",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b6",
+    "narration": "Then open another game without quitting, and switch back.",
+    "image": "img6",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "STEP 3: SWAP GAMES",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b7",
+    "narration": "The catch? You'll rarely hit sixty. It's usually around forty.",
+    "image": "img7",
+    "delivery": "amused",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "~40 FPS, RARELY 60",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b8",
+    "narration": "And animations run twice as fast, because the physics are tied to the frame rate.",
+    "image": "img8",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "2x SPEED",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b9",
+    "narration": "Rockstar could patch it later.",
+    "image": "img9",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b10",
+    "narration": "Faster but unstable, or a steady thirty: which side are you on? Follow for more GTA 6 tips.",
+    "image": "img10",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   }
+  ],
+  "facts": [
+   {
+    "claim": "RockstarINTEL (Aaron Trueman, 22 Nov 2026): the game is otherwise 'locked to a target of 30FPS on all consoles'; 'this neat trick actually unlocks the frame rate of the game'; 'First spotted by u/Meowwie64' on Reddit; 'this is only possible on XBOX due to its reliance on the excellent Quick Resume feature'; 'You must also be using a display that supports 120Hz.' Steps: set the Xbox frame rate to 60Hz in TV & Display settings; boot GTA VI; wait until you see the 6 Stars in the intro sequence; change the display settings back to 120Hz; cold boot another game (not already in Quick Resume) via the Xbox Guide without quitting GTA VI; switch back to GTA VI. Downsides: 'You'll rarely hit 60FPS', typically around 40FPS, unstable; physics are tied to frame rate, so gameplay animations run at twice the normal speed (cutscenes unaffected). 'It is possible Rockstar decides to patch this in the future.'",
+    "sources": [
+     "https://rockstarintel.com/gta-vi-60fps-glitch-discovered-and-heres-how-to-do-it/"
+    ],
+    "main": true
+   },
+   {
+    "claim": "Digital Foundry (18 Nov 2026): every console version targets 30 fps; there is no 60 fps mode.",
+    "sources": [
+     "https://www.gtaboom.com/digital-foundry-finds-that-gta-6-indeed-runs-best-on-ps5-pro-b72f"
+    ],
+    "main": false
+   }
+  ],
+  "description": "An Xbox Quick Resume trick unlocks GTA 6's 30 fps cap: the steps, and the catch (about 40 fps, double-speed animations). Found by a Reddit user; Rockstar could patch it.\nSource: RockstarINTEL.",
+  "hashtags": [
+   "#GTA6",
+   "#Xbox",
+   "#GTA6Tips"
+  ],
+  "affiliate_product": null,
+  "written_by": "Claude in session (verified)",
+  "experiment": "E1-short",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "XBOX GLITCH BEATS",
+    "THE 30 FPS LOCK?",
+    "HERE'S THE CATCH"
+   ],
+   "why": "written in session",
+   "frame": {
+    "shot": "extended_look_09026",
+    "f": 0.5,
+    "x": 0.58
+   }
+  }
+ },
+ "gta6-jason-army": {
+  "viable": true,
+  "title": "GTA 6's Jason was in the Army. Rockstar explains",
+  "thumb_text": "JASON WAS IN THE ARMY",
+  "hook_card": "JASON, EX-ARMY?",
+  "hooks": [
+   "Jason from GTA 6 used to be in the Army. But GTA 6's story lead says that's not a statement."
+  ],
+  "chosen_hook": 0,
+  "images": {
+   "img1": "CLIP:extended_look_03021",
+   "img2": "CLIP:trailer_2_00081",
+   "img3": "CLIP:trailer_2_00136",
+   "img4": "CLIP:trailer_2_00232",
+   "img5": "CLIP:extended_look_09994",
+   "img6": "CLIP:trailer_1_00728",
+   "img7": "CLIP:extended_look_07446",
+   "img8": "CLIP:extended_look_15698",
+   "img9": "CLIP:trailer_2_00188",
+   "img10": "CLIP:extended_look_10081",
+   "img11": "CLIP:extended_look_08816"
+  },
+  "scenes": [
+   {
+    "id": "b1",
+    "narration": "Jason from GTA 6 used to be in the Army. But GTA 6's story lead says that's not a statement.",
+    "image": "img1",
+    "delivery": "curious",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b2",
+    "narration": "Here's how Rockstar describes him.",
+    "image": "img2",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "Jason grew up around grifters and crooks.",
+    "image": "img3",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b4",
+    "narration": "Then he did a stint in the Army, trying to shake off his troubled teens.",
+    "image": "img4",
+    "delivery": "serious",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "A STINT IN THE ARMY",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b5",
+    "narration": "Now he's back doing what he knows best: working for local drug runners.",
+    "image": "img5",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b6",
+    "narration": "Then he meets Lucia, who could be the best or worst thing to ever happen to him.",
+    "image": "img6",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b7",
+    "narration": "So does the Army part mean something? Rupert Humphries, Rockstar's senior vice president of narrative, told Love magazine:",
+    "image": "img7",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b8",
+    "narration": "\"We didn't want to make any kind of statement with Jason's backstory.\"",
+    "image": "img8",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "QUOTE: R. HUMPHRIES",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b9",
+    "narration": "He says Jason does what he does because of his material circumstances.",
+    "image": "img9",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b10",
+    "narration": "But he says a lot is up to the player: does he need to do it, or is he wired differently from other people?",
+    "image": "img10",
+    "delivery": "curious",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b11",
+    "narration": "Pushed by money, or wired that way: which side are you on? Follow for more GTA 6 facts.",
+    "image": "img11",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   }
+  ],
+  "facts": [
+   {
+    "claim": "GamesRadar+ (Catherine Lewis, 5 Oct 2026): Rockstar introduced Jason as someone who 'grew up around grifters and crooks', spent 'a stint in the Army trying to shake off his troubled teens' and is back 'doing what he knows best, working for local drug runners'; Lucia 'could be the best or worst thing to ever happen to him'. Rupert Humphries, GTA 6's senior vice president of narrative (the story lead), told Love magazine: 'We didn't want to make any kind of statement with Jason's backstory.' He said Jason takes the measures he does 'because of his material circumstances', 'but a lot of this is up to the player to decide whether he needs to do that or if it's a choice he makes because he's wired differently from other people.'",
+    "sources": [
+     "https://gamesradar.com/games/grand-theft-auto/gta-6-story-lead-insists-rockstar-didnt-want-to-make-any-kind-of-statement-with-jasons-ex-military-background"
+    ],
+    "main": true
+   }
+  ],
+  "description": "Rockstar says Jason did a stint in the Army before going back to crime. GTA 6's story lead, Rupert Humphries, says it wasn't meant as a statement, and leaves his reasons up to you.\nSource: GamesRadar+ (Love magazine interview).",
+  "hashtags": [
+   "#GTA6",
+   "#JasonDuval",
+   "#GTA6Story"
+  ],
+  "affiliate_product": null,
+  "written_by": "Claude in session (verified)",
+  "experiment": "E1-long",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "JASON WAS IN",
+    "THE ARMY?",
+    "ROCKSTAR EXPLAINS"
+   ],
+   "why": "written in session",
+   "frame": {
+    "shot": "trailer_2_00882",
+    "f": 0.5,
+    "x": 0.63
+   }
+  }
+ },
+ "gta6-real-cheetah": {
+  "viable": true,
+  "title": "GTA 6's Cheetah supercar is real. It costs £1 million",
+  "thumb_text": "£1 MILLION GTA CAR",
+  "hook_card": "A REAL GTA 6 CAR?",
+  "hooks": [
+   "The Cheetah from GTA 6 is real, and it costs one million pounds."
+  ],
+  "chosen_hook": 0,
+  "images": {
+   "img1": "CLIP:trailer_2_00232",
+   "img2": "CLIP:extended_look_07018",
+   "img3": "CLIP:extended_look_11192",
+   "img4": "CLIP:extended_look_04786",
+   "img5": "CLIP:extended_look_11560",
+   "img6": "CLIP:extended_look_07501",
+   "img7": "OFFICIAL:v_a9877dd12c",
+   "img8": "CLIP:extended_look_09432",
+   "img9": "CLIP:extended_look_04835"
+  },
+  "scenes": [
+   {
+    "id": "b1",
+    "narration": "The Cheetah from GTA 6 is real, and it costs one million pounds.",
+    "image": "img1",
+    "delivery": "surprised",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b2",
+    "narration": "Rockstar teamed up with West Coast Customs to build it.",
+    "image": "img2",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "Underneath, it's a Ferrari Testarossa, painted pink and blue.",
+    "image": "img3",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "A REAL TESTAROSSA",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b4",
+    "narration": "It's on show at Selfridges in London until November 28th.",
+    "image": "img4",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "SELFRIDGES, LONDON",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b5",
+    "narration": "You can't just add it to a basket. You go through Selfridges' personal shoppers.",
+    "image": "img5",
+    "delivery": "amused",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b6",
+    "narration": "In the game, the Cheetah comes with the ninety-nine dollar Ultimate Edition.",
+    "image": "img6",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "IN-GAME: $99.99 EDITION",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b7",
+    "narration": "In 2013, Rockstar gave away a real GTA 5 car. It later sold for about forty-five thousand dollars.",
+    "image": "img7",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "GTA 5 CAR: ~$45,000",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b8",
+    "narration": "One fan joked: in the game you steal it, at Selfridges you need a mortgage.",
+    "image": "img8",
+    "delivery": "laughs softly",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b9",
+    "narration": "Real Cheetah or game Cheetah: which do you want? Follow for more GTA 6 facts.",
+    "image": "img9",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   }
+  ],
+  "facts": [
+   {
+    "claim": "TweakTown (Nov 2026): 'Rockstar's real GTA 6 supercar costs $1.3 million, while the in-game one is in a $99.99 edition'; 'a customized Ferrari Testarossa reworked to look like the Grotti Cheetah'; 'Rockstar Games collaborated with West Coast Customs'; 'available to purchase for £1 million via Selfridges Personal Shopping'; 'there's no add to cart button here'; the Selfridges pop-up runs 'from November 9 to November 28'; 'The in-game '95 Cheetah is included in GTA 6's $99.99 Ultimate Edition.'",
+    "sources": [
+     "https://www.tweaktown.com/news/114594/rockstars-real-gta-6-supercar-costs-1-3-million-while-the-in-game-one-is-in-a-99-99-edition/index.html"
+    ],
+    "main": true
+   },
+   {
+    "claim": "Top Gear (13 Nov 2026): 'This £1m GTA 6 'Grotti Cheetah' (Ferrari Testarossa) is up for sale at Selfridges'; built for Rockstar by LA-based West Coast Customs; 'a very Vice City-coded blue-and-pink paint job'; 'Back in 2013, the game's developer gave away a real-life version of the 'Bravado Banshee''.",
+    "sources": [
+     "https://www.topgear.com/car-news/gaming/ps1m-gta-6-grotti-cheetah-ferrari-testarossa-sale-selfridges"
+    ],
+    "main": true
+   },
+   {
+    "claim": "IBTimes UK (10 Nov 2026): the 2013 GTA 5 promotion gave away a real Bravado Banshee; the winner 'eventually sold the vehicle for about $45,000 (£33,469) on eBay'; one commenter joked: 'In the game you steal it. At Selfridges you need a mortgage.'",
+    "sources": [
+     "https://www.ibtimes.co.uk/rockstar-gta-6-grotti-cheetah-million-pound-supercar-1831230"
+    ],
+    "main": true
+   }
+  ],
+  "description": "Rockstar and West Coast Customs turned a Ferrari Testarossa into GTA 6's Grotti Cheetah. It's at Selfridges London (to 28 Nov) for £1 million. In the game, it's in the $99.99 Ultimate Edition.\nSources: TweakTown, Top Gear, IBTimes UK.",
+  "hashtags": [
+   "#GTA6",
+   "#GrottiCheetah",
+   "#Selfridges"
+  ],
+  "affiliate_product": null,
+  "written_by": "Claude in session (verified)",
+  "experiment": "E1-short",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "A REAL GTA CAR",
+    "FOR £1 MILLION?",
+    "WHERE TO BUY IT"
+   ],
+   "why": "written in session",
+   "frame": {
+    "shot": "extended_look_07899",
+    "f": 0.5,
+    "x": 0.62
+   }
+  }
+ },
+ "gta6-chiliad-secret": {
+  "viable": true,
+  "title": "GTA 6 brought back GTA 5's Mount Chiliad mystery",
+  "thumb_text": "CHILIAD IS BACK",
+  "hook_card": "REMEMBER CHILIAD?",
+  "hooks": [
+   "A secret in GTA 6 brings back a GTA 5 mystery from 2013."
+  ],
+  "chosen_hook": 0,
+  "images": {
+   "img1": "CLIP:extended_look_10196",
+   "img2": "CLIP:launch_trailer_00119",
+   "img3": "CLIP:trailer_2_00895",
+   "img4": "CLIP:trailer_2_00416",
+   "img5": "OFFICIAL:v_3360902d78",
+   "img6": "OFFICIAL:v_fdac18d437",
+   "img7": "CLIP:launch_trailer_00685",
+   "img8": "CLIP:extended_look_02968",
+   "img9": "OFFICIAL:v_a457313ec2",
+   "img10": "CLIP:extended_look_10037",
+   "img11": "CLIP:trailer_2_00996",
+   "img12": "CLIP:extended_look_03021"
+  },
+  "scenes": [
+   {
+    "id": "b1",
+    "narration": "A secret in GTA 6 brings back a GTA 5 mystery from 2013.",
+    "image": "img1",
+    "delivery": "curious",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b2",
+    "narration": "In an early mission, Donnie Carter calls Jason to meet him and Brian.",
+    "image": "img2",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "Then Donnie sends Jason to a bar nearby.",
+    "image": "img3",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b4",
+    "narration": "And as you walk up, some random locals are talking about Mount Chiliad.",
+    "image": "img4",
+    "delivery": "surprised",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b5",
+    "narration": "That's the big mountain in GTA 5's Blaine County.",
+    "image": "img5",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "MOUNT CHILIAD (GTA 5)",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b6",
+    "narration": "Back in 2013, players found a strange mural at the top.",
+    "image": "img6",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b7",
+    "narration": "It seemed to show a UFO, a jetpack and an egg, with mysterious symbols.",
+    "image": "img7",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "UFO + JETPACK + EGG",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b8",
+    "narration": "Players searched Los Santos and Blaine County for clues.",
+    "image": "img8",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b9",
+    "narration": "In 2017, GTA Online added a jetpack and a secret underground base.",
+    "image": "img9",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "DOOMSDAY HEIST, 2017",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b10",
+    "narration": "But not everyone was convinced the mystery was solved.",
+    "image": "img10",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b11",
+    "narration": "Now one player says the locals in GTA 6 \"were talking about how there was a hidden bunker with jetpacks and eggs under Chiliad.\"",
+    "image": "img11",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b12",
+    "narration": "A real clue, or just Rockstar teasing: which side are you on? Follow for more GTA 6 secrets.",
+    "image": "img12",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   }
+  ],
+  "facts": [
+   {
+    "claim": "GAMINGbible (Richard Breslin, 20 Nov 2026): a hidden NPC conversation in an early GTA VI mission: Donald 'Donnie' Carter calls Jason to meet him and Brian Heder, then sends Jason to a nearby bar; approaching it, 'seemingly random NPCs' talk about 'the strange events surrounding Mount Chiliad in Blaine County'. Found by Reddit user Tr1angleChoke; SprungVenus: 'Heard that too; they were talking about how there was a hidden bunker with jetpacks and eggs under Chiliad.' GTA V released in September 2013; at the top of Mount Chiliad players found 'a strange mural featuring what appeared to be a UFO, a jetpack and an egg, along with several mysterious symbols'; players searched Los Santos and Blaine County for clues; Rockstar added a jetpack and a secret underground facility in GTA Online's Doomsday Heist update in 2017, but 'not everyone was convinced' the mystery was solved; Rockstar may be 'simply teasing its fans'. The writer had not heard it first-hand.",
+    "sources": [
+     "https://www.gamingbible.com/news/gta-6-gta-5-mount-chiliad-mystery-easter-egg-802897-20261120",
+     "https://www.reddit.com/r/GTA6/comments/1y02b4y/crazy_npc_easter_egg_dialog_in_gta_6/"
+    ],
+    "main": true
+   }
+  ],
+  "description": "Players say random locals in an early GTA 6 mission talk about GTA 5's Mount Chiliad mystery: the 2013 mural with a UFO, a jetpack and an egg.\nSource: GAMINGbible (Reddit finds).",
+  "hashtags": [
+   "#GTA6",
+   "#MountChiliad",
+   "#GTA5"
+  ],
+  "affiliate_product": null,
+  "written_by": "Claude in session (verified)",
+  "experiment": "E1-long",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "GTA 5'S MOUNTAIN",
+    "MYSTERY IS BACK?",
+    "LISTEN AT THE BAR"
+   ],
+   "why": "written in session",
+   "frame": {
+    "shot": "extended_look_03021",
+    "f": 0.8,
+    "x": 0.3
+   }
+  }
+ },
+ "gta6-outsold-consoles": {
+  "viable": true,
+  "title": "GTA 6 outsold three consoles before it even launched",
+  "thumb_text": "OUTSOLD 3 CONSOLES",
+  "hook_card": "BEAT 3 CONSOLES?",
+  "hooks": [
+   "Before launch, GTA 6 outsold three famous game consoles."
+  ],
+  "chosen_hook": 0,
+  "images": {
+   "img1": "CLIP:extended_look_10132",
+   "img2": "CLIP:extended_look_07446",
+   "img3": "CLIP:extended_look_10618",
+   "img4": "CLIP:extended_look_11148",
+   "img5": "CLIP:extended_look_04835",
+   "img6": "CLIP:launch_trailer_00026",
+   "img7": "CLIP:extended_look_12606",
+   "img8": "CLIP:trailer_1_00183",
+   "img9": "OFFICIAL:v_c670974867",
+   "img10": "OFFICIAL:v_24ba6644de",
+   "img11": "CLIP:extended_look_07899"
+  },
+  "scenes": [
+   {
+    "id": "b1",
+    "narration": "Before launch, GTA 6 outsold three famous game consoles.",
+    "image": "img1",
+    "delivery": "surprised",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b2",
+    "narration": "Take-Two says it sold thirty-two and a half million copies before release.",
+    "image": "img2",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "32.5M BEFORE RELEASE",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "That beats the original Xbox, at twenty-four million.",
+    "image": "img3",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "XBOX: 24M",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b4",
+    "narration": "It beats the GameCube, at about twenty-two million.",
+    "image": "img4",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "GAMECUBE: 21.74M",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b5",
+    "narration": "And it beats Sega's Mega Drive, at almost thirty-one million.",
+    "image": "img5",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "MEGA DRIVE: 30.75M",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b6",
+    "narration": "It came very close to the Nintendo 64, at thirty-two point nine million.",
+    "image": "img6",
+    "delivery": "amazed",
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "N64: 32.93M",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b7",
+    "narration": "GAMINGbible says that makes it the thirtieth best-selling game of all time, from day one.",
+    "image": "img7",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "#30 OF ALL TIME",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b8",
+    "narration": "Elden Ring took three years to sell that many.",
+    "image": "img8",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b9",
+    "narration": "For comparison, GTA 5 sold about eleven million on its first day.",
+    "image": "img9",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "GTA 5 DAY ONE: ~11M",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b10",
+    "narration": "GTA 5 went on to sell two hundred and thirty-five million. That's third of all time, behind Minecraft and Tetris.",
+    "image": "img10",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "GTA 5: 235M",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b11",
+    "narration": "Will GTA 6 pass GTA 5's two hundred and thirty-five million? Yes or no: pick a side. Follow for more GTA 6 facts.",
+    "image": "img11",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   }
+  ],
+  "facts": [
+   {
+    "claim": "GAMINGbible (Olly Smith, 22 Nov 2026): 'As revealed by Take-Two Interactive, Rockstar's parent company, Grand Theft Auto VI has sold 32.5 million units pre-release across PlayStation 5 and Xbox Series X/S' (company estimates through the end of 19 November); this 'comes exceedingly close to the lifetime sales of the Nintendo 64, which has shifted 32.93 million units since 1996'; more than other consoles: Sega Mega Drive (30.75M), original Xbox (24M), Nintendo GameCube (21.74M); 'GTA VI has already become the 30th best-selling game of all time in its first day alone'; 'it took Elden Ring three years to hit the same number of sales'; GTA V sold 'around 11 million copies in the first day of release'; GTA V lifetime 235 million, third behind Minecraft (425M) and Tetris (520M).",
+    "sources": [
+     "https://www.gamingbible.com/news/gta-6-day-one-copies-sold-270457-20261122"
+    ],
+    "main": true
+   }
+  ],
+  "description": "Take-Two: 32.5 million GTA 6 copies sold before release. That's more than the original Xbox, GameCube and Mega Drive sold in their lifetimes, and close to the N64.\nSources: GAMINGbible, Take-Two.",
+  "hashtags": [
+   "#GTA6",
+   "#GTA6Sales",
+   "#GTA5"
+  ],
+  "affiliate_product": null,
+  "written_by": "Claude in session (verified)",
+  "experiment": "E1-long",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "OUTSOLD 3 CONSOLES",
+    "BEFORE LAUNCH?",
+    "HERE ARE THE NUMBERS"
+   ],
+   "why": "written in session",
+   "frame": {
+    "shot": "extended_look_10081",
+    "f": 0.2,
+    "x": 0.42
+   }
+  }
+ },
  "gta6-trailer-songs": {
   "viable": true,
   "title": "GTA 6's trailers brought two old songs back to life",
@@ -6544,9 +7644,9 @@
    ],
    "why": "written in session",
    "frame": {
-    "shot": "trailer_1_00065",
-    "f": 0.5,
-    "x": 0.2
+    "shot": "trailer_1_00084",
+    "f": 0.3,
+    "x": 0.5
    }
   }
  },
@@ -6758,9 +7858,9 @@
    ],
    "why": "written in session",
    "frame": {
-    "shot": "extended_look_07899",
+    "shot": "trailer_1_00728",
     "f": 0.5,
-    "x": 0.5
+    "x": 0.3
    }
   }
  }

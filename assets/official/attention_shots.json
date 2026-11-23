@@ -90,6 +90,30 @@
    "f": 0.5,
    "x": 0.5,
    "shows": "Lucia bench pressing, face up, gym (checked 21 Nov)"
+  },
+  {
+   "shot": "trailer_2_00882",
+   "f": 0.5,
+   "x": 0.63,
+   "shows": "Jason (black tee) with Lucia in a kitchen; x 0.63 = Jason, 0.39 = Lucia (checked 23 Nov)"
+  },
+  {
+   "shot": "extended_look_09026",
+   "f": 0.5,
+   "x": 0.58,
+   "shows": "Lucia driving, looking back, face clear (checked 23 Nov)"
+  },
+  {
+   "shot": "extended_look_03021",
+   "f": 0.8,
+   "x": 0.3,
+   "shows": "Jason close-up (white tee, bag strap) with Lucia behind, graffiti wall (checked 23 Nov)"
+  },
+  {
+   "shot": "extended_look_10081",
+   "f": 0.2,
+   "x": 0.42,
+   "shows": "Jason in a cap by a van in a sunny alley, Lucia beside him (checked 23 Nov)"
   }
  ],
  "robbery/masks": [

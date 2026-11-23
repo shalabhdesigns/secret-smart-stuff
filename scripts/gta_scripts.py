@@ -1216,13 +1216,259 @@ S["gta6-egg-tower"] = dict(
 )
 
 
+S["gta6-xbox-60fps"] = dict(
+    title="GTA 6's Xbox glitch breaks the 30 fps lock",
+    thumb_text="BEAT THE 30 FPS LOCK",
+    hook_card="30 FPS? NOT ON XBOX",
+    cover_lines=["XBOX GLITCH BEATS", "THE 30 FPS LOCK?", "HERE'S THE CATCH"],
+    cover_frame={"shot": "extended_look_09026", "f": 0.5, "x": 0.58},   # Lucia driving, looking back (R3: face)
+    experiment="E1-short",
+    beats=[
+        ("GTA 6 is locked to thirty frames a second. But Xbox players found a way around it.",
+         "CLIP:extended_look_07899", None, "curious"),
+        ("A player on Reddit spotted it first.", "CLIP:extended_look_10037", None, None),
+        ("It only works on Xbox, with Quick Resume, and a 120 hertz TV.", "CLIP:extended_look_11192",
+         "XBOX + 120HZ TV ONLY", None),
+        ("Set your Xbox to sixty hertz, then start the game.", "CLIP:extended_look_09166", "STEP 1: 60HZ", None),
+        ("When the six stars appear in the intro, switch back to 120.", "CLIP:extended_look_09432",
+         "STEP 2: BACK TO 120HZ", None),
+        ("Then open another game without quitting, and switch back.", "CLIP:extended_look_10833",
+         "STEP 3: SWAP GAMES", None),
+        ("The catch? You'll rarely hit sixty. It's usually around forty.", "CLIP:extended_look_07501",
+         "~40 FPS, RARELY 60", "amused"),
+        ("And animations run twice as fast, because the physics are tied to the frame rate.",
+         "CLIP:launch_trailer_00469", "2x SPEED", None),
+        ("Rockstar could patch it later.", "CLIP:extended_look_12327", None, None),
+        ("Faster but unstable, or a steady thirty: which side are you on? Follow for more GTA 6 tips.",
+         "CLIP:extended_look_03021", None, None),
+    ],
+    facts=[
+        {"claim": "RockstarINTEL (Aaron Trueman, 22 Nov 2026): the game is otherwise 'locked to a target of 30FPS on "
+                  "all consoles'; 'this neat trick actually unlocks the frame rate of the game'; 'First spotted by "
+                  "u/Meowwie64' on Reddit; 'this is only possible on XBOX due to its reliance on the excellent Quick "
+                  "Resume feature'; 'You must also be using a display that supports 120Hz.' Steps: set the Xbox frame "
+                  "rate to 60Hz in TV & Display settings; boot GTA VI; wait until you see the 6 Stars in the intro "
+                  "sequence; change the display settings back to 120Hz; cold boot another game (not already in Quick "
+                  "Resume) via the Xbox Guide without quitting GTA VI; switch back to GTA VI. Downsides: 'You'll "
+                  "rarely hit 60FPS', typically around 40FPS, unstable; physics are tied to frame rate, so gameplay "
+                  "animations run at twice the normal speed (cutscenes unaffected). 'It is possible Rockstar decides "
+                  "to patch this in the future.'",
+         "sources": ["https://rockstarintel.com/gta-vi-60fps-glitch-discovered-and-heres-how-to-do-it/"],
+         "main": True},
+        {"claim": "Digital Foundry (18 Nov 2026): every console version targets 30 fps; there is no 60 fps mode.",
+         "sources": ["https://www.gtaboom.com/digital-foundry-finds-that-gta-6-indeed-runs-best-on-ps5-pro-b72f"],
+         "main": False},
+    ],
+    description="An Xbox Quick Resume trick unlocks GTA 6's 30 fps cap: the steps, and the catch (about 40 fps, "
+                "double-speed animations). Found by a Reddit user; Rockstar could patch it.\n"
+                "Source: RockstarINTEL.",
+    hashtags=["#GTA6", "#Xbox", "#GTA6Tips"],
+)
+
+S["gta6-jason-army"] = dict(
+    title="GTA 6's Jason was in the Army. Rockstar explains",
+    thumb_text="JASON WAS IN THE ARMY",
+    hook_card="JASON, EX-ARMY?",
+    cover_lines=["JASON WAS IN", "THE ARMY?", "ROCKSTAR EXPLAINS"],
+    cover_frame={"shot": "trailer_2_00882", "f": 0.5, "x": 0.63},   # Jason in a black tee, Lucia beside (R3: face)
+    experiment="E1-long",
+    beats=[
+        ("Jason from GTA 6 used to be in the Army. But GTA 6's story lead says that's not a statement.",
+         "CLIP:extended_look_03021", None, "curious"),
+        ("Here's how Rockstar describes him.", "CLIP:trailer_2_00081", None, None),
+        ("Jason grew up around grifters and crooks.", "CLIP:trailer_2_00136", None, None),
+        ("Then he did a stint in the Army, trying to shake off his troubled teens.", "CLIP:trailer_2_00232",
+         "A STINT IN THE ARMY", "serious"),
+        ("Now he's back doing what he knows best: working for local drug runners.", "CLIP:extended_look_09994",
+         None, None),
+        ("Then he meets Lucia, who could be the best or worst thing to ever happen to him.",
+         "CLIP:trailer_1_00728", None, None),
+        ("So does the Army part mean something? Rupert Humphries, Rockstar's senior vice president of narrative, "
+         "told Love magazine:", "CLIP:extended_look_07446", None, None),
+        ("\"We didn't want to make any kind of statement with Jason's backstory.\"", "CLIP:extended_look_15698",
+         "QUOTE: R. HUMPHRIES", None),
+        ("He says Jason does what he does because of his material circumstances.", "CLIP:trailer_2_00188", None,
+         None),
+        ("But he says a lot is up to the player: does he need to do it, or is he wired differently from other people?",
+         "CLIP:extended_look_10081", None, "curious"),
+        ("Pushed by money, or wired that way: which side are you on? Follow for more GTA 6 facts.",
+         "CLIP:extended_look_08816", None, None),
+    ],
+    facts=[
+        {"claim": "GamesRadar+ (Catherine Lewis, 5 Oct 2026): Rockstar introduced Jason as someone who 'grew up "
+                  "around grifters and crooks', spent 'a stint in the Army trying to shake off his troubled teens' "
+                  "and is back 'doing what he knows best, working for local drug runners'; Lucia 'could be the best or "
+                  "worst thing to ever happen to him'. Rupert Humphries, GTA 6's senior vice president of narrative "
+                  "(the story lead), told Love magazine: 'We didn't want to make any kind of statement with Jason's "
+                  "backstory.' He said Jason takes the measures he does 'because of his material circumstances', 'but "
+                  "a lot of this is up to the player to decide whether he needs to do that or if it's a choice he "
+                  "makes because he's wired differently from other people.'",
+         "sources": ["https://gamesradar.com/games/grand-theft-auto/gta-6-story-lead-insists-rockstar-didnt-want-to-make-any-kind-of-statement-with-jasons-ex-military-background"],
+         "main": True},
+    ],
+    description="Rockstar says Jason did a stint in the Army before going back to crime. GTA 6's story lead, Rupert "
+                "Humphries, says it wasn't meant as a statement, and leaves his reasons up to you.\n"
+                "Source: GamesRadar+ (Love magazine interview).",
+    hashtags=["#GTA6", "#JasonDuval", "#GTA6Story"],
+)
+
+S["gta6-real-cheetah"] = dict(
+    title="GTA 6's Cheetah supercar is real. It costs £1 million",
+    thumb_text="£1 MILLION GTA CAR",
+    hook_card="A REAL GTA 6 CAR?",
+    cover_lines=["A REAL GTA CAR", "FOR £1 MILLION?", "WHERE TO BUY IT"],
+    cover_frame={"shot": "extended_look_07899", "f": 0.5, "x": 0.62},   # Lucia in a parked car (R3: face)
+    experiment="E1-short",
+    beats=[
+        ("The Cheetah from GTA 6 is real, and it costs one million pounds.", "CLIP:trailer_2_00232",
+         None, "surprised"),
+        ("Rockstar teamed up with West Coast Customs to build it.", "CLIP:extended_look_07018", None, None),
+        ("Underneath, it's a Ferrari Testarossa, painted pink and blue.", "CLIP:extended_look_11192",
+         "A REAL TESTAROSSA", None),
+        ("It's on show at Selfridges in London until November 28th.", "CLIP:extended_look_04786",
+         "SELFRIDGES, LONDON", None),
+        ("You can't just add it to a basket. You go through Selfridges' personal shoppers.",
+         "CLIP:extended_look_11560", None, "amused"),
+        ("In the game, the Cheetah comes with the ninety-nine dollar Ultimate Edition.", "CLIP:extended_look_07501",
+         "IN-GAME: $99.99 EDITION", None),
+        ("In 2013, Rockstar gave away a real GTA 5 car. It later sold for about forty-five thousand dollars.",
+         "OFFICIAL:v_a9877dd12c", "GTA 5 CAR: ~$45,000", None),
+        ("One fan joked: in the game you steal it, at Selfridges you need a mortgage.", "CLIP:extended_look_09432",
+         None, "laughs softly"),
+        ("Real Cheetah or game Cheetah: which do you want? Follow for more GTA 6 facts.",
+         "CLIP:extended_look_04835", None, None),
+    ],
+    facts=[
+        {"claim": "TweakTown (Nov 2026): 'Rockstar's real GTA 6 supercar costs $1.3 million, while the in-game one is "
+                  "in a $99.99 edition'; 'a customized Ferrari Testarossa reworked to look like the Grotti Cheetah'; "
+                  "'Rockstar Games collaborated with West Coast Customs'; 'available to purchase for £1 million via "
+                  "Selfridges Personal Shopping'; 'there's no add to cart button here'; the Selfridges pop-up runs "
+                  "'from November 9 to November 28'; 'The in-game '95 Cheetah is included in GTA 6's $99.99 Ultimate "
+                  "Edition.'",
+         "sources": ["https://www.tweaktown.com/news/114594/rockstars-real-gta-6-supercar-costs-1-3-million-while-the-in-game-one-is-in-a-99-99-edition/index.html"],
+         "main": True},
+        {"claim": "Top Gear (13 Nov 2026): 'This £1m GTA 6 'Grotti Cheetah' (Ferrari Testarossa) is up for sale at "
+                  "Selfridges'; built for Rockstar by LA-based West Coast Customs; 'a very Vice City-coded "
+                  "blue-and-pink paint job'; 'Back in 2013, the game's developer gave away a real-life version of the "
+                  "'Bravado Banshee''.",
+         "sources": ["https://www.topgear.com/car-news/gaming/ps1m-gta-6-grotti-cheetah-ferrari-testarossa-sale-selfridges"],
+         "main": True},
+        {"claim": "IBTimes UK (10 Nov 2026): the 2013 GTA 5 promotion gave away a real Bravado Banshee; the winner "
+                  "'eventually sold the vehicle for about $45,000 (£33,469) on eBay'; one commenter joked: 'In the game "
+                  "you steal it. At Selfridges you need a mortgage.'",
+         "sources": ["https://www.ibtimes.co.uk/rockstar-gta-6-grotti-cheetah-million-pound-supercar-1831230"],
+         "main": True},
+    ],
+    description="Rockstar and West Coast Customs turned a Ferrari Testarossa into GTA 6's Grotti Cheetah. It's at "
+                "Selfridges London (to 28 Nov) for £1 million. In the game, it's in the $99.99 Ultimate Edition.\n"
+                "Sources: TweakTown, Top Gear, IBTimes UK.",
+    hashtags=["#GTA6", "#GrottiCheetah", "#Selfridges"],
+)
+
+S["gta6-chiliad-secret"] = dict(
+    title="GTA 6 brought back GTA 5's Mount Chiliad mystery",
+    thumb_text="CHILIAD IS BACK",
+    hook_card="REMEMBER CHILIAD?",
+    cover_lines=["GTA 5'S MOUNTAIN", "MYSTERY IS BACK?", "LISTEN AT THE BAR"],
+    cover_frame={"shot": "extended_look_03021", "f": 0.8, "x": 0.3},   # Jason close-up, Lucia behind (R3: face)
+    experiment="E1-long",
+    beats=[
+        ("A secret in GTA 6 brings back a GTA 5 mystery from 2013.", "CLIP:extended_look_10196", None, "curious"),
+        ("In an early mission, Donnie Carter calls Jason to meet him and Brian.", "CLIP:launch_trailer_00119",
+         None, None),
+        ("Then Donnie sends Jason to a bar nearby.", "CLIP:trailer_2_00895", None, None),
+        ("And as you walk up, some random locals are talking about Mount Chiliad.", "CLIP:trailer_2_00416",
+         None, "surprised"),
+        ("That's the big mountain in GTA 5's Blaine County.", "OFFICIAL:v_3360902d78", "MOUNT CHILIAD (GTA 5)",
+         None),
+        ("Back in 2013, players found a strange mural at the top.", "OFFICIAL:v_fdac18d437", None, None),
+        ("It seemed to show a UFO, a jetpack and an egg, with mysterious symbols.", "CLIP:launch_trailer_00685",
+         "UFO + JETPACK + EGG", None),
+        ("Players searched Los Santos and Blaine County for clues.", "CLIP:extended_look_02968", None, None),
+        ("In 2017, GTA Online added a jetpack and a secret underground base.", "OFFICIAL:v_a457313ec2",
+         "DOOMSDAY HEIST, 2017", None),
+        ("But not everyone was convinced the mystery was solved.", "CLIP:extended_look_10037", None, None),
+        ("Now one player says the locals in GTA 6 \"were talking about how there was a hidden bunker with jetpacks "
+         "and eggs under Chiliad.\"", "CLIP:trailer_2_00996", None, None),
+        ("A real clue, or just Rockstar teasing: which side are you on? Follow for more GTA 6 secrets.",
+         "CLIP:extended_look_03021", None, None),
+    ],
+    facts=[
+        {"claim": "GAMINGbible (Richard Breslin, 20 Nov 2026): a hidden NPC conversation in an early GTA VI mission: "
+                  "Donald 'Donnie' Carter calls Jason to meet him and Brian Heder, then sends Jason to a nearby bar; "
+                  "approaching it, 'seemingly random NPCs' talk about 'the strange events surrounding Mount Chiliad in "
+                  "Blaine County'. Found by Reddit user Tr1angleChoke; SprungVenus: 'Heard that too; they were talking "
+                  "about how there was a hidden bunker with jetpacks and eggs under Chiliad.' GTA V released in "
+                  "September 2013; at the top of Mount Chiliad players found 'a strange mural featuring what appeared "
+                  "to be a UFO, a jetpack and an egg, along with several mysterious symbols'; players searched Los "
+                  "Santos and Blaine County for clues; Rockstar added a jetpack and a secret underground facility in "
+                  "GTA Online's Doomsday Heist update in 2017, but 'not everyone was convinced' the mystery was "
+                  "solved; Rockstar may be 'simply teasing its fans'. The writer had not heard it first-hand.",
+         "sources": ["https://www.gamingbible.com/news/gta-6-gta-5-mount-chiliad-mystery-easter-egg-802897-20261120",
+                     "https://www.reddit.com/r/GTA6/comments/1y02b4y/crazy_npc_easter_egg_dialog_in_gta_6/"],
+         "main": True},
+    ],
+    description="Players say random locals in an early GTA 6 mission talk about GTA 5's Mount Chiliad mystery: the "
+                "2013 mural with a UFO, a jetpack and an egg.\nSource: GAMINGbible (Reddit finds).",
+    hashtags=["#GTA6", "#MountChiliad", "#GTA5"],
+)
+
+S["gta6-outsold-consoles"] = dict(
+    title="GTA 6 outsold three consoles before it even launched",
+    thumb_text="OUTSOLD 3 CONSOLES",
+    hook_card="BEAT 3 CONSOLES?",
+    cover_lines=["OUTSOLD 3 CONSOLES", "BEFORE LAUNCH?", "HERE ARE THE NUMBERS"],
+    cover_frame={"shot": "extended_look_10081", "f": 0.2, "x": 0.42},   # Jason in a cap by a van, Lucia beside (R3)
+    experiment="E1-long",
+    beats=[
+        ("Before launch, GTA 6 outsold three famous game consoles.", "CLIP:extended_look_10132", None,
+         "surprised"),
+        ("Take-Two says it sold thirty-two and a half million copies before release.", "CLIP:extended_look_07446",
+         "32.5M BEFORE RELEASE", None),
+        ("That beats the original Xbox, at twenty-four million.", "CLIP:extended_look_10618", "XBOX: 24M", None),
+        ("It beats the GameCube, at about twenty-two million.", "CLIP:extended_look_11148", "GAMECUBE: 21.74M",
+         None),
+        ("And it beats Sega's Mega Drive, at almost thirty-one million.", "CLIP:extended_look_04835",
+         "MEGA DRIVE: 30.75M", None),
+        ("It came very close to the Nintendo 64, at thirty-two point nine million.", "CLIP:launch_trailer_00026",
+         "N64: 32.93M", "amazed"),
+        ("GAMINGbible says that makes it the thirtieth best-selling game of all time, from day one.",
+         "CLIP:extended_look_12606", "#30 OF ALL TIME", None),
+        ("Elden Ring took three years to sell that many.", "CLIP:trailer_1_00183", None, None),
+        ("For comparison, GTA 5 sold about eleven million on its first day.", "OFFICIAL:v_c670974867",
+         "GTA 5 DAY ONE: ~11M", None),
+        ("GTA 5 went on to sell two hundred and thirty-five million. That's third of all time, behind Minecraft "
+         "and Tetris.", "OFFICIAL:v_24ba6644de", "GTA 5: 235M", None),
+        ("Will GTA 6 pass GTA 5's two hundred and thirty-five million? Yes or no: pick a side. Follow for more "
+         "GTA 6 facts.", "CLIP:extended_look_07899", None, None),
+    ],
+    facts=[
+        {"claim": "GAMINGbible (Olly Smith, 22 Nov 2026): 'As revealed by Take-Two Interactive, Rockstar's parent "
+                  "company, Grand Theft Auto VI has sold 32.5 million units pre-release across PlayStation 5 and Xbox "
+                  "Series X/S' (company estimates through the end of 19 November); this 'comes exceedingly close to "
+                  "the lifetime sales of the Nintendo 64, which has shifted 32.93 million units since 1996'; more "
+                  "than other consoles: Sega Mega Drive (30.75M), original Xbox (24M), Nintendo GameCube (21.74M); "
+                  "'GTA VI has already become the 30th best-selling game of all time in its first day alone'; 'it "
+                  "took Elden Ring three years to hit the same number of sales'; GTA V sold 'around 11 million copies "
+                  "in the first day of release'; GTA V lifetime 235 million, third behind Minecraft (425M) and "
+                  "Tetris (520M).",
+         "sources": ["https://www.gamingbible.com/news/gta-6-day-one-copies-sold-270457-20261122"],
+         "main": True},
+    ],
+    description="Take-Two: 32.5 million GTA 6 copies sold before release. That's more than the original Xbox, "
+                "GameCube and Mega Drive sold in their lifetimes, and close to the N64.\nSources: GAMINGbible, "
+                "Take-Two.",
+    hashtags=["#GTA6", "#GTA6Sales", "#GTA5"],
+)
+
+
 # ---- RESERVE scripts (20 Nov 2026, owner away): evergreen, no time words; used only if a slot is empty ----
 S["gta6-trailer-songs"] = dict(
     title="GTA 6's trailers brought two old songs back to life",
     thumb_text="TWO OLD SONGS",
     hook_card="TWO OLD SONGS",
     cover_lines=["TWO 80s SONGS", "EXPLODED ON SPOTIFY", "THANKS TO THE TRAILERS"],
-    cover_frame={"shot": "trailer_1_00065", "f": 0.5, "x": 0.2},   # Lucia in prison (R3: face)
+    cover_frame={"shot": "trailer_1_00084", "f": 0.3, "x": 0.5},   # Lucia in prison (R3: face)
     beats=[
         ("GTA 6 didn't just break view records. It brought two old songs back from the dead.",
          "CLIP:trailer_2_00920", None, "excited"),
@@ -1267,7 +1513,7 @@ S["gta6-vice-city-1986"] = dict(
     thumb_text="BACK TO VICE CITY",
     hook_card="1986 VS NOW",
     cover_lines=["VICE CITY IN 1986", "VS GTA 6'S VICE CITY", "WHAT CHANGED?"],
-    cover_frame={"shot": "extended_look_07899", "f": 0.5, "x": 0.5},   # Lucia in a car (R3: face)
+    cover_frame={"shot": "trailer_1_00728", "f": 0.5, "x": 0.3},   # Lucia leaning over Jason (23 Nov: 07899 went to real-cheetah) (R3: face)
     beats=[
         ("GTA 6 isn't the first time Rockstar has taken us to Vice City.", "CLIP:extended_look_10132", None,
          "curious"),
