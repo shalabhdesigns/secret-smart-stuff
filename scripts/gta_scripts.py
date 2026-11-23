@@ -983,22 +983,22 @@ S["gta6-lucia-actor"] = dict(
     thumb_text="SHE WAS IN GTA 5",
     hook_card="SHE WAS IN GTA 5?",
     cover_lines=["LUCIA'S ACTRESS", "WAS IN GTA 5?", "SPOT HER ROLE"],
-    cover_frame={"shot": "trailer_2_00961", "f": 0.5, "x": 0.4},   # Lucia, green dress, rooftop bar (R3: face)
+    cover_frame={"shot": "trailer_1_00065", "f": 0.5, "x": 0.2},   # Lucia in prison orange at a window (R3: face; 23 Nov: trailer_2_00961 showed her back)
     experiment="E1-long",
     beats=[
         ("The woman who plays Lucia in GTA 6 was already in GTA 5. You just never noticed.",
-         "CLIP:extended_look_08816", None, "curious"),
-        ("Her name is Manni Perez, and she's nominated at the Game Awards for Best Performance, as Lucia.",
-         "CLIP:extended_look_10196", "LUCIA: MANNI L. PEREZ", None),
+         "CLIP:extended_look_10196", None, "curious"),
+        ("Her name is Manni Perez. She's nominated at the Game Awards for Best Performance, for playing Lucia.",
+         "CLIP:extended_look_10132", "LUCIA: MANNI L. PEREZ", None),
         ("LADbible checked her IMDb, and her very first credit is GTA 5.", "OFFICIAL:v_c670974867",
          "FIRST CREDIT: GTA 5", None),
         ("She voiced a character called Clubber number two.", "CLIP:extended_look_10510", "'CLUBBER 2'", "amused"),
-        ("Then, in a 2019 GTA Online update, she was a blackjack dealer with no name.", "OFFICIAL:v_7f4ce4e75d",
+        ("Then, in a 2019 GTA Online update, she was a blackjack dealer with no name.", "OFFICIAL:v_24ba6644de",
          "UNNAMED DEALER, 2019", None),
-        ("On TV, she's been in Jessica Jones, The Blacklist and Law and Order.", "CLIP:trailer_2_00920", None, None),
+        ("On TV, she's been in Jessica Jones, The Blacklist and Law and Order.", "CLIP:trailer_1_00084", None, None),
         ("And she trains in Muay Thai, Brazilian jiu-jitsu and MMA.", "CLIP:extended_look_10387", None, None),
         ("Back in 2018, she said her biggest fear was playing a woman who needs to be saved by a man.",
-         "CLIP:extended_look_03021", None, None),
+         "CLIP:trailer_2_00631", None, None),
         ("And Jason? Dylan Rourke posted on Instagram that he played him.", "CLIP:trailer_2_00232",
          "JASON: DYLAN ROURKE", "excited"),
         ("It's his first video game. Before this, he was on Station 19 and Modern Family.",
@@ -1388,6 +1388,22 @@ if __name__ == "__main__":
     import datetime as _dt
     _ist = (_dt.datetime.utcnow() + _dt.timedelta(hours=5, minutes=30)).date().isoformat()
     todo = {x[2] for x in _recent_plan(4) if x[0] is None or x[0] > _ist}     # not made yet (tomorrow on + reserves)
+    # 23 Nov 2026 (cost): 10 of 10 morning scripts on 22-23 Nov were held by the paid script check, mostly for one
+    # word stronger than the source ("never" for "still hasn't", "the biggest hint", a year not in the sources).
+    # Catch those here for free: an absolute word or a year in the narration that no fact claim contains.
+    import re as _re
+    _abs = ("never", "biggest", "only", "always", "every", "ever", "all-time", "highest", "most", "best", "first",
+            "record", "nobody", "no one", "confirmed", "official", "joke")
+    for t in todo & set(out):
+        ftxt = " ".join(f["claim"] for f in out[t]["facts"]).lower()
+        for sc in out[t]["scenes"]:
+            low = sc["narration"].lower()
+            for w in _abs:
+                if _re.search(rf"\b{_re.escape(w)}\b", low) and not _re.search(rf"\b{_re.escape(w)}\b", ftxt):
+                    print(f"  warning {t} {sc['id']}: '{w}' is not in any fact claim (make sure the source says it, or reword)")
+            for y in _re.findall(r"\b(19\d\d|20\d\d)\b", sc["narration"]):
+                if y not in ftxt:
+                    print(f"  warning {t} {sc['id']}: year {y} is not in any fact claim")
     seen = {}
     for t in list(out)[::-1]:
         c = out[t].get("cover") or {}

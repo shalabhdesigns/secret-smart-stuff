@@ -7390,14 +7390,14 @@
       ],
       "chosen_hook": 0,
       "images": {
-       "img1": "CLIP:extended_look_08816",
-       "img2": "CLIP:extended_look_10196",
+       "img1": "CLIP:extended_look_10196",
+       "img2": "CLIP:extended_look_10132",
        "img3": "OFFICIAL:v_c670974867",
        "img4": "CLIP:extended_look_10510",
-       "img5": "OFFICIAL:v_7f4ce4e75d",
-       "img6": "CLIP:trailer_2_00920",
+       "img5": "OFFICIAL:v_24ba6644de",
+       "img6": "CLIP:trailer_1_00084",
        "img7": "CLIP:extended_look_10387",
-       "img8": "CLIP:extended_look_03021",
+       "img8": "CLIP:trailer_2_00631",
        "img9": "CLIP:trailer_2_00232",
        "img10": "CLIP:extended_look_07899",
        "img11": "CLIP:extended_look_07446",
@@ -7421,7 +7421,7 @@
        },
        {
         "id": "b2",
-        "narration": "Her name is Manni Perez, and she's nominated at the Game Awards for Best Performance, as Lucia.",
+        "narration": "Her name is Manni Perez. She's nominated at the Game Awards for Best Performance, for playing Lucia.",
         "image": "img2",
         "delivery": null,
         "focus": null,
@@ -7626,9 +7626,9 @@
        ],
        "why": "written in session",
        "frame": {
-        "shot": "trailer_2_00961",
+        "shot": "trailer_1_00065",
         "f": 0.5,
-        "x": 0.4
+        "x": 0.2
        }
       }
      },
