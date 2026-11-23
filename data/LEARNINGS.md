@@ -1,19 +1,19 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-23 08:23 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-23 13:31 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
-- News-style topics got more views than film topics: 2,045 vs 311 median (pattern, n=5 vs 7). Film kept more subs per 1k, so do not judge on views alone.
-- Videos of 36s+ out-viewed 30–36s: 1,117 vs 785 (pattern, n=14 vs 8). Do not pad, because the shorter group kept slightly more viewers (43.6 vs 39.4).
-- State a price, file size or date only if the facts list sources it. Cut filler bridge lines like "Which is huge" (hypothesis, owner notes).
-- Keep the question hook, but do not reveal its answer in the next beat. Make the on-screen callouts match the hook (hypothesis, owner notes).
-- Put the proof clip or image early, and match each image to the spoken word (hypothesis, 2 videos).
+- Cut filler and dead-spot lines around 15-22s (jokes, caveats, bridge lines that repeat the hook). (pattern, n=2 videos)
+- Make on-screen callouts and the title match the hook and the question the video actually answers. (pattern, n=2 owner notes)
+- Show the exact image a line names, and keep it simple. (hypothesis)
+- Keep the question hook, but make the first line concrete and don't give the answer away in the first 5 seconds. (hypothesis)
+- Don't pad length: 36s+ gets more views (n=16 vs 8) but 30-36s keeps more viewers, so use the shortest script that delivers the payoff. (pattern, n=24)
 
 ## Topic guidance now
-- News: double down for reach. n=5, median views 2,045 vs channel median 1,200. Subs_per_1k is only 0.63, so watch growth.
-- Film: keep but fix. n=7, median views 311 vs 1,200, subs_per_1k 1.64, median_kept_pct 33.3. Do not drop yet.
-- GTA 6 videos: not enough data yet. One video was above the median and one was below. Do not drop the pillar on this evidence.
-- Walk_past, why_detail, by_country, india_asia, virality: not enough data yet (n=2–3). Walk_past's median views (2,417, n=2) are too thin to act on.
+- News: keep. n=5, 2,045 median views vs 1,034 overall, but subs_per_1k is only 0.63.
+- Film: keep and test, don't drop. n=7, 311 median views, but 1.64 subs_per_1k.
+- Virality: don't expand yet. n=5, 535 median views, 0.0 subs_per_1k, 0.0 shares_per_1k.
+- walk_past, why_detail, by_country, india_asia: not enough data yet (n=2 each).
 
 ## Per-video analyses
 
