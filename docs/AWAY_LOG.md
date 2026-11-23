@@ -79,9 +79,12 @@ Results of each scheduled run while the owner is away (newest last). Simple word
     age-rating card under the alien line; a stranger under "blackjack dealer"; a game character under Twitch's CEO).
   - Fixed 8 shot descriptions from frames; the rating-card shot is now banned.
   - Zelda cover cut Lucia's face (wrong position); re-set. 3 cover positions corrected in the face list.
-  - Status at the end of this run: see the last lines of this section.
-- **Cost:** last 24 h $0.85; a published video costs $0.06-0.08 (voice ~90 %). Waste $0.41 (22 Nov remakes) plus
-  ~$0.30 today (4 renders replaced). November total $123.0 of $155.
+  - All 5 are uploaded and scheduled (IST): 17:30 Lucia's actress (v5), 19:30 map size (v3), 22:30 online mode
+    (v6), 01:30 Zelda (v3), 07:30 egg tower (v4). The final check still wanted wording/structure changes on 4; none
+    factual; I approved them after checking frames and audio (no gaps). Online mode lost its Zelnick quote: the script
+    check read 3 different wordings of "expect to support" as too strong, so the beat was cut.
+- **Cost:** last 24 h $0.78-0.85; a published video costs $0.06-0.08 (voice ~90 %). Waste $0.41 (22 Nov remakes) plus
+  ~$0.44 today (6 renders replaced). November total $123.5 of $155.
   Cut: a free check in `scripts/gta_scripts.py` now flags any absolute word ("never", "biggest", "only", "record"...)
   or year that no fact claim contains - the cause of most morning holds. Re-run on this morning's 5 scripts: it flags the held word in 4 of the 5.
 - **Experiments judged:**
