@@ -6545,7 +6545,7 @@
   "images": {
    "img1": "CLIP:extended_look_03021",
    "img2": "CLIP:trailer_2_00081",
-   "img3": "CLIP:trailer_2_00136",
+   "img3": "CLIP:launch_trailer_00119",
    "img4": "CLIP:trailer_2_00232",
    "img5": "CLIP:extended_look_09994",
    "img6": "CLIP:trailer_1_00728",
@@ -6767,7 +6767,7 @@
   "images": {
    "img1": "CLIP:trailer_2_00232",
    "img2": "CLIP:extended_look_07018",
-   "img3": "CLIP:extended_look_11192",
+   "img3": "CLIP:trailer_1_00325",
    "img4": "CLIP:extended_look_04786",
    "img5": "CLIP:extended_look_11560",
    "img6": "CLIP:extended_look_07501",
@@ -6808,7 +6808,7 @@
    },
    {
     "id": "b3",
-    "narration": "Underneath, it's a Ferrari Testarossa, painted pink and blue.",
+    "narration": "Underneath, it's a Ferrari Testarossa.",
     "image": "img3",
     "delivery": null,
     "focus": null,
