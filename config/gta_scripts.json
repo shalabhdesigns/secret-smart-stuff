@@ -5644,8 +5644,7 @@
    "img7": "CLIP:launch_trailer_00026",
    "img8": "CLIP:extended_look_07446",
    "img9": "CLIP:trailer_1_00398",
-   "img10": "OFFICIAL:v_07edb091bb",
-   "img11": "CLIP:extended_look_09766"
+   "img10": "CLIP:extended_look_09766"
   },
   "scenes": [
    {
@@ -5785,23 +5784,8 @@
    },
    {
     "id": "b10",
-    "narration": "And GTA 5's online mode isn't going away. Take-Two's Strauss Zelnick says: \"We do expect to support GTA Online going forward.\"",
-    "image": "img10",
-    "delivery": null,
-    "focus": null,
-    "motion": "push",
-    "transition": "cut",
-    "callout": "QUOTE: STRAUSS ZELNICK",
-    "pop": null,
-    "arrow": null,
-    "card_text": null,
-    "tone": "normal",
-    "markers": null
-   },
-   {
-    "id": "b11",
     "narration": "Story first, or online first: which one do you care about more? Pick a side. Follow for more GTA 6 facts.",
-    "image": "img11",
+    "image": "img10",
     "delivery": null,
     "focus": null,
     "motion": "push",

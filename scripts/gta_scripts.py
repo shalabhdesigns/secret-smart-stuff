@@ -1097,9 +1097,6 @@ S["gta6-online-when"] = dict(
         ("Bloomberg's Jason Schreier has also reported that the online part is expected in 2027.",
          "CLIP:extended_look_07446", "EXPECTED: 2027", None),
         ("Rockstar hasn't confirmed that.", "CLIP:trailer_1_00398", None, None),
-        ("And GTA 5's online mode isn't going away. Take-Two's Strauss Zelnick says: \"We do expect to support GTA "
-         "Online going forward.\"",
-         "OFFICIAL:v_07edb091bb", "QUOTE: STRAUSS ZELNICK", None),
         ("Story first, or online first: which one do you care about more? Pick a side. Follow for more GTA 6 "
          "facts.", "CLIP:extended_look_09766", None, None),
     ],
