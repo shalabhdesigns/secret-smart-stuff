@@ -69,3 +69,34 @@ Results of each scheduled run while the owner is away (newest last). Simple word
   - 01:30 GTA 6's Metacritic fight just dragged in Zelda (the one news/drama; big numbers; E1 short)
   - 07:30 (24 Nov) GTA 6 hid a real Easter egg at the top of a tower (secrets)
   - All 5: side-taking question + follow line (E2); face covers (R3), no face repeated from today.
+
+## 23 Nov 2026 (daily run, 12:41 IST)
+- **Today's 5 videos were held again** (the 05:47 IST script check held all 5 before the voice, one wording each).
+  Fixed and remade each; looked at every contact sheet, the cover and the audio (no gaps).
+  - What was wrong: "never" where the source says "still hasn't"; "the biggest hint"; a Clancy quote not word for
+    word; a year (1998) not in the sources; "brightly colored"; "a joke". After rendering: pictures that showed
+    something else, all from wrong shot descriptions (Lucia's back called "Lucia"; a scuffle called "dancing"; the
+    age-rating card under the alien line; a stranger under "blackjack dealer"; a game character under Twitch's CEO).
+  - Fixed 8 shot descriptions from frames; the rating-card shot is now banned.
+  - Zelda cover cut Lucia's face (wrong position); re-set. 3 cover positions corrected in the face list.
+  - Status at the end of this run: see the last lines of this section.
+- **Cost:** last 24 h $0.85; a published video costs $0.06-0.08 (voice ~90 %). Waste $0.41 (22 Nov remakes) plus
+  ~$0.30 today (4 renders replaced). November total $123.0 of $155.
+  Cut: a free check in `scripts/gta_scripts.py` now flags any absolute word ("never", "biggest", "only", "record"...)
+  or year that no fact claim contains - the cause of most morning holds. Re-run on this morning's 5 scripts: it flags the held word in 4 of the 5.
+- **Experiments judged:**
+  - E2 (follow line) DROPPED: 0.14 new IG followers per 1,000 views on 22 Nov vs 0.15-0.31 before; no lift.
+  - E1 (40 s vs 55 s) EXTENDED: short median 1,514 IG vs long 1,347 (+12 %, bar is +20 %); not all 24 h yet.
+  - E3 (12:00 UTC slot) EXTENDED: YouTube got 68-75 % of IG views at 12:00 vs 5-36 % at 23:00; 2 videos so far.
+  - No new experiment (2 still running).
+- **Learnings:** F13 character + relationship question = best YouTube ever (dating Lucia 1,891 YT, 6 shares).
+  F14 lists of small secrets hold viewers worst (12.8-13.5 s watch vs 22-28 s) -> new rule R6: one secret per video,
+  told as a story. F15 face covers: all 5 on 22 Nov got 1,223-1,602 IG (R3 holds). F16 wrong shot descriptions
+  caused 4 of 5 holds after rendering.
+- **Tomorrow (24 Nov), IST:**
+  - 17:30 GTA 6's Xbox glitch breaks the 30 fps lock (practical how-to; E1 short; E3 slot)
+  - 19:30 GTA 6's Jason was in the Army. Rockstar explains (character; split question)
+  - 22:30 GTA 6's Cheetah supercar is real. It costs £1 million (real world + big number; E1 short)
+  - 01:30 GTA 6 brought back GTA 5's Mount Chiliad mystery (one secret, GTA 5 link)
+  - 07:30 (25 Nov) GTA 6 outsold three consoles before it even launched (big number vs famous things)
+  - All 5: face covers (4 new checked face shots, none used this week), side-taking last line, no follow line.
