@@ -1002,7 +1002,7 @@ S["gta6-lucia-actor"] = dict(
         ("And Jason? Dylan Rourke posted on Instagram that he played him.", "CLIP:trailer_2_00232",
          "JASON: DYLAN ROURKE", "excited"),
         ("It's his first video game. Before this, he was on Station 19 and Modern Family.",
-         "CLIP:extended_look_07899", None, None),
+         "CLIP:extended_look_03021", None, None),
         ("His message to fans ended with: See y'all in Leonida.", "CLIP:extended_look_07446", None, None),
         ("Lucia or Jason: whose story are you here for? Pick a side. Follow for more GTA 6 secrets.",
          "CLIP:extended_look_10919", None, None),
