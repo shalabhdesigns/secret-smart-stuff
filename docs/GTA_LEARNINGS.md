@@ -115,74 +115,80 @@ the next videos; identifying patterns and improving is Claude's job, not the own
 ## Numbers
 
 <!-- AUTO:START -->
-_Numbers updated 2026-11-22 07:27 UTC by scripts/gta_learn.py (GTA videos only; no API cost)._
+_Numbers updated 2026-11-23 07:12 UTC by scripts/gta_learn.py (GTA videos only; no API cost)._
 
-**Accounts:** youtube 53 (first seen 15); instagram 9 (first seen 1)
+**Accounts:** youtube 55 (first seen 15); instagram 10 (first seen 1)
 
 | published (UTC) | video | cat | logo | s | IG 24h | IG now | IG watch s | IG skip % | IG shares | YT 24h | YT now | YT % viewed | exp |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 11-16T17:00 | GTA 6 still isn't on PC. Here's why | tech | - | 29.2 | 1401 | 1401 | 13.0 | 33.5 | - | - | 4 | 90.37 |  |
 | 11-16T20:00 | GTA 6 at $80 is cheaper than GTA 5 was | money | - | - | 242 | 243 | 15.3 | 33.2 | - | - | 10 | 96.16 |  |
-| 11-16T23:00 | GTA 6's wildest scenes match real Florida videos | real world | - | 31.6 | 174 | 174 | 11.6 | 39.3 | - | - | 32 | 51.71 |  |
-| 11-17T02:00 | The GTA 6 trailer that broke YouTube | other | - | 34.7 | 133 | 135 | 11.5 | 42 | - | - | 1158 | 74.06 |  |
+| 11-16T23:00 | GTA 6's wildest scenes match real Florida videos | real world | - | 31.6 | 174 | 174 | 11.6 | 39.3 | - | - | 33 | 51.71 |  |
+| 11-17T02:00 | The GTA 6 trailer that broke YouTube | other | - | 34.7 | 133 | 135 | 11.5 | 42 | - | - | 1158 | 73.94 |  |
 | 11-17T17:00 | 27 minutes of GTA 6 gameplay: what nobody notice | other | - | 27.5 | 426 | 430 | 9.0 | 36.9 | 1 | - | 45 | 68.91 |  |
 | 11-17T20:00 | GTA 6 took 13 years. Here's what happened | other | - | 42.2 | 191 | 192 | 11.1 | 43.1 | - | - | 243 | 46.03 |  |
 | 11-17T23:00 | Will GTA 6 even fit on your PS5? | tech | - | 34.4 | 1354 | 1357 | 16.4 | 26.6 | - | - | 152 | 51.85999999999999 |  |
-| 11-18T02:00 | Lucia is the GTA hero we waited 29 years for | characters | - | 31.6 | 1470 | 1612 | 14.4 | 30.7 | - | - | 1246 | 52.33 |  |
-| 11-18T11:00 | Is the $100 GTA 6 Ultimate Edition worth it? | money | - | 38.4 | 307 | 347 | 14.8 | 44.6 | - | 1 | 188 | 63.39 |  |
-| 11-18T14:00 | Why an NBA team becomes 'Vice City' tonight | real world | - | - | 171 | 199 | 13.2 | 31 | - | 2 | 321 | 204.6 |  |
-| 11-18T17:00 | GTA 6 is already unlocked in these countries | tech | - | 57.1 | 183 | 185 | 16.2 | 30.9 | - | 1 | 176 | 49.98 |  |
+| 11-18T02:00 | Lucia is the GTA hero we waited 29 years for | characters | - | 31.6 | 1470 | 1620 | 14.4 | 30.5 | - | - | 1258 | 52.33 |  |
+| 11-18T11:00 | Is the $100 GTA 6 Ultimate Edition worth it? | money | - | 38.4 | 307 | 347 | 14.8 | 44.6 | - | 1 | 188 | 64.77 |  |
+| 11-18T14:00 | Why an NBA team becomes 'Vice City' tonight | real world | - | - | 171 | 199 | 13.2 | 31 | - | 2 | 321 | 205.97 |  |
+| 11-18T17:00 | GTA 6 is already unlocked in these countries | tech | - | 57.1 | 183 | 185 | 16.2 | 30.9 | - | 1 | 176 | 50.39 |  |
 | 11-18T23:00 | Why the GTA 6 box has no disc inside | tech | - | 47.2 | 557 | 567 | 18.8 | 32 | - | - | 201 | 56.779999999999994 |  |
 | 11-19T14:00 | The GTA 5 record GTA 6 has to beat | records | - | - | 1386 | 1391 | 22.5 | 30.2 | - | 1077 | 1089 | 103.56 |  |
 | 11-19T20:00 | GTA 6: Rockstar's war on the leakers | drama | Y | - | 1339 | 1345 | 25.9 | 33.3 | - | 295 | 860 | 138.16 |  |
 | 11-19T23:00 | GTA 6 is in America, but Tokyo nearly won, says  | real world | Y | - | 1647 | 1648 | 28.0 | 27.9 | 4 | 73 | 775 | 33.85 |  |
-| 11-20T02:00 | GTA 6's map: the real places it looks like | real world | Y | - | 1470 | 1473 | 27.1 | 23.1 | 4 | 1040 | 1035 | 66.04 |  |
-| 11-20T12:00 | GTA 6 costs double GTA 5 in India, but there's a | money | Y | - | 1532 | 1534 | 28.5 | 21.1 | 3 | 1147 | 1221 | - |  |
-| 11-20T14:00 | GTA 6's wildest scenes match real Florida videos | real world | Y | - | 1278 | 1280 | 19.6 | 25.6 | - | 1132 | 1179 | - |  |
-| 11-20T17:00 | GTA 6 still isn't on PC. Here's why | tech | Y | - | 1219 | 1222 | 19.9 | 21.2 | 1 | 1147 | 1148 | - |  |
-| 11-20T20:00 | GTA 6 tied the highest Metacritic score ever | records | Y | 56.6 | 1484 | 1485 | 20.0 | 25.9 | 1 | 1129 | 1135 | - |  |
-| 11-20T23:00 | GTA 6's characters in Rockstar's own words | characters | Y | - | 1327 | 1333 | 25.6 | 27.8 | - | 485 | 783 | - |  |
-| 11-21T02:00 | GTA 6 Trailer 2: 475 million views in a day? | records | Y | - | 1292 | 1292 | 19.5 | 31.3 | - | 284 | 284 | - |  |
-| 11-21T14:00 | GTA 6 launch: 7.9 million people watching at onc | records | Y | - | 152 | 152 | 14.2 | 20.3 | - | 242 | 242 | - |  |
-| 11-21T17:00 | GTA 6 fans found Dexter's apartment in Vice City | real world | Y | - | - | 340 | 12.4 | 47.1 | - | - | 467 | - |  |
-| 11-21T20:00 | GTA 6 is about 50 hours long, one review says | reviews | Y | - | - | 1650 | 29.1 | 27.7 | - | - | 1199 | - |  |
-| 11-21T23:00 | GTA 6 sold 19 million copies? Here's the catch | records | Y | - | - | - | - | - | - | - | 221 | - |  |
-| 11-21T23:00 | GTA 6 made $3.79 billion on day one, Rockstar sa | money | Y | 60.2 | - | 1396 | 29.4 | 29.8 | 14 | - | 188 | - |  |
-| 11-22T02:00 | GTA 6 fans think we saw it back in 2021 | other | Y | - | - | 1485 | 30.5 | 21.6 | - | - | 912 | - |  |
+| 11-20T02:00 | GTA 6's map: the real places it looks like | real world | Y | - | 1470 | 1475 | 27.0 | 23.2 | 4 | 1040 | 1038 | 66.04 |  |
+| 11-20T12:00 | GTA 6 costs double GTA 5 in India, but there's a | money | Y | - | 1532 | 1535 | 28.5 | 21.1 | 3 | 1147 | 1244 | - |  |
+| 11-20T14:00 | GTA 6's wildest scenes match real Florida videos | real world | Y | - | 1278 | 1280 | 19.6 | 25.6 | - | 1132 | 1194 | - |  |
+| 11-20T17:00 | GTA 6 still isn't on PC. Here's why | tech | Y | - | 1219 | 1223 | 19.9 | 21.3 | 1 | 1147 | 1148 | - |  |
+| 11-20T20:00 | GTA 6 tied the highest Metacritic score ever | records | Y | 56.6 | 1484 | 1485 | 20.0 | 25.9 | 1 | 1129 | 1134 | - |  |
+| 11-20T23:00 | GTA 6's characters in Rockstar's own words | characters | Y | - | 1327 | 1333 | 25.6 | 27.8 | - | 485 | 948 | - |  |
+| 11-21T02:00 | GTA 6 Trailer 2: 475 million views in a day? | records | Y | - | 1292 | 1295 | 19.4 | 31.3 | - | 284 | 306 | - |  |
+| 11-21T14:00 | GTA 6 launch: 7.9 million people watching at onc | records | Y | - | 153 | 153 | 14.1 | 20.8 | - | 427 | 427 | - |  |
+| 11-21T17:00 | GTA 6 fans found Dexter's apartment in Vice City | real world | Y | - | 630 | 630 | 14.5 | 41.3 | - | 670 | 670 | - |  |
+| 11-21T20:00 | GTA 6 is about 50 hours long, one review says | reviews | Y | - | 1658 | 1658 | 29.2 | 27.6 | - | 1318 | 1318 | - |  |
+| 11-21T23:00 | GTA 6 sold 19 million copies? Here's the catch | records | Y | - | - | - | - | - | - | 240 | 240 | - |  |
+| 11-21T23:00 | GTA 6 made $3.79 billion on day one, Rockstar sa | money | Y | 60.2 | 1407 | 1407 | 29.5 | 29.8 | 14 | 263 | 263 | - |  |
+| 11-22T02:00 | GTA 6 fans think we saw it back in 2021 | other | Y | - | 1497 | 1497 | 30.2 | 21.9 | - | 941 | 941 | - |  |
+| 11-22T12:00 | GTA 6 runs best on one console. Here's which | tech | Y | 58.0 | - | 1431 | 28.2 | 21.6 | 4 | - | 705 | - | E1-long |
+| 11-22T14:00 | Is dating Lucia in GTA 6 cheating? Couples disag | characters | Y | - | - | 1347 | 22.2 | 31.9 | 6 | - | 1553 | - | E1-long |
+| 11-22T17:00 | GTA 6 has a secret Kodak Black radio station | other | Y | - | - | 1402 | 12.9 | 35.7 | 1 | - | 966 | - | E1-short |
+| 11-22T20:00 | GTA 6's weirdest secrets players found in week o | other | Y | - | - | - | - | - | - | - | - | - | E1-long |
+| 11-23T02:00 | GTA 6 players are trying to make Jason fat | characters | Y | - | - | - | - | - | - | - | - | - | E1-short |
 
-Videos with 24 h numbers: 23 of 28.
+Videos with 24 h numbers: 28 of 33.
 
 **By topic type** (median per video: IG views 24h / YT views 24h / IG avg watch s / n)
+- reviews: 1658 / 1318 / 29.2 / n=1
 - characters: 1398.5 / 485 / 20.0 / n=2
-- records: 1339.0 / 680.5 / 19.8 / n=4
+- records: 1339.0 / 427 / 19.7 / n=5
 - drama: 1339 / 295 / 25.9 / n=1
-- real world: 1278 / 556.5 / 19.6 / n=5
 - tech: 1219 / 574.0 / 16.4 / n=5
-- money: 307 / 574.0 / 15.3 / n=3
-- other: 191 / None / 11.1 / n=3
+- real world: 954.0 / 670 / 17.1 / n=6
+- money: 857.0 / 263 / 21.9 / n=4
+- other: 308.5 / 941 / 11.3 / n=4
 
 **Logo on cover/first screen** (median per video: IG views 24h / YT views 24h / IG avg watch s / n)
-- logo: 1333.0 / 762.5 / 22.8 / n=10
+- logo: 1373.0 / 670 / 25.8 / n=15
 - no logo: 307 / 1.5 / 14.4 / n=13
 
 **By slot (UTC)** (median per video: IG views 24h / YT views 24h / IG avg watch s / n)
 - 12:00: 1532 / 1147 / 28.5 / n=1
-- 02:00: 1381.0 / 662.0 / 16.9 / n=4
-- 23:00: 1327 / 279.0 / 18.8 / n=5
-- 17:00: 822.5 / 574.0 / 14.6 / n=4
-- 20:00: 790.5 / 712.0 / 17.6 / n=4
-- 14:00: 724.5 / 659.5 / 16.9 / n=4
+- 02:00: 1470 / 941 / 19.4 / n=5
+- 23:00: 1340.5 / 251.5 / 22.2 / n=7
+- 20:00: 1339 / 1129 / 20.0 / n=5
+- 14:00: 724.5 / 752.0 / 16.9 / n=4
+- 17:00: 630 / 670 / 14.5 / n=5
 - 11:00: 307 / 1 / 14.8 / n=1
 
 **By length** (median per video: IG views 24h / YT views 24h / IG avg watch s / n)
-- <45 s: 1285.0 / 390.0 / 15.8 / n=20
-- >55 s: 833.5 / 565.0 / 18.1 / n=2
+- >55 s: 1407 / 263 / 20.0 / n=3
+- <45 s: 1292 / 577.5 / 16.4 / n=24
 - 45-55 s: 557 / None / 18.8 / n=1
 
 **Format** (median per video: IG views 24h / YT views 24h / IG avg watch s / n)
-- old format: 1278 / 390.0 / 16.4 / n=23
+- old format: 1292 / 485 / 18.8 / n=28
 
-**Top 3 (IG 24h):** GTA 6 is in America, but Tokyo nearly wo (1647; hook: "") | GTA 6 costs double GTA 5 in India, but t (1532; hook: "") | GTA 6 tied the highest Metacritic score  (1484; hook: "GTA 6's reviews are in, and the number is almost perfect.")
+**Top 3 (IG 24h):** GTA 6 is about 50 hours long, one review (1658; hook: "") | GTA 6 is in America, but Tokyo nearly wo (1647; hook: "") | GTA 6 costs double GTA 5 in India, but t (1532; hook: "")
 
-**Bottom 3 (IG 24h):** Why an NBA team becomes 'Vice City' toni (171; hook: "") | GTA 6 launch: 7.9 million people watchin (152; hook: "") | The GTA 6 trailer that broke YouTube (133; hook: "Why did GTA 6's trailer come early?")
+**Bottom 3 (IG 24h):** GTA 6 launch: 7.9 million people watchin (153; hook: "") | The GTA 6 trailer that broke YouTube (133; hook: "Why did GTA 6's trailer come early?") | GTA 6 sold 19 million copies? Here's the (None; hook: "")
 <!-- AUTO:END -->

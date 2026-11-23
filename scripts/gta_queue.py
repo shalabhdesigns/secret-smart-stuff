@@ -234,7 +234,7 @@ FORMATS = {
  "gta6-true-fat-jason": "Tone: playful. Shape: the silly mission -> the system -> the fan's recipe -> the anticlimax twist.",
  "gta6-lucia-actor": "Tone: fan-detective, warm. Shape: the hidden cameo -> who she is -> the tiny GTA 5 role -> the Online role -> who she is off screen -> Jason's actor.",
  "gta6-map-size": "Tone: practical myth-buster, quick. Shape: the question -> no official number -> what Rockstar has said -> what's reported -> how long it takes to cross.",
- "gta6-online-when": "Tone: a friend answering a worried player, calm. Shape: the bad news -> GTA 5 did the same -> no date -> the biggest hint -> what's confirmed.",
+ "gta6-online-when": "Tone: a friend answering a worried player, calm. Shape: the bad news -> GTA 5 did the same -> no date -> a hint -> what's confirmed.",
  "gta6-zelda-score": "Tone: gossip about an internet war, amused. Shape: the two numbers -> why players are angry -> the twist (Zelda) -> the revenge.",
  "gta6-egg-tower": "Tone: insider tip turning spooky. Shape: the climb -> the egg nest -> the cutscene -> the light in the sky -> the alien rescue -> the joke achievement.",
  "gta6-trailer-songs": "Tone: music nerd, delighted. Shape: the claim -> song one + number -> Florida link -> song two, bigger -> comparison.",

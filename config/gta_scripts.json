@@ -5198,14 +5198,14 @@
    "img1": "CLIP:extended_look_08816",
    "img2": "CLIP:extended_look_10196",
    "img3": "OFFICIAL:v_c670974867",
-   "img4": "CLIP:trailer_1_00341",
+   "img4": "CLIP:extended_look_10510",
    "img5": "OFFICIAL:v_7f4ce4e75d",
-   "img6": "CLIP:trailer_2_01293",
+   "img6": "CLIP:trailer_2_00920",
    "img7": "CLIP:extended_look_10387",
    "img8": "CLIP:extended_look_03021",
    "img9": "CLIP:trailer_2_00232",
    "img10": "CLIP:extended_look_07899",
-   "img11": "CLIP:trailer_1_00356",
+   "img11": "CLIP:extended_look_07446",
    "img12": "CLIP:extended_look_10919"
   },
   "scenes": [
@@ -5474,7 +5474,7 @@
    },
    {
     "id": "b2",
-    "narration": "First, Rockstar has never given a size in square miles.",
+    "narration": "First, Rockstar still hasn't given a size in square miles.",
     "image": "img2",
     "delivery": null,
     "focus": null,
@@ -5725,7 +5725,7 @@
    },
    {
     "id": "b6",
-    "narration": "The biggest hint came from Twitch's boss, Dan Clancy, in September.",
+    "narration": "One hint came from Twitch's boss, Dan Clancy, in September.",
     "image": "img6",
     "delivery": null,
     "focus": null,
@@ -5740,7 +5740,7 @@
    },
    {
     "id": "b7",
-    "narration": "He told Bloomberg there'd be a big bump with GTA 6, \"but then an even bigger one next year when they launch multiplayer.\"",
+    "narration": "He told Bloomberg: \"You are going to see this big bump with GTA 6, but then an even bigger one next year when they launch multiplayer.\"",
     "image": "img7",
     "delivery": null,
     "focus": null,
@@ -5867,7 +5867,7 @@
   "thumb_text": "99 OR 5.6?",
   "hook_card": "99 OR 5.6?",
   "hooks": [
-   "GTA 6's score fight has dragged in a game from 1998: Zelda."
+   "GTA 6's score fight has dragged in a Nintendo 64 classic: Zelda."
   ],
   "chosen_hook": 0,
   "images": {
@@ -5884,7 +5884,7 @@
   "scenes": [
    {
     "id": "b1",
-    "narration": "GTA 6's score fight has dragged in a game from 1998: Zelda.",
+    "narration": "GTA 6's score fight has dragged in a Nintendo 64 classic: Zelda.",
     "image": "img1",
     "delivery": "amused",
     "focus": null,
@@ -5959,7 +5959,7 @@
    },
    {
     "id": "b6",
-    "narration": "Then it got weird. The other game with a ninety-nine is Zelda: Ocarina of Time.",
+    "narration": "Then it got weird. Zelda: Ocarina of Time also has a ninety-nine.",
     "image": "img6",
     "delivery": null,
     "focus": null,
@@ -6081,7 +6081,7 @@
    "img3": "CLIP:extended_look_15698",
    "img4": "CLIP:extended_look_07446",
    "img5": "CLIP:extended_look_04835",
-   "img6": "CLIP:trailer_1_00398",
+   "img6": "CLIP:launch_trailer_00685",
    "img7": "CLIP:trailer_2_01188",
    "img8": "CLIP:trailer_2_00996",
    "img9": "CLIP:extended_look_02513",
@@ -6123,7 +6123,7 @@
    },
    {
     "id": "b3",
-    "narration": "At the top, there's a nest of brightly colored eggs.",
+    "narration": "At the top, there's a literal nest of eggs.",
     "image": "img3",
     "delivery": "amused",
     "focus": null,
@@ -6258,7 +6258,7 @@
    },
    {
     "id": "b12",
-    "narration": "Even the achievement is a joke: The Truth Is Out There.",
+    "narration": "You even get an achievement for it: The Truth Is Out There.",
     "image": "img12",
     "delivery": null,
     "focus": null,

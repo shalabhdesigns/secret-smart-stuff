@@ -7393,14 +7393,14 @@
        "img1": "CLIP:extended_look_08816",
        "img2": "CLIP:extended_look_10196",
        "img3": "OFFICIAL:v_c670974867",
-       "img4": "CLIP:trailer_1_00341",
+       "img4": "CLIP:extended_look_10510",
        "img5": "OFFICIAL:v_7f4ce4e75d",
-       "img6": "CLIP:trailer_2_01293",
+       "img6": "CLIP:trailer_2_00920",
        "img7": "CLIP:extended_look_10387",
        "img8": "CLIP:extended_look_03021",
        "img9": "CLIP:trailer_2_00232",
        "img10": "CLIP:extended_look_07899",
-       "img11": "CLIP:trailer_1_00356",
+       "img11": "CLIP:extended_look_07446",
        "img12": "CLIP:extended_look_10919"
       },
       "scenes": [
@@ -7719,7 +7719,7 @@
        },
        {
         "id": "b2",
-        "narration": "First, Rockstar has never given a size in square miles.",
+        "narration": "First, Rockstar still hasn't given a size in square miles.",
         "image": "img2",
         "delivery": null,
         "focus": null,
@@ -7908,7 +7908,7 @@
     "notes": {
      "object": "official GTA 6 footage",
      "question": "GTA 6 has no online mode. When is it coming?",
-     "angle": "VERIFIED 22 Nov 2026 (status as of 21 Nov). Publishes 23 Nov 17:00 UTC. Script in gta_scripts.py. Single-player only (store pages; Leonipedia, GameVerse); GTA Online came 1 Oct 2013, two weeks after GTA V; no announced online mode or date; Twitch CEO Clancy to Bloomberg ('next year when they launch multiplayer'); Schreier: expected 2027; Take-Two keeps supporting GTA Online. CTA: story first or online first? FORMAT FOR THIS VIDEO (its own look and feel): Tone: a friend answering a worried player, calm. Shape: the bad news -> GTA 5 did the same -> no date -> the biggest hint -> what's confirmed.",
+     "angle": "VERIFIED 22 Nov 2026 (status as of 21 Nov). Publishes 23 Nov 17:00 UTC. Script in gta_scripts.py. Single-player only (store pages; Leonipedia, GameVerse); GTA Online came 1 Oct 2013, two weeks after GTA V; no announced online mode or date; Twitch CEO Clancy to Bloomberg ('next year when they launch multiplayer'); Schreier: expected 2027; Take-Two keeps supporting GTA Online. CTA: story first or online first? FORMAT FOR THIS VIDEO (its own look and feel): Tone: a friend answering a worried player, calm. Shape: the bad news -> GTA 5 did the same -> no date -> a hint -> what's confirmed.",
      "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): man beside a custom sports car in a neon garage\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
      "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
      "official_images": "required",
@@ -8020,7 +8020,7 @@
        },
        {
         "id": "b6",
-        "narration": "The biggest hint came from Twitch's boss, Dan Clancy, in September.",
+        "narration": "One hint came from Twitch's boss, Dan Clancy, in September.",
         "image": "img6",
         "delivery": null,
         "focus": null,
@@ -8035,7 +8035,7 @@
        },
        {
         "id": "b7",
-        "narration": "He told Bloomberg there'd be a big bump with GTA 6, \"but then an even bigger one next year when they launch multiplayer.\"",
+        "narration": "He told Bloomberg: \"You are going to see this big bump with GTA 6, but then an even bigger one next year when they launch multiplayer.\"",
         "image": "img7",
         "delivery": null,
         "focus": null,
@@ -8212,7 +8212,7 @@
       "thumb_text": "99 OR 5.6?",
       "hook_card": "99 OR 5.6?",
       "hooks": [
-       "GTA 6's score fight has dragged in a game from 1998: Zelda."
+       "GTA 6's score fight has dragged in a Nintendo 64 classic: Zelda."
       ],
       "chosen_hook": 0,
       "images": {
@@ -8229,7 +8229,7 @@
       "scenes": [
        {
         "id": "b1",
-        "narration": "GTA 6's score fight has dragged in a game from 1998: Zelda.",
+        "narration": "GTA 6's score fight has dragged in a Nintendo 64 classic: Zelda.",
         "image": "img1",
         "delivery": "amused",
         "focus": null,
@@ -8304,7 +8304,7 @@
        },
        {
         "id": "b6",
-        "narration": "Then it got weird. The other game with a ninety-nine is Zelda: Ocarina of Time.",
+        "narration": "Then it got weird. Zelda: Ocarina of Time also has a ninety-nine.",
         "image": "img6",
         "delivery": null,
         "focus": null,
@@ -8476,7 +8476,7 @@
        "img3": "CLIP:extended_look_15698",
        "img4": "CLIP:extended_look_07446",
        "img5": "CLIP:extended_look_04835",
-       "img6": "CLIP:trailer_1_00398",
+       "img6": "CLIP:launch_trailer_00685",
        "img7": "CLIP:trailer_2_01188",
        "img8": "CLIP:trailer_2_00996",
        "img9": "CLIP:extended_look_02513",
@@ -8518,7 +8518,7 @@
        },
        {
         "id": "b3",
-        "narration": "At the top, there's a nest of brightly colored eggs.",
+        "narration": "At the top, there's a literal nest of eggs.",
         "image": "img3",
         "delivery": "amused",
         "focus": null,
@@ -8653,7 +8653,7 @@
        },
        {
         "id": "b12",
-        "narration": "Even the achievement is a joke: The Truth Is Out There.",
+        "narration": "You even get an achievement for it: The Truth Is Out There.",
         "image": "img12",
         "delivery": null,
         "focus": null,
