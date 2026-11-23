@@ -5785,13 +5785,13 @@
    },
    {
     "id": "b10",
-    "narration": "Meanwhile, Take-Two says it will keep supporting GTA Online on GTA 5.",
+    "narration": "Meanwhile, Take-Two's Strauss Zelnick says: \"We do expect to support GTA Online going forward.\"",
     "image": "img10",
     "delivery": null,
     "focus": null,
     "motion": "push",
     "transition": "cut",
-    "callout": null,
+    "callout": "QUOTE: STRAUSS ZELNICK",
     "pop": null,
     "arrow": null,
     "card_text": null,
@@ -5899,7 +5899,7 @@
    },
    {
     "id": "b2",
-    "narration": "On Metacritic, critics gave it ninety-nine. That ties the all-time record.",
+    "narration": "On Metacritic, critics gave it ninety-nine. That ties the best score of all time.",
     "image": "img2",
     "delivery": null,
     "focus": null,
@@ -5944,7 +5944,7 @@
    },
    {
     "id": "b5",
-    "narration": "The complaints: thirty frames a second, bugs, a slow start, and no disc.",
+    "narration": "Players complained about thirty frames a second, bugs, a slow start, and no physical disc.",
     "image": "img5",
     "delivery": null,
     "focus": null,
@@ -5989,7 +5989,7 @@
    },
    {
     "id": "b8",
-    "narration": "Push Square says it looks like GTA 6 fans hitting back.",
+    "narration": "Push Square says that drop looks like GTA 6 fans hitting back.",
     "image": "img8",
     "delivery": null,
     "focus": null,

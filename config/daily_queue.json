@@ -8080,13 +8080,13 @@
        },
        {
         "id": "b10",
-        "narration": "Meanwhile, Take-Two says it will keep supporting GTA Online on GTA 5.",
+        "narration": "Meanwhile, Take-Two's Strauss Zelnick says: \"We do expect to support GTA Online going forward.\"",
         "image": "img10",
         "delivery": null,
         "focus": null,
         "motion": "push",
         "transition": "cut",
-        "callout": null,
+        "callout": "QUOTE: STRAUSS ZELNICK",
         "pop": null,
         "arrow": null,
         "card_text": null,
@@ -8244,7 +8244,7 @@
        },
        {
         "id": "b2",
-        "narration": "On Metacritic, critics gave it ninety-nine. That ties the all-time record.",
+        "narration": "On Metacritic, critics gave it ninety-nine. That ties the best score of all time.",
         "image": "img2",
         "delivery": null,
         "focus": null,
@@ -8289,7 +8289,7 @@
        },
        {
         "id": "b5",
-        "narration": "The complaints: thirty frames a second, bugs, a slow start, and no disc.",
+        "narration": "Players complained about thirty frames a second, bugs, a slow start, and no physical disc.",
         "image": "img5",
         "delivery": null,
         "focus": null,
@@ -8334,7 +8334,7 @@
        },
        {
         "id": "b8",
-        "narration": "Push Square says it looks like GTA 6 fans hitting back.",
+        "narration": "Push Square says that drop looks like GTA 6 fans hitting back.",
         "image": "img8",
         "delivery": null,
         "focus": null,
@@ -9034,26 +9034,26 @@
       "thumb_text": "JASON WAS IN THE ARMY",
       "hook_card": "JASON, EX-ARMY?",
       "hooks": [
-       "Jason from GTA 6 used to be in the Army. But GTA 6's story lead says that wasn't meant as a statement."
+       "Jason from GTA 6 used to be in the Army. But GTA 6's story lead says that's not a statement."
       ],
       "chosen_hook": 0,
       "images": {
        "img1": "CLIP:extended_look_03021",
        "img2": "CLIP:trailer_2_00081",
        "img3": "CLIP:trailer_2_00136",
-       "img4": "CLIP:trailer_2_00114",
+       "img4": "CLIP:trailer_2_00232",
        "img5": "CLIP:extended_look_09994",
        "img6": "CLIP:trailer_1_00728",
-       "img7": "CLIP:extended_look_15698",
-       "img8": "CLIP:trailer_1_00026",
+       "img7": "CLIP:extended_look_07446",
+       "img8": "CLIP:extended_look_15698",
        "img9": "CLIP:trailer_2_00188",
        "img10": "CLIP:extended_look_10081",
-       "img11": "CLIP:trailer_2_00232"
+       "img11": "CLIP:extended_look_08816"
       },
       "scenes": [
        {
         "id": "b1",
-        "narration": "Jason from GTA 6 used to be in the Army. But GTA 6's story lead says that wasn't meant as a statement.",
+        "narration": "Jason from GTA 6 used to be in the Army. But GTA 6's story lead says that's not a statement.",
         "image": "img1",
         "delivery": "curious",
         "focus": null,
@@ -9188,7 +9188,7 @@
        },
        {
         "id": "b10",
-        "narration": "But he also says a lot of it is up to the player: does Jason need to do it, or is he wired differently from other people?",
+        "narration": "But he says a lot is up to the player: does he need to do it, or is he wired differently from other people?",
         "image": "img10",
         "delivery": "curious",
         "focus": null,
@@ -9306,7 +9306,7 @@
       "thumb_text": "£1 MILLION GTA CAR",
       "hook_card": "A REAL GTA 6 CAR?",
       "hooks": [
-       "The Cheetah supercar from GTA 6 is real. And it costs one million pounds."
+       "The Cheetah from GTA 6 is real, and it costs one million pounds."
       ],
       "chosen_hook": 0,
       "images": {
@@ -9323,7 +9323,7 @@
       "scenes": [
        {
         "id": "b1",
-        "narration": "The Cheetah supercar from GTA 6 is real. And it costs one million pounds.",
+        "narration": "The Cheetah from GTA 6 is real, and it costs one million pounds.",
         "image": "img1",
         "delivery": "surprised",
         "focus": null,
@@ -9383,7 +9383,7 @@
        },
        {
         "id": "b5",
-        "narration": "You can't add it to a basket. You go through the store's personal shopping team.",
+        "narration": "You can't just add it to a basket. You go through Selfridges' personal shoppers.",
         "image": "img5",
         "delivery": "amused",
         "focus": null,
@@ -9413,7 +9413,7 @@
        },
        {
         "id": "b7",
-        "narration": "In 2013, Rockstar gave away a real GTA 5 car. The winner sold it for about forty-five thousand dollars.",
+        "narration": "In 2013, Rockstar gave away a real GTA 5 car. It later sold for about forty-five thousand dollars.",
         "image": "img7",
         "delivery": null,
         "focus": null,
@@ -9443,7 +9443,7 @@
        },
        {
         "id": "b9",
-        "narration": "Real Cheetah or game Cheetah: which one do you want? Follow for more GTA 6 facts.",
+        "narration": "Real Cheetah or game Cheetah: which do you want? Follow for more GTA 6 facts.",
         "image": "img9",
         "delivery": null,
         "focus": null,
@@ -9575,7 +9575,7 @@
        "img9": "OFFICIAL:v_a457313ec2",
        "img10": "CLIP:extended_look_10037",
        "img11": "CLIP:trailer_2_00996",
-       "img12": "CLIP:trailer_1_00728"
+       "img12": "CLIP:extended_look_03021"
       },
       "scenes": [
        {
@@ -9849,7 +9849,7 @@
       "thumb_text": "OUTSOLD 3 CONSOLES",
       "hook_card": "BEAT 3 CONSOLES?",
       "hooks": [
-       "Before it even came out, GTA 6 sold more copies than three famous game consoles sold in their whole lives."
+       "Before launch, GTA 6 outsold three famous game consoles."
       ],
       "chosen_hook": 0,
       "images": {
@@ -9858,7 +9858,7 @@
        "img3": "CLIP:extended_look_10618",
        "img4": "CLIP:extended_look_11148",
        "img5": "CLIP:extended_look_04835",
-       "img6": "CLIP:extended_look_15698",
+       "img6": "CLIP:launch_trailer_00026",
        "img7": "CLIP:extended_look_12606",
        "img8": "CLIP:trailer_1_00183",
        "img9": "OFFICIAL:v_c670974867",
@@ -9868,7 +9868,7 @@
       "scenes": [
        {
         "id": "b1",
-        "narration": "Before it even came out, GTA 6 sold more copies than three famous game consoles sold in their whole lives.",
+        "narration": "Before launch, GTA 6 outsold three famous game consoles.",
         "image": "img1",
         "delivery": "surprised",
         "focus": null,
