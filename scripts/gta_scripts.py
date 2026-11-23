@@ -983,7 +983,7 @@ S["gta6-lucia-actor"] = dict(
     thumb_text="SHE WAS IN GTA 5",
     hook_card="SHE WAS IN GTA 5?",
     cover_lines=["LUCIA'S ACTRESS", "WAS IN GTA 5?", "SPOT HER ROLE"],
-    cover_frame={"shot": "trailer_1_00065", "f": 0.5, "x": 0.2},   # Lucia in prison orange at a window (R3: face; 23 Nov: trailer_2_00961 showed her back)
+    cover_frame={"shot": "trailer_1_00065", "f": 0.5, "x": 0.33},   # Lucia in prison orange at a window (R3: face; 23 Nov: trailer_2_00961 showed her back)
     experiment="E1-long",
     beats=[
         ("The woman who plays Lucia in GTA 6 was already in GTA 5. You just never noticed.",
@@ -1078,7 +1078,7 @@ S["gta6-online-when"] = dict(
     thumb_text="NO ONLINE?",
     hook_card="NO ONLINE?",
     cover_lines=["NO ONLINE MODE?", "WHEN DOES IT", "FINALLY COME?"],
-    cover_frame={"shot": "extended_look_03869", "f": 0.5, "x": 0.2},   # Jason in a tank top with Lucia (R3: face)
+    cover_frame={"shot": "extended_look_03869", "f": 0.5, "x": 0.32},   # Jason in a tank top with Lucia (R3: face)
     experiment="E1-long",
     beats=[
         ("You can't play GTA 6 with your friends. Not online, and not on the same couch.",
@@ -1127,7 +1127,7 @@ S["gta6-zelda-score"] = dict(
     thumb_text="99 OR 5.6?",
     hook_card="99 OR 5.6?",
     cover_lines=["CRITICS SAY 99", "PLAYERS SAY 5.6", "WHO'S RIGHT?"],
-    cover_frame={"shot": "trailer_2_00631", "f": 0.5, "x": 0.25},   # Lucia in the prison yard (R3: face)
+    cover_frame={"shot": "trailer_2_00631", "f": 0.5, "x": 0.43},   # Lucia in the prison yard (R3: face)
     experiment="E1-short",
     beats=[
         ("GTA 6's score fight has dragged in a Nintendo 64 classic: Zelda.", "CLIP:trailer_1_00728", None, "amused"),
