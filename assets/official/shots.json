@@ -12,7 +12,8 @@
    "clip": "extended_look",
    "start": 0.0,
    "end": 167.17,
-   "shows": "Two people from behind at a graffiti-covered elevator door in a dim hallway"
+   "shows": "Two people from behind at a graffiti-covered elevator door in a dim hallway",
+   "avoid": "opens on the age-rating card ('MATURE ... INAPPROPRIATE FOR CHILDREN') and the Rockstar logo (23 Nov render)"
   },
   "extended_look_01671": {
    "clip": "extended_look",
@@ -1562,7 +1563,7 @@
    "clip": "extended_look",
    "start": 1127.53,
    "end": 1138.8,
-   "shows": "Woman with backpack parachuting over a sunny city skyline, rivers and islands below"
+   "shows": "Woman with backpack parachuting over a sunny city skyline, rivers and islands below (a parachute jump, not a climb)"
   },
   "extended_look_11388": {
    "clip": "extended_look",
