@@ -1178,7 +1178,7 @@ S["gta6-egg-tower"] = dict(
     beats=[
         ("Climb what may be the highest point in GTA 6, and you find a real Easter egg.",
          "CLIP:extended_look_07899", None, "curious"),
-        ("It's a radio tower in South Vice-Dale County, and the climb is long.", "CLIP:launch_trailer_00685",
+        ("It's a radio tower in South Vice-Dale County, and the climb is long.", "CLIP:trailer_1_00026",
          "SOUTH VICE-DALE", None),
         ("At the top, there's a literal nest of eggs.", "CLIP:extended_look_15698", "A NEST OF EGGS",
          "amused"),
@@ -1193,7 +1193,7 @@ S["gta6-egg-tower"] = dict(
          "CLIP:extended_look_02513", None, None),
         ("The door code is found at a military airfield.", "CLIP:launch_trailer_00390",
          "CODE: 2-3-4-1", None),
-        ("Inside the facility, you can find a living alien and carry it out.", "CLIP:trailer_2_01113", None, None),
+        ("Inside the facility, you can find a living alien and carry it out.", "CLIP:launch_trailer_00423", None, None),
         ("You even get an achievement for it: The Truth Is Out There.", "CLIP:trailer_1_00300", "TRUTH IS OUT THERE",
          None),
         ("Egg tower or alien rescue: which one are you trying first? Pick a side. Follow for more GTA 6 secrets.",
