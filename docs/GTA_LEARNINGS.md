@@ -16,7 +16,7 @@ the next videos; identifying patterns and improving is Claude's job, not the own
 5. Rules: a learning without a number, or one that changed nothing, is deleted, not repeated. Never compare with
    the old product videos. Small samples (n < 3 per side) are "extend", not "adopt".
 
-## What the numbers say so far (22 Nov 07:35 UTC, 23 of 28 GTA videos with 24 h numbers)
+## What the numbers say so far (23 Nov 07:45 UTC, 28 of 33 GTA videos with 24 h numbers)
 (F1-F4 of 20 Nov deleted on 21 Nov: F6 repeats them on more videos; F4 changed nothing.)
 
 - F5 Posting time (21 Nov, from the owner's screenshots, 09:37 IST; 23 videos):
@@ -76,6 +76,25 @@ the next videos; identifying patterns and improving is Claude's job, not the own
   "Follow for more GTA 6 secrets/facts/tips" (no promise); keep every hedge word of the source; describe in-game
   things as in-game ("players have spotted Bigfoot in the game").
 
+- F13 Characters + a relationship question win YouTube and shares (23 Nov): "Is dating Lucia cheating?" got 1,891
+  YouTube views (140 % of its 1,347 IG views; the best YT result of any GTA video) and 6 IG shares (2nd best after
+  official sales' 14). Console-best: 1,434 IG, 980 YT, 4 shares, 28.2 s watch. Change: each batch keeps >= 1 character
+  video with a question that splits viewers on the character (24 Nov: Jason's Army past, "pushed by money or wired
+  that way?").
+- F14 Lists of small secrets hold viewers worst (23 Nov): weird-secrets 13.5 s average watch, 39 % skip; Kodak radio
+  (posters to find) 12.8 s, 36.5 % - vs 22-28 s and 22-32 % for the other three 22 Nov videos. Reach was still
+  1,223-1,426. Change: a secret video tells ONE secret as a story with a payoff (24 Nov: Mount Chiliad), never a
+  list; how-to steps stay at 3 short beats (24 Nov: Xbox glitch).
+- F15 Face covers keep working (23 Nov): all 5 face covers of 22 Nov reached 1,223-1,602 IG views; no video with a
+  face cover has fallen under 1,200 IG views (faceless/masked covers: 152, 340). R3 holds.
+- F16 Wrong shot descriptions cause most holds after rendering (23 Nov): 4 of 5 remakes rendered today were held by
+  the final check for a picture that showed something else - all traced to wrong descriptions (00961 "Lucia" = her
+  back; 00920 "dancing" = a scuffle; 00000 = the age-rating card; v_7f4ce4e75d = a stranger; 07899 "a man" = Jason).
+  Each costs a ~$0.07 render. Change: 7 descriptions fixed from frames, 00000 marked avoid; a shot not seen in a
+  rendered video is previewed with `shotframes` before use. And 10 of 10 morning scripts on 22-23 Nov were held by the
+  paid script check for one word stronger than the source; gta_scripts.py now flags (free) absolute words and years
+  that no fact claim contains.
+
 ## Adopted rules (proven on our GTA numbers)
 - R1 (20 Nov): real GTA VI logo on the cover and first screen + story format (F1).
 - R2 (20 Nov): favour character, "does this affect me" (price/console/storage) and record topics; avoid event and
@@ -90,13 +109,18 @@ the next videos; identifying patterns and improving is Claude's job, not the own
   16 checked shots (5 added 21 Nov), enough to rotate a full week without a repeat.
   Tightened 22 Nov (F9): the face must be big and clear (close or medium shot of Lucia or Jason); covers with a
   wide shot or a masked stranger got 152 and 340 vs 1,396-1,650 with a face.
+  Re-checked 23 Nov (F15): holds (22 Nov face covers 1,223-1,602). 4 new checked face shots (19 in total; one wrong
+  entry removed: trailer_2_00961 shows Lucia's back).
 - R4 (21 Nov): the last beat asks a side-taking question that splits viewers ("PS5 or PC - which side are you
   on?"), never a neutral "what do you think?" (F6: 13 YT comments on the PC vs console video vs ~0 elsewhere).
 - R5 (21 Nov): at least 1 of 5 daily videos is a practical / real-world fact viewers save or send (price in
   rupees/dollars, size, where places are in real life, what console you need) - these get all the shares (F6).
   Widened 22 Nov (F10): plus 1 video on one big hard number set against something famous (14 shares in 8 h).
+- R6 (23 Nov, F14): a secret video is ONE secret told as a story, never a list of finds (lists: 12.8-13.5 s
+  watch vs 22-28 s).
 
 ## Experiments log
+<!-- 23 Nov: E2 dropped (numbers below). E1 and E3 extended. No new experiment: 2 running. 24 Nov batch: E1 short = xbox-60fps (12:00), real-cheetah (17:00); long = jason-army, chiliad-secret, outsold-consoles; E3: xbox-60fps at 12:00 UTC. -->
 <!-- 22 Nov: E1-E3 not judged yet - their first videos publish tonight (22 Nov batch, all 5 remade this morning after the script check). No new experiment: 3 are running (the max is 2; none is added until one ends). 23 Nov batch: E1 test = map-size (14:00), zelda-score (20:00); control = lucia-actor, online-when, egg-tower; E2: all five; E3: lucia-actor at 12:00 UTC. -->
 <!-- 21 Nov: E1-E3 not judged yet - their first videos are the 22 Nov batch (E1 test: kodak-radio, true-fat-jason; control: console-best, dating-lucia, weird-secrets; E2: all five; E3: console-best at 12:00 UTC). No new experiment: 3 are running. -->
 <!-- newest first: E<n> | started | change | hypothesis | videos (test / control) | result with numbers | decision -->
@@ -104,13 +128,20 @@ the next videos; identifying patterns and improving is Claude's job, not the own
   gta_slots) | the 12:00 video gets >= 50 % of its Instagram views on YouTube at 24 h, like the other slots, while the
   23:00 videos got 5-36 % | 22-24 Nov 12:00 videos vs 19-21 Nov 23:00 videos, same metric | result: pending |
   decision: pending (if adopted, keep 23:00 out; if not, go back)
+  23 Nov: 12:00 videos so far: India price 1,147 YT / 1,532 IG (75 %), console-best 980 / 1,434 (68 %) vs 23:00
+  videos 5-36 %. n=2 -> EXTEND 2 more days (lucia-actor 23 Nov, xbox-60fps 24 Nov), then adopt if >= 50 % holds.
 - E2 | from 22 Nov scripts | every video's last beat ends with a follow line after the comment question, e.g.
   "Follow for more GTA 6 secrets." (22 Nov: "every day" dropped, the script check called it an unsourced promise) | Instagram followers per 1,000 Reel views rise from ~0.1 (19-21 Nov)
   to 1+ | all videos 22-24 Nov vs 19-21 Nov (account-level: daily follower and subscriber gain per 1,000 views) |
-  result: pending | decision: pending
+  result (23 Nov): IG followers 9 -> 10 on 22 Nov from 7,327 views = 0.14 per 1,000 (19-21 Nov: 0.15-0.31); the
+  line was also behind 5 of 10 script-check holds on 22 Nov | decision: DROP (no lift). Follow lines removed from the
+  24 Nov scripts; the last line is the side-taking question.
 - E1 | from 22 Nov scripts | length: 2 of the 5 daily videos 100-115 words (~40 s), 3 at 140-165 words (~55 s);
   alternate which slots get the short ones each day | the short ones get >= 20 % more Instagram views at 24 h with
   a lower skip rate | test = short ones, control = long ones, same days | result: pending | decision: pending
+  23 Nov (22 Nov videos, most not yet 24 h): short Kodak 1,426 / fat Jason 1,602 IG (median 1,514) vs long 1,434 /
+  1,347 / 1,223 (median 1,347): +12 %, under the +20 % bar; skip short 36.5 / 28.0 % vs long 21.6-39 %. n=2 vs 3
+  -> EXTEND (23 + 24 Nov add 4 short, 6 long); judge on 25 Nov.
 
 ## Numbers
 

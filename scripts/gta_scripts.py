@@ -1239,7 +1239,7 @@ S["gta6-xbox-60fps"] = dict(
         ("And animations run twice as fast, because the physics are tied to the frame rate.",
          "CLIP:launch_trailer_00469", "2x SPEED", None),
         ("Rockstar could patch it later.", "CLIP:extended_look_12327", None, None),
-        ("Faster but unstable, or a steady thirty: which side are you on? Follow for more GTA 6 tips.",
+        ("Faster but unstable, or a steady thirty: which side are you on?",
          "CLIP:extended_look_03021", None, None),
     ],
     facts=[
@@ -1291,7 +1291,7 @@ S["gta6-jason-army"] = dict(
          None),
         ("But he says a lot is up to the player: does he need to do it, or is he wired differently from other people?",
          "CLIP:extended_look_10081", None, "curious"),
-        ("Pushed by money, or wired that way: which side are you on? Follow for more GTA 6 facts.",
+        ("Pushed by money, or wired that way: which side are you on?",
          "CLIP:extended_look_08816", None, None),
     ],
     facts=[
@@ -1335,7 +1335,7 @@ S["gta6-real-cheetah"] = dict(
          "OFFICIAL:v_a9877dd12c", "GTA 5 CAR: ~$45,000", None),
         ("One fan joked: in the game you steal it, at Selfridges you need a mortgage.", "CLIP:extended_look_09432",
          None, "laughs softly"),
-        ("Real Cheetah or game Cheetah: which do you want? Follow for more GTA 6 facts.",
+        ("Real Cheetah or game Cheetah: which do you want?",
          "CLIP:extended_look_04835", None, None),
     ],
     facts=[
@@ -1390,7 +1390,7 @@ S["gta6-chiliad-secret"] = dict(
         ("But not everyone was convinced the mystery was solved.", "CLIP:extended_look_10037", None, None),
         ("Now one player says the locals in GTA 6 \"were talking about how there was a hidden bunker with jetpacks "
          "and eggs under Chiliad.\"", "CLIP:trailer_2_00996", None, None),
-        ("A real clue, or just Rockstar teasing: which side are you on? Follow for more GTA 6 secrets.",
+        ("A real clue, or just Rockstar teasing: which side are you on?",
          "CLIP:extended_look_03021", None, None),
     ],
     facts=[
@@ -1439,8 +1439,8 @@ S["gta6-outsold-consoles"] = dict(
          "GTA 5 DAY ONE: ~11M", None),
         ("GTA 5 went on to sell two hundred and thirty-five million. That's third of all time, behind Minecraft "
          "and Tetris.", "OFFICIAL:v_24ba6644de", "GTA 5: 235M", None),
-        ("Will GTA 6 pass GTA 5's two hundred and thirty-five million? Yes or no: pick a side. Follow for more "
-         "GTA 6 facts.", "CLIP:extended_look_07899", None, None),
+        ("Will GTA 6 pass GTA 5's two hundred and thirty-five million? Yes or no: pick a side.",
+         "CLIP:extended_look_07899", None, None),
     ],
     facts=[
         {"claim": "GAMINGbible (Olly Smith, 22 Nov 2026): 'As revealed by Take-Two Interactive, Rockstar's parent "
@@ -1638,8 +1638,8 @@ if __name__ == "__main__":
     # word stronger than the source ("never" for "still hasn't", "the biggest hint", a year not in the sources).
     # Catch those here for free: an absolute word or a year in the narration that no fact claim contains.
     import re as _re
-    _abs = ("never", "biggest", "only", "always", "every", "ever", "all-time", "highest", "most", "best", "first",
-            "record", "nobody", "no one", "confirmed", "official", "joke")
+    _abs = ("never", "biggest", "only", "always", "every", "all-time", "highest", "most", "best", "record",
+            "nobody", "no one", "confirmed", "official", "joke")      # "first"/"ever" were mostly harmless ordinals
     for t in todo & set(out):
         ftxt = " ".join(f["claim"] for f in out[t]["facts"]).lower()
         for sc in out[t]["scenes"]:
