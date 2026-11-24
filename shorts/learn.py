@@ -142,6 +142,13 @@ Owner feedback (latest): {feedback}"""
 
 
 def weekly(p) -> dict:
+    # 24 Nov 2026 (owner's daily cost check): while the normal daily video is paused for the GTA series, every script
+    # is written by Claude in session and learning runs on GTA videos only (scripts/gta_learn.py,
+    # docs/GTA_LEARNINGS.md; owner, 20 Nov). This generic Sonnet report (~$0.12 a run, twice a week) fed only the
+    # old paid script writer, so it is skipped until the pause ends.
+    paused = str((p.cfg.pipeline or {}).get("daily_paused_until") or "")
+    if paused and time.strftime("%Y-%m-%d", time.gmtime()) <= paused:
+        return {"skipped": f"GTA series: learning is scripts/gta_learn.py until {paused}"}
     st = stats(p.state)
     fb = [dict(r) for r in p.state.db.execute(
         "SELECT decision, note FROM feedback WHERE note != '' ORDER BY at DESC LIMIT 15")]

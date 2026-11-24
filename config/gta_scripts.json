@@ -7176,9 +7176,9 @@
    ],
    "why": "written in session",
    "frame": {
-    "shot": "extended_look_03021",
-    "f": 0.8,
-    "x": 0.3
+    "shot": "trailer_2_00976",
+    "f": 0.2,
+    "x": 0.46
    }
   }
  },
@@ -7398,9 +7398,9 @@
    ],
    "why": "written in session",
    "frame": {
-    "shot": "extended_look_10081",
+    "shot": "launch_trailer_00631",
     "f": 0.2,
-    "x": 0.42
+    "x": 0.56
    }
   }
  },
@@ -7864,9 +7864,9 @@
    ],
    "why": "written in session",
    "frame": {
-    "shot": "trailer_2_00976",
-    "f": 0.2,
-    "x": 0.46
+    "shot": "trailer_2_01418",
+    "f": 0.5,
+    "x": 0.42
    }
   }
  },

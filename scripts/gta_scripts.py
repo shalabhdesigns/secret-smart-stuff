@@ -1368,7 +1368,7 @@ S["gta6-chiliad-secret"] = dict(
     thumb_text="CHILIAD IS BACK",
     hook_card="REMEMBER CHILIAD?",
     cover_lines=["GTA 5'S MOUNTAIN", "MYSTERY IS BACK?", "LISTEN AT THE BAR"],
-    cover_frame={"shot": "extended_look_03021", "f": 0.8, "x": 0.3},   # Jason close-up, Lucia behind (R3: face)
+    cover_frame={"shot": "trailer_2_00976", "f": 0.2, "x": 0.46},   # Jason close-up in a car (24 Nov: 03021 at f 0.8 was too dark; cover as published)
     experiment="E1-long",
     beats=[
         ("A secret in GTA 6 brings back a GTA 5 mystery from 2013.", "CLIP:extended_look_10196", None, "curious"),
@@ -1416,7 +1416,7 @@ S["gta6-outsold-consoles"] = dict(
     thumb_text="OUTSOLD 3 CONSOLES",
     hook_card="BEAT 3 CONSOLES?",
     cover_lines=["OUTSOLD 3 CONSOLES", "BEFORE LAUNCH?", "HERE ARE THE NUMBERS"],
-    cover_frame={"shot": "extended_look_10081", "f": 0.2, "x": 0.42},   # Jason in a cap by a van, Lucia beside (R3)
+    cover_frame={"shot": "launch_trailer_00631", "f": 0.2, "x": 0.56},   # Lucia on a rooftop at sunset (24 Nov: 10081 at f 0.2 showed her back; cover as published)
     experiment="E1-long",
     beats=[
         ("Before launch, GTA 6 outsold three famous game consoles.", "CLIP:extended_look_10132", None,
@@ -1514,7 +1514,7 @@ S["gta6-money-glitch"] = dict(
     thumb_text="MONEY GLITCH LIVES",
     hook_card="THE GLITCH SURVIVED",
     cover_lines=["MONEY GLITCH", "SURVIVED THE UPDATE?", "HOW IT WORKS"],
-    cover_frame={"shot": "trailer_2_00976", "f": 0.2, "x": 0.46},   # Jason close-up in a car (24 Nov check)
+    cover_frame={"shot": "trailer_2_01418", "f": 0.5, "x": 0.42},   # Jason on a motorbike, plane overhead (24 Nov check)
     beats=[
         ("GTA 6 just got a new update, and the infinite money glitch survived it.", "CLIP:extended_look_10132",
          None, "surprised"),
