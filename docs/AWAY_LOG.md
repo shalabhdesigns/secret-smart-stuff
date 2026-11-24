@@ -120,7 +120,7 @@ Results of each scheduled run while the owner is away (newest last). Simple word
   - Cheetah: the Testarossa shot ends with ~0.5 s of a club scene, and the opening Jason shot hides his face. It is
     not wrong enough to remake. Wrong shot descriptions are fixed so it won't happen again.
 - **Cost:** last 24 h $1.00 in total. A published video costs $0.05-0.08 (voice is ~90 %). Today's 5 cost
-  $0.05-0.07 each with no remakes. Waste $0.36 (yesterday's remakes). November total ~ $124.5 of $155.
+  $0.05-0.07 each with no remakes. Waste $0.36 (yesterday's remakes). November total $123.9 of $155 (measured).
   - Cut: the generic twice-a-week Sonnet "learnings" report ($0.12 a run) is off while the GTA series runs. It only
     fed the old paid script writer; GTA learning is the free `gta_learn.py`.
 - **Experiments judged:**
