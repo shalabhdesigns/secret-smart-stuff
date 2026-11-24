@@ -7404,6 +7404,1152 @@
    }
   }
  },
+ "gta6-lucia-liberty": {
+  "viable": true,
+  "title": "GTA 6's Lucia isn't from Vice City. Here's where",
+  "thumb_text": "LUCIA'S REAL HOME",
+  "hook_card": "NOT FROM VICE CITY?",
+  "hooks": [
+   "Lucia is the star of GTA 6, but she isn't from Vice City."
+  ],
+  "chosen_hook": 0,
+  "images": {
+   "img1": "CLIP:extended_look_09026",
+   "img2": "CLIP:extended_look_15698",
+   "img3": "CLIP:extended_look_10387",
+   "img4": "CLIP:trailer_2_00631",
+   "img5": "CLIP:trailer_2_00498",
+   "img6": "CLIP:trailer_1_00604",
+   "img7": "CLIP:extended_look_10132",
+   "img8": "CLIP:extended_look_07446",
+   "img9": "CLIP:extended_look_10196",
+   "img10": "CLIP:trailer_1_00728"
+  },
+  "scenes": [
+   {
+    "id": "b1",
+    "narration": "Lucia is the star of GTA 6, but she isn't from Vice City.",
+    "image": "img1",
+    "delivery": "curious",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b2",
+    "narration": "She moved there from Liberty City. That's GTA's own version of New York.",
+    "image": "img2",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "FROM LIBERTY CITY",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "Rockstar's bio says: \"Lucia's father taught her to fight as soon as she could walk.\"",
+    "image": "img3",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "QUOTE: ROCKSTAR GAMES",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b4",
+    "narration": "And fighting for her family is what landed her in the Leonida Penitentiary.",
+    "image": "img4",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b5",
+    "narration": "Rockstar says it was sheer luck that got her out.",
+    "image": "img5",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b6",
+    "narration": "In the trailer, it's Jason who picks her up from jail.",
+    "image": "img6",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b7",
+    "narration": "Her new rule? \"Only smart moves from here.\"",
+    "image": "img7",
+    "delivery": "amused",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b8",
+    "narration": "So what is she after? Rockstar says: \"Lucia wants the good life her mom has dreamed of since their days in Liberty City.\"",
+    "image": "img8",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "QUOTE: ROCKSTAR GAMES",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b9",
+    "narration": "And instead of just dreaming about it, Lucia is ready to take matters into her own hands.",
+    "image": "img9",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b10",
+    "narration": "So is Lucia doing this for her family, or for herself? Which side are you on?",
+    "image": "img10",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   }
+  ],
+  "facts": [
+   {
+    "claim": "GamesRadar+ (Scott McCrae, 6 May 2025): Rockstar revealed that protagonist Lucia 'has moved to Vice City from none other than Liberty City', GTA's New York. Rockstar's bio: 'More than anything, Lucia wants the good life her mom has dreamed of since their days in Liberty City', and instead of half-baked fantasies she is prepared to take matters into her own hands. In the trailer, Jason picks Lucia up from jail.",
+    "sources": [
+     "https://www.gamesradar.com/games/grand-theft-auto/liberty-city-lives-on-in-spirit-as-gta-6-reveals-new-protagonist-lucia-is-from-gtas-new-york"
+    ],
+    "main": true
+   },
+   {
+    "claim": "Rockstar's character descriptions (via GTA BOOM): 'Lucia's father taught her to fight as soon as she could walk.' She was incarcerated at the Leonida Penitentiary for a crime connected to 'fighting for her family'; Rockstar describes her release as 'sheer luck'; her line: 'only smart moves from here'. Lucia 'grew up in Liberty City, the GTA universe's version of New York'; she is 'prepared to take matters into her own hands', unlike her mother's 'half-baked fantasies'.",
+    "sources": [
+     "https://www.gtaboom.com/everything-confirmed-about-jason-and-lucia-in-gta-6-cc2c",
+     "https://www.gtaboom.com/every-gta-6-character-confirmed-so-far-156f"
+    ],
+    "main": true
+   }
+  ],
+  "description": "Lucia isn't from Vice City: Rockstar's bio says she came from Liberty City, GTA's New York. Her father taught her to fight, fighting for her family put her in the Leonida Penitentiary, and she wants the good life her mom dreamed of.\nSources: Rockstar Games character text via GamesRadar+ and GTA BOOM.",
+  "hashtags": [
+   "#GTA6",
+   "#LuciaCaminos",
+   "#LibertyCity"
+  ],
+  "affiliate_product": null,
+  "written_by": "Claude in session (verified)",
+  "experiment": "E4-lucia",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "LUCIA ISN'T FROM",
+    "VICE CITY?",
+    "HERE'S WHERE"
+   ],
+   "why": "written in session",
+   "frame": {
+    "shot": "extended_look_08816",
+    "f": 0.5,
+    "x": 0.6
+   }
+  }
+ },
+ "gta6-money-glitch": {
+  "viable": true,
+  "title": "GTA 6's money glitch survived the new update",
+  "thumb_text": "MONEY GLITCH LIVES",
+  "hook_card": "THE GLITCH SURVIVED",
+  "hooks": [
+   "GTA 6 just got a new update, and the infinite money glitch survived it."
+  ],
+  "chosen_hook": 0,
+  "images": {
+   "img1": "CLIP:extended_look_10132",
+   "img2": "CLIP:extended_look_11192",
+   "img3": "CLIP:extended_look_09432",
+   "img4": "CLIP:extended_look_09994",
+   "img5": "CLIP:extended_look_02513",
+   "img6": "CLIP:extended_look_10037",
+   "img7": "CLIP:trailer_2_00452",
+   "img8": "CLIP:extended_look_06719",
+   "img9": "CLIP:trailer_2_00795",
+   "img10": "CLIP:extended_look_05543",
+   "img11": "CLIP:extended_look_09166",
+   "img12": "CLIP:extended_look_03021"
+  },
+  "scenes": [
+   {
+    "id": "b1",
+    "narration": "GTA 6 just got a new update, and the infinite money glitch survived it.",
+    "image": "img1",
+    "delivery": "surprised",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b2",
+    "narration": "On PS5 it's about six hundred megabytes. On Xbox, about 1.6 gigs.",
+    "image": "img2",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "PS5 604MB / XBOX 1.6GB",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "It fixes crashes, the weather, autosaves, phone calls and wanted levels.",
+    "image": "img3",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b4",
+    "narration": "But the money glitch is completely untouched.",
+    "image": "img4",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b5",
+    "narration": "Here's how it works. In an abandoned red barn northeast of Hamlet, there are drugs and a bag of cash to grab.",
+    "image": "img5",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "RED BARN, NE OF HAMLET",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b6",
+    "narration": "Players load up to four stash bags into their trunk, then save and reload.",
+    "image": "img6",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "UP TO 4 BAGS",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b7",
+    "narration": "The loot comes back, but the bags stay in the car.",
+    "image": "img7",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b8",
+    "narration": "Sell it at a fence like Brian's Lockup, and that's roughly eight to eleven thousand dollars a run.",
+    "image": "img8",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "$8K-$11K PER RUN",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b9",
+    "narration": "So why are so many players skipping it?",
+    "image": "img9",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b10",
+    "narration": "Early GTA 6 leans on the feeling of being broke, and some players call the glitch an easy way to ruin the experience.",
+    "image": "img10",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b11",
+    "narration": "TweakTown also reports that some of that farmed cash can get restricted later.",
+    "image": "img11",
+    "delivery": "amused",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b12",
+    "narration": "So: glitch your way rich, or grind it out? Which side are you on?",
+    "image": "img12",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   }
+  ],
+  "facts": [
+   {
+    "claim": "Notebookcheck (Chibuike Okpara, 23 Nov 2026): the new GTA 6 update 'leaves the lucrative infinite money glitch completely untouched'; download 603.8 MB on PlayStation 5 and 1.6 GB on Xbox Series X|S; Rockstar's patch notes list crash fixes and fixes for weather, autosave, phone calls, Wanted Level, the deadlift bar and partners handing bags to fences. The glitch: an apparently abandoned red barn northeast of Hamlet with cocaine bundles and a cash-filled stash bag; up to four stash bags fit in a vehicle trunk; players save and immediately reload with the trunk's cargo intact; 'up to $10,000 per run'.",
+    "sources": [
+     "https://www.notebookcheck.net/New-GTA-6-update-leaves-infinite-money-glitch-untouched.1457986.0.html"
+    ],
+    "main": true
+   },
+   {
+    "claim": "TweakTown (Hamid Murtaza, 22 Nov 2026): 'GTA 6 already has an infinite money glitch, but many players are skipping it'; loot the red barn northeast of Hamlet, load the bags into a car, drive away and return or save and reload so the loot respawns while the bags stay in the vehicle, sell at a fence such as Brian's Lockup; 'roughly $8,000 to $11,000 per run'; 'Early GTA 6 leans heavily on the feeling of being broke'; some replies call it 'an easy way to ruin the experience'; 'certain funds become restricted later' for players who farmed early.",
+    "sources": [
+     "https://www.tweaktown.com/news/114814/gta-6-already-has-an-infinite-money-glitch-but-many-players-are-skipping-it/index.html"
+    ],
+    "main": true
+   },
+   {
+    "claim": "ComicBook.com (Logan Moore, 23 Nov 2026): Rockstar hasn't patched the infinite money glitch; it is mentioned nowhere in the update's patch notes.",
+    "sources": [
+     "https://comicbook.com/gaming/news/gta-6-money-infinite-glitch-bug-update/"
+    ],
+    "main": false
+   }
+  ],
+  "description": "GTA 6's 23 November update (about 604 MB on PS5, 1.6 GB on Xbox) fixed crashes and more, but not the red-barn money glitch: roughly $8,000-$11,000 a run. Why many players skip it.\nSources: Notebookcheck, TweakTown, ComicBook.com.",
+  "hashtags": [
+   "#GTA6",
+   "#GTA6Tips",
+   "#GTA6Update"
+  ],
+  "affiliate_product": null,
+  "written_by": "Claude in session (verified)",
+  "experiment": null,
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "MONEY GLITCH",
+    "SURVIVED THE UPDATE?",
+    "HOW IT WORKS"
+   ],
+   "why": "written in session",
+   "frame": {
+    "shot": "trailer_2_00976",
+    "f": 0.2,
+    "x": 0.46
+   }
+  }
+ },
+ "gta6-jason-landlord": {
+  "viable": true,
+  "title": "GTA 6's Jason lives rent-free. Here's the catch",
+  "thumb_text": "JASON'S LANDLORD",
+  "hook_card": "NO RENT? REALLY?",
+  "hooks": [
+   "In GTA 6, Jason has a place in the Keys, and he lives there rent-free."
+  ],
+  "chosen_hook": 0,
+  "images": {
+   "img1": "CLIP:trailer_2_00188",
+   "img2": "CLIP:trailer_2_00081",
+   "img3": "CLIP:trailer_2_00851",
+   "img4": "CLIP:trailer_1_00183",
+   "img5": "CLIP:launch_trailer_00026",
+   "img6": "CLIP:extended_look_10330",
+   "img7": "CLIP:extended_look_05543",
+   "img8": "CLIP:extended_look_11437",
+   "img9": "CLIP:trailer_2_01293",
+   "img10": "CLIP:trailer_2_00114",
+   "img11": "CLIP:extended_look_07899"
+  },
+  "scenes": [
+   {
+    "id": "b1",
+    "narration": "In GTA 6, Jason has a place in the Keys, and he lives there rent-free.",
+    "image": "img1",
+    "delivery": "curious",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b2",
+    "narration": "Sounds like a dream, until you meet his landlord.",
+    "image": "img2",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "His name is Brian.",
+    "image": "img3",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "BRIAN HEDER",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b4",
+    "narration": "Rockstar calls him \"a classic drug runner from the golden age of smuggling in the Keys.\"",
+    "image": "img4",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "QUOTE: ROCKSTAR GAMES",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b5",
+    "narration": "And he's still at it, moving product through his boat yard with his third wife, Lori.",
+    "image": "img5",
+    "delivery": "amused",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b6",
+    "narration": "So what does Jason pay instead of rent? He helps with local shakedowns.",
+    "image": "img6",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b7",
+    "narration": "Rockstar says Jason grew up around grifters and crooks, so none of this is new to him.",
+    "image": "img7",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b8",
+    "narration": "His friend Cal works with Brian too.",
+    "image": "img8",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b9",
+    "narration": "Rockstar says Cal \"feels safest hanging at home, snooping on Coast Guard comms with a few beers and some private browser tabs open.\"",
+    "image": "img9",
+    "delivery": "laughs softly",
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "QUOTE: ROCKSTAR GAMES",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b10",
+    "narration": "So the house is free. The job just comes with it.",
+    "image": "img10",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b11",
+    "narration": "A free house in the Keys, but you work for a smuggler: deal or no deal?",
+    "image": "img11",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   }
+  ],
+  "facts": [
+   {
+    "claim": "GamesRadar+ (Anna Koselke, 6 May 2025), quoting Rockstar's character text: Brian is 'still moving product through his boat yard with his third wife, Lori'; Jason lives at his place 'so long as he helps with local shakedowns'; 'Cal feels safest hanging at home, snooping on Coast Guard comms with a few beers and some private browser tabs open.' Cal is friends with Jason.",
+    "sources": [
+     "https://www.gamesradar.com/games/grand-theft-auto/rockstar-gives-us-our-best-look-at-the-gta-6-characters-yet-from-a-beer-loving-conspiracy-believing-hermit-to-a-rap-duo-with-a-relentless-social-media-presence"
+    ],
+    "main": true
+   },
+   {
+    "claim": "GTA BOOM: Jason works 'for local drug runners' in the Leonida Keys, living rent-free with a veteran trafficker named Brian Heder. Rockstar: 'Brian's a classic drug runner from the golden age of smuggling in the Keys.' (Jason's landlord, boat yard). PSU: Cal is a friend of Jason and an associate of Brian.",
+    "sources": [
+     "https://www.gtaboom.com/everything-confirmed-about-jason-and-lucia-in-gta-6-cc2c",
+     "https://www.gtaboom.com/every-gta-6-character-confirmed-so-far-156f",
+     "https://www.psu.com/news/grand-theft-auto-vi-details-jason-lucias-backgrounds-introduces-cal-boobie-drequan-more"
+    ],
+    "main": true
+   },
+   {
+    "claim": "GamesRadar+ (5 Oct 2026): Rockstar introduced Jason as someone who 'grew up around grifters and crooks'.",
+    "sources": [
+     "https://gamesradar.com/games/grand-theft-auto/gta-6-story-lead-insists-rockstar-didnt-want-to-make-any-kind-of-statement-with-jasons-ex-military-background"
+    ],
+    "main": false
+   }
+  ],
+  "description": "Jason lives rent-free in the Keys, at a place owned by Brian Heder, a classic drug runner who still moves product through his boat yard. The rent: local shakedowns. Plus Cal, in Rockstar's words.\nSources: Rockstar Games character text via GamesRadar+, GTA BOOM, PSU.",
+  "hashtags": [
+   "#GTA6",
+   "#JasonDuval",
+   "#GTA6Story"
+  ],
+  "affiliate_product": null,
+  "written_by": "Claude in session (verified)",
+  "experiment": null,
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "JASON LIVES",
+    "RENT-FREE?",
+    "MEET HIS LANDLORD"
+   ],
+   "why": "written in session",
+   "frame": {
+    "shot": "trailer_2_00188",
+    "f": 0.2,
+    "x": 0.54
+   }
+  }
+ },
+ "gta6-44-million": {
+  "viable": true,
+  "title": "GTA 6 sold 44.9 million in four days, analyst says",
+  "thumb_text": "44.9M IN 4 DAYS?",
+  "hook_card": "BIGGER THAN MOVIES?",
+  "hooks": [
+   "In four days, GTA 6 made about as much as two blockbuster movies combined."
+  ],
+  "chosen_hook": 0,
+  "images": {
+   "img1": "CLIP:extended_look_11609",
+   "img2": "CLIP:extended_look_07446",
+   "img3": "CLIP:extended_look_15524",
+   "img4": "CLIP:extended_look_15485",
+   "img5": "CLIP:extended_look_07351",
+   "img6": "CLIP:extended_look_15698",
+   "img7": "CLIP:extended_look_09432",
+   "img8": "CLIP:extended_look_06422",
+   "img9": "CLIP:launch_trailer_00026",
+   "img10": "CLIP:trailer_2_00452",
+   "img11": "CLIP:extended_look_11192",
+   "img12": "CLIP:extended_look_07899"
+  },
+  "scenes": [
+   {
+    "id": "b1",
+    "narration": "In four days, GTA 6 made about as much as two blockbuster movies combined.",
+    "image": "img1",
+    "delivery": "surprised",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b2",
+    "narration": "That's the estimate from Rhys Elliott at Alinea Analytics.",
+    "image": "img2",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "ALINEA ANALYTICS",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "He estimates it sold 44.9 million copies by the end of its first weekend.",
+    "image": "img3",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "44.9M COPIES (EST.)",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b4",
+    "narration": "That's more than four billion dollars in four days.",
+    "image": "img4",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "$4B+ IN 4 DAYS",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b5",
+    "narration": "Spider-Man: Brand New Day made over two and a half billion at the box office.",
+    "image": "img5",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "SPIDER-MAN: $2.5B+",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b6",
+    "narration": "Christopher Nolan's The Odyssey made about 1.8 billion.",
+    "image": "img6",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "THE ODYSSEY: $1.8B",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b7",
+    "narration": "Together, that's about 4.3 billion. GTA 6 roughly matched it in one long weekend.",
+    "image": "img7",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "MOVIES: ~$4.3B",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b8",
+    "narration": "The report even says it made twice as much as Taylor Swift's entire Eras Tour.",
+    "image": "img8",
+    "delivery": "amused",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "2x THE ERAS TOUR",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b9",
+    "narration": "Rockstar's own number is 3.79 billion dollars on day one.",
+    "image": "img9",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "OFFICIAL DAY 1: $3.79B",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b10",
+    "narration": "The 44.9 million is an estimate. Neither Rockstar nor Take-Two has confirmed it.",
+    "image": "img10",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b11",
+    "narration": "The same estimate puts about three in four of those copies on PS5.",
+    "image": "img11",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "PS5: 75.1% (EST.)",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b12",
+    "narration": "Elliott calls it the biggest entertainment launch of all time. Do you agree, yes or no?",
+    "image": "img12",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   }
+  ],
+  "facts": [
+   {
+    "claim": "LevelUp (23 Nov 2026): 'Analyst Rhys Elliott from Alinea Analytics estimates that, by the end of its first weekend, GTA 6 had already sold a staggering 44.9 million copies worldwide' (PS5 and Xbox Series X|S); approximately $4 billion USD in 4 days; 'roughly equal to the combined box office' of Spider-Man: Brand New Day ('surpassed $2.5 billion USD') and Christopher Nolan's The Odyssey ('reached $1.8 billion USD'), 'Together, both productions generated approximately $4.3 billion USD'; 'generated twice as much revenue as Taylor Swift's entire Eras Tour'; Elliott calls it the biggest entertainment launch of all time; the figures 'have not been officially confirmed'.",
+    "sources": [
+     "https://www.levelup.com/en/news/gta-6-has-reportedly-sold-more-than-44-million-copies-and-its-revenue-nearly-matches-the-combined-box-office-earnings-of-spider-man-and-the-odyssey/"
+    ],
+    "main": true
+   },
+   {
+    "claim": "Gadget Review via Yahoo Finance (Rex Edison, 23 Nov 2026): Alinea Analytics put launch-weekend sell-through at 44.9 million copies between the 19 November release and the end of 22 November, 'more than $4 billion in consumer revenue'; 'Neither number has been confirmed by Rockstar Games or parent company Take-Two Interactive.' Rockstar's own figure: '$3.79 billion in worldwide first-day retail sales'. PS5 '33.7 million copies, or 75.1%'; Xbox '11.2 million copies, representing 24.9%'.",
+    "sources": [
+     "https://finance.yahoo.com/media-advertising/articles/gta-vi-launch-weekend-sales-190418068.html"
+    ],
+    "main": true
+   }
+  ],
+  "description": "Alinea Analytics estimates GTA 6 sold 44.9 million copies and made over $4 billion by the end of its first weekend - about the box office of Spider-Man: Brand New Day and The Odyssey combined. Rockstar and Take-Two haven't confirmed it; their own day-one figure is $3.79 billion.\nSources: LevelUp, Gadget Review (Yahoo Finance).",
+  "hashtags": [
+   "#GTA6",
+   "#GTA6Sales",
+   "#GrandTheftAuto"
+  ],
+  "affiliate_product": null,
+  "written_by": "Claude in session (verified)",
+  "experiment": null,
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "44.9 MILLION SOLD",
+    "IN FOUR DAYS?",
+    "VS TWO BLOCKBUSTERS"
+   ],
+   "why": "written in session",
+   "frame": {
+    "shot": "extended_look_11609",
+    "f": 0.5,
+    "x": 0.8
+   }
+  }
+ },
+ "gta6-fortnite-drop": {
+  "viable": true,
+  "title": "GTA 6 pulled players away from Fortnite, analyst says",
+  "thumb_text": "FORTNITE FEELS IT",
+  "hook_card": "FORTNITE DOWN 28%?",
+  "hooks": [
+   "GTA 6 has been out for one week, and Fortnite is already feeling it."
+  ],
+  "chosen_hook": 0,
+  "images": {
+   "img1": "CLIP:extended_look_10196",
+   "img2": "CLIP:extended_look_07446",
+   "img3": "CLIP:trailer_2_00452",
+   "img4": "CLIP:extended_look_15524",
+   "img5": "CLIP:extended_look_09432",
+   "img6": "CLIP:extended_look_06719",
+   "img7": "CLIP:extended_look_05648",
+   "img8": "CLIP:extended_look_15698",
+   "img9": "CLIP:extended_look_03021"
+  },
+  "scenes": [
+   {
+    "id": "b1",
+    "narration": "GTA 6 has been out for one week, and Fortnite is already feeling it.",
+    "image": "img1",
+    "delivery": "curious",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b2",
+    "narration": "Rhys Elliott at Alinea Analytics estimates 40.8 million people logged in to play it last Sunday.",
+    "image": "img2",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "40.8M ON SUNDAY (EST.)",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "So where did all those players come from?",
+    "image": "img3",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b4",
+    "narration": "The same analyst says Fortnite's player base is down about twenty-eight percent.",
+    "image": "img4",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "FORTNITE: ABOUT -28%",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b5",
+    "narration": "And Call of Duty is down forty-two percent.",
+    "image": "img5",
+    "delivery": "surprised",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "CALL OF DUTY: -42%",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b6",
+    "narration": "Before launch, Sensor Tower predicted this. It said other games could lose more than ten percent of their daily players in GTA 6's first month.",
+    "image": "img6",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "PREDICTED: OVER -10%",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b7",
+    "narration": "And it named Fortnite as one of the most exposed.",
+    "image": "img7",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b8",
+    "narration": "None of these numbers have been officially confirmed. They're analyst estimates.",
+    "image": "img8",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b9",
+    "narration": "So, back to Fortnite when the hype fades, or is GTA 6 your new main? Which side are you on?",
+    "image": "img9",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   }
+  ],
+  "facts": [
+   {
+    "claim": "LevelUp (23 Nov 2026), reporting Alinea Analytics (analyst Rhys Elliott): about 40.8 million people logged in on Sunday, November 22; Fortnite's player base down about 28%; Call of Duty down 42%; these figures 'have not been officially confirmed'.",
+    "sources": [
+     "https://www.levelup.com/en/news/gta-6-has-reportedly-sold-more-than-44-million-copies-and-its-revenue-nearly-matches-the-combined-box-office-earnings-of-spider-man-and-the-odyssey/"
+    ],
+    "main": true
+   },
+   {
+    "claim": "GTA BOOM (Ray Ampoloquio, 17 Nov 2026): Sensor Tower projected that daily active player numbers across games other than GTA VI 'could fall more than 10% in the month after launch'; it 'names Fortnite and single-player AAA titles as the most exposed'.",
+    "sources": [
+     "https://www.gtaboom.com/sensor-tower-says-fortnite-stands-to-lose-the-most-players-after-gta-vi-launches-7982"
+    ],
+    "main": true
+   }
+  ],
+  "description": "An analyst estimate says 40.8 million people played GTA 6 on its first Sunday, while Fortnite fell about 28% and Call of Duty 42%. Sensor Tower predicted the dip before launch. None of it is official.\nSources: LevelUp (Alinea Analytics), GTA BOOM (Sensor Tower).",
+  "hashtags": [
+   "#GTA6",
+   "#Fortnite",
+   "#GTA6News"
+  ],
+  "affiliate_product": null,
+  "written_by": "Claude in session (verified)",
+  "experiment": null,
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "FORTNITE PLAYERS",
+    "LEAVING FOR GTA?",
+    "THE NUMBERS"
+   ],
+   "why": "written in session",
+   "frame": {
+    "shot": "extended_look_06943",
+    "f": 0.5,
+    "x": 0.49
+   }
+  }
+ },
  "gta6-trailer-songs": {
   "viable": true,
   "title": "GTA 6's trailers brought two old songs back to life",

@@ -1461,6 +1461,260 @@ S["gta6-outsold-consoles"] = dict(
 
 
 # ---- RESERVE scripts (20 Nov 2026, owner away): evergreen, no time words; used only if a slot is empty ----
+S["gta6-lucia-liberty"] = dict(
+    title="GTA 6's Lucia isn't from Vice City. Here's where",
+    thumb_text="LUCIA'S REAL HOME",
+    hook_card="NOT FROM VICE CITY?",
+    cover_lines=["LUCIA ISN'T FROM", "VICE CITY?", "HERE'S WHERE"],
+    cover_frame={"shot": "extended_look_08816", "f": 0.5, "x": 0.6},   # Lucia at the wheel, face clear (24 Nov check)
+    experiment="E4-lucia",
+    beats=[
+        ("Lucia is the star of GTA 6, but she isn't from Vice City.", "CLIP:extended_look_09026", None, "curious"),
+        ("She moved there from Liberty City. That's GTA's own version of New York.", "CLIP:extended_look_15698",
+         "FROM LIBERTY CITY", None),
+        ("Rockstar's bio says: \"Lucia's father taught her to fight as soon as she could walk.\"",
+         "CLIP:extended_look_10387", "QUOTE: ROCKSTAR GAMES", None),
+        ("And fighting for her family is what landed her in the Leonida Penitentiary.", "CLIP:trailer_2_00631",
+         None, None),
+        ("Rockstar says it was sheer luck that got her out.", "CLIP:trailer_2_00498", None, None),
+        ("In the trailer, it's Jason who picks her up from jail.", "CLIP:trailer_1_00604", None, None),
+        ("Her new rule? \"Only smart moves from here.\"", "CLIP:extended_look_10132", None, "amused"),
+        ("So what is she after? Rockstar says: \"Lucia wants the good life her mom has dreamed of since their days "
+         "in Liberty City.\"", "CLIP:extended_look_07446", "QUOTE: ROCKSTAR GAMES", None),
+        ("And instead of just dreaming about it, Lucia is ready to take matters into her own hands.",
+         "CLIP:extended_look_10196", None, None),
+        ("So is Lucia doing this for her family, or for herself? Which side are you on?",
+         "CLIP:trailer_1_00728", None, None),
+    ],
+    facts=[
+        {"claim": "GamesRadar+ (Scott McCrae, 6 May 2025): Rockstar revealed that protagonist Lucia 'has moved to Vice "
+                  "City from none other than Liberty City', GTA's New York. Rockstar's bio: 'More than anything, Lucia "
+                  "wants the good life her mom has dreamed of since their days in Liberty City', and instead of "
+                  "half-baked fantasies she is prepared to take matters into her own hands. In the trailer, Jason "
+                  "picks Lucia up from jail.",
+         "sources": ["https://www.gamesradar.com/games/grand-theft-auto/liberty-city-lives-on-in-spirit-as-gta-6-reveals-new-protagonist-lucia-is-from-gtas-new-york"],
+         "main": True},
+        {"claim": "Rockstar's character descriptions (via GTA BOOM): 'Lucia's father taught her to fight as soon as "
+                  "she could walk.' She was incarcerated at the Leonida Penitentiary for a crime connected to "
+                  "'fighting for her family'; Rockstar describes her release as 'sheer luck'; her line: 'only smart "
+                  "moves from here'. Lucia 'grew up in Liberty City, the GTA universe's version of New York'; she is "
+                  "'prepared to take matters into her own hands', unlike her mother's 'half-baked fantasies'.",
+         "sources": ["https://www.gtaboom.com/everything-confirmed-about-jason-and-lucia-in-gta-6-cc2c",
+                     "https://www.gtaboom.com/every-gta-6-character-confirmed-so-far-156f"], "main": True},
+    ],
+    description="Lucia isn't from Vice City: Rockstar's bio says she came from Liberty City, GTA's New York. Her "
+                "father taught her to fight, fighting for her family put her in the Leonida Penitentiary, and she "
+                "wants the good life her mom dreamed of.\nSources: Rockstar Games character text via GamesRadar+ "
+                "and GTA BOOM.",
+    hashtags=["#GTA6", "#LuciaCaminos", "#LibertyCity"],
+)
+
+S["gta6-money-glitch"] = dict(
+    title="GTA 6's money glitch survived the new update",
+    thumb_text="MONEY GLITCH LIVES",
+    hook_card="THE GLITCH SURVIVED",
+    cover_lines=["MONEY GLITCH", "SURVIVED THE UPDATE?", "HOW IT WORKS"],
+    cover_frame={"shot": "trailer_2_00976", "f": 0.2, "x": 0.46},   # Jason close-up in a car (24 Nov check)
+    beats=[
+        ("GTA 6 just got a new update, and the infinite money glitch survived it.", "CLIP:extended_look_10132",
+         None, "surprised"),
+        ("On PS5 it's about six hundred megabytes. On Xbox, about 1.6 gigs.", "CLIP:extended_look_11192",
+         "PS5 604MB / XBOX 1.6GB", None),
+        ("It fixes crashes, the weather, autosaves, phone calls and wanted levels.", "CLIP:extended_look_09432",
+         None, None),
+        ("But the money glitch is completely untouched.", "CLIP:extended_look_09994", None, None),
+        ("Here's how it works. In an abandoned red barn northeast of Hamlet, there are drugs and a bag of cash to grab.",
+         "CLIP:extended_look_02513", "RED BARN, NE OF HAMLET", None),
+        ("Players load up to four stash bags into their trunk, then save and reload.", "CLIP:extended_look_10037",
+         "UP TO 4 BAGS", None),
+        ("The loot comes back, but the bags stay in the car.", "CLIP:trailer_2_00452", None, None),
+        ("Sell it at a fence like Brian's Lockup, and that's roughly eight to eleven thousand dollars a run.",
+         "CLIP:extended_look_06719", "$8K-$11K PER RUN", None),
+        ("So why are so many players skipping it?", "CLIP:trailer_2_00795", None, None),
+        ("Early GTA 6 leans on the feeling of being broke, and some players call the glitch an easy way to ruin "
+         "the experience.", "CLIP:extended_look_05543", None, None),
+        ("TweakTown also reports that some of that farmed cash can get restricted later.", "CLIP:extended_look_09166",
+         None, "amused"),
+        ("So: glitch your way rich, or grind it out? Which side are you on?", "CLIP:extended_look_03021",
+         None, None),
+    ],
+    facts=[
+        {"claim": "Notebookcheck (Chibuike Okpara, 23 Nov 2026): the new GTA 6 update 'leaves the lucrative infinite "
+                  "money glitch completely untouched'; download 603.8 MB on PlayStation 5 and 1.6 GB on Xbox Series "
+                  "X|S; Rockstar's patch notes list crash fixes and fixes for weather, autosave, phone calls, Wanted "
+                  "Level, the deadlift bar and partners handing bags to fences. The glitch: an apparently abandoned "
+                  "red barn northeast of Hamlet with cocaine bundles and a cash-filled stash bag; up to four stash "
+                  "bags fit in a vehicle trunk; players save and immediately reload with the trunk's cargo intact; "
+                  "'up to $10,000 per run'.",
+         "sources": ["https://www.notebookcheck.net/New-GTA-6-update-leaves-infinite-money-glitch-untouched.1457986.0.html"],
+         "main": True},
+        {"claim": "TweakTown (Hamid Murtaza, 22 Nov 2026): 'GTA 6 already has an infinite money glitch, but many "
+                  "players are skipping it'; loot the red barn northeast of Hamlet, load the bags into a car, drive "
+                  "away and return or save and reload so the loot respawns while the bags stay in the vehicle, sell "
+                  "at a fence such as Brian's Lockup; 'roughly $8,000 to $11,000 per run'; 'Early GTA 6 leans heavily "
+                  "on the feeling of being broke'; some replies call it 'an easy way to ruin the experience'; "
+                  "'certain funds become restricted later' for players who farmed early.",
+         "sources": ["https://www.tweaktown.com/news/114814/gta-6-already-has-an-infinite-money-glitch-but-many-players-are-skipping-it/index.html"],
+         "main": True},
+        {"claim": "ComicBook.com (Logan Moore, 23 Nov 2026): Rockstar hasn't patched the infinite money glitch; it "
+                  "is mentioned nowhere in the update's patch notes.",
+         "sources": ["https://comicbook.com/gaming/news/gta-6-money-infinite-glitch-bug-update/"], "main": False},
+    ],
+    description="GTA 6's 23 November update (about 604 MB on PS5, 1.6 GB on Xbox) fixed crashes and more, but not "
+                "the red-barn money glitch: roughly $8,000-$11,000 a run. Why many players skip it.\n"
+                "Sources: Notebookcheck, TweakTown, ComicBook.com.",
+    hashtags=["#GTA6", "#GTA6Tips", "#GTA6Update"],
+)
+
+S["gta6-jason-landlord"] = dict(
+    title="GTA 6's Jason lives rent-free. Here's the catch",
+    thumb_text="JASON'S LANDLORD",
+    hook_card="NO RENT? REALLY?",
+    cover_lines=["JASON LIVES", "RENT-FREE?", "MEET HIS LANDLORD"],
+    cover_frame={"shot": "trailer_2_00188", "f": 0.2, "x": 0.54},   # Jason in cap + sunglasses at his house (24 Nov check)
+    beats=[
+        ("In GTA 6, Jason has a place in the Keys, and he lives there rent-free.", "CLIP:trailer_2_00188",
+         None, "curious"),
+        ("Sounds like a dream, until you meet his landlord.", "CLIP:trailer_2_00081", None, None),
+        ("His name is Brian.", "CLIP:trailer_2_00851", "BRIAN HEDER", None),
+        ("Rockstar calls him \"a classic drug runner from the golden age of smuggling in the Keys.\"",
+         "CLIP:trailer_1_00183", "QUOTE: ROCKSTAR GAMES", None),
+        ("And he's still at it, moving product through his boat yard with his third wife, Lori.",
+         "CLIP:launch_trailer_00026", None, "amused"),
+        ("So what does Jason pay instead of rent? He helps with local shakedowns.", "CLIP:extended_look_10330",
+         None, None),
+        ("Rockstar says Jason grew up around grifters and crooks, so none of this is new to him.",
+         "CLIP:extended_look_05543", None, None),
+        ("His friend Cal works with Brian too.", "CLIP:extended_look_11437", None, None),
+        ("Rockstar says Cal \"feels safest hanging at home, snooping on Coast Guard comms with a few beers and some "
+         "private browser tabs open.\"", "CLIP:trailer_2_01293", "QUOTE: ROCKSTAR GAMES", "laughs softly"),
+        ("So the house is free. The job just comes with it.", "CLIP:trailer_2_00114", None, None),
+        ("A free house in the Keys, but you work for a smuggler: deal or no deal?", "CLIP:extended_look_07899",
+         None, None),
+    ],
+    facts=[
+        {"claim": "GamesRadar+ (Anna Koselke, 6 May 2025), quoting Rockstar's character text: Brian is 'still moving "
+                  "product through his boat yard with his third wife, Lori'; Jason lives at his place 'so long as he "
+                  "helps with local shakedowns'; 'Cal feels safest hanging at home, snooping on Coast Guard comms with "
+                  "a few beers and some private browser tabs open.' Cal is friends with Jason.",
+         "sources": ["https://www.gamesradar.com/games/grand-theft-auto/rockstar-gives-us-our-best-look-at-the-gta-6-characters-yet-from-a-beer-loving-conspiracy-believing-hermit-to-a-rap-duo-with-a-relentless-social-media-presence"],
+         "main": True},
+        {"claim": "GTA BOOM: Jason works 'for local drug runners' in the Leonida Keys, living rent-free with a "
+                  "veteran trafficker named Brian Heder. Rockstar: 'Brian's a classic drug runner from the golden age "
+                  "of smuggling in the Keys.' (Jason's landlord, boat yard). PSU: Cal is a friend of Jason and an "
+                  "associate of Brian.",
+         "sources": ["https://www.gtaboom.com/everything-confirmed-about-jason-and-lucia-in-gta-6-cc2c",
+                     "https://www.gtaboom.com/every-gta-6-character-confirmed-so-far-156f",
+                     "https://www.psu.com/news/grand-theft-auto-vi-details-jason-lucias-backgrounds-introduces-cal-boobie-drequan-more"],
+         "main": True},
+        {"claim": "GamesRadar+ (5 Oct 2026): Rockstar introduced Jason as someone who 'grew up around grifters and "
+                  "crooks'.",
+         "sources": ["https://gamesradar.com/games/grand-theft-auto/gta-6-story-lead-insists-rockstar-didnt-want-to-make-any-kind-of-statement-with-jasons-ex-military-background"],
+         "main": False},
+    ],
+    description="Jason lives rent-free in the Keys, at a place owned by Brian Heder, a classic drug runner who still "
+                "moves product through his boat yard. The rent: local shakedowns. Plus Cal, in Rockstar's words.\n"
+                "Sources: Rockstar Games character text via GamesRadar+, GTA BOOM, PSU.",
+    hashtags=["#GTA6", "#JasonDuval", "#GTA6Story"],
+)
+
+S["gta6-44-million"] = dict(
+    title="GTA 6 sold 44.9 million in four days, analyst says",
+    thumb_text="44.9M IN 4 DAYS?",
+    hook_card="BIGGER THAN MOVIES?",
+    cover_lines=["44.9 MILLION SOLD", "IN FOUR DAYS?", "VS TWO BLOCKBUSTERS"],
+    cover_frame={"shot": "extended_look_11609", "f": 0.5, "x": 0.8},   # Jason in a dark suit, airport lounge (24 Nov check)
+    beats=[
+        ("In four days, GTA 6 made about as much as two blockbuster movies combined.", "CLIP:extended_look_11609",
+         None, "surprised"),
+        ("That's the estimate from Rhys Elliott at Alinea Analytics.", "CLIP:extended_look_07446",
+         "ALINEA ANALYTICS", None),
+        ("He estimates it sold 44.9 million copies by the end of its first weekend.", "CLIP:extended_look_15524",
+         "44.9M COPIES (EST.)", None),
+        ("That's more than four billion dollars in four days.", "CLIP:extended_look_15485", "$4B+ IN 4 DAYS", None),
+        ("Spider-Man: Brand New Day made over two and a half billion at the box office.", "CLIP:extended_look_07351",
+         "SPIDER-MAN: $2.5B+", None),
+        ("Christopher Nolan's The Odyssey made about 1.8 billion.", "CLIP:extended_look_15698",
+         "THE ODYSSEY: $1.8B", None),
+        ("Together, that's about 4.3 billion. GTA 6 roughly matched it in one long weekend.",
+         "CLIP:extended_look_09432", "MOVIES: ~$4.3B", None),
+        ("The report even says it made twice as much as Taylor Swift's entire Eras Tour.",
+         "CLIP:extended_look_06422", "2x THE ERAS TOUR", "amused"),
+        ("Rockstar's own number is 3.79 billion dollars on day one.", "CLIP:launch_trailer_00026",
+         "OFFICIAL DAY 1: $3.79B", None),
+        ("The 44.9 million is an estimate. Neither Rockstar nor Take-Two has confirmed it.",
+         "CLIP:trailer_2_00452", None, None),
+        ("The same estimate puts about three in four of those copies on PS5.", "CLIP:extended_look_11192",
+         "PS5: 75.1% (EST.)", None),
+        ("Elliott calls it the biggest entertainment launch of all time. Do you agree, yes or no?",
+         "CLIP:extended_look_07899", None, None),
+    ],
+    facts=[
+        {"claim": "LevelUp (23 Nov 2026): 'Analyst Rhys Elliott from Alinea Analytics estimates that, by the end of "
+                  "its first weekend, GTA 6 had already sold a staggering 44.9 million copies worldwide' (PS5 and Xbox "
+                  "Series X|S); approximately $4 billion USD in 4 days; 'roughly equal to the combined box office' of "
+                  "Spider-Man: Brand New Day ('surpassed $2.5 billion USD') and Christopher Nolan's The Odyssey "
+                  "('reached $1.8 billion USD'), 'Together, both productions generated approximately $4.3 billion "
+                  "USD'; 'generated twice as much revenue as Taylor Swift's entire Eras Tour'; Elliott calls it the "
+                  "biggest entertainment launch of all time; the figures 'have not been officially confirmed'.",
+         "sources": ["https://www.levelup.com/en/news/gta-6-has-reportedly-sold-more-than-44-million-copies-and-its-revenue-nearly-matches-the-combined-box-office-earnings-of-spider-man-and-the-odyssey/"],
+         "main": True},
+        {"claim": "Gadget Review via Yahoo Finance (Rex Edison, 23 Nov 2026): Alinea Analytics put launch-weekend "
+                  "sell-through at 44.9 million copies between the 19 November release and the end of 22 November, "
+                  "'more than $4 billion in consumer revenue'; 'Neither number has been confirmed by Rockstar Games or "
+                  "parent company Take-Two Interactive.' Rockstar's own figure: '$3.79 billion in worldwide first-day "
+                  "retail sales'. PS5 '33.7 million copies, or 75.1%'; Xbox '11.2 million copies, representing 24.9%'.",
+         "sources": ["https://finance.yahoo.com/media-advertising/articles/gta-vi-launch-weekend-sales-190418068.html"],
+         "main": True},
+    ],
+    description="Alinea Analytics estimates GTA 6 sold 44.9 million copies and made over $4 billion by the end of "
+                "its first weekend - about the box office of Spider-Man: Brand New Day and The Odyssey combined. "
+                "Rockstar and Take-Two haven't confirmed it; their own day-one figure is $3.79 billion.\n"
+                "Sources: LevelUp, Gadget Review (Yahoo Finance).",
+    hashtags=["#GTA6", "#GTA6Sales", "#GrandTheftAuto"],
+)
+
+S["gta6-fortnite-drop"] = dict(
+    title="GTA 6 pulled players away from Fortnite, analyst says",
+    thumb_text="FORTNITE FEELS IT",
+    hook_card="FORTNITE DOWN 28%?",
+    cover_lines=["FORTNITE PLAYERS", "LEAVING FOR GTA?", "THE NUMBERS"],
+    cover_frame={"shot": "extended_look_06943", "f": 0.5, "x": 0.49},   # Lucia in a red bandana, robbery (24 Nov check)
+    beats=[
+        ("GTA 6 has been out for one week, and Fortnite is already feeling it.", "CLIP:extended_look_10196",
+         None, "curious"),
+        ("Rhys Elliott at Alinea Analytics estimates 40.8 million people logged in to play it last Sunday.",
+         "CLIP:extended_look_07446", "40.8M ON SUNDAY (EST.)", None),
+        ("So where did all those players come from?", "CLIP:trailer_2_00452", None, None),
+        ("The same analyst says Fortnite's player base is down about twenty-eight percent.",
+         "CLIP:extended_look_15524", "FORTNITE: ABOUT -28%", None),
+        ("And Call of Duty is down forty-two percent.", "CLIP:extended_look_09432", "CALL OF DUTY: -42%",
+         "surprised"),
+        ("Before launch, Sensor Tower predicted this. It said other games could lose more than ten percent of their "
+         "daily players in GTA 6's first month.", "CLIP:extended_look_06719", "PREDICTED: OVER -10%", None),
+        ("And it named Fortnite as one of the most exposed.", "CLIP:extended_look_05648", None, None),
+        ("None of these numbers have been officially confirmed. They're analyst estimates.", "CLIP:extended_look_15698", None, None),
+        ("So, back to Fortnite when the hype fades, or is GTA 6 your new main? Which side are you on?",
+         "CLIP:extended_look_03021", None, None),
+    ],
+    facts=[
+        {"claim": "LevelUp (23 Nov 2026), reporting Alinea Analytics (analyst Rhys Elliott): about 40.8 million people "
+                  "logged in on Sunday, November 22; Fortnite's player base down about 28%; Call of Duty down 42%; "
+                  "these figures 'have not been officially confirmed'.",
+         "sources": ["https://www.levelup.com/en/news/gta-6-has-reportedly-sold-more-than-44-million-copies-and-its-revenue-nearly-matches-the-combined-box-office-earnings-of-spider-man-and-the-odyssey/"],
+         "main": True},
+        {"claim": "GTA BOOM (Ray Ampoloquio, 17 Nov 2026): Sensor Tower projected that daily active player numbers "
+                  "across games other than GTA VI 'could fall more than 10% in the month after launch'; it 'names "
+                  "Fortnite and single-player AAA titles as the most exposed'.",
+         "sources": ["https://www.gtaboom.com/sensor-tower-says-fortnite-stands-to-lose-the-most-players-after-gta-vi-launches-7982"],
+         "main": True},
+    ],
+    description="An analyst estimate says 40.8 million people played GTA 6 on its first Sunday, while Fortnite fell "
+                "about 28% and Call of Duty 42%. Sensor Tower predicted the dip before launch. None of it is "
+                "official.\nSources: LevelUp (Alinea Analytics), GTA BOOM (Sensor Tower).",
+    hashtags=["#GTA6", "#Fortnite", "#GTA6News"],
+)
+
 S["gta6-trailer-songs"] = dict(
     title="GTA 6's trailers brought two old songs back to life",
     thumb_text="TWO OLD SONGS",

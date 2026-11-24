@@ -351,6 +351,15 @@ def self_review(p: Pipeline, job: str, rounds: int = 3) -> dict:
         except BudgetExceeded as e:
             return {**(prev or {}), "passed": False, "budget_stop": True,
                     "summary": f"stopped: budget limit reached before review round {r} ({e})"}
+        except Exception as e:  # noqa: BLE001
+            # 24 Nov 2026: the Anthropic key returned 401 and the run crashed, leaving all 5 videos in 'review' with no
+            # hold event, so the deadline safety net never saw them. A check that could not run is not a verdict:
+            # the caller holds the video for Claude (and the safety net publishes it near its slot).
+            if "LLMError" not in type(e).__name__ and "Anthropic" not in str(e):
+                raise
+            p.state.log(f"final check could not run: {str(e)[:200]}", "warn", job)
+            return {"passed": False, "check_error": True,
+                    "summary": f"could not run (API error: {str(e)[:120]}); not a verdict on the video"}
         if c.get("passed") or c.get("verdict") == "drop" or c.get("unshowable") or r == rounds:
             return c
         p.prepare_prior(job, c)
@@ -548,7 +557,7 @@ def do_produce(p: Pipeline, req: dict) -> int:
         c = self_review(p, job)
         if c.get("passed"):
             break
-        if _prewritten_job(p, job) and not c.get("budget_stop"):
+        if (_prewritten_job(p, job) or c.get("check_error")) and not c.get("budget_stop"):
             # never drop a script Claude wrote and checked: hold it; Claude fixes it in session (no API cost)
             subprocess.run([str(ROOT / "scripts" / "open_review.sh"), job], check=True)
             p.state.log(f"{job} held for Claude: final check said {c.get('summary', '')[:200]}", "warn", job)

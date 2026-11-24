@@ -107,13 +107,55 @@
    "shot": "extended_look_03021",
    "f": 0.8,
    "x": 0.3,
-   "shows": "Jason close-up (white tee, bag strap) with Lucia behind, graffiti wall (checked 23 Nov)"
+   "shows": "Jason close-up (white tee, bag strap) with Lucia behind, graffiti wall (checked 23 Nov) | 24 Nov: at f 0.8 the cover was dark, face half hidden by the logo"
   },
   {
    "shot": "extended_look_10081",
    "f": 0.2,
    "x": 0.42,
-   "shows": "Jason in a cap by a van in a sunny alley, Lucia beside him (checked 23 Nov)"
+   "shows": "Jason in a cap by a van in a sunny alley, Lucia beside him (checked 23 Nov) | 24 Nov: at f 0.2 the cover showed Lucia from behind (no face): use f 0.5+ only after a preview"
+  },
+  {
+   "shot": "trailer_2_00976",
+   "f": 0.2,
+   "x": 0.46,
+   "shows": "Jason close-up in a car, Lucia's earring beside (checked 24 Nov; later frames are their hands)"
+  },
+  {
+   "shot": "trailer_2_00188",
+   "f": 0.2,
+   "x": 0.54,
+   "shows": "Jason shirtless in cap + sunglasses at his stilt house (checked 24 Nov; later a porch view)"
+  },
+  {
+   "shot": "extended_look_08816",
+   "f": 0.5,
+   "x": 0.6,
+   "shows": "Lucia at the wheel, dim car (checked 24 Nov; f 0.2/0.8 show a man in glasses)"
+  },
+  {
+   "shot": "extended_look_11609",
+   "f": 0.5,
+   "x": 0.8,
+   "shows": "Jason in a dark suit with two women, airport lounge (checked 24 Nov)"
+  },
+  {
+   "shot": "extended_look_06943",
+   "f": 0.5,
+   "x": 0.49,
+   "shows": "Lucia in a red bandana mask + leather jacket, eyes clear, robbery (checked 24 Nov)"
+  },
+  {
+   "shot": "launch_trailer_00631",
+   "f": 0.2,
+   "x": 0.56,
+   "shows": "Lucia on a rooftop at sunset, face clear (checked 24 Nov; later frames are a dark gunman)"
+  },
+  {
+   "shot": "extended_look_02968",
+   "f": 0.2,
+   "x": 0.35,
+   "shows": "Jason by a graffiti wall, Lucia right at x 0.72 (checked 24 Nov)"
   }
  ],
  "robbery/masks": [
