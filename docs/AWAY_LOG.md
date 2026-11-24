@@ -103,3 +103,43 @@ Results of each scheduled run while the owner is away (newest last). Simple word
   - 01:30 GTA 6 brought back GTA 5's Mount Chiliad mystery (one secret, GTA 5 link)
   - 07:30 (25 Nov) GTA 6 outsold three consoles before it even launched (big number vs famous things)
   - All 5: face covers (4 new checked face shots, none used this week), side-taking last line, no follow line.
+
+## 24 Nov 2026 (daily run, 12:41 IST)
+- **Problem found and fixed: the Anthropic API key stopped working (401 "invalid x-api-key") overnight.**
+  - All 5 of today's videos were made, but the final check crashed. They were stuck "in review" with no hold
+    note, so the safety net would never have published them.
+  - I checked every video myself (contact sheet, cover, audio checks) and approved all 5 for their slots.
+  - Code fix: a final check that can't run now holds the video for Claude instead of crashing, so the 90-minute
+    safety net can still publish it. The script pre-check is skipped (as before) while the key is broken.
+  - Only the owner can renew the key (GitHub secret `ANTHROPIC_API_KEY`). Until then, videos rely on my daily
+    check and the safety net. This costs nothing extra.
+- **Today's videos (IST), all scheduled:** 17:30 Xbox 60 fps glitch · 19:30 Jason's Army past · 22:30 the £1M real
+  Cheetah · 01:30 Mount Chiliad mystery · 07:30 (25 Nov) outsold 3 consoles.
+  - 2 covers fixed before upload: Chiliad (Jason's face was dark and half under the logo) and Outsold (showed the
+    back of Lucia's head). Both now show a clear, lit face. The other 3 covers are fine.
+  - Cheetah: the Testarossa shot ends with ~0.5 s of a club scene, and the opening Jason shot hides his face. It is
+    not wrong enough to remake. Wrong shot descriptions are fixed so it won't happen again.
+- **Cost:** last 24 h $1.00 in total. A published video costs $0.05-0.08 (voice is ~90 %). Today's 5 cost
+  $0.05-0.07 each with no remakes. Waste $0.36 (yesterday's remakes). November total ~ $124.5 of $155.
+  - Cut: the generic twice-a-week Sonnet "learnings" report ($0.12 a run) is off while the GTA series runs. It only
+    fed the old paid script writer; GTA learning is the free `gta_learn.py`.
+- **Experiments judged:**
+  - E1 (40 s vs 55 s) DROPPED: short median 1,445 IG views vs long 1,434 (+1 %; the bar was +20 %). Long videos
+    keep more watch time (26 s vs 18 s). All videos go back to 50-65 s.
+  - E3 (12:00 UTC slot) ADOPTED as rule R7: YouTube got 68-75 % of Instagram's views at 12:00 (3 videos) vs
+    5-36 % at the old 23:00 slot. Slots stay as they are.
+- **New experiment:** E4: Lucia's name in the title + a Lucia face cover, one video a day. Test: Lucia from Liberty
+  City (25 Nov). Control: the other 4 that day.
+- **Learnings (with numbers):**
+  - F17: "Lucia's actress was in GTA 5" is our best video ever: 2,252 IG views at 12 h (old best 1,658), 31 s watch.
+  - F18: step-by-step unlock videos get saved: Kodak radio got 48 saves; all others 0-13.
+  - F19: YouTube looked slow for 3 of yesterday's videos at 4-10 h (28-106 views). Checking at 24 h tomorrow.
+  - F20: followers are stuck: Instagram 10 for 3 days after ~14,000 views; YouTube subscribers 49 -> 58.
+  - R3 (face covers) holds and is tightened: the face must be lit and above the logo. 9 new checked face shots.
+- **Tomorrow (25 Nov), IST:**
+  - 17:30 GTA 6's Lucia isn't from Vice City. Here's where (character; E4 test)
+  - 19:30 GTA 6's money glitch survived the new update (practical how-to)
+  - 22:30 GTA 6's Jason lives rent-free. Here's the catch (character, funny)
+  - 01:30 GTA 6 sold 44.9 million in four days, analyst says (big number vs Spider-Man + The Odyssey)
+  - 07:30 (26 Nov) GTA 6 pulled players away from Fortnite, analyst says (rivalry; pick a side)
+  - All 5: a new face cover each (none used this week), a side-taking last line, 110-170 words.
