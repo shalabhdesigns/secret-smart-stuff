@@ -10308,7 +10308,7 @@
        "why": "written in session",
        "frame": {
         "shot": "extended_look_10196",
-        "f": 0.3,
+        "f": 0.5,
         "x": 0.45
        }
       }
@@ -11446,6 +11446,1417 @@
       }
      },
      "publish_at": "2026-11-26T02:00:00Z",
+     "batch": "gta6-launch-footage",
+     "seo": {
+      "category_id": "20",
+      "hashtags": [
+       "#GTA6",
+       "#GTAVI",
+       "#GrandTheftAuto6"
+      ],
+      "tags": [
+       "GTA 6",
+       "GTA VI",
+       "Grand Theft Auto 6",
+       "Grand Theft Auto VI",
+       "GTA 6 news",
+       "GTA 6 trailer",
+       "Rockstar Games",
+       "Vice City",
+       "Jason and Lucia",
+       "Leonida"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-lucia-looks",
+   "fresh": true,
+   "nonce": "gta-footage-gta6-lucia-looks-2026-11-26",
+   "day": "2026-11-26",
+   "topic_def": {
+    "id": "gta6-lucia-looks",
+    "title": "GTA 6: Lucia's hidden looks are in magazines. Here's how",
+    "pillar": "gta6",
+    "notes": {
+     "object": "official GTA 6 footage",
+     "question": "GTA 6: Lucia's hidden looks are in magazines. Here's how",
+     "angle": "VERIFIED 25 Nov 2026. Publishes 26 Nov 12:00 UTC (E4 Lucia test). Script in gta_scripts.py. Notebookcheck (24 Nov): scan hidden magazines with the Waink app to unlock hairstyles/makeup; community guides: 15 Lucia, 13 Jason styles, 17 tattoos, 34 watches (79). VGC: lip icon = beauty parlour (makeup, nails). FORMAT FOR THIS VIDEO (its own look and feel): Tone: insider tip, warm. Shape: the hidden looks -> where they hide -> scan -> salon -> the counts (Lucia, Jason, extras) -> nobody told you -> makeup tip -> pick a side.",
+     "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): a tattooed person in a cyan top in front of a graffiti-painted custom car (no casino; checked 23 Nov)\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+     "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
+     "official_images": "required",
+     "open_hook": true,
+     "words": [
+      110,
+      170
+     ],
+     "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
+     "style": "story",
+     "badge": "GTA 6",
+     "script": {
+      "viable": true,
+      "title": "GTA 6: Lucia's hidden looks are in magazines. Here's how",
+      "thumb_text": "LUCIA'S HIDDEN LOOKS",
+      "hook_card": "15 HIDDEN LOOKS",
+      "hooks": [
+       "Lucia has fifteen hidden looks in GTA 6, and they're tucked away inside magazines."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:extended_look_10132",
+       "img2": "CLIP:extended_look_04786",
+       "img3": "CLIP:extended_look_03894",
+       "img4": "CLIP:extended_look_04115",
+       "img5": "CLIP:extended_look_07899",
+       "img6": "CLIP:trailer_2_00188",
+       "img7": "CLIP:extended_look_12606",
+       "img8": "CLIP:extended_look_07446",
+       "img9": "CLIP:extended_look_02968",
+       "img10": "CLIP:trailer_1_00728",
+       "img11": "CLIP:extended_look_10196"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "Lucia has fifteen hidden looks in GTA 6, and they're tucked away inside magazines.",
+        "image": "img1",
+        "delivery": "curious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "Players found magazines hidden all over Leonida.",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "Get close to one, and your Waink app pops up. Scan it, and the style unlocks.",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "SCAN IT WITH WAINK",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "Then you'll find it at the salon or the tattoo parlor.",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "Community guides count fifteen magazine styles just for Lucia, with hair and makeup.",
+        "image": "img5",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "LUCIA: 15 STYLES",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "Jason gets thirteen.",
+        "image": "img6",
+        "delivery": "amused",
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "JASON: 13 STYLES",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "There are also seventeen tattoos and thirty-four luxury watches to collect.",
+        "image": "img7",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "17 TATTOOS, 34 WATCHES",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "That's seventy-nine unlockables in total, by the guides' count.",
+        "image": "img8",
+        "delivery": "surprised",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "79 UNLOCKABLES",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "And Rockstar didn't publish any instructions for this. Players worked it out themselves.",
+        "image": "img9",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "Want new makeup and nails? Look for the lip icon. That's a beauty parlour.",
+        "image": "img10",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "LIP ICON = MAKEUP",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b11",
+        "narration": "So: Lucia's trailer look, or a brand new style? Which side are you on?",
+        "image": "img11",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "Notebookcheck (Karan Sharma, 24 Nov 2026): players 'have discovered that scanning hidden magazines across Leonida can unlock exclusive hairstyles for Jason and hairstyles and makeup options for Lucia'; magazines are scanned with the Waink app, whose pop-up shows up when the player is close to one; after scanning, the style 'will become accessible through the salon or tattoo parlor'. 'According to community guides, there are 79 different cosmetic unlockable items, which include 13 Jason magazine styles, 15 Lucia magazine styles, 17 magazine tattoos, and 34 luxury watches.' Rockstar 'did not publish official instructions explaining how the Waink magazine unlocks would work'.",
+        "sources": [
+         "https://www.notebookcheck.net/GTA-6-Waink-app-unlocks-new-hairstyles-and-makeup-for-Jason-and-Lucia.1458943.0.html"
+        ],
+        "main": true
+       },
+       {
+        "claim": "VGC (Jordan Middler, 18 Nov 2026): change hair at barber shops or stylists around Leonida; for Lucia, 'if you go to a beauty parlour (indicated by a lip icon when hovering over the location icon) you can change her makeup and nails'; Jason and Lucia each have signature hairstyles.",
+        "sources": [
+         "https://www.videogameschronicle.com/guide/how-to-change-hair-in-gta-6"
+        ],
+        "main": true
+       }
+      ],
+      "description": "Lucia's extra hairstyles and makeup hide in magazines across Leonida: scan them with the Waink app, then pick the style at a salon. Community guides count 15 Lucia styles, 13 for Jason, 17 tattoos and 34 watches.\nSources: Notebookcheck, VGC.",
+      "hashtags": [
+       "#GTA6",
+       "#LuciaCaminos",
+       "#GTA6Tips"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)",
+      "experiment": "E4-lucia",
+      "cover": {
+       "image": "img1",
+       "lines": [
+        "LUCIA HAS 15",
+        "HIDDEN LOOKS?",
+        "HERE'S HOW TO GET THEM"
+       ],
+       "why": "written in session",
+       "frame": {
+        "shot": "trailer_1_00084",
+        "f": 0.6,
+        "x": 0.5
+       }
+      }
+     },
+     "publish_at": "2026-11-26T12:00:00Z",
+     "batch": "gta6-launch-footage",
+     "seo": {
+      "category_id": "20",
+      "hashtags": [
+       "#GTA6",
+       "#GTAVI",
+       "#GrandTheftAuto6"
+      ],
+      "tags": [
+       "GTA 6",
+       "GTA VI",
+       "Grand Theft Auto 6",
+       "Grand Theft Auto VI",
+       "GTA 6 news",
+       "GTA 6 trailer",
+       "Rockstar Games",
+       "Vice City",
+       "Jason and Lucia",
+       "Leonida"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-ps-record",
+   "fresh": true,
+   "nonce": "gta-footage-gta6-ps-record-2026-11-26",
+   "day": "2026-11-26",
+   "topic_def": {
+    "id": "gta6-ps-record",
+    "title": "GTA 6 is PlayStation's biggest launch ever, Sony says",
+    "pillar": "gta6",
+    "notes": {
+     "object": "official GTA 6 footage",
+     "question": "GTA 6 is PlayStation's biggest launch ever, Sony says",
+     "angle": "VERIFIED 25 Nov 2026. Publishes 26 Nov 14:00 UTC. Script in gta_scripts.py. Sony PlayStation Blog 23 Nov (via GamesRadar+, Player.One, Push Square): 39M+ unique PS5 players 19-22 Nov, 683M hours, 17.4 h average, concurrent-player record on PlayStation, first game on 70% of new PS5s; no peak number; Xbox not counted. FORMAT FOR THIS VIDEO (its own look and feel): Tone: big-number record call, delighted. Shape: Sony's verdict -> players -> hours -> the years maths -> average -> the at-once record -> new PS5s -> the missing number -> pick a side.",
+     "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): a tattooed person in a cyan top in front of a graffiti-painted custom car (no casino; checked 23 Nov)\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+     "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
+     "official_images": "required",
+     "open_hook": true,
+     "words": [
+      110,
+      170
+     ],
+     "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
+     "style": "story",
+     "badge": "GTA 6",
+     "script": {
+      "viable": true,
+      "title": "GTA 6 is PlayStation's biggest launch ever, Sony says",
+      "thumb_text": "39 MILLION PLAYERS",
+      "hook_card": "SONY'S NEW RECORD",
+      "hooks": [
+       "Sony just called GTA 6 the biggest launch in PlayStation history."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:trailer_2_00188",
+       "img2": "CLIP:extended_look_07501",
+       "img3": "CLIP:extended_look_12606",
+       "img4": "CLIP:extended_look_09432",
+       "img5": "CLIP:extended_look_15698",
+       "img6": "CLIP:extended_look_11437",
+       "img7": "CLIP:extended_look_12735",
+       "img8": "CLIP:extended_look_10618",
+       "img9": "CLIP:extended_look_11192",
+       "img10": "CLIP:extended_look_02226",
+       "img11": "CLIP:extended_look_09166",
+       "img12": "CLIP:extended_look_10132"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "Sony just called GTA 6 the biggest launch in PlayStation history.",
+        "image": "img1",
+        "delivery": "excited",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "That's across three decades and five console generations.",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "5 CONSOLE GENERATIONS",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "More than thirty-nine million people played it on PS5 in its first four days.",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "39M+ PS5 PLAYERS",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "Together, they played six hundred and eighty-three million hours.",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "683M HOURS",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "That's about seventy-eight thousand years of GTA, in four days.",
+        "image": "img5",
+        "delivery": "surprised",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "~78,000 YEARS",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "The average player put in seventeen point four hours.",
+        "image": "img6",
+        "delivery": "amused",
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "17.4 HOURS EACH",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "It also set PlayStation's record for the highest number of players in one game at the same time.",
+        "image": "img7",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "That beat the old records for multiplayer and free-to-play games too.",
+        "image": "img8",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "And seventy percent of brand-new PS5s played GTA 6 first.",
+        "image": "img9",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "70% OF NEW PS5s",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "One thing Sony didn't share: the actual peak number.",
+        "image": "img10",
+        "delivery": "short pause",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b11",
+        "narration": "And remember, that's PlayStation alone. Xbox players aren't counted.",
+        "image": "img11",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b12",
+        "narration": "So where did you play it first: PS5 or Xbox? Pick a side.",
+        "image": "img12",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "Sony (PlayStation Blog, 23 Nov 2026, quoted by GamesRadar+, Anna Koselke, 24 Nov 2026): 'becoming the biggest game launch in PlayStation history, across three decades and five console generations'; 'More than 39 million unique players have experienced Jason and Lucia's story in Grand Theft Auto 6 on PlayStation 5'; 'GTA 6 set a new record for the highest number of concurrent players for any game on PlayStation, surpassing previous records across multiplayer, free-to-play, and single-player titles'; 'players cumulatively logged an incredible 683 million hours'; 'an average of 17.4 hours'; 'GTA 6 was the first game played on 70% of new PS5 consoles'.",
+        "sources": [
+         "https://www.gamesradar.com/games/grand-theft-auto/gta-6-is-the-biggest-launch-in-playstation-history-with-sony-reporting-more-than-39-million-unique-players-playing-rockstars-new-game-on-ps5/"
+        ],
+        "main": true
+       },
+       {
+        "claim": "Player.One (Theo Stering, 24 Nov 2026): Sony's figures cover November 19 to 22, 'its first four days'; 'Sony didn't publish the actual peak concurrent count or name the previous record holder'; the 39 million counts unique players on PS5 and 'doesn't include anyone playing on Xbox Series X|S'. Push Square (Liam Croft, 24 Nov 2026): from launch on 19 November through the opening weekend, over 39 million unique players; PlayStation's post: 'the biggest launch in PlayStation history'. Calculated: 683 million hours / 8,766 hours a year = about 77,900 years.",
+        "sources": [
+         "https://www.player.one/gta-6-breaks-playstation-launch-record-over-39m-ps5-players-log-683m-hours-70-new-ps5s-run-it-164608",
+         "https://www.pushsquare.com/news/2026/11/gta-6-officially-the-biggest-launch-in-playstation-history-with-over-39-million-players"
+        ],
+        "main": true
+       }
+      ],
+      "description": "Sony says GTA 6 is the biggest launch in PlayStation history: 39 million+ PS5 players in four days, 683 million hours (about 78,000 years), and a new record for players at once. Xbox isn't counted.\nSources: Sony via GamesRadar+, Player.One, Push Square.",
+      "hashtags": [
+       "#GTA6",
+       "#PS5",
+       "#PlayStation"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)",
+      "experiment": null,
+      "cover": {
+       "image": "img1",
+       "lines": [
+        "39 MILLION PLAYERS",
+        "IN FOUR DAYS?",
+        "SONY'S NEW RECORD"
+       ],
+       "why": "written in session",
+       "frame": {
+        "shot": "extended_look_10330",
+        "f": 0.2,
+        "x": 0.33
+       }
+      }
+     },
+     "publish_at": "2026-11-26T14:00:00Z",
+     "batch": "gta6-launch-footage",
+     "seo": {
+      "category_id": "20",
+      "hashtags": [
+       "#GTA6",
+       "#GTAVI",
+       "#GrandTheftAuto6"
+      ],
+      "tags": [
+       "GTA 6",
+       "GTA VI",
+       "Grand Theft Auto 6",
+       "Grand Theft Auto VI",
+       "GTA 6 news",
+       "GTA 6 trailer",
+       "Rockstar Games",
+       "Vice City",
+       "Jason and Lucia",
+       "Leonida"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-steal-cars",
+   "fresh": true,
+   "nonce": "gta-footage-gta6-steal-cars-2026-11-26",
+   "day": "2026-11-26",
+   "topic_def": {
+    "id": "gta6-steal-cars",
+    "title": "GTA 6 won't let you steal every car. Here's how",
+    "pillar": "gta6",
+    "notes": {
+     "object": "official GTA 6 footage",
+     "question": "GTA 6 won't let you steal every car. Here's how",
+     "angle": "VERIFIED 25 Nov 2026. Publishes 26 Nov 17:00 UTC. Script in gta_scripts.py. Rob Nelson (Rockstar North) to IGN/TGG via GamesRadar+ and Kotaku; PC Gamer guides: Slim Jim (Chapter 2), key cloner (Chapter 3), trunks without alarm, trackers. FORMAT FOR THIS VIDEO (its own look and feel): Tone: practical, a friend explaining the new rules. Shape: the irony -> Rockstar's own words -> tool one -> its perk -> tool two -> how -> smash option -> the old trick -> the tracker catch -> pick a side.",
+     "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): a tattooed person in a cyan top in front of a graffiti-painted custom car (no casino; checked 23 Nov)\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+     "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
+     "official_images": "required",
+     "open_hook": true,
+     "words": [
+      110,
+      170
+     ],
+     "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
+     "style": "story",
+     "badge": "GTA 6",
+     "script": {
+      "viable": true,
+      "title": "GTA 6 won't let you steal every car. Here's how",
+      "thumb_text": "2 TOOLS YOU NEED",
+      "hook_card": "CARS YOU CAN'T STEAL?",
+      "hooks": [
+       "It's called Grand Theft Auto, but some GTA 6 cars won't let you steal them. Not yet."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:extended_look_07899",
+       "img2": "CLIP:extended_look_07501",
+       "img3": "CLIP:extended_look_08740",
+       "img4": "CLIP:trailer_1_00702",
+       "img5": "CLIP:extended_look_09994",
+       "img6": "CLIP:extended_look_04835",
+       "img7": "CLIP:extended_look_11192",
+       "img8": "CLIP:extended_look_09166",
+       "img9": "CLIP:extended_look_09432",
+       "img10": "CLIP:extended_look_09766",
+       "img11": "CLIP:extended_look_03021"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "It's called Grand Theft Auto, but some GTA 6 cars won't let you steal them. Not yet.",
+        "image": "img1",
+        "delivery": "curious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "Rockstar North's Rob Nelson put it like this: \"Previously, you could just press triangle to automatically hotwire and steal any vehicle that you wanted and take off.\"",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "QUOTE: ROCKSTAR",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "Now some parked cars stay locked until you get the right tools.",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "Tool one: the Slim Jim, from Chapter 2.",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "SLIM JIM: CHAPTER 2",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "It opens locks quietly, and the trunk opens without the alarm. Some have cash inside.",
+        "image": "img5",
+        "delivery": "amused",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "But it can't start a keyless car. That needs tool two: the key cloner, from Chapter 3.",
+        "image": "img6",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "KEY CLONER: CHAPTER 3",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "Stand by the door, pick Clone Key, and find the sweet spot.",
+        "image": "img7",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "Nelson says you can smash the window and get in, \"but you can't start it without the key cloner.\"",
+        "image": "img8",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "QUOTE: ROCKSTAR",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "One old trick still works: \"You can always carjack any driver you see.\"",
+        "image": "img9",
+        "delivery": "excited",
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "QUOTE: ROCKSTAR",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "A grabbed car might still have a tracker. Advanced ones tell the cops where you are.",
+        "image": "img10",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b11",
+        "narration": "So: smash the window, or Slim Jim and sneak? Which side are you on?",
+        "image": "img11",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "GamesRadar+ (Dustin Bailey, 27 Aug 2026), quoting Rockstar North's Rob Nelson to IGN: 'Previously, you could just press triangle to automatically hotwire and steal any vehicle that you wanted and take off.' 'you start off the game and there are certain parked cars that are not accessible to you until you get a bit further along with the story and you acquire certain tools to get into them.' 'You can always carjack any driver you see.'",
+        "sources": [
+         "https://www.gamesradar.com/games/grand-theft-auto/rockstar-says-gta-6-wont-let-you-magically-hotwire-every-car-you-acquire-certain-tools-to-get-into-them/"
+        ],
+        "main": true
+       },
+       {
+        "claim": "Kotaku (Zack Zwiezen, 28 Aug 2026): Nelson told TGG: 'You can smash the window and get in, but you can't start it without the key cloner.' A carjacked car 'might still have a tracker in it'.",
+        "sources": [
+         "https://kotaku.com/for-the-first-time-in-25-years-gta-6-will-make-stealing-cars-hard-2000729419"
+        ],
+        "main": true
+       },
+       {
+        "claim": "PC Gamer (Andrea Shearon, 18 Nov 2026): 'You get the slim jim from Moses during Chapter 2'; 'Unlocking a car with a slim jim also lets you pop the trunk without setting off an alarm, and you might find some goodies in car trunks like weapons, drugs, or cash'; 'A slim jim won't start a car with keyless ignition', that needs a key cloner. 'You get the key cloner in Chapter 3'; stand next to the door, select 'Clone Key', use the stick to find the sweet spot; advanced trackers 'relay your exact location to the cops'.",
+        "sources": [
+         "https://www.pcgamer.com/games/grand-theft-auto/gta-6-slim-jim/",
+         "https://www.pcgamer.com/games/grand-theft-auto/gta-6-clone-keys/"
+        ],
+        "main": true
+       }
+      ],
+      "description": "GTA 6 locks some parked cars until you get the right tools: the Slim Jim (Chapter 2) opens them quietly, the key cloner (Chapter 3) starts keyless cars, and carjacking still works.\nSources: Rockstar's Rob Nelson via GamesRadar+ and Kotaku; PC Gamer.",
+      "hashtags": [
+       "#GTA6",
+       "#GTA6Tips",
+       "#GrandTheftAuto"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)",
+      "experiment": null,
+      "cover": {
+       "image": "img1",
+       "lines": [
+        "SOME CARS WON'T",
+        "LET YOU STEAL THEM?",
+        "THE 2 TOOLS YOU NEED"
+       ],
+       "why": "written in session",
+       "frame": {
+        "shot": "trailer_1_00604",
+        "f": 0.8,
+        "x": 0.75
+       }
+      }
+     },
+     "publish_at": "2026-11-26T17:00:00Z",
+     "batch": "gta6-launch-footage",
+     "seo": {
+      "category_id": "20",
+      "hashtags": [
+       "#GTA6",
+       "#GTAVI",
+       "#GrandTheftAuto6"
+      ],
+      "tags": [
+       "GTA 6",
+       "GTA VI",
+       "Grand Theft Auto 6",
+       "Grand Theft Auto VI",
+       "GTA 6 news",
+       "GTA 6 trailer",
+       "Rockstar Games",
+       "Vice City",
+       "Jason and Lucia",
+       "Leonida"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-mario-caps",
+   "fresh": true,
+   "nonce": "gta-footage-gta6-mario-caps-2026-11-26",
+   "day": "2026-11-26",
+   "topic_def": {
+    "id": "gta6-mario-caps",
+    "title": "GTA 6 hides Mario-style caps for Jason and Lucia",
+    "pillar": "gta6",
+    "notes": {
+     "object": "official GTA 6 footage",
+     "question": "GTA 6 hides Mario-style caps for Jason and Lucia",
+     "angle": "VERIFIED 25 Nov 2026. Publishes 26 Nov 20:00 UTC. Script in gta_scripts.py. VGTimes + KhelNow (24 Nov): past Mount Kalaga, purple tarp, smoke on the ruins, hidden block -> red J cap (Jason), green L cap (Lucia); found by xGarbett; tested by Kotaku's Zach Zwiezen. FORMAT FOR THIS VIDEO (its own look and feel): Tone: playful treasure hunt. Shape: the secret -> where -> three steps -> the finder's shortcut -> the reward -> tested -> who wears it better.",
+     "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): a tattooed person in a cyan top in front of a graffiti-painted custom car (no casino; checked 23 Nov)\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+     "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
+     "official_images": "required",
+     "open_hook": true,
+     "words": [
+      110,
+      170
+     ],
+     "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
+     "style": "story",
+     "badge": "GTA 6",
+     "script": {
+      "viable": true,
+      "title": "GTA 6 hides Mario-style caps for Jason and Lucia",
+      "thumb_text": "MARIO-STYLE CAPS",
+      "hook_card": "A MARIO SECRET?",
+      "hooks": [
+       "Players found a secret in GTA 6 that gives Jason and Lucia Mario and Luigi-style caps."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:extended_look_10081",
+       "img2": "CLIP:extended_look_06960",
+       "img3": "CLIP:extended_look_04675",
+       "img4": "CLIP:trailer_2_01113",
+       "img5": "CLIP:extended_look_10330",
+       "img6": "CLIP:extended_look_02968",
+       "img7": "CLIP:extended_look_13887",
+       "img8": "CLIP:extended_look_03869",
+       "img9": "CLIP:trailer_2_00416",
+       "img10": "CLIP:extended_look_10196"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "Players found a secret in GTA 6 that gives Jason and Lucia Mario and Luigi-style caps.",
+        "image": "img1",
+        "delivery": "excited",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "It's in the far north of Leonida, past Mount Kalaga, at some old stone ruins.",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "NORTH OF MOUNT KALAGA",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "First, find a purple tarp near the ruins and interact with it.",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "1. PURPLE TARP",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "Then climb the ruins, and stand in the smoke rising from one of the broken columns.",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "2. STAND IN THE SMOKE",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "A hidden block appears above your head.",
+        "image": "img5",
+        "delivery": "curious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "3. HIT THE BLOCK",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "The player who found it, xGarbett, couldn't break it by jumping, so they shot it instead.",
+        "image": "img6",
+        "delivery": "amused",
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "It still worked. A familiar little tune plays, and two caps pop out.",
+        "image": "img7",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "A red one with a J for Jason, and a green one with an L for Lucia.",
+        "image": "img8",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "RED J + GREEN L",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "Kotaku's Zach Zwiezen tested it, then tried the caps on at a clothing store.",
+        "image": "img9",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "So who wears it better: Jason in red, or Lucia in green? Pick a side.",
+        "image": "img10",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "VGTimes (Arkadiy Andrienko, 24 Nov 2026): in Lammox County, 'north of Leonida beyond Mount Kalaga', players 'have found a hidden Easter egg that unlocks red and green caps for Jason and Lucia'; 'players must interact with a purple tarp, climb the ruins, and stand in smoke rising from one of the columns'; a hidden block appears above the character; hitting it plays a familiar tune and releases two caps, one with a J (Jason) and one with an L (Lucia); the secret 'does not use Nintendo's names or symbols'; the discoverer, xGarbett, couldn't break the block by jumping, so they shot it instead, and that still revealed the caps; Kotaku's Zach Zwiezen also tested the find and went to a clothing store to try on the accessories.",
+        "sources": [
+         "https://vgtimes.com/gaming-news/175580-gta-6-easter-egg-lets-jason-and-lucia-wear-mario-and-luigi-style-caps.html"
+        ],
+        "main": true
+       },
+       {
+        "claim": "KhelNow (Mahaksh Chouhan, 24 Nov 2026): the Easter egg is in northern Leonida, beyond Mount Kalaga, at abandoned stone ruins; interact with the item on a purple tarp, climb to the top of the nearby ruins, stand inside the plume of smoke rising from one of the broken columns; a floating invisible block appears above the character; rewards: a red cap with the letter 'J' for Jason and a green cap with the letter 'L' for Lucia; DiscussingFilm (23 Nov): 'A Mario easter egg has been found in GTA 6.'",
+        "sources": [
+         "https://khelnow.com/gaming/gta-6-mario-luigi-easter-egg-location-202611"
+        ],
+        "main": true
+       }
+      ],
+      "description": "Players found a Mario-style secret in GTA 6: past Mount Kalaga, use the purple tarp, stand in the smoke on the ruins and hit the hidden block for a red J cap (Jason) and a green L cap (Lucia).\nSources: VGTimes, KhelNow.",
+      "hashtags": [
+       "#GTA6",
+       "#GTA6Secrets",
+       "#EasterEgg"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)",
+      "experiment": null,
+      "cover": {
+       "image": "img1",
+       "lines": [
+        "MARIO CAPS FOR",
+        "JASON AND LUCIA?",
+        "HOW TO FIND THEM"
+       ],
+       "why": "written in session",
+       "frame": {
+        "shot": "extended_look_10081",
+        "f": 0.2,
+        "x": 0.55
+       }
+      }
+     },
+     "publish_at": "2026-11-26T20:00:00Z",
+     "batch": "gta6-launch-footage",
+     "seo": {
+      "category_id": "20",
+      "hashtags": [
+       "#GTA6",
+       "#GTAVI",
+       "#GrandTheftAuto6"
+      ],
+      "tags": [
+       "GTA 6",
+       "GTA VI",
+       "Grand Theft Auto 6",
+       "Grand Theft Auto VI",
+       "GTA 6 news",
+       "GTA 6 trailer",
+       "Rockstar Games",
+       "Vice City",
+       "Jason and Lucia",
+       "Leonida"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-lose-cash",
+   "fresh": true,
+   "nonce": "gta-footage-gta6-lose-cash-2026-11-26",
+   "day": "2026-11-26",
+   "topic_def": {
+    "id": "gta6-lose-cash",
+    "title": "GTA 6 takes all your cash when you die. Keep it like this",
+    "pillar": "gta6",
+    "notes": {
+     "object": "official GTA 6 footage",
+     "question": "GTA 6 takes all your cash when you die. Keep it like this",
+     "angle": "VERIFIED 25 Nov 2026. Publishes 27 Nov 02:00 UTC. Script in gta_scripts.py. GamesFuze (19/22 Nov): lose all cash on hand at death; BuckMe (Chapter 1, ATMs only, small fee on death), Family Savings can't be lost, floorboard stash in Jason's bedroom; >$1,000 buys need BuckMe. TweakTown: Rockstar says you need money to progress the story. FORMAT FOR THIS VIDEO (its own look and feel): Tone: urgent friendly warning. Shape: the loss -> it used to be kinder -> why it matters -> three ways to keep it -> the catches -> pick a side.",
+     "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): a tattooed person in a cyan top in front of a graffiti-painted custom car (no casino; checked 23 Nov)\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+     "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
+     "official_images": "required",
+     "open_hook": true,
+     "words": [
+      110,
+      170
+     ],
+     "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
+     "style": "story",
+     "badge": "GTA 6",
+     "script": {
+      "viable": true,
+      "title": "GTA 6 takes all your cash when you die. Keep it like this",
+      "thumb_text": "KEEP YOUR CASH",
+      "hook_card": "DIE = LOSE IT ALL?",
+      "hooks": [
+       "Die in GTA 6, and every dollar in your pocket is gone."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:extended_look_03021",
+       "img2": "OFFICIAL:v_24ba6644de",
+       "img3": "CLIP:extended_look_09994",
+       "img4": "CLIP:extended_look_03894",
+       "img5": "CLIP:extended_look_10699",
+       "img6": "CLIP:extended_look_09432",
+       "img7": "CLIP:extended_look_07446",
+       "img8": "CLIP:trailer_2_00188",
+       "img9": "CLIP:trailer_2_00996",
+       "img10": "CLIP:extended_look_04835",
+       "img11": "CLIP:extended_look_10132"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "Die in GTA 6, and every dollar in your pocket is gone.",
+        "image": "img1",
+        "delivery": "serious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "In older GTA games, you only lost part of it. Not anymore.",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "And money matters more this time. Rockstar says you need enough of it to move the story forward.",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "Here's how to keep it. One: a BuckMe bank account, from an early Chapter 1 mission.",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "1. BUCKME ACCOUNT",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "You can't move cash in the app. You have to visit an ATM.",
+        "image": "img5",
+        "delivery": "amused",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "Banked money isn't totally safe: one guide says you still lose a little of it when you die.",
+        "image": "img6",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "Two: Family Savings. Money you put in there can't be withdrawn, and it can't be lost.",
+        "image": "img7",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "2. FAMILY SAVINGS",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "Three: the floorboards in Jason's bedroom. Cash stashed there survives death and arrest.",
+        "image": "img8",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "3. FLOORBOARD STASH",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "One catch: later story events can affect that stash.",
+        "image": "img9",
+        "delivery": "short pause",
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "And big buys need the bank anyway. Anything over a thousand dollars has to come from BuckMe.",
+        "image": "img10",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "OVER $1,000 = BUCKME",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b11",
+        "narration": "So: carry your cash and risk it, or bank every dollar? Which side are you on?",
+        "image": "img11",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "GamesFuze (Andrés, 19 Nov 2026, updated 22 Nov): 'In previous games in the series, you would only lose a part of your money. However, in GTA 6, you lose everything you have on hand.' Stash: at Jason's House, interact with 'the floorboards in the bedroom'; stashed money and items are kept on death or arrest; 'Later story events can affect your stash.' BuckMe unlocks by completing the 'Buck Me' mission, one of the first missions in Chapter 1; 'you cannot transfer funds between your on-hand cash and BuckMe account within the app itself. You will need to go to ATMs every time'; on death or arrest 'you'll still lose a small amount of your BuckMe money' as a small 'maintenance fee'; Family Savings: 'You can no longer withdraw or lose money from Family Savings'; 'all purchases higher than $1000 require BuckMe funds'.",
+        "sources": [
+         "https://gamesfuze.com/guides/gta-6-how-to-avoid-losing-money-when-you-die/"
+        ],
+        "main": true
+       },
+       {
+        "claim": "eGamers (George Tsagkarakis, 19 Nov 2026): 'Money in Family Savings is never lost, and meeting savings goals raises your checking limit and unlocks discounts.'",
+        "sources": [
+         "https://egamers.io/gta-6-buckme-guide-how-family-savings-checking-limits-and-perks-work/"
+        ],
+        "main": false
+       },
+       {
+        "claim": "TweakTown (Derek Strickland, 31 Aug 2026): 'Making cash isn't optional though--you'll need to make enough money to progress the story, Rockstar confirms.'",
+        "sources": [
+         "https://www.tweaktown.com/news/113368/gta-6s-illicit-criminal-economy-robberies-and-money-explained-by-rockstar/index.html"
+        ],
+        "main": true
+       }
+      ],
+      "description": "In GTA 6 you lose all the cash you carry when you die. Keep it in BuckMe (ATMs only), Family Savings (can't be lost) or the floorboard stash in Jason's bedroom.\nSources: GamesFuze, eGamers, TweakTown.",
+      "hashtags": [
+       "#GTA6",
+       "#GTA6Tips",
+       "#GTA6Money"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)",
+      "experiment": null,
+      "cover": {
+       "image": "img1",
+       "lines": [
+        "DIE AND LOSE",
+        "ALL YOUR CASH?",
+        "3 WAYS TO KEEP IT"
+       ],
+       "why": "written in session",
+       "frame": {
+        "shot": "launch_trailer_00670",
+        "f": 0.5,
+        "x": 0.6
+       }
+      }
+     },
+     "publish_at": "2026-11-27T02:00:00Z",
      "batch": "gta6-launch-footage",
      "seo": {
       "category_id": "20",

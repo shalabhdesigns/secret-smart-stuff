@@ -1466,7 +1466,7 @@ S["gta6-lucia-liberty"] = dict(
     thumb_text="LUCIA'S REAL HOME",
     hook_card="NOT FROM VICE CITY?",
     cover_lines=["LUCIA ISN'T FROM", "VICE CITY?", "HERE'S WHERE"],
-    cover_frame={"shot": "extended_look_10196", "f": 0.3, "x": 0.45},   # Lucia close-up, purple wall (25 Nov: 08816 cover was too dark)
+    cover_frame={"shot": "extended_look_10196", "f": 0.5, "x": 0.45},   # Lucia close-up, purple wall (25 Nov: 08816 cover was too dark; f 0.3 = profile)
     experiment="E4-lucia",
     beats=[
         ("Lucia is the star of GTA 6, but she isn't from Vice City.", "CLIP:extended_look_10196", None, "curious"),
@@ -1713,6 +1713,273 @@ S["gta6-fortnite-drop"] = dict(
                 "about 28% and Call of Duty 42%. Sensor Tower predicted the dip before launch. None of it is "
                 "official.\nSources: LevelUp (Alinea Analytics), GTA BOOM (Sensor Tower).",
     hashtags=["#GTA6", "#Fortnite", "#GTA6News"],
+)
+
+# ---- 26 Nov 2026 batch (written 25 Nov by the daily run; slots 12:00 / 14:00 / 17:00 / 20:00 / 02:00 UTC) ----
+
+S["gta6-lucia-looks"] = dict(
+    title="GTA 6: Lucia's hidden looks are in magazines. Here's how",
+    thumb_text="LUCIA'S HIDDEN LOOKS",
+    hook_card="15 HIDDEN LOOKS",
+    cover_lines=["LUCIA HAS 15", "HIDDEN LOOKS?", "HERE'S HOW TO GET THEM"],
+    cover_frame={"shot": "trailer_1_00084", "f": 0.6, "x": 0.5},   # Lucia in prison orange, face clear (25 Nov preview)
+    experiment="E4-lucia",
+    beats=[
+        ("Lucia has fifteen hidden looks in GTA 6, and they're tucked away inside magazines.",
+         "CLIP:extended_look_10132", None, "curious"),
+        ("Players found magazines hidden all over Leonida.", "CLIP:extended_look_04786", None, None),
+        ("Get close to one, and your Waink app pops up. Scan it, and the style unlocks.",
+         "CLIP:extended_look_03894", "SCAN IT WITH WAINK", None),
+        ("Then you'll find it at the salon or the tattoo parlor.", "CLIP:extended_look_04115", None, None),
+        ("Community guides count fifteen magazine styles just for Lucia, with hair and makeup.",
+         "CLIP:extended_look_07899", "LUCIA: 15 STYLES", None),
+        ("Jason gets thirteen.", "CLIP:trailer_2_00188", "JASON: 13 STYLES", "amused"),
+        ("There are also seventeen tattoos and thirty-four luxury watches to collect.",
+         "CLIP:extended_look_12606", "17 TATTOOS, 34 WATCHES", None),
+        ("That's seventy-nine unlockables in total, by the guides' count.", "CLIP:extended_look_07446",
+         "79 UNLOCKABLES", "surprised"),
+        ("And Rockstar didn't publish any instructions for this. Players worked it out themselves.",
+         "CLIP:extended_look_02968", None, None),
+        ("Want new makeup and nails? Look for the lip icon. That's a beauty parlour.",
+         "CLIP:trailer_1_00728", "LIP ICON = MAKEUP", None),
+        ("So: Lucia's trailer look, or a brand new style? Which side are you on?",
+         "CLIP:extended_look_10196", None, None),
+    ],
+    facts=[
+        {"claim": "Notebookcheck (Karan Sharma, 24 Nov 2026): players 'have discovered that scanning hidden magazines "
+                  "across Leonida can unlock exclusive hairstyles for Jason and hairstyles and makeup options for "
+                  "Lucia'; magazines are scanned with the Waink app, whose pop-up shows up when the player is close to "
+                  "one; after scanning, the style 'will become accessible through the salon or tattoo parlor'. "
+                  "'According to community guides, there are 79 different cosmetic unlockable items, which include 13 "
+                  "Jason magazine styles, 15 Lucia magazine styles, 17 magazine tattoos, and 34 luxury watches.' "
+                  "Rockstar 'did not publish official instructions explaining how the Waink magazine unlocks would "
+                  "work'.",
+         "sources": ["https://www.notebookcheck.net/GTA-6-Waink-app-unlocks-new-hairstyles-and-makeup-for-Jason-and-Lucia.1458943.0.html"],
+         "main": True},
+        {"claim": "VGC (Jordan Middler, 18 Nov 2026): change hair at barber shops or stylists around Leonida; for "
+                  "Lucia, 'if you go to a beauty parlour (indicated by a lip icon when hovering over the location "
+                  "icon) you can change her makeup and nails'; Jason and Lucia each have signature hairstyles.",
+         "sources": ["https://www.videogameschronicle.com/guide/how-to-change-hair-in-gta-6"], "main": True},
+    ],
+    description="Lucia's extra hairstyles and makeup hide in magazines across Leonida: scan them with the Waink app, "
+                "then pick the style at a salon. Community guides count 15 Lucia styles, 13 for Jason, 17 tattoos "
+                "and 34 watches.\nSources: Notebookcheck, VGC.",
+    hashtags=["#GTA6", "#LuciaCaminos", "#GTA6Tips"],
+)
+
+S["gta6-ps-record"] = dict(
+    title="GTA 6 is PlayStation's biggest launch ever, Sony says",
+    thumb_text="39 MILLION PLAYERS",
+    hook_card="SONY'S NEW RECORD",
+    cover_lines=["39 MILLION PLAYERS", "IN FOUR DAYS?", "SONY'S NEW RECORD"],
+    cover_frame={"shot": "extended_look_10330", "f": 0.2, "x": 0.33},   # Jason in a cap with a basketball (25 Nov preview)
+    beats=[
+        ("Sony just called GTA 6 the biggest launch in PlayStation history.", "CLIP:trailer_2_00188", None,
+         "excited"),
+        ("That's across three decades and five console generations.", "CLIP:extended_look_07501",
+         "5 CONSOLE GENERATIONS", None),
+        ("More than thirty-nine million people played it on PS5 in its first four days.",
+         "CLIP:extended_look_12606", "39M+ PS5 PLAYERS", None),
+        ("Together, they played six hundred and eighty-three million hours.", "CLIP:extended_look_09432",
+         "683M HOURS", None),
+        ("That's about seventy-eight thousand years of GTA, in four days.", "CLIP:extended_look_15698",
+         "~78,000 YEARS", "surprised"),
+        ("The average player put in seventeen point four hours.", "CLIP:extended_look_11437", "17.4 HOURS EACH",
+         "amused"),
+        ("It also set PlayStation's record for the highest number of players in one game at the same time.",
+         "CLIP:extended_look_12735", None, None),
+        ("That beat the old records for multiplayer and free-to-play games too.", "CLIP:extended_look_10618",
+         None, None),
+        ("And seventy percent of brand-new PS5s played GTA 6 first.", "CLIP:extended_look_11192",
+         "70% OF NEW PS5s", None),
+        ("One thing Sony didn't share: the actual peak number.", "CLIP:extended_look_02226", None, "short pause"),
+        ("And remember, that's PlayStation alone. Xbox players aren't counted.", "CLIP:extended_look_09166",
+         None, None),
+        ("So where did you play it first: PS5 or Xbox? Pick a side.", "CLIP:extended_look_10132", None, None),
+    ],
+    facts=[
+        {"claim": "Sony (PlayStation Blog, 23 Nov 2026, quoted by GamesRadar+, Anna Koselke, 24 Nov 2026): 'becoming "
+                  "the biggest game launch in PlayStation history, across three decades and five console "
+                  "generations'; 'More than 39 million unique players have experienced Jason and Lucia's story in "
+                  "Grand Theft Auto 6 on PlayStation 5'; 'GTA 6 set a new record for the highest number of concurrent "
+                  "players for any game on PlayStation, surpassing previous records across multiplayer, free-to-play, "
+                  "and single-player titles'; 'players cumulatively logged an incredible 683 million hours'; 'an "
+                  "average of 17.4 hours'; 'GTA 6 was the first game played on 70% of new PS5 consoles'.",
+         "sources": ["https://www.gamesradar.com/games/grand-theft-auto/gta-6-is-the-biggest-launch-in-playstation-history-with-sony-reporting-more-than-39-million-unique-players-playing-rockstars-new-game-on-ps5/"],
+         "main": True},
+        {"claim": "Player.One (Theo Stering, 24 Nov 2026): Sony's figures cover November 19 to 22, 'its first four "
+                  "days'; 'Sony didn't publish the actual peak concurrent count or name the previous record holder'; "
+                  "the 39 million counts unique players on PS5 and 'doesn't include anyone playing on Xbox Series "
+                  "X|S'. Push Square (Liam Croft, 24 Nov 2026): from launch on 19 November through the opening "
+                  "weekend, over 39 million unique players; PlayStation's post: 'the biggest launch in PlayStation "
+                  "history'. Calculated: 683 million hours / 8,766 hours a year = about 77,900 years.",
+         "sources": ["https://www.player.one/gta-6-breaks-playstation-launch-record-over-39m-ps5-players-log-683m-hours-70-new-ps5s-run-it-164608",
+                     "https://www.pushsquare.com/news/2026/11/gta-6-officially-the-biggest-launch-in-playstation-history-with-over-39-million-players"],
+         "main": True},
+    ],
+    description="Sony says GTA 6 is the biggest launch in PlayStation history: 39 million+ PS5 players in four days, "
+                "683 million hours (about 78,000 years), and a new record for players at once. Xbox isn't counted."
+                "\nSources: Sony via GamesRadar+, Player.One, Push Square.",
+    hashtags=["#GTA6", "#PS5", "#PlayStation"],
+)
+
+S["gta6-steal-cars"] = dict(
+    title="GTA 6 won't let you steal every car. Here's how",
+    thumb_text="2 TOOLS YOU NEED",
+    hook_card="CARS YOU CAN'T STEAL?",
+    cover_lines=["SOME CARS WON'T", "LET YOU STEAL THEM?", "THE 2 TOOLS YOU NEED"],
+    cover_frame={"shot": "trailer_1_00604", "f": 0.8, "x": 0.75},   # Jason close-up at the wheel (25 Nov preview)
+    beats=[
+        ("It's called Grand Theft Auto, but some GTA 6 cars won't let you steal them. Not yet.",
+         "CLIP:extended_look_07899", None, "curious"),
+        ("Rockstar North's Rob Nelson put it like this: \"Previously, you could just press triangle to automatically hotwire and "
+         "steal any vehicle that you wanted and take off.\"", "CLIP:extended_look_07501", "QUOTE: ROCKSTAR", None),
+        ("Now some parked cars stay locked until you get the right tools.", "CLIP:extended_look_08740", None, None),
+        ("Tool one: the Slim Jim, from Chapter 2.", "CLIP:trailer_1_00702", "SLIM JIM: CHAPTER 2", None),
+        ("It opens locks quietly, and the trunk opens without the alarm. Some have cash inside.",
+         "CLIP:extended_look_09994", None, "amused"),
+        ("But it can't start a keyless car. That needs tool two: the key cloner, from Chapter 3.",
+         "CLIP:extended_look_04835", "KEY CLONER: CHAPTER 3", None),
+        ("Stand by the door, pick Clone Key, and find the sweet spot.", "CLIP:extended_look_11192", None, None),
+        ("Nelson says you can smash the window and get in, \"but you can't start it without the key cloner.\"",
+         "CLIP:extended_look_09166", "QUOTE: ROCKSTAR", None),
+        ("One old trick still works: \"You can always carjack any driver you see.\"", "CLIP:extended_look_09432",
+         "QUOTE: ROCKSTAR", "excited"),
+        ("A grabbed car might still have a tracker. Advanced ones tell the cops where you are.",
+         "CLIP:extended_look_09766", None, None),
+        ("So: smash the window, or Slim Jim and sneak? Which side are you on?", "CLIP:extended_look_03021",
+         None, None),
+    ],
+    facts=[
+        {"claim": "GamesRadar+ (Dustin Bailey, 27 Aug 2026), quoting Rockstar North's Rob Nelson to IGN: 'Previously, "
+                  "you could just press triangle to automatically hotwire and steal any vehicle that you wanted and "
+                  "take off.' 'you start off the game and there are certain parked cars that are not accessible to you "
+                  "until you get a bit further along with the story and you acquire certain tools to get into them.' "
+                  "'You can always carjack any driver you see.'",
+         "sources": ["https://www.gamesradar.com/games/grand-theft-auto/rockstar-says-gta-6-wont-let-you-magically-hotwire-every-car-you-acquire-certain-tools-to-get-into-them/"],
+         "main": True},
+        {"claim": "Kotaku (Zack Zwiezen, 28 Aug 2026): Nelson told TGG: 'You can smash the window and get in, but you "
+                  "can't start it without the key cloner.' A carjacked car 'might still have a tracker in it'.",
+         "sources": ["https://kotaku.com/for-the-first-time-in-25-years-gta-6-will-make-stealing-cars-hard-2000729419"],
+         "main": True},
+        {"claim": "PC Gamer (Andrea Shearon, 18 Nov 2026): 'You get the slim jim from Moses during Chapter 2'; "
+                  "'Unlocking a car with a slim jim also lets you pop the trunk without setting off an alarm, and you "
+                  "might find some goodies in car trunks like weapons, drugs, or cash'; 'A slim jim won't start a car "
+                  "with keyless ignition', that needs a key cloner. 'You get the key cloner in Chapter 3'; stand next "
+                  "to the door, select 'Clone Key', use the stick to find the sweet spot; advanced trackers 'relay your "
+                  "exact location to the cops'.",
+         "sources": ["https://www.pcgamer.com/games/grand-theft-auto/gta-6-slim-jim/",
+                     "https://www.pcgamer.com/games/grand-theft-auto/gta-6-clone-keys/"], "main": True},
+    ],
+    description="GTA 6 locks some parked cars until you get the right tools: the Slim Jim (Chapter 2) opens them "
+                "quietly, the key cloner (Chapter 3) starts keyless cars, and carjacking still works.\nSources: "
+                "Rockstar's Rob Nelson via GamesRadar+ and Kotaku; PC Gamer.",
+    hashtags=["#GTA6", "#GTA6Tips", "#GrandTheftAuto"],
+)
+
+S["gta6-mario-caps"] = dict(
+    title="GTA 6 hides Mario-style caps for Jason and Lucia",
+    thumb_text="MARIO-STYLE CAPS",
+    hook_card="A MARIO SECRET?",
+    cover_lines=["MARIO CAPS FOR", "JASON AND LUCIA?", "HOW TO FIND THEM"],
+    cover_frame={"shot": "extended_look_10081", "f": 0.2, "x": 0.55},   # Jason in a cap by the van, face clear at f 0.2 (25 Nov preview)
+    beats=[
+        ("Players found a secret in GTA 6 that gives Jason and Lucia Mario and Luigi-style caps.",
+         "CLIP:extended_look_10081", None, "excited"),
+        ("It's in the far north of Leonida, past Mount Kalaga, at some old stone ruins.", "CLIP:extended_look_06960",
+         "NORTH OF MOUNT KALAGA", None),
+        ("First, find a purple tarp near the ruins and interact with it.", "CLIP:extended_look_04675",
+         "1. PURPLE TARP", None),
+        ("Then climb the ruins, and stand in the smoke rising from one of the broken columns.",
+         "CLIP:trailer_2_01113", "2. STAND IN THE SMOKE", None),
+        ("A hidden block appears above your head.", "CLIP:extended_look_10330", "3. HIT THE BLOCK", "curious"),
+        ("The player who found it, xGarbett, couldn't break it by jumping, so they shot it instead.",
+         "CLIP:extended_look_02968", None, "amused"),
+        ("It still worked. A familiar little tune plays, and two caps pop out.", "CLIP:extended_look_13887",
+         None, None),
+        ("A red one with a J for Jason, and a green one with an L for Lucia.", "CLIP:extended_look_03869",
+         "RED J + GREEN L", None),
+        ("Kotaku's Zach Zwiezen tested it, then tried the caps on at a clothing store.", "CLIP:trailer_2_00416",
+         None, None),
+        ("So who wears it better: Jason in red, or Lucia in green? Pick a side.", "CLIP:extended_look_10196",
+         None, None),
+    ],
+    facts=[
+        {"claim": "VGTimes (Arkadiy Andrienko, 24 Nov 2026): in Lammox County, 'north of Leonida beyond Mount Kalaga', "
+                  "players 'have found a hidden Easter egg that unlocks red and green caps for Jason and Lucia'; "
+                  "'players must interact with a purple tarp, climb the ruins, and stand in smoke rising from one of "
+                  "the columns'; a hidden block appears above the character; hitting it plays a familiar tune and "
+                  "releases two caps, one with a J (Jason) and one with an L (Lucia); the secret 'does not use "
+                  "Nintendo's names or symbols'; the discoverer, xGarbett, couldn't break the block by jumping, so "
+                  "they shot it instead, and that still revealed the caps; Kotaku's Zach Zwiezen also tested the find "
+                  "and went to a clothing store to try on the accessories.",
+         "sources": ["https://vgtimes.com/gaming-news/175580-gta-6-easter-egg-lets-jason-and-lucia-wear-mario-and-luigi-style-caps.html"],
+         "main": True},
+        {"claim": "KhelNow (Mahaksh Chouhan, 24 Nov 2026): the Easter egg is in northern Leonida, beyond Mount Kalaga, "
+                  "at abandoned stone ruins; interact with the item on a purple tarp, climb to the top of the nearby "
+                  "ruins, stand inside the plume of smoke rising from one of the broken columns; a floating invisible "
+                  "block appears above the character; rewards: a red cap with the letter 'J' for Jason and a green cap "
+                  "with the letter 'L' for Lucia; DiscussingFilm (23 Nov): 'A Mario easter egg has been found in GTA "
+                  "6.'",
+         "sources": ["https://khelnow.com/gaming/gta-6-mario-luigi-easter-egg-location-202611"], "main": True},
+    ],
+    description="Players found a Mario-style secret in GTA 6: past Mount Kalaga, use the purple tarp, stand in the "
+                "smoke on the ruins and hit the hidden block for a red J cap (Jason) and a green L cap (Lucia).\n"
+                "Sources: VGTimes, KhelNow.",
+    hashtags=["#GTA6", "#GTA6Secrets", "#EasterEgg"],
+)
+
+S["gta6-lose-cash"] = dict(
+    title="GTA 6 takes all your cash when you die. Keep it like this",
+    thumb_text="KEEP YOUR CASH",
+    hook_card="DIE = LOSE IT ALL?",
+    cover_lines=["DIE AND LOSE", "ALL YOUR CASH?", "3 WAYS TO KEEP IT"],
+    cover_frame={"shot": "launch_trailer_00670", "f": 0.5, "x": 0.6},   # Jason + Lucia embracing on a balcony at sunset (25 Nov preview)
+    beats=[
+        ("Die in GTA 6, and every dollar in your pocket is gone.", "CLIP:extended_look_03021", None, "serious"),
+        ("In older GTA games, you only lost part of it. Not anymore.", "OFFICIAL:v_24ba6644de", None, None),
+        ("And money matters more this time. Rockstar says you need enough of it to move the story forward.",
+         "CLIP:extended_look_09994", None, None),
+        ("Here's how to keep it. One: a BuckMe bank account, from an early Chapter 1 mission.",
+         "CLIP:extended_look_03894", "1. BUCKME ACCOUNT", None),
+        ("You can't move cash in the app. You have to visit an ATM.", "CLIP:extended_look_10699",
+         None, "amused"),
+        ("Banked money isn't totally safe: one guide says you still lose a little of it when you die.",
+         "CLIP:extended_look_09432", None, None),
+        ("Two: Family Savings. Money you put in there can't be withdrawn, and it can't be lost.",
+         "CLIP:extended_look_07446", "2. FAMILY SAVINGS", None),
+        ("Three: the floorboards in Jason's bedroom. Cash stashed there survives death and arrest.",
+         "CLIP:trailer_2_00188", "3. FLOORBOARD STASH", None),
+        ("One catch: later story events can affect that stash.", "CLIP:trailer_2_00996", None, "short pause"),
+        ("And big buys need the bank anyway. Anything over a thousand dollars has to come from BuckMe.",
+         "CLIP:extended_look_04835", "OVER $1,000 = BUCKME", None),
+        ("So: carry your cash and risk it, or bank every dollar? Which side are you on?",
+         "CLIP:extended_look_10132", None, None),
+    ],
+    facts=[
+        {"claim": "GamesFuze (Andrés, 19 Nov 2026, updated 22 Nov): 'In previous games in the series, you would only "
+                  "lose a part of your money. However, in GTA 6, you lose everything you have on hand.' Stash: at "
+                  "Jason's House, interact with 'the floorboards in the bedroom'; stashed money and items are kept on "
+                  "death or arrest; 'Later story events can affect your stash.' BuckMe unlocks by completing the 'Buck "
+                  "Me' mission, one of the first missions in Chapter 1; 'you cannot transfer funds between your on-hand "
+                  "cash and BuckMe account within the app itself. You will need to go to ATMs every time'; on death or "
+                  "arrest 'you'll still lose a small amount of your BuckMe money' as a small 'maintenance fee'; Family "
+                  "Savings: 'You can no longer withdraw or lose money from Family Savings'; 'all purchases higher than "
+                  "$1000 require BuckMe funds'.",
+         "sources": ["https://gamesfuze.com/guides/gta-6-how-to-avoid-losing-money-when-you-die/"], "main": True},
+        {"claim": "eGamers (George Tsagkarakis, 19 Nov 2026): 'Money in Family Savings is never lost, and meeting "
+                  "savings goals raises your checking limit and unlocks discounts.'",
+         "sources": ["https://egamers.io/gta-6-buckme-guide-how-family-savings-checking-limits-and-perks-work/"],
+         "main": False},
+        {"claim": "TweakTown (Derek Strickland, 31 Aug 2026): 'Making cash isn't optional though--you'll need to make "
+                  "enough money to progress the story, Rockstar confirms.'",
+         "sources": ["https://www.tweaktown.com/news/113368/gta-6s-illicit-criminal-economy-robberies-and-money-explained-by-rockstar/index.html"],
+         "main": True},
+    ],
+    description="In GTA 6 you lose all the cash you carry when you die. Keep it in BuckMe (ATMs only), Family "
+                "Savings (can't be lost) or the floorboard stash in Jason's bedroom.\nSources: GamesFuze, eGamers, "
+                "TweakTown.",
+    hashtags=["#GTA6", "#GTA6Tips", "#GTA6Money"],
 )
 
 S["gta6-trailer-songs"] = dict(

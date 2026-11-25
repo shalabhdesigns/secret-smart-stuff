@@ -11,7 +11,7 @@
    "shot": "trailer_1_00084",
    "f": 0.6,
    "x": 0.5,
-   "shows": "Lucia orange prison jumpsuit"
+   "shows": "Lucia orange prison jumpsuit, face clear at f 0.5-0.8 (checked 25 Nov; f 0.2 = another woman)"
   },
   {
    "shot": "trailer_2_00631",
@@ -35,7 +35,7 @@
    "shot": "extended_look_10196",
    "f": 0.5,
    "x": 0.5,
-   "shows": "Lucia close-up"
+   "shows": "Lucia close-up, grey hoodie, purple-tiled wall, bright; f 0.5 faces camera, f 0.3 is a profile (checked 25 Nov). 25 Nov: extended_look_08816 removed (cover too dark)"
   },
   {
    "shot": "extended_look_03869",
@@ -112,8 +112,8 @@
   {
    "shot": "extended_look_10081",
    "f": 0.2,
-   "x": 0.42,
-   "shows": "Jason in a cap by a van in a sunny alley, Lucia beside him (checked 23 Nov) | 24 Nov: at f 0.2 the cover showed Lucia from behind (no face): use f 0.5+ only after a preview"
+   "x": 0.55,
+   "shows": "Jason in a cap by a van in a sunny alley, Lucia beside him; x 0.55 = Jason face at f 0.2 (checked 25 Nov); f 0.8 = his back"
   },
   {
    "shot": "trailer_2_00976",
@@ -165,9 +165,21 @@
   },
   {
    "shot": "extended_look_10196",
-   "f": 0.3,
+   "f": 0.5,
    "x": 0.45,
-   "shows": "Lucia close-up, grey hoodie, purple-tiled wall, bright (checked 25 Nov). 25 Nov: extended_look_08816 removed (cover too dark)"
+   "shows": "Lucia close-up, grey hoodie, purple-tiled wall, bright; f 0.5 faces camera, f 0.3 is a profile (checked 25 Nov). 25 Nov: extended_look_08816 removed (cover too dark)"
+  },
+  {
+   "shot": "trailer_1_00604",
+   "f": 0.8,
+   "x": 0.75,
+   "shows": "Jason close-up at the wheel of a car, billboard behind (checked 25 Nov; f 0.2 = his hands only)"
+  },
+  {
+   "shot": "launch_trailer_00670",
+   "f": 0.5,
+   "x": 0.6,
+   "shows": "Jason and Lucia embracing on a balcony at sunset, Jason face clear, Lucia in profile (checked 25 Nov)"
   }
  ],
  "robbery/masks": [
