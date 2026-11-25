@@ -1,9 +1,17 @@
 {
- "collected_at": "2026-11-24T10:03:08Z",
+ "collected_at": "2026-11-25T08:47:34Z",
  "errors": [
   "@simplethingshistories: ERROR: [youtube:tab] @simplethingshistories: This channel does not have a shorts tab"
  ],
  "all_titles": [
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Refrigerators Use Magnetic Door Seals?"
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Shipping Containers Have Corner Locks?"
+  },
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Steel Rebar Has Bumps for a Reason?"
@@ -1197,12 +1205,8 @@
    "title": "Did You Know Humans Once Feared Their Own Shadows?"
   },
   {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know the 5-second Rule Isn't Real?"
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Early Cars Didn’t Have Seat Belts?"
+   "channel": "@nameexplain",
+   "title": "Where Did The Term Gen X Come From?"
   },
   {
    "channel": "@nameexplain",
@@ -1671,28 +1675,28 @@
    "title": "How Did Austria Get Its Name? #Shorts",
    "views": 290000,
    "url": "https://www.youtube.com/shorts/FL3QhU8Qnk0",
-   "multiple": 35.8
+   "multiple": 36.0
   },
   {
    "channel": "@nameexplain",
    "title": "How Did Albania Get Its Name? #Short",
    "views": 148000,
    "url": "https://www.youtube.com/shorts/ZBhLog20r7A",
-   "multiple": 18.3
+   "multiple": 18.4
   },
   {
    "channel": "@nameexplain",
    "title": "How Did Finland Get Its Name?",
    "views": 139000,
    "url": "https://www.youtube.com/shorts/9TfBENxGKM0",
-   "multiple": 17.2
+   "multiple": 17.3
   },
   {
    "channel": "@nameexplain",
    "title": "Why Slovakia & Slovenia Have Similar Names",
    "views": 117000,
    "url": "https://www.youtube.com/shorts/HVPXShUrUIc",
-   "multiple": 14.4
+   "multiple": 14.5
   },
   {
    "channel": "@historyofsimplethings",
@@ -1714,13 +1718,6 @@
    "views": 45000,
    "url": "https://www.youtube.com/shorts/MSekKfY92kw",
    "multiple": 5.6
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Early Cars Didn’t Have Seat Belts?",
-   "views": 15000,
-   "url": "https://www.youtube.com/shorts/9MplJWQxBas",
-   "multiple": 5.0
   },
   {
    "channel": "@nameexplain",
@@ -1755,7 +1752,7 @@
    "title": "How Did Cape Verde Get Its Name? #Shorts",
    "views": 31000,
    "url": "https://www.youtube.com/shorts/Eqx4CR_S8SQ",
-   "multiple": 3.8
+   "multiple": 3.9
   },
   {
    "channel": "@historyofsimplethings",
@@ -1797,7 +1794,7 @@
    "title": "Grapes & Grapefruit!?",
    "views": 27000,
    "url": "https://www.youtube.com/shorts/2zV94ObpQgc",
-   "multiple": 3.3
+   "multiple": 3.4
   },
   {
    "channel": "@historyofsimplethings",
@@ -2028,13 +2025,6 @@
    "title": "Did You Know Restaurants Were Created for Quick Meals?",
    "views": 6700,
    "url": "https://www.youtube.com/shorts/vumImdgkQ_w",
-   "multiple": 2.2
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know the 5-second Rule Isn't Real?",
-   "views": 6500,
-   "url": "https://www.youtube.com/shorts/ZMfVhhauP2I",
    "multiple": 2.2
   },
   {
