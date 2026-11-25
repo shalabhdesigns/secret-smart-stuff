@@ -1466,10 +1466,10 @@ S["gta6-lucia-liberty"] = dict(
     thumb_text="LUCIA'S REAL HOME",
     hook_card="NOT FROM VICE CITY?",
     cover_lines=["LUCIA ISN'T FROM", "VICE CITY?", "HERE'S WHERE"],
-    cover_frame={"shot": "extended_look_08816", "f": 0.5, "x": 0.6},   # Lucia at the wheel, face clear (24 Nov check)
+    cover_frame={"shot": "extended_look_10196", "f": 0.3, "x": 0.45},   # Lucia close-up, purple wall (25 Nov: 08816 cover was too dark)
     experiment="E4-lucia",
     beats=[
-        ("Lucia is the star of GTA 6, but she isn't from Vice City.", "CLIP:extended_look_09026", None, "curious"),
+        ("Lucia is the star of GTA 6, but she isn't from Vice City.", "CLIP:extended_look_10196", None, "curious"),
         ("She moved there from Liberty City. That's GTA's own version of New York.", "CLIP:extended_look_15698",
          "FROM LIBERTY CITY", None),
         ("Rockstar's bio says: \"Lucia's father taught her to fight as soon as she could walk.\"",
@@ -1482,7 +1482,7 @@ S["gta6-lucia-liberty"] = dict(
         ("So what is she after? Rockstar says: \"Lucia wants the good life her mom has dreamed of since their days "
          "in Liberty City.\"", "CLIP:extended_look_07446", "QUOTE: ROCKSTAR GAMES", None),
         ("And instead of just dreaming about it, Lucia is ready to take matters into her own hands.",
-         "CLIP:extended_look_10196", None, None),
+         "CLIP:extended_look_03021", None, None),
         ("So is Lucia doing this for her family, or for herself? Which side are you on?",
          "CLIP:trailer_1_00728", None, None),
     ],

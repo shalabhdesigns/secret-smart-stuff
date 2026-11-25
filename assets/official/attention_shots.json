@@ -128,12 +128,6 @@
    "shows": "Jason shirtless in cap + sunglasses at his stilt house (checked 24 Nov; later a porch view)"
   },
   {
-   "shot": "extended_look_08816",
-   "f": 0.5,
-   "x": 0.6,
-   "shows": "Lucia at the wheel, dim car (checked 24 Nov; f 0.2/0.8 show a man in glasses)"
-  },
-  {
    "shot": "extended_look_11609",
    "f": 0.5,
    "x": 0.8,
@@ -168,6 +162,12 @@
    "f": 0.2,
    "x": 0.33,
    "shows": "Jason in a cap and tank top with a basketball under his stilt house (checked 24 Nov)"
+  },
+  {
+   "shot": "extended_look_10196",
+   "f": 0.3,
+   "x": 0.45,
+   "shows": "Lucia close-up, grey hoodie, purple-tiled wall, bright (checked 25 Nov). 25 Nov: extended_look_08816 removed (cover too dark)"
   }
  ],
  "robbery/masks": [
