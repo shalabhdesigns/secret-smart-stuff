@@ -143,3 +143,34 @@ Results of each scheduled run while the owner is away (newest last). Simple word
   - 01:30 GTA 6 sold 44.9 million in four days, analyst says (big number vs Spider-Man + The Odyssey)
   - 07:30 (26 Nov) GTA 6 pulled players away from Fortnite, analyst says (rivalry; pick a side)
   - All 5: a new face cover each (none used this week), a side-taking last line, 110-170 words.
+
+## 25 Nov 2026 (daily run, 12:41 IST)
+- **Today's videos: all 5 checked by me and scheduled** (the final check still can't run: Anthropic API key 401).
+  - IST: 17:30 Lucia isn't from Vice City · 19:30 money glitch survived the update · 22:30 Jason's landlord ·
+    01:30 44.9M sold in four days · 07:30 (26 Nov) Fortnite players leaving for GTA.
+  - Fixed 1: Lucia from Liberty City (our E4 test). Its opening shot ran on into a stranger for 2.5 s and the cover
+    was too dark to see Lucia. Remade with a bright Lucia close-up (+$0.06), new cover, looked at both, approved.
+  - Other 4 covers and videos: fine (real logo, 3 lines, clear Jason/Lucia face; audio level OK, no gaps).
+  - One small slip: the new Lucia cover picture was also a cover on 21 Nov (4 days ago). Kept it: it was the only
+    bright Lucia face, and the dark one would have hurt the E4 test more.
+- **Cost:** last 24 h $0.38 (voice only; $0.06-0.07 a video). Waste $0.06 (the Lucia remake). November $124.3 of
+  $155 (measured). Nothing safe left to cut: voice is the product; wrong shot facts (the cause of remakes) were fixed.
+- **Experiments:** E4 (Lucia in title + Lucia face cover) EXTENDED: first test video goes out today, no numbers yet.
+  No new experiment (see F23: E5 "4 uploads a day" waits for tomorrow's YouTube numbers).
+- **Learnings (with numbers):**
+  - F21: every 24 Nov video beat the day before on Instagram (1,578-1,838 vs median 1,456). Lucia's actress ended at
+    2,259 IG / 1,856 YouTube: best ever.
+  - F22: "where to find it / how to do it" videos get saved (11-48 saves vs 0-6). R5 tightened: how-tos with
+    numbered steps.
+  - F23: YouTube is uneven (4-36 % of IG views for 23 Nov non-12:00 videos). Watching; E5 if it stays low.
+  - F24: wrong shot descriptions caused today's remake. 15 shots previewed and corrected; 4 new checked face covers.
+  - R3 (face covers) and R6 (one secret per video) hold.
+- **Tomorrow (26 Nov), IST:**
+  - 17:30 GTA 6: Lucia's hidden looks are in magazines. Here's how (E4 test; how-to)
+  - 19:30 GTA 6 is PlayStation's biggest launch ever, Sony says (official big number)
+  - 22:30 GTA 6 won't let you steal every car. Here's how (how-to; Rockstar quotes)
+  - 01:30 GTA 6 hides Mario-style caps for Jason and Lucia (one secret, 3 steps)
+  - 07:30 (27 Nov) GTA 6 takes all your cash when you die. Keep it like this (how-to)
+  - Dropped after research: a "fight the Devil" secret mission (only one source) and Jason's actor (done 23 Nov).
+- **Still needs the owner (no action taken, not messaged):** the Anthropic API key (GitHub secret
+  `ANTHROPIC_API_KEY`) has been invalid since 24 Nov. Videos still go out through my daily check and the safety net.
