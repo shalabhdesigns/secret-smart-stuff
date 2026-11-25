@@ -1,6 +1,6 @@
 # Secret Smart Stuff — learnings (auto-updated)
 
-Updated 2026-11-24 22:46 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
+Updated 2026-11-25 09:06 UTC. Built from every published video's 48 h and 7 day analysis, the weekly report and owner feedback. With fewer than 10 videos, lessons are hypotheses.
 
 ## Rules the writer follows now
 - Cut filler and dead-spot lines around 15-22s (jokes, caveats, bridge lines that repeat the hook). (pattern, n=2 videos)
