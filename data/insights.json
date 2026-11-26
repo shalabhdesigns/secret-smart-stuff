@@ -1,5 +1,5 @@
 {
-  "videos_considered": 16,
+  "videos_considered": 17,
   "enough_data": true,
   "pillars": {
     "by_country": {
@@ -10,7 +10,7 @@
     },
     "walk_past": {
       "n": 2,
-      "median_views_vs_channel": 1.85,
+      "median_views_vs_channel": 1.86,
       "avg_view_pct": 63.4,
       "subs_per_1k_views": 0.21
     },
@@ -34,7 +34,7 @@
     },
     "film": {
       "n": 1,
-      "median_views_vs_channel": 1.1,
+      "median_views_vs_channel": 1.11,
       "avg_view_pct": 42.1,
       "subs_per_1k_views": 0.69
     },
@@ -45,10 +45,10 @@
       "subs_per_1k_views": 0.0
     },
     "gta6": {
-      "n": 2,
-      "median_views_vs_channel": 0.93,
-      "avg_view_pct": 63.0,
-      "subs_per_1k_views": 0.41
+      "n": 3,
+      "median_views_vs_channel": 0.89,
+      "avg_view_pct": 76.1,
+      "subs_per_1k_views": 0.29
     }
   }
 }
