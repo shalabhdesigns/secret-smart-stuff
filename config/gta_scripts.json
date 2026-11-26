@@ -9019,9 +9019,9 @@
    ],
    "why": "written in session",
    "frame": {
-    "shot": "extended_look_10330",
-    "f": 0.2,
-    "x": 0.33
+    "shot": "launch_trailer_00119",
+    "f": 0.5,
+    "x": 0.67
    }
   }
  },
@@ -9256,9 +9256,9 @@
    ],
    "why": "written in session",
    "frame": {
-    "shot": "trailer_1_00604",
-    "f": 0.8,
-    "x": 0.75
+    "shot": "launch_trailer_00263",
+    "f": 0.5,
+    "x": 0.25
    }
   }
  },
@@ -9708,6 +9708,1071 @@
     "shot": "launch_trailer_00670",
     "f": 0.5,
     "x": 0.6
+   }
+  }
+ },
+ "gta6-lucia-svu": {
+  "viable": true,
+  "title": "GTA 6's Lucia actress played a boxer on Law & Order",
+  "thumb_text": "LUCIA'S ACTRESS",
+  "hook_card": "SHE PLAYED A BOXER",
+  "hooks": [
+   "Lucia's actress played a boxer on Law and Order, years before GTA 6."
+  ],
+  "chosen_hook": 0,
+  "images": {
+   "img1": "CLIP:extended_look_10132",
+   "img2": "OFFICIAL:vi_Lucia_Caminos_09",
+   "img3": "CLIP:extended_look_10387",
+   "img4": "OFFICIAL:vi_Lucia_Caminos_10",
+   "img5": "OFFICIAL:vi_Lucia_Caminos_02",
+   "img6": "OFFICIAL:vi_Lucia_Caminos_03",
+   "img7": "OFFICIAL:vi_Lucia_Caminos_05",
+   "img8": "OFFICIAL:vi_Lucia_Caminos_14",
+   "img9": "OFFICIAL:vi_Jason_and_Lucia_01"
+  },
+  "scenes": [
+   {
+    "id": "b1",
+    "narration": "Lucia's actress played a boxer on Law and Order, years before GTA 6.",
+    "image": "img1",
+    "delivery": "excited",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b2",
+    "narration": "Her name is Manni L. Perez. In a twenty-twenty episode of Special Victims Unit, she played Esperanza Morales.",
+    "image": "img2",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "MANNI L. PEREZ",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "Esperanza is a young boxer who ends up facing a murder charge.",
+    "image": "img3",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "SVU: A YOUNG BOXER",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b4",
+    "narration": "Perez says of that part: I basically just played myself, but a bit less animated.",
+    "image": "img4",
+    "delivery": "amused",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b5",
+    "narration": "She calls it her big break, and says it won her an Imagen Award for Best Supporting Actress.",
+    "image": "img5",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "IMAGEN AWARD",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b6",
+    "narration": "After that came Chicago P.D., The Blacklist, Blindspot and Jessica Jones.",
+    "image": "img6",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "4 MORE TV SHOWS",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b7",
+    "narration": "And in GTA 6, her Lucia starts out in prison.",
+    "image": "img7",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b8",
+    "narration": "Now that role has her nominated for Best Performance at The Game Awards.",
+    "image": "img8",
+    "delivery": "excited",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "GAME AWARDS NOMINEE",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b9",
+    "narration": "So: should Lucia's actress win it? Yes or no, pick a side.",
+    "image": "img9",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   }
+  ],
+  "facts": [
+   {
+    "claim": "TVLine (Michael Boyle, 23 Nov 2026), 'GTA 6's Lucia Actress Had A Role On Law & Order: Special Victims Unit': Lucia Caminos is played by Manni L. Perez; she starred in the 2020 SVU episode 'Redemption in Her Corner' as Esperanza Morales, a young boxer who accidentally kills her coach and faces murder charges; Perez: 'I basically just played myself, but a bit less animated'; she calls the role her 'big break' that 'led me to win an Imagen Award ... for Best Supporting Actress in a TV Series' (quoted from the Hollywood Times); later roles in 'Chicago P.D.', 'The Blacklist', 'Blindspot' and 'Jessica Jones'; her Lucia performance earned 'a nomination for Best Performance at The Game Awards 2026'.",
+    "sources": [
+     "https://www.tvline.com/2325622/gta-6-lucia-actress-manni-l-perez-law-and-order-special-victims-unit-role/"
+    ],
+    "main": true
+   },
+   {
+    "claim": "Notebookcheck (Darryl Linington, 25 Nov 2026): the game opens with 'Lucia's prison prologue'.",
+    "sources": [
+     "https://www.notebookcheck.net/GTA-6-PC-ports-reach-gameplay-despite-Take-Two-s-GitHub-DMCA.1459752.0.html"
+    ],
+    "main": false
+   }
+  ],
+  "description": "Before GTA 6, Lucia's actress Manni L. Perez played a young boxer, Esperanza Morales, in a 2020 Law & Order: SVU episode - her 'big break'. Now she's nominated for Best Performance at The Game Awards.\nSources: TVLine, Notebookcheck.",
+  "hashtags": [
+   "#GTA6",
+   "#LuciaCaminos",
+   "#MannILPerez"
+  ],
+  "affiliate_product": null,
+  "written_by": "Claude in session (verified)",
+  "experiment": "E4-lucia",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "LUCIA'S ACTRESS",
+    "WAS ON LAW & ORDER?",
+    "HER BIG BREAK"
+   ],
+   "why": "written in session",
+   "frame": {
+    "shot": "extended_look_10387",
+    "f": 0.5,
+    "x": 0.5
+   }
+  }
+ },
+ "gta6-cut-tennis": {
+  "viable": true,
+  "title": "GTA 6 cut tennis, a GTA 5 favourite. Rockstar says why",
+  "thumb_text": "TENNIS WAS CUT",
+  "hook_card": "WHAT ROCKSTAR CUT",
+  "hooks": [
+   "GTA 5 had tennis. GTA 6 was going to have it too, until Rockstar cut it."
+  ],
+  "chosen_hook": 0,
+  "images": {
+   "img1": "CLIP:trailer_2_00188",
+   "img2": "CLIP:extended_look_12920",
+   "img3": "OFFICIAL:v_24ba6644de",
+   "img4": "CLIP:extended_look_04501",
+   "img5": "CLIP:extended_look_03826",
+   "img6": "CLIP:extended_look_02968",
+   "img7": "OFFICIAL:vi_Jason_and_Lucia_07",
+   "img8": "OFFICIAL:vi_Cal_Hampton_01",
+   "img9": "CLIP:extended_look_07501",
+   "img10": "OFFICIAL:vi_Jason_and_Lucia_03"
+  },
+  "scenes": [
+   {
+    "id": "b1",
+    "narration": "GTA 5 had tennis. GTA 6 was going to have it too, until Rockstar cut it.",
+    "image": "img1",
+    "delivery": "curious",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b2",
+    "narration": "Rob Nelson and Scott Mitchell from Rockstar North told the German magazine PC Games what didn't make it.",
+    "image": "img2",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "PC GAMES INTERVIEW",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "Tennis was planned, but it didn't meet the studio's standards.",
+    "image": "img3",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "CUT: TENNIS",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b4",
+    "narration": "Trips to the cinema and the theatre were cut too. They weren't interactive enough.",
+    "image": "img4",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "CUT: CINEMA + THEATRE",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b5",
+    "narration": "So were home decorating and crafting.",
+    "image": "img5",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "CUT: HOME DECORATING",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b6",
+    "narration": "Even crawling got cut.",
+    "image": "img6",
+    "delivery": "amused",
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "CUT: CRAWLING",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b7",
+    "narration": "Those didn't fit the story or the gameplay well enough.",
+    "image": "img7",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b8",
+    "narration": "But one game made it: mini golf.",
+    "image": "img8",
+    "delivery": "excited",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "KEPT: MINI GOLF",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b9",
+    "narration": "And nothing in the interview says the cut features are coming back in an update.",
+    "image": "img9",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b10",
+    "narration": "So: which cut hurts more, tennis or home decorating? Pick a side.",
+    "image": "img10",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   }
+  ],
+  "facts": [
+   {
+    "claim": "Dexerto (Dylan Horetski, 25 Nov 2026): in an interview with German outlet PC Games, Rockstar North's Rob Nelson and design producer Scott Mitchell revealed cut features: tennis, cinema and theatre visits, crawling, home decorating and crafting; tennis 'players could participate in throughout GTA 5'; Rockstar planned to bring it back for GTA 6 but its implementation failed to meet the developer's standards; 'Cinema and theater visits were also removed, as Rockstar felt the activities were not interactive enough'; mini golf 'made it into the finished game'.",
+    "sources": [
+     "https://www.dexerto.com/gta/gta-6-devs-reveal-major-gameplay-features-that-didnt-make-the-final-cut-3431334/"
+    ],
+    "main": true
+   },
+   {
+    "claim": "Rockstar Report (25 Nov 2026): 'a PC Games interview with Rockstar North development lead Rob Nelson and design producer Scott Mitchell'; 'Rockstar North planned a full tennis minigame for Grand Theft Auto VI, then removed it'; crafting, home furnishing and crawling were discarded when they did not fit the story or gameplay well enough; the studio retained minigolf; the interview does not suggest the cut features return in an update.",
+    "sources": [
+     "https://rockstarreport.com/news/rockstar-explains-gta-6-cut-tennis-cinemas"
+    ],
+    "main": true
+   }
+  ],
+  "description": "Rockstar North's Rob Nelson and Scott Mitchell told PC Games what GTA 6 cut: tennis (a GTA 5 activity), cinema and theatre trips, home decorating, crafting and crawling. Mini golf stayed.\nSources: Dexerto, Rockstar Report.",
+  "hashtags": [
+   "#GTA6",
+   "#GTA5",
+   "#Rockstar"
+  ],
+  "affiliate_product": null,
+  "written_by": "Claude in session (verified)",
+  "experiment": "E5-gta5-callback",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "GTA 5 HAD TENNIS.",
+    "WHY DID 6 CUT IT?",
+    "ROCKSTAR EXPLAINS"
+   ],
+   "why": "written in session",
+   "frame": {
+    "shot": "extended_look_03869",
+    "f": 0.5,
+    "x": 0.32
+   }
+  }
+ },
+ "gta6-black-friday": {
+  "viable": true,
+  "title": "GTA 6 on Black Friday: where it's actually cheaper",
+  "thumb_text": "BLACK FRIDAY",
+  "hook_card": "NOT ON SALE?",
+  "hooks": [
+   "It's Black Friday. So is GTA 6 cheaper yet? Here's where to look."
+  ],
+  "chosen_hook": 0,
+  "images": {
+   "img1": "CLIP:extended_look_07899",
+   "img2": "CLIP:extended_look_09166",
+   "img3": "OFFICIAL:vi_ULTIMATE_EDITION_02",
+   "img4": "CLIP:extended_look_10699",
+   "img5": "CLIP:extended_look_09766",
+   "img6": "OFFICIAL:vi_ULTIMATE_EDITION_SQUALO_03",
+   "img7": "CLIP:extended_look_04835",
+   "img8": "CLIP:extended_look_07238",
+   "img9": "CLIP:extended_look_09432",
+   "img10": "OFFICIAL:vi_Jason_and_Lucia_14"
+  },
+  "scenes": [
+   {
+    "id": "b1",
+    "narration": "It's Black Friday. So is GTA 6 cheaper yet? Here's where to look.",
+    "image": "img1",
+    "delivery": "serious",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b2",
+    "narration": "This week, GameRant and GamingHQ found no discount on the UK PlayStation or Xbox stores.",
+    "image": "img2",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "NO STORE DISCOUNT",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "In the US, the normal price is seventy-nine ninety-nine, or ninety-nine ninety-nine for the Ultimate Edition.",
+    "image": "img3",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "$79.99 / $99.99",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b4",
+    "narration": "But in the UK, one shop is cheaper. Here's how to save.",
+    "image": "img4",
+    "delivery": "excited",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b5",
+    "narration": "One: ShopTo sells the Xbox digital code for fifty-five eighty-five, instead of sixty-nine ninety-nine.",
+    "image": "img5",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "1. XBOX: £55.85",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b6",
+    "narration": "Two: the Ultimate Edition on Xbox is sixty-nine eighty-five, about twenty-two percent off.",
+    "image": "img6",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "2. ULTIMATE: £69.85",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b7",
+    "narration": "Three: on PlayStation, buy seventy pounds of credit for sixty pounds eighty-five, then use it on the game.",
+    "image": "img7",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "3. PS CREDIT: £60.85",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b8",
+    "narration": "Boxed codes are sixty-one eighty-five on both consoles.",
+    "image": "img8",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "BOXED: £61.85",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b9",
+    "narration": "Deals change fast on Black Friday, so check the price before you pay.",
+    "image": "img9",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b10",
+    "narration": "So: buy GTA 6 now, or hold out for a real sale? Pick a side.",
+    "image": "img10",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   }
+  ],
+  "facts": [
+   {
+    "claim": "GameRant (Dominik Bošnjak, 25 Nov 2026): 'Grand Theft Auto 6 is already available at discounts of up to 22% as part of some early Black Friday offers'; 'The Standard and Ultimate Editions of GTA 6 are regularly priced at $79.99 and $99.99, respectively. Their UK prices are £69.99 ... and £89.99'; ShopTo: Standard (Digital) Xbox £55.85 (20%), Ultimate (Digital) Xbox £69.85 (22%), Standard boxed code £61.85 on Xbox and PlayStation (12%); 'The retailer is currently offering £70 gift cards for £60.85'; 'Neither Sony nor Microsoft is currently offering discounts on the game through its respective UK digital storefront.'",
+    "sources": [
+     "https://gamerant.com/gta-6-black-friday-sale-deal/"
+    ],
+    "main": true
+   },
+   {
+    "claim": "GamingHQ (26 Nov 2026), 'GTA 6 Black Friday Deals Slash Prices by Up to 22%': ShopTo Xbox digital Standard '£55.85, representing a discount of approximately 20%'; Ultimate '£69.85, offering savings of around 22%'; boxed '£61.85 on both consoles'; '£70 worth of PlayStation wallet credit for £60.85'; 'the official UK PlayStation and Xbox storefronts have yet to introduce comparable offers'.",
+    "sources": [
+     "https://gaminghq.eu/2026/11/26/gta-6-black-friday-deals/"
+    ],
+    "main": true
+   },
+   {
+    "claim": "Nacionale (16 Nov 2026): no Black Friday price cut announced; GTA VI 'costs $79.99 for the Standard Edition and $99.99 for the Ultimate Edition in the US'; Best Buy: 'still $79.99 at checkout'.",
+    "sources": [
+     "https://www.nacionale.com/en/articles/will-gta-6-be-on-sale-black-friday-price-79-99-ultimate-edition-deals"
+    ],
+    "main": false
+   }
+  ],
+  "description": "GTA 6 on Black Friday: no discount on the PlayStation or Xbox stores this week ($79.99 / $99.99 in the US). In the UK, ShopTo had it for £55.85 on Xbox, £69.85 Ultimate, or £60.85 via PS credit. Check prices before you buy.\nSources: GameRant, GamingHQ, Nacionale.",
+  "hashtags": [
+   "#GTA6",
+   "#BlackFriday",
+   "#GTA6Deals"
+  ],
+  "affiliate_product": null,
+  "written_by": "Claude in session (verified)",
+  "experiment": null,
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "GTA ON SALE FOR",
+    "BLACK FRIDAY?",
+    "WHERE IT'S CHEAPER"
+   ],
+   "why": "written in session",
+   "frame": {
+    "shot": "trailer_1_00625",
+    "f": 0.5,
+    "x": 0.44
+   }
+  }
+ },
+ "gta6-niko-cameo": {
+  "viable": true,
+  "title": "GTA 6 hides a GTA 4 legend near the end. Rockstar explains",
+  "thumb_text": "SPOILER: GTA 4 LEGEND",
+  "hook_card": "SPOILER WARNING",
+  "hooks": [
+   "Spoiler warning: a GTA 4 legend shows up near the end of GTA 6."
+  ],
+  "chosen_hook": 0,
+  "images": {
+   "img1": "CLIP:extended_look_03021",
+   "img2": "CLIP:trailer_1_00300",
+   "img3": "CLIP:extended_look_12920",
+   "img4": "CLIP:trailer_2_00346",
+   "img5": "CLIP:extended_look_06719",
+   "img6": "CLIP:extended_look_10510",
+   "img7": "CLIP:extended_look_07501",
+   "img8": "CLIP:extended_look_12327",
+   "img9": "CLIP:extended_look_04180",
+   "img10": "CLIP:extended_look_12606",
+   "img11": "OFFICIAL:vi_Jason_and_Lucia_09"
+  },
+  "scenes": [
+   {
+    "id": "b1",
+    "narration": "Spoiler warning: a GTA 4 legend shows up near the end of GTA 6.",
+    "image": "img1",
+    "delivery": "serious",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b2",
+    "narration": "It's Niko Bellic, the hero of GTA 4.",
+    "image": "img2",
+    "delivery": "excited",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "NIKO BELLIC",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "He turns up as a hitman for a Balkan cartel, sent to deal with a character called Giorgio.",
+    "image": "img3",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b4",
+    "narration": "Rockstar's Rob Nelson told Kotaku it just grew very organically.",
+    "image": "img4",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "QUOTE: ROCKSTAR",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b5",
+    "narration": "Even Niko's original voice actor came back for it.",
+    "image": "img5",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b6",
+    "narration": "And listen when that mission ends. The jingle is the one from GTA 4.",
+    "image": "img6",
+    "delivery": "amused",
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "GTA 4'S JINGLE",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b7",
+    "narration": "Nelson called it a late addition. For a long time, it was a normal GTA 6 sound.",
+    "image": "img7",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b8",
+    "narration": "So is Niko gone for good? He's still kicking around, Nelson said. He's still in play.",
+    "image": "img8",
+    "delivery": "curious",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b9",
+    "narration": "He also confirmed Niko goes back to Liberty City afterwards, but won't say which GTA 4 ending is the real one.",
+    "image": "img9",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b10",
+    "narration": "Nelson hoped the cameo would stay secret for a bit. Players posted it in under three days.",
+    "image": "img10",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "POSTED IN < 3 DAYS",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b11",
+    "narration": "So: should Niko get a bigger part in GTA 6's future? Yes or no, pick a side.",
+    "image": "img11",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   }
+  ],
+  "facts": [
+   {
+    "claim": "Kotaku (Zack Zwiezen, 25 Nov 2026), 'GTA 6 Boss Reveals How That Very Surprising Cameo Happened And What It Means For The Character' (spoilers): near the end of the main story, Niko Bellic, GTA IV's protagonist, appears as a Balkan cartel hitman sent to deal with Giorgio; Rockstar head of production Rob Nelson: 'It just grew very organically', the Balkan-cartel storyline started early in development; original voice actor returned for the role; the mission-complete jingle after the cameo is from GTA IV, which Nelson called a 'late addition': 'For a long time it was like a normal [GTA 6] stinger'; on Niko: 'He's still kicking around. He's still in play'; Nelson confirmed Niko returns to Liberty City after these events but would not say which GTA IV ending is canon; Nelson hoped the cameo 'stays secret for a bit'; many players posted videos of it less than three days after launch.",
+    "sources": [
+     "https://kotaku.com/gta-6-boss-reveals-how-that-very-surprising-cameo-happened-and-what-it-means-for-the-character-2000758616"
+    ],
+    "main": true
+   }
+  ],
+  "description": "Spoilers: Niko Bellic, GTA 4's hero, appears near the end of GTA 6 as a Balkan cartel hitman. Rockstar's Rob Nelson told Kotaku how it happened, why the GTA 4 jingle plays, and that Niko is 'still in play'.\nSources: Kotaku.",
+  "hashtags": [
+   "#GTA6",
+   "#GTA4",
+   "#NikoBellic"
+  ],
+  "affiliate_product": null,
+  "written_by": "Claude in session (verified)",
+  "experiment": "E5-gta5-callback",
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "SPOILER: A GTA 4",
+    "LEGEND IS BACK?",
+    "ROCKSTAR EXPLAINS"
+   ],
+   "why": "written in session",
+   "frame": {
+    "shot": "trailer_2_00795",
+    "f": 0.5,
+    "x": 0.31
+   }
+  }
+ },
+ "gta6-pc-port": {
+  "viable": true,
+  "title": "GTA 6 fan PC ports hit 5 fps. Take-Two shut one down",
+  "thumb_text": "FAN PC PORTS",
+  "hook_card": "NO PC VERSION YET",
+  "hooks": [
+   "Fans are trying to put GTA 6 on PC without Rockstar, and Take-Two is shutting them down."
+  ],
+  "chosen_hook": 0,
+  "images": {
+   "img1": "CLIP:extended_look_10081",
+   "img2": "CLIP:extended_look_12920",
+   "img3": "OFFICIAL:vi_Jason_Duval_10",
+   "img4": "CLIP:extended_look_08201",
+   "img5": "CLIP:extended_look_02226",
+   "img6": "CLIP:extended_look_09166",
+   "img7": "CLIP:extended_look_09766",
+   "img8": "OFFICIAL:vi_Lucia_Caminos_05",
+   "img9": "CLIP:extended_look_15698",
+   "img10": "OFFICIAL:vi_Jason_and_Lucia_13"
+  },
+  "scenes": [
+   {
+    "id": "b1",
+    "narration": "Fans are trying to put GTA 6 on PC without Rockstar, and Take-Two is shutting them down.",
+    "image": "img1",
+    "delivery": "serious",
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b2",
+    "narration": "On November twenty-fourth, a takedown notice published by GitHub disabled the most prominent project, called Leonida.",
+    "image": "img2",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "PROJECT: LEONIDA",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b3",
+    "narration": "It covered the project's whole network: three thousand and seven copies.",
+    "image": "img3",
+    "delivery": "surprised",
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": "3,007 REPOS DOWN",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b4",
+    "narration": "The notice argues it's built on stolen files from a leaked Xbox version, and breaks Rockstar's ban on reverse engineering.",
+    "image": "img4",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b5",
+    "narration": "Discord servers organising the work have gone offline too.",
+    "image": "img5",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b6",
+    "narration": "And here's the catch: the builds barely run.",
+    "image": "img6",
+    "delivery": "amused",
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b7",
+    "narration": "The fastest ones reported so far reach three to five frames a second.",
+    "image": "img7",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "3-5 FPS",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b8",
+    "narration": "One clip runs Lucia's prison opening at one to three frames a second, on an RTX fifty seventy Ti.",
+    "image": "img8",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": "1-3 FPS",
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b9",
+    "narration": "And Rockstar still hasn't announced a PC version.",
+    "image": "img9",
+    "delivery": null,
+    "focus": null,
+    "motion": "drift",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   },
+   {
+    "id": "b10",
+    "narration": "So: wait for Rockstar's own PC version, or buy a console now? Pick a side.",
+    "image": "img10",
+    "delivery": null,
+    "focus": null,
+    "motion": "push",
+    "transition": "cut",
+    "callout": null,
+    "pop": null,
+    "arrow": null,
+    "card_text": null,
+    "tone": "normal",
+    "markers": null
+   }
+  ],
+  "facts": [
+   {
+    "claim": "Notebookcheck (Darryl Linington, 25 Nov 2026), 'GTA 6 PC ports reach gameplay despite Take-Two's GitHub DMCA': 'A DMCA notice published by GitHub on November 24 disabled Leonida, the most prominent project working from the Xbox Series build leaked by Cyberleek earlier this month. GitHub says the takedown covered the project's full network of 3,007 repositories.' The notice argues 'the project is a derivative work built on stolen files and that it violates Rockstar's ban on reverse engineering.' 'the fastest builds reported so far only reach 3 to 5 FPS'; one clip shows the prologue 'at just 1 to 3 FPS on an RTX 5070 Ti'; builds have 'cleared Lucia's prison prologue'; Discord coordination servers have gone offline; 'Rockstar has not announced a PC version.'",
+    "sources": [
+     "https://www.notebookcheck.net/GTA-6-PC-ports-reach-gameplay-despite-Take-Two-s-GitHub-DMCA.1459752.0.html"
+    ],
+    "main": true
+   },
+   {
+    "claim": "KitGuru (Matthew Wilson, 26 Nov 2026): 'DMCA notices began targeting GitHub repositories associated with the projects'; Discord communities organising reverse-engineering efforts were shut down by legal notices from Take-Two's legal team (per PC Gamer); clips show the game running 'at unplayable frame rates'.",
+    "sources": [
+     "https://www.kitguru.net/gaming/matthew-wilson/rockstar-begins-taking-down-unofficial-gta-6-pc-port-efforts-on-github-and-discord/"
+    ],
+    "main": false
+   }
+  ],
+  "description": "Unofficial GTA 6 PC ports built from a leaked Xbox version: Take-Two's DMCA took down Leonida's 3,007 GitHub repositories, and the best builds run at 3-5 fps. Rockstar hasn't announced a PC version.\nSources: Notebookcheck, KitGuru.",
+  "hashtags": [
+   "#GTA6",
+   "#GTA6PC",
+   "#PCGaming"
+  ],
+  "affiliate_product": null,
+  "written_by": "Claude in session (verified)",
+  "experiment": null,
+  "cover": {
+   "image": "img1",
+   "lines": [
+    "FANS PUT IT ON PC?",
+    "3,007 COPIES",
+    "SHUT DOWN"
+   ],
+   "why": "written in session",
+   "frame": {
+    "shot": "trailer_2_00882",
+    "f": 0.5,
+    "x": 0.63
    }
   }
  },
