@@ -174,3 +174,35 @@ Results of each scheduled run while the owner is away (newest last). Simple word
   - Dropped after research: a "fight the Devil" secret mission (only one source) and Jason's actor (done 23 Nov).
 - **Still needs the owner (no action taken, not messaged):** the Anthropic API key (GitHub secret
   `ANTHROPIC_API_KEY`) has been invalid since 24 Nov. Videos still go out through my daily check and the safety net.
+
+## 26 Nov 2026 (daily run, 12:41 IST)
+- **Today's videos: all 5 checked by me and scheduled** (the final check still can't run: Anthropic API key 401).
+  - IST: 17:30 Lucia's magazine looks · 19:30 PlayStation's biggest launch · 22:30 stealing cars ·
+    01:30 Mario-style caps · 07:30 (27 Nov) keep your cash when you die.
+  - Contact sheets, first frames and audio (no gaps, level OK at start and end) fine on all 5.
+  - Fixed 2 covers before upload (no cost): PlayStation record showed a basketball hoop with Jason's face under the
+    logo; stealing cars showed a car interior and no face. Now Jason on the phone (bright) and Lucia at a red
+    convertible. I looked at both new covers. The other 3 covers are fine.
+- **Cost:** last 24 h $0.39 (voice only; $0.06-0.07 a video). Waste $0.00. Nothing safe left to cut: voice is the
+  product and no remakes were needed.
+- **Experiments:** E4 (Lucia in title + Lucia face cover) EXTENDED: still no 24 h numbers; the first test (1,592 IG at
+  10 h) is not ahead of its day so far. Third test tomorrow, verdict 28 Nov.
+  - New E5: hook on an older GTA (GTA 4/5). Our 3 best Instagram videos all did (1,836-2,259 vs median 1,457).
+    Test: tennis cut, Niko cameo. Control: Black Friday, PC ports.
+- **Learnings (with numbers):**
+  - F25: YouTube views often arrive after 24 h (Jason's Army 267 -> 1,012). The "4 uploads a day" test is not
+    needed: 24 Nov non-12:00 videos got a median 43 % of IG views on YouTube (bar 30 %). 5 a day stays.
+  - F26: older-GTA hooks win (see E5).
+  - F27: 2 of 5 "previewed" face covers showed no face. Removed from the list; the face list is used up for the
+    week, so tomorrow's run must preview new face shots first.
+  - R3, R5, R7 re-checked: hold.
+- **Tomorrow (27 Nov), IST:**
+  - 17:30 GTA 6's Lucia actress played a boxer on Law & Order (character; E4 test)
+  - 19:30 GTA 6 cut tennis, a GTA 5 favourite. Rockstar says why (E5 test)
+  - 22:30 GTA 6 on Black Friday: where it's actually cheaper (practical, prices to save)
+  - 01:30 GTA 6 hides a GTA 4 legend near the end. Rockstar explains (character, spoiler warning first; E5 test)
+  - 07:30 (28 Nov) GTA 6 fan PC ports hit 5 fps. Take-Two shut one down (tech / does it affect me)
+  - All 5: face cover, side-taking last line, 112-161 words. Black Friday prices are from 25-26 Nov reports; the
+    script says to check before buying.
+- **Still needs the owner (no action taken, not messaged):** the Anthropic API key (GitHub secret
+  `ANTHROPIC_API_KEY`) has been invalid since 24 Nov. Videos still go out through my daily check.
