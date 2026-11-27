@@ -3,12 +3,12 @@ mode: dry_run            # dry_run (fake providers, no spend) | live
 
 quiet_from: "2026-11-20T18:30:00Z"    # 00:00 IST 21 Nov
 quiet_until: "2026-11-27T03:30:00Z"   # owner away 21-27 Nov (back ~09:00 IST 27 Nov): no Telegram messages or alert issues
-gta_reserve_until: "2026-11-30"
+gta_reserve_until: "2026-12-15"   # owner, 27 Nov 2026: auto-publish continues to 15 Dec
 # GTA posting slots (UTC). 21 Nov 2026 (E3): 23:00 UTC videos got 5-35 % of their Instagram views on YouTube,
 # every other slot 30-150 %, so 23:00 moves to 12:00 for a 3-day test (docs/GTA_LEARNINGS.md E3)
 gta_slots: ["12:00", "14:00", "17:00", "20:00", "02:00"]   # evergreen reserve scripts fill empty GTA slots (owner away)
 series_hold: false   # 18 Nov 2026: owner approved the story-format sample (heat-vice-city-v3); queue resumes
-daily_paused_until: "2026-11-30"   # owner, 14 Nov 2026: the GTA 6 series (3 a day, config/daily_queue.json) replaces the normal daily video for the rest of November
+daily_paused_until: "2026-12-15"   # owner, 14 Nov 2026: the GTA 6 series replaces the normal daily video; kept with auto-publish to 15 Dec (27 Nov)
 
 budget_usd:
   per_video: 2.00     # stills format (onigiri v9): ~$1.00 per video measured; leaves room for one owner fix
@@ -39,7 +39,7 @@ approval:
   # uploaded private + scheduled for its slot without waiting for the owner; he gets a message with a
   # "Stop it" button. After auto_until the system goes back to manual approval by itself.
   mode: auto
-  auto_until: "2026-11-30"   # owner, 20 Nov 2026: away 21-27 Nov, "without requiring any input, intervention, or approval from me"
+  auto_until: "2026-12-15"   # owner, 27 Nov 2026: "Yes continue auto-publish" (was 30 Nov); 20 Nov 2026: away 21-27 Nov, "without requiring any input, intervention, or approval from me"
   privacy_on_upload: private
 
 providers:

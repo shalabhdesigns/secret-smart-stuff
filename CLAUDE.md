@@ -95,7 +95,7 @@ input, intervention, or approval from me")
   today's videos (made at 05:47 IST; first slot 19:30 IST): held/failed -> fix real problems in `scripts/gta_scripts.py`,
   remake (queue item + new `nonce` + `retire_jobs`), look at the frames, approve with its slot. It appends results to
   `docs/AWAY_LOG.md` and never messages or asks the owner.
-- Approvals: auto-publish until 30 Nov (`approval.auto_until`). Claude may approve a held video after fixing it and
+- Approvals: auto-publish until 15 Dec (`approval.auto_until`; owner, 27 Nov: "Yes continue auto-publish"). Claude may approve a held video after fixing it and
   checking its frames. Safety net (`shorts/dispatch.deadline_publish`, every 15 min): a video still held 90 min before
   its slot is published unless the final check found a factual problem; one held before the voice is remade without
   the pre-check 4 h before its slot.
