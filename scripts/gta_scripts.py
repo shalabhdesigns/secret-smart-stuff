@@ -1987,7 +1987,7 @@ S["gta6-lucia-svu"] = dict(
     thumb_text="LUCIA'S ACTRESS",
     hook_card="SHE PLAYED A BOXER",
     cover_lines=["LUCIA'S ACTRESS", "WAS ON LAW & ORDER?", "HER BIG BREAK"],
-    cover_frame={"shot": "extended_look_10387", "f": 0.5, "x": 0.5},   # Lucia bench pressing in a gym (fits the boxer story)
+    cover_frame={"image": "img2", "zone": "lower"},   # 27 Nov fix: Lucia in boxing gloves (official still), face clear above the logo (10387 put her face under it)
     experiment="E4-lucia",
     beats=[
         ("Lucia's actress played a boxer on Law and Order, years before GTA 6.", "CLIP:extended_look_10132", None,
@@ -2036,8 +2036,8 @@ S["gta6-cut-tennis"] = dict(
     cover_frame={"shot": "extended_look_03869", "f": 0.5, "x": 0.32},   # Jason in a tank top (R3: face)
     experiment="E5-gta5-callback",
     beats=[
-        ("GTA 5 had tennis. GTA 6 was going to have it too, until Rockstar cut it.", "CLIP:trailer_2_00188",
-         None, "curious"),
+        ("GTA 5 had tennis.", "CLIP:extended_look_03869", None, "curious"),
+        ("GTA 6 was going to have it too, until Rockstar cut it.", "CLIP:trailer_2_00188", None, None),
         ("Rob Nelson and Scott Mitchell from Rockstar North told the German magazine PC Games what didn't make it.",
          "CLIP:extended_look_12920", "PC GAMES INTERVIEW", None),
         ("Tennis was planned, but it didn't meet the studio's standards.", "OFFICIAL:v_24ba6644de",
@@ -2134,10 +2134,9 @@ S["gta6-niko-cameo"] = dict(
     cover_frame={"shot": "trailer_2_00795", "f": 0.5, "x": 0.31},   # Lucia + Jason with drinks at a bar (R3: faces)
     experiment="E5-gta5-callback",
     beats=[
-        ("Spoiler warning: a GTA 4 legend shows up near the end of GTA 6.", "CLIP:extended_look_03021", None,
-         "serious"),
+        ("Spoiler warning: a GTA 4 legend is hiding in GTA 6.", "CLIP:trailer_1_00728", None, "serious"),
         ("It's Niko Bellic, the hero of GTA 4.", "CLIP:trailer_1_00300", "NIKO BELLIC", "excited"),
-        ("He turns up as a hitman for a Balkan cartel, sent to deal with a character called Giorgio.",
+        ("Near the end, he turns up as a hitman for a Balkan cartel, sent to deal with a character called Giorgio.",
          "CLIP:extended_look_12920", None, None),
         ("Rockstar's Rob Nelson told Kotaku it just grew very organically.", "CLIP:trailer_2_00346",
          "QUOTE: ROCKSTAR", None),
@@ -2180,7 +2179,7 @@ S["gta6-pc-port"] = dict(
     thumb_text="FAN PC PORTS",
     hook_card="NO PC VERSION YET",
     cover_lines=["FANS PUT IT ON PC?", "3,007 COPIES", "SHUT DOWN"],
-    cover_frame={"shot": "trailer_2_00882", "f": 0.5, "x": 0.63},   # Jason (black tee) in a kitchen (R3: face)
+    cover_frame={"image": "img3", "zone": "lower"},   # 27 Nov fix: hooded Jason close-up (official still; 00882 was a 23 Nov cover)
     beats=[
         ("Fans are trying to put GTA 6 on PC without Rockstar, and Take-Two is shutting them down.",
          "CLIP:extended_look_10081", None, "serious"),

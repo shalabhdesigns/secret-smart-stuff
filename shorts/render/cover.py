@@ -231,6 +231,10 @@ def make(llm_ask, d: Path, news: bool = False, news_rule: str | None = None, bad
         x0 = max(0, min(im.width - cw, round(im.width * float(fr.get("x", 0.5)) - cw / 2)))
         pic = d / "cover_frame.png"
         im.crop((x0, 0, x0 + cw, im.height)).save(pic)
+    elif fr and fr.get("image") and (d / f"{fr['image']}.png").exists():
+        # 27 Nov 2026: an official still in the video (e.g. a big, bright Lucia portrait) as the cover; it is
+        # already cut to 9:16, so it is used as it is
+        pic = d / f"{fr['image']}.png"
     if not pic.exists():
         cands = sorted(d.glob("img*.png"))
         if not cands:
