@@ -227,93 +227,98 @@ the next videos; identifying patterns and improving is Claude's job, not the own
 ## Numbers
 
 <!-- AUTO:START -->
-_Numbers updated 2026-11-26 07:12 UTC by scripts/gta_learn.py (GTA videos only; no API cost)._
+_Numbers updated 2026-11-27 07:20 UTC by scripts/gta_learn.py (GTA videos only; no API cost)._
 
-**Accounts:** youtube 65 (first seen 15); instagram 10 (first seen 1)
+**Accounts:** youtube 71 (first seen 15); instagram 10 (first seen 1)
 
 | published (UTC) | video | cat | logo | s | IG 24h | IG now | IG watch s | IG skip % | IG shares | YT 24h | YT now | YT % viewed | exp |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 11-16T17:00 | GTA 6 still isn't on PC. Here's why | tech | - | 29.2 | 1401 | 1401 | 13.0 | 33.5 | - | - | 4 | 90.37 |  |
 | 11-16T20:00 | GTA 6 at $80 is cheaper than GTA 5 was | money | - | - | 242 | 243 | 15.3 | 33.2 | - | - | 10 | 96.16 |  |
-| 11-16T23:00 | GTA 6's wildest scenes match real Florida videos | real world | - | 31.6 | 174 | 174 | 11.6 | 39.3 | - | - | 34 | 53.55 |  |
+| 11-16T23:00 | GTA 6's wildest scenes match real Florida videos | real world | - | 31.6 | 174 | 174 | 11.6 | 39.3 | - | - | 35 | 53.55 |  |
 | 11-17T02:00 | The GTA 6 trailer that broke YouTube | other | - | 34.7 | 133 | 135 | 11.5 | 42 | - | - | 1158 | 73.96 |  |
 | 11-17T17:00 | 27 minutes of GTA 6 gameplay: what nobody notice | other | - | 27.5 | 426 | 430 | 9.0 | 36.9 | 1 | - | 45 | 68.91 |  |
 | 11-17T20:00 | GTA 6 took 13 years. Here's what happened | other | - | 42.2 | 191 | 192 | 11.1 | 43.1 | - | - | 243 | 46.03 |  |
 | 11-17T23:00 | Will GTA 6 even fit on your PS5? | tech | - | 34.4 | 1354 | 1357 | 16.4 | 26.6 | - | - | 152 | 51.85999999999999 |  |
-| 11-18T02:00 | Lucia is the GTA hero we waited 29 years for | characters | - | 31.6 | 1470 | 1645 | 14.4 | 30.6 | - | - | 1289 | 52.1 |  |
+| 11-18T02:00 | Lucia is the GTA hero we waited 29 years for | characters | - | 31.6 | 1470 | 1646 | 14.4 | 30.7 | - | - | 1295 | 52.09 |  |
 | 11-18T11:00 | Is the $100 GTA 6 Ultimate Edition worth it? | money | - | 38.4 | 307 | 347 | 14.8 | 44.6 | - | 1 | 185 | 58.21999999999999 |  |
-| 11-18T14:00 | Why an NBA team becomes 'Vice City' tonight | real world | - | - | 171 | 199 | 13.2 | 31 | - | 2 | 331 | 105.59 |  |
+| 11-18T14:00 | Why an NBA team becomes 'Vice City' tonight | real world | - | - | 171 | 199 | 13.2 | 31 | - | 2 | 332 | 105.88 |  |
 | 11-18T17:00 | GTA 6 is already unlocked in these countries | tech | - | 57.1 | 183 | 185 | 16.2 | 30.9 | - | 1 | 173 | 47.96 |  |
 | 11-18T23:00 | Why the GTA 6 box has no disc inside | tech | - | 47.2 | 557 | 567 | 18.8 | 32 | - | - | 201 | 61.59 |  |
 | 11-19T14:00 | The GTA 5 record GTA 6 has to beat | records | - | - | 1386 | 1391 | 22.5 | 30.2 | - | 1077 | 1044 | 102.27 |  |
 | 11-19T20:00 | GTA 6: Rockstar's war on the leakers | drama | Y | - | 1339 | 1346 | 25.9 | 33.3 | - | 295 | 856 | 79.59 |  |
-| 11-19T23:00 | GTA 6 is in America, but Tokyo nearly won, says  | real world | Y | - | 1647 | 1651 | 28.0 | 27.8 | 4 | 73 | 778 | 52.5 |  |
-| 11-20T02:00 | GTA 6's map: the real places it looks like | real world | Y | - | 1470 | 1475 | 27.0 | 23.2 | 4 | 1040 | 1016 | 58.62 |  |
-| 11-20T12:00 | GTA 6 costs double GTA 5 in India, but there's a | money | Y | - | 1532 | 1536 | 28.5 | 21.1 | 3 | 1147 | 1255 | 64.4 |  |
+| 11-19T23:00 | GTA 6 is in America, but Tokyo nearly won, says  | real world | Y | - | 1647 | 1651 | 28.0 | 27.8 | 4 | 73 | 779 | 52.839999999999996 |  |
+| 11-20T02:00 | GTA 6's map: the real places it looks like | real world | Y | - | 1470 | 1476 | 27.0 | 23.1 | 4 | 1040 | 1022 | 58.62 |  |
+| 11-20T12:00 | GTA 6 costs double GTA 5 in India, but there's a | money | Y | - | 1532 | 1536 | 28.5 | 21.1 | 3 | 1147 | 1256 | 64.4 |  |
 | 11-20T14:00 | GTA 6's wildest scenes match real Florida videos | real world | Y | - | 1278 | 1282 | 19.6 | 25.6 | - | 1132 | 1204 | 55.279999999999994 |  |
 | 11-20T17:00 | GTA 6 still isn't on PC. Here's why | tech | Y | - | 1219 | 1223 | 19.9 | 21.3 | 1 | 1147 | 1042 | 60.74 |  |
-| 11-20T20:00 | GTA 6 tied the highest Metacritic score ever | records | Y | 56.6 | 1484 | 1485 | 20.0 | 25.9 | 1 | 1129 | 1134 | 68.27 |  |
-| 11-20T23:00 | GTA 6's characters in Rockstar's own words | characters | Y | - | 1327 | 1333 | 25.6 | 27.8 | - | 485 | 952 | 54.17999999999999 |  |
-| 11-21T02:00 | GTA 6 Trailer 2: 475 million views in a day? | records | Y | - | 1292 | 1316 | 19.1 | 32.4 | - | 284 | 308 | 50.2 |  |
-| 11-21T14:00 | GTA 6 launch: 7.9 million people watching at onc | records | Y | - | 153 | 153 | 14.1 | 20.8 | - | 427 | 677 | 46.27 |  |
-| 11-21T17:00 | GTA 6 fans found Dexter's apartment in Vice City | real world | Y | - | 630 | 631 | 14.5 | 41.4 | - | 670 | 765 | 54.400000000000006 |  |
-| 11-21T20:00 | GTA 6 is about 50 hours long, one review says | reviews | Y | - | 1658 | 1658 | 29.2 | 27.6 | - | 1318 | 1357 | 75.57 |  |
-| 11-21T23:00 | GTA 6 sold 19 million copies? Here's the catch | records | Y | - | - | - | - | - | - | 240 | 412 | 44.38 |  |
-| 11-21T23:00 | GTA 6 made $3.79 billion on day one, Rockstar sa | money | Y | 60.2 | 1407 | 1408 | 29.5 | 29.9 | 14 | 263 | 434 | 54.78999999999999 |  |
-| 11-22T02:00 | GTA 6 fans think we saw it back in 2021 | other | Y | - | 1497 | 1498 | 30.2 | 22 | - | 1036 | 1124 | 63.9 |  |
-| 11-22T12:00 | GTA 6 runs best on one console. Here's which | tech | Y | 58.0 | 1434 | 1435 | 28.2 | 21.6 | 4 | 980 | 1016 | 60.86 | E1-long |
-| 11-22T14:00 | Is dating Lucia in GTA 6 cheating? Couples disag | characters | Y | - | 1347 | 1356 | 22.2 | 31.9 | 6 | 1891 | 2702 | 71.16 | E1-long |
-| 11-22T17:00 | GTA 6 has a secret Kodak Black radio station | other | Y | - | 1435 | 1448 | 12.6 | 37.1 | 1 | 1408 | 1525 | 86.72 | E1-short |
-| 11-22T20:00 | GTA 6's weirdest secrets players found in week o | other | Y | - | 1229 | 1229 | 13.4 | 39.2 | 3 | 717 | 977 | 62.06 | E1-long |
-| 11-23T02:00 | GTA 6 players are trying to make Jason fat | characters | Y | - | 1635 | 1635 | 23.1 | 28.1 | 1 | 811 | 1182 | 76.37 | E1-short |
-| 11-23T12:00 | GTA 6's Lucia actress was in GTA 5 all along | characters | Y | - | 2259 | 2278 | 30.8 | 21.2 | 3 | 1856 | 1975 | 65.33 | E1-long |
-| 11-23T14:00 | GTA 6's map vs GTA 5: how big is it really? | real world | Y | - | 1456 | 1464 | 17.3 | 26.4 | 2 | 62 | 246 | 74.49 | E1-short |
-| 11-23T17:00 | GTA 6 has no online mode. When is it coming? | other | Y | - | 1708 | 1710 | 26.0 | 27.3 | - | 616 | 970 | 63.12 | E1-long |
-| 11-23T20:00 | GTA 6's Metacritic fight just dragged in Zelda | reviews | Y | - | 1338 | 1339 | 18.1 | 34.8 | 1 | 459 | 610 | 49.35 | E1-short |
-| 11-24T02:00 | GTA 6 hid a real Easter egg at the top of a towe | real world | Y | - | 1262 | 1264 | 15.9 | 35.4 | - | 319 | 363 | 42.47 | E1-long |
-| 11-24T12:00 | GTA 6's Xbox glitch breaks the 30 fps lock | tech | Y | - | 1580 | 1580 | 18.2 | 33.7 | 2 | 156 | 304 | - | E1-short |
-| 11-24T14:00 | GTA 6's Jason was in the Army. Rockstar explains | characters | Y | - | 1706 | 1706 | 27.9 | 21.9 | - | 267 | 1012 | - | E1-long |
-| 11-24T17:00 | GTA 6's Cheetah supercar is real. It costs £1 mi | money | Y | - | 1868 | 1868 | 18.5 | 21.4 | - | 1160 | 1160 | - | E1-short |
-| 11-24T20:00 | GTA 6 brought back GTA 5's Mount Chiliad mystery | other | Y | - | 1836 | 1836 | 26.1 | 28.8 | - | 1418 | 1418 | - | E1-long |
-| 11-25T02:00 | GTA 6 outsold three consoles before it even laun | records | Y | - | 1423 | 1423 | 20.9 | 26.3 | - | 345 | 345 | - | E1-long |
-| 11-25T12:00 | GTA 6's Lucia isn't from Vice City. Here's where | characters | Y | - | - | 1592 | 22.2 | 24.2 | - | - | 1179 | - | E4-lucia |
-| 11-25T14:00 | GTA 6's money glitch survived the new update | other | Y | - | - | 1533 | 26.2 | 29.6 | 2 | - | 51 | - |  |
-| 11-25T17:00 | GTA 6's Jason lives rent-free. Here's the catch | characters | Y | - | - | 1797 | 31.9 | 20.9 | - | - | 1115 | - |  |
-| 11-25T20:00 | GTA 6 sold 44.9 million in four days, analyst sa | records | Y | - | - | 557 | 15.8 | 35.5 | - | - | 40 | - |  |
-| 11-26T02:00 | GTA 6 pulled players away from Fortnite, analyst | other | Y | - | - | - | - | - | - | - | - | - |  |
+| 11-20T20:00 | GTA 6 tied the highest Metacritic score ever | records | Y | 56.6 | 1484 | 1485 | 20.0 | 25.9 | 1 | 1129 | 1134 | 68.31 |  |
+| 11-20T23:00 | GTA 6's characters in Rockstar's own words | characters | Y | - | 1327 | 1333 | 25.6 | 27.8 | - | 485 | 952 | 54.120000000000005 |  |
+| 11-21T02:00 | GTA 6 Trailer 2: 475 million views in a day? | records | Y | - | 1292 | 1318 | 19.1 | 32.4 | - | 284 | 308 | 50.64999999999999 |  |
+| 11-21T14:00 | GTA 6 launch: 7.9 million people watching at onc | records | Y | - | 153 | 153 | 14.1 | 20.8 | - | 427 | 676 | 46.22 |  |
+| 11-21T17:00 | GTA 6 fans found Dexter's apartment in Vice City | real world | Y | - | 630 | 631 | 14.5 | 41.4 | - | 670 | 767 | 54.400000000000006 |  |
+| 11-21T20:00 | GTA 6 is about 50 hours long, one review says | reviews | Y | - | 1658 | 1658 | 29.2 | 27.6 | - | 1318 | 1357 | 75.5 |  |
+| 11-21T23:00 | GTA 6 sold 19 million copies? Here's the catch | records | Y | - | - | - | - | - | - | 240 | 412 | 44.25 |  |
+| 11-21T23:00 | GTA 6 made $3.79 billion on day one, Rockstar sa | money | Y | 60.2 | 1407 | 1408 | 29.5 | 29.9 | 14 | 263 | 436 | 54.79999999999999 |  |
+| 11-22T02:00 | GTA 6 fans think we saw it back in 2021 | other | Y | - | 1497 | 1498 | 30.2 | 22 | - | 1036 | 1124 | 63.99 |  |
+| 11-22T12:00 | GTA 6 runs best on one console. Here's which | tech | Y | 58.0 | 1434 | 1435 | 28.2 | 21.6 | 4 | 980 | 1016 | 61.11 | E1-long |
+| 11-22T14:00 | Is dating Lucia in GTA 6 cheating? Couples disag | characters | Y | - | 1347 | 1356 | 22.2 | 31.9 | 6 | 1891 | 2927 | 70.58 | E1-long |
+| 11-22T17:00 | GTA 6 has a secret Kodak Black radio station | other | Y | - | 1435 | 1451 | 12.6 | 37.1 | 1 | 1408 | 1529 | 86.07 | E1-short |
+| 11-22T20:00 | GTA 6's weirdest secrets players found in week o | other | Y | - | 1229 | 1230 | 13.4 | 39.2 | 3 | 717 | 978 | 61.84 | E1-long |
+| 11-23T02:00 | GTA 6 players are trying to make Jason fat | characters | Y | - | 1635 | 1635 | 23.1 | 28.1 | 1 | 811 | 1211 | 76.36 | E1-short |
+| 11-23T12:00 | GTA 6's Lucia actress was in GTA 5 all along | characters | Y | - | 2259 | 2280 | 30.8 | 21.2 | 3 | 1856 | 2027 | 65.66 | E1-long |
+| 11-23T14:00 | GTA 6's map vs GTA 5: how big is it really? | real world | Y | - | 1456 | 1464 | 17.3 | 26.4 | 2 | 62 | 246 | 61.68 | E1-short |
+| 11-23T17:00 | GTA 6 has no online mode. When is it coming? | other | Y | - | 1708 | 1712 | 26.0 | 27.3 | - | 616 | 975 | 66.85 | E1-long |
+| 11-23T20:00 | GTA 6's Metacritic fight just dragged in Zelda | reviews | Y | - | 1338 | 1339 | 18.1 | 34.8 | 1 | 459 | 627 | 56.330000000000005 | E1-short |
+| 11-24T02:00 | GTA 6 hid a real Easter egg at the top of a towe | real world | Y | - | 1262 | 1268 | 15.9 | 35.4 | - | 319 | 415 | 43.33 | E1-long |
+| 11-24T12:00 | GTA 6's Xbox glitch breaks the 30 fps lock | tech | Y | - | 1580 | 1580 | 18.2 | 33.7 | 2 | 156 | 518 | 61.24000000000001 | E1-short |
+| 11-24T14:00 | GTA 6's Jason was in the Army. Rockstar explains | characters | Y | - | 1706 | 1706 | 27.9 | 21.9 | - | 267 | 1095 | 67.89 | E1-long |
+| 11-24T17:00 | GTA 6's Cheetah supercar is real. It costs £1 mi | money | Y | - | 1868 | 1873 | 18.5 | 21.5 | - | 1160 | 1170 | 51.28 | E1-short |
+| 11-24T20:00 | GTA 6 brought back GTA 5's Mount Chiliad mystery | other | Y | - | 1836 | 1840 | 26.1 | 28.8 | - | 1418 | 1841 | 70.79 | E1-long |
+| 11-25T02:00 | GTA 6 outsold three consoles before it even laun | records | Y | - | 1423 | 1426 | 20.9 | 26.3 | - | 345 | 486 | 41.07 | E1-long |
+| 11-25T12:00 | GTA 6's Lucia isn't from Vice City. Here's where | characters | Y | - | 1599 | 1601 | 22.2 | 24.2 | - | 1219 | 1234 | - | E4-lucia |
+| 11-25T14:00 | GTA 6's money glitch survived the new update | other | Y | - | 1537 | 1542 | 26.1 | 29.8 | 2 | 364 | 991 | - |  |
+| 11-25T17:00 | GTA 6's Jason lives rent-free. Here's the catch | characters | Y | - | 1805 | 1805 | 39.4 | 21 | 1 | 1162 | 1169 | - |  |
+| 11-25T20:00 | GTA 6 sold 44.9 million in four days, analyst sa | records | Y | - | 957 | 959 | 25.5 | 34.4 | 3 | 109 | 135 | - |  |
+| 11-26T02:00 | GTA 6 pulled players away from Fortnite, analyst | other | Y | - | 1498 | 1499 | 21.3 | 23.7 | 4 | 567 | 923 | - |  |
+| 11-26T12:00 | GTA 6: Lucia's hidden looks are in magazines. He | characters | Y | - | 1644 | 1644 | 17.7 | 27.8 | 5 | 1783 | 1783 | - | E4-lucia |
+| 11-26T14:00 | GTA 6 is PlayStation's biggest launch ever, Sony | records | Y | - | 213 | 213 | 16.8 | 25.9 | - | 49 | 49 | - |  |
+| 11-26T17:00 | GTA 6 won't let you steal every car. Here's how | other | Y | - | - | 1536 | 26.2 | 24.5 | - | - | 1074 | - |  |
+| 11-26T20:00 | GTA 6 hides Mario-style caps for Jason and Lucia | characters | Y | - | - | 1475 | 11.7 | 30.9 | 2 | - | 200 | - |  |
+| 11-27T02:00 | GTA 6 takes all your cash when you die. Keep it  | other | Y | - | - | 1489 | 23.2 | 29.8 | - | - | 61 | - |  |
 
-Videos with 24 h numbers: 43 of 48.
+Videos with 24 h numbers: 50 of 53.
 
 **By topic type** (median per video: IG views 24h / YT views 24h / IG avg watch s / n)
-- characters: 1552.5 / 811 / 24.4 / n=6
+- characters: 1635 / 1190.5 / 23.1 / n=9
 - reviews: 1498.0 / 888.5 / 23.6 / n=2
+- other: 1466.0 / 717 / 17.4 / n=10
 - money: 1407 / 705.0 / 18.5 / n=5
-- records: 1386 / 386.0 / 20.0 / n=6
 - tech: 1354 / 568.0 / 18.2 / n=7
 - drama: 1339 / 295 / 25.9 / n=1
-- other: 1332.0 / 1036 / 13.0 / n=8
+- records: 1292 / 314.5 / 20.0 / n=8
 - real world: 1270.0 / 319 / 16.6 / n=8
 
 **Logo on cover/first screen** (median per video: IG views 24h / YT views 24h / IG avg watch s / n)
-- logo: 1435 / 693.5 / 22.2 / n=30
+- logo: 1463.0 / 670 / 22.2 / n=37
 - no logo: 307 / 1.5 / 14.4 / n=13
 
 **By slot (UTC)** (median per video: IG views 24h / YT views 24h / IG avg watch s / n)
-- 12:00: 1556.0 / 1063.5 / 28.4 / n=4
-- 02:00: 1446.5 / 578.0 / 20.0 / n=8
-- 14:00: 1347 / 427 / 19.6 / n=7
+- 12:00: 1589.5 / 1183.0 / 25.2 / n=6
+- 02:00: 1470 / 567 / 20.9 / n=9
+- 17:00: 1401 / 1147 / 16.2 / n=9
+- 14:00: 1347 / 364 / 19.6 / n=9
 - 23:00: 1340.5 / 251.5 / 22.2 / n=7
-- 20:00: 1338.5 / 923.0 / 19.1 / n=8
-- 17:00: 1310.0 / 908.5 / 15.3 / n=8
+- 20:00: 1338 / 717 / 20.0 / n=9
 - 11:00: 307 / 1 / 14.8 / n=1
 
 **By length** (median per video: IG views 24h / YT views 24h / IG avg watch s / n)
 - >55 s: 1420.5 / 621.5 / 24.1 / n=4
-- <45 s: 1354 / 643.0 / 18.5 / n=38
+- <45 s: 1393.5 / 616 / 19.4 / n=45
 - 45-55 s: 557 / None / 18.8 / n=1
 
 **Format** (median per video: IG views 24h / YT views 24h / IG avg watch s / n)
-- story format: 1643.0 / 402.0 / 19.7 / n=10
+- story format: 1580 / 459 / 21.3 / n=17
 - old format: 1333.0 / 764.0 / 19.0 / n=33
 
 **Top 3 (IG 24h):** GTA 6's Lucia actress was in GTA 5 all a (2259; hook: "") | GTA 6's Cheetah supercar is real. It cos (1868; hook: "") | GTA 6 brought back GTA 5's Mount Chiliad (1836; hook: "")
