@@ -2134,7 +2134,7 @@ S["gta6-niko-cameo"] = dict(
     cover_frame={"shot": "trailer_2_00795", "f": 0.5, "x": 0.31},   # Lucia + Jason with drinks at a bar (R3: faces)
     experiment="E5-gta5-callback",
     beats=[
-        ("Spoiler warning: a GTA 4 legend is hiding in GTA 6.", "CLIP:trailer_1_00728", None, "serious"),
+        ("Spoiler warning: a GTA 4 legend is hiding in GTA 6.", "OFFICIAL:vi_Lucia_Caminos_10", None, "serious"),   # 27 Nov v3: the 00728 crop showed lamps, not faces
         ("It's Niko Bellic, the hero of GTA 4.", "CLIP:trailer_1_00300", "NIKO BELLIC", "excited"),
         ("Near the end, he turns up as a hitman for a Balkan cartel, sent to deal with a character called Giorgio.",
          "CLIP:extended_look_12920", None, None),
