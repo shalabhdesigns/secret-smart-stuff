@@ -20,6 +20,11 @@ jobs:
           path: assets/official/clips
           key: official-clips-v1-${{ github.run_id }}
           restore-keys: official-clips-v1-
+      - uses: actions/cache/restore@v4     # 27 Nov 2026: official stills (vi_...) too, as 9:16 cover crops
+        with:
+          path: assets/official/img
+          key: official-v1-${{ github.run_id }}
+          restore-keys: official-v1-
       - run: |
           python - <<'PY'
           import os, re, subprocess
@@ -27,7 +32,13 @@ jobs:
           from shorts import official_clips as oc
           out = Path(os.environ["RUNNER_TEMP"]) / "frames"; out.mkdir()
           cat = oc.shots_catalogue()
-          for sid in [x.strip() for x in os.environ["SHOTS"].split(",") if re.fullmatch(r"[a-z0-9_]{3,60}", x.strip())]:
+          for sid in [x.strip() for x in os.environ["SHOTS"].split(",") if re.fullmatch(r"[A-Za-z0-9_]{3,60}", x.strip())]:
+              if sid.startswith(("vi_", "v_")):
+                  from shorts import official as of
+                  v = of.vertical(sid, out / f"{sid}_full.png")
+                  subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(v), "-vf", "scale=480:-1",
+                                  str(out / f"{sid}_v.jpg")], check=True)
+                  continue
               sh = cat.get(sid)
               if not sh: print("unknown", sid); continue
               src = oc.CLIPS / f"{sh['clip']}.mp4"
