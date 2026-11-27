@@ -2036,7 +2036,7 @@ S["gta6-cut-tennis"] = dict(
     cover_frame={"shot": "extended_look_03869", "f": 0.5, "x": 0.32},   # Jason in a tank top (R3: face)
     experiment="E5-gta5-callback",
     beats=[
-        ("GTA 5 had tennis.", "CLIP:extended_look_03869", None, "curious"),
+        ("GTA 5 had tennis.", "OFFICIAL:vi_Jason_Duval_02", None, "curious"),   # 27 Nov v3: the 03869 crop cut Jason's face off
         ("GTA 6 was going to have it too, until Rockstar cut it.", "CLIP:trailer_2_00188", None, None),
         ("Rob Nelson and Scott Mitchell from Rockstar North told the German magazine PC Games what didn't make it.",
          "CLIP:extended_look_12920", "PC GAMES INTERVIEW", None),
