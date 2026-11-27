@@ -1,5 +1,5 @@
 {
- "collected_at": "2026-11-26T08:33:33Z",
+ "collected_at": "2026-11-27T08:45:31Z",
  "errors": [
   "@simplethingshistories: ERROR: [youtube:tab] @simplethingshistories: This channel does not have a shorts tab"
  ],
@@ -1720,17 +1720,17 @@
    "multiple": 5.6
   },
   {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Copper Can Make You Serious Cash?💰",
-   "views": 13000,
-   "url": "https://www.youtube.com/shorts/hLRu5f6OFQw",
-   "multiple": 4.3
-  },
-  {
    "channel": "@nameexplain",
    "title": "How Did East Timor Get Its Name? #shorts",
    "views": 35000,
    "url": "https://www.youtube.com/shorts/b4zrXLrj4Ow",
+   "multiple": 4.3
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Copper Can Make You Serious Cash?💰",
+   "views": 13000,
+   "url": "https://www.youtube.com/shorts/hLRu5f6OFQw",
    "multiple": 4.3
   },
   {
@@ -1811,13 +1811,6 @@
    "multiple": 3.3
   },
   {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Aluminum Doesn’t Rust Like Iron? ✨",
-   "views": 9600,
-   "url": "https://www.youtube.com/shorts/58rlT470JyU",
-   "multiple": 3.2
-  },
-  {
    "channel": "@nameexplain",
    "title": "Why Does Sino Mean China?",
    "views": 26000,
@@ -1829,6 +1822,13 @@
    "title": "The Many Names Of Germany",
    "views": 26000,
    "url": "https://www.youtube.com/shorts/8X9rVA--EG4",
+   "multiple": 3.2
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Aluminum Doesn’t Rust Like Iron? ✨",
+   "views": 9600,
+   "url": "https://www.youtube.com/shorts/58rlT470JyU",
    "multiple": 3.2
   },
   {
@@ -1846,13 +1846,6 @@
    "multiple": 3.1
   },
   {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Basketball Began as a Winter Game?",
-   "views": 8900,
-   "url": "https://www.youtube.com/shorts/GaED350XHFU",
-   "multiple": 3.0
-  },
-  {
    "channel": "@nameexplain",
    "title": "How Did Georgia Get Its Name?",
    "views": 24000,
@@ -1864,6 +1857,13 @@
    "title": "How Did Algeria Get Its Name? #Shorts",
    "views": 24000,
    "url": "https://www.youtube.com/shorts/jFdXZeDpX9k",
+   "multiple": 3.0
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Basketball Began as a Winter Game?",
+   "views": 8900,
+   "url": "https://www.youtube.com/shorts/GaED350XHFU",
    "multiple": 3.0
   },
   {
@@ -1895,13 +1895,6 @@
    "multiple": 2.8
   },
   {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Cheese Came From Animal Stomachs?",
-   "views": 8100,
-   "url": "https://www.youtube.com/shorts/eE3K1cOYKDI",
-   "multiple": 2.7
-  },
-  {
    "channel": "@nameexplain",
    "title": "How  Did Czechia Get Its Name? #Shorts",
    "views": 22000,
@@ -1910,38 +1903,17 @@
   },
   {
    "channel": "@historyofsimplethings",
+   "title": "Did You Know Cheese Came From Animal Stomachs?",
+   "views": 8100,
+   "url": "https://www.youtube.com/shorts/eE3K1cOYKDI",
+   "multiple": 2.7
+  },
+  {
+   "channel": "@historyofsimplethings",
    "title": "Did You Know the Cursor on Your Screen Tilts for a Reason?",
    "views": 7900,
    "url": "https://www.youtube.com/shorts/dfQpC80UsZQ",
    "multiple": 2.6
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Oil Refineries Are Giant Boiling Towers? 🛢️🔥",
-   "views": 7400,
-   "url": "https://www.youtube.com/shorts/F4uJ3BpwL-k",
-   "multiple": 2.5
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Skyscrapers Are Built to Sway?",
-   "views": 7500,
-   "url": "https://www.youtube.com/shorts/MSI5uRtelVg",
-   "multiple": 2.5
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Phillips Was A Real Person? 🔩😮",
-   "views": 7400,
-   "url": "https://www.youtube.com/shorts/Bxa1bCf0hbA",
-   "multiple": 2.5
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Cigars Aren’t Meant to Be Inhaled?",
-   "views": 7600,
-   "url": "https://www.youtube.com/shorts/fR0dq4m2g1I",
-   "multiple": 2.5
   },
   {
    "channel": "@nameexplain",
@@ -1966,6 +1938,34 @@
   },
   {
    "channel": "@historyofsimplethings",
+   "title": "Did You Know Oil Refineries Are Giant Boiling Towers? 🛢️🔥",
+   "views": 7500,
+   "url": "https://www.youtube.com/shorts/F4uJ3BpwL-k",
+   "multiple": 2.5
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Skyscrapers Are Built to Sway?",
+   "views": 7600,
+   "url": "https://www.youtube.com/shorts/MSI5uRtelVg",
+   "multiple": 2.5
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Phillips Was A Real Person? 🔩😮",
+   "views": 7400,
+   "url": "https://www.youtube.com/shorts/Bxa1bCf0hbA",
+   "multiple": 2.5
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Cigars Aren’t Meant to Be Inhaled?",
+   "views": 7600,
+   "url": "https://www.youtube.com/shorts/fR0dq4m2g1I",
+   "multiple": 2.5
+  },
+  {
+   "channel": "@historyofsimplethings",
    "title": "Did You Know Saltwater Destroys Iron Faster? 🌊",
    "views": 6900,
    "url": "https://www.youtube.com/shorts/TRm5hFjWhgI",
@@ -1984,6 +1984,13 @@
    "views": 6800,
    "url": "https://www.youtube.com/shorts/f5YrzXU530w",
    "multiple": 2.3
+  },
+  {
+   "channel": "@nameexplain",
+   "title": "Is PS Short For Something?",
+   "views": 18000,
+   "url": "https://www.youtube.com/shorts/3B1J4kBTQBE",
+   "multiple": 2.2
   },
   {
    "channel": "@historyofsimplethings",
@@ -2029,10 +2036,10 @@
   },
   {
    "channel": "@nameexplain",
-   "title": "Is PS Short For Something?",
-   "views": 18000,
-   "url": "https://www.youtube.com/shorts/3B1J4kBTQBE",
-   "multiple": 2.2
+   "title": "How Did Burkina Faso Get Its Name? #Shorts",
+   "views": 17000,
+   "url": "https://www.youtube.com/shorts/3uqhcdtcaWs",
+   "multiple": 2.1
   },
   {
    "channel": "@historyofsimplethings",
@@ -2053,13 +2060,6 @@
    "title": "Did You Know the Hole in Soda Can Tabs Isn’t Just for Opening?",
    "views": 6400,
    "url": "https://www.youtube.com/shorts/KFdrdW_OgY8",
-   "multiple": 2.1
-  },
-  {
-   "channel": "@nameexplain",
-   "title": "How Did Burkina Faso Get Its Name? #Shorts",
-   "views": 17000,
-   "url": "https://www.youtube.com/shorts/3uqhcdtcaWs",
    "multiple": 2.1
   }
  ]
