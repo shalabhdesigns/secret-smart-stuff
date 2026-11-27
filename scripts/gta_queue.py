@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 import sys
 
-sys.path.insert(0, "/home/claude/shorts-system")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[1]))
 
 RULES = (
     "GTA 6 SERIES RULES (owner, 16 Nov 2026 - these win over everything else):\n"
@@ -411,6 +411,8 @@ def build():
                  "seo": {"category_id": "20", "hashtags": ["#GTA6", "#GTAVI", "#GrandTheftAuto6"],
                          "tags": ["GTA 6", "GTA VI", "Grand Theft Auto 6", "Grand Theft Auto VI", "GTA 6 news",
                                   "GTA 6 trailer", "Rockstar Games", "Vice City", "Jason and Lucia", "Leonida"]}}
+        if (SCRIPTS.get(tid) or {}).get("open") == "motion":   # E7 (27 Nov 2026): 25-35 s, no still title card
+            notes.update(words=[65, 95], open="motion")
         # 20 Nov 2026: a remake of a topic on a later day needs its own nonce (the daily run skips used nonces)
         nonce = f"gta-footage-{tid}" if (day or "") <= "2026-11-20" else f"gta-footage-{tid}-{day}"
         q.append({"action": "produce", "topic": tid, "fresh": True, "nonce": nonce, "day": day,
@@ -423,7 +425,7 @@ def build():
 
 
 if __name__ == "__main__":
-    out = sys.argv[1] if len(sys.argv) > 1 else "/home/claude/shorts-system/config/daily_queue.json"
+    out = sys.argv[1] if len(sys.argv) > 1 else str(__import__("pathlib").Path(__file__).resolve().parents[1] / "config" / "daily_queue.json")
     q = build()
     json.dump({"note": "GTA 6 launch week, footage edition (owner, 16 Nov 2026): 5 a day, Rockstar footage. "
                "Built by scripts/gta_queue.py.", "queue": q}, open(out, "w"), indent=1, ensure_ascii=False)

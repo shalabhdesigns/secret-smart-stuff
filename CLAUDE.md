@@ -59,7 +59,7 @@
 - **Story format + natural voice** (owner, 18 Nov 2026): the old scripts were "unnatural, badly built, confusing".
   GTA videos use `notes.style: "story"` (`shorts/prompts.py` STORY_*): a real person telling a friend a story, natural
   complete sentences clear on one listen, hook -> escalating reveals -> wow payoff -> comment question, 45-70 s
-  (110-170 words), no loop lead-in, real Rockstar/Take-Two quotes word for word. Voice: "Mark - Natural
+  (110-170 words; E7 send-first shorts 65-95 words with `open="motion"`, no still title card, from 29 Nov), no loop lead-in, real Rockstar/Take-Two quotes word for word. Voice: "Mark - Natural
   Conversations" (ElevenLabs Voice Library, eleven_v4) with up to 5 delivery tags per video.
 - **Scripts are written by Claude in session, not by the API** (owner, 18 Nov 2026: "$20 every 3-4 days is way too
   much ... create a video on the first try"). Claude researches, writes and fact-checks each day's scripts and picks
@@ -88,7 +88,7 @@
   12:00, 14:00, 17:00, 20:00, 02:00 UTC (the 23:00 slot was weak on YouTube; experiment E3). Review the numbers after 7 days: 8 a day if views per video hold, back to 3 if they fall.
 - **Flag cost and policy risks before spending.** Never claim something works until it has been tested.
 
-## Owner away 21-27 Nov 2026 (owner, 20 Nov: "I DO NOT WANT ANY INTERRUPTIONS WHATSOEVER ... without requiring any
+## Owner away 21-27 Nov 2026 (he is back from 27 Nov evening; the daily run keeps working the same way, results only) (owner, 20 Nov: "I DO NOT WANT ANY INTERRUPTIONS WHATSOEVER ... without requiring any
 input, intervention, or approval from me")
 - One scheduled Claude run a day (cloud, not his laptop), **"Daily GTA scripts + cost check", 12:41 IST**: learning
   loop (`scripts/gta_learn.py`, `docs/GTA_LEARNINGS.md`), cost check, tomorrow's 5 scripts, and a safety pass on

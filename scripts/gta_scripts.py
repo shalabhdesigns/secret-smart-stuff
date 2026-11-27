@@ -2574,6 +2574,7 @@ def build(topic: str, v: dict) -> dict:
             "facts": v["facts"], "description": v["description"], "hashtags": v["hashtags"],
             "affiliate_product": None, "written_by": "Claude in session (verified)",
             "experiment": v.get("experiment"),     # docs/GTA_LEARNINGS.md experiment id, e.g. "E1-short"
+            "open": v.get("open"),                 # "motion" = no still title card (E7, 27 Nov 2026)
             # cover + opening card words, written here (no paid cover call); the picture is the first beat's shot
             "cover": {"image": "img1", "lines": v.get("cover_lines") or [v["hook_card"]], "why": "written in session",
                       **({"frame": v["cover_frame"]} if v.get("cover_frame") else {})}}
@@ -2592,8 +2593,9 @@ def check(topic: str, s: dict) -> list[str]:
         if kind == "OFFICIAL" and sid not in cat:
             errs.append(f"{topic}: bad image {sid}")
     words = sum(len(sc["narration"].split()) for sc in s["scenes"])
-    if not 95 <= words <= 175:
-        errs.append(f"{topic}: {words} words")
+    lo, hi = (65, 95) if s.get("open") == "motion" else (95, 175)   # E7 send-first videos: 25-35 s
+    if not lo <= words <= hi:
+        errs.append(f"{topic}: {words} words (want {lo}-{hi})")
     for sc in s["scenes"]:
         if len(sc["callout"] or "") > 34:
             errs.append(f"{topic}: long callout {sc['callout']}")

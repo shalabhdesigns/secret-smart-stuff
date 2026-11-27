@@ -1477,8 +1477,17 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
             pass
         from .render import logo as _logo
         real_logo = _logo.has_logo(tnotes.get("badge"))
+        # 27 Nov 2026 (owner approved; experiment E7): "motion" opening = no still title card. 45 % of YouTube viewers
+        # swiped away during the 2.6 s card; the designed cover still goes to Instagram (cover_url) and YouTube
+        # (thumbnail). The video starts on footage + the spoken hook, with a mid-size logo for 2 s, then small.
+        motion_open = (tnotes.get("open") or (self._prewritten or {}).get("open")) == "motion"
+        if motion_open:
+            hook = None
         overlays = []
-        if real_logo:    # owner, 20 Nov 2026: the real GTA VI logo, big on the first screen, small in the corner after
+        if real_logo and motion_open:
+            overlays = [(_logo.frame_png(tnotes["badge"], d / "logo_mid.png", 300, (540, 250)), 0.0, 2.0),
+                        (_logo.frame_png(tnotes["badge"], d / "logo_small.png", 190, (150, 300)), 2.0, end + 1)]
+        elif real_logo:    # owner, 20 Nov 2026: the real GTA VI logo, big on the first screen, small in the corner after
             _hl = [t for t in (hook[0] if hook else []) if t]
             _show = 2.6 if len(_hl) >= 3 or sum(len(t) for t in _hl) > 24 else 1.8   # matches the opening card
             overlays = [(_logo.frame_png(tnotes["badge"], d / "logo_big.png", 520, (540, 470)), 0.0, _show),

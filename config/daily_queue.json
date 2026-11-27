@@ -289,6 +289,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -636,6 +637,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -1374,6 +1376,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -1676,6 +1679,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -1988,6 +1992,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -2298,6 +2303,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -2576,6 +2582,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -2848,6 +2855,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -3145,6 +3153,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -3449,6 +3458,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -3770,6 +3780,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -4075,6 +4086,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -4387,6 +4399,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -4698,6 +4711,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -5009,6 +5023,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -5311,6 +5326,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -5606,6 +5622,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -5906,6 +5923,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -6241,6 +6259,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E1-long",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -6559,6 +6578,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E1-long",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -6790,6 +6810,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E1-short",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -7069,6 +7090,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E1-long",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -7315,6 +7337,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E1-short",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -7617,6 +7640,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E1-long",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -7855,6 +7879,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E1-short",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -8125,6 +8150,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E1-long",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -8380,6 +8406,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E1-short",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -8684,6 +8711,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E1-long",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -8947,6 +8975,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E1-short",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -9219,6 +9248,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E1-long",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -9473,6 +9503,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E1-short",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -9762,6 +9793,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E1-long",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -10034,6 +10066,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E1-long",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -10298,6 +10331,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E4-lucia",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -10600,6 +10634,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -10888,6 +10923,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -11183,6 +11219,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -11430,6 +11467,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -11709,6 +11747,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E4-lucia",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -12005,6 +12044,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -12292,6 +12332,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -12555,6 +12596,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -12841,6 +12883,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -13088,6 +13131,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E4-lucia",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -13366,6 +13410,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E5-gta5-callback",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -13636,6 +13681,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -13908,6 +13954,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E5-gta5-callback",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -14171,6 +14218,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -14442,6 +14490,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E5-older-gta+E6-still-cover",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -14705,6 +14754,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E5-older-gta+E6-still-cover",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -14944,6 +14994,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E6-still-cover",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -15207,6 +15258,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E6-still-cover",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -15485,6 +15537,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": "E6-still-cover",
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -15763,6 +15816,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [
@@ -16027,6 +16081,7 @@
       "affiliate_product": null,
       "written_by": "Claude in session (verified)",
       "experiment": null,
+      "open": null,
       "cover": {
        "image": "img1",
        "lines": [

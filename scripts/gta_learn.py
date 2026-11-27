@@ -42,6 +42,10 @@ def category(text: str) -> str:
     return "other"
 
 
+def _rate(n, d, per: int = 1000):
+    return round(per * n / d, 1) if isinstance(n, (int, float)) and d else None
+
+
 def near(rows: list[tuple[float, dict]], hours: float, lo: float, hi: float) -> dict | None:
     c = [(abs(a - hours), d) for a, d in rows if lo <= a <= hi]
     return min(c, key=lambda x: x[0])[1] if c else None
@@ -103,6 +107,14 @@ def collect(db: str) -> list[dict]:
             "ig_watch_s": round(((il or {}).get("ig_reels_avg_watch_time") or 0) / 1000, 1) or None,
             "ig_skip": (il or {}).get("reels_skip_rate"), "ig_shares": (il or {}).get("shares"),
             "ig_saves": (il or {}).get("saved"), "ig_reach": (il or {}).get("reach"),
+            # 27 Nov 2026: reach stops at ~1,100-1,500 for every Reel (Instagram's first test group). What gets a Reel
+            # pushed further: watch time, likes and above all sends (Mosseri). Judge experiments on these rates.
+            "ig_sends_per_1k": _rate((il or {}).get("shares"), (il or {}).get("reach")),
+            "ig_likes_per_1k": _rate((il or {}).get("likes"), (il or {}).get("reach")),
+            "ig_saves_per_1k": _rate((il or {}).get("saved"), (il or {}).get("reach")),
+            # YouTube "views" count every start; engagedViews = people who stayed. 45 % swiped away (27 Nov).
+            "yt_engaged_pct": _rate((yt[-1][1] if yt else {}).get("engagedViews"), (yt[-1][1] if yt else {}).get("views"), 100),
+            "open": sc.get("open") or "card",
         })
     acct = {}
     for svc in ("youtube", "instagram"):
@@ -133,13 +145,15 @@ def render(vs: list[dict], acct: dict) -> str:
     if acct:
         L.append("**Accounts:** " + "; ".join(f"{k} {v['now']} (first seen {v['first_seen']})" for k, v in acct.items()))
         L.append("")
-    L += ["| published (UTC) | video | cat | logo | s | IG 24h | IG now | IG watch s | IG skip % | IG shares | YT 24h | YT now | YT % viewed | exp |",
-          "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
+    L += ["| published (UTC) | video | cat | open | s | IG 24h | IG reach | IG watch s | IG skip % | sends/1k | likes/1k | saves/1k | YT 24h | YT now | YT stayed % | YT % viewed | exp |",
+          "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for v in vs:
-        L.append(f"| {(v['publish_at'] or '')[5:16]} | {v['title'][:48]} | {v['category']} | {'Y' if v['logo'] else '-'} | "
-                 f"{v['seconds'] or '-'} | {v['ig_views_24h'] or '-'} | {v['ig_views'] or '-'} | {v['ig_watch_s'] or '-'} | "
-                 f"{v['ig_skip'] or '-'} | {v['ig_shares'] or '-'} | {v['yt_views_24h'] or '-'} | {v['yt_views'] or '-'} | "
-                 f"{v['yt_pct_viewed'] or '-'} | {v['experiment'] or ''} |")
+        L.append(f"| {(v['publish_at'] or '')[5:16]} | {v['title'][:48]} | {v['category']} | {v['open']} | "
+                 f"{v['seconds'] or '-'} | {v['ig_views_24h'] or '-'} | {v['ig_reach'] or '-'} | {v['ig_watch_s'] or '-'} | "
+                 f"{v['ig_skip'] or '-'} | {v['ig_sends_per_1k'] if v['ig_sends_per_1k'] is not None else '-'} | "
+                 f"{v['ig_likes_per_1k'] or '-'} | {v['ig_saves_per_1k'] if v['ig_saves_per_1k'] is not None else '-'} | "
+                 f"{v['yt_views_24h'] or '-'} | {v['yt_views'] or '-'} | {v['yt_engaged_pct'] or '-'} | "
+                 f"{round(v['yt_pct_viewed']) if v['yt_pct_viewed'] else '-'} | {v['experiment'] or ''} |")
     done = [v for v in vs if v["ig_views_24h"] is not None or v["yt_views_24h"] is not None]
     L += ["", f"Videos with 24 h numbers: {len(done)} of {len(vs)}.", ""]
     if done:
@@ -149,6 +163,13 @@ def render(vs: list[dict], acct: dict) -> str:
         L += groups(done, lambda v: ("<45 s" if (v["seconds"] or 0) < 45 else "45-55 s" if (v["seconds"] or 0) <= 55 else ">55 s"),
                     "By length") + [""]
         L += groups(done, lambda v: "story format" if v["story"] else "old format", "Format") + [""]
+        L += groups(done, lambda v: v["open"], "Opening (E7: motion vs title card)") + [""]
+        rec = [v for v in done if v["ig_reach"]]
+        if rec:
+            br = [v for v in rec if v["ig_reach"] >= 3000]
+            L.append(f"**Breakouts (IG reach >= 3,000, i.e. pushed past the first test group):** {len(br)} of {len(rec)}"
+                     + (": " + ", ".join(v["title"][:40] for v in br) if br else ""))
+            L.append("")
         top = sorted(done, key=lambda v: -(v["ig_views_24h"] or 0))
         L.append("**Top 3 (IG 24h):** " + " | ".join(f"{v['title'][:40]} ({v['ig_views_24h']}; hook: \"{v['hook'][:70]}\")" for v in top[:3]))
         L.append("")
