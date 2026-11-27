@@ -16,7 +16,7 @@ the next videos; identifying patterns and improving is Claude's job, not the own
 5. Rules: a learning without a number, or one that changed nothing, is deleted, not repeated. Never compare with
    the old product videos. Small samples (n < 3 per side) are "extend", not "adopt".
 
-## What the numbers say so far (26 Nov 07:12 UTC, 42 of 48 GTA videos with 24 h numbers)
+## What the numbers say so far (27 Nov 07:20 UTC, 48 of 53 GTA videos with 24 h numbers)
 (F1-F4 deleted 21 Nov; F5 deleted 24 Nov: E3 tested it and is now rule R7.)
 
 - F6 Full analysis (21 Nov 04:18 UTC, all 23 GTA videos; IG + YT live counts; table in the owner report):
@@ -137,6 +137,27 @@ the next videos; identifying patterns and improving is Claude's job, not the own
   the face list is now used up for the week (27 Nov covers reuse 21-23 Nov shots), so the next run previews new
   face shots with `shotframes` (or a still from the catalogue) before picking covers.
 
+- F28 Sales-number videos have worn out (27 Nov): official sales (21 Nov) 1,407 IG and 14 shares; then analyst and
+  platform numbers fell each time: outsold consoles 1,423 (25 Nov), 44.9M analyst 957 IG / 135 YT, Sony's PlayStation
+  record 213 IG / 49 YT at ~17 h (the lowest of any logo-era video; same day: 1,475-1,644 IG). It had a face cover
+  (Jason on the phone), so the topic, not the cover, failed. Change: no sales / launch-number videos (analyst,
+  Sony, "outsold") until Rockstar or Take-Two publish a new number; R5's "big number" slot is dropped; R2 tightened.
+- F29 Lucia never flops, but her name does not add a lift (27 Nov, E4 dropped): Lucia from Liberty City 1,599 IG and
+  Lucia's magazine looks 1,644 IG were +5 % and +11 % over their days (bar +25 %). But they are steady: the 5 Lucia
+  videos since 23 Nov got 1,599-2,259 IG, and the best YouTube share of IG (77-108 %; magazine looks 1,783 YT).
+  Change: each batch keeps >= 2 Jason/Lucia character videos (28 Nov: ages, four heroes, break-up); Lucia's name in
+  the title is no longer required.
+- F30 Step videos are saved but not watched (27 Nov): Mario caps (3 steps to find) 11.7 s average watch and 31 %
+  skip, but 21 saves; magazine looks 17.7 s, 31 saves; money glitch 26.1 s, 17 saves; car tools 26.2 s, 8 saves. The
+  ones that tell a story around the steps (a catch, a "why") hold about twice as long. Change: a how-to has at most 3
+  numbered steps and then a catch or a pro move as its payoff (28 Nov snap gun: the alarm catch + the back-door move).
+- F31 The `faces` list was used up; official character stills are a new pool (27 Nov): only 3 unused face shots
+  were left for 22-28 Nov, all dark or masked. `shotframes` now previews catalogue stills too: 15 previewed, 9 put a
+  big face above the logo (Jason_Duval_01/02/07/08/15, Lucia_Caminos_06/07/09/12); wide Jason-and-Lucia stills put
+  both faces under the logo (unusable); Jason_Duval_07's eyes sat under the logo. Today's lucia-svu and pc-port
+  covers were moved to stills (the old ones repeated 22-23 Nov pictures; lucia-svu's face sat under the logo). A
+  cover can now be `{"image": "imgN", "zone": "lower"}` for a still in the video. Change: E6 tests still covers.
+
 ## Adopted rules (proven on our GTA numbers)
 - R1 (20 Nov): real GTA VI logo on the cover and first screen + story format (F1).
 - R2 (20 Nov): favour character, "does this affect me" (price/console/storage) and record topics; avoid event and
@@ -144,6 +165,8 @@ the next videos; identifying patterns and improving is Claude's job, not the own
   Confirmed 21 Nov on 23 videos (F6): every daily batch has >= 3 of 5 from characters / records / real-world
   practical / "does it affect me"; at most 1 news/drama; no events, timelines or trailer trivia.
   22 Nov (F9): viewer/stream-count records count as events (stream record 152 IG views): avoid.
+  Tightened 27 Nov (F28): sales / launch-number records (analyst estimates, platform records, "outsold") are out
+  until an official new number (213-957 IG for the last two). Characters stay first (F29).
 - R3 (21 Nov): cover picture = a clear Lucia or Jason face (or masked Lucia) from `faces` in
   `assets/official/attention_shots.json`; no faceless covers (cars, buildings, scenery, crowds). Never the same
   face shot two days running (F6).
@@ -161,14 +184,19 @@ the next videos; identifying patterns and improving is Claude's job, not the own
   half under the logo; the back of Lucia's head at f 0.2). 9 new checked face shots (28 in total).
   Re-checked 26 Nov: holds (24 Nov face covers 1,423-1,868 IG at 24 h). Tightened (F27): every cover is looked at
   after rendering; a "preview" entry is not proof (2 of 5 failed). 2 entries removed (26 in the list).
+  Re-checked 27 Nov: holds (26 Nov face covers 1,475-1,644 IG; the 213 was the topic, F28). Widened (F31): an
+  official Jason/Lucia still with the face above the logo may be the cover (previewed with `shotframes`).
 - R4 (21 Nov): the last beat asks a side-taking question that splits viewers ("PS5 or PC - which side are you
   on?"), never a neutral "what do you think?" (F6: 13 YT comments on the PC vs console video vs ~0 elsewhere).
 - R5 (21 Nov): at least 1 of 5 daily videos is a practical / real-world fact viewers save or send (price in
   rupees/dollars, size, where places are in real life, what console you need) - these get all the shares (F6).
   Widened 22 Nov (F10): plus 1 video on one big hard number set against something famous (14 shares in 8 h).
+  Dropped 27 Nov (F28): the "big number" video (957 and 213 IG for the last two).
   Tightened 25 Nov (F22): the practical videos are step-by-step how-tos with numbered callouts whenever the
   sources give steps (saves: how-to/find-it 11-48 vs 0-6 for the rest).
   Re-checked 26 Nov: holds (money glitch how-to 17 saves at 8 h vs 0-3 for the other 25 Nov videos).
+  Re-checked 27 Nov: holds (26 Nov how-tos 8-31 saves vs 0 for the record video). Tightened (F30): max 3 steps, then
+  a catch or pro move.
 - R6 (23 Nov, F14): a secret video is ONE secret told as a story, never a list of finds (lists: 12.8-13.5 s
   watch vs 22-28 s).
   Re-checked 25 Nov: holds (one-secret Chiliad 26.0 s watch, 1,813 IG; egg tower 15.9 s, 25 saves).
@@ -179,6 +207,7 @@ the next videos; identifying patterns and improving is Claude's job, not the own
   and fewer watch seconds (median 17.7 s vs 26.2 s).
 
 ## Experiments log
+<!-- 27 Nov: E4 DROPPED (+5 %, +11 %; bar +25 %). E5 extended (its first videos publish today). New: E6 (still covers). 28 Nov batch: E5 test = ages (12:00), four-heroes (14:00); E6 test = all five 28 Nov + 27 Nov lucia-svu, pc-port; E6 control = 27 Nov cut-tennis, black-friday, niko-cameo + the 26 Nov batch (clip-frame face covers). -->
 <!-- 26 Nov: E4 extended (no 24 h numbers; preview below). New: E5 (older-GTA hook). 27 Nov batch: E4 test = lucia-svu (12:00); E5 test = cut-tennis (14:00), niko-cameo (20:00); E5 control = black-friday (17:00), pc-port (02:00). -->
 <!-- 25 Nov: E4 not judged yet (its first video, lucia-liberty, publishes 25 Nov 12:00 UTC; remade this morning: the opening shot ran on into a stranger). No new experiment: no per-video follower number exists to test F20 fairly, and E5 (4 uploads a day) waits for the 24 Nov YouTube numbers (F23). 26 Nov batch: E4 test = lucia-looks (12:00); control = ps-record, steal-cars, mario-caps, lose-cash. -->
 <!-- 24 Nov: E1 dropped, E3 adopted (R7). New: E4 (Lucia). 25 Nov batch: E4 test = lucia-liberty (12:00); control = money-glitch, jason-landlord, 44-million, fortnite-drop. -->
@@ -186,10 +215,17 @@ the next videos; identifying patterns and improving is Claude's job, not the own
 <!-- 22 Nov: E1-E3 not judged yet - their first videos publish tonight (22 Nov batch, all 5 remade this morning after the script check). No new experiment: 3 are running (the max is 2; none is added until one ends). 23 Nov batch: E1 test = map-size (14:00), zelda-score (20:00); control = lucia-actor, online-when, egg-tower; E2: all five; E3: lucia-actor at 12:00 UTC. -->
 <!-- 21 Nov: E1-E3 not judged yet - their first videos are the 22 Nov batch (E1 test: kodak-radio, true-fat-jason; control: console-best, dating-lucia, weird-secrets; E2: all five; E3: console-best at 12:00 UTC). No new experiment: 3 are running. -->
 <!-- newest first: E<n> | started | change | hypothesis | videos (test / control) | result with numbers | decision -->
+- E6 | from 27 Nov | cover = an official Jason/Lucia character still (big, sharp face above the logo) instead of a
+  trailer frame | still-cover videos get >= 10 % more IG views at 24 h than clip-frame face covers | test: 27 Nov
+  lucia-svu, pc-port; 28 Nov ages, four-heroes, snap-gun, break-up, patch-fix | control: 27 Nov cut-tennis,
+  black-friday, niko-cameo; 26 Nov batch excluding ps-record (topic flop, F28) | result: pending | decision: pending
+  (judge on 29 Nov with n=7 vs 7; adopt if the median gap is >= 10 % and no still cover is under 1,200 IG)
 - E5 | from 27 Nov | the video's hook is a link to an older GTA (a GTA 4/5 character, place, activity or mystery in
   GTA 6) | E5 videos get >= 15 % more IG views at 24 h than the same day's non-E5, non-E4 videos (F26: 1,836-2,259 vs
   median 1,457) | test: 27 Nov cut-tennis, niko-cameo; control: black-friday, pc-port | result: pending | decision:
   pending (2 more test videos on 28 Nov; adopt at n=4 if the median gap is >= 15 %)
+  27 Nov: no numbers yet (test videos publish 27 Nov 14:00 and 20:00 UTC) -> EXTEND. 28 Nov test: ages (Lucia's
+  licence from GTA 4's Liberty City), four-heroes (GTA 5's three); control: snap-gun, break-up, patch-fix.
 - E4 | from 25 Nov | Lucia's name in the title + a clear Lucia face on the cover, 1 video a day | the Lucia video gets
   >= 25 % more IG views at 24 h than the median of the same day's other 4 videos (F17: Lucia actress 2,252 vs
   1,315-1,694) | test: 25 Nov lucia-liberty (then 1 a day on 26-27 Nov); control: the same day's other videos |
@@ -199,6 +235,10 @@ the next videos; identifying patterns and improving is Claude's job, not the own
   26 Nov: still no 24 h numbers. Preview: lucia-liberty 1,592 IG at 10 h vs same-day Jason's landlord 1,797 at 5 h
   and money glitch 1,533 at 8 h - not ahead so far. -> EXTEND. 27 Nov test: lucia-svu (Lucia's actress on Law &
   Order); judge all 3 on 28 Nov.
+  27 Nov (judged a day early: adopting needs all 3 at +25 % and 2 of 2 already missed): lucia-liberty 1,599 IG vs
+  the 25 Nov median 1,518 (+5 %); lucia-looks 1,644 vs the 26 Nov median 1,489 (+11 %; ps-record 213, steal-cars
+  1,536, mario-caps 1,475, lose-cash 1,489). Watch 22.2 / 17.7 s vs 21-39 s. -> DROP. Kept (F29): Lucia videos are
+  steady (never under 1,599) and win YouTube (1,234 / 1,783 YT), so characters stay first in R2.
 - E3 | from 22 Nov | slots 12:00, 14:00, 17:00, 20:00, 02:00 UTC (the 23:00 slot moves to 12:00 = 17:30 IST; config
   gta_slots) | the 12:00 video gets >= 50 % of its Instagram views on YouTube at 24 h, like the other slots, while the
   23:00 videos got 5-36 % | 22-24 Nov 12:00 videos vs 19-21 Nov 23:00 videos, same metric | result: pending |
