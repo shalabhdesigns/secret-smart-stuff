@@ -206,3 +206,41 @@ Results of each scheduled run while the owner is away (newest last). Simple word
     script says to check before buying.
 - **Still needs the owner (no action taken, not messaged):** the Anthropic API key (GitHub secret
   `ANTHROPIC_API_KEY`) has been invalid since 24 Nov. Videos still go out through my daily check.
+
+## 27 Nov 2026 (daily run, 12:41 IST)
+- **Today's videos: all 5 checked by me and scheduled** (the final check still can't run: Anthropic API key 401).
+  - IST: 17:30 Lucia's actress on Law & Order · 19:30 GTA 6 cut tennis · 22:30 Black Friday prices ·
+    01:30 Niko cameo · 07:30 (28 Nov) fan PC ports.
+  - Remade 2 (opening second showed no face): cut tennis opened on a truck yard -> now a Jason close-up (v3);
+    Niko opened on a dark wall -> now a Lucia close-up (v3). Cost about $0.20 in voice, before upload (no quota).
+  - New covers for 2 (free): Lucia's actress (her face sat under the logo) -> Lucia in boxing gloves; PC ports
+    (a 23 Nov picture again) -> hooded Jason. I looked at both. The other 3 covers are fine but reuse 22-23 Nov
+    pictures (no unused face shot was left).
+  - Black Friday prices: reports disagree (ShopTo Xbox £53.85 vs £55.85). Kept £55.85 (GameRant + GamingHQ, the
+    newest); the video says to check the price before paying.
+  - Contact sheets, first frames and audio (no gaps; level OK at start and end) checked.
+- **Cost:** last 24 h $0.30 (voice only, $0.05-0.07 a video) + about $0.20 for today's 3 remakes (waste: the
+  replaced versions). November about $125 of $155. Nothing safe left to cut today. Next cut: let a picture-only remake
+  keep its voice (saves ~$0.06 a remake).
+- **Experiments:**
+  - E4 (Lucia's name in the title) DROPPED: +5 % and +11 % over its days (bar +25 %). Lucia videos stay steady
+    (never under 1,599 IG) and win YouTube, so characters stay first.
+  - E5 (older-GTA hook) EXTENDED: first test videos go out today.
+  - New E6: covers from official Jason/Lucia stills (bigger, sharper faces). Test: all 5 of tomorrow + 2 of today.
+- **Learnings (with numbers):**
+  - F28: sales-number videos are worn out: Sony's PlayStation record got 213 IG / 49 YouTube (others that day
+    1,475-1,644). No more sales/launch-number videos until an official new number. R2 tightened, R5's "big number"
+    slot dropped.
+  - F29: Lucia never flops (1,599-2,259 IG; best YouTube share).
+  - F30: step videos get saved but not watched (Mario caps 11.7 s watch). Max 3 steps, then a catch.
+  - F31: the face list was used up; 9 official stills checked as new covers (the preview tool now shows stills).
+  - R3, R5 re-checked: hold.
+- **Tomorrow (28 Nov), IST:**
+  - 17:30 GTA 6 fans found Jason and Lucia's ages. Lucia's twist (characters; E5 test)
+  - 19:30 GTA 6 nearly had four heroes. Rockstar explains why not (characters; E5 test)
+  - 22:30 GTA 6's snap gun opens locked doors quietly. Get it (how-to to save)
+  - 01:30 GTA 6: can Jason and Lucia break up? Rockstar answers (relationship question)
+  - 07:30 (29 Nov) GTA 6's first update fixed the cops you couldn't lose (does it affect me)
+  - All 5: official-still face cover (previewed), side-taking last line, 124-152 words.
+- **Still needs the owner (no action taken, not messaged):** the Anthropic API key (GitHub secret
+  `ANTHROPIC_API_KEY`) has been invalid since 24 Nov. Videos still go out through my daily check and the safety net.
