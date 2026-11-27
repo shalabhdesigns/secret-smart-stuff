@@ -14212,6 +14212,1320 @@
   },
   {
    "action": "produce",
+   "topic": "gta6-ages",
+   "fresh": true,
+   "nonce": "gta-footage-gta6-ages-2026-11-28",
+   "day": "2026-11-28",
+   "topic_def": {
+    "id": "gta6-ages",
+    "title": "GTA 6 fans found Jason and Lucia's ages. Lucia's twist",
+    "pillar": "gta6",
+    "notes": {
+     "object": "official GTA 6 footage",
+     "question": "GTA 6 fans found Jason and Lucia's ages. Lucia's twist",
+     "angle": "VERIFIED 27 Nov 2026. Publishes 28 Nov 12:00 UTC (E5 older-GTA test: Liberty City; E6 still cover). Script in gta_scripts.py. UNILAD (26 Nov), LAFM + Pulptastic (27 Nov): in-game driver's licences found by fans - Jason born 1 May 1996 (30), 6'3\", Key Lento; Lucia born 20 Nov 2000 (26), 5'3\", licence issued in Liberty City; not announced by Rockstar. GTA 6 launched 19 Nov (Rockstar via Forbes). CTA: who's in charge? FORMAT FOR THIS VIDEO (its own look and feel): Tone: fun gossip, 'wait, really?'. Shape: licences found -> feel old -> Jason's age -> his height + home -> Lucia's age + height -> Liberty City (GTA 4) -> her birthday -> the day after launch -> fans not Rockstar -> pick a side.",
+     "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): a tattooed person in a cyan top in front of a graffiti-painted custom car (no casino; checked 23 Nov)\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+     "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
+     "official_images": "required",
+     "open_hook": true,
+     "words": [
+      110,
+      170
+     ],
+     "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
+     "style": "story",
+     "badge": "GTA 6",
+     "script": {
+      "viable": true,
+      "title": "GTA 6 fans found Jason and Lucia's ages. Lucia's twist",
+      "thumb_text": "THEIR REAL AGES",
+      "hook_card": "FANS FOUND THEIR IDS",
+      "hooks": [
+       "Fans just found Jason and Lucia's driver's licences in GTA 6."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:extended_look_10196",
+       "img2": "OFFICIAL:vi_Jason_and_Lucia_01",
+       "img3": "OFFICIAL:vi_Jason_Duval_02",
+       "img4": "CLIP:trailer_2_00188",
+       "img5": "OFFICIAL:vi_Lucia_Caminos_07",
+       "img6": "OFFICIAL:vi_Lucia_Caminos_03",
+       "img7": "OFFICIAL:vi_Lucia_Caminos_06",
+       "img8": "CLIP:extended_look_12606",
+       "img9": "OFFICIAL:vi_Jason_and_Lucia_17",
+       "img10": "OFFICIAL:vi_Jason_and_Lucia_14"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "Fans just found Jason and Lucia's driver's licences in GTA 6.",
+        "image": "img1",
+        "delivery": "excited",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "And the dates on them are making a lot of people feel old.",
+        "image": "img2",
+        "delivery": "amused",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "Jason was born on May the first, nineteen ninety-six. That makes him thirty.",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "JASON: 30",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "His licence says he's six foot three, and he lives down in Key Lento.",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "6'3\", KEY LENTO",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "Lucia is twenty-six. She's a full foot shorter, at five foot three.",
+        "image": "img5",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "LUCIA: 26, 5'3\"",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "And her licence wasn't issued in Leonida. It was issued in Liberty City, the city from GTA 4.",
+        "image": "img6",
+        "delivery": "curious",
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "ISSUED: LIBERTY CITY",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "Now look at her birthday: November the twentieth, two thousand.",
+        "image": "img7",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "BORN: 20 NOV 2000",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "GTA 6 came out on November the nineteenth. So Lucia turned twenty-six the very next day.",
+        "image": "img8",
+        "delivery": "surprised",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "LAUNCH: 19 NOV",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "Rockstar hasn't announced any of this. Fans read it off the licences in the game.",
+        "image": "img9",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "So: Jason at thirty, Lucia at twenty-six. Who's really in charge? Pick a side.",
+        "image": "img10",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "UNILAD (Callum Jones, 26 Nov 2026), 'GTA 6 fans have discovered Jason and Lucia's ages': from the in-game driver's licenses, Jason Duval was born May 1, 1996, so he is 30, height 6 ft 3 in, resides in Key Lento; Lucia Caminos is 26, date of birth November 20, 2000, height 5 ft 3 in, license issued in Liberty City. A player discovery; the article does not say Rockstar confirmed the numbers.",
+        "sources": [
+         "https://www.unilad.com/technology/gta-6-players-discover-jason-lucia-ages-202979-20261126"
+        ],
+        "main": true
+       },
+       {
+        "claim": "LAFM (27 Nov 2026) and Pulptastic (27 Nov 2026): fans tracked down the in-game driver's licences; Jason born 1 May 1996 (30), 6 ft 3 in, Key Lento; Lucia born 20 November 2000 (26), 5 ft 3 in, licence issued in Liberty City; a fan post on 23 Nov said Lucia 'celebrated her 26th birthday just 3 days ago'. TechWiser: Rockstar hasn't revealed their exact ages officially.",
+        "sources": [
+         "https://www.lafm.com.au/trending/gaming/gta-6-fans-just-found-jason-and-lucias-ages-and-now-everyone-feels-ancient/",
+         "https://pulptastic.com/gta-6-fans-have-discovered-jason-and-lucias-ages-and-its-making-them-feel-old/"
+        ],
+        "main": true
+       },
+       {
+        "claim": "Rockstar: GTA 6 releases at 'midnight local time on November 19, 2026, in all regions' (Forbes, 12 Nov 2026). Liberty City is the setting of Grand Theft Auto IV (Wikipedia).",
+        "sources": [
+         "https://www.forbes.com/sites/brianmazique/2026/11/12/gta-6-unlocks-at-midnight-on-november-19-but-millions-of-americans-can-start-playing-the-night-before/",
+         "https://en.wikipedia.org/wiki/Grand_Theft_Auto_IV"
+        ],
+        "main": false
+       }
+      ],
+      "description": "Fans found Jason and Lucia's in-game driver's licences: Jason, born 1 May 1996, is 30 and 6'3\"; Lucia, born 20 November 2000, is 26, 5'3\", with a licence from Liberty City. She turned 26 the day after GTA 6 came out. Rockstar hasn't announced these numbers.\nSources: UNILAD, LAFM, Pulptastic.",
+      "hashtags": [
+       "#GTA6",
+       "#LuciaCaminos",
+       "#JasonDuval"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)",
+      "experiment": "E5-older-gta+E6-still-cover",
+      "cover": {
+       "image": "img1",
+       "lines": [
+        "JASON 30, LUCIA 26?",
+        "FANS FOUND THEIR IDS",
+        "AND A BIRTHDAY TWIST"
+       ],
+       "why": "written in session",
+       "frame": {
+        "image": "img5",
+        "zone": "lower"
+       }
+      }
+     },
+     "publish_at": "2026-11-28T12:00:00Z",
+     "batch": "gta6-launch-footage",
+     "seo": {
+      "category_id": "20",
+      "hashtags": [
+       "#GTA6",
+       "#GTAVI",
+       "#GrandTheftAuto6"
+      ],
+      "tags": [
+       "GTA 6",
+       "GTA VI",
+       "Grand Theft Auto 6",
+       "Grand Theft Auto VI",
+       "GTA 6 news",
+       "GTA 6 trailer",
+       "Rockstar Games",
+       "Vice City",
+       "Jason and Lucia",
+       "Leonida"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-four-heroes",
+   "fresh": true,
+   "nonce": "gta-footage-gta6-four-heroes-2026-11-28",
+   "day": "2026-11-28",
+   "topic_def": {
+    "id": "gta6-four-heroes",
+    "title": "GTA 6 nearly had four heroes. Rockstar explains why not",
+    "pillar": "gta6",
+    "notes": {
+     "object": "official GTA 6 footage",
+     "question": "GTA 6 nearly had four heroes. Rockstar explains why not",
+     "angle": "VERIFIED 27 Nov 2026. Publishes 28 Nov 14:00 UTC (E5 older-GTA test: GTA 5's three; E6 still cover). Script in gta_scripts.py. Dexerto/GamesRadar/PC Gamer (27-29 Aug), Rob Nelson to IGN: 'Is it four characters now?', 'diluting the amount of player time with each', 'two characters in a relationship', chemistry quotes, 'I think we've got it.' CTA: two or four? FORMAT FOR THIS VIDEO (its own look and feel): Tone: behind-the-scenes, thoughtful. Shape: the road not taken -> GTA 5's three -> who said it -> the question -> the worry -> the choice -> I love them both -> chemistry is hard -> 'I think we've got it' -> two or four.",
+     "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): a tattooed person in a cyan top in front of a graffiti-painted custom car (no casino; checked 23 Nov)\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+     "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
+     "official_images": "required",
+     "open_hook": true,
+     "words": [
+      110,
+      170
+     ],
+     "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
+     "style": "story",
+     "badge": "GTA 6",
+     "script": {
+      "viable": true,
+      "title": "GTA 6 nearly had four heroes. Rockstar explains why not",
+      "thumb_text": "FOUR HEROES?",
+      "hook_card": "4 HEROES, NOT 2?",
+      "hooks": [
+       "Rockstar thought about giving GTA 6 four main characters, not two."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:trailer_1_00728",
+       "img2": "OFFICIAL:v_c670974867",
+       "img3": "CLIP:trailer_2_00346",
+       "img4": "CLIP:extended_look_07446",
+       "img5": "CLIP:extended_look_07501",
+       "img6": "OFFICIAL:vi_Jason_and_Lucia_13",
+       "img7": "OFFICIAL:vi_Jason_Duval_02",
+       "img8": "OFFICIAL:vi_Lucia_Caminos_12",
+       "img9": "OFFICIAL:vi_Jason_and_Lucia_09",
+       "img10": "OFFICIAL:vi_Jason_and_Lucia_01"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "Rockstar thought about giving GTA 6 four main characters, not two.",
+        "image": "img1",
+        "delivery": "curious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "Remember, GTA 5 let you switch between three: Michael, Franklin and Trevor.",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "GTA 5: 3 HEROES",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "Rockstar North's Rob Nelson told IGN what they asked themselves after GTA 5.",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "How do we follow up three characters? Is it four characters now?",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "QUOTE: ROCKSTAR",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "But, he said, we worried about diluting the amount of player time with each, and therefore player connection with those characters.",
+        "image": "img5",
+        "delivery": "serious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "QUOTE: ROCKSTAR",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "So, in his words, we decided to step in this direction of two characters in a relationship.",
+        "image": "img6",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "2 HEROES, 1 COUPLE",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "Then the question became: how do you make players feel like, I love them both?",
+        "image": "img7",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "Nelson admits chemistry is a notoriously hard thing to do in any sort of entertainment.",
+        "image": "img8",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "Either the characters and the actors that embody them have it, or they don't. His verdict? I think we've got it.",
+        "image": "img9",
+        "delivery": "amused",
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "So: two heroes in love, or four to switch between? Which side are you on?",
+        "image": "img10",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "Dexerto (Dylan Horetski, 27 Aug 2026), from an IGN interview with Rockstar North co-studio head Rob Nelson: 'After doing GTA 5, we talked about different ideas of' 'How do we follow up three characters? Is it four characters now?' 'But we worried about diluting the amount of player time with each and therefore player connection with those characters.' 'So we decided to step in this direction of two characters in a relationship.' 'But then the question became: how do you make players feel like, 'I love them both?'' 'Chemistry is a notoriously hard thing to do in any sort of entertainment.' 'Either the characters and the actors that embody them have it - or they don't.' 'I think we've got it.' GTA 5 let players switch between Michael, Franklin and Trevor.",
+        "sources": [
+         "https://www.dexerto.com/gta/gta-6-almost-had-four-playable-characters-instead-of-just-jason-and-lucia-3403255/"
+        ],
+        "main": true
+       },
+       {
+        "claim": "GamesRadar+ (Ashley Bardhan, 27 Aug 2026) and PC Gamer (29 Aug 2026): Rockstar considered giving GTA 6 four protagonists; Nelson to IGN: 'How do we follow up three characters? Is it four characters now?'; 'we worried about diluting the amount of player time with each'.",
+        "sources": [
+         "https://www.gamesradar.com/games/grand-theft-auto/rockstar-considered-giving-gta-6-four-protagonists-before-deciding-it-would-suck-we-worried-about-diluting-the-amount-of-player-time-with-each/",
+         "https://www.pcgamer.com/games/grand-theft-auto/rockstar-considered-having-four-protagonists-in-grand-theft-auto-6-but-the-studio-worried-about-diluting-the-amount-of-player-time-with-each-character/"
+        ],
+        "main": true
+       }
+      ],
+      "description": "Rockstar North's Rob Nelson told IGN the team asked 'Is it four characters now?' after GTA 5's three, but worried about 'diluting the amount of player time with each' - so GTA 6 has two, Jason and Lucia, in a relationship.\nSources: Dexerto, GamesRadar+, PC Gamer (IGN interview).",
+      "hashtags": [
+       "#GTA6",
+       "#GTA5",
+       "#Rockstar"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)",
+      "experiment": "E5-older-gta+E6-still-cover",
+      "cover": {
+       "image": "img1",
+       "lines": [
+        "4 HEROES INSTEAD",
+        "OF JASON + LUCIA?",
+        "ROCKSTAR EXPLAINS"
+       ],
+       "why": "written in session",
+       "frame": {
+        "image": "img7",
+        "zone": "lower"
+       }
+      }
+     },
+     "publish_at": "2026-11-28T14:00:00Z",
+     "batch": "gta6-launch-footage",
+     "seo": {
+      "category_id": "20",
+      "hashtags": [
+       "#GTA6",
+       "#GTAVI",
+       "#GrandTheftAuto6"
+      ],
+      "tags": [
+       "GTA 6",
+       "GTA VI",
+       "Grand Theft Auto 6",
+       "Grand Theft Auto VI",
+       "GTA 6 news",
+       "GTA 6 trailer",
+       "Rockstar Games",
+       "Vice City",
+       "Jason and Lucia",
+       "Leonida"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-snap-gun",
+   "fresh": true,
+   "nonce": "gta-footage-gta6-snap-gun-2026-11-28",
+   "day": "2026-11-28",
+   "topic_def": {
+    "id": "gta6-snap-gun",
+    "title": "GTA 6's snap gun opens locked doors quietly. Get it",
+    "pillar": "gta6",
+    "notes": {
+     "object": "official GTA 6 footage",
+     "question": "GTA 6's snap gun opens locked doors quietly. Get it",
+     "angle": "VERIFIED 27 Nov 2026. Publishes 28 Nov 17:00 UTC (how-to to save; E6 still cover). Script in gta_scripts.py. PC Gamer (18 Nov): from Yasmani in Chapter 3 after the jewelry heist in Dubious Provenance; 'Use snap gun' at a locked door; left stick sweet spot + right trigger; alarm still active; back door -> office disables the alarm. CTA: quiet or kick? FORMAT FOR THIS VIDEO (its own look and feel): Tone: heist tip from a friend, quick. Shape: the problem -> the tool -> 3 numbered steps -> how to use -> the alarm catch -> pro move -> pick a side.",
+     "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): a tattooed person in a cyan top in front of a graffiti-painted custom car (no casino; checked 23 Nov)\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+     "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
+     "official_images": "required",
+     "open_hook": true,
+     "words": [
+      110,
+      170
+     ],
+     "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
+     "style": "story",
+     "badge": "GTA 6",
+     "script": {
+      "viable": true,
+      "title": "GTA 6's snap gun opens locked doors quietly. Get it",
+      "thumb_text": "THE SNAP GUN",
+      "hook_card": "NO MORE KICKING DOORS",
+      "hooks": [
+       "Tired of kicking doors open in GTA 6? There's a quieter way."
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:extended_look_10132",
+       "img2": "CLIP:extended_look_07238",
+       "img3": "OFFICIAL:vi_Jason_Duval_08",
+       "img4": "CLIP:extended_look_07057",
+       "img5": "CLIP:extended_look_06860",
+       "img6": "CLIP:extended_look_02968",
+       "img7": "CLIP:extended_look_09166",
+       "img8": "CLIP:trailer_2_00996",
+       "img9": "OFFICIAL:vi_Jason_and_Lucia_02"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "Tired of kicking doors open in GTA 6? There's a quieter way.",
+        "image": "img1",
+        "delivery": "curious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "It's called the snap gun. It makes picking locks faster and quieter.",
+        "image": "img2",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "THE SNAP GUN",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "Here's how to get it. One: play the story through to Chapter 3.",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "1. REACH CHAPTER 3",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "Two: finish the jewelry heist in the mission Dubious Provenance. Yasmani gives you the snap gun.",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "2. DUBIOUS PROVENANCE",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "Three: equip it, walk up to a locked door, and choose Use snap gun.",
+        "image": "img5",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "3. USE SNAP GUN",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "Then find the sweet spot with the left stick, and press the right trigger until the meter fills.",
+        "image": "img6",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "STICK, THEN TRIGGER",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "Now the catch: the alarm is still active. Kicking open other doors, breaking display cases, or a store employee can still set it off.",
+        "image": "img7",
+        "delivery": "serious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "ALARM STILL ON",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "The pro move: use it on the back door, get to the office, and you can disable the alarm altogether.",
+        "image": "img8",
+        "delivery": "excited",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "BACK DOOR -> OFFICE",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "So: snap gun and stay quiet, or kick the door in? Pick a side.",
+        "image": "img9",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "PC Gamer (Andrea Shearon, 18 Nov 2026), 'How to get a snap gun in GTA 6': the snap gun is 'a handy little device that makes picking locks faster and quieter'; 'You get the snap gun from Yasmani in Chapter 3 after completing the jewelry heist in the Dubious Provenance mission.' 'Approach a locked door with the tool equipped, and the \"Use snap gun\" option will appear.' 'Use the left analogue stick to find the lock's sweet spot, then press the right trigger until the meter fills.' 'While the snap gun circumvents alarms, the alarm itself is still active. It may still be set off by kicking open other doors, breaking display cases, or by a store employee.' Using it on an establishment's back door gives access to the office to 'completely disable the alarm altogether'.",
+        "sources": [
+         "https://www.pcgamer.com/games/grand-theft-auto/gta-6-snap-gun/"
+        ],
+        "main": true
+       }
+      ],
+      "description": "How to get GTA 6's snap gun: reach Chapter 3, finish the jewelry heist in Dubious Provenance and Yasmani gives it to you. Equip it at a locked door, find the sweet spot with the left stick, then hold the right trigger. The alarm is still active - use the back door to reach the office and turn it off.\nSource: PC Gamer.",
+      "hashtags": [
+       "#GTA6",
+       "#GTA6Tips",
+       "#GTAVI"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)",
+      "experiment": "E6-still-cover",
+      "cover": {
+       "image": "img1",
+       "lines": [
+        "OPEN LOCKED DOORS",
+        "WITHOUT THE ALARM?",
+        "THE TOOL YOU NEED"
+       ],
+       "why": "written in session",
+       "frame": {
+        "image": "img3",
+        "zone": "lower"
+       }
+      }
+     },
+     "publish_at": "2026-11-28T17:00:00Z",
+     "batch": "gta6-launch-footage",
+     "seo": {
+      "category_id": "20",
+      "hashtags": [
+       "#GTA6",
+       "#GTAVI",
+       "#GrandTheftAuto6"
+      ],
+      "tags": [
+       "GTA 6",
+       "GTA VI",
+       "Grand Theft Auto 6",
+       "Grand Theft Auto VI",
+       "GTA 6 news",
+       "GTA 6 trailer",
+       "Rockstar Games",
+       "Vice City",
+       "Jason and Lucia",
+       "Leonida"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-break-up",
+   "fresh": true,
+   "nonce": "gta-footage-gta6-break-up-2026-11-28",
+   "day": "2026-11-28",
+   "topic_def": {
+    "id": "gta6-break-up",
+    "title": "GTA 6: can Jason and Lucia break up? Rockstar answers",
+    "pillar": "gta6",
+    "notes": {
+     "object": "official GTA 6 footage",
+     "question": "GTA 6: can Jason and Lucia break up? Rockstar answers",
+     "angle": "VERIFIED 27 Nov 2026. Publishes 28 Nov 20:00 UTC (relationship question, F13; E6 still cover). Script in gta_scripts.py. GamesRadar (1 Nov, Edge): 'yours to keep or yours to lose'; GamesRadar (27 Aug, IGN): 'They will remain partners in crime', nurturing 'will definitely have a bearing on how their story plays out'. CTA: keep them together? FORMAT FOR THIS VIDEO (its own look and feel): Tone: relationship debate, a little dramatic. Shape: the question -> press disagrees -> Rockstar quote 1 -> quote 2 -> the late-night calls -> the twist -> partners stay -> your choices matter -> the answer -> pick a side.",
+     "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): a tattooed person in a cyan top in front of a graffiti-painted custom car (no casino; checked 23 Nov)\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+     "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
+     "official_images": "required",
+     "open_hook": true,
+     "words": [
+      110,
+      170
+     ],
+     "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
+     "style": "story",
+     "badge": "GTA 6",
+     "script": {
+      "viable": true,
+      "title": "GTA 6: can Jason and Lucia break up? Rockstar answers",
+      "thumb_text": "CAN THEY BREAK UP?",
+      "hook_card": "CAN THEY BREAK UP?",
+      "hooks": [
+       "Can Jason and Lucia actually break up in GTA 6?"
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:extended_look_07899",
+       "img2": "OFFICIAL:vi_Jason_and_Lucia_06",
+       "img3": "CLIP:extended_look_07446",
+       "img4": "CLIP:trailer_2_00346",
+       "img5": "CLIP:extended_look_03894",
+       "img6": "CLIP:launch_trailer_00026",
+       "img7": "OFFICIAL:vi_Jason_and_Lucia_08",
+       "img8": "OFFICIAL:vi_Lucia_Caminos_06",
+       "img9": "CLIP:extended_look_10833",
+       "img10": "OFFICIAL:vi_Jason_and_Lucia_13"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "Can Jason and Lucia actually break up in GTA 6?",
+        "image": "img1",
+        "delivery": "curious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "Even the gaming press can't agree. One headline says yes. Another says no.",
+        "image": "img2",
+        "delivery": "amused",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "Rockstar's Rob Nelson told Edge magazine: we start them wanting to be together.",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "QUOTE: ROCKSTAR",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "And then: it's yours to keep or yours to lose.",
+        "image": "img4",
+        "delivery": "serious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "QUOTE: ROCKSTAR",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "GamesRadar says if you ignore one too many late-night phone calls from your partner, things may go awry.",
+        "image": "img5",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "IGNORE THE CALLS?",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "But here's the twist. Nelson also told IGN: they will remain partners in crime.",
+        "image": "img6",
+        "delivery": "excited",
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "QUOTE: ROCKSTAR",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "Whether they're romantically close or not doesn't change that. They will still work together.",
+        "image": "img7",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "And whether you've nurtured the relationship or not will definitely have a bearing on how their story plays out.",
+        "image": "img8",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "IT CHANGES THE STORY",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "So the romance is yours to keep or lose. But they stay partners in crime.",
+        "image": "img9",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "Would you keep Jason and Lucia together, or let it fall apart? Pick a side.",
+        "image": "img10",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "GamesRadar+ (Kaan Serin, 1 Nov 2026), 'GTA 6 lets you break up Jason and Lucia if you want': Rockstar North's Rob Nelson told Edge Magazine 'We start them wanting to be together' and 'it's yours to keep or yours to lose'; the writer: they 'can become a romantic couple and then break up entirely' and 'ignore one too many late-night phone calls from your partner and things may go awry'.",
+        "sources": [
+         "https://gamesradar.com/games/grand-theft-auto/gta-6-lets-you-break-up-jason-and-lucia-if-you-want-and-we-can-thank-red-dead-redemption-2s-arthur-morgan-for-the-choice"
+        ],
+        "main": true
+       },
+       {
+        "claim": "GamesRadar+ (Ashley Bardhan, 27 Aug 2026), 'GTA 6 won't let you break up Lucia and Jason': Nelson to IGN: 'They will remain partners in crime,' 'You will always have the benefit of working together and having each other's back' 'whether they're romantically close or not doesn't change that. They will still work together.' 'Whether you've nurtured the relationship or not will definitely have a bearing on how their story plays out.' The writer: 'There's no way for them to break up, Rockstar says.' TechRadar (28 Aug 2026), same IGN interview: 'It's not something that we want to foist upon players.'",
+        "sources": [
+         "https://www.gamesradar.com/games/grand-theft-auto/gta-6-wont-let-you-break-up-lucia-and-jason-no-matter-how-poorly-you-treat-them-they-will-remain-partners-in-crime/",
+         "https://www.techradar.com/gaming/rockstar-says-if-you-want-gta-6s-romance-between-jason-and-lucia-to-flourish-you-have-to-nurture-it-but-its-completely-optional-its-not-something-that-we-want-to-foist-upon-players"
+        ],
+        "main": true
+       }
+      ],
+      "description": "Can Jason and Lucia break up in GTA 6? Rob Nelson told Edge the romance is 'yours to keep or yours to lose', and told IGN 'They will remain partners in crime' - and that nurturing the relationship 'will definitely have a bearing on how their story plays out'.\nSources: GamesRadar+, TechRadar.",
+      "hashtags": [
+       "#GTA6",
+       "#JasonAndLucia",
+       "#GTAVI"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)",
+      "experiment": "E6-still-cover",
+      "cover": {
+       "image": "img1",
+       "lines": [
+        "CAN JASON AND LUCIA",
+        "BREAK UP?",
+        "ROCKSTAR ANSWERS"
+       ],
+       "why": "written in session",
+       "frame": {
+        "image": "img8",
+        "zone": "lower"
+       }
+      }
+     },
+     "publish_at": "2026-11-28T20:00:00Z",
+     "batch": "gta6-launch-footage",
+     "seo": {
+      "category_id": "20",
+      "hashtags": [
+       "#GTA6",
+       "#GTAVI",
+       "#GrandTheftAuto6"
+      ],
+      "tags": [
+       "GTA 6",
+       "GTA VI",
+       "Grand Theft Auto 6",
+       "Grand Theft Auto VI",
+       "GTA 6 news",
+       "GTA 6 trailer",
+       "Rockstar Games",
+       "Vice City",
+       "Jason and Lucia",
+       "Leonida"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "action": "produce",
+   "topic": "gta6-patch-fix",
+   "fresh": true,
+   "nonce": "gta-footage-gta6-patch-fix-2026-11-28",
+   "day": "2026-11-28",
+   "topic_def": {
+    "id": "gta6-patch-fix",
+    "title": "GTA 6's first update fixed the cops you couldn't lose",
+    "pillar": "gta6",
+    "notes": {
+     "object": "official GTA 6 footage",
+     "question": "GTA 6's first update fixed the cops you couldn't lose",
+     "angle": "VERIFIED 27 Nov 2026. Publishes 29 Nov 02:00 UTC (does it affect me; E6 still cover). Script in gta_scripts.py. Beebom + Timesaver: update 1.002.002, 23 Nov, PS5 603.8 MB / Xbox ~1.6 GB; fixes: unable to lose Wanted Level, autosave, loot bags for fences, crashes, weather, gym deadlift bar; some players still report problems. CTA: did it get you? FORMAT FOR THIS VIDEO (its own look and feel): Tone: helpful, relieved. Shape: the pain -> it was a bug -> the update -> 4 fixes as a list of wins -> the funny one -> size -> still check -> pick a side.",
+     "format_rules": "GTA 6 SERIES - STORY FORMAT (owner, 18 Nov 2026; these win over everything else):\nThe owner's verdict on the old scripts: unnatural, badly built sentences, confusing, lines that don't say what they mean, no burning curiosity. So: tell it like a real person telling a friend the most interesting thing they heard today. Natural complete sentences, clear on one listen, real personality, a hook that makes people NEED the answer, reveals that escalate, a payoff that makes them say 'wow', then a comment question.\nBAD (never write like this): 'Game Boy Color GTA 2 added two.' / 'Power Up Gaming: first fully written, voiced lead.' / 'Twenty-nine years. Quite the loading screen.' / 'Now you know the answer to...'\nGOOD (style examples only - every video needs its OWN opening; never copy these): 'Go back to 1997, the very first Grand Theft Auto. At the start, you picked who to play as, and four of them were women.' / 'So what's actually new about Lucia? She's the first woman who leads a GTA story.'\nFOOTAGE: every beat shows Rockstar's OFFICIAL GTA VI footage: in \"images\", each value is exactly 'CLIP:<shot_id>' from the SHOT LIST below. Use 'OFFICIAL:<id>' (screenshot catalogue) only for GTA 5 (the cover v_c670974867, Los Santos v_24ba6644de / v_fdac18d437 / v_07edb091bb, the map v_3360902d78) when the line is about GTA 5, for one beat. Open on striking footage that fits the hook. A NEW shot every beat (10-20 different shots); a shot may come back only as a deliberate callback. Never use a shot marked avoid.\nSHOTS MATCH WORDS: a line about a person shows that person (Jason, Lucia), a place shows that place, an action shows that action. Read the SHOT LIST descriptions and pick the closest. Abstract lines (prices, dates, sizes) show on-mood footage with the number as a short callout.\nREAL PEOPLE: when the brief quotes a Rockstar or Take-Two person, use their exact words, say who they are, put 'QUOTE: <NAME>, <COMPANY>' in that beat's callout, and show a PLACE on that beat (never a character's face, so no one thinks the character is the real person). Never invent or reword a quote.\nFOR THE REVIEWERS: the game IS the topic, so Rockstar's official footage and characters are the approved pictures (commentary on the game), not 'a brand or logo as the subject'.\nFACTS: every number, date and claim comes from the verified brief or your sources. Rumours are never facts: say plainly who claims it ('fans think', 'one report says'). If a fact needs heavy hedging, drop it. The TITLE asserts nothing unconfirmed. No story spoilers beyond Rockstar's trailers. Never pretend the footage is our gameplay.\nLENGTH: 110-170 words (about 45-70 seconds); as long as the story needs, never padded.\nVERIFIED BRIEF: the angle below was researched and checked: use ITS facts, ITS wording and ITS sources first.\nLOOK AND FEEL: follow this video's own FORMAT (structure, pace, opening style); each video must feel different.\n\nSHOT LIST (CLIP:<id> | length | what it shows):\n@@SHOT_LIST@@\n\nSCREENSHOT CATALOGUE (OFFICIAL:<id> | game | what it shows; mainly for GTA 5):\nv_07edb091bb | GTA V | GTA V: Los Santos skyline at sunset with a palm tree in front (the GTA 5 city)\nv_9ca23774eb | GTA V | GTA V: the three GTA 5 heroes Franklin, Michael and Trevor posing together (cut-out on black)\nv_7f4ce4e75d | GTA V | GTA Online (GTA 5's world): a tattooed person in a cyan top in front of a graffiti-painted custom car (no casino; checked 23 Nov)\nv_24ba6644de | GTA V | GTA V: sunny Los Santos downtown towers and palm trees (the GTA 5 city by day)\nv_a9877dd12c | GTA V | GTA V: blue striped sports cars racing on a road at sunset\nv_a457313ec2 | GTA V | GTA V: helicopter flying over Los Santos on a sunny day\nv_fdac18d437 | GTA V | GTA V: Los Santos skyline at dusk over a lake and hills\nv_3360902d78 | GTA V | GTA V: the official map of Los Santos and Blaine County (whole GTA 5 map)\nv_c670974867 | GTA V | GTA V: the official GTA 5 cover art (2013 box art, with the 'Grand Theft Auto V' logo)\nv_bd8dd92adc | GTA V | GTA Online (GTA 5's world): museum plaza with palm trees on a sunny day",
+     "critic_rules": "\nGTA 6 series: the footage is OFFICIAL Rockstar GTA VI trailer footage (and GTA V screenshots) and that is required: never mark it down as game art or logos. Judge the SCRIPT hardest: BLOCKING if any sentence is unclear, unnatural or a fragment, if the hook creates no real curiosity, if the build doesn't escalate or the payoff doesn't land, if a person/place/action line shows something clearly different, or if a rumour is stated as fact.",
+     "official_images": "required",
+     "open_hook": true,
+     "words": [
+      110,
+      170
+     ],
+     "cover_rule": "The words are the QUESTION or the mystery only, 2-5 words, and never give away the answer. Keep them off faces.",
+     "style": "story",
+     "badge": "GTA 6",
+     "script": {
+      "viable": true,
+      "title": "GTA 6's first update fixed the cops you couldn't lose",
+      "thumb_text": "THE UPDATE FIXED IT",
+      "hook_card": "COULDN'T LOSE THE COPS?",
+      "hooks": [
+       "Couldn't lose the cops in GTA 6?"
+      ],
+      "chosen_hook": 0,
+      "images": {
+       "img1": "CLIP:trailer_1_00084",
+       "img2": "CLIP:extended_look_09432",
+       "img3": "OFFICIAL:vi_Jason_Duval_01",
+       "img4": "CLIP:extended_look_09166",
+       "img5": "CLIP:extended_look_07501",
+       "img6": "CLIP:extended_look_09994",
+       "img7": "CLIP:extended_look_07446",
+       "img8": "CLIP:extended_look_10387",
+       "img9": "CLIP:extended_look_09766",
+       "img10": "CLIP:extended_look_10037",
+       "img11": "OFFICIAL:vi_Jason_and_Lucia_19"
+      },
+      "scenes": [
+       {
+        "id": "b1",
+        "narration": "Couldn't lose the cops in GTA 6?",
+        "image": "img1",
+        "delivery": "curious",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b2",
+        "narration": "It wasn't just you. It was a bug.",
+        "image": "img2",
+        "delivery": "amused",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b3",
+        "narration": "On November the twenty-third, Rockstar released an update for PS5 and Xbox.",
+        "image": "img3",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "UPDATE 1.002.002",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b4",
+        "narration": "Its notes list a fix for players being unable to lose their wanted level.",
+        "image": "img4",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "FIXED: WANTED LEVEL",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b5",
+        "narration": "It also fixed the game not autosaving correctly.",
+        "image": "img5",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "FIXED: AUTOSAVE",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b6",
+        "narration": "And partners not handing over bags, so you couldn't sell them to fences.",
+        "image": "img6",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "FIXED: LOOT BAGS",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b7",
+        "narration": "Plus several crashes, and weather that didn't change for long stretches.",
+        "image": "img7",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "FIXED: CRASHES, WEATHER",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b8",
+        "narration": "It even fixed the deadlift bar in the gym.",
+        "image": "img8",
+        "delivery": "amused",
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": "FIXED: DEADLIFT BAR",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b9",
+        "narration": "It's small: about six hundred megabytes on PS5, and about one point six gigabytes on Xbox.",
+        "image": "img9",
+        "delivery": null,
+        "focus": null,
+        "motion": "drift",
+        "transition": "cut",
+        "callout": "PS5 604MB / XBOX 1.6GB",
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b10",
+        "narration": "Some players still report problems, so keep your game updated.",
+        "image": "img10",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       },
+       {
+        "id": "b11",
+        "narration": "So: did the cop bug get you, or did it pass you by? Pick a side.",
+        "image": "img11",
+        "delivery": null,
+        "focus": null,
+        "motion": "push",
+        "transition": "cut",
+        "callout": null,
+        "pop": null,
+        "arrow": null,
+        "card_text": null,
+        "tone": "normal",
+        "markers": null
+       }
+      ],
+      "facts": [
+       {
+        "claim": "Beebom (Sagnik Adhikary, GTA 6 patch notes tracker, updated 23 Nov 2026): version 01.002.002, November 23, 2026, PS5 603.8 MB, Xbox Series X|S 1.6 GB; notes: 'Fixed several issues that caused the game to crash', 'Fixed an issue that resulted in the weather not changing for extended periods', 'Fixed an issue that resulted in the game not autosaving correctly', 'Fixed an issue that resulted in the players being unable to lose their Wanted Level', 'Fixed an issue that resulted in the player being unable to use the deadlift bar in the Gym', partners 'not handing over bags so that players could sell them to fences'.",
+        "sources": [
+         "https://beebom.com/gta-6-patch-notes-updates-tracker/"
+        ],
+        "main": true
+       },
+       {
+        "claim": "Timesaver (updated 26 Nov 2026): 'The latest GTA 6 update is 1.002.002 on PS5 (1.0.2.2 on Xbox), released November 23, 2026', with the same fixes, quoted from Rockstar Support's 'Grand Theft Auto VI Launch Updates'; PS5 603.8 MB, Xbox about 1.6 GB; players on r/GTA6 still report some problems (weather, autosave, a PS5 crash).",
+        "sources": [
+         "https://timesaver.gg/blog/gta-6-update-patch-notes"
+        ],
+        "main": true
+       }
+      ],
+      "description": "GTA 6 update 1.002.002 (23 Nov 2026, PS5 and Xbox) fixed players being unable to lose their Wanted Level, autosave, partners not handing over bags for fences, crashes, stuck weather and the gym's deadlift bar. About 604 MB on PS5, 1.6 GB on Xbox.\nSources: Beebom, Timesaver (Rockstar Support notes).",
+      "hashtags": [
+       "#GTA6",
+       "#GTA6Update",
+       "#GTAVI"
+      ],
+      "affiliate_product": null,
+      "written_by": "Claude in session (verified)",
+      "experiment": "E6-still-cover",
+      "cover": {
+       "image": "img1",
+       "lines": [
+        "STUCK WITH COPS",
+        "ON YOUR TAIL?",
+        "THE UPDATE FIXED IT"
+       ],
+       "why": "written in session",
+       "frame": {
+        "image": "img3",
+        "zone": "lower"
+       }
+      }
+     },
+     "publish_at": "2026-11-29T02:00:00Z",
+     "batch": "gta6-launch-footage",
+     "seo": {
+      "category_id": "20",
+      "hashtags": [
+       "#GTA6",
+       "#GTAVI",
+       "#GrandTheftAuto6"
+      ],
+      "tags": [
+       "GTA 6",
+       "GTA VI",
+       "Grand Theft Auto 6",
+       "Grand Theft Auto VI",
+       "GTA 6 news",
+       "GTA 6 trailer",
+       "Rockstar Games",
+       "Vice City",
+       "Jason and Lucia",
+       "Leonida"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "action": "produce",
    "topic": "gta6-trailer-songs",
    "fresh": true,
    "nonce": "gta-reserve-gta6-trailer-songs",

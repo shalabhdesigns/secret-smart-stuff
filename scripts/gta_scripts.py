@@ -2223,6 +2223,254 @@ S["gta6-pc-port"] = dict(
     hashtags=["#GTA6", "#GTA6PC", "#PCGaming"],
 )
 
+S["gta6-ages"] = dict(
+    title="GTA 6 fans found Jason and Lucia's ages. Lucia's twist",
+    thumb_text="THEIR REAL AGES",
+    hook_card="FANS FOUND THEIR IDS",
+    cover_lines=["JASON 30, LUCIA 26?", "FANS FOUND THEIR IDS", "AND A BIRTHDAY TWIST"],
+    cover_frame={"image": "img5", "zone": "lower"},   # Lucia_Caminos_07: Lucia close-up, face above the logo (27 Nov preview; E6 still cover)
+    experiment="E5-older-gta+E6-still-cover",
+    beats=[
+        ("Fans just found Jason and Lucia's driver's licences in GTA 6.", "CLIP:extended_look_10196", None, "excited"),
+        ("And the dates on them are making a lot of people feel old.", "OFFICIAL:vi_Jason_and_Lucia_01", None, "amused"),
+        ("Jason was born on May the first, nineteen ninety-six. That makes him thirty.",
+         "OFFICIAL:vi_Jason_Duval_02", "JASON: 30", None),
+        ("His licence says he's six foot three, and he lives down in Key Lento.", "CLIP:trailer_2_00188",
+         "6'3\", KEY LENTO", None),
+        ("Lucia is twenty-six. She's a full foot shorter, at five foot three.", "OFFICIAL:vi_Lucia_Caminos_07",
+         "LUCIA: 26, 5'3\"", None),
+        ("And her licence wasn't issued in Leonida. It was issued in Liberty City, the city from GTA 4.",
+         "OFFICIAL:vi_Lucia_Caminos_03", "ISSUED: LIBERTY CITY", "curious"),
+        ("Now look at her birthday: November the twentieth, two thousand.", "OFFICIAL:vi_Lucia_Caminos_06",
+         "BORN: 20 NOV 2000", None),
+        ("GTA 6 came out on November the nineteenth. So Lucia turned twenty-six the very next day.",
+         "CLIP:extended_look_12606", "LAUNCH: 19 NOV", "surprised"),
+        ("Rockstar hasn't announced any of this. Fans read it off the licences in the game.",
+         "OFFICIAL:vi_Jason_and_Lucia_17", None, None),
+        ("So: Jason at thirty, Lucia at twenty-six. Who's really in charge? Pick a side.",
+         "OFFICIAL:vi_Jason_and_Lucia_14", None, None),
+    ],
+    facts=[
+        {"claim": "UNILAD (Callum Jones, 26 Nov 2026), 'GTA 6 fans have discovered Jason and Lucia's ages': from the "
+                  "in-game driver's licenses, Jason Duval was born May 1, 1996, so he is 30, height 6 ft 3 in, resides "
+                  "in Key Lento; Lucia Caminos is 26, date of birth November 20, 2000, height 5 ft 3 in, license issued "
+                  "in Liberty City. A player discovery; the article does not say Rockstar confirmed the numbers.",
+         "sources": ["https://www.unilad.com/technology/gta-6-players-discover-jason-lucia-ages-202979-20261126"],
+         "main": True},
+        {"claim": "LAFM (27 Nov 2026) and Pulptastic (27 Nov 2026): fans tracked down the in-game driver's licences; Jason "
+                  "born 1 May 1996 (30), 6 ft 3 in, Key Lento; Lucia born 20 November 2000 (26), 5 ft 3 in, licence "
+                  "issued in Liberty City; a fan post on 23 Nov said Lucia 'celebrated her 26th birthday just 3 days "
+                  "ago'. TechWiser: Rockstar hasn't revealed their exact ages officially.",
+         "sources": ["https://www.lafm.com.au/trending/gaming/gta-6-fans-just-found-jason-and-lucias-ages-and-now-everyone-feels-ancient/",
+                     "https://pulptastic.com/gta-6-fans-have-discovered-jason-and-lucias-ages-and-its-making-them-feel-old/"],
+         "main": True},
+        {"claim": "Rockstar: GTA 6 releases at 'midnight local time on November 19, 2026, in all regions' (Forbes, 12 Nov "
+                  "2026). Liberty City is the setting of Grand Theft Auto IV (Wikipedia).",
+         "sources": ["https://www.forbes.com/sites/brianmazique/2026/11/12/gta-6-unlocks-at-midnight-on-november-19-but-millions-of-americans-can-start-playing-the-night-before/",
+                     "https://en.wikipedia.org/wiki/Grand_Theft_Auto_IV"], "main": False},
+    ],
+    description="Fans found Jason and Lucia's in-game driver's licences: Jason, born 1 May 1996, is 30 and 6'3\"; "
+                "Lucia, born 20 November 2000, is 26, 5'3\", with a licence from Liberty City. She turned 26 the day "
+                "after GTA 6 came out. Rockstar hasn't announced these numbers.\nSources: UNILAD, LAFM, Pulptastic.",
+    hashtags=["#GTA6", "#LuciaCaminos", "#JasonDuval"],
+)
+
+S["gta6-four-heroes"] = dict(
+    title="GTA 6 nearly had four heroes. Rockstar explains why not",
+    thumb_text="FOUR HEROES?",
+    hook_card="4 HEROES, NOT 2?",
+    cover_lines=["4 HEROES INSTEAD", "OF JASON + LUCIA?", "ROCKSTAR EXPLAINS"],
+    cover_frame={"image": "img7", "zone": "lower"},   # Jason_Duval_02: Jason close-up (27 Nov preview; E6 still cover)
+    experiment="E5-older-gta+E6-still-cover",
+    beats=[
+        ("Rockstar thought about giving GTA 6 four main characters, not two.", "CLIP:trailer_1_00728", None,
+         "curious"),
+        ("Remember, GTA 5 let you switch between three: Michael, Franklin and Trevor.", "OFFICIAL:v_c670974867",
+         "GTA 5: 3 HEROES", None),
+        ("Rockstar North's Rob Nelson told IGN what they asked themselves after GTA 5.", "CLIP:trailer_2_00346",
+         None, None),
+        ("How do we follow up three characters? Is it four characters now?", "CLIP:extended_look_07446",
+         "QUOTE: ROCKSTAR", None),
+        ("But, he said, we worried about diluting the amount of player time with each, and therefore player "
+         "connection with those characters.", "CLIP:extended_look_07501", "QUOTE: ROCKSTAR", "serious"),
+        ("So, in his words, we decided to step in this direction of two characters in a relationship.",
+         "OFFICIAL:vi_Jason_and_Lucia_13", "2 HEROES, 1 COUPLE", None),
+        ("Then the question became: how do you make players feel like, I love them both?",
+         "OFFICIAL:vi_Jason_Duval_02", None, None),
+        ("Nelson admits chemistry is a notoriously hard thing to do in any sort of entertainment.",
+         "OFFICIAL:vi_Lucia_Caminos_12", None, None),
+        ("Either the characters and the actors that embody them have it, or they don't. His verdict? I think "
+         "we've got it.", "OFFICIAL:vi_Jason_and_Lucia_09", None, "amused"),
+        ("So: two heroes in love, or four to switch between? Which side are you on?",
+         "OFFICIAL:vi_Jason_and_Lucia_01", None, None),
+    ],
+    facts=[
+        {"claim": "Dexerto (Dylan Horetski, 27 Aug 2026), from an IGN interview with Rockstar North co-studio head Rob "
+                  "Nelson: 'After doing GTA 5, we talked about different ideas of' 'How do we follow up three "
+                  "characters? Is it four characters now?' 'But we worried about diluting the amount of player time "
+                  "with each and therefore player connection with those characters.' 'So we decided to step in this "
+                  "direction of two characters in a relationship.' 'But then the question became: how do you make "
+                  "players feel like, 'I love them both?'' 'Chemistry is a notoriously hard thing to do in any sort of "
+                  "entertainment.' 'Either the characters and the actors that embody them have it - or they don't.' "
+                  "'I think we've got it.' GTA 5 let players switch between Michael, Franklin and Trevor.",
+         "sources": ["https://www.dexerto.com/gta/gta-6-almost-had-four-playable-characters-instead-of-just-jason-and-lucia-3403255/"],
+         "main": True},
+        {"claim": "GamesRadar+ (Ashley Bardhan, 27 Aug 2026) and PC Gamer (29 Aug 2026): Rockstar considered giving "
+                  "GTA 6 four protagonists; Nelson to IGN: 'How do we follow up three characters? Is it four characters "
+                  "now?'; 'we worried about diluting the amount of player time with each'.",
+         "sources": ["https://www.gamesradar.com/games/grand-theft-auto/rockstar-considered-giving-gta-6-four-protagonists-before-deciding-it-would-suck-we-worried-about-diluting-the-amount-of-player-time-with-each/",
+                     "https://www.pcgamer.com/games/grand-theft-auto/rockstar-considered-having-four-protagonists-in-grand-theft-auto-6-but-the-studio-worried-about-diluting-the-amount-of-player-time-with-each-character/"],
+         "main": True},
+    ],
+    description="Rockstar North's Rob Nelson told IGN the team asked 'Is it four characters now?' after GTA 5's three, "
+                "but worried about 'diluting the amount of player time with each' - so GTA 6 has two, Jason and Lucia, "
+                "in a relationship.\nSources: Dexerto, GamesRadar+, PC Gamer (IGN interview).",
+    hashtags=["#GTA6", "#GTA5", "#Rockstar"],
+)
+
+S["gta6-snap-gun"] = dict(
+    title="GTA 6's snap gun opens locked doors quietly. Get it",
+    thumb_text="THE SNAP GUN",
+    hook_card="NO MORE KICKING DOORS",
+    cover_lines=["OPEN LOCKED DOORS", "WITHOUT THE ALARM?", "THE TOOL YOU NEED"],
+    cover_frame={"image": "img3", "zone": "lower"},   # Jason_Duval_08: Jason in a cap with a pistol (27 Nov preview; E6 still cover)
+    experiment="E6-still-cover",
+    beats=[
+        ("Tired of kicking doors open in GTA 6? There's a quieter way.", "CLIP:extended_look_10132", None,
+         "curious"),
+        ("It's called the snap gun. It makes picking locks faster and quieter.", "CLIP:extended_look_07238",
+         "THE SNAP GUN", None),
+        ("Here's how to get it. One: play the story through to Chapter 3.", "OFFICIAL:vi_Jason_Duval_08",
+         "1. REACH CHAPTER 3", None),
+        ("Two: finish the jewelry heist in the mission Dubious Provenance. Yasmani gives you the snap gun.",
+         "CLIP:extended_look_07057", "2. DUBIOUS PROVENANCE", None),
+        ("Three: equip it, walk up to a locked door, and choose Use snap gun.", "CLIP:extended_look_06860",
+         "3. USE SNAP GUN", None),
+        ("Then find the sweet spot with the left stick, and press the right trigger until the meter fills.",
+         "CLIP:extended_look_02968", "STICK, THEN TRIGGER", None),
+        ("Now the catch: the alarm is still active. Kicking open other doors, breaking display cases, or a store "
+         "employee can still set it off.", "CLIP:extended_look_09166", "ALARM STILL ON", "serious"),
+        ("The pro move: use it on the back door, get to the office, and you can disable the alarm altogether.",
+         "CLIP:trailer_2_00996", "BACK DOOR -> OFFICE", "excited"),
+        ("So: snap gun and stay quiet, or kick the door in? Pick a side.", "OFFICIAL:vi_Jason_and_Lucia_02", None,
+         None),
+    ],
+    facts=[
+        {"claim": "PC Gamer (Andrea Shearon, 18 Nov 2026), 'How to get a snap gun in GTA 6': the snap gun is 'a handy "
+                  "little device that makes picking locks faster and quieter'; 'You get the snap gun from Yasmani in "
+                  "Chapter 3 after completing the jewelry heist in the Dubious Provenance mission.' 'Approach a locked "
+                  "door with the tool equipped, and the \"Use snap gun\" option will appear.' 'Use the left analogue "
+                  "stick to find the lock's sweet spot, then press the right trigger until the meter fills.' 'While "
+                  "the snap gun circumvents alarms, the alarm itself is still active. It may still be set off by "
+                  "kicking open other doors, breaking display cases, or by a store employee.' Using it on an "
+                  "establishment's back door gives access to the office to 'completely disable the alarm altogether'.",
+         "sources": ["https://www.pcgamer.com/games/grand-theft-auto/gta-6-snap-gun/"], "main": True},
+    ],
+    description="How to get GTA 6's snap gun: reach Chapter 3, finish the jewelry heist in Dubious Provenance and "
+                "Yasmani gives it to you. Equip it at a locked door, find the sweet spot with the left stick, then "
+                "hold the right trigger. The alarm is still active - use the back door to reach the office and turn "
+                "it off.\nSource: PC Gamer.",
+    hashtags=["#GTA6", "#GTA6Tips", "#GTAVI"],
+)
+
+S["gta6-break-up"] = dict(
+    title="GTA 6: can Jason and Lucia break up? Rockstar answers",
+    thumb_text="CAN THEY BREAK UP?",
+    hook_card="CAN THEY BREAK UP?",
+    cover_lines=["CAN JASON AND LUCIA", "BREAK UP?", "ROCKSTAR ANSWERS"],
+    cover_frame={"image": "img8", "zone": "lower"},   # Lucia_Caminos_06: Lucia at a party, face above the logo (27 Nov preview; E6 still cover)
+    experiment="E6-still-cover",
+    beats=[
+        ("Can Jason and Lucia actually break up in GTA 6?", "CLIP:extended_look_07899", None, "curious"),
+        ("Even the gaming press can't agree. One headline says yes. Another says no.",
+         "OFFICIAL:vi_Jason_and_Lucia_06", None, "amused"),
+        ("Rockstar's Rob Nelson told Edge magazine: we start them wanting to be together.",
+         "CLIP:extended_look_07446", "QUOTE: ROCKSTAR", None),
+        ("And then: it's yours to keep or yours to lose.", "CLIP:trailer_2_00346", "QUOTE: ROCKSTAR", "serious"),
+        ("GamesRadar says if you ignore one too many late-night phone calls from your partner, things may go awry.",
+         "CLIP:extended_look_03894", "IGNORE THE CALLS?", None),
+        ("But here's the twist. Nelson also told IGN: they will remain partners in crime.",
+         "CLIP:launch_trailer_00026", "QUOTE: ROCKSTAR", "excited"),
+        ("Whether they're romantically close or not doesn't change that. They will still work together.",
+         "OFFICIAL:vi_Jason_and_Lucia_08", None, None),
+        ("And whether you've nurtured the relationship or not will definitely have a bearing on how their story "
+         "plays out.", "OFFICIAL:vi_Lucia_Caminos_06", "IT CHANGES THE STORY", None),
+        ("So the romance is yours to keep or lose. But they stay partners in crime.", "CLIP:extended_look_10833",
+         None, None),
+        ("Would you keep Jason and Lucia together, or let it fall apart? Pick a side.",
+         "OFFICIAL:vi_Jason_and_Lucia_13", None, None),
+    ],
+    facts=[
+        {"claim": "GamesRadar+ (Kaan Serin, 1 Nov 2026), 'GTA 6 lets you break up Jason and Lucia if you want': Rockstar "
+                  "North's Rob Nelson told Edge Magazine 'We start them wanting to be together' and 'it's yours to keep "
+                  "or yours to lose'; the writer: they 'can become a romantic couple and then break up entirely' and "
+                  "'ignore one too many late-night phone calls from your partner and things may go awry'.",
+         "sources": ["https://gamesradar.com/games/grand-theft-auto/gta-6-lets-you-break-up-jason-and-lucia-if-you-want-and-we-can-thank-red-dead-redemption-2s-arthur-morgan-for-the-choice"],
+         "main": True},
+        {"claim": "GamesRadar+ (Ashley Bardhan, 27 Aug 2026), 'GTA 6 won't let you break up Lucia and Jason': Nelson to "
+                  "IGN: 'They will remain partners in crime,' 'You will always have the benefit of working together and "
+                  "having each other's back' 'whether they're romantically close or not doesn't change that. They will "
+                  "still work together.' 'Whether you've nurtured the relationship or not will definitely have a "
+                  "bearing on how their story plays out.' The writer: 'There's no way for them to break up, Rockstar "
+                  "says.' TechRadar (28 Aug 2026), same IGN interview: 'It's not something that we want to foist upon "
+                  "players.'",
+         "sources": ["https://www.gamesradar.com/games/grand-theft-auto/gta-6-wont-let-you-break-up-lucia-and-jason-no-matter-how-poorly-you-treat-them-they-will-remain-partners-in-crime/",
+                     "https://www.techradar.com/gaming/rockstar-says-if-you-want-gta-6s-romance-between-jason-and-lucia-to-flourish-you-have-to-nurture-it-but-its-completely-optional-its-not-something-that-we-want-to-foist-upon-players"],
+         "main": True},
+    ],
+    description="Can Jason and Lucia break up in GTA 6? Rob Nelson told Edge the romance is 'yours to keep or yours "
+                "to lose', and told IGN 'They will remain partners in crime' - and that nurturing the relationship "
+                "'will definitely have a bearing on how their story plays out'.\nSources: GamesRadar+, TechRadar.",
+    hashtags=["#GTA6", "#JasonAndLucia", "#GTAVI"],
+)
+
+S["gta6-patch-fix"] = dict(
+    title="GTA 6's first update fixed the cops you couldn't lose",
+    thumb_text="THE UPDATE FIXED IT",
+    hook_card="COULDN'T LOSE THE COPS?",
+    cover_lines=["STUCK WITH COPS", "ON YOUR TAIL?", "THE UPDATE FIXED IT"],
+    cover_frame={"image": "img3", "zone": "lower"},   # Jason_Duval_01: Jason with a pistol under palms, face above the logo (27 Nov preview: 07 put his eyes under the logo; E6 still cover)
+    experiment="E6-still-cover",
+    beats=[
+        ("Couldn't lose the cops in GTA 6?", "CLIP:trailer_1_00084", None, "curious"),
+        ("It wasn't just you. It was a bug.", "CLIP:extended_look_09432", None, "amused"),
+        ("On November the twenty-third, Rockstar released an update for PS5 and Xbox.", "OFFICIAL:vi_Jason_Duval_01",
+         "UPDATE 1.002.002", None),
+        ("Its notes list a fix for players being unable to lose their wanted level.", "CLIP:extended_look_09166",
+         "FIXED: WANTED LEVEL", None),
+        ("It also fixed the game not autosaving correctly.", "CLIP:extended_look_07501", "FIXED: AUTOSAVE", None),
+        ("And partners not handing over bags, so you couldn't sell them to fences.", "CLIP:extended_look_09994",
+         "FIXED: LOOT BAGS", None),
+        ("Plus several crashes, and weather that didn't change for long stretches.", "CLIP:extended_look_07446",
+         "FIXED: CRASHES, WEATHER", None),
+        ("It even fixed the deadlift bar in the gym.", "CLIP:extended_look_10387", "FIXED: DEADLIFT BAR", "amused"),
+        ("It's small: about six hundred megabytes on PS5, and about one point six gigabytes on Xbox.",
+         "CLIP:extended_look_09766", "PS5 604MB / XBOX 1.6GB", None),
+        ("Some players still report problems, so keep your game updated.", "CLIP:extended_look_10037", None, None),
+        ("So: did the cop bug get you, or did it pass you by? Pick a side.", "OFFICIAL:vi_Jason_and_Lucia_19",
+         None, None),
+    ],
+    facts=[
+        {"claim": "Beebom (Sagnik Adhikary, GTA 6 patch notes tracker, updated 23 Nov 2026): version 01.002.002, "
+                  "November 23, 2026, PS5 603.8 MB, Xbox Series X|S 1.6 GB; notes: 'Fixed several issues that caused "
+                  "the game to crash', 'Fixed an issue that resulted in the weather not changing for extended periods', "
+                  "'Fixed an issue that resulted in the game not autosaving correctly', 'Fixed an issue that resulted "
+                  "in the players being unable to lose their Wanted Level', 'Fixed an issue that resulted in the player "
+                  "being unable to use the deadlift bar in the Gym', partners 'not handing over bags so that players "
+                  "could sell them to fences'.",
+         "sources": ["https://beebom.com/gta-6-patch-notes-updates-tracker/"], "main": True},
+        {"claim": "Timesaver (updated 26 Nov 2026): 'The latest GTA 6 update is 1.002.002 on PS5 (1.0.2.2 on Xbox), "
+                  "released November 23, 2026', with the same fixes, quoted from Rockstar Support's 'Grand Theft Auto "
+                  "VI Launch Updates'; PS5 603.8 MB, Xbox about 1.6 GB; players on r/GTA6 still report some problems "
+                  "(weather, autosave, a PS5 crash).",
+         "sources": ["https://timesaver.gg/blog/gta-6-update-patch-notes"], "main": True},
+    ],
+    description="GTA 6 update 1.002.002 (23 Nov 2026, PS5 and Xbox) fixed players being unable to lose their Wanted "
+                "Level, autosave, partners not handing over bags for fences, crashes, stuck weather and the gym's "
+                "deadlift bar. About 604 MB on PS5, 1.6 GB on Xbox.\nSources: Beebom, Timesaver (Rockstar Support notes).",
+    hashtags=["#GTA6", "#GTA6Update", "#GTAVI"],
+)
+
 S["gta6-trailer-songs"] = dict(
     title="GTA 6's trailers brought two old songs back to life",
     thumb_text="TWO OLD SONGS",
