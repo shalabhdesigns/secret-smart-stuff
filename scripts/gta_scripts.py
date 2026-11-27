@@ -2283,7 +2283,7 @@ S["gta6-four-heroes"] = dict(
     cover_frame={"image": "img7", "zone": "lower"},   # Jason_Duval_02: Jason close-up (27 Nov preview; E6 still cover)
     experiment="E5-older-gta+E6-still-cover",
     beats=[
-        ("Rockstar thought about giving GTA 6 four main characters, not two.", "CLIP:trailer_1_00728", None,
+        ("Rockstar thought about giving GTA 6 four main characters, not two.", "OFFICIAL:vi_Lucia_Caminos_12", None,
          "curious"),
         ("Remember, GTA 5 let you switch between three: Michael, Franklin and Trevor.", "OFFICIAL:v_c670974867",
          "GTA 5: 3 HEROES", None),
@@ -2298,7 +2298,7 @@ S["gta6-four-heroes"] = dict(
         ("Then the question became: how do you make players feel like, I love them both?",
          "OFFICIAL:vi_Jason_Duval_02", None, None),
         ("Nelson admits chemistry is a notoriously hard thing to do in any sort of entertainment.",
-         "OFFICIAL:vi_Lucia_Caminos_12", None, None),
+         "OFFICIAL:vi_Lucia_Caminos_09", None, None),
         ("Either the characters and the actors that embody them have it, or they don't. His verdict? I think "
          "we've got it.", "OFFICIAL:vi_Jason_and_Lucia_09", None, "amused"),
         ("So: two heroes in love, or four to switch between? Which side are you on?",
@@ -2378,10 +2378,10 @@ S["gta6-break-up"] = dict(
     thumb_text="CAN THEY BREAK UP?",
     hook_card="CAN THEY BREAK UP?",
     cover_lines=["CAN JASON AND LUCIA", "BREAK UP?", "ROCKSTAR ANSWERS"],
-    cover_frame={"image": "img8", "zone": "lower"},   # Lucia_Caminos_06: Lucia at a party, face above the logo (27 Nov preview; E6 still cover)
+    cover_frame={"image": "img1", "zone": "lower"},   # Lucia_Caminos_06 (also beat 1): Lucia at a party, face above the logo (27 Nov preview; E6 still cover)
     experiment="E6-still-cover",
     beats=[
-        ("Can Jason and Lucia actually break up in GTA 6?", "CLIP:extended_look_07899", None, "curious"),
+        ("Can Jason and Lucia actually break up in GTA 6?", "OFFICIAL:vi_Lucia_Caminos_06", None, "curious"),
         ("Even the gaming press can't agree. One headline says yes. Another says no.",
          "OFFICIAL:vi_Jason_and_Lucia_06", None, "amused"),
         ("Rockstar's Rob Nelson told Edge magazine: we start them wanting to be together.",
@@ -2394,7 +2394,7 @@ S["gta6-break-up"] = dict(
         ("Whether they're romantically close or not doesn't change that. They will still work together.",
          "OFFICIAL:vi_Jason_and_Lucia_08", None, None),
         ("And whether you've nurtured the relationship or not will definitely have a bearing on how their story "
-         "plays out.", "OFFICIAL:vi_Lucia_Caminos_06", "IT CHANGES THE STORY", None),
+         "plays out.", "CLIP:extended_look_07899", "IT CHANGES THE STORY", None),
         ("So the romance is yours to keep or lose. But they stay partners in crime.", "CLIP:extended_look_10833",
          None, None),
         ("Would you keep Jason and Lucia together, or let it fall apart? Pick a side.",
@@ -2429,12 +2429,12 @@ S["gta6-patch-fix"] = dict(
     thumb_text="THE UPDATE FIXED IT",
     hook_card="COULDN'T LOSE THE COPS?",
     cover_lines=["STUCK WITH COPS", "ON YOUR TAIL?", "THE UPDATE FIXED IT"],
-    cover_frame={"image": "img3", "zone": "lower"},   # Jason_Duval_01: Jason with a pistol under palms, face above the logo (27 Nov preview: 07 put his eyes under the logo; E6 still cover)
+    cover_frame={"image": "img1", "zone": "lower"},   # Jason_Duval_01 (also beat 1): Jason with a pistol under palms, face above the logo (27 Nov preview: 07 put his eyes under the logo; E6 still cover)
     experiment="E6-still-cover",
     beats=[
-        ("Couldn't lose the cops in GTA 6?", "CLIP:trailer_1_00084", None, "curious"),
+        ("Couldn't lose the cops in GTA 6?", "OFFICIAL:vi_Jason_Duval_01", None, "curious"),
         ("It wasn't just you. It was a bug.", "CLIP:extended_look_09432", None, "amused"),
-        ("On November the twenty-third, Rockstar released an update for PS5 and Xbox.", "OFFICIAL:vi_Jason_Duval_01",
+        ("On November the twenty-third, Rockstar released an update for PS5 and Xbox.", "CLIP:trailer_2_00452",
          "UPDATE 1.002.002", None),
         ("Its notes list a fix for players being unable to lose their wanted level.", "CLIP:extended_look_09166",
          "FIXED: WANTED LEVEL", None),

@@ -11021,14 +11021,14 @@
   ],
   "chosen_hook": 0,
   "images": {
-   "img1": "CLIP:trailer_1_00728",
+   "img1": "OFFICIAL:vi_Lucia_Caminos_12",
    "img2": "OFFICIAL:v_c670974867",
    "img3": "CLIP:trailer_2_00346",
    "img4": "CLIP:extended_look_07446",
    "img5": "CLIP:extended_look_07501",
    "img6": "OFFICIAL:vi_Jason_and_Lucia_13",
    "img7": "OFFICIAL:vi_Jason_Duval_02",
-   "img8": "OFFICIAL:vi_Lucia_Caminos_12",
+   "img8": "OFFICIAL:vi_Lucia_Caminos_09",
    "img9": "OFFICIAL:vi_Jason_and_Lucia_09",
    "img10": "OFFICIAL:vi_Jason_and_Lucia_01"
   },
@@ -11423,14 +11423,14 @@
   ],
   "chosen_hook": 0,
   "images": {
-   "img1": "CLIP:extended_look_07899",
+   "img1": "OFFICIAL:vi_Lucia_Caminos_06",
    "img2": "OFFICIAL:vi_Jason_and_Lucia_06",
    "img3": "CLIP:extended_look_07446",
    "img4": "CLIP:trailer_2_00346",
    "img5": "CLIP:extended_look_03894",
    "img6": "CLIP:launch_trailer_00026",
    "img7": "OFFICIAL:vi_Jason_and_Lucia_08",
-   "img8": "OFFICIAL:vi_Lucia_Caminos_06",
+   "img8": "CLIP:extended_look_07899",
    "img9": "CLIP:extended_look_10833",
    "img10": "OFFICIAL:vi_Jason_and_Lucia_13"
   },
@@ -11621,7 +11621,7 @@
    ],
    "why": "written in session",
    "frame": {
-    "image": "img8",
+    "image": "img1",
     "zone": "lower"
    }
   }
@@ -11636,9 +11636,9 @@
   ],
   "chosen_hook": 0,
   "images": {
-   "img1": "CLIP:trailer_1_00084",
+   "img1": "OFFICIAL:vi_Jason_Duval_01",
    "img2": "CLIP:extended_look_09432",
-   "img3": "OFFICIAL:vi_Jason_Duval_01",
+   "img3": "CLIP:trailer_2_00452",
    "img4": "CLIP:extended_look_09166",
    "img5": "CLIP:extended_look_07501",
    "img6": "CLIP:extended_look_09994",
@@ -11849,7 +11849,7 @@
    ],
    "why": "written in session",
    "frame": {
-    "image": "img3",
+    "image": "img1",
     "zone": "lower"
    }
   }
