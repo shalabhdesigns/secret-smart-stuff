@@ -2471,6 +2471,261 @@ S["gta6-patch-fix"] = dict(
     hashtags=["#GTA6", "#GTA6Update", "#GTAVI"],
 )
 
+S["gta6-lucia-flowers"] = dict(
+    title="GTA 6 is making real men buy flowers. Here's why",
+    thumb_text="FLOWERS FOR LUCIA",
+    hook_card="TRAINING THE MEN?",
+    cover_lines=["REAL MEN BUYING", "FLOWERS BECAUSE", "OF LUCIA?"],
+    cover_frame={"image": "img5", "zone": "lower"},   # Lucia_Caminos_02: Lucia at a rooftop pool, face above the logo (28 Nov preview)
+    open="motion",
+    experiment="E7-send-first",
+    beats=[
+        ("A real husband just bought his wife flowers, because of GTA 6.", "CLIP:extended_look_10196", None,
+         "amused"),
+        ("Early on, Jason gets little prompts: buy flowers, get groceries, fix up the home.",
+         "CLIP:trailer_2_00188", "FLOWERS. GROCERIES.", None),
+        ("Lucia's coming home from prison, and each says: Lucia will appreciate this.",
+         "CLIP:trailer_2_00631", None, None),
+        ("One wife says her husband went out for cat food and came home with flowers and ice cream.",
+         "CLIP:extended_look_06535", "FLOWERS + ICE CREAM", None),
+        ("His reason? If he gets Lucia flowers, he has to get her some too.", "OFFICIAL:vi_Lucia_Caminos_02",
+         None, "laughs softly"),
+        ("One reply: they're training the men.", "CLIP:extended_look_03869", "TRAINING THE MEN", None),
+        ("Is GTA 6 training the men? Yes or no? Send this to someone who owes you flowers.",
+         "OFFICIAL:vi_Jason_and_Lucia_13", None, None),
+    ],
+    facts=[
+        {"claim": "Open Magazine (Mahima Pandey, updated 26 Nov 2026) and Screen Realm (Guillermo Troncoso, 26-27 Nov "
+                  "2026): when players control Jason, in-game prompts suggest buying flowers, picking up groceries, "
+                  "getting jewellery and home improvements, each with the message 'Lucia will appreciate this.'; early "
+                  "in the game Jason prepares the home for Lucia's return from prison.",
+         "sources": ["https://openthemagazine.com/lifestyle/gta-6s-lucia-is-making-boyfriends-and-husbands-step-up-meet-the-actor-behind-the-viral-sensation",
+                     "https://screenrealm.com/gta-6-lucia-internet-obsession-relationship-memes-grand-theft-auto/"],
+         "main": True},
+        {"claim": "IBTimes UK (Jim Manzon, 27 Nov 2026): Monroe Cammack shared on Threads that her husband left a gaming "
+                  "session to buy cat food and came home with flowers and ice cream, crediting Lucia ('if I have to get "
+                  "Lucia flowers' he had to get her flowers too); a reply: 'They're Training the Men'.",
+         "sources": ["https://www.ibtimes.co.uk/gta-6-lucia-inspires-flowers-ice-cream-gesture-1835112"], "main": True},
+        {"claim": "Newsweek (19 Nov 2026): Mike From PA on X: 'GTA VI might be training men on the skills necessary to be "
+                  "a better boyfriend', viewed 1.4 million times.",
+         "sources": ["https://newsweek.com/in-gta-6-the-ultimate-male-fantasy-is-being-a-good-boyfriend-12741017"],
+         "main": False},
+    ],
+    description="GTA 6 gives Jason prompts to buy Lucia flowers, groceries and home upgrades - 'Lucia will appreciate "
+                "this.' Now a wife on Threads says her husband came home with flowers and ice cream because of it. "
+                "One reply: 'They're Training the Men'.\nSources: IBTimes UK, Open Magazine, Screen Realm, Newsweek.",
+    hashtags=["#GTA6", "#Lucia", "#GTAVI"],
+)
+
+S["gta6-lucia-files-1"] = dict(
+    title="GTA 6 Lucia Files #1: Lucia's heist friend Vicki",
+    thumb_text="LUCIA FILES #1",
+    hook_card="LUCIA FILES #1",
+    cover_lines=["LUCIA FILES #1", "HER HEIST FRIEND", "IS A NETFLIX STAR?"],
+    cover_frame={"image": "img1", "zone": "lower"},   # Lucia_Caminos_12 (also beat 1): Lucia aiming from a car, face above the logo (28 Nov preview)
+    experiment="E8-lucia-files",
+    beats=[
+        ("Lucia Files, number one: the friend who helps Lucia plan a heist.", "OFFICIAL:vi_Lucia_Caminos_12", None,
+         "curious"),
+        ("Her name is Vicki, and you meet her in Chapter 2.", "CLIP:extended_look_10132", "CHAPTER 2", None),
+        ("She works at Delights, a club in Kelly County, as a bartender and dancer.", "CLIP:extended_look_10510",
+         "DELIGHTS, KELLY COUNTY", None),
+        ("By the time you meet her, Jason and Lucia are finally back together.", "OFFICIAL:vi_Jason_and_Lucia_14",
+         None, None),
+        ("But Jason isn't around for Vicki's missions. This part of the story is Lucia's.",
+         "OFFICIAL:vi_Lucia_Caminos_08", None, None),
+        ("And Vicki helps her plan a heist.", "OFFICIAL:vi_Jason_and_Lucia_15", "A HEIST PLAN", "excited"),
+        ("No, you can't romance her, whatever your relationship level. But you can still text or call her.",
+         "CLIP:extended_look_03894", "NO ROMANCE", "amused"),
+        ("Now the twist. Players say Vicki is played by Taryn Manning.", "CLIP:extended_look_07446",
+         "VICKI: TARYN MANNING", "surprised"),
+        ("That's Pennsatucky, from the Netflix prison show Orange Is the New Black.", "CLIP:trailer_2_00518",
+         "PENNSATUCKY, OITNB", None),
+        ("Rockstar hasn't confirmed it. But if it's her, it's her first video game.", "OFFICIAL:vi_Lucia_Caminos_09",
+         None, None),
+        ("Fitting, because Lucia's own story starts in prison too.", "CLIP:trailer_2_00631", None, None),
+        ("Vicki or Jason: who's the better partner for Lucia's heists? Pick a side.",
+         "OFFICIAL:vi_Jason_and_Lucia_02", None, None),
+    ],
+    facts=[
+        {"claim": "VGC (Jordan Middler, 19 Nov 2026), 'GTA 6 Vicki: Can you romance Vicki in GTA 6?': Vicki is a "
+                  "Chapter 2 side character; 'She works at Delights, the strip club in Kelly County'; when you meet her "
+                  "'Lucia and Jason are finally reunited'; 'Jason is not around for the missions with Vicki'; 'No, you "
+                  "can't romance Vicki in GTA 6', 'no matter what relationship level you are at'; you can still text or "
+                  "phone her.",
+         "sources": ["https://www.videogameschronicle.com/guide/gta-6-vicki-can-you-romance-vicki-in-gta-6/"],
+         "main": True},
+        {"claim": "PlayStation LifeStyle (Rahul Majumdar, 23 Nov 2026): Vicky is 'a bartender and dancer working at "
+                  "Delights Cabaret'; players meet her in chapter 2, where she has a supporting role 'to help Lucia plan "
+                  "a heist'; not confirmed by Rockstar; 'Players have discovered that Vicky is played by Taryn Manning, who played Pennsatucky in "
+                  "Orange Is the New Black'; 'GTA 6 marks her first performance in a video game'. No confirmation from "
+                  "Rockstar (based on a Culture Crave post). The Tab (19 Nov) and Maxim (19 Nov, citing Polygon) also "
+                  "list 'Vicki: Taryn Manning'. Orange Is the New Black is a Netflix series set in a women's prison.",
+         "sources": ["https://www.playstationlifestyle.net/2026/11/23/gta-6-orange-is-the-new-black-star-cabaret-bar",
+                     "https://thetab.com/2026/11/19/side-by-side-gta-vis-vibey-voice-actors-and-their-characters-as-thirst-for-mandy-ramps-up",
+                     "https://www.maxim.com/entertainment/lucia-caminos-in-grand-theft-auto-vi/"],
+         "main": True},
+        {"claim": "Notebookcheck (25 Nov 2026): the game opens with 'Lucia's prison prologue'.",
+         "sources": ["https://www.notebookcheck.net/GTA-6-PC-ports-reach-gameplay-despite-Take-Two-s-GitHub-DMCA.1459752.0.html"],
+         "main": False},
+    ],
+    description="The Lucia Files #1: Vicki, Lucia's friend from Delights in Kelly County, helps her plan a heist in "
+                "Chapter 2 - and you can't romance her. Players say she's played by Taryn Manning, Pennsatucky in "
+                "Orange Is the New Black (not confirmed by Rockstar).\nSources: VGC, PlayStation LifeStyle, The Tab, Maxim.",
+    hashtags=["#GTA6", "#LuciaCaminos", "#GTAVI"],
+)
+
+S["gta6-hunting"] = dict(
+    title="GTA 6 pays Jason $2,500 for one boar. Here's how",
+    thumb_text="$2,500 FOR A BOAR",
+    hook_card="ONE BOAR = $2,500?",
+    cover_lines=["ONE BOAR = $2,500?", "JASON'S HUNTING JOB", "AND THE CATCH"],
+    cover_frame={"image": "img1", "zone": "lower"},   # Jason_Duval_18 (also beat 1): Jason at a fuel pump, face high and lit (28 Nov preview)
+    beats=[
+        ("One wild boar paid a PC Gamer writer two and a half thousand dollars in GTA 6.",
+         "OFFICIAL:vi_Jason_Duval_18", None, "surprised"),
+        ("It's a side job for Jason, from a hunter called Bret Vogel, in Lummox County. Here's how to start.",
+         "OFFICIAL:vi_Jason_Duval_14", "BRET VOGEL", None),
+        ("One: in Chapter 2, after the mission Coffee Break, Bret texts you.", "CLIP:launch_trailer_00119",
+         "1. CHAPTER 2", None),
+        ("Two: go as Jason, without Lucia, and do his first hunt, Veteran Hunted. You get a rifle, the SM-69.",
+         "OFFICIAL:vi_Jason_Duval_17", "2. VETERAN HUNTED", None),
+        ("Three: open his Target Decks: fifteen contracts for animals like deer and wild boar.",
+         "CLIP:extended_look_04645", "3. 15 TARGET DECKS", None),
+        ("Now the catch. Bret only accepts animals in pristine or good condition.", "CLIP:trailer_1_00183",
+         "PRISTINE OR GOOD ONLY", "serious"),
+        ("A damaged carcass doesn't count. So go for one clean shot, to the head or the heart.",
+         "OFFICIAL:vi_Jason_Duval_05", "HEAD OR HEART", None),
+        ("The pro move: the small W-22 for small animals. The wrong weapon can ruin them.",
+         "CLIP:extended_look_10298", "SMALL GAME: W-22", None),
+        ("And bring a pickup to carry them.", "CLIP:trailer_1_00499", None, None),
+        ("Big ones, like boars, Bret's team collects for you.", "CLIP:extended_look_04645", None, None),
+        ("Hunting or robbing stores: which is the better way to get rich in GTA 6? Pick a side.",
+         "OFFICIAL:vi_Jason_and_Lucia_04", None, None),
+    ],
+    facts=[
+        {"claim": "GTABase, 'Bret's Hunting Decks' (Strangers & Freaks): mission giver Bret Vogel, Killtelligence "
+                  "Provisions cabin in northern Lummox County; 'Bret Vogel's hunting jobs are exclusive to Jason'; Bret "
+                  "invites you to Veteran Hunted some time after the Chapter 2 main mission Coffee Break; go 'as Jason, "
+                  "without Lucia'; the tutorial hunt gives the Killtelligence SM-69 rifle; then the Target Decks: '15 "
+                  "hunting contracts, each asking for a few specific animals' (deck 1 whitetail deer, deck 2 includes "
+                  "Wild Boar); 'Bret only accepts animals in Pristine or Good condition: a damaged carcass doesn't "
+                  "count'; 'go for one clean shot to the head or heart'; Wortham W-22 for small animals, 'The wrong "
+                  "weapon can ruin a small carcass'; large animals such as bears and boars are collected by 'Bret's "
+                  "team'; smaller ones are carried in a vehicle - 'bring a pickup with an open bed'.",
+         "sources": ["https://www.gtabase.com/gta-6/strangers/brets-hunting-decks"], "main": True},
+        {"claim": "PC Gamer (Christopher Livingston, 18 Nov 2026), 'GTA 6: The fastest ways to make money': hunting for "
+                  "Bret in Lummox County from Chapter 2, Jason only; take 'From hundreds to thousands, depending on the "
+                  "kill'; 'Bret paid me $2,500' for a wild boar the writer shot. The same guide lists robbing stores "
+                  "with back doors at $6,000-$15,000.",
+         "sources": ["https://www.pcgamer.com/games/grand-theft-auto/gta-6-how-to-make-money/"], "main": True},
+    ],
+    description="How to start hunting for Bret Vogel in GTA 6: Chapter 2 after Coffee Break, Veteran Hunted as Jason "
+                "(you get the SM-69), then 15 Target Decks. Bret only takes animals in Pristine or Good condition - one "
+                "clean shot to the head or heart, the W-22 for small game. PC Gamer's writer got $2,500 for one "
+                "boar.\nSources: GTABase, PC Gamer.",
+    hashtags=["#GTA6", "#GTA6Tips", "#GTAVI"],
+)
+
+S["gta6-tourist-trap"] = dict(
+    title="GTA 6 wipes your cash after Chapter 1. Save $5,000",
+    thumb_text="SAVE $5,000 FIRST",
+    hook_card="MOVE YOUR MONEY",
+    cover_lines=["CHAPTER 1 ENDS", "AND YOUR CASH IS GONE?", "SAVE $5,000 FIRST"],
+    cover_frame={"image": "img4", "zone": "lower"},   # Jason_Duval_15: Jason lifting a barbell, face high and lit (28 Nov preview)
+    open="motion",
+    experiment="E7-send-first",
+    beats=[
+        ("Before you finish GTA 6's first chapter, move your money. Here's why.", "CLIP:trailer_2_00188", None,
+         "serious"),
+        ("In the mission Tourist Trap, Jason's house in Key Lento burns.", "OFFICIAL:vi_Jason_and_Lucia_08",
+         "TOURIST TRAP", None),
+        ("You lose your pocket cash, BuckMe balance, the house and the cars there.",
+         "CLIP:extended_look_04835", "CASH, HOUSE, CARS: GONE", None),
+        ("Jason is hurt too, and his fitness drops.", "OFFICIAL:vi_Jason_Duval_15", None, None),
+        ("The fix: in the BuckMe app, pick Buck Yourself.", "CLIP:extended_look_10037", "BUCKME: BUCK YOURSELF",
+         "curious"),
+        ("Move up to five thousand dollars into Family Savings. That money carries over.",
+         "OFFICIAL:vi_Jason_and_Lucia_17", "FAMILY SAVINGS: $5,000", None),
+        ("Clothes, tattoos and guns you bought stay with you.", "OFFICIAL:vi_Jason_Duval_17", None, None),
+        ("Send this to a friend still in Chapter 1. Did the fire get you? Yes or no?",
+         "OFFICIAL:vi_Jason_and_Lucia_01", None, None),
+    ],
+    facts=[
+        {"claim": "GTABase (Adam, 19 Nov 2026), 'How to Keep Your Money Safe in GTA 6': at Tourist Trap you lose pocket "
+                  "cash, the BuckMe checking balance, the floorboard stash, the Key Lento house and 'your personal "
+                  "vehicles'; 'Jason is also badly hurt' and his fitness drops at the start of Chapter 2; kept: Family "
+                  "Savings '(up to $5,000)'; in the BuckMe app, 'Buck Yourself' moves money into Family Savings; "
+                  "Tourist Trap is the point of no return.",
+         "sources": ["https://www.gtabase.com/gta-6/articles/how-to-keep-your-money-safe-in-gta-6"], "main": True},
+        {"claim": "SSBCrack (23 Nov 2026) and MovieWeb (Jake Dee, 22 Nov 2026): Tourist Trap, a mandatory mission at "
+                  "the end of Chapter 1, takes place as Jason's house on Key Lento burns; players lose cash, access to "
+                  "the BuckMe balance, the house and 'any personal vehicles stored there'; the fire leaves him "
+                  "bedridden for two days and his fitness drops; Family Savings takes up to $5,000 and carries over to "
+                  "Chapter 2; 'Clothing, tattoos and weapons bought in Chapter 1 carry over'. KeenGamer (23 Nov 2026): "
+                  "'Open BuckMe, select Checking Account, then Buck Yourself, and transfer up to the $5,000 cap'; "
+                  "Family Savings kept, max $5,000; purchased guns, clothes and tattoos kept.",
+         "sources": ["https://news.ssbcrack.com/gta-6s-tourist-trap-mission-wipes-out-cash-cars-and-fitness-heres-how-to-save-5000/",
+                     "https://movieweb.com/gta-6-chapter-1-mistake/",
+                     "https://www.keengamer.com/articles/guides/gta-6-chapter-2-lost-money-what-carries-over-and-how-to-get-it-back/"],
+         "main": True},
+    ],
+    description="GTA 6's Tourist Trap mission (end of Chapter 1) burns Jason's Key Lento house: you lose pocket cash, "
+                "your BuckMe balance, the house and your cars. Before it, open BuckMe -> Buck Yourself and move up to "
+                "$5,000 into Family Savings - it carries over. Clothes, tattoos and bought guns stay.\n"
+                "Sources: GTABase, SSBCrack, MovieWeb, KeenGamer.",
+    hashtags=["#GTA6", "#GTA6Tips", "#GTAVI"],
+)
+
+S["gta6-lose-cops"] = dict(
+    title="GTA 6 cops remember your car. Here's how to vanish",
+    thumb_text="HOW TO VANISH",
+    hook_card="THEY REMEMBER YOU",
+    cover_lines=["COPS KNOW YOUR FACE,", "CLOTHES AND CAR?", "HOW TO VANISH"],
+    cover_frame={"image": "img1", "zone": "lower"},   # Lucia_Caminos_10 (also beat 1): Lucia close-up in a car, neon light (28 Nov preview)
+    beats=[
+        ("In GTA 6, the cops don't just chase you. They remember you.", "OFFICIAL:vi_Lucia_Caminos_10", None,
+         "serious"),
+        ("Little icons show what they know: your face, your clothes, your car, and whether you two are together.",
+         "CLIP:extended_look_09432", "FACE, CLOTHES, CAR", None),
+        ("And the wanted level now goes up to six stars. GTA 5 stopped at five.", "OFFICIAL:vi_Jason_Duval_07",
+         "6 STARS (GTA 5: 5)", None),
+        ("Here's how to vanish. One: swap cars.", "CLIP:launch_trailer_00263", "1. SWAP CARS", None),
+        ("A cop car that doesn't know your new ride rolls right on by.", "CLIP:trailer_2_00452", None, None),
+        ("Two: split up. That also lowers what the police think they know.", "CLIP:extended_look_10081",
+         "2. SPLIT UP", None),
+        ("Three: if they know who you are, but not your car, hold Circle on PlayStation to hide in it.",
+         "OFFICIAL:vi_Jason_and_Lucia_06", "3. HOLD CIRCLE: HIDE", "curious"),
+        ("The catch: they must not know your car yet.", "OFFICIAL:vi_Lucia_Caminos_07", None, None),
+        ("Rockstar's Rob Nelson says: one star is not going to be too difficult to get away from.",
+         "CLIP:extended_look_07446", "QUOTE: ROCKSTAR", None),
+        ("But at three stars in the city, getting away in a car gets harder, unless it's very fast, or a sports "
+         "bike.", "OFFICIAL:vi_Jason_Duval_11", None, None),
+        ("So: hide in the car, or floor it on a sports bike? Pick a side.", "OFFICIAL:vi_Jason_and_Lucia_09", None,
+         None),
+    ],
+    facts=[
+        {"claim": "GamesRadar+ (Dustin Bailey, 27 Aug 2026), 'GTA 6 wanted system goes up to 6 stars and lets police "
+                  "track your face, your clothes, and your car': icons show 'their clothes, their faces, their car, and "
+                  "the fact that they're together'; 'the wanted level can go up to six stars - GTA 5 had previously "
+                  "been capped at five stars'; swapping vehicles removes the car icon and a cop car that 'doesn't "
+                  "recognize the new vehicle' will 'roll right on by'; 'You could split up, and that will also help "
+                  "lower the police's perception of you'; Rob Nelson (Rockstar North, to IGN): 'One star is not going "
+                  "to be too difficult to get away from'; 'If you get three stars in the city, it can sometimes be "
+                  "challenging to get away in a vehicle, unless it's a very fast vehicle or a sports bike'.",
+         "sources": ["https://www.gamesradar.com/games/grand-theft-auto/gta-6-wanted-system-goes-up-to-6-stars-and-lets-police-track-your-face-your-clothes-and-your-car/"],
+         "main": True},
+        {"claim": "Push Square (Sammy Barker, 25 Nov 2026), 'GTA 6: Secret Controls the Game Doesn't Tell You' (Default "
+                  "control scheme): when police know your identity but not your car, 'hold Circle to hide from any "
+                  "pursuing police'.",
+         "sources": ["https://www.pushsquare.com/guides/gta-6-secret-controls-the-game-doesnt-tell-you"], "main": True},
+    ],
+    description="GTA 6's police remember your face, clothes and car, and the wanted level goes up to six stars. Swap "
+                "cars, split up, and - if they know you but not your car - hold Circle (PS5, default controls) to hide "
+                "in it.\nSources: GamesRadar+ (Rockstar's Rob Nelson to IGN), Push Square.",
+    hashtags=["#GTA6", "#GTA6Tips", "#GTAVI"],
+)
+
 S["gta6-trailer-songs"] = dict(
     title="GTA 6's trailers brought two old songs back to life",
     thumb_text="TWO OLD SONGS",
