@@ -1,9 +1,17 @@
 {
- "collected_at": "2026-11-27T08:45:31Z",
+ "collected_at": "2026-11-28T07:59:40Z",
  "errors": [
   "@simplethingshistories: ERROR: [youtube:tab] @simplethingshistories: This channel does not have a shorts tab"
  ],
  "all_titles": [
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Guns Can Fire Without Their Usual Loud Bang?"
+  },
+  {
+   "channel": "@historyofsimplethings",
+   "title": "Did You Know Batteries Lose Power While Unused?"
+  },
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Refrigerators Use Magnetic Door Seals?"
@@ -1195,14 +1203,6 @@
   {
    "channel": "@historyofsimplethings",
    "title": "Did You Know Knocking on Wood From Ancient Beliefs in Tree Spirits?"
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Cats Were Once Blamed for Misfortunes?"
-  },
-  {
-   "channel": "@historyofsimplethings",
-   "title": "Did You Know Humans Once Feared Their Own Shadows?"
   },
   {
    "channel": "@nameexplain",
