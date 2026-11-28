@@ -88,6 +88,37 @@ def fetch_bundle(job: str, into: Path) -> bool:
     return r.returncode == 0
 
 
+def cache_voice(job: str) -> bool:
+    """Copy a version's narration (voice_text.txt, narration audio, words.json) from its review bundle into
+    Pipeline.VOICE_CACHE, keyed by the exact spoken text. Never fails a run: no bundle -> nothing cached."""
+    import shutil
+    import tempfile
+    if not JOB_RE.fullmatch(job or ""):
+        return False
+    try:
+        src = ROOT / "build" / job
+        tmp = None
+        if not (src / "voice_text.txt").exists():
+            tmp = Path(tempfile.mkdtemp())
+            fetch_bundle(job, tmp)
+            src = tmp
+        text_f = src / "voice_text.txt"
+        audio = next((src / n for n in ("narration_trim.mp3", "narration_trim.wav", "narration.mp3", "narration.wav")
+                      if (src / n).exists()), None)
+        if not text_f.exists() or not audio or not (src / "words.json").exists():
+            return False
+        dst = Pipeline.VOICE_CACHE / Pipeline.voice_key(text_f.read_text())
+        dst.mkdir(parents=True, exist_ok=True)
+        for f in (text_f, audio, src / "words.json"):
+            shutil.copy(f, dst / f.name)
+        if tmp:
+            shutil.rmtree(tmp, ignore_errors=True)
+        return True
+    except Exception as e:  # noqa: BLE001
+        print(f"voice cache skipped for {job}: {e}")
+        return False
+
+
 def preserve_media(p: Pipeline) -> None:
     """After a crash: save every finished-but-unpublished video's media to its review release, so the next run can
     resume it instead of paying for new pictures and voice (30 Oct 2026: a crash lost the knife video's media)."""
@@ -398,6 +429,7 @@ def do_produce(p: Pipeline, req: dict) -> int:
         if p.state.get_topic(skip):
             p.state.set_topic_status(skip, "rejected")
     for old in req.get("retire_jobs") or []:
+        cache_voice(old)     # 28 Nov 2026 (cost): a remake with the same words reuses this version's voice
         # superseded versions (e.g. made in an old format): close them, keep the topic for a remake
         jj = p.state.get_job(old)
         if jj and jj["status"] in ("review", "failed", "paused", "running"):

@@ -162,3 +162,27 @@ def test_shot_piece_keeps_the_described_middle(tmp_path):
                     "-map", "[v]", "-pix_fmt", "yuv420p", str(src)], check=True)
     s, e = oc._shot_piece(src, 0.0, 2.57)
     assert 0.95 < s < 1.15 and abs(e - 2.57) < 0.01
+
+
+def test_remake_reuses_cached_voice(tmp_path, monkeypatch):
+    """28 Nov 2026 (cost): a remake with the same words reuses the retired version's voice; other words do not."""
+    import importlib
+    import sys
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+    rc = importlib.import_module("run_command")
+    monkeypatch.setattr(Pipeline, "VOICE_CACHE", tmp_path / "cache")
+    monkeypatch.setattr(rc, "ROOT", tmp_path)
+    old = tmp_path / "build" / "gta6-x-v1"
+    old.mkdir(parents=True)
+    (old / "voice_text.txt").write_text("[curious] Hello there.")
+    (old / "narration.mp3").write_bytes(b"ID3")
+    (old / "words.json").write_text('[{"word": "Hello", "start": 0.0, "end": 0.4}]')
+    assert rc.cache_voice("gta6-x-v1")
+    p = Pipeline.__new__(Pipeline)
+    new = tmp_path / "build" / "gta6-x-v2"
+    new.mkdir(parents=True)
+    got = p._reuse_voice(new, "[curious] Hello there.")
+    assert got and got["reused"] and (new / "narration.mp3").exists() and got["duration"] == 0.4
+    new2 = tmp_path / "build" / "gta6-x-v3"
+    new2.mkdir(parents=True)
+    assert p._reuse_voice(new2, "[curious] Hello there!") is None

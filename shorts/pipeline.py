@@ -840,10 +840,23 @@ Return JSON only: {{"ok": true/false, "swaps": [{{"beat": "b3", "shot": "<shot i
         pr = d / "prior"
         return pr if (pr / "script.json").exists() else None
 
+    VOICE_CACHE = Path(__file__).resolve().parents[1] / "build" / "voice_cache"
+
+    @classmethod
+    def voice_key(cls, text: str) -> str:
+        return hashlib.sha256(text.encode("utf-8")).hexdigest()[:20]
+
     def _reuse_voice(self, d: Path, text: str) -> dict | None:
         pr = self._prior(d)
         if not pr:
-            return None
+            # 28 Nov 2026 (cost): a remake that changes only pictures (new queue item + retire_jobs) used to pay for
+            # the same narration again. run_command puts the retired version's voice in VOICE_CACHE, keyed by the
+            # exact spoken text (delivery tags included), so identical words are reused and anything else is new.
+            c = self.VOICE_CACHE / self.voice_key(text)
+            if (c / "voice_text.txt").exists() and (c / "voice_text.txt").read_text() == text:
+                pr = c
+            else:
+                return None
         old = (pr / "voice_text.txt").read_text() if (pr / "voice_text.txt").exists() else None
         if old is None:   # older bundles: rebuild the text from the old script
             try:
