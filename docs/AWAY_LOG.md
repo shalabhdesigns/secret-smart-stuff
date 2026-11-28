@@ -244,3 +244,34 @@ Results of each scheduled run while the owner is away (newest last). Simple word
   - All 5: official-still face cover (previewed), side-taking last line, 124-152 words.
 - **Still needs the owner (no action taken, not messaged):** the Anthropic API key (GitHub secret
   `ANTHROPIC_API_KEY`) has been invalid since 24 Nov. Videos still go out through my daily check and the safety net.
+
+## 28 Nov 2026 (daily run, 12:41 IST)
+- **Today's videos: all 5 checked by me and scheduled** (the final check still can't run: Anthropic API key 401).
+  - IST: 17:30 Jason and Lucia's ages · 19:30 four heroes · 22:30 snap gun · 01:30 can they break up? ·
+    07:30 (29 Nov) the update that fixed the cops.
+  - Covers looked at: real GTA VI logo, 3 readable lines, a big lit face, 5 different pictures. No fixes needed.
+  - Contact sheets, first frames and audio checked (no gaps; level OK at start and end; first word complete).
+- **Cost:** last 24 h $0.55 (voice only, $0.05-0.07 a video). Waste $0.12 (2 replaced remakes from 27 Nov).
+  - Cut today: a remake with the same words now reuses the old voice (saves ~$0.06 a remake). Tested (all tests pass).
+- **Experiments:**
+  - E5 (older-GTA hook) and E6 (still covers): no 24 h numbers yet. Their last test videos go out today. Both judged
+    tomorrow. Early sign for E5: the Niko video has 14.8 saves per 1,000 (normal is 2.2).
+  - New E7 (send-first shorts, 25-35 s, no title card): Lucia flowers + Tourist Trap. Control: the other 3.
+  - New E8 (Lucia Files series): #1 tomorrow.
+- **Learnings (with numbers):**
+  - F33: sends and saves come from different videos. Sends: official numbers (11.7 per 1,000) and couple debates
+    (5.0). Saves: how-tos (17-37 per 1,000). E7 tests the "send" kind.
+  - F34: what players talk about now: the "training the men" flowers trend, the Chapter 1 money wipe, Vicki's
+    casting. 3 of tomorrow's videos use them.
+  - R8 re-checked: holds (12:00 slot is still the best: 1,590 IG / 1,183 YouTube median).
+- **Tomorrow (29 Nov), IST:**
+  - 17:30 GTA 6 is making real men buy flowers. Here's why (E7, couple debate)
+  - 19:30 GTA 6 Lucia Files #1: Lucia's heist friend Vicki (E8)
+  - 22:30 GTA 6 pays Jason $2,500 for one boar. Here's how (how-to with a catch)
+  - 01:30 GTA 6 wipes your cash after Chapter 1. Save $5,000 (E7, know before you play)
+  - 07:30 (30 Nov) GTA 6 cops remember your car. Here's how to vanish (how-to)
+  - All 5: new official-still face covers (previewed today), side-taking last line.
+  - The first E7 videos use the new "no title card" opening for the first time. Tomorrow's run must look at their
+    first 3 seconds before approving.
+- **Still needs the owner (no action taken, not messaged):** the Anthropic API key (GitHub secret
+  `ANTHROPIC_API_KEY`) has been invalid since 24 Nov. Videos still go out through my daily check and the safety net.
