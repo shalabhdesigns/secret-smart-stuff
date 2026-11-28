@@ -16,7 +16,7 @@ the next videos; identifying patterns and improving is Claude's job, not the own
 5. Rules: a learning without a number, or one that changed nothing, is deleted, not repeated. Never compare with
    the old product videos. Small samples (n < 3 per side) are "extend", not "adopt".
 
-## What the numbers say so far (27 Nov 07:20 UTC, 48 of 53 GTA videos with 24 h numbers)
+## What the numbers say so far (28 Nov 07:11 UTC, 53 of 58 GTA videos with 24 h numbers)
 (F1-F4 deleted 21 Nov; F5 deleted 24 Nov: E3 tested it and is now rule R7.)
 
 - F6 Full analysis (21 Nov 04:18 UTC, all 23 GTA videos; IG + YT live counts; table in the owner report):
@@ -170,6 +170,19 @@ the next videos; identifying patterns and improving is Claude's job, not the own
   1,972); 45-50 % stayed -> mostly under 500. 12:00 UTC slot median 1,234 YT vs 705 at 02:00.
   Change: judge videos by sends, likes and saves per 1,000 reached, IG breakouts (reach >= 3,000) and YouTube
   "stayed %" (gta_learn.py now reports them), not by IG views; E7 + E8 start 29 Nov; R8.
+  Re-checked 28 Nov (35 logo videos since 21 Nov): still 0 breakouts; best reach 1,877 (Lucia's actress).
+- F33 Sends and saves come from different videos (28 Nov, 35 logo videos since 21 Nov): the two highest send rates
+  are an official big number (official sales 11.7 per 1,000 reached) and a couple debate (dating Lucia 5.0; median
+  0.7). The couple debate is also our best YouTube video (2,929 views, 63 % stayed). Saves go to find-it / how-to
+  videos (Kodak radio 37.3, Lucia's looks 23.7, egg tower 22.4, Mario caps 17.6 per 1,000; median 2.2), which get
+  sent at only 0-1.6. Change: E7's first tests are a couple debate (the viral "Lucia will appreciate this" flowers
+  trend) and a "know this before you play" warning (Tourist Trap wipes your cash), both built to be sent; how-tos
+  (hunting, police) stay in the control group for saves.
+- F34 What GTA 6 players talk about now (web, 28 Nov): the "training the men" trend (Jason's in-game prompts, "Lucia
+  will appreciate this"; a husband bought real flowers, IBTimes 27 Nov; Mike From PA's post 1.4 million views; a
+  TikTok 3.2 million views), the Chapter 1 money wipe at Tourist Trap (guides from GTABase, MovieWeb, KeenGamer,
+  SSBCrack on 19-23 Nov), Vicki's casting (Taryn Manning, reported 23 Nov) and a Ninja Turtles egg (30,000+ likes on
+  X, location unknown, so not used). Change: 3 of 29 Nov's 5 videos come from these.
 
 ## Adopted rules (proven on our GTA numbers)
 - R1 (20 Nov): real GTA VI logo on the cover and first screen + story format (F1).
@@ -221,6 +234,7 @@ the next videos; identifying patterns and improving is Claude's job, not the own
 
 - R8 (27 Nov, F32 + R7): the day's strongest Jason/Lucia character video goes in the 12:00 UTC slot (17:30 IST),
   the best YouTube slot (median 1,234 YT vs 705-1,122 for the others).
+  Re-checked 28 Nov: holds (slot table: 12:00 median 1,590 IG / 1,183 YT, the best of all slots; n=6).
 
 ## Experiments log
 <!-- 27 Nov: E4 DROPPED (+5 %, +11 %; bar +25 %). E5 extended (its first videos publish today). New: E6 (still covers). 28 Nov batch: E5 test = ages (12:00), four-heroes (14:00); E6 test = all five 28 Nov + 27 Nov lucia-svu, pc-port; E6 control = 27 Nov cut-tennis, black-friday, niko-cameo + the 26 Nov batch (clip-frame face covers). -->
@@ -230,11 +244,14 @@ the next videos; identifying patterns and improving is Claude's job, not the own
 <!-- 23 Nov: E2 dropped (numbers below). E1 and E3 extended. No new experiment: 2 running. 24 Nov batch: E1 short = xbox-60fps (12:00), real-cheetah (17:00); long = jason-army, chiliad-secret, outsold-consoles; E3: xbox-60fps at 12:00 UTC. -->
 <!-- 22 Nov: E1-E3 not judged yet - their first videos publish tonight (22 Nov batch, all 5 remade this morning after the script check). No new experiment: 3 are running (the max is 2; none is added until one ends). 23 Nov batch: E1 test = map-size (14:00), zelda-score (20:00); control = lucia-actor, online-when, egg-tower; E2: all five; E3: lucia-actor at 12:00 UTC. -->
 <!-- 21 Nov: E1-E3 not judged yet - their first videos are the 22 Nov batch (E1 test: kodak-radio, true-fat-jason; control: console-best, dating-lucia, weird-secrets; E2: all five; E3: console-best at 12:00 UTC). No new experiment: 3 are running. -->
+<!-- 28 Nov: E5 and E6 not judged (no 24 h numbers yet; their last test videos are today's 28 Nov batch, so neither takes new videos; both are judged on 29 Nov). E7 + E8 start with the 29 Nov batch (2 experiments taking videos). 29 Nov batch: E7 test = lucia-flowers (12:00), tourist-trap (20:00); E7 control = lucia-files-1, hunting, lose-cops; E8 = lucia-files-1 (Lucia Files #1, 14:00). -->
 <!-- newest first: E<n> | started | change | hypothesis | videos (test / control) | result with numbers | decision -->
 - E8 | from 29 Nov (if E5 has ended; else the day E5 ends) | a numbered series for followers: "The Lucia Files #1, #2,
   #3..." (1 a day, Lucia only, each ends "Part 2 tomorrow" only if part 2 is really planned for tomorrow; title and
   cover say "LUCIA FILES #n") | Instagram followers per 1,000 reached rise from ~0.1 to >= 1 and YouTube subscribers
   per day rise | account-level: 3 series days vs the 3 days before | result: pending | decision: pending
+  28 Nov: STARTED (E5 takes no more videos). #1 = lucia-files-1 (Vicki, Lucia's heist friend; 29 Nov 14:00 UTC).
+  No "Part 2 tomorrow" line until part 2 is written. Read IG followers and YT subscribers on 2 Dec vs 26-28 Nov.
 - E7 | from 29 Nov (owner approved 27 Nov) | "send-first short": 65-95 words (25-35 s), `open="motion"` (no still
   title card: footage + spoken hook from frame 1, mid logo 2 s then small; the cover still goes to IG and YouTube as
   the cover/thumbnail), and a topic built to be SENT to a friend: a couple/character debate, "know this before you
@@ -242,17 +259,27 @@ the next videos; identifying patterns and improving is Claude's job, not the own
   AND YouTube stayed % >= 65 (control ~55); any IG breakout (reach >= 3,000) counts as a win | test: 2-3 of 5 a day
   (one in the 12:00 slot every other day); control: the same days' normal videos | result: pending | decision:
   pending (judge at n=6; read YouTube at 48 h)
+  28 Nov: STARTED. Test: lucia-flowers (12:00, couple debate), tourist-trap (20:00, know before you play). Control:
+  lucia-files-1, hunting, lose-cops. 2 a day -> judge on 2 Dec (n=6 test vs 9 control).
 - E6 | from 27 Nov | cover = an official Jason/Lucia character still (big, sharp face above the logo) instead of a
   trailer frame | still-cover videos get >= 10 % more IG views at 24 h than clip-frame face covers | test: 27 Nov
   lucia-svu, pc-port; 28 Nov ages, four-heroes, snap-gun, break-up, patch-fix | control: 27 Nov cut-tennis,
   black-friday, niko-cameo; 26 Nov batch excluding ps-record (topic flop, F28) | result: pending | decision: pending
   (judge on 29 Nov with n=7 vs 7; adopt if the median gap is >= 10 % and no still cover is under 1,200 IG)
+  28 Nov: not judged (only 1 test video has any number: lucia-svu 1,482 IG at 10 h; pc-port none). Today's 5 covers
+  (all stills) were looked at: big lit faces, real logo, 3 lines. Last test videos publish today -> judge 29 Nov.
+  Note (F32): the bar (+10 % IG views) sits inside the 1,200-1,900 noise band, so a "win" also needs better
+  sends/likes per 1,000 or YouTube stayed %.
 - E5 | from 27 Nov | the video's hook is a link to an older GTA (a GTA 4/5 character, place, activity or mystery in
   GTA 6) | E5 videos get >= 15 % more IG views at 24 h than the same day's non-E5, non-E4 videos (F26: 1,836-2,259 vs
   median 1,457) | test: 27 Nov cut-tennis, niko-cameo; control: black-friday, pc-port | result: pending | decision:
   pending (2 more test videos on 28 Nov; adopt at n=4 if the median gap is >= 15 %)
   27 Nov: no numbers yet (test videos publish 27 Nov 14:00 and 20:00 UTC) -> EXTEND. 28 Nov test: ages (Lucia's
   licence from GTA 4's Liberty City), four-heroes (GTA 5's three); control: snap-gun, break-up, patch-fix.
+  28 Nov: no 24 h numbers yet. Early read: cut-tennis 1,679 IG views at 8 h (reach 1,349); niko-cameo 1,177 at 2 h
+  with 14.8 saves and 2.5 sends per 1,000 (both far above the medians 2.2 / 0.7); control black-friday 955 at 5 h,
+  pc-port none. -> EXTEND; no more test videos (n=4 is complete with today's two); judge 29 Nov on IG views AND
+  saves/sends per 1,000 (F32).
 - E4 | from 25 Nov | Lucia's name in the title + a clear Lucia face on the cover, 1 video a day | the Lucia video gets
   >= 25 % more IG views at 24 h than the median of the same day's other 4 videos (F17: Lucia actress 2,252 vs
   1,315-1,694) | test: 25 Nov lucia-liberty (then 1 a day on 26-27 Nov); control: the same day's other videos |
@@ -294,28 +321,28 @@ the next videos; identifying patterns and improving is Claude's job, not the own
 ## Numbers
 
 <!-- AUTO:START -->
-_Numbers updated 2026-11-27 15:54 UTC by scripts/gta_learn.py (GTA videos only; no API cost)._
+_Numbers updated 2026-11-28 07:11 UTC by scripts/gta_learn.py (GTA videos only; no API cost)._
 
-**Accounts:** youtube 71 (first seen 15); instagram 10 (first seen 1)
+**Accounts:** youtube 72 (first seen 15); instagram 10 (first seen 1)
 
 | published (UTC) | video | cat | open | s | IG 24h | IG reach | IG watch s | IG skip % | sends/1k | likes/1k | saves/1k | YT 24h | YT now | YT stayed % | YT % viewed | exp |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 11-16T17:00 | GTA 6 still isn't on PC. Here's why | tech | card | 29.2 | 1401 | 1097 | 13.0 | 33.5 | 0.0 | 6.4 | 0.9 | - | 4 | 50.0 | 90 |  |
 | 11-16T20:00 | GTA 6 at $80 is cheaper than GTA 5 was | money | card | - | 242 | 213 | 15.3 | 33.2 | 0.0 | 23.5 | 0.0 | - | 10 | 30.0 | 96 |  |
-| 11-16T23:00 | GTA 6's wildest scenes match real Florida videos | real world | card | 31.6 | 174 | 146 | 11.6 | 39.3 | 0.0 | 6.8 | 0.0 | - | 35 | 58.8 | 54 |  |
+| 11-16T23:00 | GTA 6's wildest scenes match real Florida videos | real world | card | 31.6 | 174 | 146 | 11.6 | 39.3 | 0.0 | 6.8 | 0.0 | - | 35 | 57.1 | 54 |  |
 | 11-17T02:00 | The GTA 6 trailer that broke YouTube | other | card | 34.7 | 133 | 120 | 11.5 | 42 | 0.0 | - | 0.0 | - | 1158 | 51.6 | 74 |  |
 | 11-17T17:00 | 27 minutes of GTA 6 gameplay: what nobody notice | other | card | 27.5 | 426 | 365 | 9.0 | 36.9 | 2.7 | 16.4 | 0.0 | - | 45 | 40.0 | 69 |  |
 | 11-17T20:00 | GTA 6 took 13 years. Here's what happened | other | card | 42.2 | 191 | 161 | 11.1 | 43.1 | 0.0 | 18.6 | 0.0 | - | 243 | 53.9 | 46 |  |
 | 11-17T23:00 | Will GTA 6 even fit on your PS5? | tech | card | 34.4 | 1354 | 1103 | 16.4 | 26.6 | 0.0 | 8.2 | 0.0 | - | 152 | 44.7 | 52 |  |
 | 11-18T02:00 | Lucia is the GTA hero we waited 29 years for | characters | card | 31.6 | 1470 | 1312 | 14.4 | 30.7 | 0.0 | 13.7 | 2.3 | - | 1295 | 44.6 | 52 |  |
 | 11-18T11:00 | Is the $100 GTA 6 Ultimate Edition worth it? | money | card | 38.4 | 307 | 304 | 14.8 | 44.6 | 0.0 | 6.6 | 0.0 | 1 | 185 | 48.6 | 58 |  |
-| 11-18T14:00 | Why an NBA team becomes 'Vice City' tonight | real world | card | - | 171 | 169 | 13.2 | 31 | 0.0 | 17.8 | 0.0 | 2 | 332 | 60.1 | 106 |  |
+| 11-18T14:00 | Why an NBA team becomes 'Vice City' tonight | real world | card | - | 171 | 169 | 13.2 | 31 | 0.0 | 17.8 | 0.0 | 2 | 332 | 59.9 | 106 |  |
 | 11-18T17:00 | GTA 6 is already unlocked in these countries | tech | card | 57.1 | 183 | 164 | 16.2 | 30.9 | 0.0 | 6.1 | 0.0 | 1 | 173 | 60.1 | 48 |  |
 | 11-18T23:00 | Why the GTA 6 box has no disc inside | tech | card | 47.2 | 557 | 454 | 18.8 | 32 | 0.0 | - | 0.0 | - | 201 | 43.3 | 62 |  |
 | 11-19T14:00 | The GTA 5 record GTA 6 has to beat | records | card | - | 1386 | 1110 | 22.5 | 30.2 | 0.0 | 21.6 | 0.9 | 1077 | 1044 | 51.1 | 102 |  |
 | 11-19T20:00 | GTA 6: Rockstar's war on the leakers | drama | card | - | 1339 | 1130 | 25.9 | 33.3 | 0.0 | 8.0 | 0.0 | 295 | 856 | 49.6 | 80 |  |
-| 11-19T23:00 | GTA 6 is in America, but Tokyo nearly won, says  | real world | card | - | 1647 | 1206 | 28.0 | 27.8 | 3.3 | 21.6 | 2.5 | 73 | 779 | 55.0 | 53 |  |
-| 11-20T02:00 | GTA 6's map: the real places it looks like | real world | card | - | 1470 | 1209 | 27.0 | 23.1 | 3.3 | 25.6 | 1.7 | 1040 | 1022 | 59.1 | 59 |  |
+| 11-19T23:00 | GTA 6 is in America, but Tokyo nearly won, says  | real world | card | - | 1647 | 1206 | 28.0 | 27.8 | 3.3 | 21.6 | 2.5 | 73 | 780 | 55.0 | 53 |  |
+| 11-20T02:00 | GTA 6's map: the real places it looks like | real world | card | - | 1470 | 1209 | 27.0 | 23.1 | 3.3 | 25.6 | 1.7 | 1040 | 1022 | 59.0 | 59 |  |
 | 11-20T12:00 | GTA 6 costs double GTA 5 in India, but there's a | money | card | - | 1532 | 1247 | 28.5 | 21.1 | 2.4 | 15.2 | 0.0 | 1147 | 1256 | 58.4 | 64 |  |
 | 11-20T14:00 | GTA 6's wildest scenes match real Florida videos | real world | card | - | 1278 | 1147 | 19.6 | 25.6 | 0.0 | 15.7 | 1.7 | 1132 | 1204 | 63.7 | 55 |  |
 | 11-20T17:00 | GTA 6 still isn't on PC. Here's why | tech | card | - | 1219 | 1088 | 19.9 | 21.3 | 0.9 | 11.0 | 0.0 | 1147 | 1042 | 57.7 | 61 |  |
@@ -326,45 +353,45 @@ _Numbers updated 2026-11-27 15:54 UTC by scripts/gta_learn.py (GTA videos only; 
 | 11-21T17:00 | GTA 6 fans found Dexter's apartment in Vice City | real world | card | - | 630 | 540 | 14.5 | 41.4 | 0.0 | 11.1 | 5.6 | 670 | 767 | 50.4 | 54 |  |
 | 11-21T20:00 | GTA 6 is about 50 hours long, one review says | reviews | card | - | 1658 | 1243 | 29.2 | 27.6 | 0.0 | 15.3 | 0.0 | 1318 | 1357 | 53.9 | 76 |  |
 | 11-21T23:00 | GTA 6 sold 19 million copies? Here's the catch | records | card | - | - | - | - | - | - | - | - | 240 | 412 | 60.4 | 44 |  |
-| 11-21T23:00 | GTA 6 made $3.79 billion on day one, Rockstar sa | money | card | 60.2 | 1407 | 1194 | 29.5 | 29.9 | 11.7 | 34.3 | 0.8 | 263 | 436 | 57.4 | 55 |  |
+| 11-21T23:00 | GTA 6 made $3.79 billion on day one, Rockstar sa | money | card | 60.2 | 1407 | 1194 | 29.5 | 29.9 | 11.7 | 34.3 | 0.8 | 263 | 436 | 57.6 | 54 |  |
 | 11-22T02:00 | GTA 6 fans think we saw it back in 2021 | other | card | - | 1497 | 1296 | 30.2 | 22 | 0.0 | 11.6 | 1.5 | 1036 | 1124 | 58.3 | 64 |  |
 | 11-22T12:00 | GTA 6 runs best on one console. Here's which | tech | card | 58.0 | 1434 | 1266 | 28.2 | 21.6 | 3.2 | 22.9 | 1.6 | 980 | 1016 | 64.2 | 61 | E1-long |
-| 11-22T14:00 | Is dating Lucia in GTA 6 cheating? Couples disag | characters | card | - | 1347 | 1202 | 22.2 | 32 | 5.0 | 1.7 | 4.2 | 1891 | 2927 | 63.6 | 71 | E1-long |
-| 11-22T17:00 | GTA 6 has a secret Kodak Black radio station | other | card | - | 1435 | 1288 | 12.6 | 37.1 | 0.8 | 23.3 | 37.3 | 1408 | 1529 | 53.6 | 86 | E1-short |
-| 11-22T20:00 | GTA 6's weirdest secrets players found in week o | other | card | - | 1229 | 1129 | 13.4 | 39.2 | 2.7 | 13.3 | 6.2 | 717 | 978 | 56.5 | 62 | E1-long |
-| 11-23T02:00 | GTA 6 players are trying to make Jason fat | characters | card | - | 1635 | 1433 | 23.1 | 28.1 | 0.7 | 16.7 | 1.4 | 811 | 1212 | 59.2 | 76 | E1-short |
-| 11-23T12:00 | GTA 6's Lucia actress was in GTA 5 all along | characters | card | - | 2259 | 1875 | 30.8 | 21.2 | 1.6 | 27.7 | 6.9 | 1856 | 2045 | 60.4 | 66 | E1-long |
+| 11-22T14:00 | Is dating Lucia in GTA 6 cheating? Couples disag | characters | card | - | 1347 | 1203 | 22.2 | 32 | 5.0 | 1.7 | 4.2 | 1891 | 2929 | 63.2 | 70 | E1-long |
+| 11-22T17:00 | GTA 6 has a secret Kodak Black radio station | other | card | - | 1435 | 1288 | 12.6 | 37.2 | 0.8 | 23.3 | 37.3 | 1408 | 1530 | 53.7 | 86 | E1-short |
+| 11-22T20:00 | GTA 6's weirdest secrets players found in week o | other | card | - | 1229 | 1129 | 13.4 | 39.2 | 2.7 | 13.3 | 6.2 | 717 | 979 | 56.5 | 62 | E1-long |
+| 11-23T02:00 | GTA 6 players are trying to make Jason fat | characters | card | - | 1635 | 1433 | 23.1 | 28.1 | 0.7 | 16.7 | 1.4 | 811 | 1213 | 59.6 | 77 | E1-short |
+| 11-23T12:00 | GTA 6's Lucia actress was in GTA 5 all along | characters | card | - | 2259 | 1877 | 30.8 | 21.2 | 1.6 | 27.7 | 6.9 | 1856 | 2086 | 60.3 | 65 | E1-long |
 | 11-23T14:00 | GTA 6's map vs GTA 5: how big is it really? | real world | card | - | 1456 | 1231 | 17.3 | 26.4 | 1.6 | 19.5 | 1.6 | 62 | 246 | 49.8 | 62 | E1-short |
-| 11-23T17:00 | GTA 6 has no online mode. When is it coming? | other | card | - | 1708 | 1499 | 26.0 | 27.3 | 0.0 | 19.3 | 0.0 | 616 | 975 | 62.7 | 67 | E1-long |
-| 11-23T20:00 | GTA 6's Metacritic fight just dragged in Zelda | reviews | card | - | 1338 | 1184 | 18.1 | 34.8 | 0.8 | 11.0 | 1.7 | 459 | 627 | 61.2 | 56 | E1-short |
-| 11-24T02:00 | GTA 6 hid a real Easter egg at the top of a towe | real world | card | - | 1262 | 1115 | 15.9 | 35.4 | 0.0 | 18.8 | 22.4 | 319 | 415 | 51.5 | 43 | E1-long |
-| 11-24T12:00 | GTA 6's Xbox glitch breaks the 30 fps lock | tech | card | - | 1580 | 1231 | 18.2 | 33.7 | 1.6 | 11.4 | 2.4 | 156 | 518 | 45.2 | 61 | E1-short |
-| 11-24T14:00 | GTA 6's Jason was in the Army. Rockstar explains | characters | card | - | 1706 | 1232 | 27.9 | 21.9 | 0.0 | 19.5 | 2.4 | 267 | 1097 | 52.1 | 68 | E1-long |
-| 11-24T17:00 | GTA 6's Cheetah supercar is real. It costs £1 mi | money | card | - | 1868 | 1438 | 18.5 | 21.5 | 0.0 | 12.5 | 4.2 | 1160 | 1170 | 58.4 | 51 | E1-short |
-| 11-24T20:00 | GTA 6 brought back GTA 5's Mount Chiliad mystery | other | card | - | 1836 | 1309 | 26.0 | 28.8 | 0.0 | 26.7 | 7.6 | 1418 | 1841 | 52.3 | 71 | E1-long |
-| 11-25T02:00 | GTA 6 outsold three consoles before it even laun | records | card | - | 1423 | 1236 | 20.9 | 26.3 | 0.0 | 11.3 | 0.8 | 345 | 486 | 47.4 | 41 | E1-long |
-| 11-25T12:00 | GTA 6's Lucia isn't from Vice City. Here's where | characters | card | - | 1599 | 1269 | 22.2 | 24.2 | 0.0 | 15.0 | 0.8 | 1219 | 1234 | - | - | E4-lucia |
-| 11-25T14:00 | GTA 6's money glitch survived the new update | other | card | - | 1537 | 1319 | 26.1 | 29.8 | 1.5 | 19.0 | 12.9 | 364 | 991 | - | - |  |
-| 11-25T17:00 | GTA 6's Jason lives rent-free. Here's the catch | characters | card | - | 1805 | 1341 | 39.4 | 21 | 0.7 | 23.1 | 2.2 | 1162 | 1170 | - | - |  |
-| 11-25T20:00 | GTA 6 sold 44.9 million in four days, analyst sa | records | card | - | 957 | 809 | 25.5 | 34.4 | 3.7 | 19.8 | 2.5 | 109 | 135 | - | - |  |
-| 11-26T02:00 | GTA 6 pulled players away from Fortnite, analyst | other | card | - | 1498 | 1196 | 21.3 | 23.7 | 3.3 | 25.1 | 1.7 | 567 | 939 | - | - |  |
-| 11-26T12:00 | GTA 6: Lucia's hidden looks are in magazines. He | characters | card | - | 1646 | 1351 | 17.7 | 27.8 | 3.7 | 21.5 | 23.7 | 1847 | 1847 | - | - | E4-lucia |
-| 11-26T14:00 | GTA 6 is PlayStation's biggest launch ever, Sony | records | card | - | 213 | 186 | 16.8 | 25.9 | 0.0 | 43.0 | 0.0 | 49 | 49 | - | - |  |
-| 11-26T17:00 | GTA 6 won't let you steal every car. Here's how | other | card | - | 1536 | 1161 | 26.2 | 24.5 | 0.0 | 19.8 | 6.9 | 1118 | 1118 | - | - |  |
-| 11-26T20:00 | GTA 6 hides Mario-style caps for Jason and Lucia | characters | card | - | - | 1251 | 11.7 | 30.9 | 1.6 | 15.2 | 17.6 | - | 260 | - | - |  |
-| 11-27T02:00 | GTA 6 takes all your cash when you die. Keep it  | other | card | - | - | 1155 | 23.2 | 29.9 | 0.0 | 10.4 | 6.1 | - | 67 | - | - |  |
-| 11-27T12:00 | GTA 6's Lucia actress played a boxer on Law & Or | characters | card | - | - | - | - | - | - | - | - | - | - | - | - | E4-lucia |
-| 11-27T14:00 | GTA 6 cut tennis, a GTA 5 favourite. Rockstar sa | other | card | - | - | - | - | - | - | - | - | - | - | - | - | E5-gta5-callback |
-| 11-27T17:00 | GTA 6 on Black Friday: where it's actually cheap | money | card | - | - | - | - | - | - | - | - | - | - | - | - |  |
-| 11-27T20:00 | GTA 6 hides a GTA 4 legend near the end. Rocksta | other | card | - | - | - | - | - | - | - | - | - | - | - | - | E5-gta5-callback |
+| 11-23T17:00 | GTA 6 has no online mode. When is it coming? | other | card | - | 1708 | 1499 | 26.0 | 27.3 | 0.0 | 19.3 | 0.0 | 616 | 974 | 62.7 | 67 | E1-long |
+| 11-23T20:00 | GTA 6's Metacritic fight just dragged in Zelda | reviews | card | - | 1338 | 1184 | 18.1 | 34.8 | 0.8 | 11.0 | 1.7 | 459 | 628 | 61.5 | 56 | E1-short |
+| 11-24T02:00 | GTA 6 hid a real Easter egg at the top of a towe | real world | card | - | 1262 | 1115 | 15.9 | 35.3 | 0.0 | 18.8 | 22.4 | 319 | 415 | 51.6 | 44 | E1-long |
+| 11-24T12:00 | GTA 6's Xbox glitch breaks the 30 fps lock | tech | card | - | 1580 | 1231 | 18.2 | 33.7 | 1.6 | 11.4 | 2.4 | 156 | 519 | 47.2 | 68 | E1-short |
+| 11-24T14:00 | GTA 6's Jason was in the Army. Rockstar explains | characters | card | - | 1706 | 1232 | 27.9 | 21.9 | 0.0 | 19.5 | 2.4 | 267 | 1104 | 56.3 | 103 | E1-long |
+| 11-24T17:00 | GTA 6's Cheetah supercar is real. It costs £1 mi | money | card | - | 1868 | 1438 | 18.5 | 21.5 | 0.0 | 12.5 | 4.2 | 1160 | 1177 | 58.5 | 51 | E1-short |
+| 11-24T20:00 | GTA 6 brought back GTA 5's Mount Chiliad mystery | other | card | - | 1836 | 1309 | 26.0 | 28.8 | 0.0 | 26.7 | 7.6 | 1418 | 1880 | 53.8 | 77 | E1-long |
+| 11-25T02:00 | GTA 6 outsold three consoles before it even laun | records | card | - | 1423 | 1236 | 20.9 | 26.3 | 0.0 | 11.3 | 0.8 | 345 | 487 | 49.7 | 53 | E1-long |
+| 11-25T12:00 | GTA 6's Lucia isn't from Vice City. Here's where | characters | card | - | 1599 | 1269 | 22.2 | 24.2 | 0.0 | 15.0 | 0.8 | 1219 | 1239 | 57.4 | 60 | E4-lucia |
+| 11-25T14:00 | GTA 6's money glitch survived the new update | other | card | - | 1537 | 1320 | 26.0 | 29.9 | 1.5 | 18.9 | 12.9 | 364 | 994 | 59.3 | 60 |  |
+| 11-25T17:00 | GTA 6's Jason lives rent-free. Here's the catch | characters | card | - | 1805 | 1341 | 39.4 | 21 | 0.7 | 23.1 | 2.2 | 1162 | 1172 | 56.0 | 65 |  |
+| 11-25T20:00 | GTA 6 sold 44.9 million in four days, analyst sa | records | card | - | 957 | 810 | 25.5 | 34.4 | 3.7 | 19.8 | 2.5 | 109 | 145 | 36.8 | 64 |  |
+| 11-26T02:00 | GTA 6 pulled players away from Fortnite, analyst | other | card | - | 1498 | 1196 | 21.3 | 23.7 | 3.3 | 25.1 | 1.7 | 567 | 960 | 60.3 | 42 |  |
+| 11-26T12:00 | GTA 6: Lucia's hidden looks are in magazines. He | characters | card | - | 1646 | 1351 | 17.7 | 27.9 | 3.7 | 21.5 | 23.7 | 1847 | 2050 | - | - | E4-lucia |
+| 11-26T14:00 | GTA 6 is PlayStation's biggest launch ever, Sony | records | card | - | 213 | 186 | 16.8 | 25.9 | 0.0 | 43.0 | 0.0 | 49 | 123 | - | - |  |
+| 11-26T17:00 | GTA 6 won't let you steal every car. Here's how | other | card | - | 1537 | 1161 | 26.2 | 24.5 | 0.0 | 19.8 | 6.9 | 1431 | 1431 | - | - |  |
+| 11-26T20:00 | GTA 6 hides Mario-style caps for Jason and Lucia | characters | card | - | 1484 | 1251 | 11.7 | 31.1 | 1.6 | 15.2 | 17.6 | 525 | 525 | - | - |  |
+| 11-27T02:00 | GTA 6 takes all your cash when you die. Keep it  | other | card | - | 1504 | 1164 | 23.0 | 30.3 | 0.0 | 10.3 | 6.0 | 194 | 194 | - | - |  |
+| 11-27T12:00 | GTA 6's Lucia actress played a boxer on Law & Or | characters | card | - | - | 1256 | 17.8 | 24.8 | 0.0 | 12.7 | 1.6 | - | 1317 | - | - | E4-lucia |
+| 11-27T14:00 | GTA 6 cut tennis, a GTA 5 favourite. Rockstar sa | other | card | - | - | 1349 | 19.9 | 25.2 | 0.7 | 16.3 | 1.5 | - | 1143 | - | - | E5-gta5-callback |
+| 11-27T17:00 | GTA 6 on Black Friday: where it's actually cheap | money | card | - | - | 875 | 13.8 | 41.9 | 0.0 | 3.4 | 0.0 | - | 241 | - | - |  |
+| 11-27T20:00 | GTA 6 hides a GTA 4 legend near the end. Rocksta | other | card | - | - | 813 | 17.8 | 27.7 | 2.5 | 24.6 | 14.8 | - | 88 | - | - | E5-gta5-callback |
 | 11-28T02:00 | GTA 6 fan PC ports hit 5 fps. Take-Two shut one  | tech | card | - | - | - | - | - | - | - | - | - | - | - | - |  |
 
-Videos with 24 h numbers: 51 of 58.
+Videos with 24 h numbers: 53 of 58.
 
 **By topic type** (median per video: IG views 24h / YT views 24h / IG avg watch s / n)
-- characters: 1635 / 1190.5 / 23.1 / n=9
+- characters: 1617.0 / 1162 / 22.6 / n=10
 - reviews: 1498.0 / 888.5 / 23.6 / n=2
-- other: 1497 / 876.5 / 21.3 / n=11
+- other: 1497.5 / 717 / 22.1 / n=12
 - money: 1407 / 705.0 / 18.5 / n=5
 - tech: 1354 / 568.0 / 18.2 / n=7
 - drama: 1339 / 295 / 25.9 / n=1
@@ -372,31 +399,31 @@ Videos with 24 h numbers: 51 of 58.
 - real world: 1270.0 / 319 / 16.6 / n=8
 
 **Logo on cover/first screen** (median per video: IG views 24h / YT views 24h / IG avg watch s / n)
-- logo: 1470 / 693.5 / 22.2 / n=38
+- logo: 1484 / 643.0 / 22.2 / n=40
 - no logo: 307 / 1.5 / 14.4 / n=13
 
 **By slot (UTC)** (median per video: IG views 24h / YT views 24h / IG avg watch s / n)
 - 12:00: 1589.5 / 1183.0 / 25.2 / n=6
-- 02:00: 1470 / 567 / 20.9 / n=9
-- 17:00: 1418.0 / 1132.5 / 17.4 / n=10
+- 02:00: 1470.0 / 456.0 / 21.1 / n=10
+- 17:00: 1418.0 / 1153.5 / 17.4 / n=10
 - 14:00: 1347 / 364 / 19.6 / n=9
 - 23:00: 1340.5 / 251.5 / 22.2 / n=7
-- 20:00: 1338 / 717 / 20.0 / n=9
+- 20:00: 1338.5 / 621.0 / 19.1 / n=10
 - 11:00: 307 / 1 / 14.8 / n=1
 
 **By length** (median per video: IG views 24h / YT views 24h / IG avg watch s / n)
+- <45 s: 1423 / 591.5 / 19.6 / n=48
 - >55 s: 1420.5 / 621.5 / 24.1 / n=4
-- <45 s: 1401 / 643.0 / 19.6 / n=46
 - 45-55 s: 557 / None / 18.8 / n=1
 
 **Format** (median per video: IG views 24h / YT views 24h / IG avg watch s / n)
-- story format: 1558.5 / 513.0 / 21.8 / n=18
+- story format: 1537.0 / 492.0 / 21.8 / n=20
 - old format: 1333.0 / 764.0 / 19.0 / n=33
 
 **Opening (E7: motion vs title card)** (median per video: IG views 24h / YT views 24h / IG avg watch s / n)
-- card: 1404.0 / 643.0 / 19.8 / n=51
+- card: 1415.0 / 591.5 / 19.8 / n=53
 
-**Breakouts (IG reach >= 3,000, i.e. pushed past the first test group):** 0 of 50
+**Breakouts (IG reach >= 3,000, i.e. pushed past the first test group):** 0 of 52
 
 **Top 3 (IG 24h):** GTA 6's Lucia actress was in GTA 5 all a (2259; hook: "") | GTA 6's Cheetah supercar is real. It cos (1868; hook: "") | GTA 6 brought back GTA 5's Mount Chiliad (1836; hook: "")
 
